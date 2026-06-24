@@ -2,7 +2,7 @@
 
 Nine end-to-end runs of the pipeline against representative inputs, from a 5 KB minified file all the way to a React-Compiler-output `Button` with cache scaffolding. Each example references the relevant workflow + stage docs — read those for step-level detail, then come back here for a concrete trace.
 
-These traces show the **deep path** end-to-end (typed `.tsx` + Stage 3 acceptance reviewer-LOOP). The **default "readable restore" tier** stops earlier: Stage 1 (only if obfuscated) → Stage 2 rename → reading-aid polish (`polish.ts --rename --fast`) → format → deliver with a semantic filename + provenance, with naming quality as the only hard bar. Treat the typed-`.tsx` and reviewer-LOOP steps below as deep mode.
+These traces show the **deep path** end-to-end (typed `.tsx` + Stage 3 acceptance reviewer-LOOP). The **default "readable restore" tier** stops earlier: Stage 1 (only if obfuscated) → Stage 2 rename → reading-aid polish (`polish.ts --rename --fast`) → format → **stage in `$WS`, organize, then promote** into `restored/` with a semantic filename + provenance, with naming quality as the only hard bar (never deliver raw script output straight into `restored/`). Treat the typed-`.tsx` and reviewer-LOOP steps below as deep mode.
 
 ← Back to [SKILL.md](../SKILL.md).
 

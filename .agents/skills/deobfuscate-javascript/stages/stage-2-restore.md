@@ -135,7 +135,7 @@ bun <skill-dir>/scripts/smart-rename.ts "$WS/original.js" --merge "$WS/manual.js
 bun <skill-dir>/scripts/apply.ts "$WS/original.js" "$WS/renames.json" --out "$WS/renamed.js"
 ```
 
-(Or skip the plumbing: `polish.ts <file> --rename --fast --out draft.tsx --format`, then hand-name the residue in the draft.)
+(Or skip the plumbing: `polish.ts <file> --rename --fast --out "$WS/draft.tsx" --format` into the `$WS` staging dir, then hand-name the residue in the draft. The draft is a staged checkpoint, not the deliverable — promote it into `restored/` only after it reads cleanly.)
 
 **Thorough flow (deep mode / when density stays high):** fall back to explicit per-pass runs, re-extracting between passes so each pass's `context` quotes the _renamed_ prior code (`let A = useIntl()` reads as `intl` immediately). For deep/full restoration, repeat Pass 2/3 until `quality-gate.ts` stops reporting `cryptic-params` / `cryptic-bindings` / `short-identifier-density`.
 
