@@ -599,12 +599,18 @@ function isLottieAnimationDataModule(file: string, source: string): boolean {
 
   const header = source.slice(0, 500);
   const leadingData = source.slice(0, 8000);
-  return (
-    /Restored from ref\/webview\/assets\/[^/\r\n]+\.js/.test(header) &&
+  const hasLottieVersion =
     /\bv\s*:\s*["'`]5\.\d+\.\d+["'`]/.test(leadingData) &&
     /\bip\s*:/.test(leadingData) &&
     /\bop\s*:/.test(leadingData) &&
-    /\bfr\s*:/.test(leadingData) &&
+    /\bfr\s*:/.test(leadingData);
+  const hasLottieToolkitMetadata =
+    /@lottiefiles\/toolkit-js/.test(leadingData) &&
+    /\bw\s*:/.test(leadingData) &&
+    /\bh\s*:/.test(leadingData);
+  return (
+    /Restored from ref\/webview\/assets\/[^/\r\n]+\.js/.test(header) &&
+    (hasLottieVersion || hasLottieToolkitMetadata) &&
     /\blayers\s*:/.test(source)
   );
 }

@@ -193,6 +193,9 @@ describe("relativeImport / buildImportMappings", () => {
     expect(relativeImport("ui/panel.tsx", "utils/format-thing.ts")).toBe(
       "../utils/format-thing",
     );
+    expect(relativeImport("ui/panel.tsx", "utils/search/index.ts")).toBe(
+      "../utils/search",
+    );
     expect(relativeImport("a/b/c.tsx", "a/b/d.ts")).toBe("./d");
   });
 
@@ -384,6 +387,145 @@ describe("promoteOrganized", () => {
         .map((r) => r.basename)
         .sort(),
     ).toEqual(["download-Gh1jKl34", "format-thing-AbCdEf12", "panel-Mn5oPq78"]);
+  });
+
+  test("promotes a split directory candidate and records its index entry", () => {
+    const target = makeTmpRoot();
+    const fullDir = path.join(target, ".deobfuscate-javascript", "_full");
+    const candidateDir = path.join(
+      fullDir,
+      "files",
+      "score-query-match-AbCdEf12",
+      "candidate",
+    );
+    fs.mkdirSync(candidateDir, { recursive: true });
+    fs.mkdirSync(path.join(fullDir, "checkpoints"), { recursive: true });
+    fs.mkdirSync(path.join(fullDir, "locks"), { recursive: true });
+    fs.writeFileSync(
+      path.join(candidateDir, "index.ts"),
+      [
+        'import { scoreQueryMatch } from "./matcher";',
+        "export { scoreQueryMatch };",
+        "",
+      ].join("\n"),
+    );
+    fs.writeFileSync(
+      path.join(candidateDir, "matcher.ts"),
+      [
+        "export function scoreQueryMatch(candidate: string, query: string): number {",
+        "  return candidate.includes(query) ? 1 : 0;",
+        "}",
+        "",
+      ].join("\n"),
+    );
+
+    const manifest = {
+      version: 1 as const,
+      entry: "score-query-match-AbCdEf12",
+      rootDir: "ref/webview/assets",
+      targetDir: target,
+      createdAt: "2026-06-24T00:00:00.000Z",
+      updatedAt: "2026-06-24T00:00:00.000Z",
+      files: {
+        "score-query-match-AbCdEf12": {
+          path: "ref/webview/assets/score-query-match-AbCdEf12.js",
+          basename: "score-query-match-AbCdEf12",
+          kind: "local",
+          depth: 0,
+          stages: { organized: true },
+          organization: org(
+            "utils",
+            "utils/score-query-match.ts",
+            "split",
+            "single-util",
+          ),
+          exports: [{ exported: "t", local: "s", kind: "named" }],
+          owner: null,
+          claimedAt: null,
+          lastUpdated: null,
+        },
+      },
+      edges: [],
+      unresolved: [],
+    };
+    fs.writeFileSync(
+      path.join(fullDir, "manifest.json"),
+      JSON.stringify(manifest, null, 2),
+    );
+
+    const results = promoteOrganized({ target });
+
+    expect(results[0]!.promoted).toBe(true);
+    expect(
+      fs.existsSync(path.join(target, "utils", "score-query-match", "index.ts")),
+    ).toBe(true);
+    expect(
+      fs.existsSync(
+        path.join(target, "utils", "score-query-match", "matcher.ts"),
+      ),
+    ).toBe(true);
+    const importMap = JSON.parse(
+      fs.readFileSync(path.join(target, "IMPORT_MAP.json"), "utf-8"),
+    );
+    expect(importMap.chunks["score-query-match-AbCdEf12"].restored).toBe(
+      "utils/score-query-match/index.ts",
+    );
+    expect(importMap.chunks["score-query-match-AbCdEf12"].exports).toEqual({
+      t: "scoreQueryMatch",
+    });
+  });
+
+  test("promotes a large flat data asset without requiring a split", () => {
+    const target = makeTmpRoot();
+    const fullDir = path.join(target, ".deobfuscate-javascript", "_full");
+    fs.mkdirSync(path.join(fullDir, "checkpoints"), { recursive: true });
+    fs.mkdirSync(path.join(fullDir, "locks"), { recursive: true });
+    const entries = Array.from(
+      { length: 1005 },
+      (_, index) => `  "message.${index}": "value ${index}",`,
+    ).join("\n");
+    fs.writeFileSync(
+      path.join(fullDir, "checkpoints", "locale-FrFrAa11.tsx"),
+      `// Restored from ref/webview/assets/locale-FrFrAa11.js\nexport const localeMessages = {\n${entries}\n};\n`,
+    );
+    const manifest = {
+      version: 1 as const,
+      entry: "locale-FrFrAa11",
+      rootDir: "ref/webview/assets",
+      targetDir: target,
+      createdAt: "2026-06-24T00:00:00.000Z",
+      updatedAt: "2026-06-24T00:00:00.000Z",
+      files: {
+        "locale-FrFrAa11": {
+          path: "ref/webview/assets/locale-FrFrAa11.js",
+          basename: "locale-FrFrAa11",
+          kind: "local",
+          depth: 0,
+          stages: { organized: true },
+          organization: org(
+            "locales",
+            "locales/fr-fr.ts",
+            "manual",
+            "data-asset",
+          ),
+          exports: [{ exported: "t", local: "localeMessages", kind: "named" }],
+          owner: null,
+          claimedAt: null,
+          lastUpdated: null,
+        },
+      },
+      edges: [],
+      unresolved: [],
+    };
+    fs.writeFileSync(
+      path.join(fullDir, "manifest.json"),
+      JSON.stringify(manifest, null, 2),
+    );
+
+    const results = promoteOrganized({ target });
+
+    expect(results[0]!.promoted).toBe(true);
+    expect(fs.existsSync(path.join(target, "locales", "fr-fr.ts"))).toBe(true);
   });
 
   test("is idempotent: a second run promotes nothing new", () => {

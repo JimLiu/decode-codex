@@ -520,8 +520,10 @@ export const ORGANIZATION_RECIPES: OrganizationRecipe[] = [
 ];
 export const ORGANIZATION_CLASSIFICATIONS: OrganizationClassification[] = [
   "app-feature",
+  "data-asset",
   "icon",
   "single-util",
+  "vendor-npm",
   "vendor-runtime",
   "boundary",
 ];

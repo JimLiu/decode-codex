@@ -96,7 +96,11 @@ export function relativeImport(
   toSemanticPath: string,
 ): string {
   const fromDir = path.dirname(fromSemanticPath);
-  const toNoExt = toSemanticPath.replace(/\.[cm]?[jt]sx?$/i, "");
+  const withoutExt = toSemanticPath.replace(/\.[cm]?[jt]sx?$/i, "");
+  const toNoExt =
+    path.posix.basename(withoutExt) === "index"
+      ? path.posix.dirname(withoutExt)
+      : withoutExt;
   let rel = path.relative(fromDir, toNoExt);
   if (rel === "") rel = ".";
   rel = rel.split(path.sep).join("/");
@@ -147,11 +151,17 @@ type Built = {
   files: Array<{ relPath: string; code: string }>;
   /** The path to remove on rollback (the file, or the chunk's directory). */
   promotionRoot: string;
+  /** Actual public entry file recorded in IMPORT_MAP. */
+  restoredPath: string;
   exportMap: Record<string, string>;
 };
 
 function toPosixPath(input: string): string {
   return input.split(path.sep).join("/");
+}
+
+function stripSourceExtension(input: string): string {
+  return input.replace(/\.[cm]?[jt]sx?$/i, "");
 }
 
 function repoRelativeSourcePath(
@@ -259,9 +269,10 @@ export function inferManualExportMap(
 /**
  * Build a chunk's deliverable file set (contents + final relative paths) without
  * touching disk. icon/button use the typed semantic-finalize recipe; manual/split
- * use the agent candidate (files/<basename>/candidate.tsx|.ts) if present, else the
- * mechanical checkpoint (which the gate rejects unless clean). The caller writes
- * the files at their final locations, gates them there (so relative imports to
+ * use the agent candidate (files/<basename>/candidate.tsx|.ts or a
+ * files/<basename>/candidate/ directory) if present, else the mechanical
+ * checkpoint (which the gate rejects unless clean). The caller writes the files
+ * at their final locations, gates them there (so relative imports to
  * already-promoted siblings resolve), and rolls back `promotionRoot` on failure.
  */
 function buildCandidate(
@@ -324,10 +335,47 @@ function buildCandidate(
         code: ensureProvenanceHeader(rewrite(f.code), sourcePath, description),
       }));
     }
-    return { files, promotionRoot: semanticPath, exportMap: result.exportMap };
+    return {
+      files,
+      promotionRoot: semanticPath,
+      restoredPath: semanticPath,
+      exportMap: result.exportMap,
+    };
   }
 
   // manual / split: prefer an agent-rewritten candidate, else the checkpoint.
+  const directoryCandidate = readCandidateDirectory(fullDir, basename);
+  if (directoryCandidate) {
+    const baseDir =
+      path.posix.basename(stripSourceExtension(semanticPath)) === "index"
+        ? path.posix.dirname(semanticPath)
+        : stripSourceExtension(semanticPath);
+    const files = directoryCandidate.files.map((f) => {
+      const relPath = path.posix.join(baseDir, f.relPath);
+      const perFileMappings = buildImportMappings(
+        chunk,
+        relPath,
+        args.importMap,
+        args.manifest,
+      );
+      const code =
+        perFileMappings.length > 0
+          ? rewriteSemanticImports(f.code, perFileMappings)
+          : f.code;
+      return {
+        relPath,
+        code: ensureProvenanceHeader(code, sourcePath, description),
+      };
+    });
+    const entryRelPath = path.posix.join(baseDir, directoryCandidate.entry);
+    return {
+      files,
+      promotionRoot: baseDir,
+      restoredPath: entryRelPath,
+      exportMap: inferManualExportMap(directoryCandidate.entrySource, chunk),
+    };
+  }
+
   const source =
     readCandidate(fullDir, basename) ?? readCheckpoint(fullDir, basename);
   if (source == null) {
@@ -341,6 +389,7 @@ function buildCandidate(
       },
     ],
     promotionRoot: semanticPath,
+    restoredPath: semanticPath,
     exportMap: inferManualExportMap(source, chunk),
   };
 }
@@ -361,6 +410,43 @@ function readCandidate(fullDir: string, basename: string): string | null {
   return null;
 }
 
+function readCandidateDirectory(
+  fullDir: string,
+  basename: string,
+): {
+  files: Array<{ relPath: string; code: string }>;
+  entry: string;
+  entrySource: string;
+} | null {
+  const root = path.join(fullDir, "files", basename, "candidate");
+  if (!fs.existsSync(root) || !fs.statSync(root).isDirectory()) return null;
+
+  const files: Array<{ relPath: string; code: string }> = [];
+  const visit = (dir: string): void => {
+    for (const name of fs.readdirSync(dir).sort()) {
+      const abs = path.join(dir, name);
+      const stat = fs.statSync(abs);
+      if (stat.isDirectory()) {
+        visit(abs);
+        continue;
+      }
+      if (!/\.[cm]?[jt]sx?$/i.test(name)) continue;
+      files.push({
+        relPath: toPosixPath(path.relative(root, abs)),
+        code: fs.readFileSync(abs, "utf-8"),
+      });
+    }
+  };
+  visit(root);
+  if (files.length === 0) return null;
+
+  const entry =
+    files.find((f) => /^index\.[cm]?[jt]sx?$/i.test(f.relPath))?.relPath ??
+    files[0]!.relPath;
+  const entrySource = files.find((f) => f.relPath === entry)!.code;
+  return { files, entry, entrySource };
+}
+
 function qualityOptionsFor(
   classification: string | undefined,
   tier: "readable" | "deep",
@@ -371,6 +457,12 @@ function qualityOptionsFor(
       vendored: true,
       allowFlat: true,
       allowMechanicalNames: true,
+    };
+  }
+  if (classification === "data-asset") {
+    return {
+      ...DEFAULT_OPTIONS,
+      allowFlat: true,
     };
   }
   // Readable tier ships organized-but-untyped output; deep tier enforces types.
@@ -523,7 +615,7 @@ export function promoteOrganized(
       // Gate passed — record success in-memory (so downstream consumers see it).
       importMap.chunks![basename] = {
         ...(importMap.chunks![basename] ?? {}),
-        restored: org.semanticPath,
+        restored: built.restoredPath,
         ...(Object.keys(built.exportMap).length > 0
           ? { exports: built.exportMap }
           : {}),
@@ -535,22 +627,22 @@ export function promoteOrganized(
 
       if (opts.dryRun) {
         dryWritten.push(built.promotionRoot);
-        log(`[dry] ${basename} → ${org.semanticPath}  PASS`);
+        log(`[dry] ${basename} → ${built.restoredPath}  PASS`);
         results.push({
           basename,
           promoted: false,
-          semanticPath: org.semanticPath,
+          semanticPath: built.restoredPath,
           reason: "would promote",
         });
       } else {
         writeJsonAtomic(importMapPath, importMap);
         writeJsonAtomic(paths.manifestPath, manifest);
         promotedCount++;
-        log(`promote: ${basename} → ${org.semanticPath}`);
+        log(`promote: ${basename} → ${built.restoredPath}`);
         results.push({
           basename,
           promoted: true,
-          semanticPath: org.semanticPath,
+          semanticPath: built.restoredPath,
           reason: "promoted",
         });
       }

@@ -89,13 +89,22 @@ export type PlanOrganizeInputs = {
 };
 
 // Matches semantic-finalize.ts's stripHashSuffix so plan + promote agree on stems.
-const HASH_SUFFIX_RE = /-[A-Za-z0-9_-]{6,12}$/;
+const HASH_SUFFIX_RE = /^[A-Za-z0-9_-]{6,12}$/;
 const ICON_SIGNAL =
   /jsx(?:DEV|s)?\s*\(\s*["']svg["']|<svg[\s/>]|viewBox\s*[:=]/;
 const BUTTON_SIGNAL = /\bButton\b/;
 
 function stripHashSuffix(basename: string): string {
-  return basename.replace(HASH_SUFFIX_RE, "");
+  for (let index = basename.lastIndexOf("-"); index > 0; index = basename.lastIndexOf("-", index - 1)) {
+    const suffix = basename.slice(index + 1);
+    if (
+      HASH_SUFFIX_RE.test(suffix) &&
+      /[0-9_]/.test(suffix)
+    ) {
+      return basename.slice(0, index).replace(/-+$/, "");
+    }
+  }
+  return basename;
 }
 
 type Shape = {
@@ -126,6 +135,51 @@ function detectShape(source: string, basename: string): Shape | null {
     return null;
   }
   return null;
+}
+
+function isLottieAnimationData(source: string): boolean {
+  const leadingData = source.slice(0, 8000);
+  const hasLottieVersion =
+    /\bv\s*:\s*["'`]5\.\d+\.\d+["'`]/.test(leadingData) &&
+    /\b(?:ip|op)\s*:/.test(leadingData) &&
+    /\bfr\s*:/.test(leadingData);
+  const hasLottieToolkitMetadata =
+    /@lottiefiles\/toolkit-js/.test(leadingData) &&
+    /\bw\s*:/.test(leadingData) &&
+    /\bh\s*:/.test(leadingData);
+  return (hasLottieVersion || hasLottieToolkitMetadata) && /\blayers\s*:/.test(source);
+}
+
+function localeStemFromBasename(basename: string, stem: string): string | null {
+  if (/^[a-z]{2,3}(?:-(?:[A-Z]{2}|[0-9]{3}|[A-Z][a-z]{3})){0,2}$/.test(stem)) {
+    return stem;
+  }
+  const match = basename.match(
+    /^([a-z]{2,3}(?:-(?:[A-Z]{2}|[0-9]{3}|[A-Z][a-z]{3})){0,2})(?:-|$)/,
+  );
+  return match?.[1] ?? null;
+}
+
+function isLocaleMessagesData(source: string): boolean {
+  return (
+    /\b(?:var|const)\s+[A-Za-z0-9_$]*Greeting\s*=/.test(source) &&
+    /\bexport\s+const\s+[A-Za-z0-9_$]*Default\s*=\s*\{/.test(source) &&
+    /["'`]CopyButton\.copyTooltip["'`]/.test(source)
+  );
+}
+
+function isThemeData(source: string): boolean {
+  return (
+    /\bexport\s+const\s+[A-Za-z0-9_$]*Default\s*=\s*\{/.test(source) &&
+    /\bbg\s*:/.test(source) &&
+    /\bcolors\s*:/.test(source) &&
+    /\bname\s*:/.test(source) &&
+    /\bsettings\s*:/.test(source) &&
+    /(?:\btype\s*:|\bchromeTheme\s*:)/.test(source) &&
+    /editor\.background|activityBar\.background|tokenColors|scope\s*:/.test(
+      source,
+    )
+  );
 }
 
 function matchDomain(
@@ -242,6 +296,41 @@ function classify(
         status: "approved",
         confidence: 0.7,
         reason: "button/control module",
+      });
+    }
+    if (isLottieAnimationData(source)) {
+      const name = kebabCase(stem) || "animation";
+      return mk({
+        domain: "animations",
+        semanticPath: `animations/${name}.ts`,
+        recipe: "manual",
+        classification: "data-asset",
+        status: "approved",
+        confidence: 0.85,
+        reason: "Lottie animation data module",
+      });
+    }
+    const localeStem = localeStemFromBasename(basename, stem);
+    if (localeStem && isLocaleMessagesData(source)) {
+      return mk({
+        domain: "locales",
+        semanticPath: `locales/${kebabCase(localeStem)}.ts`,
+        recipe: "manual",
+        classification: "data-asset",
+        status: "approved",
+        confidence: 0.85,
+        reason: "localized message catalog",
+      });
+    }
+    if (isThemeData(source)) {
+      return mk({
+        domain: "themes",
+        semanticPath: `themes/${kebabCase(stem)}.ts`,
+        recipe: "manual",
+        classification: "data-asset",
+        status: "approved",
+        confidence: 0.85,
+        reason: "editor theme data module",
       });
     }
   }

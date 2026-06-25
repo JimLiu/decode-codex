@@ -78,6 +78,7 @@ export type ManifestStages = {
 export type OrganizationRecipe = "icon" | "button" | "split" | "manual";
 export type OrganizationClassification =
   | "app-feature"
+  | "data-asset"
   | "icon"
   | "single-util"
   | "vendor-npm"
