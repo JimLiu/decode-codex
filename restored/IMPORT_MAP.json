@@ -10578,8 +10578,7 @@
       "exports": {
         "ComposerExternalFooter": "ComposerExternalFooter"
       },
-      "status": "draft",
-      "note": "Public draft organized for the updated ref chunk; not promoted until shared app-initial producer imports are restored and quality-gate passes."
+      "status": "done"
     },
     "use-git-recent-branches-DVeuba-T": {
       "restored": "utils/use-git-recent-branches.ts",
