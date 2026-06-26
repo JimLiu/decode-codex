@@ -55,6 +55,14 @@ interface BackgroundTerminalActionStateWithRow<
   row: BackgroundTerminalProcessRow<Process>;
 }
 
+interface BackgroundTerminalActionStateWithRowIndex<
+  Process extends BackgroundTerminalProcessIdentity,
+  Row extends BackgroundTerminalProcessRow<Process>,
+> {
+  row: Row;
+  rowIndex?: number | null;
+}
+
 export interface BackgroundTerminalRow<
   Terminal extends ComparableBackgroundTerminal = ComparableBackgroundTerminal,
 > {
@@ -166,6 +174,47 @@ export function findBackgroundTerminalMetricsRow<
         isSameProcess(row.process, actionState.row.process),
     ) ?? null
   );
+}
+
+export function insertBackgroundTerminalActionRows<
+  Process extends BackgroundTerminalProcessIdentity,
+  Row extends BackgroundTerminalProcessRow<Process>,
+  ActionState extends BackgroundTerminalActionStateWithRowIndex<Process, Row>,
+>(
+  rows: Row[],
+  actionStatesByProcessId: Map<string, ActionState>,
+  isSameProcess: (existingProcess: Process, actionProcess: Process) => boolean,
+): Row[] {
+  if (actionStatesByProcessId.size === 0) {
+    return rows;
+  }
+
+  let nextRows = rows.slice();
+  let rowsToInsert: Array<{ row: Row; rowIndex: number }> = [];
+  for (let actionState of actionStatesByProcessId.values()) {
+    let actionRow = actionState.row;
+    if (
+      nextRows.some((row) => isSameProcess(row.process, actionRow.process)) ||
+      !hasBackgroundTerminalRow(actionRow)
+    ) {
+      continue;
+    }
+
+    rowsToInsert.push({
+      row: actionRow,
+      rowIndex: actionState.rowIndex ?? nextRows.length,
+    });
+  }
+
+  rowsToInsert.sort((left, right) => left.rowIndex - right.rowIndex);
+  for (let rowToInsert of rowsToInsert) {
+    nextRows.splice(
+      Math.min(rowToInsert.rowIndex, nextRows.length),
+      0,
+      rowToInsert.row,
+    );
+  }
+  return nextRows;
 }
 
 export function pruneSettledBackgroundTerminalActionStates<

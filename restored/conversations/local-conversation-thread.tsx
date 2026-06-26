@@ -784,6 +784,7 @@ import {
   createBackgroundTerminalSnapshot,
   hasBackgroundTerminalRow,
   hasMatchingBackgroundTerminal,
+  insertBackgroundTerminalActionRows,
   pruneSettledBackgroundTerminalActionStates,
   resolveBackgroundTerminalStatus,
 } from "./local-conversation-thread-parts/background-terminal-state";
@@ -1751,21 +1752,6 @@ function up({
       (a.add(t.row.terminal.id), o.push(t.row.terminal), (s += 1));
   return s;
 }
-function dp(e, t) {
-  if (t.size === 0) return e;
-  let n = e.slice(),
-    r = [];
-  for (let e of t.values())
-    n.some((item) => bu(item.process, e.row.process)) ||
-      !hasBackgroundTerminalRow(e.row) ||
-      r.push({
-        row: e.row,
-        rowIndex: e.rowIndex ?? n.length,
-      });
-  r.sort((e, t) => e.rowIndex - t.rowIndex);
-  for (let e of r) n.splice(Math.min(e.rowIndex, n.length), 0, e.row);
-  return n;
-}
 function fp({
   childProcesses,
   conversationCwd,
@@ -1865,7 +1851,7 @@ function _p(e) {
       bu,
     );
   let C = x,
-    w = dp(b, C);
+    w = insertBackgroundTerminalActionRows(b, C, bu);
   let T = w,
     E,
     D;
