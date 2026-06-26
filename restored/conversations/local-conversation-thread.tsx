@@ -766,6 +766,8 @@ import {
   ThreadOverflowMenu as Pd,
 } from "../threads/thread-overflow-menu";
 import { shouldShowInlineActivityForRightPanel } from "./local-conversation-thread-parts/inline-activity-panel";
+import { shouldUseFullWidthRightPanelForRoute } from "./local-conversation-thread-parts/right-panel-route-state";
+import { shouldShowScrollToBottomButton } from "./local-conversation-thread-parts/scroll-to-bottom-state";
 function Fd(e) {
   let n = Ld.useRef(null),
     r = (t) => {
@@ -10341,16 +10343,6 @@ function formatBackgroundAgentDisplayName({
 var initThreadScrollState = once(() => {
   Vt();
 });
-function fb({
-  isScrollToTopEnabled,
-  isScrolledFromBottom,
-  responseSpacerHeightPx,
-  scrollDistanceFromBottomPx,
-}) {
-  return !isScrollToTopEnabled || responseSpacerHeightPx == null
-    ? isScrolledFromBottom
-    : scrollDistanceFromBottomPx > responseSpacerHeightPx + 24;
-}
 var pb = once(() => {
   nd();
 });
@@ -12928,9 +12920,6 @@ var eS,
     };
     rS = new WeakMap();
   });
-function aS({ conversationId, isRightPanelFullWidth, routeConversationId }) {
-  return isRightPanelFullWidth && conversationId === routeConversationId;
-}
 var initBackgroundAgentThreadTab = once(() => {});
 async function openBackgroundAgentThreadTab(
   e,
@@ -13513,7 +13502,7 @@ function NS(e) {
   };
   let { data: _data } = Ti(T),
     D = W(go),
-    O = aS({
+    O = shouldUseFullWidthRightPanelForRoute({
       conversationId,
       isRightPanelFullWidth: D,
       routeConversationId: ot(_.value),
@@ -13855,7 +13844,7 @@ function RS(e) {
       }));
     };
   let U = Y(ae),
-    oe = fb({
+    oe = shouldShowScrollToBottomButton({
       isScrollToTopEnabled: T,
       isScrolledFromBottom: j,
       responseSpacerHeightPx: F?.getHeightPx() ?? null,

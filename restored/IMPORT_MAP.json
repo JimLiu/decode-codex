@@ -10541,7 +10541,7 @@
         "z": "useReviewSearchHighlights"
       },
       "status": "draft",
-      "note": "Draft for the updated ref chunk. Current pass restored runtime/i18n/JSX factory aliases and extracted the inline activity panel helper; promotion is blocked on full semantic split and import repair."
+      "note": "Draft for the updated ref chunk. Current pass extracted right-panel route, inline activity, and scroll-to-bottom visibility helpers; promotion is blocked on full semantic split and import repair."
     },
     "thread-overflow-menu-CM-Eo7JH": {
       "restored": "threads/thread-overflow-menu.tsx",
