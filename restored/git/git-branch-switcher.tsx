@@ -80,9 +80,9 @@ import {
   yl as Se,
 } from "./app-initial~app-main~onboarding-page~profile-QLPeiknY.js";
 import {
-  a as Ce,
-  o as we,
-} from "./app-initial~app-main~remote-conversation-page~onboarding-page~hotkey-window-thread-page~thr~b0jzjd62-JuRN2k_O.js";
+  DiffStats as Ce,
+  initDiffStatsChunk as we,
+} from "./git-review-primitives";
 function Te({ cwd, enabled, hostConfig, operationSource }) {
   return JSON.stringify({
     cwd: cwd ?? null,

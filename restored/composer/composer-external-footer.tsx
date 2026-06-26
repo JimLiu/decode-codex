@@ -117,9 +117,9 @@ import {
   v as at,
 } from "./app-initial~app-main~remote-conversation-page~new-thread-panel-page~appgen-library-page~hot~djo67r4n-CIs8dplf.js";
 import {
-  c as ot,
-  s as st,
-} from "./app-initial~app-main~remote-conversation-page~onboarding-page~hotkey-window-thread-page~thr~b0jzjd62-JuRN2k_O.js";
+  initCreateGitRepositoryChunk as st,
+  useCreateGitRepository as ot,
+} from "../git/git-review-primitives";
 import {
   a as ct,
   i as G,

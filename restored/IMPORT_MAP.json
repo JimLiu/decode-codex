@@ -10607,6 +10607,21 @@
       },
       "status": "draft",
       "note": "Public draft organized for the updated ref chunk; not promoted until shared app-initial producer imports are restored and quality-gate passes."
+    },
+    "app-initial~app-main~remote-conversation-page~onboarding-page~hotkey-window-thread-page~thr~b0jzjd62-JuRN2k_O": {
+      "restored": "git/git-review-primitives.tsx",
+      "exports": {
+        "a": "DiffStats",
+        "c": "useCreateGitRepository",
+        "i": "RollingDiffStatNumber",
+        "n": "initGitReviewPrimitivesChunk",
+        "o": "initDiffStatsChunk",
+        "r": "AnimatedDiffStats",
+        "s": "initCreateGitRepositoryChunk",
+        "t": "GitReviewPrimitives"
+      },
+      "status": "draft",
+      "note": "Public draft organized for the updated ref chunk; not promoted until shared app-initial producer imports are restored and quality-gate passes."
     }
   }
 }

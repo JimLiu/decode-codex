@@ -628,9 +628,9 @@ import {
   t as jl,
 } from "./app-initial~app-main~remote-conversation-page~onboarding-page~projects-index-page~hotkey-wi~l5ab2ey0-8q2fQ40X.js";
 import {
-  a as Ml,
-  o as Nl,
-} from "./app-initial~app-main~remote-conversation-page~onboarding-page~hotkey-window-thread-page~thr~b0jzjd62-JuRN2k_O.js";
+  DiffStats as Ml,
+  initDiffStatsChunk as Nl,
+} from "../git/git-review-primitives";
 import {
   n as Pl,
   t as Fl,
