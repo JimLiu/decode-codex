@@ -10540,6 +10540,17 @@
       },
       "status": "draft",
       "note": "Public draft organized for the updated ref chunk; not promoted until raw producer imports are restored and quality-gate passes."
+    },
+    "thread-overflow-menu-CM-Eo7JH": {
+      "restored": "threads/thread-overflow-menu.tsx",
+      "exports": {
+        "i": "openSideChatTab",
+        "n": "initThreadOverflowMenuChunk",
+        "r": "initOpenSideChatTabChunk",
+        "t": "ThreadOverflowMenu"
+      },
+      "status": "draft",
+      "note": "Public draft organized for the updated ref chunk; not promoted until shared app-initial producer imports are restored and quality-gate passes."
     }
   }
 }
