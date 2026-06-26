@@ -10713,6 +10713,14 @@
         "t": "Tabs"
       },
       "status": "done"
+    },
+    "artifact-tab-content.electron-xyz2yen7": {
+      "restored": "ui/artifact-tab-content.tsx",
+      "exports": {
+        "ArtifactTabContent": "ArtifactTabContent"
+      },
+      "status": "draft",
+      "notes": "Draft facade plus semantic preview helpers; full promotion is deferred until Walnut and dynamic preview producer chunks are split."
     }
   }
 }
