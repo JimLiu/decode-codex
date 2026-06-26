@@ -10456,6 +10456,90 @@
         "ThreadAppShellChrome": "ThreadAppShellChrome"
       },
       "status": "done"
+    },
+    "rolldown-runtime-Czos8NxU": {
+      "restored": "runtime/commonjs-interop.ts",
+      "exports": {
+        "a": "commonJsRequire",
+        "i": "copyCommonJsProperties",
+        "n": "once",
+        "o": "toCommonJs",
+        "r": "exportGetters",
+        "s": "toEsModule",
+        "t": "createCommonJsModule"
+      },
+      "status": "done"
+    },
+    "rpc-Cp252OZG": {
+      "restored": "runtime/rpc-b-ugf-axq.tsx",
+      "exports": {
+        "appHost": "appHost",
+        "appServices": "appServices",
+        "initializeAppHostServices": "initializeAppHostServices"
+      },
+      "status": "done"
+    },
+    "use-media-query-CUpGkpzI": {
+      "restored": "utils/use-media-query.ts",
+      "exports": {
+        "n": "useMediaQuery",
+        "t": "initUseMediaQueryChunk"
+      },
+      "status": "done"
+    },
+    "artifact-file-preview-icon-DejMdUR4": {
+      "restored": "utils/artifact-file-preview-icon.tsx",
+      "exports": {
+        "n": "initArtifactFilePreviewIconChunk",
+        "t": "ArtifactFilePreviewIcon"
+      },
+      "status": "done"
+    },
+    "local-conversation-thread-Bf38rCmF": {
+      "restored": "conversations/local-conversation-thread.tsx",
+      "exports": {
+        "A": "LocalConversationSummaryPanel",
+        "C": "useLocalConversationSummaryPanelModel",
+        "D": "usePinnedSummaryPanelLayout",
+        "E": "initLocalConversationArtifacts",
+        "F": "isRecentLocalEnvironmentAction",
+        "I": "ThreadFindNavigationRail",
+        "L": "initThreadFindNavigationRail",
+        "M": "ThreadSummaryPanelChrome",
+        "N": "initThreadSummaryPanelChrome",
+        "O": "initPinnedSummaryPanelState",
+        "P": "initLocalEnvironmentRecentActions",
+        "R": "initReviewSearchHighlighter",
+        "S": "initLocalConversationSummaryPanelSignals",
+        "T": "initLocalConversationArtifactSignals",
+        "_": "initConversationSearchHelpers",
+        "a": "initLocalConversationThreadChunk",
+        "b": "renderLocalConversationMarkdownForTurns",
+        "c": "initMarkConversationReadEffect",
+        "d": "openBackgroundAgentThreadTab",
+        "f": "shouldShowInlineActivityForRightPanel",
+        "g": "createLocalConversationSearchAdapter",
+        "h": "localConversationVisibleTurnEntriesSignal",
+        "i": "LocalConversationThread",
+        "j": "initLocalConversationGitSummary",
+        "k": "pinnedSummaryPanelState",
+        "l": "useMarkConversationReadOnVisibility",
+        "m": "initLocalConversationTurnSelectors",
+        "n": "LocalConversationSummaryThread",
+        "o": "initLocalConversationThreadRoute",
+        "p": "initBackgroundAgentThreadTab",
+        "r": "LocalConversationSideChatThread",
+        "s": "useResumeLocalConversation",
+        "t": "LocalConversationMainThread",
+        "u": "initBackgroundAgentThreadTabs",
+        "v": "formatBackgroundAgentDisplayName",
+        "w": "localConversationOutputArtifactsSignal",
+        "x": "initConversationMarkdownRenderer",
+        "y": "initThreadScrollState",
+        "z": "useReviewSearchHighlights"
+      },
+      "status": "draft",
+      "note": "Public draft organized for the updated ref chunk; not promoted until raw producer imports are restored and quality-gate passes."
     }
   }
 }

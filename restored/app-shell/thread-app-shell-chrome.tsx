@@ -1,6 +1,6 @@
 // Restored from ref/webview/assets/thread-app-shell-chrome-D7ImdiWZ.js
 // Thread app-shell chrome: right/bottom panel outlets, tab launchers, and browser tab title synchronization.
-import { n as e, s as t } from "./rolldown-runtime-Czos8NxU.js";
+import { once as e, toEsModule as t } from "../runtime/commonjs-interop";
 import {
   $N as n,
   $P as r,
@@ -179,15 +179,21 @@ import {
   p as ln,
   v as un,
 } from "./app-initial~app-main~worktree-init-v2-page~appgen-publication-terms-route~remote-conversati~oykv7gy7-B4ar2dlW.js";
-import { n as dn, t as fn } from "./artifact-file-preview-icon-DejMdUR4.js";
 import {
-  T as pn,
-  a as mn,
-  r as hn,
-  w as gn,
-} from "./local-conversation-thread-Bf38rCmF.js";
+  ArtifactFilePreviewIcon as fn,
+  initArtifactFilePreviewIconChunk as dn,
+} from "../utils/artifact-file-preview-icon";
+import {
+  initLocalConversationArtifactSignals as pn,
+  initLocalConversationThreadChunk as mn,
+  LocalConversationSideChatThread as hn,
+  localConversationOutputArtifactsSignal as gn,
+} from "../conversations/local-conversation-thread";
 import { i as _n, r as vn } from "./thread-overflow-menu-CM-Eo7JH.js";
-import { n as yn, t as bn } from "./use-media-query-CUpGkpzI.js";
+import {
+  initUseMediaQueryChunk as bn,
+  useMediaQuery as yn,
+} from "../utils/use-media-query";
 var xn,
   BottomPanelClosedIcon,
   initBottomPanelClosedIcon = e(() => {
