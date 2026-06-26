@@ -10541,8 +10541,8 @@
         "z": "useReviewSearchHighlights"
       },
       "status": "draft",
-      "note": "Draft for the updated ref chunk. Current pass extracted right-panel route, inline activity, scroll helpers, review-search PIP anchor placement, turn search-key, turn request-index, artifact summary key/preview/target-label helpers, background summary item/filter/key helpers, local-environment recent-action/action-item/path/run-id, and parent conversation turn-filter helpers; promotion is blocked on full semantic split and import repair.",
-      "lastUpdated": "2026-06-26T23:28:20.000Z"
+      "note": "Draft for the updated ref chunk. Current pass extracted right-panel route, inline activity, scroll helpers, review-search PIP anchor placement, turn search-key, turn request-index, artifact summary key/preview/target-label helpers, background summary item/filter/key helpers, background terminal row/match/snapshot helpers, local-environment recent-action/action-item/path/run-id, and parent conversation turn-filter helpers; promotion is blocked on full semantic split and import repair.",
+      "lastUpdated": "2026-06-26T23:31:35.000Z"
     },
     "thread-overflow-menu-CM-Eo7JH": {
       "restored": "threads/thread-overflow-menu.tsx",

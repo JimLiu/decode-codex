@@ -778,6 +778,11 @@ import {
   isDoneBackgroundAgent,
   isWorkingBackgroundAgent,
 } from "./local-conversation-thread-parts/background-summary";
+import {
+  createBackgroundTerminalSnapshot,
+  hasBackgroundTerminalRow,
+  hasMatchingBackgroundTerminal,
+} from "./local-conversation-thread-parts/background-terminal-state";
 import { shouldShowInlineActivityForRightPanel } from "./local-conversation-thread-parts/inline-activity-panel";
 import { createLatestTurnSubmitPlacementSnapshot } from "./local-conversation-thread-parts/latest-turn-submit-placement";
 import {
@@ -1731,14 +1736,14 @@ function up({
     s = backgroundTerminals.length;
   for (let e of registeredRows)
     a.has(e.terminal.id) ||
-      mp(o, e.terminal) ||
+      hasMatchingBackgroundTerminal(o, e.terminal) ||
       (a.add(e.terminal.id), o.push(e.terminal), (s += 1));
   for (let t of actionStatesByProcessId.values())
     lu(t, null, processSnapshotTimeMs) ||
       t.row.process.conversationId !== conversationId ||
-      !pp(t.row) ||
+      !hasBackgroundTerminalRow(t.row) ||
       a.has(t.row.terminal.id) ||
-      mp(o, t.row.terminal) ||
+      hasMatchingBackgroundTerminal(o, t.row.terminal) ||
       (a.add(t.row.terminal.id), o.push(t.row.terminal), (s += 1));
   return s;
 }
@@ -1748,7 +1753,7 @@ function dp(e, t) {
     r = [];
   for (let e of t.values())
     n.some((item) => bu(item.process, e.row.process)) ||
-      !pp(e.row) ||
+      !hasBackgroundTerminalRow(e.row) ||
       r.push({
         row: e.row,
         rowIndex: e.rowIndex ?? n.length,
@@ -1793,30 +1798,8 @@ function fp({
         processSnapshotTimeMs,
       ).map((item) => ({
         ...item,
-        terminal: hp(item.process),
+        terminal: createBackgroundTerminalSnapshot(item.process),
       }));
-}
-function pp(e) {
-  return "terminal" in e;
-}
-function mp(e, t) {
-  return e.some(
-    (item) =>
-      item.id === t.id ||
-      (item.command === t.command &&
-        item.cwd === t.cwd &&
-        item.turnId === t.turnId),
-  );
-}
-function hp(e) {
-  return {
-    command: e.command,
-    cwd: e.cwd,
-    id: e.itemId,
-    processId: e.processId,
-    startedAtMs: e.startedAtMs,
-    turnId: e.turnId,
-  };
 }
 var gp = once(() => {
   Xl();
