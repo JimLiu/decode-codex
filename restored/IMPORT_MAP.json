@@ -11144,6 +11144,118 @@
       "status": "done",
       "note": "Restored local conversation page container: workspace tab remapping, local header chrome, summary panel toggle, latest-turn preview, background subagent panel, composer shell, pending client/worktree routes, and debug panel reporter.",
       "lastUpdated": "2026-06-27T18:51:20.705Z"
+    },
+    "analyze_image_animation-BUMQPx3-": {
+      "restored": "animations/analyze-image-animation.ts",
+      "exports": {
+        "default": "analyzeImageAnimation"
+      },
+      "status": "done"
+    },
+    "automation-Db3NF6nJ": {
+      "restored": "animations/automation.ts",
+      "exports": {
+        "default": "automation"
+      },
+      "status": "done"
+    },
+    "browsing_animation-BdVoiA1R": {
+      "restored": "animations/browsing-animation.ts",
+      "exports": {
+        "default": "browsingAnimation"
+      },
+      "status": "done"
+    },
+    "code-searching-icon-BzRS2ht5": {
+      "restored": "animations/code-searching-icon.ts",
+      "exports": {
+        "default": "codeSearchingIcon"
+      },
+      "status": "done"
+    },
+    "codex-happy-small-D5oLnQly": {
+      "restored": "animations/codex-happy-small.ts",
+      "exports": {
+        "default": "codexHappySmall"
+      },
+      "status": "done"
+    },
+    "codex-looking-around-Bmjizoql": {
+      "restored": "animations/codex-looking-around.ts",
+      "exports": {
+        "default": "codexLookingAround"
+      },
+      "status": "done"
+    },
+    "edit_files_animation-CSgo4_VY": {
+      "restored": "utils/edit-files-animation.ts",
+      "exports": {
+        "default": "editFilesAnimation"
+      },
+      "status": "done"
+    },
+    "hello-DH6gJwg3": {
+      "restored": "animations/hello.ts",
+      "exports": {
+        "default": "hello"
+      },
+      "status": "done"
+    },
+    "internal-knowledge-icon-CkLV1q4d": {
+      "restored": "animations/internal-knowledge-icon.ts",
+      "exports": {
+        "default": "internalKnowledgeIcon"
+      },
+      "status": "done"
+    },
+    "list_files_animation-DpVGteja": {
+      "restored": "animations/list-files-animation.ts",
+      "exports": {
+        "default": "listFilesAnimation"
+      },
+      "status": "done"
+    },
+    "loader-DqMmkeH8": {
+      "restored": "animations/loader.ts",
+      "exports": {
+        "default": "loader"
+      },
+      "status": "done"
+    },
+    "local_context_animation-DYw6xc2x": {
+      "restored": "animations/local-context-animation.ts",
+      "exports": {
+        "default": "localContextAnimation"
+      },
+      "status": "done"
+    },
+    "run_command_animation-BBpYMkAi": {
+      "restored": "utils/run-command-animation.ts",
+      "exports": {
+        "default": "runCommandAnimation"
+      },
+      "status": "done"
+    },
+    "searching_animation-B0ELdh4U": {
+      "restored": "animations/searching-animation.ts",
+      "exports": {
+        "default": "searchingAnimation"
+      },
+      "status": "done"
+    },
+    "to_do_animation-BK6L8h25": {
+      "restored": "animations/to-do-animation.ts",
+      "exports": {
+        "default": "toDoAnimation"
+      },
+      "status": "done"
+    },
+    "web-search-icon-DwkfqMCX": {
+      "restored": "animations/web-search-icon.ts",
+      "exports": {
+        "default": "webSearchIcon"
+      },
+      "status": "done"
     }
   }
 }
