@@ -291,7 +291,6 @@ import {
   $ as Oo,
   $o as pullRequestMergeConflictAttachmentSignal,
   Ai as Ao,
-  Dt as Mo,
   Gt as Po,
   H as Fo,
   Ja as Lo,
@@ -491,11 +490,7 @@ import {
   initThreadVirtualizerChunk as Ju,
 } from "../threads/thread-virtualizer";
 import { initTeamIconChunk as $u, TeamIcon as ed } from "../icons/team-icon";
-import {
-  initThreadScrollLayoutChunk as td,
-  initThreadScrollLayoutStyleChunk as nd,
-  ThreadScrollLayout as rd,
-} from "../utils/thread-scroll-layout";
+import { initThreadScrollLayoutStyleChunk as nd } from "../utils/thread-scroll-layout";
 import {
   initThreadScrollControllerContextChunk as id,
   threadScrollControllerContext as od,
@@ -648,6 +643,10 @@ import {
   initLocalConversationThreadLayoutShellChunk,
   LocalConversationThreadLayoutShell,
 } from "./local-conversation-thread-parts/local-conversation-thread-layout-shell";
+import {
+  initLocalConversationThreadBodyLayoutChunk,
+  LocalConversationThreadBodyLayout,
+} from "./local-conversation-thread-parts/local-conversation-thread-body-layout";
 import {
   initLocalConversationAppShellSourceRegistrationChunk,
   LocalConversationAppShellSourceRegistration,
@@ -9707,22 +9706,20 @@ function LocalConversationThreadFrame(props) {
       isScrollToTopEnabled={isScrollToTopEnabled}
     />
   );
-  let threadScrollLayout = localConversationThreadJsxRuntime.jsx(rd, {
-    ref: threadScrollLayoutApiRef,
-    hasLiveMcpAppFrame,
-    remoteHostedPIPAnchorHostId: remoteHostedPipAnchorHostId,
-    contentX,
-    footer,
-    initialOffset: initialScrollOffset,
-    onScroll: onThreadScroll,
-    onUserScrollToTop: loadOlderConversationHistory,
-    children: threadContent,
-  });
   let threadBody = (
-    <Mo value={onOpenBackgroundAgentFromSummary}>
-      {threadScrollLayout}
-      {floatingContent}
-    </Mo>
+    <LocalConversationThreadBodyLayout
+      threadScrollLayoutApiRef={threadScrollLayoutApiRef}
+      hasLiveMcpAppFrame={hasLiveMcpAppFrame}
+      remoteHostedPipAnchorHostId={remoteHostedPipAnchorHostId}
+      contentX={contentX}
+      footer={footer}
+      initialScrollOffset={initialScrollOffset}
+      onThreadScroll={onThreadScroll}
+      loadOlderConversationHistory={loadOlderConversationHistory}
+      threadContent={threadContent}
+      floatingContent={floatingContent}
+      onOpenBackgroundAgentFromSummary={onOpenBackgroundAgentFromSummary}
+    />
   );
   return (
     <LocalConversationThreadLayoutShell
@@ -10345,7 +10342,7 @@ export const initLocalConversationThreadChunk = once(() => {
   initLocalConversationThreadLayoutShellChunk();
   ho();
   id();
-  td();
+  initLocalConversationThreadBodyLayoutChunk();
   initThreadFindNavigationRail();
   rs();
   initThreadFindNavigationRailNoopChunk();
