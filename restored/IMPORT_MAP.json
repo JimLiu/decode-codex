@@ -10580,8 +10580,8 @@
         "z": "useReviewSearchHighlights"
       },
       "status": "draft",
-      "note": "Draft for the updated ref chunk. Current passes isolated unresolved current-ref producer imports under boundaries/current-ref passthrough modules, renamed the local-remote / pull-request-check current-ref import bindings, gave the main local conversation route helpers semantic names, cleaned up resume-conversation error handling, expanded frame/footer/content state naming, named the visible-turn/search/thread-find/Berry-display turn helper cluster, and now named the route/header/side-chat/mark-read wrapper cluster. These boundaries are open and must be replaced by semantic producer restores before final completion.",
-      "lastUpdated": "2026-06-27T03:58:12.000Z"
+      "note": "Draft for the updated ref chunk. Current passes isolated unresolved current-ref producer imports under boundaries/current-ref passthrough modules, renamed the local-remote / pull-request-check current-ref import bindings, gave the main local conversation route helpers semantic names, cleaned up resume-conversation error handling, expanded frame/footer/content state naming, named the visible-turn/search/thread-find/Berry-display turn helper cluster, named the route/header/side-chat/mark-read wrapper cluster, and now semanticized the thread summary panel chrome/sections plus related process/PiP/browser-source controls. These boundaries are open and must be replaced by semantic producer restores before final completion.",
+      "lastUpdated": "2026-06-27T04:05:40.000Z"
     },
     "thread-overflow-menu-CM-Eo7JH": {
       "restored": "threads/thread-overflow-menu.tsx",

@@ -7449,19 +7449,22 @@ var nv,
   });
 function ThreadSummaryPanelRoot(props) {
   let { children, shouldHideInlineImmediately, shouldShow } = props,
-    a = W(mt),
-    o = shouldHideInlineImmediately && "invisible",
-    s = S("pointer-events-none pe-4 max-h-full min-h-0 origin-top-right", o);
-  let c = shouldShow ? 1 : 0,
-    l = shouldShow ? 0 : "100%",
-    u = shouldShow ? 1 : 0.8,
-    d = {
-      opacity: c,
-      translateX: l,
-      scale: u,
+    animationsDisabled = W(mt),
+    invisibleClassName = shouldHideInlineImmediately && "invisible",
+    motionContainerClassName = S(
+      "pointer-events-none pe-4 max-h-full min-h-0 origin-top-right",
+      invisibleClassName,
+    );
+  let targetOpacity = shouldShow ? 1 : 0,
+    targetTranslateX = shouldShow ? 0 : "100%",
+    targetScale = shouldShow ? 1 : 0.8,
+    animateState = {
+      opacity: targetOpacity,
+      translateX: targetTranslateX,
+      scale: targetScale,
     };
-  let f =
-    shouldHideInlineImmediately || a
+  let transitionConfig =
+    shouldHideInlineImmediately || animationsDisabled
       ? {
           duration: 0,
         }
@@ -7470,14 +7473,23 @@ function ThreadSummaryPanelRoot(props) {
           duration: 0.3,
           bounce: 0.01,
         };
-  let m = shouldShow ? "thread-summary-panel" : undefined,
-    h = shouldShow ? "pointer-events-auto" : "pointer-events-none",
-    g = S("flex max-h-full min-h-0 flex-col", h);
-  let _ = {
+  let pipObstacleId = shouldShow ? "thread-summary-panel" : undefined,
+    pointerEventsClassName = shouldShow
+      ? "pointer-events-auto"
+      : "pointer-events-none",
+    panelClassName = S(
+      "flex max-h-full min-h-0 flex-col",
+      pointerEventsClassName,
+    );
+  let panelStyle = {
     width: 300,
   };
-  let v = (
-    <div data-pip-obstacle={m} className={g} style={_}>
+  let panelBody = (
+    <div
+      data-pip-obstacle={pipObstacleId}
+      className={panelClassName}
+      style={panelStyle}
+    >
       {children}
     </div>
   );
@@ -7486,10 +7498,10 @@ function ThreadSummaryPanelRoot(props) {
       <div className="relative flex max-h-full">
         {threadSummaryPanelJsxRuntime.jsx(p.div, {
           initial: false,
-          className: s,
-          animate: d,
-          transition: f,
-          children: v,
+          className: motionContainerClassName,
+          animate: animateState,
+          transition: transitionConfig,
+          children: panelBody,
         })}
       </div>
     </div>
@@ -7497,13 +7509,13 @@ function ThreadSummaryPanelRoot(props) {
 }
 function ThreadSummaryPanelPopoverContent(props) {
   let { children } = props,
-    r = {
+    popoverStyle = {
       width: 300,
     };
   return (
     <div
       className="flex max-h-[min(var(--radix-popover-content-available-height),calc(100vh-16px))] flex-col"
-      style={r}
+      style={popoverStyle}
     >
       {children}
     </div>
@@ -7521,24 +7533,24 @@ function ThreadSummaryPanelContent(props) {
 }
 function ThreadSummaryPanelHeaderButton(props) {
   let { label, onClick, pressed, shortcut, ...rest } = props;
-  let s = pressed ? "secondary" : "ghost",
-    c = <BackgroundTerminalIcon className="icon-sm" />;
-  let l = threadSummaryPanelJsxRuntime.jsx(k, {
+  let buttonColor = pressed ? "secondary" : "ghost",
+    iconNode = <BackgroundTerminalIcon className="icon-sm" />;
+  let buttonNode = threadSummaryPanelJsxRuntime.jsx(k, {
     size: "toolbar",
-    color: s,
+    color: buttonColor,
     "aria-label": label,
     "aria-pressed": pressed,
     title: label,
     onClick,
     uniform: true,
     ...rest,
-    children: c,
+    children: iconNode,
   });
   return threadSummaryPanelJsxRuntime.jsx(jr, {
     tooltipContent: label,
     shortcut,
     delayOpen: true,
-    children: l,
+    children: buttonNode,
   });
 }
 function ThreadSummaryPanelSectionCount({ count }) {
@@ -7588,7 +7600,7 @@ function FloatingLocalConversationSummaryPanel(props) {
       shouldShow,
       onOpenBackgroundAgent,
     } = props,
-    m = Q.jsx(ThreadSummaryPanelChrome.Content, {
+    contentNode = Q.jsx(ThreadSummaryPanelChrome.Content, {
       children: (
         <ThreadSummaryPanelSections
           artifacts={artifacts}
@@ -7610,7 +7622,7 @@ function FloatingLocalConversationSummaryPanel(props) {
   return Q.jsx(ThreadSummaryPanelChrome.Root, {
     shouldHideInlineImmediately,
     shouldShow,
-    children: m,
+    children: contentNode,
   });
 }
 function noopForceShowFloatingSummaryPanel() {}
@@ -7685,233 +7697,253 @@ function ThreadSummaryPanelSections(props) {
       registerEnvironmentActionCommands,
       onOpenBackgroundAgent,
     } = props,
-    h = B(Fe),
-    g = ur(),
-    _ = St() === sn,
-    y = W(ra),
-    b = h.value.routeKind === "local-thread" ? h.value.conversationId : null,
-    x = K(Zi, b),
-    S = W(z),
-    C = Vr("3264431617"),
-    w = W(computerUsePictureInPictureAvailableSignal),
-    T = W(computerUsePictureInPictureVisibleSignal),
-    E = qr("open-file"),
-    O = W(oa),
-    k = K(er, b),
-    { data } = W(Tl),
-    j = W(pendingBackgroundProcessRowsSignal),
-    M = backgroundAgents.some(shouldShowInlineBackgroundAgent);
-  let N = M,
-    P = backgroundAgents.filter(shouldHideInlineBackgroundAgent);
-  let F = P,
-    I = C && isVisible && b != null,
-    L = {
+    scope = B(Fe),
+    intl = ur(),
+    isElectronRuntime = St() === sn,
+    hostConfig = W(ra),
+    conversationId =
+      scope.value.routeKind === "local-thread"
+        ? scope.value.conversationId
+        : null,
+    conversationTitle = K(Zi, conversationId),
+    isBrowserSidebarEnabled = W(z),
+    isBackgroundProcessTrackingEnabled = Vr("3264431617"),
+    isComputerUsePipAvailable = W(computerUsePictureInPictureAvailableSignal),
+    isComputerUsePipVisible = W(computerUsePictureInPictureVisibleSignal),
+    openFileMutation = qr("open-file"),
+    workspaceRouteState = W(oa),
+    conversationMode = K(er, conversationId),
+    { data: automationData } = W(Tl),
+    pendingBackgroundProcessRows = W(pendingBackgroundProcessRowsSignal),
+    hasInlineBackgroundAgent = backgroundAgents.some(
+      shouldShowInlineBackgroundAgent,
+    );
+  let hiddenBackgroundAgents = backgroundAgents.filter(
+      shouldHideInlineBackgroundAgent,
+    ),
+    shouldPollChatProcesses =
+      isBackgroundProcessTrackingEnabled && isVisible && conversationId != null,
+    chatProcessesQueryOptions = {
       queryConfig: {
-        enabled: I,
+        enabled: shouldPollChatProcesses,
         intervalMs: 1e3,
       },
     };
-  let { data: _data } = jn("chat-processes", L),
-    ee = K(v, b),
-    V = W(co),
-    { data: __data } = Te(Xt.THREAD_WORKSPACE_ROOT_HINTS),
-    ne = k === "projectless",
-    re = b == null ? null : (__data?.[b] ?? null),
-    ie = ne ? (ee ?? re) : V,
-    H = !ne && O.kind === "git",
-    ae = O.cwd == null ? null : D(O.cwd);
-  let U = ae,
-    oe = _data?.processes.some((e) => e.conversationId === b) ?? false;
-  let se = oe,
-    ce =
-      backgroundTerminals.length > 0 ||
-      restoredBackgroundProcesses.length > 0 ||
-      j.size > 0 ||
-      se;
-  _data?.processes;
-  let le = _data?.processes,
-    ue = createBackgroundTerminalProcessSnapshotSelector({
-      actionStatesByProcessId: j,
-      backgroundTerminals,
-      conversationId: b,
-      isEqual: jv.default,
-      persistedProcesses: le,
-      restoredProcesses: restoredBackgroundProcesses,
-    });
-  let de = ue,
-    fe = I && ce,
-    pe = {
-      enabled: fe,
+  let { data: chatProcessesData } = jn(
+      "chat-processes",
+      chatProcessesQueryOptions,
+    ),
+    conversationWorkspaceRoot = K(v, conversationId),
+    currentWorkspaceRoot = W(co),
+    { data: threadWorkspaceRootHints } = Te(Xt.THREAD_WORKSPACE_ROOT_HINTS),
+    isProjectlessConversation = conversationMode === "projectless",
+    threadWorkspaceRootHint =
+      conversationId == null
+        ? null
+        : (threadWorkspaceRootHints?.[conversationId] ?? null),
+    workspaceBrowserRoot = isProjectlessConversation
+      ? (conversationWorkspaceRoot ?? threadWorkspaceRootHint)
+      : currentWorkspaceRoot,
+    isGitWorkspace =
+      !isProjectlessConversation && workspaceRouteState.kind === "git",
+    resolvedWorkspaceCwd =
+      workspaceRouteState.cwd == null ? null : D(workspaceRouteState.cwd);
+  let activeCwd = resolvedWorkspaceCwd,
+    hasTrackedConversationProcesses =
+      chatProcessesData?.processes.some(
+        (processRecord) => processRecord.conversationId === conversationId,
+      ) ?? false;
+  let hasBackgroundTaskSources =
+    backgroundTerminals.length > 0 ||
+    restoredBackgroundProcesses.length > 0 ||
+    pendingBackgroundProcessRows.size > 0 ||
+    hasTrackedConversationProcesses;
+  chatProcessesData?.processes;
+  let chatProcessRecords = chatProcessesData?.processes,
+    backgroundProcessSnapshotSelector =
+      createBackgroundTerminalProcessSnapshotSelector({
+        actionStatesByProcessId: pendingBackgroundProcessRows,
+        backgroundTerminals,
+        conversationId,
+        isEqual: jv.default,
+        persistedProcesses: chatProcessRecords,
+        restoredProcesses: restoredBackgroundProcesses,
+      });
+  let shouldPollChildProcesses =
+      shouldPollChatProcesses && hasBackgroundTaskSources,
+    childProcessesQueryConfig = {
+      enabled: shouldPollChildProcesses,
       intervalMs: 1e3,
       structuralSharing: false,
     };
-  let me = {
-    queryConfig: pe,
-    select: de,
+  let childProcessesQueryOptions = {
+    queryConfig: childProcessesQueryConfig,
+    select: backgroundProcessSnapshotSelector,
   };
-  let { data: ___data } = jn("child-processes", me),
-    ge = ___data?.processSnapshotTimeMs ?? 0,
-    _e,
-    G,
-    ve;
+  let { data: childProcessesData } = jn(
+      "child-processes",
+      childProcessesQueryOptions,
+    ),
+    processSnapshotTimeMs = childProcessesData?.processSnapshotTimeMs ?? 0,
+    matchingAutomation,
+    backgroundTaskCount,
+    backgroundTerminalRows;
   {
-    ve = C
+    backgroundTerminalRows = isBackgroundProcessTrackingEnabled
       ? createRestoredBackgroundTerminalRows({
           attachChildProcessMetrics: selectRunningProcessRows,
-          childProcesses: ___data?.processes,
-          conversationCwd: O.cwd,
-          conversationId: b,
+          childProcesses: childProcessesData?.processes,
+          conversationCwd: workspaceRouteState.cwd,
+          conversationId,
           createConversationProcessRecords: restoreRegisteredProcessRows,
           enabled: isVisible,
-          hostId: y.id,
+          hostId: hostConfig.id,
           mergeRestoredProcesses: mergeProcessRows,
-          processSnapshotTimeMs: ge,
-          records: _data?.processes,
+          processSnapshotTimeMs,
+          records: chatProcessesData?.processes,
           restoredProcesses: restoredBackgroundProcesses,
         })
       : [];
-    let e;
-    e =
-      data == null
+    matchingAutomation =
+      automationData == null
         ? null
         : Jl({
-            automations: data.items,
-            conversationId: b,
+            automations: automationData.items,
+            conversationId,
           });
-    _e = e;
-    G = countBackgroundTerminalSummaryRows({
-      actionStatesByProcessId: j,
+    backgroundTaskCount = countBackgroundTerminalSummaryRows({
+      actionStatesByProcessId: pendingBackgroundProcessRows,
       backgroundTerminals,
-      conversationId: b,
+      conversationId,
       isSettledActionState: isPendingProcessRowExpired,
-      processSnapshotTimeMs: ge,
-      registeredRows: ve,
+      processSnapshotTimeMs,
+      registeredRows: backgroundTerminalRows,
     });
   }
-  let ye = G,
-    be = !_ && ye > 0,
-    xe = g.formatMessage({
+  let showBackgroundTasksSection =
+      !isElectronRuntime && backgroundTaskCount > 0,
+    viewAllProcessesLabel = intl.formatMessage({
       id: "codex.localConversation.backgroundTasks.viewAllProcessesLabel",
       defaultMessage: "View all processes",
       description:
         "Accessible label for the thread summary panel action that opens the process manager",
     });
-  let Se = xe,
-    Ce = T
-      ? g.formatMessage({
-          id: "codex.localConversation.remoteHostedPip.hide",
-          defaultMessage: "Hide PiP",
-          description:
-            "Accessible label for hiding the Computer Use PiP stream",
-        })
-      : g.formatMessage({
-          id: "codex.localConversation.remoteHostedPip.show",
-          defaultMessage: "Show PiP",
-          description:
-            "Accessible label for showing the Computer Use PiP stream",
-        });
-  let we = Ce,
-    Ee = g.formatMessage({
-      id: "codex.localConversation.plan.title",
-      defaultMessage: "Plan",
-      description: "Title for the plan section in the thread summary panel",
-    });
-  let De = Ee,
-    Oe = (e) => {
-      let { icon, path, title } = e;
-      wl({
-        scope: h,
-        path,
-        cwd: U,
-        browserSidebarEnabled: S,
-        hostConfig: y,
-        hostId: y.id,
-        icon,
-        openFile: E.mutate,
-        openInSidePanel: true,
-        title,
+  let computerUsePipToggleLabel = isComputerUsePipVisible
+    ? intl.formatMessage({
+        id: "codex.localConversation.remoteHostedPip.hide",
+        defaultMessage: "Hide PiP",
+        description: "Accessible label for hiding the Computer Use PiP stream",
+      })
+    : intl.formatMessage({
+        id: "codex.localConversation.remoteHostedPip.show",
+        defaultMessage: "Show PiP",
+        description: "Accessible label for showing the Computer Use PiP stream",
       });
-    };
-  let ke = Y(Oe),
-    Ae = (event, t) => {
-      switch (event.type) {
+  let planSectionTitle = intl.formatMessage({
+    id: "codex.localConversation.plan.title",
+    defaultMessage: "Plan",
+    description: "Title for the plan section in the thread summary panel",
+  });
+  let openOutputArtifact = (artifact) => {
+    let { icon, path, title } = artifact;
+    wl({
+      scope,
+      path,
+      cwd: activeCwd,
+      browserSidebarEnabled: isBrowserSidebarEnabled,
+      hostConfig,
+      hostId: hostConfig.id,
+      icon,
+      openFile: openFileMutation.mutate,
+      openInSidePanel: true,
+      title,
+    });
+  };
+  let onOpenOutputArtifact = Y(openOutputArtifact),
+    handleOpenOutput = (resource, browserEvent) => {
+      switch (resource.type) {
         case "file":
         case "generated-image":
-          ke({
-            path: event.path,
+          onOpenOutputArtifact({
+            path: resource.path,
           });
           return;
         case "google-drive":
         case "appgen-app":
           wi({
-            event: t,
-            href: event.url,
-            originHostId: y.id,
+            event: browserEvent,
+            href: resource.url,
+            originHostId: hostConfig.id,
             initiator: "mcp_app_resource",
           });
           return;
         case "website":
-          if (yn(event.target)) {
+          if (yn(resource.target)) {
             wi({
-              event: t,
-              href: event.target,
+              event: browserEvent,
+              href: resource.target,
               initiator: "mcp_app_resource",
-              originHostId: y.id,
+              originHostId: hostConfig.id,
             });
             return;
           }
           wl({
-            path: event.target,
-            cwd: U,
-            browserSidebarEnabled: S,
-            hostConfig: y,
-            hostId: y.id,
-            openFile: E.mutate,
+            path: resource.target,
+            cwd: activeCwd,
+            browserSidebarEnabled: isBrowserSidebarEnabled,
+            hostConfig,
+            hostId: hostConfig.id,
+            openFile: openFileMutation.mutate,
           });
       }
     };
-  let je = Y(Ae),
-    Me = (e) => {
-      ja(h, "right", e.tabId);
+  let onOpenOutput = Y(handleOpenOutput),
+    handleOpenSideChat = (sideChat) => {
+      ja(scope, "right", sideChat.tabId);
     };
-  let Ne = Y(Me),
-    Pe = (e) => {
-      qi(h, e, {
+  let onOpenSideChat = Y(handleOpenSideChat),
+    handleOpenSource = (source) => {
+      qi(scope, source, {
         isFullScreen: true,
       });
-      let t = ia(e);
-      h.get(ga.tabs$).some((item) => item.tabId === t) &&
-        (ga.activateTab(h, t), ma(h));
+      let tabId = ia(source);
+      scope.get(ga.tabs$).some((item) => item.tabId === tabId) &&
+        (ga.activateTab(scope, tabId), ma(scope));
     };
-  let Ie = Y(Pe),
-    Le = y.kind === "local" ? getGeneratedImagePreviewSrc : undefined,
-    Re = () => {
-      h.get(ti).danger(
-        <FormattedMessage
-          id="codex.localConversation.backgroundTerminals.cleanError"
-          defaultMessage="Unable to stop background terminals"
-          description="Toast shown when cleaning background terminals from the thread summary panel fails"
-        />,
-      );
+  let onOpenSource = Y(handleOpenSource),
+    getImagePreviewSrc =
+      hostConfig.kind === "local" ? getGeneratedImagePreviewSrc : undefined,
+    showStopBackgroundTerminalError = () => {
+      scope
+        .get(ti)
+        .danger(
+          <FormattedMessage
+            id="codex.localConversation.backgroundTerminals.cleanError"
+            defaultMessage="Unable to stop background terminals"
+            description="Toast shown when cleaning background terminals from the thread summary panel fails"
+          />,
+        );
     };
-  let ze = Y(Re),
-    Be = () => {
-      h.get(ti).danger(
-        <FormattedMessage
-          id="codex.localConversation.backgroundTerminals.restartError"
-          defaultMessage="Unable to track restarted background terminal"
-          description="Toast shown when tracking a restarted background terminal from the thread summary panel fails"
-        />,
-      );
+  let onStopBackgroundTerminalError = Y(showStopBackgroundTerminalError),
+    showRestartBackgroundTerminalError = () => {
+      scope
+        .get(ti)
+        .danger(
+          <FormattedMessage
+            id="codex.localConversation.backgroundTerminals.restartError"
+            defaultMessage="Unable to track restarted background terminal"
+            description="Toast shown when tracking a restarted background terminal from the thread summary panel fails"
+          />,
+        );
     };
-  let Ve = Y(Be),
-    He = (e) => {
-      b != null &&
+  let onRestartBackgroundTerminalError = Y(showRestartBackgroundTerminalError),
+    handleOpenBackgroundTerminal = (backgroundTerminal) => {
+      conversationId != null &&
         openBackgroundTerminalSidePanelTab({
-          scope: h,
-          backgroundTerminal: e,
-          conversationId: b,
-          fallbackTitle: g.formatMessage({
+          scope,
+          backgroundTerminal,
+          conversationId,
+          fallbackTitle: intl.formatMessage({
             id: "codex.localConversation.backgroundTerminalTab.title",
             defaultMessage: "Background terminal",
             description:
@@ -7919,8 +7951,8 @@ function ThreadSummaryPanelSections(props) {
           }),
         });
     };
-  let Ue = Y(He),
-    We = _e != null && (
+  let onOpenBackgroundTerminal = Y(handleOpenBackgroundTerminal),
+    automationSection = matchingAutomation != null && (
       <Nm
         sectionKey="automation"
         title={
@@ -7931,42 +7963,42 @@ function ThreadSummaryPanelSections(props) {
           />
         }
       >
-        <H_ automation={_e} />
+        <H_ automation={matchingAutomation} />
       </Nm>
     );
-  let Ge = !_ && H && U && (
+  let gitSummarySection = !isElectronRuntime && isGitWorkspace && activeCwd && (
     <L_
-      cwd={U}
-      conversationId={b}
-      hostConfig={y}
-      isCodexWorktree={O.isCodexWorktree}
-      onOpenReviewTab={() => Zs(h)}
+      cwd={activeCwd}
+      conversationId={conversationId}
+      hostConfig={hostConfig}
+      isCodexWorktree={workspaceRouteState.isCodexWorktree}
+      onOpenReviewTab={() => Zs(scope)}
       onForceShow={onForceShow}
       registerEnvironmentActionCommands={registerEnvironmentActionCommands}
-      workspaceBrowserRoot={ie}
+      workspaceBrowserRoot={workspaceBrowserRoot}
     />
   );
-  let Ke =
-    plan != null && b != null ? (
-      <Nm sectionKey="plan" title={De}>
+  let planSection =
+    plan != null && conversationId != null ? (
+      <Nm sectionKey="plan" title={planSectionTitle}>
         <SummaryPanelRow
           icon={<Ls className="icon-xs shrink-0" />}
-          label={plan.title ?? De}
+          label={plan.title ?? planSectionTitle}
           labelClassName="min-w-0 truncate"
-          title={plan.title ?? De}
+          title={plan.title ?? planSectionTitle}
           onClick={() => {
-            tc(h, {
+            tc(scope, {
               content: plan.content,
-              conversationId: b,
-              cwd: U,
+              conversationId,
+              cwd: activeCwd,
               key: plan.key,
-              title: De,
+              title: planSectionTitle,
             });
           }}
         />
       </Nm>
     ) : null;
-  let qe = !H && (
+  let outputsSection = !isGitWorkspace && (
     <Nm
       sectionKey="artifacts"
       title={
@@ -7981,14 +8013,14 @@ function ThreadSummaryPanelSections(props) {
       })}
     >
       <Wf
-        onOpen={je}
+        onOpen={onOpenOutput}
         artifacts={artifacts}
-        conversationTitle={x}
-        getImagePreviewSrc={Le}
+        conversationTitle={conversationTitle}
+        getImagePreviewSrc={getImagePreviewSrc}
       />
     </Nm>
   );
-  let Je = sideChats.length > 0 && (
+  let sideChatsSection = sideChats.length > 0 && (
     <Nm
       sectionKey="side-chats"
       title={
@@ -8002,43 +8034,46 @@ function ThreadSummaryPanelSections(props) {
         count: sideChats.length,
       })}
     >
-      <K_ sideChats={sideChats} onOpen={Ne} />
+      <K_ sideChats={sideChats} onOpen={onOpenSideChat} />
     </Nm>
   );
-  let Ye = backgroundAgents.length > 0 && (
+  let backgroundAgentsSection = backgroundAgents.length > 0 && (
     <Nm
-      autoCollapse={!N && backgroundAgents.every(isDoneBackgroundAgent)}
+      autoCollapse={
+        !hasInlineBackgroundAgent &&
+        backgroundAgents.every(isDoneBackgroundAgent)
+      }
       sectionKey="background-subagents"
       title={Q.jsx(BackgroundTaskSectionTitle, {
         type: "subagents",
       })}
       titleSuffix={
-        N
+        hasInlineBackgroundAgent
           ? null
           : Q.jsx(ThreadSummaryPanelChrome.SectionCount, {
-              count: F.length,
+              count: hiddenBackgroundAgents.length,
             })
       }
     >
       {Q.jsx($f, {
         backgroundAgents,
         backgroundTerminals: [],
-        conversationId: b,
+        conversationId,
         onOpenBackgroundAgent,
-        onOpenTerminal: Ue,
-        onStopError: ze,
+        onOpenTerminal: onOpenBackgroundTerminal,
+        onStopError: onStopBackgroundTerminalError,
       })}
     </Nm>
   );
-  let Xe = be && (
+  let backgroundTasksSection = showBackgroundTasksSection && (
     <Nm
       after={
-        C ? (
+        isBackgroundProcessTrackingEnabled ? (
           <button
             type="button"
-            aria-label={Se}
+            aria-label={viewAllProcessesLabel}
             className="ms-auto inline-flex size-6 cursor-interaction items-center justify-center rounded-sm text-token-text-tertiary hover:text-token-foreground focus-visible:outline-2 focus-visible:outline-offset-2"
-            title={Se}
+            title={viewAllProcessesLabel}
             onClick={openThreadSummaryProcessManager}
           >
             <Ec className="icon-xs" />
@@ -8050,22 +8085,22 @@ function ThreadSummaryPanelSections(props) {
         type: "tasks",
       })}
       titleSuffix={Q.jsx(ThreadSummaryPanelChrome.SectionCount, {
-        count: ye,
+        count: backgroundTaskCount,
       })}
     >
       {Q.jsx(qt, {
         electron: true,
         children: Q.jsx(_p, {
           backgroundTerminals,
-          childProcesses: ___data?.processes,
-          conversationId: b,
-          hostId: y.id,
+          childProcesses: childProcessesData?.processes,
+          conversationId,
+          hostId: hostConfig.id,
           isVisible,
-          processSnapshotTimeMs: ge,
-          registeredRows: ve,
-          onOpen: Ue,
-          onRestartError: Ve,
-          onStopError: ze,
+          processSnapshotTimeMs,
+          registeredRows: backgroundTerminalRows,
+          onOpen: onOpenBackgroundTerminal,
+          onRestartError: onRestartBackgroundTerminalError,
+          onStopError: onStopBackgroundTerminalError,
         }),
       })}
       {backgroundTerminals.length > 0 &&
@@ -8074,26 +8109,29 @@ function ThreadSummaryPanelSections(props) {
           children: Q.jsx($f, {
             backgroundAgents: [],
             backgroundTerminals,
-            conversationId: b,
+            conversationId,
             onOpenBackgroundAgent,
-            onOpenTerminal: Ue,
-            onStopError: ze,
+            onOpenTerminal: onOpenBackgroundTerminal,
+            onStopError: onStopBackgroundTerminalError,
           }),
         })}
     </Nm>
   );
-  let Ze = w && (
+  let computerUsePipSection = isComputerUsePipAvailable && (
     <Nm mode="headerless" sectionKey="computer-use-pip">
       <ComputerUsePictureInPictureRow
-        isVisible={T}
+        isVisible={isComputerUsePipVisible}
         onToggle={() => {
-          h.set(computerUsePictureInPictureVisibleSignal, !T);
+          scope.set(
+            computerUsePictureInPictureVisibleSignal,
+            !isComputerUsePipVisible,
+          );
         }}
-        toggleLabel={we}
+        toggleLabel={computerUsePipToggleLabel}
       />
     </Nm>
   );
-  let Qe = browserUseSummaries.length > 0 && (
+  let browserTabsSection = browserUseSummaries.length > 0 && (
     <Nm
       sectionKey="browser-tabs"
       title={<BrowserUseSummarySectionTitle />}
@@ -8104,50 +8142,62 @@ function ThreadSummaryPanelSections(props) {
       <BrowserUseSummarySectionContent
         browserUseSummaries={browserUseSummaries}
         onOpenBrowserTab={(browserTabId) => {
-          openBrowserSummaryTab(h, true, {
+          openBrowserSummaryTab(scope, true, {
             browserTabId,
           });
         }}
       />
     </Nm>
   );
-  let $e = (
+  let sourcesTitle = (
     <FormattedMessage
       id="codex.localConversation.sources.title"
       defaultMessage="Sources"
       description="Title for the thread summary side panel sources section"
     />
   );
-  let et = toolSources.length + webSources.length,
-    tt = Q.jsx(ThreadSummaryPanelChrome.SectionCount, {
-      count: et,
+  let sourceCount = toolSources.length + webSources.length,
+    sourceCountSuffix = Q.jsx(ThreadSummaryPanelChrome.SectionCount, {
+      count: sourceCount,
     });
-  let nt = <Z_ onOpen={Ie} toolSources={toolSources} webSources={webSources} />;
-  let rt = (
-    <Nm sectionKey="tool-sources" title={$e} titleSuffix={tt}>
-      {nt}
+  let sourcesContent = (
+    <Z_
+      onOpen={onOpenSource}
+      toolSources={toolSources}
+      webSources={webSources}
+    />
+  );
+  let sourcesSection = (
+    <Nm
+      sectionKey="tool-sources"
+      title={sourcesTitle}
+      titleSuffix={sourceCountSuffix}
+    >
+      {sourcesContent}
     </Nm>
   );
   return (
     <>
-      {We}
-      {Ge}
-      {Ke}
-      {qe}
-      {Je}
-      {Ye}
-      {Xe}
-      {Ze}
-      {Qe}
-      {rt}
+      {automationSection}
+      {gitSummarySection}
+      {planSection}
+      {outputsSection}
+      {sideChatsSection}
+      {backgroundAgentsSection}
+      {backgroundTasksSection}
+      {computerUsePipSection}
+      {browserTabsSection}
+      {sourcesSection}
     </>
   );
 }
 function openThreadSummaryProcessManager() {
   Kt("openProcessManager", "thread_summary_process_manager");
 }
-function getGeneratedImagePreviewSrc(e) {
-  return Wr(e) !== "always" || br(e) == null ? null : L(e);
+function getGeneratedImagePreviewSrc(generatedImage) {
+  return Wr(generatedImage) !== "always" || br(generatedImage) == null
+    ? null
+    : L(generatedImage);
 }
 var Av,
   jv,
@@ -8239,14 +8289,12 @@ interface PinnedSummaryPanelState {
   displayMode: "overlay" | "shift" | "gutter";
   isPopoverOpen: boolean;
 }
-
 export interface PinnedSummaryPanelLayoutStore {
   set: (
     atom: typeof pinnedSummaryPanelState,
     updater: (state: PinnedSummaryPanelState) => PinnedSummaryPanelState,
   ) => void;
 }
-
 export function usePinnedSummaryPanelLayout(
   store: PinnedSummaryPanelLayoutStore,
 ): void {
@@ -9467,7 +9515,6 @@ interface BackgroundAgentDisplayNameOptions {
   agentNickname?: string | null;
   conversationId: string;
 }
-
 function formatBackgroundAgentDisplayName({
   agentNickname,
   conversationId,
@@ -12457,7 +12504,6 @@ export interface LocalConversationThreadProps {
   lockedCollaborationMode?: unknown;
   onOpenBackgroundAgent?: BackgroundAgentOpenHandler;
 }
-
 export function LocalConversationThread(props: LocalConversationThreadProps) {
   let {
     conversationId,
@@ -12665,7 +12711,6 @@ export interface LocalConversationSummaryThreadProps {
   header?: RenderableThreadNode;
   onOpenBackgroundAgent?: BackgroundAgentOpenHandler;
 }
-
 export function LocalConversationSummaryThread(
   props: LocalConversationSummaryThreadProps,
 ) {
@@ -13351,11 +13396,11 @@ function LocalConversationComposerFooter({
     intl = ur(),
     scrollController = ad(),
     handleLocalSubmitStart = Y(() => {
-      let e = scrollController.getScrollElement();
+      let scrollElement = scrollController.getScrollElement();
       onPrepareLatestTurnSubmitPlacement({
         distanceFromBottomPx:
           scrollController.getLastScrollDistanceFromBottomPx(),
-        scrollHeightPx: e?.scrollHeight ?? null,
+        scrollHeightPx: scrollElement?.scrollHeight ?? null,
       });
       scrollController.setFooterResizeViewportPreserveDisabled(true);
     }),
@@ -13376,12 +13421,12 @@ function LocalConversationComposerFooter({
             ot(scope.value) === conversationId
               ? (Ot(scope) ?? undefined)
               : undefined,
-          isResponseInProgress: isResponseInProgress,
-          localWorkspaceMaterialization: localWorkspaceMaterialization,
+          isResponseInProgress,
+          localWorkspaceMaterialization,
           showFooterBranchWhen: "always",
           showExternalFooter,
           surfaceClassName: composerSurfaceClassName,
-          composerModeAvailability: composerModeAvailability,
+          composerModeAvailability,
           lockedCollaborationMode,
           placeholderText: undefined,
           onCreateSideConversation: async ({
@@ -13397,7 +13442,7 @@ function LocalConversationComposerFooter({
               hostId: _hostId,
               collaborationMode,
               displayTitle,
-              intl: intl,
+              intl,
             }),
           onLocalSubmitStart: isScrollToTopEnabled
             ? handleLocalSubmitStart
@@ -13485,7 +13530,7 @@ function LocalConversationThreadContent({
         : Yy(visibleTurnEntries, completedThreadGoal.updatedAt * 1e3),
     conversationHostApi = Pn(conversationId),
     { data: resolvedApps = qS } = Ti({
-      hostId: hostId,
+      hostId,
     }),
     renderMcpApps = Qt("2138468235").get("enable_mcp_apps", false),
     subagentParentThreadId = K(oi, conversationId),
@@ -13511,7 +13556,7 @@ function LocalConversationThreadContent({
   let intl = ur(),
     { agentMode } = Xn({
       conversationId,
-      hostId: hostId,
+      hostId,
     }),
     resolvedCwd = cwd ? D(cwd) : null,
     collapsedTurnsById = GS.useMemo(
@@ -13532,7 +13577,7 @@ function LocalConversationThreadContent({
       conversationTurns,
       hasRenderableTurns,
       isResuming,
-      isSubagentThread: isSubagentThread,
+      isSubagentThread,
     }),
     hasConversationRef = GS.useRef(hasConversation),
     conversationTurnsRef = GS.useRef(conversationTurns),
@@ -13743,21 +13788,21 @@ function LocalConversationThreadContent({
               : null,
           getIsBackgroundSubagentsEnabled: () =>
             isBackgroundSubagentsEnabledRef.current,
-          routeContextId: routeContextId,
+          routeContextId,
           scrollAdapter: searchScrollAdapter,
         }),
       [searchScrollAdapter, routeContextId],
     ),
     getThreadFindItems = () =>
       buildThreadFindItemsForVisibleTurns({
-        isConversationHistoryComplete: isConversationHistoryComplete,
-        isAppgenEndCardEnabled: isAppgenEndCardEnabled,
+        isConversationHistoryComplete,
+        isAppgenEndCardEnabled,
         isBackgroundSubagentsEnabled,
-        modelProvider: modelProvider,
-        projectlessOutputDirectory: projectlessOutputDirectory,
+        modelProvider,
+        projectlessOutputDirectory,
         visibleTurnEntries,
       }),
-    revealThreadFindItem = Y(async ({ id: _id, turnKey }) => {
+    revealThreadFindItem = Y(async ({ id: contentUnitId, turnKey }) => {
       let virtualizedTurnListApi = virtualizedTurnListApiRef.current;
       if (virtualizedTurnListApi == null)
         throw Error(
@@ -13769,7 +13814,7 @@ function LocalConversationThreadContent({
           for (let contentUnit of turnContainer.querySelectorAll(
             "[data-content-search-unit-key]",
           ))
-            if (contentUnit.dataset.contentSearchUnitKey === _id)
+            if (contentUnit.dataset.contentSearchUnitKey === contentUnitId)
               return contentUnit;
           return null;
         },
@@ -13860,8 +13905,8 @@ function LocalConversationThreadContent({
     ) : (
       <>
         {$.jsx(ThreadAppShellSourceRegistration, {
-          conversationSource: conversationSource,
-          diffSource: diffSource,
+          conversationSource,
+          diffSource,
           orchestrationId: conversationSource.contextId,
           isDefault: ot(scope.value) === conversationId,
         })}
@@ -14039,19 +14084,19 @@ export const initLocalConversationThreadChunk = once(() => {
   KS = [];
   qS = [];
   JS = Ze({});
-  YS = Rn(ut, (e, { get }) => {
-    let n = get(oi, e);
-    if (n == null) return get(ge, e) ?? false;
-    let r = get(I, e) ?? KS,
-      i = get(I, n) ?? KS;
+  YS = Rn(ut, (conversationId, { get }) => {
+    let parentConversationId = get(oi, conversationId);
+    if (parentConversationId == null) return get(ge, conversationId) ?? false;
+    let conversationTurns = get(I, conversationId) ?? KS,
+      parentConversationTurns = get(I, parentConversationId) ?? KS;
     return (
       getConversationTurnsNotInParent({
         areTurnItemsEqual: ob.default,
         conversation: {
-          turns: r,
+          turns: conversationTurns,
         },
         parentConversation: {
-          turns: i,
+          turns: parentConversationTurns,
         },
       }).at(-1)?.status === "inProgress"
     );
