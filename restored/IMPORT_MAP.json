@@ -12490,6 +12490,36 @@
       },
       "status": "done",
       "note": "Synced current plan-pricing chunk to the semantic currency formatting helpers and the new no-op chunk initializer."
+    },
+    "pet-install-state-DNnY2nH8": {
+      "restored": "features/pet-install-state.ts",
+      "exports": {
+        "a": "startPetInstallSession",
+        "i": "petInstallSession$",
+        "n": "initPetInstallStateChunk",
+        "r": "installPet",
+        "t": "closePetInstallSession",
+        "startPetInstallSession": "startPetInstallSession",
+        "petInstallSession$": "petInstallSession$",
+        "initPetInstallStateChunk": "initPetInstallStateChunk",
+        "installPet": "installPet",
+        "closePetInstallSession": "closePetInstallSession"
+      },
+      "status": "done",
+      "note": "Restored current pet install preview/install state machine with semantic session types and chunk initializer.",
+      "lastUpdated": "2026-06-27T21:28:13.878Z"
+    },
+    "pet-install-state-DJxALilf": {
+      "restored": "features/pet-install-state-entry.ts",
+      "exports": {
+        "closePetInstallSession": "closePetInstallSession",
+        "installPet": "installPet",
+        "petInstallSession$": "petInstallSession$",
+        "startPetInstallSession": "startPetInstallSession"
+      },
+      "status": "done",
+      "note": "Restored wrapper entry that initializes pet install state before re-exporting the public API.",
+      "lastUpdated": "2026-06-27T21:28:13.878Z"
     }
   }
 }
