@@ -85,7 +85,6 @@ import {
   Gu as initGlobalStateQueryRuntime,
   HE as useHostConfigById,
   HO as getReviewCommentAttachmentKeyValue,
-  Hg as collectEndResourcePaths,
   Hh as initGitQueryKeyHelpers,
   Hi as initSettingsGearIcon,
   Hx as getFallbackBackgroundAgentHandle,
@@ -156,7 +155,6 @@ import {
   Ts as initBrowserFeatureAvailabilitySignals,
   UE as LOCAL_HOST_ID,
   Uf as initHostWorkspaceQueries,
-  Ug as collectAssistantOutputArtifacts,
   Uh as useGitAvailabilityQuery,
   Up as conversationCollaborationModeSignal,
   Uv as initMarkdownArtifactHelpers,
@@ -237,7 +235,6 @@ import {
   mP as logger,
   mi as _r,
   mo as initGitHubIcon,
-  mr as loadGroupByModule,
   mv as xr,
   nm as projectlessOutputDirectorySignal,
   ny as initAppToolSourceMatcherCache,
@@ -434,7 +431,6 @@ import {
   Bl as Ss,
   Bn as worktreeStatusQuerySignal,
   Bu as ws,
-  Dt as Ts,
   Du as Es,
   El as Ds,
   Eu as Os,
@@ -453,7 +449,6 @@ import {
   Nl as Ws,
   No as Gs,
   Nt as Ks,
-  Ot as qs,
   Pl as Js,
   Po as Ys,
   Pt as Xs,
@@ -493,7 +488,6 @@ import {
   kt as Mc,
   lf as Nc,
   ls as Pc,
-  lt as Fc,
   nu as Lc,
   oa as Rc,
   os as zc,
@@ -506,7 +500,6 @@ import {
   tr as Jc,
   tu as Yc,
   uf as Xc,
-  ut as Zc,
   vc as Qc,
   wu as $c,
   xt as el,
@@ -784,6 +777,10 @@ import {
   buildThreadFindPreviewOutputs,
   EMPTY_THREAD_FIND_PREVIEW_OUTPUTS,
 } from "./local-conversation-thread-parts/thread-find-preview-outputs";
+import {
+  collectGeneratedImagesForVisibleTurns,
+  initVisibleTurnGeneratedImagesCollector,
+} from "./local-conversation-thread-parts/visible-turn-generated-images";
 import {
   initSummaryPanelExpandableList,
   SummaryPanelExpandableList,
@@ -11188,12 +11185,6 @@ function buildLocalConversationTurnListEntries({
       projectlessOutputDirectory,
       visibleTurnEntries,
     }),
-    stableGeneratedImages = turnListEntryDeepEqualModule.default(
-      previousEntries[0]?.generatedImages,
-      generatedImagesForVisibleEntries,
-    )
-      ? previousEntries[0].generatedImages
-      : generatedImagesForVisibleEntries,
     didEntriesChange = false,
     nextEntries = [];
   if (
@@ -11222,7 +11213,7 @@ function buildLocalConversationTurnListEntries({
             completedThreadGoalTurnKey === item.turnSearchKey
               ? completedThreadGoal
               : null,
-          generatedImages: stableGeneratedImages,
+          generatedImages: generatedImagesForVisibleEntries,
           onSetCollapsedForTurn:
             turnId == null ? undefined : onSetCollapsedForTurn,
           parentThreadAttachmentSourceConversationId:
@@ -11272,75 +11263,6 @@ function buildLocalConversationTurnListEntries({
       }
   }
   return didEntriesChange ? nextEntries : previousEntries;
-}
-function collectGeneratedImagesForVisibleTurns({
-  isBackgroundSubagentsEnabled,
-  previousEntries,
-  projectlessOutputDirectory,
-  visibleTurnEntries,
-}) {
-  let previousGeneratedImages = previousEntries[0]?.generatedImages,
-    matchingEntryCount = 0,
-    lastMatchedTurnSearchKey = null;
-  for (let previousEntry of previousEntries)
-    if (previousEntry.turnSearchKey !== lastMatchedTurnSearchKey) {
-      if (
-        ((lastMatchedTurnSearchKey = previousEntry.turnSearchKey),
-        visibleTurnEntries[matchingEntryCount]?.turn !== previousEntry.turn)
-      ) {
-        matchingEntryCount = null;
-        break;
-      }
-      matchingEntryCount++;
-    }
-  let reusedGeneratedImages = [],
-    entriesNeedingImageScan = visibleTurnEntries;
-  matchingEntryCount != null &&
-    matchingEntryCount > 0 &&
-    previousGeneratedImages != null &&
-    ((reusedGeneratedImages = previousGeneratedImages),
-    (entriesNeedingImageScan = visibleTurnEntries.slice(matchingEntryCount)));
-  let generatedImages = [
-    ...reusedGeneratedImages,
-    ...entriesNeedingImageScan.flatMap(
-      ({ preserveServerUserMessages, requests, turn }) => {
-        if (
-          !turn.items.some(
-            (item) => item.type === "imageGeneration" && item.src != null,
-          )
-        )
-          return [];
-        let renderedTurn = lt(turn, requests, {
-            isBackgroundSubagentsEnabled,
-            preserveServerUserMessages,
-          }),
-          { assistantItem, toolOutputItems } = Zc(
-            renderedTurn.items,
-            renderedTurn.status,
-          ),
-          endResourcePaths = collectEndResourcePaths(
-            collectAssistantOutputArtifacts({
-              assistantContent: assistantItem?.content ?? null,
-              projectlessOutputDirectory,
-              turn: renderedTurn,
-            }),
-          );
-        return Ts({
-          completedGeneratedImages: toolOutputItems.filter(
-            (item) => item.src != null,
-          ),
-          endResourcePaths,
-          hasPendingGeneratedImages: false,
-        }).visibleCompletedGeneratedImages;
-      },
-    ),
-  ];
-  return turnListEntryDeepEqualModule.default(
-    previousGeneratedImages,
-    generatedImages,
-  )
-    ? previousGeneratedImages
-    : generatedImages;
 }
 function areTurnListEntriesEquivalent(previousEntry, nextEntry) {
   return (
@@ -11392,15 +11314,6 @@ function areTranscriptBlocksEquivalent(
     : previousTranscriptBlock.type === nextTranscriptBlock.type &&
         previousTranscriptBlock.key === nextTranscriptBlock.key;
 }
-var turnListEntryDeepEqualModule,
-  initTurnListEntryComparisonChunk = once(() => {
-    toEsModule(loadGroupByModule(), 1);
-    turnListEntryDeepEqualModule = toEsModule(loadIsEqualModule(), 1);
-    qs();
-    initConversationArtifactRuntime();
-    initMarkdownResourceHelpers();
-    Fc();
-  });
 function buildThreadFindItemsForVisibleTurns({
   isConversationHistoryComplete,
   isAppgenEndCardEnabled,
@@ -13606,7 +13519,7 @@ export const initLocalConversationThreadChunk = once(() => {
   initLocalConversationTurnSelectors();
   initThreadScrollStateSignal();
   initAutoFollowVirtualizedTurnListChunk();
-  initTurnListEntryComparisonChunk();
+  initVisibleTurnGeneratedImagesCollector();
   initLocalConversationTurnRowChunk();
   initThreadFindItemsBuilder();
   initBackgroundAgentThreadTab();
