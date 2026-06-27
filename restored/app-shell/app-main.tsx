@@ -18,8 +18,6 @@ import {
   xo as initProjectsSharedRuntimeChunk,
 } from "../boundaries/current-ref/projects-app-shared-producer";
 import {
-  Ln as AppFallback,
-  Rn as initAppFallbackChunk,
   c as initAutomationsRuntimeChunk,
   i as appgenPublicationTermsHandler,
   n as windowsTabsOpenHandler,
@@ -27,6 +25,7 @@ import {
   s as CodexApp,
   t as initCodexAppChunk,
 } from "../boundaries/current-ref/automations-page-producer";
+import { AppFallback, initAppFallbackChunk } from "./app-fallback";
 import { initEmptyAppChunk } from "./empty-app-initializer";
 import {
   Ja as initPullRequestThreadActionsChunk,

@@ -11184,10 +11184,15 @@
       "lastUpdated": "2026-06-27T03:16:46.000Z"
     },
     "app-initial~app-main~automations-page-bHJfYUGr": {
-      "restored": "boundaries/current-ref/automations-page-producer.ts",
-      "status": "boundary",
-      "note": "Current ref passthrough boundary for local-conversation-thread; open until this producer is deep-restored semantically.",
-      "lastUpdated": "2026-06-27T03:16:46.000Z"
+      "restored": "app-shell/app-fallback.tsx",
+      "exports": {
+        "Ln": "AppFallback",
+        "Rn": "initAppFallbackChunk"
+      },
+      "status": "partial",
+      "boundary": "boundaries/current-ref/automations-page-producer.ts",
+      "note": "Partial app-shell restore: Electron root fallback component and initializer now live in app-shell/app-fallback.tsx; app shell handlers, CodexApp, automation state, and remaining route/UI exports continue through the current-ref compatibility boundary.",
+      "lastUpdated": "2026-06-27T23:46:28.000Z"
     },
     "app-initial~app-main~worktree-init-v2-page~remote-conversation-page~new-thread-panel-page~o~bj5tp28r-CQrj7g91": {
       "restored": "boundaries/current-ref/worktree-new-thread-panel-producer.ts",
