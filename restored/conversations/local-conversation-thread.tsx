@@ -7436,8 +7436,8 @@ var nv,
     Gr();
     rv = getJsxRuntime();
   });
-function av(e) {
-  let { children, shouldHideInlineImmediately, shouldShow } = e,
+function ThreadSummaryPanelRoot(props) {
+  let { children, shouldHideInlineImmediately, shouldShow } = props,
     a = W(mt),
     o = shouldHideInlineImmediately && "invisible",
     s = S("pointer-events-none pe-4 max-h-full min-h-0 origin-top-right", o);
@@ -7473,7 +7473,7 @@ function av(e) {
   return (
     <div className="pointer-events-none absolute top-(--thread-floating-content-top-inset) right-0 bottom-(--thread-floating-content-bottom-inset) z-40">
       <div className="relative flex max-h-full">
-        {dv.jsx(p.div, {
+        {threadSummaryPanelJsxRuntime.jsx(p.div, {
           initial: false,
           className: s,
           animate: d,
@@ -7484,8 +7484,8 @@ function av(e) {
     </div>
   );
 }
-function ov(e) {
-  let { children } = e,
+function ThreadSummaryPanelPopoverContent(props) {
+  let { children } = props,
     r = {
       width: 300,
     };
@@ -7498,8 +7498,8 @@ function ov(e) {
     </div>
   );
 }
-function sv(e) {
-  let { children } = e;
+function ThreadSummaryPanelContent(props) {
+  let { children } = props;
   return (
     <div className="relative flex max-h-full min-h-0 flex-col overflow-hidden rounded-3xl bg-token-dropdown-background pt-3 electron:elevation-prominent extension:border extension:border-token-border-default extension:shadow-md">
       <div className="flex h-fit max-h-full min-h-0 flex-col gap-3 overflow-y-auto pb-3">
@@ -7508,11 +7508,11 @@ function sv(e) {
     </div>
   );
 }
-function cv(e) {
-  let { label, onClick, pressed, shortcut, ...rest } = e;
+function ThreadSummaryPanelHeaderButton(props) {
+  let { label, onClick, pressed, shortcut, ...rest } = props;
   let s = pressed ? "secondary" : "ghost",
     c = <BackgroundTerminalIcon className="icon-sm" />;
-  let l = dv.jsx(k, {
+  let l = threadSummaryPanelJsxRuntime.jsx(k, {
     size: "toolbar",
     color: s,
     "aria-label": label,
@@ -7523,15 +7523,14 @@ function cv(e) {
     ...rest,
     children: c,
   });
-  return dv.jsx(jr, {
+  return threadSummaryPanelJsxRuntime.jsx(jr, {
     tooltipContent: label,
     shortcut,
     delayOpen: true,
     children: l,
   });
 }
-function lv(e) {
-  let { count } = e;
+function ThreadSummaryPanelSectionCount({ count }) {
   if (count === 0) return null;
   return (
     <span className="text-base text-token-description-foreground opacity-50">
@@ -7539,11 +7538,11 @@ function lv(e) {
     </span>
   );
 }
-var uv,
-  dv,
+var threadSummaryPanelReactRuntime,
+  threadSummaryPanelJsxRuntime,
   ThreadSummaryPanelChrome,
   initThreadSummaryPanelChrome = once(() => {
-    uv = q();
+    threadSummaryPanelReactRuntime = q();
     Ut();
     bt();
     c();
@@ -7553,18 +7552,17 @@ var uv,
     Oe();
     Nf();
     Km();
-    dv = getJsxRuntime();
+    threadSummaryPanelJsxRuntime = getJsxRuntime();
     ThreadSummaryPanelChrome = {
-      Content: sv,
-      HeaderButton: cv,
-      PopoverContent: ov,
-      Root: av,
+      Content: ThreadSummaryPanelContent,
+      HeaderButton: ThreadSummaryPanelHeaderButton,
+      PopoverContent: ThreadSummaryPanelPopoverContent,
+      Root: ThreadSummaryPanelRoot,
       Section: Nm,
-      SectionCount: lv,
+      SectionCount: ThreadSummaryPanelSectionCount,
     };
   });
-function mv(e) {
-  let { type } = e;
+function BackgroundTaskSectionTitle({ type }) {
   switch (type) {
     case "subagents": {
       let e;
@@ -7588,14 +7586,14 @@ function mv(e) {
     }
   }
 }
-var hv,
-  gv,
-  _v = once(() => {
-    hv = q();
+var backgroundTaskSectionReactRuntime,
+  backgroundTaskSectionJsxRuntime,
+  initBackgroundTaskSectionTitleChunk = once(() => {
+    backgroundTaskSectionReactRuntime = q();
     Jn();
-    gv = getJsxRuntime();
+    backgroundTaskSectionJsxRuntime = getJsxRuntime();
   });
-function vv(e) {
+function FloatingLocalConversationSummaryPanel(props) {
   let {
       artifacts,
       sideChats,
@@ -7609,10 +7607,10 @@ function vv(e) {
       shouldHideInlineImmediately,
       shouldShow,
       onOpenBackgroundAgent,
-    } = e,
+    } = props,
     m = Q.jsx(ThreadSummaryPanelChrome.Content, {
       children: (
-        <Sv
+        <ThreadSummaryPanelSections
           artifacts={artifacts}
           sideChats={sideChats}
           toolSources={toolSources}
@@ -7625,7 +7623,7 @@ function vv(e) {
           plan={plan}
           registerEnvironmentActionCommands={true}
           onOpenBackgroundAgent={onOpenBackgroundAgent}
-          onForceShow={yv}
+          onForceShow={noopForceShowFloatingSummaryPanel}
         />
       ),
     });
@@ -7635,7 +7633,7 @@ function vv(e) {
     children: m,
   });
 }
-function yv() {}
+function noopForceShowFloatingSummaryPanel() {}
 
 type RenderableThreadNode = unknown;
 type BackgroundAgentOpenHandler = (backgroundAgent: unknown) => void;
@@ -7671,7 +7669,7 @@ export function LocalConversationSummaryPanel(
   return Q.jsx(ThreadSummaryPanelChrome.PopoverContent, {
     children: Q.jsx(ThreadSummaryPanelChrome.Content, {
       children: (
-        <Sv
+        <ThreadSummaryPanelSections
           artifacts={artifacts}
           sideChats={sideChats}
           toolSources={toolSources}
@@ -7684,14 +7682,14 @@ export function LocalConversationSummaryPanel(
           plan={plan}
           registerEnvironmentActionCommands={false}
           onOpenBackgroundAgent={onOpenBackgroundAgent}
-          onForceShow={xv}
+          onForceShow={noopForceShowPopoverSummaryPanel}
         />
       ),
     }),
   });
 }
-function xv() {}
-function Sv(e) {
+function noopForceShowPopoverSummaryPanel() {}
+function ThreadSummaryPanelSections(props) {
   let {
       onForceShow,
       artifacts,
@@ -7706,7 +7704,7 @@ function Sv(e) {
       plan,
       registerEnvironmentActionCommands,
       onOpenBackgroundAgent,
-    } = e,
+    } = props,
     h = B(Fe),
     g = ur(),
     _ = St() === sn,
@@ -8031,7 +8029,7 @@ function Sv(e) {
     <Nm
       autoCollapse={!N && backgroundAgents.every(wv)}
       sectionKey="background-subagents"
-      title={Q.jsx(mv, {
+      title={Q.jsx(BackgroundTaskSectionTitle, {
         type: "subagents",
       })}
       titleSuffix={
@@ -8068,7 +8066,7 @@ function Sv(e) {
         ) : null
       }
       sectionKey="background-tasks"
-      title={Q.jsx(mv, {
+      title={Q.jsx(BackgroundTaskSectionTitle, {
         type: "tasks",
       })}
       titleSuffix={Q.jsx(ThreadSummaryPanelChrome.SectionCount, {
@@ -8237,7 +8235,7 @@ var Av,
     tt();
     _n();
     n();
-    _v();
+    initBackgroundTaskSectionTitleChunk();
     Q = getJsxRuntime();
   });
 function Nv(e) {
@@ -12681,7 +12679,7 @@ function NS(e) {
         }}
       />
     );
-  let ce = $.jsx(vv, {
+  let ce = $.jsx(FloatingLocalConversationSummaryPanel, {
     ...A,
     ...j,
     onOpenBackgroundAgent: H,
