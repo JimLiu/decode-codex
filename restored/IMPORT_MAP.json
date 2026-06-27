@@ -10932,6 +10932,14 @@
         "u": "createPinThreadMenuItem"
       },
       "status": "done"
+    },
+    "header-CT44CGhD": {
+      "restored": "browser/chrome-extension-header.tsx",
+      "exports": {
+        "n": "initChromeExtensionHeaderChunk",
+        "t": "ChromeExtensionHeader"
+      },
+      "status": "done"
     }
   }
 }

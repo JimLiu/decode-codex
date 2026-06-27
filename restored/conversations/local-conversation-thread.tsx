@@ -726,7 +726,10 @@ import {
   getVisibleThreadRange as Ku,
   initThreadVirtualizerChunk as Ju,
 } from "../threads/thread-virtualizer";
-import { n as Zu, t as Qu } from "./header-CT44CGhD.js";
+import {
+  ChromeExtensionHeader,
+  initChromeExtensionHeaderChunk,
+} from "../browser/chrome-extension-header";
 import { initTeamIconChunk as $u, TeamIcon as ed } from "../icons/team-icon";
 import {
   initThreadScrollLayoutChunk as td,
@@ -13144,7 +13147,7 @@ function FS(e) {
     chromeExtension: true,
     extension: true,
     children: (
-      <Qu
+      <ChromeExtensionHeader
         desktopDeepLinkConversationId={conversationId}
         onBack={_}
         title={v}
@@ -14005,7 +14008,7 @@ export const initLocalConversationThreadChunk = once(() => {
   Qa();
   initReviewSearchHighlighter();
   Di();
-  Zu();
+  initChromeExtensionHeaderChunk();
   Ao();
   initLauncherHotkeyStateChunk();
   Vc();
