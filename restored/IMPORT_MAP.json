@@ -12617,6 +12617,26 @@
       "status": "done",
       "note": "Synced current home row layout chunk with semantic row layout primitives and initializer export.",
       "lastUpdated": "2026-06-27T21:49:07.586Z"
+    },
+    "artifact-annotation-comment-UAnLVQlX": {
+      "restored": "ui/artifact-annotation-comment.tsx",
+      "exports": {
+        "a": "initArtifactAnnotationCommentChunk",
+        "i": "getRemovedArtifactAnnotationIds",
+        "n": "getArtifactAnnotationCommentsForPath",
+        "o": "removeArtifactAnnotationCommentsForPath",
+        "r": "getNextArtifactAnnotationLine",
+        "t": "createArtifactAnnotationComment",
+        "initArtifactAnnotationCommentChunk": "initArtifactAnnotationCommentChunk",
+        "getRemovedArtifactAnnotationIds": "getRemovedArtifactAnnotationIds",
+        "getArtifactAnnotationCommentsForPath": "getArtifactAnnotationCommentsForPath",
+        "removeArtifactAnnotationCommentsForPath": "removeArtifactAnnotationCommentsForPath",
+        "getNextArtifactAnnotationLine": "getNextArtifactAnnotationLine",
+        "createArtifactAnnotationComment": "createArtifactAnnotationComment"
+      },
+      "status": "done",
+      "note": "Synced current artifact annotation comment helper chunk with semantic comment helpers and initializer export.",
+      "lastUpdated": "2026-06-27T21:50:28.470Z"
     }
   }
 }
