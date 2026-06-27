@@ -68,7 +68,6 @@ import {
   Di as DialogSection,
   Dj as joinPath,
   Dl as createLocalConversationRouteTarget,
-  Dp as conversationRemoteHostIdSignal,
   Ei as DialogHeader,
   Em as conversationTurnsSignal,
   Es as browserSidebarEnabledSignal,
@@ -130,7 +129,6 @@ import {
   QP as appScope,
   R as initSlashIcon,
   RP as ChevronIcon,
-  Rf as workspaceRootsSignal,
   Rj as _t,
   Rn as useCommandRegistration,
   Rv as initMarkdownUtilityNoop,
@@ -214,7 +212,6 @@ import {
   lD as lr,
   lF as useIntl,
   lL as LOCAL_ENVIRONMENT_CONFIG_PATH_SETTING_KEY,
-  lP as vscodeMessageBridge,
   lm as conversationResumeStateSignal,
   mM as TooltipProvider,
   mP as logger,
@@ -229,7 +226,6 @@ import {
   pP as initLoggerRuntime,
   pi as PopoverContent,
   po as GitHubIcon,
-  pp as shouldResumeConversationSignal,
   pu as useDebouncedValue,
   qV as getChunkModuleExports,
   qi as MenuChrome,
@@ -394,9 +390,7 @@ import {
   Jn as Ls,
   Km as zs,
   Ln as Bs,
-  initThreadFindNavigationRail as Vs,
   Mt as Hs,
-  Nf as Us,
   Nl as Ws,
   No as Gs,
   Nt as Ks,
@@ -716,10 +710,9 @@ import {
   useMarkConversationReadOnVisibility,
 } from "./local-conversation-thread-parts/local-conversation-read-state";
 import {
-  formatResumeConversationError,
-  shouldAutoRetryResumeError,
-  shouldShowResumeErrorToast,
-} from "./local-conversation-thread-parts/local-conversation-resume-errors";
+  initResumeLocalConversationChunk,
+  useResumeLocalConversation,
+} from "./local-conversation-thread-parts/local-conversation-resume";
 import { initVisibleTurnGeneratedImagesCollector } from "./local-conversation-thread-parts/visible-turn-generated-images";
 import {
   initLocalConversationSummaryPanelSignals,
@@ -9418,176 +9411,15 @@ var backgroundAgentThreadTabsJsxRuntime,
     rs();
     backgroundAgentThreadTabsJsxRuntime = getJsxRuntime();
   });
-function useResumeLocalConversation(conversationId) {
-  let scope = useScope(appScope),
-    intl = useIntl(),
-    { activeMode } = Us(conversationId),
-    { data } = useSignalValue(workspaceRootsSignal),
-    workspaceRoots = data?.roots,
-    shouldResumeConversation = useScopedValue(
-      shouldResumeConversationSignal,
-      conversationId,
-    );
-  useScopedValue(conversationHostIdSignal, conversationId);
-  let [isResuming, setIsResuming] =
-      localConversationThreadRouteReactRuntime.useState(
-        shouldResumeConversation,
-      ),
-    activeResumeConversationIdRef =
-      localConversationThreadRouteReactRuntime.useRef(null),
-    retryTimerRef = localConversationThreadRouteReactRuntime.useRef(null),
-    hasShownResumeErrorRef =
-      localConversationThreadRouteReactRuntime.useRef(false),
-    blockedAutoRetryConversationIdRef =
-      localConversationThreadRouteReactRuntime.useRef(null),
-    [retryTick, setRetryTick] =
-      localConversationThreadRouteReactRuntime.useState(0),
-    resumeConversation =
-      localConversationThreadRouteReactRuntime.useEffectEvent(
-        async (resumeConversationId) => {
-          try {
-            setIsResuming(true);
-            activeResumeConversationIdRef.current = resumeConversationId;
-            let resumeHostId = scope.get(
-              conversationHostIdSignal,
-              resumeConversationId,
-            );
-            await sendAppServerRequest("maybe-resume-conversation", {
-              hostId: resumeHostId,
-              conversationId: resumeConversationId,
-              model: null,
-              serviceTier: await Ma(
-                scope,
-                resumeHostId,
-                activeMode?.settings.model ?? null,
-              ),
-              reasoningEffort: null,
-              workspaceRoots: workspaceRoots ?? [],
-              collaborationMode: activeMode,
-              showThreadGoalResumeConfirmation: false,
-            });
-          } catch (error) {
-            if (
-              (logger.error("Failed to resume conversation", {
-                safe: {},
-                sensitive: {
-                  conversationId: resumeConversationId,
-                  error,
-                },
-              }),
-              activeResumeConversationIdRef.current !== resumeConversationId)
-            )
-              return;
-            let hostId = scope.get(
-                conversationRemoteHostIdSignal,
-                resumeConversationId,
-              ),
-              isArchiving =
-                hostId == null
-                  ? false
-                  : await sendAppServerRequest(
-                      "get-is-conversation-archiving-for-host",
-                      {
-                        hostId,
-                        conversationId: resumeConversationId,
-                      },
-                    );
-            if (
-              hostId == null ||
-              isArchiving ||
-              !scope.get(shouldResumeConversationSignal, resumeConversationId)
-            ) {
-              hasShownResumeErrorRef.current = false;
-              return;
-            }
-            let isSubagentChildThread =
-                scope.get(subagentParentThreadIdSignal, resumeConversationId) !=
-                null,
-              shouldAutoRetry = shouldAutoRetryResumeError(error);
-            shouldAutoRetry ||
-              (blockedAutoRetryConversationIdRef.current =
-                resumeConversationId);
-            shouldShowResumeErrorToast({
-              hasShownResumeError: hasShownResumeErrorRef.current,
-              isSubagentChildThread,
-              shouldAutoRetry,
-            }) &&
-              (scope
-                .get(toastSignal)
-                .danger(formatResumeConversationError(intl, error), {
-                  id: `resume-task-error-${resumeConversationId}`,
-                }),
-              (hasShownResumeErrorRef.current = true));
-            shouldAutoRetry &&
-              retryTimerRef.current == null &&
-              (retryTimerRef.current = setTimeout(() => {
-                retryTimerRef.current = null;
-                setRetryTick((currentRetryTick) => currentRetryTick + 1);
-              }, 750));
-          } finally {
-            activeResumeConversationIdRef.current === resumeConversationId &&
-              ((activeResumeConversationIdRef.current = null),
-              setIsResuming(false));
-          }
-        },
-      );
-  return (
-    localConversationThreadRouteReactRuntime.useEffect(() => {
-      shouldResumeConversation ||
-        ((activeResumeConversationIdRef.current = null),
-        (hasShownResumeErrorRef.current = false),
-        blockedAutoRetryConversationIdRef.current === conversationId &&
-          (blockedAutoRetryConversationIdRef.current = null),
-        retryTimerRef.current != null &&
-          (clearTimeout(retryTimerRef.current),
-          (retryTimerRef.current = null)));
-    }, [conversationId, shouldResumeConversation]),
-    localConversationThreadRouteReactRuntime.useEffect(() => {
-      blockedAutoRetryConversationIdRef.current = null;
-    }, [conversationId]),
-    localConversationThreadRouteReactRuntime.useEffect(() => {
-      if (conversationId != null)
-        return scope.watch(({ get }) => {
-          let hostId = get(conversationRemoteHostIdSignal, conversationId);
-          hostId != null &&
-            get(subagentParentThreadIdSignal, conversationId) != null &&
-            vscodeMessageBridge.dispatchMessage("subagent-thread-opened", {
-              hostId,
-              conversationId: conversationId,
-            });
-        });
-    }, [conversationId, scope]),
-    localConversationThreadRouteReactRuntime.useEffect(() => {
-      conversationId &&
-        shouldResumeConversation &&
-        conversationId !== activeResumeConversationIdRef.current &&
-        conversationId !== blockedAutoRetryConversationIdRef.current &&
-        resumeConversation(conversationId);
-    }, [shouldResumeConversation, conversationId, retryTick]),
-    localConversationThreadRouteReactRuntime.useEffect(
-      () => () => {
-        retryTimerRef.current != null &&
-          (clearTimeout(retryTimerRef.current), (retryTimerRef.current = null));
-      },
-      [],
-    ),
-    {
-      isResuming: shouldResumeConversation && isResuming,
-    }
-  );
-}
-var localConversationThreadRouteReactRuntime,
-  localConversationThreadRouteJsxRuntime,
+var localConversationThreadRouteJsxRuntime,
   initLocalConversationThreadRoute = once(() => {
     initScopeRuntime();
     initPathHelpers();
-    localConversationThreadRouteReactRuntime = toEsModule(loadReactModule(), 1);
     initIntlRuntime();
     initConversationStateSelectors();
     initAppServerRequestBridge();
-    Ha();
     initToastRuntime();
-    Vs();
+    initResumeLocalConversationChunk();
     initVscodeMessageBridge();
     initAppScope();
     initHostWorkspaceQueries();
