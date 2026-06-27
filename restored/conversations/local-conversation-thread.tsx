@@ -3705,7 +3705,7 @@ var Om,
       "flex h-7 w-7 shrink-0 cursor-interaction items-center justify-center rounded-sm border-0 bg-transparent p-0 text-token-text-tertiary hover:bg-token-list-hover-background data-[state=open]:bg-token-list-hover-background";
     jm = [];
   });
-function Nm(e) {
+function ThreadSummaryPanelSection(props) {
   let {
       autoCollapse,
       sectionKey,
@@ -3718,85 +3718,116 @@ function Nm(e) {
       title,
       titleSuffix,
       onChange,
-    } = e,
-    g = B(Fe),
-    _ = K(Gm, sectionKey),
-    v = K(Wm, sectionKey),
-    y = autoCollapse != null && _ !== "canceled",
-    b =
-      !(autoCollapse === true && _ === "collapsed") && (v ?? !defaultCollapsed),
-    x = W(mt),
-    S = (e) => {
-      g.set(Wm, sectionKey, e);
+    } = props,
+    scope = B(Fe),
+    autoCollapseState = K(
+      threadSummaryPanelSectionAutoCollapseState,
+      sectionKey,
+    ),
+    persistedIsExpanded = K(threadSummaryPanelSectionExpandedState, sectionKey),
+    shouldHandleAutoCollapse =
+      autoCollapse != null && autoCollapseState !== "canceled",
+    isExpanded =
+      !(autoCollapse === true && autoCollapseState === "collapsed") &&
+      (persistedIsExpanded ?? !defaultCollapsed),
+    shouldUseReducedMotion = W(mt),
+    setIsExpanded = (nextIsExpanded) => {
+      scope.set(
+        threadSummaryPanelSectionExpandedState,
+        sectionKey,
+        nextIsExpanded,
+      );
     };
-  let C = S,
-    w = mode === "headerless" || b || mode === "dropdown",
-    T = (
+  let shouldRenderContent =
+      mode === "headerless" || isExpanded || mode === "dropdown",
+    staticContent = (
       <div className="relative z-0 mt-0.5 overflow-hidden">
         <div className="flex flex-col gap-0.5 px-4">{children}</div>
       </div>
     );
-  let E = T,
-    D;
-  D = () => ({
-    collapse: () => C(false),
-    expand: () => C(true),
+  let createImperativeHandle = () => ({
+    collapse: () => setIsExpanded(false),
+    expand: () => setIsExpanded(true),
   });
-  Lm.useImperativeHandle(ref, D);
-  let O, k;
-  O = () => {
-    if (!y) return;
+  threadSummaryPanelSectionReactRuntime.useImperativeHandle(
+    ref,
+    createImperativeHandle,
+  );
+  let syncAutoCollapseState = () => {
+    if (!shouldHandleAutoCollapse) return;
     if (!autoCollapse) {
-      _ === "collapsed" && g.set(Gm, sectionKey, "pending");
+      autoCollapseState === "collapsed" &&
+        scope.set(
+          threadSummaryPanelSectionAutoCollapseState,
+          sectionKey,
+          "pending",
+        );
       return;
     }
-    if (_ !== "pending") return;
-    let e = window.setTimeout(() => {
-      g.set(Gm, sectionKey, "collapsed");
-    }, zm);
-    return () => window.clearTimeout(e);
+    if (autoCollapseState !== "pending") return;
+    let timeoutId = window.setTimeout(() => {
+      scope.set(
+        threadSummaryPanelSectionAutoCollapseState,
+        sectionKey,
+        "collapsed",
+      );
+    }, THREAD_SUMMARY_PANEL_SECTION_AUTO_COLLAPSE_DELAY_MS);
+    return () => window.clearTimeout(timeoutId);
   };
-  k = [autoCollapse, _, y, g, sectionKey];
-  Lm.useEffect(O, k);
-  let A = y
+  let autoCollapseEffectDeps = [
+    autoCollapse,
+    autoCollapseState,
+    shouldHandleAutoCollapse,
+    scope,
+    sectionKey,
+  ];
+  threadSummaryPanelSectionReactRuntime.useEffect(
+    syncAutoCollapseState,
+    autoCollapseEffectDeps,
+  );
+  let cancelAutoCollapse = shouldHandleAutoCollapse
     ? () => {
-        g.set(Gm, sectionKey, "canceled");
+        scope.set(
+          threadSummaryPanelSectionAutoCollapseState,
+          sectionKey,
+          "canceled",
+        );
       }
     : undefined;
-  let j =
+  let sectionHeader =
     mode === "headerless" ? null : (
-      <Pm
+      <ThreadSummaryPanelSectionHeader
         after={
-          Im.default(after)
+          isFunctionModule.default(after)
             ? after({
-                isExpanded: b,
+                isExpanded,
               })
             : after
         }
         sectionOptions={sectionOptions}
         mode={mode}
-        isExpanded={b}
+        isExpanded={isExpanded}
         onChange={onChange}
         onToggle={() => {
-          mode !== "dropdown" && C(!b);
+          mode !== "dropdown" && setIsExpanded(!isExpanded);
         }}
-        shouldUseReducedMotion={x}
+        shouldUseReducedMotion={shouldUseReducedMotion}
         titleSuffix={titleSuffix}
       >
         {title}
-      </Pm>
+      </ThreadSummaryPanelSectionHeader>
     );
-  let M = x ? (
-    w && E
+  let sectionContent = shouldUseReducedMotion ? (
+    shouldRenderContent && staticContent
   ) : (
     <Ne initial={false}>
-      {w &&
-        Rm.jsx(
+      {shouldRenderContent &&
+        threadSummaryPanelSectionJsxRuntime.jsx(
           p.div,
           {
-            initial: Hm,
-            animate: Um,
-            exit: Hm,
+            initial: collapsedSectionMotionState,
+            animate: expandedSectionMotionState,
+            exit: collapsedSectionMotionState,
             transition: ft,
             className: "relative z-0 overflow-hidden",
             children: (
@@ -3810,14 +3841,15 @@ function Nm(e) {
   return (
     <section
       className="relative z-0 flex flex-col pb-3 after:absolute after:inset-x-4 after:bottom-0 after:h-[0.5px] after:bg-token-border-default after:content-[''] last:pb-0 last:after:hidden"
-      onClick={A}
+      onClick={cancelAutoCollapse}
     >
-      {j}
-      {M}
+      {sectionHeader}
+      {sectionContent}
     </section>
   );
 }
-function Pm(e) {
+
+function ThreadSummaryPanelSectionHeader(props) {
   let {
       mode,
       sectionOptions,
@@ -3828,14 +3860,15 @@ function Pm(e) {
       onChange,
       shouldUseReducedMotion,
       titleSuffix,
-    } = e,
-    d = sectionOptions != null && sectionOptions.length > 1,
-    f = mode === "accordion" ? onToggle : undefined,
-    p = <span className="truncate">{children}</span>;
-  let m = isExpanded ? null : titleSuffix,
-    h =
-      (mode === "accordion" || d) &&
-      Rm.jsx(ht, {
+    } = props,
+    hasMultipleSectionOptions =
+      sectionOptions != null && sectionOptions.length > 1,
+    toggleHandler = mode === "accordion" ? onToggle : undefined,
+    titleNode = <span className="truncate">{children}</span>;
+  let collapsedTitleSuffix = isExpanded ? null : titleSuffix,
+    chevronIcon =
+      (mode === "accordion" || hasMultipleSectionOptions) &&
+      threadSummaryPanelSectionJsxRuntime.jsx(ht, {
         "aria-hidden": "true",
         className: S(
           "icon-2xs shrink-0 group-hover/section-toggle:opacity-100 group-focus-visible/section-toggle:opacity-100",
@@ -3844,85 +3877,90 @@ function Pm(e) {
           isExpanded ? "rotate-0" : "-rotate-90",
         ),
       });
-  let g = (
+  let toggleButton = (
     <button
       aria-expanded={isExpanded}
       className="group/section-toggle inline-flex min-w-0 shrink-0 cursor-interaction items-center gap-1.5 rounded-md py-0.5 pr-1 text-left focus-visible:outline-2 focus-visible:outline-offset-2"
-      onClick={f}
+      onClick={toggleHandler}
       type="button"
     >
-      {p}
-      {m}
-      {h}
+      {titleNode}
+      {collapsedTitleSuffix}
+      {chevronIcon}
     </button>
   );
-  let _ = g,
-    v =
-      mode === "dropdown" && d ? (
-        <H triggerButton={_}>
-          {sectionOptions?.map((e) =>
-            Rm.jsx(
-              ye,
-              {
-                onSelect: () => onChange?.(e),
-                children: e,
-              },
-              e,
-            ),
-          )}
-        </H>
-      ) : (
-        _
-      );
-  let y =
+  let headerControl =
+    mode === "dropdown" && hasMultipleSectionOptions ? (
+      <H triggerButton={toggleButton}>
+        {sectionOptions?.map((option) =>
+          threadSummaryPanelSectionJsxRuntime.jsx(
+            ye,
+            {
+              onSelect: () => onChange?.(option),
+              children: option,
+            },
+            option,
+          ),
+        )}
+      </H>
+    ) : (
+      toggleButton
+    );
+  let afterNode =
     after == null ? null : <div className="flex min-w-0 flex-1">{after}</div>;
   return (
     <header className="sticky top-0 z-10 flex h-7 w-full min-w-0 items-center justify-start gap-2 bg-token-dropdown-background ps-4 pe-2.5 pb-0.5 text-base text-token-text-tertiary">
-      {v}
-      {y}
+      {headerControl}
+      {afterNode}
     </header>
   );
 }
-var Fm,
-  Im,
-  Lm,
-  Rm,
-  zm,
-  Bm,
-  Vm,
-  Hm,
-  Um,
-  Wm,
-  Gm,
-  Km = once(() => {
-    Fm = q();
+
+var threadSummaryPanelSectionModule,
+  isFunctionModule,
+  threadSummaryPanelSectionReactRuntime,
+  threadSummaryPanelSectionJsxRuntime,
+  THREAD_SUMMARY_PANEL_SECTION_AUTO_COLLAPSE_DELAY_MS,
+  THREAD_SUMMARY_PANEL_SECTION_EXPANDED_STATE_PREFIX,
+  DEFAULT_THREAD_SUMMARY_PANEL_SECTION_EXPANDED_STATE,
+  collapsedSectionMotionState,
+  expandedSectionMotionState,
+  threadSummaryPanelSectionExpandedState,
+  threadSummaryPanelSectionAutoCollapseState,
+  initThreadSummaryPanelSectionChunk = once(() => {
+    threadSummaryPanelSectionModule = q();
     Ut();
     bt();
-    Im = toEsModule(un(), 1);
+    isFunctionModule = toEsModule(un(), 1);
     c();
-    Lm = toEsModule(G(), 1);
+    threadSummaryPanelSectionReactRuntime = toEsModule(G(), 1);
     an();
     Si();
     me();
     Oe();
     a();
     $n();
-    Rm = getJsxRuntime();
-    zm = 3e4;
-    Bm = "thread-summary-panel-section-expanded-";
-    Vm = null;
-    Hm = {
+    threadSummaryPanelSectionJsxRuntime = getJsxRuntime();
+    THREAD_SUMMARY_PANEL_SECTION_AUTO_COLLAPSE_DELAY_MS = 3e4;
+    THREAD_SUMMARY_PANEL_SECTION_EXPANDED_STATE_PREFIX =
+      "thread-summary-panel-section-expanded-";
+    DEFAULT_THREAD_SUMMARY_PANEL_SECTION_EXPANDED_STATE = null;
+    collapsedSectionMotionState = {
       height: 0,
       opacity: 0,
       marginTop: 0,
     };
-    Um = {
+    expandedSectionMotionState = {
       height: "auto",
       opacity: 1,
       marginTop: 2,
     };
-    Wm = Be((e) => `${Bm}${e}`, Vm);
-    Gm = bn(Fe, (e) => "pending");
+    threadSummaryPanelSectionExpandedState = Be(
+      (sectionKey) =>
+        `${THREAD_SUMMARY_PANEL_SECTION_EXPANDED_STATE_PREFIX}${sectionKey}`,
+      DEFAULT_THREAD_SUMMARY_PANEL_SECTION_EXPANDED_STATE,
+    );
+    threadSummaryPanelSectionAutoCollapseState = bn(Fe, () => "pending");
   });
 function BranchChangesSummaryRow(props) {
   let { onOpenReviewTab, diffStats, isDiffStatsLoading } = props,
@@ -4923,88 +4961,87 @@ var $h,
     d();
     eg = getJsxRuntime();
   });
-function ng(e) {
-  let { data, error, fixDisabledReason, item, loading } = e,
-    s = ur(),
-    c = B(fi),
-    l = W(qo),
-    u,
-    d,
-    f;
-  {
-    d = data?.checks.filter(rg);
-    let e;
-    e = new Set(l.map(dh));
-    u = e;
-    f = d != null && d.length > 0 && d.every((_item) => u.has(dh(_item)));
-  }
-  let p = f,
-    m =
+function PullRequestSidePanelChecksSection(props) {
+  let { data, error, fixDisabledReason, item, loading } = props,
+    intl = ur(),
+    scope = B(fi),
+    attachedChecks = W(qo),
+    failingChecks = data?.checks.filter(isFailingPullRequestCheck),
+    attachedCheckKeys = new Set(attachedChecks.map(dh)),
+    allFailingChecksAttached =
+      failingChecks != null &&
+      failingChecks.length > 0 &&
+      failingChecks.every((check) => attachedCheckKeys.has(dh(check)));
+  let fixDisabledTooltip =
       fixDisabledReason == null
         ? undefined
-        : ag.jsx(ih, {
+        : pullRequestChecksSectionJsxRuntime.jsx(ih, {
             reason: fixDisabledReason,
-          });
-  let h = m,
-    g =
-      d != null && d.length > 0
-        ? ag.jsx(PullRequestInlineActionButton, {
-            color: "secondary",
-            ariaLabel: p
-              ? s.formatMessage({
-                  id: "pullRequestSidePanel.checks.removeAllAccessible",
-                  defaultMessage: "Remove all",
-                  description:
-                    "Accessible label for removing all failing pull request checks from the chat",
-                })
-              : s.formatMessage({
-                  id: "pullRequestSidePanel.checks.fixAllAccessible",
-                  defaultMessage: "Fix all",
-                  description:
-                    "Accessible label for fixing all failing pull request checks",
-                }),
-            disabled: !p && fixDisabledReason != null,
-            inset: true,
-            tooltipContent: p ? undefined : h,
-            onClick: () => {
-              if (p) {
-                fh(c, {
-                  attached: false,
-                  checks: d,
+          }),
+    headerAction =
+      failingChecks != null && failingChecks.length > 0
+        ? pullRequestChecksSectionJsxRuntime.jsx(
+            PullRequestInlineActionButton,
+            {
+              color: "secondary",
+              ariaLabel: allFailingChecksAttached
+                ? intl.formatMessage({
+                    id: "pullRequestSidePanel.checks.removeAllAccessible",
+                    defaultMessage: "Remove all",
+                    description:
+                      "Accessible label for removing all failing pull request checks from the chat",
+                  })
+                : intl.formatMessage({
+                    id: "pullRequestSidePanel.checks.fixAllAccessible",
+                    defaultMessage: "Fix all",
+                    description:
+                      "Accessible label for fixing all failing pull request checks",
+                  }),
+              disabled: !allFailingChecksAttached && fixDisabledReason != null,
+              inset: true,
+              tooltipContent: allFailingChecksAttached
+                ? undefined
+                : fixDisabledTooltip,
+              onClick: () => {
+                if (allFailingChecksAttached) {
+                  fh(scope, {
+                    attached: false,
+                    checks: failingChecks,
+                  });
+                  return;
+                }
+                ph(scope, {
+                  baseBranch: item.baseBranch,
+                  checks: failingChecks,
+                  headBranch: item.headBranch,
+                  number: item.number,
                 });
-                return;
-              }
-              ph(c, {
-                baseBranch: item.baseBranch,
-                checks: d,
-                headBranch: item.headBranch,
-                number: item.number,
-              });
+              },
+              children: allFailingChecksAttached ? (
+                <FormattedMessage
+                  id="pullRequestSidePanel.checks.removeAll"
+                  defaultMessage="Remove"
+                  description="Button label for removing all failing pull request checks from the chat"
+                />
+              ) : (
+                <FormattedMessage
+                  id="pullRequestSidePanel.checks.fixAll"
+                  defaultMessage="Fix"
+                  description="Button label for fixing all failing pull request checks"
+                />
+              ),
             },
-            children: p ? (
-              <FormattedMessage
-                id="pullRequestSidePanel.checks.removeAll"
-                defaultMessage="Remove"
-                description="Button label for removing all failing pull request checks from the chat"
-              />
-            ) : (
-              <FormattedMessage
-                id="pullRequestSidePanel.checks.fixAll"
-                defaultMessage="Fix"
-                description="Button label for fixing all failing pull request checks"
-              />
-            ),
-          })
+          )
         : null;
-  let _ = (
+  let title = (
     <FormattedMessage
       id="pullRequestSidePanel.checks.title"
       defaultMessage="Checks"
       description="Checks section title in the pull request side panel"
     />
   );
-  let v = <Kh action={g}>{_}</Kh>;
-  let y = (
+  let header = <Kh action={headerAction}>{title}</Kh>;
+  let body = (
     <div className="rounded-xl bg-token-main-surface-primary py-1 ps-4 shadow-sm">
       {error == null ? (
         loading || data == null ? (
@@ -5022,22 +5059,22 @@ function ng(e) {
             canFix={fixDisabledReason == null}
             checks={data.checks}
             density="comfortable"
-            fixTooltipContent={h}
+            fixTooltipContent={fixDisabledTooltip}
             insetFixButtons={true}
             labelTone="primary"
-            isCheckAttached={(e) => u.has(dh(e))}
-            onFixCheck={(e) => {
-              ph(c, {
+            isCheckAttached={(check) => attachedCheckKeys.has(dh(check))}
+            onFixCheck={(check) => {
+              ph(scope, {
                 baseBranch: item.baseBranch,
-                checks: [e],
+                checks: [check],
                 headBranch: item.headBranch,
                 number: item.number,
               });
             }}
-            onRemoveCheck={(e) => {
-              fh(c, {
+            onRemoveCheck={(check) => {
+              fh(scope, {
                 attached: false,
-                checks: [e],
+                checks: [check],
               });
             }}
           />
@@ -5057,18 +5094,18 @@ function ng(e) {
   );
   return (
     <details open={true} className="group flex flex-col gap-1">
-      {v}
-      {y}
+      {header}
+      {body}
     </details>
   );
 }
-function rg(e) {
-  return e.status === "failing";
+function isFailingPullRequestCheck(check) {
+  return check.status === "failing";
 }
-var ig,
-  ag,
-  og = once(() => {
-    ig = q();
+var pullRequestChecksSectionModule,
+  pullRequestChecksSectionJsxRuntime,
+  initPullRequestSidePanelChecksSectionChunk = once(() => {
+    pullRequestChecksSectionModule = q();
     c();
     Jn();
     an();
@@ -5081,97 +5118,108 @@ var ig,
     Gh();
     Zh();
     tg();
-    ag = getJsxRuntime();
+    pullRequestChecksSectionJsxRuntime = getJsxRuntime();
   });
-function sg(e) {
-  return e.filter((item) => item.type !== "event");
+function getPullRequestCommentActivityItems(activityItems) {
+  return activityItems.filter((item) => item.type !== "event");
 }
-function cg(e) {
-  return ug
+function getPullRequestReviewerBadgeModels(reviewers) {
+  return pullRequestReviewerBadgeUniqBy
     .default([
-      ...e.requested,
-      ...e.requestedTeams,
-      ...e.approved,
-      ...e.changesRequested,
-      ...e.commented,
+      ...reviewers.requested,
+      ...reviewers.requestedTeams,
+      ...reviewers.approved,
+      ...reviewers.changesRequested,
+      ...reviewers.commented,
     ])
     .map((item) => ({
-      kind: e.requestedTeams.includes(item) ? "team" : "user",
+      kind: reviewers.requestedTeams.includes(item) ? "team" : "user",
       label: item,
-      status: lg(e, item),
+      status: getPullRequestReviewerStatus(reviewers, item),
     }));
 }
-function lg(e, t) {
-  return e.changesRequested.includes(t)
+function getPullRequestReviewerStatus(reviewers, login) {
+  return reviewers.changesRequested.includes(login)
     ? "changes_requested"
-    : e.approved.includes(t)
+    : reviewers.approved.includes(login)
       ? "approved"
       : "waiting";
 }
-var ug,
-  dg = once(() => {
-    ug = toEsModule(be(), 1);
+var pullRequestReviewerBadgeUniqBy,
+  initPullRequestReviewerBadgeModelsChunk = once(() => {
+    pullRequestReviewerBadgeUniqBy = toEsModule(be(), 1);
   });
-function fg(e) {
-  let { data, error, fixDisabledReason, item, loading } = e,
-    s = ur(),
-    c = B(fi),
-    l = c.value.routeConversationId,
-    u = K(ki, l),
-    d;
+function PullRequestSidePanelCommentsSection(props) {
+  let { data, error, fixDisabledReason, item, loading } = props,
+    intl = ur(),
+    scope = B(fi),
+    conversationId = scope.value.routeConversationId,
+    attachedCommentAttachments = K(ki, conversationId),
+    content;
   {
-    let e = data == null ? null : sg(data.activityItems),
-      f = data?.commentAttachments,
-      p = new Set(u.map(se));
-    let m = p,
-      h = f != null && f.length > 0 && f.every((_item) => m.has(se(_item)));
-    let g = h,
-      _ =
+    let commentActivityItems =
+        data == null
+          ? null
+          : getPullRequestCommentActivityItems(data.activityItems),
+      commentAttachments = data?.commentAttachments,
+      attachedCommentAttachmentKeys = new Set(
+        attachedCommentAttachments.map(se),
+      );
+    let allCommentsAttached =
+        commentAttachments != null &&
+        commentAttachments.length > 0 &&
+        commentAttachments.every((attachment) =>
+          attachedCommentAttachmentKeys.has(se(attachment)),
+        ),
+      fixDisabledTooltip =
         fixDisabledReason == null
           ? undefined
-          : hg.jsx(ih, {
+          : pullRequestCommentsSectionJsxRuntime.jsx(ih, {
               reason: fixDisabledReason,
             });
-    let v = _,
-      y =
-        f != null && f.length > 0
-          ? hg.jsx(PullRequestInlineActionButton, {
+    let headerAction =
+      commentAttachments != null && commentAttachments.length > 0
+        ? pullRequestCommentsSectionJsxRuntime.jsx(
+            PullRequestInlineActionButton,
+            {
               color: "secondary",
-              ariaLabel: g
-                ? s.formatMessage({
+              ariaLabel: allCommentsAttached
+                ? intl.formatMessage({
                     id: "pullRequestSidePanel.comments.removeAllAccessible",
                     defaultMessage: "Remove all",
                     description:
                       "Accessible label for removing all pull request comments from the chat",
                   })
-                : s.formatMessage({
+                : intl.formatMessage({
                     id: "pullRequestSidePanel.comments.fixAllAccessible",
                     defaultMessage: "Fix all",
                     description:
                       "Accessible label for fixing all pull request comments",
                   }),
-              disabled: !g && fixDisabledReason != null,
+              disabled: !allCommentsAttached && fixDisabledReason != null,
               inset: true,
-              tooltipContent: g ? undefined : v,
+              tooltipContent: allCommentsAttached
+                ? undefined
+                : fixDisabledTooltip,
               onClick: () => {
-                if (g) {
-                  $m(c, {
+                if (allCommentsAttached) {
+                  $m(scope, {
                     attached: false,
-                    commentAttachments: f,
-                    conversationId: l,
+                    commentAttachments,
+                    conversationId,
                   });
                   return;
                 }
-                eh(c, {
+                eh(scope, {
                   baseBranch: item.baseBranch,
-                  commentAttachments: f,
-                  conversationId: l,
+                  commentAttachments,
+                  conversationId,
                   focusComposer: true,
                   headBranch: item.headBranch,
                   number: item.number,
                 });
               },
-              children: g ? (
+              children: allCommentsAttached ? (
                 <FormattedMessage
                   id="pullRequestSidePanel.comments.removeAll"
                   defaultMessage="Remove"
@@ -5184,20 +5232,21 @@ function fg(e) {
                   description="Button label for fixing all pull request comments"
                 />
               ),
-            })
-          : null;
-    let b = (
+            },
+          )
+        : null;
+    let title = (
       <FormattedMessage
         id="pullRequestSidePanel.comments.title"
         defaultMessage="Comments"
         description="Comments section title in the pull request side panel"
       />
     );
-    let x;
-    x = <Kh action={y}>{b}</Kh>;
-    d = (
+    let header;
+    header = <Kh action={headerAction}>{title}</Kh>;
+    content = (
       <details open={true} className="group flex flex-col pb-8">
-        {x}
+        {header}
         {error == null ? (
           loading || data == null ? (
             <Qh
@@ -5209,63 +5258,77 @@ function fg(e) {
                 />
               }
             />
-          ) : e != null && e.length > 0 ? (
+          ) : commentActivityItems != null &&
+            commentActivityItems.length > 0 ? (
             <div className="flex flex-col gap-1">
-              {e.map((_item) => {
-                let t = pg(_item, f),
-                  n = t != null && m.has(se(t));
+              {commentActivityItems.map((activityItem) => {
+                let commentAttachment = findCommentAttachmentForActivityItem(
+                    activityItem,
+                    commentAttachments,
+                  ),
+                  commentIsAttached =
+                    commentAttachment != null &&
+                    attachedCommentAttachmentKeys.has(se(commentAttachment));
                 return (
                   <Qo
-                    key={_item.id}
-                    authorAvatarUrl={_item.authorAvatarUrl}
-                    authorLogin={_item.authorLogin}
-                    body={_item.body}
-                    createdAt={_item.createdAt}
+                    key={activityItem.id}
+                    authorAvatarUrl={activityItem.authorAvatarUrl}
+                    authorLogin={activityItem.authorLogin}
+                    body={activityItem.body}
+                    createdAt={activityItem.createdAt}
                     defaultCollapsed={true}
                     metadataAccessory={
-                      t == null
+                      commentAttachment == null
                         ? null
-                        : hg.jsx(PullRequestInlineActionButton, {
-                            disabled: !n && fixDisabledReason != null,
-                            inset: true,
-                            tooltipContent: n ? undefined : v,
-                            onClick: () => {
-                              if (!n) {
-                                eh(c, {
-                                  baseBranch: item.baseBranch,
-                                  commentAttachments: [t],
-                                  conversationId: l,
-                                  focusComposer: true,
-                                  headBranch: item.headBranch,
-                                  number: item.number,
+                        : pullRequestCommentsSectionJsxRuntime.jsx(
+                            PullRequestInlineActionButton,
+                            {
+                              disabled:
+                                !commentIsAttached && fixDisabledReason != null,
+                              inset: true,
+                              tooltipContent: commentIsAttached
+                                ? undefined
+                                : fixDisabledTooltip,
+                              onClick: () => {
+                                if (!commentIsAttached) {
+                                  eh(scope, {
+                                    baseBranch: item.baseBranch,
+                                    commentAttachments: [commentAttachment],
+                                    conversationId,
+                                    focusComposer: true,
+                                    headBranch: item.headBranch,
+                                    number: item.number,
+                                  });
+                                  return;
+                                }
+                                $m(scope, {
+                                  attached: false,
+                                  commentAttachments: [commentAttachment],
+                                  conversationId,
                                 });
-                                return;
-                              }
-                              $m(c, {
-                                attached: false,
-                                commentAttachments: [t],
-                                conversationId: l,
-                              });
+                              },
+                              children: commentIsAttached ? (
+                                <FormattedMessage
+                                  id="pullRequestSidePanel.comments.removeFromChat"
+                                  defaultMessage="Remove"
+                                  description="Button label for removing a pull request comment from the chat"
+                                />
+                              ) : (
+                                <FormattedMessage
+                                  id="pullRequestSidePanel.comments.fixComment"
+                                  defaultMessage="Fix"
+                                  description="Button label for fixing an individual pull request comment"
+                                />
+                              ),
                             },
-                            children: n ? (
-                              <FormattedMessage
-                                id="pullRequestSidePanel.comments.removeFromChat"
-                                defaultMessage="Remove"
-                                description="Button label for removing a pull request comment from the chat"
-                              />
-                            ) : (
-                              <FormattedMessage
-                                id="pullRequestSidePanel.comments.fixComment"
-                                defaultMessage="Fix"
-                                description="Button label for fixing an individual pull request comment"
-                              />
-                            ),
-                          })
+                          )
                     }
-                    metadataTooltipContent={_item.path ?? t?.position.path}
-                    replies={_item.replies}
+                    metadataTooltipContent={
+                      activityItem.path ?? commentAttachment?.position.path
+                    }
+                    replies={activityItem.replies}
                     surface="timeline"
-                    url={_item.url}
+                    url={activityItem.url}
                   />
                 );
               })}
@@ -5285,21 +5348,25 @@ function fg(e) {
       </details>
     );
   }
-  return d;
+  return content;
 }
-function pg(e, t) {
+function findCommentAttachmentForActivityItem(
+  activityItem,
+  commentAttachments,
+) {
   return (
-    t?.find(
-      (t) =>
-        (e.reviewThreadId != null && t.reviewThreadId === e.reviewThreadId) ||
-        (e.url != null && t.url === e.url),
+    commentAttachments?.find(
+      (attachment) =>
+        (activityItem.reviewThreadId != null &&
+          attachment.reviewThreadId === activityItem.reviewThreadId) ||
+        (activityItem.url != null && attachment.url === activityItem.url),
     ) ?? null
   );
 }
-var mg,
-  hg,
-  gg = once(() => {
-    mg = q();
+var pullRequestCommentsSectionModule,
+  pullRequestCommentsSectionJsxRuntime,
+  initPullRequestSidePanelCommentsSectionChunk = once(() => {
+    pullRequestCommentsSectionModule = q();
     c();
     Jn();
     da();
@@ -5313,8 +5380,8 @@ var mg,
     Gh();
     Zh();
     tg();
-    dg();
-    hg = getJsxRuntime();
+    initPullRequestReviewerBadgeModelsChunk();
+    pullRequestCommentsSectionJsxRuntime = getJsxRuntime();
   }),
   _g,
   vg,
@@ -5334,14 +5401,12 @@ var mg,
       </svg>
     );
   });
-function bg(e) {
-  let { error, files, hasError, loading, repository } = e;
+function PullRequestConflictFileRows(props) {
+  let { error, files, hasError, loading, repository } = props;
   if (hasError) {
-    let e;
     return <Hh description={error} />;
   }
   if (loading || files == null) {
-    let e;
     return (
       <Qh
         label={
@@ -5355,7 +5420,6 @@ function bg(e) {
     );
   }
   if (files.length === 0) {
-    let e;
     return (
       <Br.Message compact={true}>
         <FormattedMessage
@@ -5366,19 +5430,18 @@ function bg(e) {
       </Br.Message>
     );
   }
-  let s;
+  let rows;
   {
-    let e;
-    e = (e) => ({
+    let toConflictFileRow = (filePath) => ({
       icon: (
         <span className="inline-flex h-[18px] w-[18px] shrink-0 items-center justify-center">
-          {Sg.jsx(vg, {
+          {pullRequestConflictFileRowsJsxRuntime.jsx(vg, {
             className: "icon-3xs text-token-text-tertiary",
           })}
         </span>
       ),
-      id: e,
-      label: e,
+      id: filePath,
+      label: filePath,
       trailing:
         repository == null ? null : (
           <span className="max-w-52 truncate text-sm text-token-text-tertiary">
@@ -5386,47 +5449,47 @@ function bg(e) {
           </span>
         ),
     });
-    s = files.map(e);
+    rows = files.map(toConflictFileRow);
   }
   return (
     <PullRequestMetadataRows
       density="comfortable"
-      items={s}
+      items={rows}
       labelTone="primary"
     />
   );
 }
-var xg,
-  Sg,
-  Cg = once(() => {
-    xg = q();
+var pullRequestConflictFileRowsModule,
+  pullRequestConflictFileRowsJsxRuntime,
+  initPullRequestConflictFileRowsChunk = once(() => {
+    pullRequestConflictFileRowsModule = q();
     Jn();
     an();
     yg();
     initPullRequestMetadataRowsChunk();
     Gh();
     tg();
-    Sg = getJsxRuntime();
+    pullRequestConflictFileRowsJsxRuntime = getJsxRuntime();
   });
-function wg(e) {
-  let { error, files, fixDisabledReason, hasError, item, loading, repo } = e,
-    l = B(fi),
-    u = W(ko)?.url === item.url,
-    d =
+function PullRequestSidePanelConflictsSection(props) {
+  let { error, files, fixDisabledReason, hasError, item, loading, repo } =
+      props,
+    scope = B(fi),
+    conflictsAreAttached = W(ko)?.url === item.url,
+    fixDisabledTooltip =
       fixDisabledReason == null
         ? undefined
-        : Eg.jsx(ih, {
+        : pullRequestConflictsSectionJsxRuntime.jsx(ih, {
             reason: fixDisabledReason,
           });
-  let f = d,
-    p = !u && fixDisabledReason != null,
-    m = u ? undefined : f,
-    h = () => {
-      if (u) {
-        gh(l, null);
+  let actionDisabled = !conflictsAreAttached && fixDisabledReason != null,
+    actionTooltip = conflictsAreAttached ? undefined : fixDisabledTooltip,
+    handleToggleConflictsFix = () => {
+      if (conflictsAreAttached) {
+        gh(scope, null);
         return;
       }
-      hh(l, {
+      hh(scope, {
         baseBranch: item.baseBranch,
         headBranch: item.headBranch,
         number: item.number,
@@ -5434,7 +5497,7 @@ function wg(e) {
         url: item.url,
       });
     };
-  let g = u ? (
+  let actionLabel = conflictsAreAttached ? (
     <FormattedMessage
       id="pullRequestSidePanel.conflicts.remove"
       defaultMessage="Remove"
@@ -5447,25 +5510,28 @@ function wg(e) {
       description="Button label for fixing pull request merge conflicts"
     />
   );
-  let _ = Eg.jsx(PullRequestInlineActionButton, {
-    color: "secondary",
-    disabled: p,
-    inset: true,
-    tooltipContent: m,
-    onClick: h,
-    children: g,
-  });
-  let v = (
+  let headerAction = pullRequestConflictsSectionJsxRuntime.jsx(
+    PullRequestInlineActionButton,
+    {
+      color: "secondary",
+      disabled: actionDisabled,
+      inset: true,
+      tooltipContent: actionTooltip,
+      onClick: handleToggleConflictsFix,
+      children: actionLabel,
+    },
+  );
+  let title = (
     <FormattedMessage
       id="pullRequestSidePanel.conflicts.title"
       defaultMessage="Merge conflicts"
       description="Merge conflicts section title in the pull request side panel"
     />
   );
-  let y = <Kh action={_}>{v}</Kh>;
-  let b = (
+  let header = <Kh action={headerAction}>{title}</Kh>;
+  let body = (
     <div className="rounded-xl bg-token-main-surface-primary px-4 py-1 shadow-sm">
-      {Eg.jsx(bg, {
+      {pullRequestConflictsSectionJsxRuntime.jsx(PullRequestConflictFileRows, {
         error,
         files,
         hasError,
@@ -5476,15 +5542,15 @@ function wg(e) {
   );
   return (
     <details open={true} className="group flex flex-col gap-2">
-      {y}
-      {b}
+      {header}
+      {body}
     </details>
   );
 }
-var Tg,
-  Eg,
-  Dg = once(() => {
-    Tg = q();
+var pullRequestConflictsSectionModule,
+  pullRequestConflictsSectionJsxRuntime,
+  initPullRequestSidePanelConflictsSectionChunk = once(() => {
+    pullRequestConflictsSectionModule = q();
     c();
     Jn();
     cs();
@@ -5492,13 +5558,13 @@ var Tg,
     initPullRequestInlineActionButtonChunk();
     _h();
     _();
-    Cg();
+    initPullRequestConflictFileRowsChunk();
     Zh();
-    Eg = getJsxRuntime();
+    pullRequestConflictsSectionJsxRuntime = getJsxRuntime();
   });
-function Og(e) {
-  let { body, error, loading } = e,
-    a = (
+function PullRequestSidePanelDescriptionSection(props) {
+  let { body, error, loading } = props,
+    header = (
       <Kh>
         <FormattedMessage
           id="pullRequestSidePanel.description.title"
@@ -5509,7 +5575,7 @@ function Og(e) {
     );
   return (
     <details open={true} className="group flex flex-col">
-      {a}
+      {header}
       <div className="group-open:pt-2">
         {error == null ? (
           loading || body == null ? (
@@ -5546,17 +5612,17 @@ function Og(e) {
     </details>
   );
 }
-var kg,
-  Ag,
-  jg = once(() => {
-    kg = q();
+var pullRequestDescriptionSectionModule,
+  pullRequestDescriptionSectionJsxRuntime,
+  initPullRequestSidePanelDescriptionSectionChunk = once(() => {
+    pullRequestDescriptionSectionModule = q();
     Jn();
     Fo();
     us();
     Gh();
     Zh();
     tg();
-    Ag = getJsxRuntime();
+    pullRequestDescriptionSectionJsxRuntime = getJsxRuntime();
   }),
   Mg,
   Ng,
@@ -5951,7 +6017,7 @@ var Kg,
     Vg();
     Jg = getJsxRuntime();
   });
-function Xg(e) {
+function PullRequestSidePanelOverviewSection(props) {
   let {
       checks,
       checksAreLoading,
@@ -5963,61 +6029,75 @@ function Xg(e) {
       hostId,
       mergeBlocker,
       repo,
-    } = e,
-    f = Z.jsx(sr, {
+    } = props,
+    branchIcon = Z.jsx(sr, {
       className: "icon-sm shrink-0 text-token-text-tertiary",
     });
-  let p = <span className="px-2 text-token-text-tertiary">{"→"}</span>;
-  let m = (
+  let branchArrow = (
+    <span className="px-2 text-token-text-tertiary">{"→"}</span>
+  );
+  let branchLabel = (
     <span className="min-w-0 truncate">
       {item.headBranch}
-      {p}
+      {branchArrow}
       {item.baseBranch}
     </span>
   );
-  let h = (
+  let diffStats = (
     <Ml
       className="ms-auto shrink-0 text-sm"
       linesAdded={item.additions}
       linesRemoved={item.deletions}
     />
   );
-  let g = (
+  let branchRow = (
     <SummaryPanelRow
       density="comfortable"
-      icon={f}
+      icon={branchIcon}
       label={
         <>
-          {m}
-          {h}
+          {branchLabel}
+          {diffStats}
         </>
       }
       labelClassName="flex min-w-0 flex-1 items-center text-token-text-tertiary"
     />
   );
-  let _ = (
-    <Zg data={checks} hasError={checksHaveError} loading={checksAreLoading} />
+  let checksRow = (
+    <PullRequestOverviewChecksRow
+      data={checks}
+      hasError={checksHaveError}
+      loading={checksAreLoading}
+    />
   );
-  let v =
+  let mergeStatusState =
       mergeBlocker == null
         ? "ready"
         : mergeBlocker === "conflicts"
           ? "failing"
           : "in_progress",
-    y = <Ws className="icon-sm shrink-0" state={v} />;
-  let b = Z.jsx($g, {
+    mergeStatusIcon = (
+      <Ws className="icon-sm shrink-0" state={mergeStatusState} />
+    );
+  let mergeStatusLabel = Z.jsx(PullRequestOverviewMergeStatusLabel, {
     mergeBlocker,
   });
-  let x = <SummaryPanelRow density="comfortable" icon={y} label={b} />;
-  let S = comments?.reviewers ?? null,
-    C = Z.jsx(e_, {
+  let mergeStatusRow = (
+    <SummaryPanelRow
+      density="comfortable"
+      icon={mergeStatusIcon}
+      label={mergeStatusLabel}
+    />
+  );
+  let reviewers = comments?.reviewers ?? null,
+    reviewersRow = Z.jsx(PullRequestOverviewReviewersRow, {
       hostId,
       item,
       repo,
-      reviewers: S,
+      reviewers,
     });
-  let w = (
-    <Qg
+  let commentsRow = (
+    <PullRequestOverviewCommentsRow
       data={comments}
       hasError={commentsHaveError}
       loading={commentsAreLoading}
@@ -6025,18 +6105,17 @@ function Xg(e) {
   );
   return (
     <section className="flex flex-col border-b border-token-border pb-3">
-      {g}
-      {_}
-      {x}
-      {C}
-      {w}
+      {branchRow}
+      {checksRow}
+      {mergeStatusRow}
+      {reviewersRow}
+      {commentsRow}
     </section>
   );
 }
-function Zg(e) {
-  let { data, hasError, loading } = e;
+function PullRequestOverviewChecksRow(props) {
+  let { data, hasError, loading } = props;
   if (hasError) {
-    let e;
     return (
       <SummaryPanelRow
         density="comfortable"
@@ -6054,7 +6133,6 @@ function Zg(e) {
     );
   }
   if (loading || data == null) {
-    let e;
     return (
       <SummaryPanelRow
         density="comfortable"
@@ -6071,14 +6149,19 @@ function Zg(e) {
       />
     );
   }
-  let a = Kl(data);
-  let o = Hl(data.ciStatus);
-  return <SummaryPanelRow density="comfortable" icon={a} label={o} />;
+  let checksStatusIcon = Kl(data);
+  let checksStatusLabel = Hl(data.ciStatus);
+  return (
+    <SummaryPanelRow
+      density="comfortable"
+      icon={checksStatusIcon}
+      label={checksStatusLabel}
+    />
+  );
 }
-function Qg(e) {
-  let { data, hasError, loading } = e;
+function PullRequestOverviewCommentsRow(props) {
+  let { data, hasError, loading } = props;
   if (hasError) {
-    let e;
     return (
       <SummaryPanelRow
         density="comfortable"
@@ -6096,7 +6179,6 @@ function Qg(e) {
     );
   }
   if (loading || data == null) {
-    let e;
     return (
       <SummaryPanelRow
         density="comfortable"
@@ -6113,12 +6195,16 @@ function Qg(e) {
       />
     );
   }
-  let a = <Tu className="icon-sm shrink-0 text-token-text-tertiary" />;
-  let o = sg(data.activityItems);
+  let commentsIcon = (
+    <Tu className="icon-sm shrink-0 text-token-text-tertiary" />
+  );
+  let commentActivityItems = getPullRequestCommentActivityItems(
+    data.activityItems,
+  );
   return (
     <SummaryPanelRow
       density="comfortable"
-      icon={a}
+      icon={commentsIcon}
       label={
         <FormattedMessage
           id="pullRequestSidePanel.overview.comments"
@@ -6127,18 +6213,17 @@ function Qg(e) {
           }
           description="Pull request comment count in the side panel overview"
           values={{
-            count: o.length,
+            count: commentActivityItems.length,
           }}
         />
       }
     />
   );
 }
-function $g(e) {
-  let { mergeBlocker } = e;
+function PullRequestOverviewMergeStatusLabel(props) {
+  let { mergeBlocker } = props;
   switch (mergeBlocker) {
     case "conflicts": {
-      let e;
       return (
         <FormattedMessage
           id="pullRequestSidePanel.overview.conflicts"
@@ -6148,7 +6233,6 @@ function $g(e) {
       );
     }
     case "unknown": {
-      let e;
       return (
         <FormattedMessage
           id="pullRequestSidePanel.overview.conflicts.unknown"
@@ -6158,7 +6242,6 @@ function $g(e) {
       );
     }
     case null: {
-      let e;
       return (
         <FormattedMessage
           id="pullRequestSidePanel.overview.conflicts.none"
@@ -6169,22 +6252,23 @@ function $g(e) {
     }
   }
 }
-function e_(e) {
-  let { hostId, item, repo, reviewers } = e,
-    o,
-    s,
-    c,
-    l,
-    u,
-    d;
+function PullRequestOverviewReviewersRow(props) {
+  let { hostId, item, repo, reviewers } = props,
+    rowComponent,
+    labelClassName,
+    labelPrefix,
+    reviewerBadges,
+    density,
+    icon;
   {
-    let e = reviewers == null ? [] : cg(reviewers),
-      f = item.isAuthor && item.state !== "merged";
-    o = SummaryPanelRow;
-    u = "comfortable";
-    d = <Ng className="icon-sm shrink-0 text-token-text-tertiary" />;
-    s = "flex min-w-0 flex-1 items-center gap-2";
-    c = (
+    let reviewerBadgeModels =
+        reviewers == null ? [] : getPullRequestReviewerBadgeModels(reviewers),
+      canRequestReviewers = item.isAuthor && item.state !== "merged";
+    rowComponent = SummaryPanelRow;
+    density = "comfortable";
+    icon = <Ng className="icon-sm shrink-0 text-token-text-tertiary" />;
+    labelClassName = "flex min-w-0 flex-1 items-center gap-2";
+    labelPrefix = (
       <span className="shrink-0">
         <FormattedMessage
           id="pullRequestSidePanel.overview.reviewers"
@@ -6193,11 +6277,12 @@ function e_(e) {
         />
       </span>
     );
-    l =
-      reviewers != null && (e.length > 0 || f) ? (
+    reviewerBadges =
+      reviewers != null &&
+      (reviewerBadgeModels.length > 0 || canRequestReviewers) ? (
         <span className="hide-scrollbar flex min-w-0 flex-1 items-center gap-1 overflow-x-auto overflow-y-hidden py-0.5">
-          {e.map(t_)}
-          {f ? (
+          {reviewerBadgeModels.map(renderPullRequestOverviewReviewerBadge)}
+          {canRequestReviewers ? (
             <span className="shrink-0">
               <RequestPullRequestReviewersButton
                 hostId={hostId}
@@ -6210,29 +6295,29 @@ function e_(e) {
         </span>
       ) : null;
   }
-  let f = (
-    <span className={s}>
-      {c}
-      {l}
+  let label = (
+    <span className={labelClassName}>
+      {labelPrefix}
+      {reviewerBadges}
     </span>
   );
-  return Z.jsx(o, {
-    density: u,
-    icon: d,
-    label: f,
+  return Z.jsx(rowComponent, {
+    density,
+    icon,
+    label,
     labelClassName: "flex min-w-0 flex-1 items-center text-token-text-tertiary",
   });
 }
-function t_(e) {
+function renderPullRequestOverviewReviewerBadge(reviewer) {
   return Z.jsx(
     jr,
     {
-      tooltipContent: e.label,
+      tooltipContent: reviewer.label,
       children: (
         <span className="relative block size-5 shrink-0 rounded-full border border-token-bg-primary bg-token-bg-secondary">
-          {e.kind === "team" ? (
+          {reviewer.kind === "team" ? (
             <span
-              aria-label={e.label}
+              aria-label={reviewer.label}
               className="flex size-full items-center justify-center text-token-text-secondary"
               role="img"
             >
@@ -6243,27 +6328,27 @@ function t_(e) {
             </span>
           ) : (
             <img
-              alt={e.label}
+              alt={reviewer.label}
               className="size-full rounded-full object-cover"
-              src={is(e.label, 40) ?? undefined}
+              src={is(reviewer.label, 40) ?? undefined}
             />
           )}
           <span
             className={S(
               "absolute end-[-2px] bottom-[-2px] size-2 rounded-full border border-token-bg-primary",
-              e.status === "approved" && "bg-token-charts-green",
-              e.status === "waiting" && "bg-token-charts-yellow",
-              e.status === "changes_requested" && "bg-token-charts-red",
+              reviewer.status === "approved" && "bg-token-charts-green",
+              reviewer.status === "waiting" && "bg-token-charts-yellow",
+              reviewer.status === "changes_requested" && "bg-token-charts-red",
             )}
           >
             <span className="sr-only">
-              {e.status === "approved" ? (
+              {reviewer.status === "approved" ? (
                 <FormattedMessage
                   id="pullRequestSidePanel.overview.reviewer.approved"
                   defaultMessage="Approved"
                   description="Accessible status for an approved pull request reviewer"
                 />
-              ) : e.status === "changes_requested" ? (
+              ) : reviewer.status === "changes_requested" ? (
                 <FormattedMessage
                   id="pullRequestSidePanel.overview.reviewer.changesRequested"
                   defaultMessage="Requested changes"
@@ -6281,7 +6366,7 @@ function t_(e) {
         </span>
       ),
     },
-    `${e.kind}:${e.label}`,
+    `${reviewer.kind}:${reviewer.label}`,
   );
 }
 var n_,
@@ -6303,7 +6388,7 @@ var n_,
     ps();
     initSummaryPanelRowChunk();
     Yg();
-    dg();
+    initPullRequestReviewerBadgeModelsChunk();
     Z = getJsxRuntime();
   });
 function PullRequestSidePanelDetails(props) {
@@ -6391,7 +6476,7 @@ function PullRequestSidePanelDetails(props) {
           }).map(getPullRequestDiffFileDisplayPath)
         : null;
   let overviewSection = (
-    <Xg
+    <PullRequestSidePanelOverviewSection
       hostId={request.hostId}
       item={item}
       checks={checksData}
@@ -6406,43 +6491,52 @@ function PullRequestSidePanelDetails(props) {
   );
   let pullRequestBodyText = pullRequestBody?.body ?? null,
     bodySection = (
-      <Og
+      <PullRequestSidePanelDescriptionSection
         body={pullRequestBodyText}
         error={bodyError}
         loading={bodyIsLoading}
       />
     );
   let checksErrorMessage = checksError?.message,
-    checksSection = pullRequestSidePanelDetailsJsxRuntime.jsx(ng, {
-      data: checksData,
-      error: checksErrorMessage,
-      fixDisabledReason: mergeFixDisabledReason,
-      item,
-      loading: checksAreLoading,
-    });
+    checksSection = pullRequestSidePanelDetailsJsxRuntime.jsx(
+      PullRequestSidePanelChecksSection,
+      {
+        data: checksData,
+        error: checksErrorMessage,
+        fixDisabledReason: mergeFixDisabledReason,
+        item,
+        loading: checksAreLoading,
+      },
+    );
   let conflictSection =
     mergeBlocker === "conflicts"
-      ? pullRequestSidePanelDetailsJsxRuntime.jsx(wg, {
-          error:
-            diffResult?.status === "error"
-              ? diffResult.error
-              : diffError?.message,
-          files: conflictFilePaths,
-          fixDisabledReason: mergeFixDisabledReason,
-          hasError: diffHaveError || diffResult?.status === "error",
-          item,
-          loading: diffIsLoading,
-          repo,
-        })
+      ? pullRequestSidePanelDetailsJsxRuntime.jsx(
+          PullRequestSidePanelConflictsSection,
+          {
+            error:
+              diffResult?.status === "error"
+                ? diffResult.error
+                : diffError?.message,
+            files: conflictFilePaths,
+            fixDisabledReason: mergeFixDisabledReason,
+            hasError: diffHaveError || diffResult?.status === "error",
+            item,
+            loading: diffIsLoading,
+            repo,
+          },
+        )
       : null;
   let commentsErrorMessage = commentsError?.message,
-    commentsSection = pullRequestSidePanelDetailsJsxRuntime.jsx(fg, {
-      data: commentsData,
-      error: commentsErrorMessage,
-      fixDisabledReason: mergeFixDisabledReason,
-      item,
-      loading: commentsAreLoading,
-    });
+    commentsSection = pullRequestSidePanelDetailsJsxRuntime.jsx(
+      PullRequestSidePanelCommentsSection,
+      {
+        data: commentsData,
+        error: commentsErrorMessage,
+        fixDisabledReason: mergeFixDisabledReason,
+        item,
+        loading: commentsAreLoading,
+      },
+    );
   return (
     <>
       {overviewSection}
@@ -6471,10 +6565,10 @@ var pullRequestSidePanelDetailsModule,
     _();
     Er();
     n();
-    og();
-    gg();
-    Dg();
-    jg();
+    initPullRequestSidePanelChecksSectionChunk();
+    initPullRequestSidePanelCommentsSectionChunk();
+    initPullRequestSidePanelConflictsSectionChunk();
+    initPullRequestSidePanelDescriptionSectionChunk();
     r_();
     pullRequestSidePanelDetailsJsxRuntime = getJsxRuntime();
   });
@@ -7384,7 +7478,7 @@ function ThreadSummaryEnvironmentSection(props) {
     />
   );
   return (
-    <Nm
+    <ThreadSummaryPanelSection
       sectionKey="environment"
       after={renderSectionActions}
       title={sectionTitle}
@@ -7394,7 +7488,7 @@ function ThreadSummaryEnvironmentSection(props) {
       {branchControlRow}
       {pullRequestControls}
       {gitSummary}
-    </Nm>
+    </ThreadSummaryPanelSection>
   );
 }
 var R_,
@@ -7417,7 +7511,7 @@ var R_,
     zi();
     Mm();
     initSummaryPanelRowChunk();
-    Km();
+    initThreadSummaryPanelSectionChunk();
     Xm();
     M_();
     I_();
@@ -7841,14 +7935,14 @@ var threadSummaryPanelReactRuntime,
     initBackgroundTerminalIconChunk();
     Oe();
     Nf();
-    Km();
+    initThreadSummaryPanelSectionChunk();
     threadSummaryPanelJsxRuntime = getJsxRuntime();
     ThreadSummaryPanelChrome = {
       Content: ThreadSummaryPanelContent,
       HeaderButton: ThreadSummaryPanelHeaderButton,
       PopoverContent: ThreadSummaryPanelPopoverContent,
       Root: ThreadSummaryPanelRoot,
-      Section: Nm,
+      Section: ThreadSummaryPanelSection,
       SectionCount: ThreadSummaryPanelSectionCount,
     };
   });
@@ -8217,7 +8311,7 @@ function ThreadSummaryPanelSections(props) {
     };
   let onOpenBackgroundTerminal = Y(handleOpenBackgroundTerminal),
     automationSection = matchingAutomation != null && (
-      <Nm
+      <ThreadSummaryPanelSection
         sectionKey="automation"
         title={
           <FormattedMessage
@@ -8228,7 +8322,7 @@ function ThreadSummaryPanelSections(props) {
         }
       >
         <H_ automation={matchingAutomation} />
-      </Nm>
+      </ThreadSummaryPanelSection>
     );
   let gitSummarySection = !isElectronRuntime && isGitWorkspace && activeCwd && (
     <ThreadSummaryEnvironmentSection
@@ -8244,7 +8338,7 @@ function ThreadSummaryPanelSections(props) {
   );
   let planSection =
     plan != null && conversationId != null ? (
-      <Nm sectionKey="plan" title={planSectionTitle}>
+      <ThreadSummaryPanelSection sectionKey="plan" title={planSectionTitle}>
         <SummaryPanelRow
           icon={<Ls className="icon-xs shrink-0" />}
           label={plan.title ?? planSectionTitle}
@@ -8260,10 +8354,10 @@ function ThreadSummaryPanelSections(props) {
             });
           }}
         />
-      </Nm>
+      </ThreadSummaryPanelSection>
     ) : null;
   let outputsSection = !isGitWorkspace && (
-    <Nm
+    <ThreadSummaryPanelSection
       sectionKey="artifacts"
       title={
         <FormattedMessage
@@ -8282,10 +8376,10 @@ function ThreadSummaryPanelSections(props) {
         conversationTitle={conversationTitle}
         getImagePreviewSrc={getImagePreviewSrc}
       />
-    </Nm>
+    </ThreadSummaryPanelSection>
   );
   let sideChatsSection = sideChats.length > 0 && (
-    <Nm
+    <ThreadSummaryPanelSection
       sectionKey="side-chats"
       title={
         <FormattedMessage
@@ -8299,10 +8393,10 @@ function ThreadSummaryPanelSections(props) {
       })}
     >
       <K_ sideChats={sideChats} onOpen={onOpenSideChat} />
-    </Nm>
+    </ThreadSummaryPanelSection>
   );
   let backgroundAgentsSection = backgroundAgents.length > 0 && (
-    <Nm
+    <ThreadSummaryPanelSection
       autoCollapse={
         !hasInlineBackgroundAgent &&
         backgroundAgents.every(isDoneBackgroundAgent)
@@ -8327,10 +8421,10 @@ function ThreadSummaryPanelSections(props) {
         onOpenTerminal: onOpenBackgroundTerminal,
         onStopError: onStopBackgroundTerminalError,
       })}
-    </Nm>
+    </ThreadSummaryPanelSection>
   );
   let backgroundTasksSection = showBackgroundTasksSection && (
-    <Nm
+    <ThreadSummaryPanelSection
       after={
         isBackgroundProcessTrackingEnabled ? (
           <button
@@ -8379,10 +8473,10 @@ function ThreadSummaryPanelSections(props) {
             onStopError: onStopBackgroundTerminalError,
           }),
         })}
-    </Nm>
+    </ThreadSummaryPanelSection>
   );
   let computerUsePipSection = isComputerUsePipAvailable && (
-    <Nm mode="headerless" sectionKey="computer-use-pip">
+    <ThreadSummaryPanelSection mode="headerless" sectionKey="computer-use-pip">
       <ComputerUsePictureInPictureRow
         isVisible={isComputerUsePipVisible}
         onToggle={() => {
@@ -8393,10 +8487,10 @@ function ThreadSummaryPanelSections(props) {
         }}
         toggleLabel={computerUsePipToggleLabel}
       />
-    </Nm>
+    </ThreadSummaryPanelSection>
   );
   let browserTabsSection = browserUseSummaries.length > 0 && (
-    <Nm
+    <ThreadSummaryPanelSection
       sectionKey="browser-tabs"
       title={<BrowserUseSummarySectionTitle />}
       titleSuffix={Q.jsx(ThreadSummaryPanelChrome.SectionCount, {
@@ -8411,7 +8505,7 @@ function ThreadSummaryPanelSections(props) {
           });
         }}
       />
-    </Nm>
+    </ThreadSummaryPanelSection>
   );
   let sourcesTitle = (
     <FormattedMessage
@@ -8432,13 +8526,13 @@ function ThreadSummaryPanelSections(props) {
     />
   );
   let sourcesSection = (
-    <Nm
+    <ThreadSummaryPanelSection
       sectionKey="tool-sources"
       title={sourcesTitle}
       titleSuffix={sourceCountSuffix}
     >
       {sourcesContent}
-    </Nm>
+    </ThreadSummaryPanelSection>
   );
   return (
     <>
@@ -8512,7 +8606,7 @@ var Av,
     iv();
     initBackgroundTerminalSidePanelTabChunk();
     initSummaryPanelRowChunk();
-    Km();
+    initThreadSummaryPanelSectionChunk();
     initThreadSummaryPanelChrome();
     tt();
     _n();
