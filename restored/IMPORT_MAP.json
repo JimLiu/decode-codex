@@ -12709,6 +12709,17 @@
       "status": "done",
       "note": "Synced current Appshot availability/logo aggregate chunk with split semantic modules.",
       "lastUpdated": "2026-06-27T22:07:43.292Z"
+    },
+    "app-initial~app-main~remote-conversation-page~new-thread-panel-page~onboarding-page~appgen-~lxml58r4-kB1QbLtZ": {
+      "restored": "icons/play-circle",
+      "exports": {
+        "i": "initCirclePauseIconChunk",
+        "n": "initCirclePlayIconChunk",
+        "r": "CirclePauseIcon",
+        "t": "CirclePlayIcon"
+      },
+      "status": "done",
+      "note": "Current onboarding/appgen icon chunk matches the shared circle play/pause SVG bundle; restored through icons/play-circle with explicit play/pause component names and chunk initializers."
     }
   }
 }
