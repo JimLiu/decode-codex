@@ -1,5 +1,5 @@
 // Restored from ref/webview/assets/local-conversation-thread-Bf38rCmF.js
-// Public draft for the local conversation thread feature chunk. Key exported APIs have semantic names; internal imports still follow the current ref graph until their producers are restored.
+// Public draft for the local conversation thread feature chunk. Key exported APIs have semantic names; unresolved current-ref producer imports are isolated under boundaries/current-ref until those chunks are deep-restored.
 const __vite__mapDeps = (
   i,
   m = __vite__mapDeps,
@@ -327,7 +327,7 @@ import {
   zV as Ci,
   za as wi,
   zo as Ti,
-} from "./app-initial~app-main~remote-conversation-page~plugin-detail-page~new-thread-panel-page~appg~ijdupmx5-CdYgxe-b.js";
+} from "../boundaries/current-ref/appg-thread-shared-producer";
 import {
   $i as Ei,
   A as Di,
@@ -429,7 +429,7 @@ import {
   yn as _o,
   ys as vo,
   yu as yo,
-} from "./app-initial~app-main~remote-conversation-page~new-thread-panel-page~projects-index-page~app~ovcriy74-KTK3czaX.js";
+} from "../boundaries/current-ref/projects-app-shared-producer";
 import {
   G as bo,
   W as xo,
@@ -437,11 +437,11 @@ import {
   fn as Co,
   jn as wo,
   kn as To,
-} from "./app-initial~app-main~automations-page-bHJfYUGr.js";
+} from "../boundaries/current-ref/automations-page-producer";
 import {
   O as Eo,
   k as Do,
-} from "./app-initial~app-main~worktree-init-v2-page~remote-conversation-page~new-thread-panel-page~o~bj5tp28r-CQrj7g91.js";
+} from "../boundaries/current-ref/worktree-new-thread-panel-producer";
 import {
   $ as Oo,
   $o as ko,
@@ -485,7 +485,7 @@ import {
   u as ps,
   us as ms,
   zt as hs,
-} from "./app-initial~app-main~worktree-init-v2-page~remote-conversation-page~pull-requests-page~new-~kvpgbdy1-mhRp2VYQ.js";
+} from "../boundaries/current-ref/pull-request-thread-actions-producer";
 import {
   $c as openBrowserSummaryTab,
   $l as _s,
@@ -580,7 +580,7 @@ import {
   xt as el,
   yc as tl,
   zl as nl,
-} from "./app-initial~app-main~onboarding-page~profile-QLPeiknY.js";
+} from "../boundaries/current-ref/profile-page-producer";
 import {
   $ as rl,
   A as il,
@@ -596,7 +596,7 @@ import {
   st as ml,
   t as hl,
   tn as gl,
-} from "./app-initial~app-main~remote-conversation-page~new-thread-panel-page~appgen-library-page~hot~djo67r4n-CIs8dplf.js";
+} from "../boundaries/current-ref/appgen-library-hot-producer";
 import {
   getResizeObserverEntrySize as _l,
   initUseResizeObserverChunk as vl,
@@ -604,19 +604,19 @@ import {
 import {
   i as yl,
   r as bl,
-} from "./app-initial~app-main~remote-conversation-page~onboarding-page~hotkey-window-thread-page~thr~jv7rs281-DxRnxRkd.js";
+} from "../boundaries/current-ref/thread-hotkey-shell-producer";
 import {
   H as xl,
   U as Sl,
   _ as Cl,
   v as wl,
-} from "./app-initial~app-main~worktree-init-v2-page~appgen-publication-terms-route~remote-conversati~oykv7gy7-B4ar2dlW.js";
+} from "../boundaries/current-ref/appgen-publication-terms-producer";
 import {
   _ as Tl,
   g as El,
   o as Dl,
   u as Ol,
-} from "./app-initial~app-main~remote-conversation-page~pull-requests-page~onboarding-page~projects-i~easvi6ps-Cs84X9Ip.js";
+} from "../boundaries/current-ref/projects-pull-requests-producer";
 import {
   getPullRequestMergeVisualState,
   getPullRequestVisualState,
@@ -637,7 +637,7 @@ import {
 import {
   m as Rl,
   p as zl,
-} from "./app-initial~app-main~pets-settings~appearance-settings~general-settings-x4e4q7BN.js";
+} from "../boundaries/current-ref/pets-general-settings-producer";
 import {
   getAttachedHeartbeatAutomationForThread as Jl,
   HeartbeatAutomationCheckRing as Vl,
@@ -653,7 +653,7 @@ import { initThreadLayoutChunk, ThreadLayout } from "../utils/thread-layout";
 import {
   M as Tu,
   N as Eu,
-} from "./app-initial~app-main~onboarding-page~appearance-settings~general-settings-Dkbr2b2v.js";
+} from "../boundaries/current-ref/onboarding-general-settings-producer";
 import {
   initLauncherHotkeyStateChunk,
   launcherHotkeyStateQuery,
@@ -712,7 +712,7 @@ import {
   o as Hu,
   r as Uu,
   t as Wu,
-} from "./local-remote-dropdown-BcmhHtfg.js";
+} from "../boundaries/current-ref/local-remote-dropdown-producer";
 import {
   buildThreadVirtualizerLayout as Xu,
   getDistanceFromBottomForCenteredTurn as Yu,
@@ -763,7 +763,7 @@ import {
   v as Od,
   w as kd,
   x as Ad,
-} from "./pull-request-check-rows-Q1OJv6O3.js";
+} from "../boundaries/current-ref/pull-request-check-rows-producer";
 import {
   initOpenSideChatTabChunk as Nd,
   initThreadOverflowMenuChunk as Md,
@@ -9431,7 +9431,9 @@ async function renderLocalConversationMarkdownForTurns({
   let { renderConversationMarkdown } = await u(
     async () => {
       let { renderConversationMarkdown: _renderConversationMarkdown } =
-        await import("./conversation-markdown-BjFKV53f.js");
+        await import(
+          "../boundaries/current-ref/conversation-markdown-producer"
+        );
       return {
         renderConversationMarkdown: _renderConversationMarkdown,
       };

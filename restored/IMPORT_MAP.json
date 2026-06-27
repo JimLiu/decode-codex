@@ -10580,8 +10580,8 @@
         "z": "useReviewSearchHighlights"
       },
       "status": "draft",
-      "note": "Draft for the updated ref chunk. Current pass extracted right-panel route, inline activity, scroll helpers, review-search PIP anchor placement, turn search-key, turn request-index, artifact summary key/preview/target-label helpers, background summary item/filter/key/visibility helpers, background terminal row/match/snapshot/process/status/merge/prune/insert/count/current-row/restored-row/restart-row/register-record/process-snapshot helpers, terminal/process app-shell helper import repair including the thread-background-processes hash import removal, star icon hash import repair, use-git-config-value/thread-virtualizer/thread-scroll-controller hash import repair, local-environments-utils/team icon hash import repair, local-environment recent-action/action-item/path/run-id, parent conversation turn-filter helpers, browser-use summary helpers/list UI/store hook/section UI/open-tab action alias, summary panel chrome/title/sections local names/props, computer-use PiP row UI, background-task section title UI, summary helper names, and the SummaryPanelRow import alias repair; promotion is blocked on full semantic split and import repair.",
-      "lastUpdated": "2026-06-27T02:46:51.000Z"
+      "note": "Draft for the updated ref chunk. Current pass isolated all unresolved current-ref producer imports under boundaries/current-ref passthrough modules, so the local conversation thread no longer imports missing hash siblings directly. These boundaries are open and must be replaced by semantic producer restores before final completion.",
+      "lastUpdated": "2026-06-27T03:16:46.000Z"
     },
     "thread-overflow-menu-CM-Eo7JH": {
       "restored": "threads/thread-overflow-menu.tsx",
@@ -10942,6 +10942,96 @@
         "t": "ChromeExtensionHeader"
       },
       "status": "done"
+    },
+    "app-initial~app-main~remote-conversation-page~plugin-detail-page~new-thread-panel-page~appg~ijdupmx5-CdYgxe-b": {
+      "restored": "boundaries/current-ref/appg-thread-shared-producer.ts",
+      "status": "boundary",
+      "note": "Current ref passthrough boundary for local-conversation-thread; open until this producer is deep-restored semantically.",
+      "lastUpdated": "2026-06-27T03:16:46.000Z"
+    },
+    "app-initial~app-main~remote-conversation-page~new-thread-panel-page~projects-index-page~app~ovcriy74-KTK3czaX": {
+      "restored": "boundaries/current-ref/projects-app-shared-producer.ts",
+      "status": "boundary",
+      "note": "Current ref passthrough boundary for local-conversation-thread; open until this producer is deep-restored semantically.",
+      "lastUpdated": "2026-06-27T03:16:46.000Z"
+    },
+    "app-initial~app-main~automations-page-bHJfYUGr": {
+      "restored": "boundaries/current-ref/automations-page-producer.ts",
+      "status": "boundary",
+      "note": "Current ref passthrough boundary for local-conversation-thread; open until this producer is deep-restored semantically.",
+      "lastUpdated": "2026-06-27T03:16:46.000Z"
+    },
+    "app-initial~app-main~worktree-init-v2-page~remote-conversation-page~new-thread-panel-page~o~bj5tp28r-CQrj7g91": {
+      "restored": "boundaries/current-ref/worktree-new-thread-panel-producer.ts",
+      "status": "boundary",
+      "note": "Current ref passthrough boundary for local-conversation-thread; open until this producer is deep-restored semantically.",
+      "lastUpdated": "2026-06-27T03:16:46.000Z"
+    },
+    "app-initial~app-main~worktree-init-v2-page~remote-conversation-page~pull-requests-page~new-~kvpgbdy1-mhRp2VYQ": {
+      "restored": "boundaries/current-ref/pull-request-thread-actions-producer.ts",
+      "status": "boundary",
+      "note": "Current ref passthrough boundary for local-conversation-thread; open until this producer is deep-restored semantically.",
+      "lastUpdated": "2026-06-27T03:16:46.000Z"
+    },
+    "app-initial~app-main~onboarding-page~profile-QLPeiknY": {
+      "restored": "boundaries/current-ref/profile-page-producer.ts",
+      "status": "boundary",
+      "note": "Current ref passthrough boundary for local-conversation-thread; open until this producer is deep-restored semantically.",
+      "lastUpdated": "2026-06-27T03:16:46.000Z"
+    },
+    "app-initial~app-main~remote-conversation-page~new-thread-panel-page~appgen-library-page~hot~djo67r4n-CIs8dplf": {
+      "restored": "boundaries/current-ref/appgen-library-hot-producer.ts",
+      "status": "boundary",
+      "note": "Current ref passthrough boundary for local-conversation-thread; open until this producer is deep-restored semantically.",
+      "lastUpdated": "2026-06-27T03:16:46.000Z"
+    },
+    "app-initial~app-main~remote-conversation-page~onboarding-page~hotkey-window-thread-page~thr~jv7rs281-DxRnxRkd": {
+      "restored": "boundaries/current-ref/thread-hotkey-shell-producer.ts",
+      "status": "boundary",
+      "note": "Current ref passthrough boundary for local-conversation-thread; open until this producer is deep-restored semantically.",
+      "lastUpdated": "2026-06-27T03:16:46.000Z"
+    },
+    "app-initial~app-main~worktree-init-v2-page~appgen-publication-terms-route~remote-conversati~oykv7gy7-B4ar2dlW": {
+      "restored": "boundaries/current-ref/appgen-publication-terms-producer.ts",
+      "status": "boundary",
+      "note": "Current ref passthrough boundary for local-conversation-thread; open until this producer is deep-restored semantically.",
+      "lastUpdated": "2026-06-27T03:16:46.000Z"
+    },
+    "app-initial~app-main~remote-conversation-page~pull-requests-page~onboarding-page~projects-i~easvi6ps-Cs84X9Ip": {
+      "restored": "boundaries/current-ref/projects-pull-requests-producer.ts",
+      "status": "boundary",
+      "note": "Current ref passthrough boundary for local-conversation-thread; open until this producer is deep-restored semantically.",
+      "lastUpdated": "2026-06-27T03:16:46.000Z"
+    },
+    "app-initial~app-main~pets-settings~appearance-settings~general-settings-x4e4q7BN": {
+      "restored": "boundaries/current-ref/pets-general-settings-producer.ts",
+      "status": "boundary",
+      "note": "Current ref passthrough boundary for local-conversation-thread; open until this producer is deep-restored semantically.",
+      "lastUpdated": "2026-06-27T03:16:46.000Z"
+    },
+    "app-initial~app-main~onboarding-page~appearance-settings~general-settings-Dkbr2b2v": {
+      "restored": "boundaries/current-ref/onboarding-general-settings-producer.ts",
+      "status": "boundary",
+      "note": "Current ref passthrough boundary for local-conversation-thread; open until this producer is deep-restored semantically.",
+      "lastUpdated": "2026-06-27T03:16:46.000Z"
+    },
+    "local-remote-dropdown-BcmhHtfg": {
+      "restored": "boundaries/current-ref/local-remote-dropdown-producer.ts",
+      "status": "boundary",
+      "note": "Current ref passthrough boundary for local-conversation-thread; open until this producer is deep-restored semantically.",
+      "lastUpdated": "2026-06-27T03:16:46.000Z"
+    },
+    "pull-request-check-rows-Q1OJv6O3": {
+      "restored": "boundaries/current-ref/pull-request-check-rows-producer.ts",
+      "status": "boundary",
+      "note": "Current ref passthrough boundary for local-conversation-thread; open until this producer is deep-restored semantically.",
+      "lastUpdated": "2026-06-27T03:16:46.000Z"
+    },
+    "conversation-markdown-BjFKV53f": {
+      "restored": "boundaries/current-ref/conversation-markdown-producer.ts",
+      "status": "boundary",
+      "note": "Current ref passthrough boundary for local-conversation-thread; open until this producer is deep-restored semantically.",
+      "lastUpdated": "2026-06-27T03:16:46.000Z"
     }
   }
 }
