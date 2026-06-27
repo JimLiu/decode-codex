@@ -471,7 +471,6 @@ import {
   initBackgroundTerminalSidePanelTabChunk,
   initPendingBackgroundProcessRowsChunk,
   initProcessMetricHelpersChunk,
-  initThreadAppShellSourcesChunk,
   initThreadNullRefChunk,
   initThreadSidePanelTabRegistryChunk,
   initThreadSummaryPanelSignalsChunk,
@@ -486,7 +485,6 @@ import {
   restoreRegisteredProcessRows,
   selectRunningProcessRows,
   setPendingBackgroundProcessRow,
-  ThreadAppShellSourceRegistration,
   useNullAppShellRef,
 } from "../app-shell/thread-background-processes";
 import {
@@ -651,6 +649,10 @@ import {
   initLocalConversationThreadFooterChunk,
   LocalConversationThreadFooter,
 } from "./local-conversation-thread-parts/local-conversation-thread-footer";
+import {
+  initLocalConversationAppShellSourceRegistrationChunk,
+  LocalConversationAppShellSourceRegistration,
+} from "./local-conversation-thread-parts/local-conversation-app-shell-source-registration";
 import {
   ForkFromOlderTurnDialogController,
   initForkFromOlderTurnDialogControllerChunk,
@@ -10235,17 +10237,12 @@ function LocalConversationThreadContent({
       />
     ) : (
       <>
-        {localConversationThreadJsxRuntime.jsx(
-          ThreadAppShellSourceRegistration,
-          {
-            conversationSource,
-            diffSource,
-            orchestrationId: conversationSource.contextId,
-            isDefault:
-              getLocalThreadConversationIdFromRoute(scope.value) ===
-              conversationId,
-          },
-        )}
+        <LocalConversationAppShellSourceRegistration
+          conversationId={conversationId}
+          conversationSource={conversationSource}
+          diffSource={diffSource}
+          routeScopeValue={scope.value}
+        />
         {localConversationThreadJsxRuntime.jsxs(motion.div, {
           ref: setContentContainerRef,
           "data-thread-find-target": "conversation",
@@ -10356,7 +10353,7 @@ export const initLocalConversationThreadChunk = once(() => {
   ul();
   Yr();
   Ea();
-  initThreadAppShellSourcesChunk();
+  initLocalConversationAppShellSourceRegistrationChunk();
   Qa();
   initReviewSearchHighlighter();
   Di();
