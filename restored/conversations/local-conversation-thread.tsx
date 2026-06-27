@@ -655,21 +655,6 @@ import {
   pullRequestChecksStatusLabel as Hl,
 } from "../github/pull-request-checks-summary";
 import {
-  A as Yl,
-  C as Xl,
-  E as Ql,
-  F as $l,
-  M as eu,
-  O as tu,
-  P as nu,
-  T as iu,
-  d as cu,
-  h as du,
-  j as pu,
-  k as mu,
-  t as yu,
-} from "./app-initial~app-main~remote-conversation-page~hotkey-window-thread-page~thread-app-shell-ch~ou5otpha-1Hh4BDD9.js";
-import {
   n as Cu,
   r as wu,
 } from "./app-initial~app-main~worktree-init-v2-page~remote-conversation-page~new-thread-panel-page~a~hqj10sd5-DiinfLhP.js";
@@ -699,15 +684,28 @@ import {
   computerUsePictureInPictureAvailableSignal,
   computerUsePictureInPictureVisibleSignal,
   getPendingBackgroundProcessRow,
+  initActiveConversationProcessRowsChunk,
+  initBackgroundTerminalIconChunk,
+  initBackgroundTerminalSidePanelTabChunk,
+  initPendingBackgroundProcessRowsChunk,
+  initProcessMetricHelpersChunk,
+  initThreadAppShellSourcesChunk,
+  initThreadNullRefChunk,
+  initThreadSidePanelTabRegistryChunk,
+  initThreadSummaryPanelSignalsChunk,
   isPendingProcessRowExpired,
   isSameProcessRow,
   matchProcessMetrics,
   mergeProcessRows,
+  openBackgroundTerminalSidePanelTab,
   pendingBackgroundProcessRowsSignal,
+  registerThreadSidePanelTab,
   removePendingBackgroundProcessRow,
   restoreRegisteredProcessRows,
   selectRunningProcessRows,
   setPendingBackgroundProcessRow,
+  ThreadAppShellSourceRegistration,
+  useNullAppShellRef,
 } from "../app-shell/thread-background-processes";
 import {
   a as zu,
@@ -1735,8 +1733,8 @@ var op,
     cp = getJsxRuntime();
   });
 var gp = once(() => {
-  Xl();
-  cu();
+  initActiveConversationProcessRowsChunk();
+  initProcessMetricHelpersChunk();
 });
 function _p(e) {
   let {
@@ -2094,9 +2092,9 @@ var Dp,
     ss();
     Xi();
     ic();
-    Xl();
-    du();
-    cu();
+    initActiveConversationProcessRowsChunk();
+    initPendingBackgroundProcessRowsChunk();
+    initProcessMetricHelpersChunk();
     r();
     te();
     n();
@@ -3554,7 +3552,7 @@ function xm(e) {
       dependencies: g,
       render: _,
     }),
-    $l(v),
+    registerThreadSidePanelTab(v),
     null
   );
 }
@@ -3581,7 +3579,7 @@ var Om,
     Jn();
     xr();
     Ei();
-    nu();
+    initThreadSidePanelTabRegistryChunk();
     je();
     Ye();
     mi();
@@ -7630,7 +7628,7 @@ var uv,
     c();
     Ye();
     Gn();
-    tu();
+    initBackgroundTerminalIconChunk();
     Oe();
     Nf();
     Km();
@@ -8010,7 +8008,7 @@ function Sv(e) {
   let Ve = Y(Be),
     He = (e) => {
       b != null &&
-        Ql({
+        openBackgroundTerminalSidePanelTab({
           scope: h,
           backgroundTerminal: e,
           conversationId: b,
@@ -8326,9 +8324,9 @@ var Av,
     el();
     fa();
     qn();
-    du();
+    initPendingBackgroundProcessRowsChunk();
     po();
-    yu();
+    initThreadSummaryPanelSignalsChunk();
     me();
     Ki();
     xn();
@@ -8345,7 +8343,7 @@ var Av,
     G_();
     X_();
     iv();
-    iu();
+    initBackgroundTerminalSidePanelTabChunk();
     Pl();
     Km();
     initThreadSummaryPanelChrome();
@@ -8795,7 +8793,7 @@ function ly(e) {
 }
 var uy = once(() => {
   xs();
-  Xl();
+  initActiveConversationProcessRowsChunk();
 });
 function dy({ browserTabId, browserSnapshot, isAgentWorking }) {
   let r = browserSnapshot?.url.trim() ?? "",
@@ -13185,7 +13183,7 @@ function RS(e) {
     [F, I] = GS.useState(null),
     L = GS.useRef(null),
     [R, z] = GS.useState(null),
-    ee = Yl("chatgpt.supportsNewChatKeyShortcut"),
+    ee = useNullAppShellRef("chatgpt.supportsNewChatKeyShortcut"),
     V = useMarkConversationReadOnVisibility(conversationId, hasConversation),
     te = async () => {
       if (C) return "stop";
@@ -13873,7 +13871,7 @@ function US({
       />
     ) : (
       <>
-        {$.jsx(pu, {
+        {$.jsx(ThreadAppShellSourceRegistration, {
           conversationSource: Ae,
           diffSource: ye,
           orchestrationId: Ae.contextId,
@@ -13979,7 +13977,7 @@ export const initLocalConversationThreadChunk = once(() => {
   ul();
   Yr();
   Ea();
-  eu();
+  initThreadAppShellSourcesChunk();
   Qa();
   initReviewSearchHighlighter();
   Di();
@@ -14011,7 +14009,7 @@ export const initLocalConversationThreadChunk = once(() => {
   initLocalConversationSummaryPanelSignals();
   Mr();
   _n();
-  mu();
+  initThreadNullRefChunk();
   Ns();
   Jy();
   Xy();
