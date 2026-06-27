@@ -12731,6 +12731,19 @@
       },
       "status": "done",
       "note": "Restored the shared image-with-fallback component and workspace_dependencies feature predicate used by onboarding, appgen, and automations surfaces."
+    },
+    "app-initial~app-main~register-app-actions-CgjL-zeV": {
+      "restored": "app-shell/register-app-actions.ts",
+      "exports": {
+        "a": "createWindowAppAction",
+        "i": "createWindowAppActionRunMap",
+        "n": "registerWindowsTabsOpenHandler",
+        "o": "initAppActionHelpersChunk",
+        "r": "windowsTabsOpenAction",
+        "t": "initRegisterAppActionsChunk"
+      },
+      "status": "done",
+      "note": "App-main registration entry for window app actions; delegates windows.tabs.open to the restored runtime module."
     }
   }
 }
