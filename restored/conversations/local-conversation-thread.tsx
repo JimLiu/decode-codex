@@ -153,7 +153,6 @@ import {
   T_ as getRouteConversationId,
   Tf as mcpServersQuerySignal,
   Ti as DialogFooterActions,
-  Tm as conversationTurnCountSignal,
   Tp as hasConversationSignal,
   Ts as initBrowserFeatureAvailabilitySignals,
   UE as LOCAL_HOST_ID,
@@ -772,10 +771,10 @@ import {
   SummaryPanelArtifactsList,
 } from "./local-conversation-thread-parts/summary-panel-artifacts-list";
 import {
-  collectLocalConversationOutputArtifacts,
-  initOutputArtifactCollectorDependencies,
-  mergeUniqueOutputArtifacts,
-} from "./local-conversation-thread-parts/local-conversation-output-artifacts";
+  initLocalConversationArtifactSignals,
+  localConversationOutputArtifactsSignal,
+  localConversationSummaryArtifactsSignal,
+} from "./local-conversation-thread-parts/local-conversation-artifact-signals";
 import { BackgroundTaskSectionTitle } from "./local-conversation-thread-parts/background-task-section-title";
 import {
   initReviewSearchHighlighter,
@@ -7511,73 +7510,6 @@ var localConversationArtifactsModule,
     Xa();
     initReducedMotionPreference();
     initPinnedSummaryPanelState();
-  });
-var historicalOutputArtifactsSignal,
-  mergedOutputArtifactsSignal,
-  localConversationOutputArtifactsSignal,
-  localConversationSummaryArtifactsSignal,
-  initLocalConversationArtifactSignals = once(() => {
-    initScopeRuntime();
-    initConversationStateSelectors();
-    initAppScope();
-    initStatsigGateSignals();
-    initOutputArtifactCollectorDependencies();
-    historicalOutputArtifactsSignal = createScopedSignalFamily(
-      appScope,
-      ({ conversationId, includeGeneratedImages }, { get }) => {
-        get(conversationResumeStateSignal, conversationId);
-        get(conversationTurnCountSignal, conversationId);
-        let turns = get(conversationTurnsSignal, conversationId);
-        return turns == null
-          ? []
-          : collectLocalConversationOutputArtifacts(turns.slice(0, -1), {
-              includeGeneratedImages,
-              projectlessOutputDirectory: get(
-                projectlessOutputDirectorySignal,
-                conversationId,
-              ),
-            });
-      },
-    );
-    mergedOutputArtifactsSignal = createScopedSignalFamily(
-      appScope,
-      ({ conversationId, includeGeneratedImages }, { get }) => {
-        let currentTurn = get(latestConversationTurnSignal, conversationId);
-        return mergeUniqueOutputArtifacts([
-          currentTurn == null
-            ? []
-            : collectLocalConversationOutputArtifacts([currentTurn], {
-                includeGeneratedImages,
-                projectlessOutputDirectory: get(
-                  projectlessOutputDirectorySignal,
-                  conversationId,
-                ),
-              }),
-          get(historicalOutputArtifactsSignal, {
-            conversationId,
-            includeGeneratedImages,
-          }),
-        ]);
-      },
-    );
-    localConversationOutputArtifactsSignal = createScopedSignalFamily(
-      appScope,
-      (conversationId, { get }) =>
-        get(mergedOutputArtifactsSignal, {
-          conversationId,
-          includeGeneratedImages: false,
-        }),
-    );
-    localConversationSummaryArtifactsSignal = createScopedSignalFamily(
-      appScope,
-      (conversationId, { get }) =>
-        get(mergedOutputArtifactsSignal, {
-          conversationId,
-          includeGeneratedImages:
-            get(conversationModeSignal, conversationId) === "projectless" &&
-            get(featureGateSignal, "120995366"),
-        }),
-    );
   });
 function collectBackgroundTerminalRowsFromTurns(turns) {
   let latestTurnIndex = turns.length - 1,
