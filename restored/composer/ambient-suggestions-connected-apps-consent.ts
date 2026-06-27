@@ -28,16 +28,4 @@ export function filterAccessibleEnabledAmbientSuggestionApps<
 
 function initAmbientSuggestionsConnectedAppsConsentChunk() {}
 
-const ambientSuggestionsConnectedAppsConsentR =
-  hasSeenAmbientSuggestionsConnectedAppsConsentSignal;
-const ambientSuggestionsConnectedAppsConsentN =
-  hasDismissedAmbientSuggestionsConnectAppsRowSignal;
-const ambientSuggestionsConnectedAppsConsentT =
-  filterAccessibleEnabledAmbientSuggestionApps;
-
-export {
-  ambientSuggestionsConnectedAppsConsentN,
-  ambientSuggestionsConnectedAppsConsentR,
-  ambientSuggestionsConnectedAppsConsentT,
-  initAmbientSuggestionsConnectedAppsConsentChunk,
-};
+export { initAmbientSuggestionsConnectedAppsConsentChunk };

@@ -4,25 +4,25 @@
 // Semantic aliases for Chromium settings constants exported by src-l0hbMZ-p.
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-export {
-  _srcEr as CHROME_SITE_SETTINGS_URL,
-  _srcIr as getChromeSiteDetailsUrlForSite,
-  _srcNr as CHROME_COOKIES_URL,
-  _srcTr as SITE_SETTINGS_PARTITION,
-  _srcZn as CHROME_PROTOCOL_HANDLERS_URL,
-  srcBn as BROWSER_DOWNLOADS_SETTINGS_PATH,
-  srcGn as EXTENSION_SETTINGS_PARTITION,
-  srcHn as HISTORY_SETTINGS_PARTITION,
-  srcIn as CONTACT_INFO_ROOT_URLS,
-  srcJn as CHROME_PASSWORDS_URL,
-  srcKn as CHROME_PASSWORD_MANAGER_URL,
-  srcLn as BROWSER_CONTACT_INFO_SETTINGS_PATH,
-  srcN as BROWSER_SITE_SETTINGS_ROUTE_PATTERN,
-  srcQn as BROWSER_PASSWORD_SETTINGS_PATH,
-  srcRn as CHROME_CONTACT_INFO_URL,
-  srcUn as BROWSER_EXTENSIONS_SETTINGS_PATH,
-  srcVn as CHROME_DOWNLOADS_URL,
-  srcWn as CHROME_EXTENSIONS_URL,
-  srcYn as PASSWORD_MANAGER_PARTITION,
-  srcZn as CONTACT_INFO_PARTITION,
-} from "../../boundaries/src-l0hb-mz-p";
+import * as chromeSettingsRuntime from "../../boundaries/src-l0hb-mz-p";
+
+export const CHROME_SITE_SETTINGS_URL = chromeSettingsRuntime._srcEr;
+export const getChromeSiteDetailsUrlForSite = chromeSettingsRuntime._srcIr;
+export const CHROME_COOKIES_URL = chromeSettingsRuntime._srcNr;
+export const SITE_SETTINGS_PARTITION = chromeSettingsRuntime._srcTr;
+export const CHROME_PROTOCOL_HANDLERS_URL = chromeSettingsRuntime._srcZn;
+export const BROWSER_DOWNLOADS_SETTINGS_PATH = chromeSettingsRuntime.srcBn;
+export const EXTENSION_SETTINGS_PARTITION = chromeSettingsRuntime.srcGn;
+export const HISTORY_SETTINGS_PARTITION = chromeSettingsRuntime.srcHn;
+export const CONTACT_INFO_ROOT_URLS = chromeSettingsRuntime.srcIn;
+export const CHROME_PASSWORDS_URL = chromeSettingsRuntime.srcJn;
+export const CHROME_PASSWORD_MANAGER_URL = chromeSettingsRuntime.srcKn;
+export const BROWSER_CONTACT_INFO_SETTINGS_PATH = chromeSettingsRuntime.srcLn;
+export const BROWSER_SITE_SETTINGS_ROUTE_PATTERN = chromeSettingsRuntime.srcN;
+export const BROWSER_PASSWORD_SETTINGS_PATH = chromeSettingsRuntime.srcQn;
+export const CHROME_CONTACT_INFO_URL = chromeSettingsRuntime.srcRn;
+export const BROWSER_EXTENSIONS_SETTINGS_PATH = chromeSettingsRuntime.srcUn;
+export const CHROME_DOWNLOADS_URL = chromeSettingsRuntime.srcVn;
+export const CHROME_EXTENSIONS_URL = chromeSettingsRuntime.srcWn;
+export const PASSWORD_MANAGER_PARTITION = chromeSettingsRuntime.srcYn;
+export const CONTACT_INFO_PARTITION = chromeSettingsRuntime.srcZn;

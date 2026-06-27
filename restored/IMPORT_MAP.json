@@ -8114,9 +8114,9 @@
     "ambient-suggestions-connected-apps-consent-DQgR2iFO": {
       "restored": "composer/ambient-suggestions-connected-apps-consent.ts",
       "exports": {
-        "n": "ambientSuggestionsConnectedAppsConsentR",
-        "r": "ambientSuggestionsConnectedAppsConsentN",
-        "t": "ambientSuggestionsConnectedAppsConsentT"
+        "n": "hasSeenAmbientSuggestionsConnectedAppsConsentSignal",
+        "r": "hasDismissedAmbientSuggestionsConnectAppsRowSignal",
+        "t": "filterAccessibleEnabledAmbientSuggestionApps"
       },
       "status": "done"
     },
