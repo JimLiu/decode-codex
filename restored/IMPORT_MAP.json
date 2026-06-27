@@ -1421,9 +1421,11 @@
       "restored": "icons/archive-icon.tsx",
       "exports": {
         "t": "ArchiveIcon",
-        "ArchiveIcon": "ArchiveIcon"
+        "ArchiveIcon": "ArchiveIcon",
+        "initArchiveIconChunk": "initArchiveIconChunk"
       },
-      "status": "done"
+      "status": "done",
+      "lastUpdated": "2026-06-27T17:03:39.156Z"
     },
     "arrow-left-Bhuia2Qv": {
       "restored": "icons/arrow-left-icon.tsx",
@@ -10592,8 +10594,8 @@
         "t": "ThreadOverflowMenu"
       },
       "status": "draft",
-      "note": "Public draft organized for the updated ref chunk. Pin and pop-in/new-window icon imports now resolve to semantic icon modules; remaining current-ref producer imports, JSX runtime cleanup, and split/rename work remain open before promotion.",
-      "lastUpdated": "2026-06-27T16:57:21.039Z"
+      "note": "Public draft organized for the updated ref chunk. Producer imports now resolve through current-ref boundaries where available; pin, archive, and pop-in/new-window icon imports resolve to semantic icon modules. Remaining work is semantic split/rename and JSX runtime cleanup before promotion.",
+      "lastUpdated": "2026-06-27T17:03:39.156Z"
     },
     "above-composer-suggestions-CAXbkE_4": {
       "restored": "composer/above-composer-suggestions.tsx",

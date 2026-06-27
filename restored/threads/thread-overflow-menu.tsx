@@ -53,7 +53,7 @@ import {
   uM as ve,
   uP as M,
   xi as ye,
-} from "./app-initial~app-main~remote-conversation-page~plugin-detail-page~new-thread-panel-page~appg~ijdupmx5-CdYgxe-b.js";
+} from "../boundaries/current-ref/appg-thread-shared-producer";
 import {
   $i as N,
   C as be,
@@ -81,13 +81,13 @@ import {
   wo as Ie,
   x as B,
   yc as Le,
-} from "./app-initial~app-main~remote-conversation-page~new-thread-panel-page~projects-index-page~app~ovcriy74-KTK3czaX.js";
+} from "../boundaries/current-ref/projects-app-shared-producer";
 import {
   Dn as V,
   En as Re,
   ct as H,
   lt as ze,
-} from "./app-initial~app-main~worktree-init-v2-page~remote-conversation-page~pull-requests-page~new-~kvpgbdy1-mhRp2VYQ.js";
+} from "../boundaries/current-ref/pull-request-thread-actions-producer";
 import {
   Ar as U,
   Du as Be,
@@ -97,29 +97,29 @@ import {
   gm as Ue,
   hm as G,
   jr as We,
-} from "./app-initial~app-main~onboarding-page~profile-QLPeiknY.js";
+} from "../boundaries/current-ref/profile-page-producer";
 import {
   _ as K,
   g as Ge,
-} from "./app-initial~app-main~remote-conversation-page~pull-requests-page~onboarding-page~projects-i~easvi6ps-Cs84X9Ip.js";
+} from "../boundaries/current-ref/projects-pull-requests-producer";
 import {
-  a as Ke,
-  c as q,
-  d as qe,
-  f as Je,
-  i as Ye,
-  n as Xe,
-  o as Ze,
-  p as Qe,
-  r as $e,
-  s as et,
-  t as tt,
-} from "./app-initial~app-main~remote-conversation-page~projects-index-page~hotkey-window-thread-page~ki4n9fl3-Dgn7MiTN.js";
+  ArchiveThreadConfirmDialog as Ke,
+  heartbeatAutomationEligibilitySignal as tt,
+  initArchiveThreadConfirmDialogChunk as Ze,
+  initHeartbeatAutomationEligibilityChunk as Xe,
+  initOpenThreadInNewWindowChunk as $e,
+  initThreadPinControlsChunk as qe,
+  initThreadPinIconChunk as q,
+  pinThreadMessage as Je,
+  ThreadPinIcon as et,
+  unpinThreadMessage as Qe,
+  useOpenThreadInNewWindow as Ye,
+} from "../automation/heartbeat-automation-eligibility";
 import { initPinIconChunk, PinIcon } from "../icons/pin-icon";
 import {
-  g as it,
-  h as at,
-} from "./app-initial~app-main~remote-conversation-page~projects-index-page~hotkey-window-thread-page~hc7acb17-o4mgW3b3.js";
+  ArchiveIcon as at,
+  initArchiveIconChunk as it,
+} from "../icons/archive-icon";
 import {
   getAttachedHeartbeatAutomationForThread as J,
   initAttachedHeartbeatAutomationLookupChunk as ot,
