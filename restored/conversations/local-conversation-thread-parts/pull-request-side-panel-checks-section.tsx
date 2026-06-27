@@ -115,7 +115,9 @@ export function PullRequestSidePanelChecksSection({
           )}
           disabled={!allFailingChecksAttached && fixDisabledReason != null}
           inset={true}
-          tooltipContent={allFailingChecksAttached ? undefined : fixDisabledTooltip}
+          tooltipContent={
+            allFailingChecksAttached ? undefined : fixDisabledTooltip
+          }
           onClick={() => {
             if (allFailingChecksAttached) {
               setPullRequestFailingChecksAttached(scope, {

@@ -79,7 +79,9 @@ type VirtualizedTurnListProps = {
   latestTurnSynchronousMeasurementKey?: unknown;
   onApiChange?: ((api: VirtualizedTurnListApi | null) => void) | null;
   onLatestTurnHeightChange?: ((change: LatestTurnHeightChange) => void) | null;
-  onRestoreStateChange?: ((state: VirtualizedTurnListRestoreState) => void) | null;
+  onRestoreStateChange?:
+    | ((state: VirtualizedTurnListRestoreState) => void)
+    | null;
   onViewportChange?:
     | ((change: {
         target: { originPx: number; targetPx: number } | null;

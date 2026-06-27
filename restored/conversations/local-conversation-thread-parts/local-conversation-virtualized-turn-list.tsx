@@ -1,16 +1,15 @@
 // Restored from ref/webview/assets/local-conversation-thread-Bf38rCmF.js
 // Virtualized local conversation turn list and per-turn measurement behavior.
 import React from "react";
-import { once, toEsModule } from "../../runtime/commonjs-interop";
+import { flushSync as flushSyncReactUpdates } from "react-dom";
+import { once } from "../../runtime/commonjs-interop";
 import {
   BP as classNames,
   DM as initWindowZoomContext,
-  JV as loadReactModule,
   VP as initClassNameRuntime,
   bM as initKeyboardShortcutLabel,
   kM as useWindowZoom,
   xM as useStableCallback,
-  yF as loadReactDomModule,
 } from "../../boundaries/current-ref/appg-thread-shared-producer";
 import {
   buildThreadVirtualizerLayout,
@@ -58,8 +57,6 @@ type TurnMeasurement = VirtualizedTurnListContracts["turnMeasurement"];
 type ObservedElementMetadata =
   VirtualizedTurnListContracts["observedElementMetadata"];
 type VirtualizedTurnListProps = VirtualizedTurnListContracts["props"];
-
-let reactDomModule: { flushSync(callback: () => void): void } | undefined;
 
 const MemoizedVirtualizedTurnItem = React.memo(VirtualizedTurnItem);
 
@@ -484,8 +481,8 @@ export function VirtualizedTurnList({
           scrollController.preserveScrollPositionForNextLayout();
         }
 
-        if (flushSync && reactDomModule?.flushSync != null) {
-          reactDomModule.flushSync(commitMeasuredHeights);
+        if (flushSync) {
+          flushSyncReactUpdates(commitMeasuredHeights);
         } else {
           commitMeasuredHeights();
         }
@@ -987,8 +984,6 @@ export function VirtualizedTurnList({
 
 export const initVirtualizedTurnListChunk = once(() => {
   initClassNameRuntime();
-  toEsModule(loadReactModule(), 1);
-  reactDomModule = toEsModule(loadReactDomModule(), 1);
   initWindowZoomContext();
   initUseResizeObserverChunk();
   initThreadScrollLayoutStyleChunk();

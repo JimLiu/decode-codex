@@ -180,8 +180,10 @@ export function LocalConversationThreadFrame({
       useMarkConversationReadOnVisibility(conversationId, hasConversation),
     hasLiveMcpAppFrame = useSignalValue(liveMcpAppFrameSignal),
     subagentResponseInProgress =
-      useScopedValue<boolean>(subagentResponseInProgressSignal, conversationId) ??
-      false,
+      useScopedValue<boolean>(
+        subagentResponseInProgressSignal,
+        conversationId,
+      ) ?? false,
     shouldMountSummaryPanelObstacles =
       shouldShowSummaryPanelObstacles && hasConversation && !hideThreadContent,
     handleOpenBackgroundAgent = (backgroundAgent: BackgroundAgent) => {

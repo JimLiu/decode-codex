@@ -138,7 +138,8 @@ export function LocalEnvironmentSelectorContent({
           key={item.configPath}
           RightIcon={
             normalizedResolvedConfigPath != null &&
-            normalizeConfigPath(item.configPath) === normalizedResolvedConfigPath
+            normalizeConfigPath(item.configPath) ===
+              normalizedResolvedConfigPath
               ? CheckIcon
               : undefined
           }

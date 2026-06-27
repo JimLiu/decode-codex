@@ -40,7 +40,11 @@ export const initBackgroundAgentThreadTab = once(() => {});
 
 export async function openBackgroundAgentThreadTab(
   scope: BackgroundAgentThreadScope,
-  { backgroundAgent, hostId, TabComponent }: OpenBackgroundAgentThreadTabOptions,
+  {
+    backgroundAgent,
+    hostId,
+    TabComponent,
+  }: OpenBackgroundAgentThreadTabOptions,
 ) {
   let { conversationId } = backgroundAgent;
   if (!scope.get<boolean>(hasConversationSignal, conversationId)) {

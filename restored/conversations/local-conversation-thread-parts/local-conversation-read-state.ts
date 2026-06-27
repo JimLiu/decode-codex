@@ -1,10 +1,10 @@
 // Restored from ref/webview/assets/local-conversation-thread-Bf38rCmF.js
 // Mark local conversations as read when visible and their read marker changes.
-import { once, toEsModule } from "../../runtime/commonjs-interop";
+import React from "react";
+import { once } from "../../runtime/commonjs-interop";
 import {
   Ep as conversationUnreadSignal,
   IB as useSignalValue,
-  JV as loadReactModule,
   Kp as conversationReadStateSignal,
   Op as initConversationStateSelectors,
   PB as useScopedValue,
@@ -19,18 +19,6 @@ import {
   G as initWindowVisibilitySignal,
   W as windowVisibleSignal,
 } from "../../boundaries/current-ref/automations-page-producer";
-
-type ReactRuntime = {
-  useEffect(effect: () => void, deps: readonly unknown[]): void;
-  useEffectEvent<TCallback extends (...args: never[]) => unknown>(
-    callback: TCallback,
-  ): TCallback;
-  useRef<TValue>(initialValue: TValue): {
-    current: TValue;
-  };
-};
-
-let markConversationReadReactRuntime: ReactRuntime;
 
 export function useMarkConversationReadOnVisibility(
   conversationId: string,
@@ -47,13 +35,9 @@ export function useMarkConversationReadOnVisibility(
       conversationReadStateSignal,
       conversationId,
     ),
-    lastMarkedConversationIdRef = markConversationReadReactRuntime.useRef<
-      string | null
-    >(null),
-    lastConversationReadStateRef =
-      markConversationReadReactRuntime.useRef<unknown>(null),
-    lastConversationReadMarkerRef =
-      markConversationReadReactRuntime.useRef<unknown>(null),
+    lastMarkedConversationIdRef = React.useRef<string | null>(null),
+    lastConversationReadStateRef = React.useRef<unknown>(null),
+    lastConversationReadMarkerRef = React.useRef<unknown>(null),
     markConversationRead = () => {
       lastMarkedConversationIdRef.current = conversationId;
       lastConversationReadStateRef.current = conversationReadState;
@@ -69,10 +53,9 @@ export function useMarkConversationReadOnVisibility(
     markConversationReadHandler = () => {
       markConversationReadEvent();
     },
-    markConversationReadEffectEvent =
-      markConversationReadReactRuntime.useEffectEvent(
-        markConversationReadHandler,
-      ),
+    markConversationReadEffectEvent = React.useEffectEvent(
+      markConversationReadHandler,
+    ),
     markVisibleConversationReadEffect = () => {
       if (!hasConversation || isWindowVisible !== true) return;
       if (lastMarkedConversationIdRef.current !== conversationId) {
@@ -95,17 +78,13 @@ export function useMarkConversationReadOnVisibility(
       conversationReadMarker,
     ];
 
-  markConversationReadReactRuntime.useEffect(
-    markVisibleConversationReadEffect,
-    markReadEffectDeps,
-  );
+  React.useEffect(markVisibleConversationReadEffect, markReadEffectDeps);
 
   return markConversationReadEvent;
 }
 
 export const initMarkConversationReadEffect = once(() => {
   initScopeRuntime();
-  markConversationReadReactRuntime = toEsModule(loadReactModule(), 1);
   initConversationStateSelectors();
   initAppServerRequestBridge();
   initWindowVisibilitySignal();

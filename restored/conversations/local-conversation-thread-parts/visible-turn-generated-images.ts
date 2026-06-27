@@ -1,10 +1,9 @@
 // Restored from ref/webview/assets/local-conversation-thread-Bf38rCmF.js
 // Generated-image output collection for visible local conversation turns.
-import { once, toEsModule } from "../../runtime/commonjs-interop";
+import { once } from "../../runtime/commonjs-interop";
 import { isEqualT as createIsEqual } from "../../vendor/lodash-is-equal";
 import {
   Hg as collectEndResourcePaths,
-  mr as loadGroupByModule,
   Nv as initConversationArtifactRuntime,
   Pv as renderConversationTurnForArtifacts,
   Ug as collectAssistantOutputArtifacts,
@@ -130,7 +129,6 @@ export function collectGeneratedImagesForVisibleTurns({
 }
 
 export const initVisibleTurnGeneratedImagesCollector = once(() => {
-  toEsModule(loadGroupByModule(), 1);
   areGeneratedImageListsEqual = createIsEqual() as (
     leftValue: unknown,
     rightValue: unknown,

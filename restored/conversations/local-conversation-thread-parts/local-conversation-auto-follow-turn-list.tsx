@@ -1,7 +1,7 @@
 // Restored from ref/webview/assets/local-conversation-thread-Bf38rCmF.js
 // Latest-turn auto-follow wrapper for the local conversation virtualized turn list.
 import React from "react";
-import { once, toEsModule } from "../../runtime/commonjs-interop";
+import { once } from "../../runtime/commonjs-interop";
 import {
   $P as initAppScope,
   AB as initScopeRuntime,
@@ -9,7 +9,6 @@ import {
   CP as animateSignalValue,
   DM as initWindowZoomContext,
   FB as useScope,
-  JV as loadReactModule,
   Mj as getScrollDistanceFromBottomPx,
   Nj as initReverseScrollUtilities,
   OP as createMotionSignal,
@@ -745,7 +744,8 @@ export function LocalConversationAutoFollowVirtualizedTurnList({
         submitPlacement == null
       )
         return;
-      let shouldPlaceLatestTurn = submitPlacement?.shouldPlaceLatestTurn ?? true;
+      let shouldPlaceLatestTurn =
+        submitPlacement?.shouldPlaceLatestTurn ?? true;
       dispatchScrollStateEvent(
         {
           type: "latest_turn_placed",
@@ -894,7 +894,6 @@ function LatestTurnAnimatedRow({
 export const initAutoFollowVirtualizedTurnListChunk = once(() => {
   initMotionRuntime();
   initScopeRuntime();
-  toEsModule(loadReactModule(), 1);
   initWindowZoomContext();
   initAppScope();
   initThreadScrollLayoutStyleChunk();

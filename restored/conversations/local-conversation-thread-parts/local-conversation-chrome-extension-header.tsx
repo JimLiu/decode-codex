@@ -103,7 +103,10 @@ export function ChromeExtensionConversationHeader({
       hasConversationSignal,
       conversationId,
     ) as boolean,
-    title = useScopedValue(conversationTitleSignal, conversationId) as ReactNode,
+    title = useScopedValue(
+      conversationTitleSignal,
+      conversationId,
+    ) as ReactNode,
     cwd = useScopedValue(conversationCwdSignal, conversationId) as
       | string
       | null

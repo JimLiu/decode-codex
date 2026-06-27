@@ -103,7 +103,9 @@ export function PullRequestSidePanelCommentsSection({
       conversationId,
     ) as ReviewCommentAttachment[],
     commentActivityItems =
-      data == null ? null : getPullRequestCommentActivityItems(data.activityItems),
+      data == null
+        ? null
+        : getPullRequestCommentActivityItems(data.activityItems),
     commentAttachments = data?.commentAttachments,
     attachedCommentAttachmentKeys = new Set(
       attachedCommentAttachments.map(getReviewCommentAttachmentKeyValue),

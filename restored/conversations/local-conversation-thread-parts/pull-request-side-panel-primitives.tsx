@@ -1,11 +1,6 @@
 // Restored from ref/webview/assets/local-conversation-thread-Bf38rCmF.js
 // Shared pull request side-panel primitives and merge-conflict file rows.
-import type {
-  KeyboardEvent,
-  MouseEvent,
-  ReactNode,
-  SVGProps,
-} from "react";
+import type { KeyboardEvent, MouseEvent, ReactNode, SVGProps } from "react";
 import { once } from "../../runtime/commonjs-interop";
 import {
   AN as initSpinnerComponent,

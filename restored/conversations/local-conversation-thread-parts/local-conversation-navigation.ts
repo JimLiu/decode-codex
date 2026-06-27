@@ -1,12 +1,12 @@
 // Restored from ref/webview/assets/local-conversation-thread-Bf38rCmF.js
 // Navigation and missing-conversation state helpers for local conversation threads.
-import { once, toEsModule } from "../../runtime/commonjs-interop";
+import React from "react";
+import { once } from "../../runtime/commonjs-interop";
 import {
   AB as initScopeRuntime,
   AI as getLocalConversationPath,
   FB as useScope,
   I_ as initRouteScope,
-  JV as loadReactModule,
   M_ as localConversationRouteScope,
   OI as getHotkeyWindowThreadPath,
   Ov as useNavigate,
@@ -17,13 +17,6 @@ import {
   uM as toastSignal,
 } from "../../boundaries/current-ref/appg-thread-shared-producer";
 import { Ja as isHotkeyWindowRoute } from "../../boundaries/current-ref/profile-page-producer";
-
-type ReactRuntime = {
-  useEffect(effect: () => void, deps: readonly unknown[]): void;
-  useRef<TValue>(initialValue: TValue): {
-    current: TValue;
-  };
-};
 
 type LocalConversationTurnItem = {
   mcpAppResourceUri?: string | null;
@@ -52,15 +45,12 @@ type MissingConversationRedirectOptions = {
   visibleSubagentParentThreadId: string | null | undefined;
 };
 
-let localConversationNavigationReactRuntime: ReactRuntime;
-
 export function turnHasMcpAppResource(
   entry: LocalConversationTurnEntry | null | undefined,
 ) {
   return (
     entry?.turn.items.some(
-      (item) =>
-        item.type === "mcpToolCall" && item.mcpAppResourceUri != null,
+      (item) => item.type === "mcpToolCall" && item.mcpAppResourceUri != null,
     ) === true
   );
 }
@@ -105,17 +95,15 @@ export function useMissingLocalConversationRedirect({
   let scope = useScope(localConversationRouteScope),
     intl = useIntl(),
     navigate = useNavigate(),
-    hasSeenConversationRef =
-      localConversationNavigationReactRuntime.useRef(false),
-    lastSubagentParentThreadIdRef =
-      localConversationNavigationReactRuntime.useRef<string | null>(null);
+    hasSeenConversationRef = React.useRef(false),
+    lastSubagentParentThreadIdRef = React.useRef<string | null>(null);
 
-  localConversationNavigationReactRuntime.useEffect(() => {
+  React.useEffect(() => {
     visibleSubagentParentThreadId != null &&
       (lastSubagentParentThreadIdRef.current = visibleSubagentParentThreadId);
   }, [visibleSubagentParentThreadId]);
 
-  localConversationNavigationReactRuntime.useEffect(() => {
+  React.useEffect(() => {
     if (!allowMissingConversation) {
       if (hasConversation) {
         hasSeenConversationRef.current = true;
@@ -126,9 +114,12 @@ export function useMissingLocalConversationRedirect({
           let lastSubagentParentThreadId =
             lastSubagentParentThreadIdRef.current;
           if (lastSubagentParentThreadId != null) {
-            navigate(getConversationNavigationPath(lastSubagentParentThreadId), {
-              replace: true,
-            });
+            navigate(
+              getConversationNavigationPath(lastSubagentParentThreadId),
+              {
+                replace: true,
+              },
+            );
             return;
           }
           navigate(isHotkeyWindowRoute() ? launcherFallbackPath : "/", {
@@ -164,8 +155,4 @@ export const initLocalConversationNavigationHelpers = once(() => {
   initIntlRuntime();
   initRouteScope();
   initToastRuntime();
-  localConversationNavigationReactRuntime = toEsModule(
-    loadReactModule(),
-    1,
-  ) as ReactRuntime;
 });

@@ -92,7 +92,9 @@ export function startRemoteHostedPipHostLayoutObserver(
       return;
     }
     let obstacleRects: ViewportRectLike[] = [];
-    for (let obstacleElement of document.querySelectorAll(pipObstacleSelector)) {
+    for (let obstacleElement of document.querySelectorAll(
+      pipObstacleSelector,
+    )) {
       let obstacleRect = getScaledElementClientRect(
         obstacleElement,
         normalizedWindowZoom,

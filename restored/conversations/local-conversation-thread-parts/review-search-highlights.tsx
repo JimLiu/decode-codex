@@ -171,8 +171,9 @@ export function useReviewSearchHighlights(props: ReviewSearchHighlightsProps) {
         (activeMatchElement.classList.add(activeContentSearchMatchClassName),
         (activeMatchElementRef.current = activeMatchElement));
     };
-  let applySearchHighlightsEffectEvent =
-      React.useEffectEvent(applySearchHighlights),
+  let applySearchHighlightsEffectEvent = React.useEffectEvent(
+      applySearchHighlights,
+    ),
     observeSearchHighlightMutations = () => {
       let containerElement = containerRef.current;
       if (

@@ -191,7 +191,9 @@ export function PullRequestSummaryRow({
     initiator: "side_panel_menu",
   });
   return (
-    <BrowserSidebarMenu items={browserSidebarItems}>{rowNode}</BrowserSidebarMenu>
+    <BrowserSidebarMenu items={browserSidebarItems}>
+      {rowNode}
+    </BrowserSidebarMenu>
   );
 }
 

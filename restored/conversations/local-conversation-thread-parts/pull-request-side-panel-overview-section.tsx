@@ -1,11 +1,10 @@
 // Restored from ref/webview/assets/local-conversation-thread-Bf38rCmF.js
 // Pull request side-panel overview section and reviewer badges.
 import type { ReactElement, SVGProps } from "react";
-import { once, toEsModule } from "../../runtime/commonjs-interop";
+import { once } from "../../runtime/commonjs-interop";
 import {
   AN as initSpinnerComponent,
   BP as classNames,
-  Jo as loadUniqModule,
   VP as initClassNameRuntime,
   iF as initIntlRuntime,
   hM as initTooltipPrimitives,
@@ -34,10 +33,7 @@ import {
   PullRequestChecksSummary,
   pullRequestChecksStatusLabel,
 } from "../../github/pull-request-checks-summary";
-import {
-  DiffStats,
-  initDiffStatsChunk,
-} from "../../git/git-review-primitives";
+import { DiffStats, initDiffStatsChunk } from "../../git/git-review-primitives";
 import { initTeamIconChunk, TeamIcon } from "../../icons/team-icon";
 import { FormattedMessage } from "../../vendor/react-intl";
 import {
@@ -433,28 +429,24 @@ type PullRequestReviewerBadgeModel = {
   status: "approved" | "changes_requested" | "waiting";
 };
 
-type UniqModule = {
-  default: <T>(items: readonly T[]) => T[];
-};
-
-let pullRequestReviewerBadgeUniqBy: UniqModule;
-
 function getPullRequestReviewerBadgeModels(
   reviewers: PullRequestReviewers,
 ): PullRequestReviewerBadgeModel[] {
-  return pullRequestReviewerBadgeUniqBy
-    .default([
-      ...reviewers.requested,
-      ...reviewers.requestedTeams,
-      ...reviewers.approved,
-      ...reviewers.changesRequested,
-      ...reviewers.commented,
-    ])
-    .map((item) => ({
-      kind: reviewers.requestedTeams.includes(item) ? "team" : "user",
-      label: item,
-      status: getPullRequestReviewerStatus(reviewers, item),
-    }));
+  return uniqueStrings([
+    ...reviewers.requested,
+    ...reviewers.requestedTeams,
+    ...reviewers.approved,
+    ...reviewers.changesRequested,
+    ...reviewers.commented,
+  ]).map((item) => ({
+    kind: reviewers.requestedTeams.includes(item) ? "team" : "user",
+    label: item,
+    status: getPullRequestReviewerStatus(reviewers, item),
+  }));
+}
+
+function uniqueStrings(items: readonly string[]): string[] {
+  return Array.from(new Set(items));
 }
 
 function getPullRequestReviewerStatus(
@@ -472,7 +464,10 @@ function renderPullRequestOverviewReviewerBadge(
   reviewer: PullRequestReviewerBadgeModel,
 ): ReactElement {
   return (
-    <Tooltip key={`${reviewer.kind}:${reviewer.label}`} tooltipContent={reviewer.label}>
+    <Tooltip
+      key={`${reviewer.kind}:${reviewer.label}`}
+      tooltipContent={reviewer.label}
+    >
       <span className="relative block size-5 shrink-0 rounded-full border border-token-bg-primary bg-token-bg-secondary">
         {reviewer.kind === "team" ? (
           <span
@@ -544,9 +539,7 @@ function PullRequestReviewerPlaceholderIcon(props: SVGProps<SVGSVGElement>) {
   );
 }
 
-const initPullRequestReviewerBadgeModelsChunk = once(() => {
-  pullRequestReviewerBadgeUniqBy = toEsModule(loadUniqModule(), 1) as UniqModule;
-});
+const initPullRequestReviewerBadgeModelsChunk = once(() => {});
 
 const initPullRequestReviewerPlaceholderIconChunk = once(() => {});
 

@@ -30,7 +30,8 @@ export function LocalConversationAppShellSourceRegistration({
       diffSource={diffSource}
       orchestrationId={conversationSource.contextId}
       isDefault={
-        getLocalThreadConversationIdFromRoute(routeScopeValue) === conversationId
+        getLocalThreadConversationIdFromRoute(routeScopeValue) ===
+        conversationId
       }
     />
   );

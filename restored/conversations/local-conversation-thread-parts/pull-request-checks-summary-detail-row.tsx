@@ -89,11 +89,7 @@ function PullRequestRichTooltip({
   );
 }
 
-function PullRequestFlyoutContent({
-  children,
-}: {
-  children?: ReactNode;
-}) {
+function PullRequestFlyoutContent({ children }: { children?: ReactNode }) {
   let body =
     children == null ? null : (
       <div className="flex min-h-0 flex-1 flex-col gap-0.5 overflow-y-auto px-3">

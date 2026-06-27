@@ -1,13 +1,13 @@
 // Restored from ref/webview/assets/local-conversation-thread-Bf38rCmF.js
 // Resume local conversations, including retry and user-visible failure handling.
-import { once, toEsModule } from "../../runtime/commonjs-interop";
+import React from "react";
+import { once } from "../../runtime/commonjs-interop";
 import {
   $P as initAppScope,
   AB as initScopeRuntime,
   Dp as conversationRemoteHostIdSignal,
   FB as useScope,
   IB as useSignalValue,
-  JV as loadReactModule,
   Op as initConversationStateSelectors,
   PB as useScopedValue,
   QP as appScope,
@@ -44,19 +44,6 @@ import {
 
 type ConversationId = string | null | undefined;
 
-type ReactRuntime = {
-  useEffect(effect: () => void | (() => void), deps: readonly unknown[]): void;
-  useEffectEvent<TCallback extends (...args: any[]) => unknown>(
-    callback: TCallback,
-  ): TCallback;
-  useRef<TValue>(initialValue: TValue): {
-    current: TValue;
-  };
-  useState<TValue>(
-    initialValue: TValue,
-  ): [TValue, (value: TValue | ((currentValue: TValue) => TValue)) => void];
-};
-
 type ScopeSnapshot = {
   get<TValue = unknown>(signal: unknown, key?: unknown): TValue;
 };
@@ -81,8 +68,6 @@ export type LocalConversationResumeState = {
   isResuming: boolean | null | undefined;
 };
 
-let resumeLocalConversationReactRuntime: ReactRuntime;
-
 export function useResumeLocalConversation(
   conversationId: ConversationId,
 ): LocalConversationResumeState {
@@ -100,18 +85,13 @@ export function useResumeLocalConversation(
       conversationId,
     ) as boolean | null | undefined;
   useScopedValue(conversationHostIdSignal, conversationId);
-  let [isResuming, setIsResuming] =
-      resumeLocalConversationReactRuntime.useState(shouldResumeConversation),
-    activeResumeConversationIdRef =
-      resumeLocalConversationReactRuntime.useRef<ConversationId>(null),
-    retryTimerRef = resumeLocalConversationReactRuntime.useRef<ReturnType<
-      typeof setTimeout
-    > | null>(null),
-    hasShownResumeErrorRef = resumeLocalConversationReactRuntime.useRef(false),
-    blockedAutoRetryConversationIdRef =
-      resumeLocalConversationReactRuntime.useRef<ConversationId>(null),
-    [retryTick, setRetryTick] = resumeLocalConversationReactRuntime.useState(0),
-    resumeConversation = resumeLocalConversationReactRuntime.useEffectEvent(
+  let [isResuming, setIsResuming] = React.useState(shouldResumeConversation),
+    activeResumeConversationIdRef = React.useRef<ConversationId>(null),
+    retryTimerRef = React.useRef<ReturnType<typeof setTimeout> | null>(null),
+    hasShownResumeErrorRef = React.useRef(false),
+    blockedAutoRetryConversationIdRef = React.useRef<ConversationId>(null),
+    [retryTick, setRetryTick] = React.useState(0),
+    resumeConversation = React.useEffectEvent(
       async (resumeConversationId: string) => {
         try {
           setIsResuming(true);
@@ -199,7 +179,7 @@ export function useResumeLocalConversation(
       },
     );
   return (
-    resumeLocalConversationReactRuntime.useEffect(() => {
+    React.useEffect(() => {
       shouldResumeConversation ||
         ((activeResumeConversationIdRef.current = null),
         (hasShownResumeErrorRef.current = false),
@@ -209,10 +189,10 @@ export function useResumeLocalConversation(
           (clearTimeout(retryTimerRef.current),
           (retryTimerRef.current = null)));
     }, [conversationId, shouldResumeConversation]),
-    resumeLocalConversationReactRuntime.useEffect(() => {
+    React.useEffect(() => {
       blockedAutoRetryConversationIdRef.current = null;
     }, [conversationId]),
-    resumeLocalConversationReactRuntime.useEffect(() => {
+    React.useEffect(() => {
       if (conversationId != null)
         return scope.watch(({ get }) => {
           let hostId = get(conversationRemoteHostIdSignal, conversationId);
@@ -224,14 +204,14 @@ export function useResumeLocalConversation(
             });
         });
     }, [conversationId, scope]),
-    resumeLocalConversationReactRuntime.useEffect(() => {
+    React.useEffect(() => {
       conversationId &&
         shouldResumeConversation &&
         conversationId !== activeResumeConversationIdRef.current &&
         conversationId !== blockedAutoRetryConversationIdRef.current &&
         resumeConversation(conversationId);
     }, [shouldResumeConversation, conversationId, retryTick]),
-    resumeLocalConversationReactRuntime.useEffect(
+    React.useEffect(
       () => () => {
         retryTimerRef.current != null &&
           (clearTimeout(retryTimerRef.current), (retryTimerRef.current = null));
@@ -246,10 +226,6 @@ export function useResumeLocalConversation(
 
 export const initResumeLocalConversationChunk = once(() => {
   initScopeRuntime();
-  resumeLocalConversationReactRuntime = toEsModule(
-    loadReactModule(),
-    1,
-  ) as ReactRuntime;
   initIntlRuntime();
   initConversationStateSelectors();
   initAppServerRequestBridge();

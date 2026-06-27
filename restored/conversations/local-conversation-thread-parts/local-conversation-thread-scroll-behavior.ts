@@ -64,8 +64,7 @@ export function useLocalConversationThreadScrollBehavior({
       threadScrollStateSignal,
       conversationId,
     ),
-    initialScrollOffset =
-      savedThreadScrollState?.distanceFromBottomPx ?? null,
+    initialScrollOffset = savedThreadScrollState?.distanceFromBottomPx ?? null,
     initialVirtualizedTurnListRestoreState =
       savedThreadScrollState?.virtualizedTurnList ?? null,
     [isScrolledFromBottom, setIsScrolledFromBottom] = React.useState(false),
@@ -73,12 +72,9 @@ export function useLocalConversationThreadScrollBehavior({
       React.useState(0),
     [responseSpacerState, setResponseSpacerState] =
       React.useState<ResponseSpacerState | null>(null),
-    latestTurnSubmitPlacementRef =
-      React.useRef<
-        ReturnType<typeof createLatestTurnSubmitPlacementSnapshot> | null
-      >(
-        null,
-      ),
+    latestTurnSubmitPlacementRef = React.useRef<ReturnType<
+      typeof createLatestTurnSubmitPlacementSnapshot
+    > | null>(null),
     threadScrollLayoutApiRef = React.useRef<ThreadScrollLayoutApi | null>(null),
     loadOlderConversationHistoryPage = async () => {
       if (isConversationHistoryComplete) return "stop";
@@ -91,10 +87,10 @@ export function useLocalConversationThreadScrollBehavior({
               : [visibleSubagentParentThreadId],
         });
         await refreshConversationHistorySignals();
-        return (
-          scope.get<boolean>(conversationHistoryCompleteSignal, conversationId) ??
-          true
-        )
+        return (scope.get<boolean>(
+          conversationHistoryCompleteSignal,
+          conversationId,
+        ) ?? true)
           ? "stop"
           : "continue";
       } catch (error) {

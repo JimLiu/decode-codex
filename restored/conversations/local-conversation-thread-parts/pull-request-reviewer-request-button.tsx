@@ -1,14 +1,13 @@
 // Restored from ref/webview/assets/local-conversation-thread-Bf38rCmF.js
 // Reviewer request popover used from the pull request side-panel overview row.
 import { useState, type ReactNode } from "react";
-import { once, toEsModule } from "../../runtime/commonjs-interop";
+import { once } from "../../runtime/commonjs-interop";
 import {
   $N as initVscodeApiBridge,
   $P as initAppScope,
   AB as initScopeRuntime,
   AN as initSpinnerComponent,
   DN as Button,
-  JV as loadReactModule,
   Lj as PlusIcon,
   ON as initButtonComponentPrimitives,
   QP as appScope,
@@ -16,7 +15,6 @@ import {
   ZN as createHostQuerySignal,
   Zi as initDropdownMenuPrimitives,
   aP as QUERY_DURATIONS,
-  bk as loadUniqByModule,
   cM as initToastRuntime,
   di as PopoverRoot,
   ea as SearchIcon,
@@ -93,12 +91,7 @@ type PullRequestReviewerRequestButtonProps = {
 
 type GithubUserSearchQuery = unknown;
 
-type UniqByModule = {
-  default: <T>(items: T[], iteratee: (item: T) => string) => T[];
-};
-
 let githubUserSearchQuery: GithubUserSearchQuery;
-let uniqByModule: UniqByModule;
 
 const initGithubUserSearchQuery = once(() => {
   initAppScope();
@@ -111,7 +104,11 @@ const initGithubUserSearchQuery = once(() => {
       enabled: queryParams.query.length > 0,
       params: queryParams,
       retry: false,
-      select: (response: { status: string; error?: string; users?: unknown }) => {
+      select: (response: {
+        status: string;
+        error?: string;
+        users?: unknown;
+      }) => {
         if (response.status === "error") throw Error(response.error);
         return response.users;
       },
@@ -156,10 +153,22 @@ function getReviewerSearchMenuOptions({
       : query.length === 0
         ? []
         : undefined
-    : uniqByModule.default(
-        [...selectedReviewers, ...availableReviewers],
-        ({ login }) => login.toLowerCase(),
+    : uniqBy([...selectedReviewers, ...availableReviewers], ({ login }) =>
+        login.toLowerCase(),
       );
+}
+
+function uniqBy<TItem>(
+  items: readonly TItem[],
+  getKey: (item: TItem) => string,
+): TItem[] {
+  let seenKeys = new Set<string>();
+  return items.filter((item) => {
+    let key = getKey(item);
+    if (seenKeys.has(key)) return false;
+    seenKeys.add(key);
+    return true;
+  });
 }
 
 function toggleSelectedReviewer(
@@ -174,9 +183,7 @@ function toggleSelectedReviewer(
     : selectedReviewers.filter((item) => item !== existingReviewer);
 }
 
-const initReviewerSearchUniqByModule = once(() => {
-  uniqByModule = toEsModule(loadUniqByModule(), 1) as UniqByModule;
-});
+const initReviewerSearchUniqByModule = once(() => {});
 
 export function RequestPullRequestReviewersButton({
   hostId,
@@ -496,7 +503,6 @@ function toReviewerSearchOption(
 
 export const initRequestPullRequestReviewersButtonChunk = once(() => {
   initScopeRuntime();
-  toEsModule(loadReactModule(), 1);
   initIntlRuntime();
   initButtonComponentPrimitives();
   initDropdownMenuPrimitives();

@@ -1,14 +1,13 @@
 // Restored from ref/webview/assets/local-conversation-thread-Bf38rCmF.js
 // Pull request side-panel tab content, body queries, and opener.
-import type { MouseEvent, ReactElement, ReactNode } from "react";
-import { once, toEsModule } from "../../runtime/commonjs-interop";
+import React, { type MouseEvent, type ReactNode } from "react";
+import { once } from "../../runtime/commonjs-interop";
 import {
   $N as initVscodeApiBridge,
   AB as initScopeRuntime,
   Al as initComposerScope,
   FB as useScope,
   IB as useSignalValue,
-  JV as loadReactModule,
   Wa as PlatformContentGate,
   aP as QUERY_DURATIONS,
   eP as useHostQuery,
@@ -577,13 +576,10 @@ export function openPullRequestSidePanelTab(
       {
         activate,
         defaultState: () => ({}),
-        icon: pullRequestSidePanelTabReactRuntime.createElement(
-          PullRequestStatusIcon,
-          {
-            className: "icon-xs shrink-0",
-            state: item.state,
-          },
-        ),
+        icon: React.createElement(PullRequestStatusIcon, {
+          className: "icon-xs shrink-0",
+          state: item.state,
+        }),
         id: tabId,
         props: {
           hostId,
@@ -608,18 +604,7 @@ export function openPullRequestSidePanelTab(
   );
 }
 
-let pullRequestSidePanelTabReactRuntime: {
-  createElement: (
-    component: unknown,
-    props: Record<string, unknown>,
-  ) => ReactElement;
-};
-
 export const initPullRequestSidePanelOpenerChunk = once(() => {
-  pullRequestSidePanelTabReactRuntime = toEsModule(
-    loadReactModule(),
-    1,
-  ) as typeof pullRequestSidePanelTabReactRuntime;
   initThreadSidePanelRuntimeChunk();
   initPullRequestStatusIconChunk();
   initPullRequestSidePanelTabChunk();
