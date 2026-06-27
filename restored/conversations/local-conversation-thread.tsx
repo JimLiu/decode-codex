@@ -145,7 +145,6 @@ import {
   Sm as threadSourceSignal,
   TM as initCheckmarkIcon,
   T_ as getRouteConversationId,
-  Tf as mcpServersQuerySignal,
   Ti as DialogFooterActions,
   Tp as hasConversationSignal,
   Ts as initBrowserFeatureAvailabilitySignals,
@@ -178,7 +177,6 @@ import {
   a_ as initFileTypeDetectionHelpers,
   ag as fn,
   ak as initAppServerRequestBridge,
-  ay as formatIdentifierTitle,
   bF as initPathHelpers,
   bM as initKeyboardShortcutLabel,
   bP as createPersistedSignal,
@@ -189,7 +187,6 @@ import {
   cM as initToastRuntime,
   cP as initVscodeMessageBridge,
   cm as conversationHostIdSignal,
-  dV as createDerivedSignal,
   di as PopoverRoot,
   dp as berryDisplayConversationTurnsSignal,
   eM as featureGateSignal,
@@ -209,7 +206,6 @@ import {
   hi as PopoverTrigger,
   hs as initLocalImageInliningHelpers,
   iF as initIntlRuntime,
-  iO as formatConversationTitleText,
   ic as useConversationAgentMode,
   jL as initModulePreloadRuntime,
   jM as $n,
@@ -232,23 +228,19 @@ import {
   mo as initGitHubIcon,
   mv as xr,
   nm as projectlessOutputDirectorySignal,
-  ny as initAppToolSourceMatcherCache,
   oM as initRefreshIcon,
   oP as initQueryDurationConstants,
   ok as sendAppServerRequest,
-  oy as initIdentifierTitleFormatter,
   pM as Tooltip,
   pP as initLoggerRuntime,
   pi as PopoverContent,
   po as GitHubIcon,
   pp as shouldResumeConversationSignal,
   pu as useDebouncedValue,
-  pz as toConversationId,
   qV as getChunkModuleExports,
   qi as MenuChrome,
   qj as useStatsigGate,
   rF as defineMessages,
-  rO as Ur,
   sF as FormattedMessage,
   sm as conversationRequestsSignal,
   tP as useAppServerMutation,
@@ -256,7 +248,6 @@ import {
   tc as Yr,
   tn as Xr,
   tp as hostConnectionStatusSignal,
-  ty as $r,
   uM as toastSignal,
   vM as KeyboardShortcutKeycap,
   va as AppDialog,
@@ -283,11 +274,9 @@ import {
 import {
   $i as Ei,
   A as Di,
-  Ar as parseMcpAppIdFromToolCallId,
   Ba as pullRequestReviewCommentAttachmentsSignal,
   Cl as pullRequestCurrentBranchSignal,
   Ds as openEnvironmentTerminalSession,
-  Fr as installedMcpAppIdsSignal,
   Ga as MoreHorizontalIcon,
   Ha as updatePullRequestReviewCommentAttachments,
   Il as Ki,
@@ -399,7 +388,6 @@ import {
   $n as vs,
   Al as ys,
   Ar as bs,
-  At as xs,
   Bl as Ss,
   Bn as worktreeStatusQuerySignal,
   Bu as ws,
@@ -454,7 +442,6 @@ import {
   jr as kc,
   jt as Ac,
   kl as jc,
-  kt as Mc,
   lf as Nc,
   ls as Pc,
   nu as Lc,
@@ -492,10 +479,6 @@ import {
   i as yl,
   r as bl,
 } from "../boundaries/current-ref/thread-hotkey-shell-producer";
-import {
-  H as xl,
-  U as Sl,
-} from "../boundaries/current-ref/appgen-publication-terms-producer";
 import {
   _ as automationDataSignal,
   g as El,
@@ -551,7 +534,6 @@ import {
 import { initStarIconChunk as Fu, StarIcon as Iu } from "../icons/star-icon";
 import {
   clearStoppedPendingProcessRows,
-  collectConversationProcessRows,
   computerUsePictureInPictureAvailableSignal,
   computerUsePictureInPictureVisibleSignal,
   getPendingBackgroundProcessRow,
@@ -693,10 +675,6 @@ import {
   ThreadSummaryComputerUsePipSection,
 } from "./local-conversation-thread-parts/thread-summary-browser-sections";
 import {
-  initThreadSummaryBrowserUseModelChunk,
-  useThreadSummaryBrowserUseSummaries,
-} from "./local-conversation-thread-parts/thread-summary-browser-use-model";
-import {
   initThreadSummaryEnvironmentSectionChunk,
   ThreadSummaryEnvironmentSection,
 } from "./local-conversation-thread-parts/thread-summary-environment-section";
@@ -711,7 +689,6 @@ import {
 import {
   initLocalConversationArtifactSignals,
   localConversationOutputArtifactsSignal,
-  localConversationSummaryArtifactsSignal,
 } from "./local-conversation-thread-parts/local-conversation-artifact-signals";
 import { BackgroundTaskSectionTitle } from "./local-conversation-thread-parts/background-task-section-title";
 import {
@@ -747,6 +724,10 @@ import {
   initVisibleTurnGeneratedImagesCollector,
 } from "./local-conversation-thread-parts/visible-turn-generated-images";
 import {
+  initLocalConversationSummaryPanelSignals,
+  useLocalConversationSummaryPanelModel,
+} from "./local-conversation-thread-parts/local-conversation-summary-panel-model";
+import {
   buildLocalConversationVisibleTurnEntries,
   initLocalConversationVisibleTurnEntriesBuilder,
 } from "./local-conversation-thread-parts/local-conversation-visible-turn-entries";
@@ -766,10 +747,6 @@ import {
   initThreadSummarySourceRowsChunk,
   ThreadSummarySourceRows,
 } from "./local-conversation-thread-parts/thread-summary-source-rows";
-import {
-  collectConversationWebSources,
-  initThreadSummaryWebSourcesChunk,
-} from "./local-conversation-thread-parts/thread-summary-web-sources";
 import {
   initThreadSummaryPanelChromePrimitives,
   ThreadSummaryPanelContent,
@@ -7146,302 +7123,6 @@ var localConversationArtifactsModule,
     Xa();
     initReducedMotionPreference();
     initPinnedSummaryPanelState();
-  });
-function collectBackgroundTerminalRowsFromTurns(turns) {
-  let latestTurnIndex = turns.length - 1,
-    backgroundTerminalRows = [];
-  for (let turnIndex = latestTurnIndex; turnIndex >= 0; --turnIndex) {
-    let turn = turns[turnIndex];
-    if (
-      turn != null &&
-      !(turnIndex === latestTurnIndex && turn.status === "inProgress")
-    ) {
-      for (let item of turn.items ?? [])
-        if (
-          item != null &&
-          item.type === "commandExecution" &&
-          item.status === "inProgress" &&
-          !turn.interruptedCommandExecutionItemIds?.includes(item.id)
-        ) {
-          let command = Mc(item);
-          backgroundTerminalRows.push({
-            id: item.id,
-            command,
-            cwd: item.cwd ?? null,
-            processId: item.processId,
-            startedAtMs:
-              turn.commandExecutionStartedAtMsById?.[item.id] ??
-              turn.firstTurnWorkItemStartedAtMs ??
-              turn.turnStartedAtMs ??
-              null,
-            turnId: turn.turnId,
-          });
-        }
-    }
-  }
-  return backgroundTerminalRows;
-}
-function collectRestoredBackgroundProcessRows(conversation) {
-  return conversation == null
-    ? []
-    : collectConversationProcessRows([conversation]).filter(
-        (item) => item.source === "restored-process",
-      );
-}
-var initRestoredProcessRowsCollector = once(() => {
-  xs();
-  initActiveConversationProcessRowsChunk();
-});
-function getLatestCompletedTurnPlanSummary(turns) {
-  for (let turnIndex = turns.length - 1; turnIndex >= 0; --turnIndex) {
-    let turn = turns[turnIndex];
-    if (turn != null && turn.status !== "inProgress")
-      for (let itemIndex = turn.items.length - 1; itemIndex >= 0; --itemIndex) {
-        let item = turn.items[itemIndex];
-        if (item == null || item.type !== "plan") continue;
-        let headingTitle = item.text.match(/^#\s+(.+)$/m)?.[1]?.trim();
-        return {
-          content: item.text,
-          key: turn.turnId ?? item.id,
-          title:
-            headingTitle == null
-              ? null
-              : formatConversationTitleText(headingTitle),
-        };
-      }
-  }
-  return null;
-}
-var initLatestCompletedPlanSummaryHelpers = once(() => {
-  Ur();
-});
-function collectSideChatTabSummaries(tabs, isConversationResponseInProgress) {
-  return tabs.flatMap((item) => {
-    if (!item.tabId.startsWith(SIDE_CHAT_TAB_ID_PREFIX)) return [];
-    let conversationId = toConversationId(
-      item.tabId.slice(SIDE_CHAT_TAB_ID_PREFIX.length),
-    );
-    return [
-      {
-        conversationId: conversationId,
-        isResponseInProgress: isConversationResponseInProgress(conversationId),
-        tabId: item.tabId,
-        title: item.title,
-      },
-    ];
-  });
-}
-var SIDE_CHAT_TAB_ID_PREFIX,
-  initSideChatTabSummaryHelpers = once(() => {
-    initPathHelpers();
-    SIDE_CHAT_TAB_ID_PREFIX = "sidechat:";
-  });
-function buildMcpServerMetadataByName(mcpServersQuery) {
-  let metadataByName = new Map();
-  for (let serverRegistration of mcpServersQuery?.data ?? []) {
-    let serverInfo = serverRegistration.serverInfo;
-    if (serverInfo == null) continue;
-    let serverLogo = xl(serverInfo),
-      displayName = serverInfo.title?.trim() || serverInfo.name.trim() || null;
-    if (serverLogo == null && displayName == null) continue;
-    let metadata = {
-      logoUrl: serverLogo?.logoUrl ?? null,
-      logoUrlDark: serverLogo?.logoDarkUrl ?? null,
-      name: displayName,
-    };
-    for (let serverName of [serverRegistration.name, serverInfo.name]) {
-      let lookupKey = normalizeMcpServerLookupKey(serverName);
-      lookupKey.length > 0 &&
-        !metadataByName.has(lookupKey) &&
-        metadataByName.set(lookupKey, metadata);
-    }
-  }
-  return metadataByName;
-}
-function normalizeMcpServerLookupKey(serverName) {
-  return serverName?.trim().toLowerCase() ?? "";
-}
-var initMcpToolSourceMetadataHelpers = once(() => {
-  Sl();
-});
-function collectConversationMcpToolSources(
-  turns,
-  apps,
-  installedMcpAppIds,
-  mcpServersQuery,
-) {
-  let toolSources = [],
-    toolSourcesById = new Map(),
-    serverMetadataByName = buildMcpServerMetadataByName(mcpServersQuery);
-  for (let turnIndex = turns.length - 1; turnIndex >= 0; --turnIndex) {
-    let turn = turns[turnIndex];
-    for (let itemIndex = turn.items.length - 1; itemIndex >= 0; --itemIndex) {
-      let item = turn.items[itemIndex];
-      if (item.type !== "mcpToolCall" || item.server === "node_repl") continue;
-      let toolSource = getMcpToolSourceSummary(
-          item,
-          apps,
-          serverMetadataByName,
-        ),
-        mcpAppId = parseMcpAppIdFromToolCallId(item.id),
-        installedMcpAppId =
-          installedMcpAppIds?.has(mcpAppId) === true ? mcpAppId : undefined,
-        existingToolSource = toolSourcesById.get(toolSource.id);
-      if (existingToolSource != null) {
-        existingToolSource.mcpAppId == null &&
-          installedMcpAppId != null &&
-          (existingToolSource.mcpAppId = installedMcpAppId);
-        continue;
-      }
-      toolSource.mcpAppId = installedMcpAppId;
-      toolSourcesById.set(toolSource.id, toolSource);
-      toolSources.push(toolSource);
-    }
-  }
-  return toolSources;
-}
-function getMcpToolSourceSummary(item, apps, serverMetadataByName) {
-  let appToolSource = $r({
-    apps: apps,
-    functionName: `${item.server}__${item.tool}`,
-    serverName: item.server,
-    toolName: item.tool,
-  });
-  if (appToolSource != null)
-    return {
-      id: appToolSource.id,
-      name: appToolSource.name,
-      pluginDisplayNames: appToolSource.pluginDisplayNames ?? [],
-      logoUrl: appToolSource.logoUrl,
-      logoUrlDark: appToolSource.logoUrlDark,
-    };
-  let serverMetadata = serverMetadataByName.get(
-    normalizeMcpServerLookupKey(item.server),
-  );
-  return {
-    id: `mcp-server:${item.server}`,
-    name: serverMetadata?.name ?? formatIdentifierTitle(item.server),
-    pluginDisplayNames: [],
-    logoUrl: serverMetadata?.logoUrl ?? null,
-    logoUrlDark: serverMetadata?.logoUrlDark ?? null,
-  };
-}
-var initLocalConversationSummaryPanelModelDependencies = once(() => {
-  Qi();
-  initAppToolSourceMatcherCache();
-  initMcpToolSourceMetadataHelpers();
-  initIdentifierTitleFormatter();
-  initThreadSummaryWebSourcesChunk();
-  initThreadSummaryBrowserUseModelChunk();
-});
-function useLocalConversationSummaryPanelModel(
-  includeBackgroundActivity = true,
-) {
-  let routeSnapshot = useScope(localConversationRouteScope),
-    conversationId =
-      routeSnapshot.value.routeKind === "local-thread"
-        ? routeSnapshot.value.conversationId
-        : null;
-  let host = useSignalValue(hostConfigSignal),
-    turns =
-      useScopedValue(conversationTurnsSignal, conversationId) ??
-      EMPTY_SUMMARY_PANEL_TURNS,
-    cwd = useScopedValue(conversationCwdSignal, conversationId),
-    title = useScopedValue(conversationTitleSignal, conversationId),
-    backgroundTerminals = includeBackgroundActivity
-      ? collectBackgroundTerminalRowsFromTurns(turns)
-      : [],
-    restoredBackgroundProcesses = includeBackgroundActivity
-      ? collectRestoredBackgroundProcessRows(
-          conversationId == null
-            ? null
-            : {
-                cwd,
-                hostId: host.id,
-                id: conversationId,
-                title,
-                turns,
-              },
-        )
-      : [];
-  let artifacts = useScopedValue(
-      localConversationSummaryArtifactsSignal,
-      conversationId,
-    ),
-    sideChats = useSignalValue(localConversationSideChatSummariesSignal),
-    installedMcpAppIds = useSignalValue(installedMcpAppIdsSignal),
-    browserUseSummaries = useThreadSummaryBrowserUseSummaries(routeSnapshot);
-  let hasExternalMcpToolCalls = turns.some(turnHasExternalMcpToolCall),
-    mcpAppsQueryInput = {
-      enabled: hasExternalMcpToolCalls,
-      hostId: host.id,
-    };
-  let { data: apps = [] } = useAppsQuery(mcpAppsQueryInput),
-    { data: mcpServersQuery } = useScopedValue(mcpServersQuerySignal, host.id),
-    toolSources = collectConversationMcpToolSources(
-      turns,
-      apps,
-      installedMcpAppIds,
-      mcpServersQuery,
-    ),
-    webSources = collectConversationWebSources(turns),
-    plan = getLatestCompletedTurnPlanSummary(turns),
-    backgroundAgents = useScopedValue(
-      backgroundAgentsSignal,
-      ns() ? conversationId : null,
-    );
-  return {
-    artifacts,
-    sideChats,
-    toolSources,
-    webSources,
-    backgroundAgents,
-    backgroundTerminals,
-    browserUseSummaries,
-    restoredBackgroundProcesses,
-    plan,
-  };
-}
-function turnHasExternalMcpToolCall(turn) {
-  return turn.items.some(isExternalMcpToolCallItem);
-}
-function isExternalMcpToolCallItem(item) {
-  return item.type === "mcpToolCall" && item.server !== "node_repl";
-}
-var localConversationSummaryPanelSignalsModule,
-  localConversationSideChatSummariesSignal,
-  EMPTY_SUMMARY_PANEL_TURNS,
-  initLocalConversationSummaryPanelSignals = once(() => {
-    localConversationSummaryPanelSignalsModule = getChunkModuleExports();
-    initScopeRuntime();
-    initConversationStateSelectors();
-    initBrowserFeatureAvailabilitySignals();
-    Ka();
-    yo();
-    Yi();
-    Ao();
-    Qi();
-    fa();
-    initConnectorAppsListQuery();
-    initConfigQueryRuntime();
-    initRouteScope();
-    Ki();
-    initConversationRouteSourceHelpers();
-    initLocalConversationArtifactSignals();
-    Pc();
-    initRestoredProcessRowsCollector();
-    initLatestCompletedPlanSummaryHelpers();
-    initSideChatTabSummaryHelpers();
-    initLocalConversationSummaryPanelModelDependencies();
-    localConversationSideChatSummariesSignal = createDerivedSignal(
-      localConversationRouteScope,
-      ({ get }) =>
-        collectSideChatTabSummaries(
-          get(rightPanelTabsStore.tabs$),
-          (t) => get(localResponseInProgressSignal, t) ?? false,
-        ),
-    );
-    EMPTY_SUMMARY_PANEL_TURNS = [];
   });
 function ConnectedLocalWorktreeRestoreBanner(props) {
   let { conversationId, cwd } = props,
