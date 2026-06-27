@@ -114,10 +114,8 @@ import {
   Nh as initGitBranchQueryRuntime,
   Nj as initReverseScrollUtilities,
   Np as conversationHistoryCompleteSignal,
-  Nu as getHostCodexHome,
   Nv as initConversationArtifactRuntime,
   OI as getHotkeyWindowThreadPath,
-  OL as normalizeWorkspaceBrowserRoot,
   OM as scaleCssPxByWindowZoom,
   ON as initButtonComponentPrimitives,
   OP as createMotionSignal,
@@ -239,7 +237,6 @@ import {
   oP as initQueryDurationConstants,
   ok as sendAppServerRequest,
   oy as initIdentifierTitleFormatter,
-  pI as isPathInCodexWorktree,
   pM as Tooltip,
   pP as initLoggerRuntime,
   pi as PopoverContent,
@@ -289,13 +286,9 @@ import {
   Ar as parseMcpAppIdFromToolCallId,
   Ba as pullRequestReviewCommentAttachmentsSignal,
   Cl as pullRequestCurrentBranchSignal,
-  Dd as Fi,
   Ds as openEnvironmentTerminalSession,
-  Ec as Ri,
-  Es as zi,
   Fr as installedMcpAppIdsSignal,
   Ga as MoreHorizontalIcon,
-  Gl as conversationDisplayTitleSignal,
   Ha as updatePullRequestReviewCommentAttachments,
   Il as Ki,
   Ir as setThreadSourceFrameState,
@@ -310,7 +303,6 @@ import {
   Rr as ia,
   Sa as aa,
   Sl as workspaceRouteStateSignal,
-  So as ca,
   Td as ua,
   Va as da,
   Wl as fa,
@@ -374,7 +366,6 @@ import {
   Gt as Po,
   H as Fo,
   Ja as Lo,
-  Ko as composerModeSignal,
   Kt as zo,
   Ma as Bo,
   Na as Vo,
@@ -386,7 +377,6 @@ import {
   W as Xo,
   _o as Zo,
   a as Qo,
-  as as $o,
   en as es,
   ho as ts,
   ji as ns,
@@ -414,7 +404,6 @@ import {
   Bn as worktreeStatusQuerySignal,
   Bu as ws,
   Du as Es,
-  El as Ds,
   Eu as Os,
   Fr as ks,
   Gm as js,
@@ -439,7 +428,6 @@ import {
   Qn as $s,
   Rn as ec,
   St as tc,
-  Tl as nc,
   Tu as rc,
   Ul as ic,
   Vl as ac,
@@ -562,10 +550,6 @@ import {
 } from "../collaboration/share-invite-autocomplete";
 import { initStarIconChunk as Fu, StarIcon as Iu } from "../icons/star-icon";
 import {
-  GitBranchSwitcher as Ru,
-  initGitBranchSwitcherChunk as Lu,
-} from "../git/git-branch-switcher";
-import {
   clearStoppedPendingProcessRows,
   collectConversationProcessRows,
   computerUsePictureInPictureAvailableSignal,
@@ -593,14 +577,6 @@ import {
   ThreadAppShellSourceRegistration,
   useNullAppShellRef,
 } from "../app-shell/thread-background-processes";
-import {
-  a as CloudEnvironmentDropdown,
-  i as initThreadHandoffHelpersChunk,
-  n as initLocalRemoteDropdownChunk,
-  o as initCloudEnvironmentDropdownChunk,
-  r as shouldShowThreadHandoffInSummary,
-  t as LocalRemoteDropdown,
-} from "../boundaries/current-ref/local-remote-dropdown-producer";
 import {
   buildThreadVirtualizerLayout as Xu,
   getDistanceFromBottomForCenteredTurn as Yu,
@@ -720,6 +696,10 @@ import {
   initThreadSummaryBrowserUseModelChunk,
   useThreadSummaryBrowserUseSummaries,
 } from "./local-conversation-thread-parts/thread-summary-browser-use-model";
+import {
+  initThreadSummaryEnvironmentSectionChunk,
+  ThreadSummaryEnvironmentSection,
+} from "./local-conversation-thread-parts/thread-summary-environment-section";
 import {
   initThreadSummaryOutputOpenHandlersChunk,
   useThreadSummaryOutputOpenHandlers,
@@ -6390,332 +6370,6 @@ var localConversationGitSummaryModule,
     localConversationGitSummaryJsxRuntime = getJsxRuntime();
     GITHUB_STATUS_ICON_CLASS_NAME = "icon-sm shrink-0 text-token-text-tertiary";
   });
-function ThreadSummaryEnvironmentModeControls(props) {
-  let { conversationId, onOpenChange } = props,
-    scope = useScope(composerScope),
-    composerMode = useSignalValue(composerModeSignal),
-    setComposerMode = (nextMode) => {
-      $o(scope, null, nextMode);
-    };
-  let conversationRemoteState = $i(conversationId),
-    threadHostId =
-      useScopedValue(conversationHostIdSignal, conversationId) ?? "local",
-    conversationCwd = useScopedValue(conversationCwdSignal, conversationId),
-    remoteCodexHome = getHostCodexHome(conversationRemoteState.hostId),
-    isWorktreeConversation = isPathInCodexWorktree(
-      conversationCwd,
-      remoteCodexHome,
-    );
-  let isThreadHandoffSummaryEnabled = useStatsigGate("1115442235"),
-    conversationTitle = useScopedValue(
-      conversationDisplayTitleSignal,
-      conversationId,
-    ),
-    threadHandoff =
-      isThreadHandoffSummaryEnabled &&
-      shouldShowThreadHandoffInSummary({
-        isCompactWindow: lo(),
-      }) &&
-      conversationRemoteState.cwd != null
-        ? {
-            conversationTitle,
-            cwd: normalizeWorkspacePath(conversationRemoteState.cwd),
-            isWorktreeConversation,
-          }
-        : null;
-  let footerRemoteState = {
-    isAttachedToStartedTask: true,
-    existingRemoteThreadState: {
-      hostId: threadHostId,
-    },
-  };
-  let localRemoteDropdown = (
-    <LocalRemoteDropdown
-      composerMode={composerMode}
-      setComposerMode={setComposerMode}
-      conversationId={conversationId}
-      footerRemoteState={footerRemoteState}
-      side="left"
-      disabled={isWorktreeConversation}
-      threadHandoff={threadHandoff}
-      worktreeLabelOnly={isWorktreeConversation}
-      triggerVariant="summary-panel"
-      onOpenChange={onOpenChange}
-    />
-  );
-  let cloudEnvironmentDropdown =
-    composerMode === "cloud" &&
-    threadSummaryEnvironmentModeControlsJsxRuntime.jsx(PlatformContentGate, {
-      electron: true,
-      browser: true,
-      children: threadSummaryEnvironmentModeControlsJsxRuntime.jsx(
-        CloudEnvironmentDropdown,
-        {
-          composerMode,
-          conversationId,
-          disabled: isWorktreeConversation,
-          setComposerMode,
-          side: "left",
-        },
-      ),
-    });
-  return (
-    <div className="relative flex w-full items-center gap-2">
-      {localRemoteDropdown}
-      {cloudEnvironmentDropdown}
-    </div>
-  );
-}
-var threadSummaryEnvironmentModeControlsModule,
-  threadSummaryEnvironmentModeControlsJsxRuntime,
-  initThreadSummaryEnvironmentModeControlsChunk = once(() => {
-    threadSummaryEnvironmentModeControlsModule = getChunkModuleExports();
-    initScopeRuntime();
-    initPathHelpers();
-    initConversationStateSelectors();
-    ca();
-    initElectronPlatformContent();
-    initCloudEnvironmentDropdownChunk();
-    cs();
-    initThreadHandoffHelpersChunk();
-    initLocalRemoteDropdownChunk();
-    initHostCodexHomeQuery();
-    Fi();
-    fa();
-    initComposerScope();
-    initHostConfigHelpers();
-    initStatsigFeatureGateHooks();
-    threadSummaryEnvironmentModeControlsJsxRuntime = getJsxRuntime();
-  });
-function ThreadSummaryEnvironmentSection(props) {
-  let {
-      cwd,
-      conversationId,
-      hostConfig,
-      isCodexWorktree,
-      onOpenReviewTab,
-      onForceShow,
-      registerEnvironmentActionCommands,
-      workspaceBrowserRoot,
-    } = props,
-    routeScope = useScope(localConversationRouteScope),
-    diffStatsQuery = useSignalValue(diffStatsSignal),
-    environmentTerminalController = useSignalValue(
-      environmentTerminalControllerSignal,
-    ),
-    diffStats = diffStatsQuery.metrics,
-    createBranchActionRef =
-      threadSummaryEnvironmentSectionReactRuntime.useRef(null),
-    createPullRequestActionRef =
-      threadSummaryEnvironmentSectionReactRuntime.useRef(null),
-    workspaceGitRoot =
-      workspaceBrowserRoot == null
-        ? null
-        : normalizeWorkspaceBrowserRoot(workspaceBrowserRoot);
-  let emptyBranchControlRow = isCodexWorktree ? (
-    <SummaryPanelRow
-      icon={threadSummaryEnvironmentSectionJsxRuntime.jsx(GitBranchIcon, {
-        className: "icon-sm shrink-0",
-      })}
-      label={
-        <FormattedMessage
-          id="localConversation.gitActions.createBranch"
-          defaultMessage="Create branch"
-          description="Label for the create branch action in the git actions dropdown"
-        />
-      }
-      onClick={() => {
-        createBranchActionRef.current?.();
-      }}
-    />
-  ) : null;
-  let branchControlRow =
-    workspaceGitRoot == null ? null : (
-      <Ru
-        gitRoot={workspaceGitRoot}
-        hostConfig={hostConfig}
-        localConversationId={conversationId}
-        shouldShow={true}
-        side="left"
-        align="start"
-        renderControl={(controlState) => {
-          let { currentBranch, disabled, isPending, switchTooltipText } =
-            controlState;
-          return currentBranch == null ? (
-            emptyBranchControlRow
-          ) : (
-            <SummaryPanelRow
-              disabled={disabled}
-              icon={threadSummaryEnvironmentSectionJsxRuntime.jsx(
-                GitBranchIcon,
-                {
-                  className: "icon-sm shrink-0",
-                },
-              )}
-              label={
-                <span className="flex min-w-0 items-center gap-1 text-token-foreground">
-                  <span className="min-w-0 truncate">{currentBranch}</span>
-                  {disabled
-                    ? null
-                    : threadSummaryEnvironmentSectionJsxRuntime.jsx(
-                        ChevronIcon,
-                        {
-                          className:
-                            "icon-2xs shrink-0 text-token-text-tertiary",
-                        },
-                      )}
-                </span>
-              }
-              labelClassName="flex min-w-0 items-center"
-              title={switchTooltipText}
-              trailing={
-                isPending
-                  ? threadSummaryEnvironmentSectionJsxRuntime.jsx(SpinnerIcon, {
-                      className: "icon-xs text-token-text-tertiary",
-                    })
-                  : null
-              }
-              trailingVisible={isPending}
-            />
-          );
-        }}
-        onOpenChange={onForceShow}
-      />
-    );
-  let renderSectionActions = (summaryState) => {
-    let { isExpanded } = summaryState;
-    return (
-      <span className="ms-auto flex items-center justify-end gap-0.5">
-        {diffStats && !isExpanded && (
-          <Ml
-            linesAdded={diffStats.additions}
-            linesRemoved={diffStats.deletions}
-          />
-        )}
-        {threadSummaryEnvironmentSectionJsxRuntime.jsx(
-          LocalConversationEnvironmentActionControls,
-          {
-            conversationId,
-            hostConfig,
-            onMenuOpenChange: onForceShow,
-            onOpenChange: onForceShow,
-            onShowTerminal: (terminalId) => {
-              openEnvironmentTerminalSession(
-                routeScope,
-                terminalId,
-                environmentTerminalController,
-              );
-            },
-            registerCommands: registerEnvironmentActionCommands,
-            workspaceRoot: cwd,
-          },
-        )}
-      </span>
-    );
-  };
-  let sectionTitle = (
-    <FormattedMessage
-      id="codex.localConversation.environmentSummary.title"
-      defaultMessage="Environment"
-      description="Title for the thread summary side panel environment and branch details section"
-    />
-  );
-  let branchChangesRow = threadSummaryEnvironmentSectionJsxRuntime.jsx(
-    BranchChangesSummaryRow,
-    {
-      onOpenReviewTab,
-      diffStats,
-      isDiffStatsLoading: diffStatsQuery.isLoading,
-    },
-  );
-  let environmentModeControls =
-    conversationId == null ? null : (
-      <ThreadSummaryEnvironmentModeControls
-        conversationId={conversationId}
-        onOpenChange={onForceShow}
-      />
-    );
-  let branchControlOwnsDetachedSetup =
-      isCodexWorktree && workspaceGitRoot != null,
-    handleCreatePullRequestActionReady,
-    handleCreateBranchActionReady;
-  handleCreateBranchActionReady = (action) => {
-    createBranchActionRef.current = action;
-  };
-  handleCreatePullRequestActionReady = (action) => {
-    createPullRequestActionRef.current = action;
-  };
-  let pullRequestControls = threadSummaryEnvironmentSectionJsxRuntime.jsx(
-    nc,
-    {
-      codexWorktree: isCodexWorktree,
-      conversationId,
-      cwd,
-      hostId: hostConfig.id,
-      hidePullRequestSection: true,
-      hideCreatePullRequestAction: true,
-      surface: "summary-panel",
-      branchControlOwnsDetachedSetup,
-      onCreateBranchActionReady: handleCreateBranchActionReady,
-      onCreatePullRequestActionReady: handleCreatePullRequestActionReady,
-    },
-    cwd,
-  );
-  let handleCreatePullRequest = () => {
-    createPullRequestActionRef.current?.();
-  };
-  let gitSummary = (
-    <LocalConversationGitSummary
-      conversationId={conversationId}
-      cwd={cwd}
-      hostConfig={hostConfig}
-      workspaceBrowserRoot={workspaceBrowserRoot}
-      onCreatePullRequest={handleCreatePullRequest}
-    />
-  );
-  return (
-    <ThreadSummaryPanelSection
-      sectionKey="environment"
-      after={renderSectionActions}
-      title={sectionTitle}
-    >
-      {branchChangesRow}
-      {environmentModeControls}
-      {branchControlRow}
-      {pullRequestControls}
-      {gitSummary}
-    </ThreadSummaryPanelSection>
-  );
-}
-var threadSummaryEnvironmentSectionModule,
-  threadSummaryEnvironmentSectionReactRuntime,
-  threadSummaryEnvironmentSectionJsxRuntime,
-  initThreadSummaryEnvironmentSectionChunk = once(() => {
-    threadSummaryEnvironmentSectionModule = getChunkModuleExports();
-    initScopeRuntime();
-    initPathHelpers();
-    threadSummaryEnvironmentSectionReactRuntime = toEsModule(
-      loadReactModule(),
-      1,
-    );
-    initIntlRuntime();
-    initSpinnerComponent();
-    Nl();
-    initGitBranchIcon();
-    initChevronDownIcon();
-    Lu();
-    Ds();
-    Ri();
-    initRouteScope();
-    zi();
-    initLocalEnvironmentActionControlsChunk();
-    initSummaryPanelRowChunk();
-    initThreadSummaryPanelSectionChunk();
-    initBranchChangesSummaryRowChunk();
-    initLocalConversationGitSummaryChunk();
-    initThreadSummaryEnvironmentModeControlsChunk();
-    threadSummaryEnvironmentSectionJsxRuntime = getJsxRuntime();
-  });
 function ThreadSummaryAutomationRow(props) {
   let { automation } = props,
     intl = useIntl(),
@@ -7173,6 +6827,11 @@ function ThreadSummaryPanelSections(props) {
     );
   let gitSummarySection = !isElectronRuntime && isGitWorkspace && activeCwd && (
     <ThreadSummaryEnvironmentSection
+      BranchChangesSummaryRowComponent={BranchChangesSummaryRow}
+      EnvironmentActionControlsComponent={
+        LocalConversationEnvironmentActionControls
+      }
+      GitSummaryComponent={LocalConversationGitSummary}
       cwd={activeCwd}
       conversationId={conversationId}
       hostConfig={hostConfig}
