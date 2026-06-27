@@ -1164,56 +1164,63 @@ var MAIN_THREAD_PIP_HOST_SELECTOR,
     PIP_OBSTACLE_SELECTOR = `[${PIP_OBSTACLE_ATTRIBUTE}]`;
     PIP_LAYOUT_ELEMENT_SELECTOR = `${MAIN_THREAD_PIP_HOST_SELECTOR},${PIP_OBSTACLE_SELECTOR}`;
   });
-function ThreadFindNavigationRail(e) {
-  let { enabled = true, getItems, onRevealItem } = e,
-    [o, s] = kf.useState(false),
-    c = Vr("2551582477") && enabled,
-    l,
-    u;
+function ThreadFindNavigationRail(props) {
+  let { enabled = true, getItems, onRevealItem } = props,
+    [shouldRenderLazyRail, setShouldRenderLazyRail] =
+      threadFindNavigationRailReactRuntime.useState(false),
+    railFeatureEnabled = Vr("2551582477") && enabled,
+    scheduleLazyRailRender,
+    lazyRailEffectDeps;
   if (
-    ((l = () => {
-      if (!c || o) return;
-      let e = () => {
-          s(true);
+    ((scheduleLazyRailRender = () => {
+      if (!railFeatureEnabled || shouldRenderLazyRail) return;
+      let revealNavigationRail = () => {
+          setShouldRenderLazyRail(true);
         },
-        t = window.requestIdleCallback?.bind(window),
-        n = window.cancelIdleCallback?.bind(window);
-      if (t && n) {
-        let r = t(e, {
+        requestIdleCallback = window.requestIdleCallback?.bind(window),
+        cancelIdleCallback = window.cancelIdleCallback?.bind(window);
+      if (requestIdleCallback && cancelIdleCallback) {
+        let idleCallbackId = requestIdleCallback(revealNavigationRail, {
           timeout: 2e3,
         });
         return () => {
-          n(r);
+          cancelIdleCallback(idleCallbackId);
         };
       }
-      let r = globalThis.setTimeout(e, 0);
+      let timeoutId = globalThis.setTimeout(revealNavigationRail, 0);
       return () => {
-        globalThis.clearTimeout(r);
+        globalThis.clearTimeout(timeoutId);
       };
     }),
-    (u = [c, o]),
-    kf.useEffect(l, u),
-    !c || !o)
+    (lazyRailEffectDeps = [railFeatureEnabled, shouldRenderLazyRail]),
+    threadFindNavigationRailReactRuntime.useEffect(
+      scheduleLazyRailRender,
+      lazyRailEffectDeps,
+    ),
+    !railFeatureEnabled || !shouldRenderLazyRail)
   )
     return null;
-  let d = getItems();
-  return Af.jsx(jf, {
-    items: d,
-    onRevealItem,
-  });
+  let navigationItems = getItems();
+  return threadFindNavigationRailJsxRuntime.jsx(
+    LazyThreadUserMessageNavigationRail,
+    {
+      items: navigationItems,
+      onRevealItem,
+    },
+  );
 }
-var Of,
-  kf,
-  Af,
-  jf,
+var threadFindNavigationRailModule,
+  threadFindNavigationRailReactRuntime,
+  threadFindNavigationRailJsxRuntime,
+  LazyThreadUserMessageNavigationRail,
   initThreadFindNavigationRail = once(() => {
-    Of = q();
-    kf = toEsModule(G(), 1);
+    threadFindNavigationRailModule = q();
+    threadFindNavigationRailReactRuntime = toEsModule(G(), 1);
     ol();
     ae();
-    Af = getJsxRuntime();
+    threadFindNavigationRailJsxRuntime = getJsxRuntime();
     Qn();
-    jf = al(
+    LazyThreadUserMessageNavigationRail = al(
       async () =>
         (
           await u(
@@ -1234,7 +1241,7 @@ var Of,
         ).ThreadUserMessageNavigationRail,
     );
   }),
-  Nf = once(() => {});
+  initThreadFindNavigationRailNoopChunk = once(() => {});
 function SummaryPanelExpandableList(props) {
   let { children, empty, getKey, items, listClassName, visibleItemLimit } =
       props,
@@ -1538,7 +1545,7 @@ var summaryPanelArtifactsModule,
     initSummaryPanelRowChunk();
     summaryPanelArtifactsJsxRuntime = getJsxRuntime();
   });
-function $f(e) {
+function ThreadSummaryBackgroundActivityRows(props) {
   let {
       backgroundAgents,
       backgroundTerminals,
@@ -1546,59 +1553,67 @@ function $f(e) {
       onOpenBackgroundAgent,
       onOpenTerminal,
       onStopError,
-    } = e,
-    c = ur(),
-    [l, u] = sp.useState(null),
-    d,
-    f;
+    } = props,
+    intl = ur(),
+    [stoppingTerminalId, setStoppingTerminalId] =
+      threadSummaryBackgroundActivityReactRuntime.useState(null),
+    backgroundSummaryItems,
+    inlineActivityBackgroundAgents;
   {
-    f = getInlineActivityBackgroundAgents(backgroundAgents);
-    d = createBackgroundSummaryItems(backgroundAgents, backgroundTerminals);
+    inlineActivityBackgroundAgents =
+      getInlineActivityBackgroundAgents(backgroundAgents);
+    backgroundSummaryItems = createBackgroundSummaryItems(
+      backgroundAgents,
+      backgroundTerminals,
+    );
   }
-  let p = (e) => {
+  let stopAllBackgroundTerminals = (terminal) => {
     conversationId == null ||
-      l != null ||
-      (u(e.id),
+      stoppingTerminalId != null ||
+      (setStoppingTerminalId(terminal.id),
       Dr("clean-background-terminals", {
         conversationId,
       })
         .catch(onStopError)
-        .finally(() => u(null)));
+        .finally(() => setStoppingTerminalId(null)));
   };
-  let m = p,
-    h = (e) => {
-      switch (e.type) {
+  let handleStopAllBackgroundTerminals = stopAllBackgroundTerminals,
+    renderBackgroundSummaryItem = (item) => {
+      switch (item.type) {
         case "agent":
           return (
             <SummaryPanelRow
               icon={null}
-              label={cp.jsx(ip, {
-                backgroundAgent: e.backgroundAgent,
-              })}
+              label={threadSummaryBackgroundActivityJsxRuntime.jsx(
+                BackgroundAgentSummaryLabel,
+                {
+                  backgroundAgent: item.backgroundAgent,
+                },
+              )}
               labelClassName="min-w-0"
               trailing={
-                e.backgroundAgent.diffStats == null ? null : (
+                item.backgroundAgent.diffStats == null ? null : (
                   <Ml
-                    linesAdded={e.backgroundAgent.diffStats.linesAdded}
-                    linesRemoved={e.backgroundAgent.diffStats.linesRemoved}
+                    linesAdded={item.backgroundAgent.diffStats.linesAdded}
+                    linesRemoved={item.backgroundAgent.diffStats.linesRemoved}
                     className="text-size-chat"
                   />
                 )
               }
-              trailingVisible={e.backgroundAgent.diffStats != null}
-              onClick={() => onOpenBackgroundAgent(e.backgroundAgent)}
+              trailingVisible={item.backgroundAgent.diffStats != null}
+              onClick={() => onOpenBackgroundAgent(item.backgroundAgent)}
             />
           );
         case "terminal":
           return (
             <SummaryPanelRow
-              icon={cp.jsx(ds, {
+              icon={threadSummaryBackgroundActivityJsxRuntime.jsx(ds, {
                 className: "icon-sm shrink-0 text-token-text-secondary",
               })}
               label={
                 <span className="truncate text-sm">
-                  {e.terminal.command.length > 0 ? (
-                    e.terminal.command
+                  {item.terminal.command.length > 0 ? (
+                    item.terminal.command
                   ) : (
                     <FormattedMessage
                       id="codex.localConversation.backgroundTerminals.defaultLabel"
@@ -1608,7 +1623,7 @@ function $f(e) {
                   )}
                 </span>
               }
-              actions={cp.jsx(jr, {
+              actions={threadSummaryBackgroundActivityJsxRuntime.jsx(jr, {
                 side: "top",
                 tooltipContent: (
                   <FormattedMessage
@@ -1621,118 +1636,131 @@ function $f(e) {
                   <button
                     type="button"
                     className="flex size-4 shrink-0 cursor-interaction items-center justify-center border-0 bg-transparent p-0 text-token-text-tertiary hover:text-token-foreground focus:outline-none disabled:cursor-not-allowed disabled:opacity-40"
-                    disabled={l != null}
-                    onClick={() => m(e.terminal)}
-                    aria-label={c.formatMessage({
+                    disabled={stoppingTerminalId != null}
+                    onClick={() =>
+                      handleStopAllBackgroundTerminals(item.terminal)
+                    }
+                    aria-label={intl.formatMessage({
                       id: "codex.localConversation.backgroundTerminals.stop",
                       defaultMessage: "Stop all background terminals",
                       description:
                         "Aria label for button that stops all background terminals from the thread summary panel",
                     })}
                   >
-                    {l === e.terminal.id
-                      ? cp.jsx(rr, {
+                    {stoppingTerminalId === item.terminal.id
+                      ? threadSummaryBackgroundActivityJsxRuntime.jsx(rr, {
                           className: "icon-xs",
                         })
-                      : cp.jsx(js, {
+                      : threadSummaryBackgroundActivityJsxRuntime.jsx(js, {
                           className: "icon-xs",
                           "aria-hidden": true,
                         })}
                   </button>
                 ),
               })}
-              onClick={() => onOpenTerminal(e.terminal)}
+              onClick={() => onOpenTerminal(item.terminal)}
             />
           );
       }
     };
-  let g = (
-    <SummaryPanelExpandableList items={d} getKey={getBackgroundSummaryItemKey}>
-      {h}
+  let backgroundSummaryRows = (
+    <SummaryPanelExpandableList
+      items={backgroundSummaryItems}
+      getKey={getBackgroundSummaryItemKey}
+    >
+      {renderBackgroundSummaryItem}
     </SummaryPanelExpandableList>
   );
-  let _ = g;
-  return f.length > 0 ? (
+  let rows = backgroundSummaryRows;
+  return inlineActivityBackgroundAgents.length > 0 ? (
     <>
-      {cp.jsx(tp, {
-        backgroundAgents: f,
-        onOpenBackgroundAgent,
-      })}
-      {_}
+      {threadSummaryBackgroundActivityJsxRuntime.jsx(
+        BackgroundAgentCollapsedSummaryRow,
+        {
+          backgroundAgents: inlineActivityBackgroundAgents,
+          onOpenBackgroundAgent,
+        },
+      )}
+      {rows}
     </>
   ) : (
-    _
+    rows
   );
 }
-function tp(e) {
-  let { backgroundAgents, onOpenBackgroundAgent } = e,
-    i,
-    a,
-    o,
-    s,
-    c;
+function BackgroundAgentCollapsedSummaryRow(props) {
+  let { backgroundAgents, onOpenBackgroundAgent } = props,
+    doneBackgroundAgents,
+    avatarListClassName,
+    agentAvatarButtons,
+    containerClassName,
+    workingBackgroundAgents;
   {
-    c = backgroundAgents.filter(isWorkingBackgroundAgent);
-    i = backgroundAgents.filter(isDoneBackgroundAgent);
-    let e = c.length > 0 ? c.slice(0, 4) : i.slice(-4);
-    s = "flex min-h-8 items-center gap-2";
-    a = "flex shrink-0 items-center gap-1.5";
-    let l;
-    l = (e) => (
+    workingBackgroundAgents = backgroundAgents.filter(isWorkingBackgroundAgent);
+    doneBackgroundAgents = backgroundAgents.filter(isDoneBackgroundAgent);
+    let visibleBackgroundAgents =
+      workingBackgroundAgents.length > 0
+        ? workingBackgroundAgents.slice(0, 4)
+        : doneBackgroundAgents.slice(-4);
+    containerClassName = "flex min-h-8 items-center gap-2";
+    avatarListClassName = "flex shrink-0 items-center gap-1.5";
+    let renderAgentAvatarButton;
+    renderAgentAvatarButton = (backgroundAgent) => (
       <button
-        key={e.conversationId}
+        key={backgroundAgent.conversationId}
         type="button"
         className="flex size-4 cursor-interaction rounded-full focus-visible:outline-2 focus-visible:outline-offset-2"
-        aria-label={e.displayName}
-        onClick={() => onOpenBackgroundAgent(e)}
+        aria-label={backgroundAgent.displayName}
+        onClick={() => onOpenBackgroundAgent(backgroundAgent)}
       >
-        {cp.jsx(bc, {
-          seed: e.conversationId,
+        {threadSummaryBackgroundActivityJsxRuntime.jsx(bc, {
+          seed: backgroundAgent.conversationId,
           className: "size-4",
           "aria-hidden": true,
         })}
       </button>
     );
-    o = e.map(l);
+    agentAvatarButtons = visibleBackgroundAgents.map(renderAgentAvatarButton);
   }
-  let l = <span className={a}>{o}</span>;
-  let u =
-    c.length > 0 ? (
+  let avatarList = (
+    <span className={avatarListClassName}>{agentAvatarButtons}</span>
+  );
+  let workingCountLabel =
+    workingBackgroundAgents.length > 0 ? (
       <span className="text-base whitespace-nowrap text-token-foreground">
         <FormattedMessage
           id="codex.localConversation.backgroundAgents.collapsedWorkingCount"
           defaultMessage={"{count, plural, one {# working} other {# working}}"}
           description="Number of multi-agent v2 subagents that are still working in the collapsed summary panel row"
           values={{
-            count: c.length,
+            count: workingBackgroundAgents.length,
           }}
         />
       </span>
     ) : null;
-  let d =
-    i.length > 0 ? (
+  let doneCountLabel =
+    doneBackgroundAgents.length > 0 ? (
       <span className="text-base whitespace-nowrap text-token-text-tertiary">
         <FormattedMessage
           id="codex.localConversation.backgroundAgents.collapsedDoneCount"
           defaultMessage={"{count, plural, one {# done} other {# done}}"}
           description="Number of multi-agent v2 subagents that are done in the collapsed summary panel row"
           values={{
-            count: i.length,
+            count: doneBackgroundAgents.length,
           }}
         />
       </span>
     ) : null;
   return (
-    <div className={s}>
-      {l}
-      {u}
-      {d}
+    <div className={containerClassName}>
+      {avatarList}
+      {workingCountLabel}
+      {doneCountLabel}
     </div>
   );
 }
-function ip(e) {
-  let { backgroundAgent } = e,
-    r =
+function BackgroundAgentSummaryLabel(props) {
+  let { backgroundAgent } = props,
+    tooltipContent =
       backgroundAgent.agentRole == null &&
       backgroundAgent.spawnModel == null ? null : (
         <span className="flex flex-col gap-0.5">
@@ -1753,21 +1781,20 @@ function ip(e) {
           )}
         </span>
       );
-  let i = r,
-    a = i == null,
-    o = backgroundAgent.status === "active",
-    s = (
+  let tooltipIsDisabled = tooltipContent == null,
+    isActive = backgroundAgent.status === "active",
+    avatarIcon = (
       <Uo
-        active={o}
+        active={isActive}
         seed={backgroundAgent.conversationId}
         className="icon-sm pointer-events-none"
         aria-hidden={true}
       />
     );
-  let c = (
+  let displayName = (
     <span className="min-w-0 truncate">{backgroundAgent.displayName}</span>
   );
-  let l =
+  let activeStatusLabel =
     backgroundAgent.status === "active" ? (
       <span className="loading-shimmer-pure-text shrink-0 whitespace-nowrap text-token-description-foreground">
         <FormattedMessage
@@ -1777,25 +1804,25 @@ function ip(e) {
         />
       </span>
     ) : null;
-  let u = (
+  let label = (
     <span className="flex min-w-0 items-center gap-2">
-      {s}
-      {c}
-      {l}
+      {avatarIcon}
+      {displayName}
+      {activeStatusLabel}
     </span>
   );
-  return cp.jsx(jr, {
-    disabled: a,
-    tooltipContent: i,
-    children: u,
+  return threadSummaryBackgroundActivityJsxRuntime.jsx(jr, {
+    disabled: tooltipIsDisabled,
+    tooltipContent,
+    children: label,
   });
 }
-var op,
-  sp,
-  cp,
-  lp = once(() => {
-    op = q();
-    sp = toEsModule(G(), 1);
+var threadSummaryBackgroundActivityModule,
+  threadSummaryBackgroundActivityReactRuntime,
+  threadSummaryBackgroundActivityJsxRuntime,
+  initThreadSummaryBackgroundActivityRowsChunk = once(() => {
+    threadSummaryBackgroundActivityModule = q();
+    threadSummaryBackgroundActivityReactRuntime = toEsModule(G(), 1);
     Jn();
     pn();
     d();
@@ -1808,9 +1835,9 @@ var op,
     Jc();
     initSummaryPanelExpandableList();
     initSummaryPanelRowChunk();
-    cp = getJsxRuntime();
+    threadSummaryBackgroundActivityJsxRuntime = getJsxRuntime();
   });
-var gp = once(() => {
+var initBackgroundTerminalSummaryRowsSupportChunk = once(() => {
   initActiveConversationProcessRowsChunk();
   initProcessMetricHelpersChunk();
 });
@@ -1828,7 +1855,7 @@ function BackgroundTerminalSummaryRows(props) {
       onOpen,
     } = props,
     scope = B(ut),
-    isVisibleRef = Op.useRef(isVisible),
+    isVisibleRef = backgroundTerminalSummaryRowsReactRuntime.useRef(isVisible),
     pendingProcessRows = W(pendingBackgroundProcessRowsSignal),
     killChildProcessMutation = qr("child-process-kill"),
     registerProcessMutation = qr("chat-process-register");
@@ -1857,11 +1884,11 @@ function BackgroundTerminalSummaryRows(props) {
       pendingRowsByProcessId,
       isSameProcessRow,
     );
-  Op.useEffect(() => {
+  backgroundTerminalSummaryRowsReactRuntime.useEffect(() => {
     isVisibleRef.current = isVisible;
     isVisible || clearStoppedPendingProcessRows(scope);
   }, [isVisible, scope]);
-  Op.useEffect(
+  backgroundTerminalSummaryRowsReactRuntime.useEffect(
     () => () => {
       isVisibleRef.current = false;
       clearStoppedPendingProcessRows(scope);
@@ -1913,7 +1940,7 @@ function BackgroundTerminalSummaryRows(props) {
         startedAtMs,
       );
     setPendingBackgroundProcessRow(scope, process.id, {
-      expiresAtMs: startedAtMs + Ap,
+      expiresAtMs: startedAtMs + BACKGROUND_TERMINAL_STARTING_ROW_TTL_MS,
       row: startingRow,
       rowIndex,
       sortRow: row,
@@ -1976,9 +2003,12 @@ function BackgroundTerminalSummaryRows(props) {
     return (
       <SummaryPanelRow
         key={row.terminal.id}
-        icon={kp.jsx(BackgroundTerminalStatusIcon, {
-          status,
-        })}
+        icon={backgroundTerminalSummaryRowsJsxRuntime.jsx(
+          BackgroundTerminalStatusIcon,
+          {
+            status,
+          },
+        )}
         label={
           <span
             className={S(
@@ -1991,19 +2021,22 @@ function BackgroundTerminalSummaryRows(props) {
             {row.terminal.command.length > 0 ? (
               row.terminal.command
             ) : (
-              <FormattedMessage {...jp.defaultLabel} />
+              <FormattedMessage {...backgroundTerminalMessages.defaultLabel} />
             )}
           </span>
         }
-        actions={kp.jsx(BackgroundTerminalRowActionMenu, {
-          row,
-          rowIndex,
-          status,
-          onOpen,
-          onRestart: restartBackgroundTerminal,
-          onStart: startBackgroundTerminal,
-          onStop: stopBackgroundTerminal,
-        })}
+        actions={backgroundTerminalSummaryRowsJsxRuntime.jsx(
+          BackgroundTerminalRowActionMenu,
+          {
+            row,
+            rowIndex,
+            status,
+            onOpen,
+            onRestart: restartBackgroundTerminal,
+            onStart: startBackgroundTerminal,
+            onStop: stopBackgroundTerminal,
+          },
+        )}
         actionsAlwaysFocusable={true}
         onClick={() => onOpen(row.terminal)}
       />
@@ -2026,16 +2059,26 @@ function BackgroundTerminalRowActionMenu(props) {
       !isMissingLiveProcess,
     restartTooltip =
       row.process.cwd == null ? (
-        <FormattedMessage {...jp.restartMissingWorkspaceTooltip} />
+        <FormattedMessage
+          {...backgroundTerminalMessages.restartMissingWorkspaceTooltip}
+        />
       ) : isStarting ? (
-        <FormattedMessage {...jp.restartStartingTooltip} />
+        <FormattedMessage
+          {...backgroundTerminalMessages.restartStartingTooltip}
+        />
       ) : isStopping ? (
-        <FormattedMessage {...jp.restartStoppingTooltip} />
+        <FormattedMessage
+          {...backgroundTerminalMessages.restartStoppingTooltip}
+        />
       ) : isMissingLiveProcess ? (
-        <FormattedMessage {...jp.restartMissingProcessTooltip} />
+        <FormattedMessage
+          {...backgroundTerminalMessages.restartMissingProcessTooltip}
+        />
       ) : undefined;
   let startOrRestartMessageDescriptor =
-      isStopped || isNotFound ? jp.start : jp.restart,
+      isStopped || isNotFound
+        ? backgroundTerminalMessages.start
+        : backgroundTerminalMessages.restart,
     handleStartOrRestart = () => {
       if (isStopped || isNotFound) {
         onStart(row, rowIndex);
@@ -2043,7 +2086,7 @@ function BackgroundTerminalRowActionMenu(props) {
       }
       onRestart(row, rowIndex);
     };
-  let actionsLabel = intl.formatMessage(jp.actions);
+  let actionsLabel = intl.formatMessage(backgroundTerminalMessages.actions);
   let triggerClassName = S(ac, "data-[state=open]:text-token-foreground");
   let triggerIcon = <Hi className="icon-2xs" />;
   let triggerButton = (
@@ -2057,7 +2100,9 @@ function BackgroundTerminalRowActionMenu(props) {
     </button>
   );
   let handleOpenOutput = () => onOpen(row.terminal);
-  let openOutputLabel = <FormattedMessage {...jp.openOutput} />;
+  let openOutputLabel = (
+    <FormattedMessage {...backgroundTerminalMessages.openOutput} />
+  );
   let openOutputItem = (
     <Br.Item
       LeftIcon={ds}
@@ -2071,11 +2116,13 @@ function BackgroundTerminalRowActionMenu(props) {
       row.metrics?.pid == null || isStarting || isStopping || isStopped,
     stopTooltip =
       row.metrics?.pid == null ? (
-        <FormattedMessage {...jp.stopMissingProcessTooltip} />
+        <FormattedMessage
+          {...backgroundTerminalMessages.stopMissingProcessTooltip}
+        />
       ) : undefined;
   let isStopTooltipInteractive = row.metrics?.pid == null,
     handleStop = () => onStop(row, rowIndex);
-  let stopLabel = <FormattedMessage {...jp.stop} />;
+  let stopLabel = <FormattedMessage {...backgroundTerminalMessages.stop} />;
   let stopItem = (
     <Br.Item
       LeftIcon={js}
@@ -2129,7 +2176,7 @@ function BackgroundTerminalStatusIcon(props) {
       getBackgroundTerminalStatusMessageDescriptor(status),
     );
   if (status === "starting") {
-    let startingIcon = kp.jsx(rr, {
+    let startingIcon = backgroundTerminalSummaryRowsJsxRuntime.jsx(rr, {
       className: "icon-xs text-token-charts-green",
     });
     return (
@@ -2143,7 +2190,7 @@ function BackgroundTerminalStatusIcon(props) {
       </span>
     );
   }
-  return kp.jsx(ds, {
+  return backgroundTerminalSummaryRowsJsxRuntime.jsx(ds, {
     className: "icon-sm shrink-0",
     title: statusLabel,
     "aria-label": statusLabel,
@@ -2152,25 +2199,25 @@ function BackgroundTerminalStatusIcon(props) {
 }
 function getBackgroundTerminalStatusMessageDescriptor(status) {
   return status === "starting"
-    ? jp.startingStatus
+    ? backgroundTerminalMessages.startingStatus
     : status === "stopping"
-      ? jp.stoppingStatus
+      ? backgroundTerminalMessages.stoppingStatus
       : status === "stopped"
-        ? jp.stoppedStatus
+        ? backgroundTerminalMessages.stoppedStatus
         : status === "not-found"
-          ? jp.notFoundStatus
-          : jp.runningStatus;
+          ? backgroundTerminalMessages.notFoundStatus
+          : backgroundTerminalMessages.runningStatus;
 }
-var Dp,
-  Op,
-  kp,
-  Ap,
-  jp,
-  Mp = once(() => {
-    Dp = q();
+var backgroundTerminalSummaryRowsModule,
+  backgroundTerminalSummaryRowsReactRuntime,
+  backgroundTerminalSummaryRowsJsxRuntime,
+  BACKGROUND_TERMINAL_STARTING_ROW_TTL_MS,
+  backgroundTerminalMessages,
+  initBackgroundTerminalSummaryRowsChunk = once(() => {
+    backgroundTerminalSummaryRowsModule = q();
     Ut();
     c();
-    Op = toEsModule(G(), 1);
+    backgroundTerminalSummaryRowsReactRuntime = toEsModule(G(), 1);
     Jn();
     an();
     d();
@@ -2185,11 +2232,11 @@ var Dp,
     r();
     te();
     n();
-    gp();
+    initBackgroundTerminalSummaryRowsSupportChunk();
     initSummaryPanelRowChunk();
-    kp = getJsxRuntime();
-    Ap = 1e4;
-    jp = Hr({
+    backgroundTerminalSummaryRowsJsxRuntime = getJsxRuntime();
+    BACKGROUND_TERMINAL_STARTING_ROW_TTL_MS = 1e4;
+    backgroundTerminalMessages = Hr({
       actions: {
         id: "codex.localConversation.backgroundTerminals.actions",
         defaultMessage: "Background terminal actions",
@@ -7934,7 +7981,7 @@ var threadSummaryPanelReactRuntime,
     Gn();
     initBackgroundTerminalIconChunk();
     Oe();
-    Nf();
+    initThreadFindNavigationRailNoopChunk();
     initThreadSummaryPanelSectionChunk();
     threadSummaryPanelJsxRuntime = getJsxRuntime();
     ThreadSummaryPanelChrome = {
@@ -8413,7 +8460,7 @@ function ThreadSummaryPanelSections(props) {
             })
       }
     >
-      {Q.jsx($f, {
+      {Q.jsx(ThreadSummaryBackgroundActivityRows, {
         backgroundAgents,
         backgroundTerminals: [],
         conversationId,
@@ -8464,7 +8511,7 @@ function ThreadSummaryPanelSections(props) {
       {backgroundTerminals.length > 0 &&
         Q.jsx(qt, {
           extension: true,
-          children: Q.jsx($f, {
+          children: Q.jsx(ThreadSummaryBackgroundActivityRows, {
             backgroundAgents: [],
             backgroundTerminals,
             conversationId,
@@ -8597,9 +8644,9 @@ var Av,
     Ji();
     lc();
     initSummaryPanelArtifactsListChunk();
-    lp();
-    gp();
-    Mp();
+    initThreadSummaryBackgroundActivityRowsChunk();
+    initBackgroundTerminalSummaryRowsSupportChunk();
+    initBackgroundTerminalSummaryRowsChunk();
     V_();
     G_();
     X_();
@@ -8654,7 +8701,7 @@ function getPinnedSummaryPanelContentShift({
 
 var PINNED_SUMMARY_PANEL_GAP_PX,
   initPinnedSummaryPanelContentShiftConstants = once(() => {
-    Nf();
+    initThreadFindNavigationRailNoopChunk();
     PINNED_SUMMARY_PANEL_GAP_PX = 16;
   }),
   DEFAULT_PINNED_SUMMARY_PANEL_STATE,
@@ -14988,7 +15035,7 @@ export const initLocalConversationThreadChunk = once(() => {
   td();
   initThreadFindNavigationRail();
   rs();
-  Nf();
+  initThreadFindNavigationRailNoopChunk();
   Pc();
   initLocalConversationGitSummary();
   initLocalConversationArtifacts();
