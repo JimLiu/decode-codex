@@ -272,7 +272,6 @@ import {
   vc as no,
   vd as ro,
   vi as io,
-  vn as ao,
   wl as currentWorkspaceRootSignal,
   wo as lo,
   x as fo,
@@ -400,7 +399,6 @@ import {
   it as ul,
   k as dl,
   n as fl,
-  rt as pl,
   tn as gl,
 } from "../boundaries/current-ref/appgen-library-hot-producer";
 import {
@@ -444,7 +442,6 @@ import {
   PullRequestChecksSummary as Kl,
   pullRequestChecksStatusLabel as Hl,
 } from "../github/pull-request-checks-summary";
-import { initThreadLayoutChunk, ThreadLayout } from "../utils/thread-layout";
 import {
   M as Tu,
   N as Eu,
@@ -471,7 +468,6 @@ import {
   initBackgroundTerminalSidePanelTabChunk,
   initPendingBackgroundProcessRowsChunk,
   initProcessMetricHelpersChunk,
-  initThreadNullRefChunk,
   initThreadSidePanelTabRegistryChunk,
   initThreadSummaryPanelSignalsChunk,
   isPendingProcessRowExpired,
@@ -485,7 +481,6 @@ import {
   restoreRegisteredProcessRows,
   selectRunningProcessRows,
   setPendingBackgroundProcessRow,
-  useNullAppShellRef,
 } from "../app-shell/thread-background-processes";
 import {
   buildThreadVirtualizerLayout as Xu,
@@ -649,6 +644,10 @@ import {
   initLocalConversationThreadFooterChunk,
   LocalConversationThreadFooter,
 } from "./local-conversation-thread-parts/local-conversation-thread-footer";
+import {
+  initLocalConversationThreadLayoutShellChunk,
+  LocalConversationThreadLayoutShell,
+} from "./local-conversation-thread-parts/local-conversation-thread-layout-shell";
 import {
   initLocalConversationAppShellSourceRegistrationChunk,
   LocalConversationAppShellSourceRegistration,
@@ -9511,11 +9510,6 @@ function LocalConversationThreadFrame(props) {
       localConversationThreadReactRuntime.useState(null),
     latestTurnSubmitPlacementRef =
       localConversationThreadReactRuntime.useRef(null),
-    [threadLayoutContainer, setThreadLayoutContainer] =
-      localConversationThreadReactRuntime.useState(null),
-    newChatShortcutRef = useNullAppShellRef(
-      "chatgpt.supportsNewChatKeyShortcut",
-    ),
     markConversationReadOnThreadInteraction =
       useMarkConversationReadOnVisibility(conversationId, hasConversation),
     loadOlderConversationHistoryPage = async () => {
@@ -9641,14 +9635,7 @@ function LocalConversationThreadFrame(props) {
     clearPlacementWhenThreadHidden,
     clearPlacementEffectDeps,
   );
-  let handleThreadLayoutContainerRef = (containerElement) => {
-    newChatShortcutRef.current = containerElement;
-    setThreadLayoutContainer(containerElement);
-  };
-  let threadLayoutContainerRef = useStableCallback(
-      handleThreadLayoutContainerRef,
-    ),
-    hasLiveMcpAppFrame = useSignalValue(liveMcpAppFrameSignal),
+  let hasLiveMcpAppFrame = useSignalValue(liveMcpAppFrameSignal),
     subagentResponseInProgress =
       useScopedValue(subagentResponseInProgressSignal, conversationId) ?? false,
     shouldMountSummaryPanelObstacles =
@@ -9737,30 +9724,16 @@ function LocalConversationThreadFrame(props) {
       {floatingContent}
     </Mo>
   );
-  let appShellOverlayOutlet = localConversationThreadJsxRuntime.jsx(ao, {});
-  let threadLayout = (
-    <ThreadLayout
-      className="min-h-0"
-      bodyClassName="[&_[data-thread-find-target=conversation]]:scroll-mt-24"
-      containerRef={threadLayoutContainerRef}
-      data-vscode-context={'{"chatgpt.supportsNewChatMenu": true}'}
-      onKeyDownCapture={markConversationReadOnThreadInteraction}
-      onPointerDownCapture={markConversationReadOnThreadInteraction}
-      onWheelCapture={markConversationReadOnThreadInteraction}
+  return (
+    <LocalConversationThreadLayoutShell
       header={header}
-    >
-      {summaryPanelObstaclesEffect}
-      {threadBody}
-      {appShellOverlayOutlet}
-    </ThreadLayout>
+      markConversationReadOnThreadInteraction={
+        markConversationReadOnThreadInteraction
+      }
+      summaryPanelObstaclesEffect={summaryPanelObstaclesEffect}
+      threadBody={threadBody}
+    />
   );
-  return localConversationThreadJsxRuntime.jsx(fs, {
-    name: "LocalConversationPage",
-    children: localConversationThreadJsxRuntime.jsx(pl, {
-      value: threadLayoutContainer,
-      children: threadLayout,
-    }),
-  });
 }
 function openBackgroundAgentFromThread(
   scope,
@@ -10369,7 +10342,7 @@ export const initLocalConversationThreadChunk = once(() => {
   initHostConfigHelpers();
   initStatsigFeatureGateHooks();
   initConversationRouteSourceHelpers();
-  initThreadLayoutChunk();
+  initLocalConversationThreadLayoutShellChunk();
   ho();
   id();
   td();
@@ -10382,7 +10355,6 @@ export const initLocalConversationThreadChunk = once(() => {
   initLocalConversationSummaryPanelSignals();
   initLoggerRuntime();
   initKeyboardShortcutLabel();
-  initThreadNullRefChunk();
   Ns();
   initWorktreeRestoreBannerChunk();
   initForkFromOlderTurnDialogControllerChunk();
