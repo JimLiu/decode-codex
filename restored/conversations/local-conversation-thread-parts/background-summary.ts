@@ -33,6 +33,12 @@ export function shouldShowInlineBackgroundAgent(
   return backgroundAgent.showInlineActivity === true;
 }
 
+export function shouldHideInlineBackgroundAgent(
+  backgroundAgent: BackgroundAgentVisibilityState,
+): boolean {
+  return !shouldShowInlineBackgroundAgent(backgroundAgent);
+}
+
 export function isDoneBackgroundAgent(
   backgroundAgent: BackgroundAgentStatusState,
 ): boolean {
@@ -60,7 +66,7 @@ export function createBackgroundSummaryItems<
 ): BackgroundSummaryItem<Agent, Terminal>[] {
   let items: BackgroundSummaryItem<Agent, Terminal>[] = [];
   for (let backgroundAgent of backgroundAgents) {
-    if (!shouldShowInlineBackgroundAgent(backgroundAgent)) {
+    if (shouldHideInlineBackgroundAgent(backgroundAgent)) {
       items.push({
         backgroundAgent,
         type: "agent",

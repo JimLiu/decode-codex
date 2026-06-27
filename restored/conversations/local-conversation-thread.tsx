@@ -782,6 +782,8 @@ import {
   getInlineActivityBackgroundAgents,
   isDoneBackgroundAgent,
   isWorkingBackgroundAgent,
+  shouldHideInlineBackgroundAgent,
+  shouldShowInlineBackgroundAgent,
 } from "./local-conversation-thread-parts/background-summary";
 import {
   appendRegisteredBackgroundTerminalRows,
@@ -7690,9 +7692,9 @@ function ThreadSummaryPanelSections(props) {
     k = K(er, b),
     { data } = W(Tl),
     j = W(pendingBackgroundProcessRowsSignal),
-    M = backgroundAgents.some(shouldShowInlineActivityAgent);
+    M = backgroundAgents.some(shouldShowInlineBackgroundAgent);
   let N = M,
-    P = backgroundAgents.filter(shouldHideInlineActivityAgent);
+    P = backgroundAgents.filter(shouldHideInlineBackgroundAgent);
   let F = P,
     I = C && isVisible && b != null,
     L = {
@@ -7997,7 +7999,7 @@ function ThreadSummaryPanelSections(props) {
   );
   let Ye = backgroundAgents.length > 0 && (
     <Nm
-      autoCollapse={!N && backgroundAgents.every(isBackgroundAgentDone)}
+      autoCollapse={!N && backgroundAgents.every(isDoneBackgroundAgent)}
       sectionKey="background-subagents"
       title={Q.jsx(BackgroundTaskSectionTitle, {
         type: "subagents",
@@ -8136,20 +8138,8 @@ function ThreadSummaryPanelSections(props) {
 function openThreadSummaryProcessManager() {
   Kt("openProcessManager", "thread_summary_process_manager");
 }
-function isBackgroundAgentDone(e) {
-  let { status } = e;
-  return status === "done";
-}
 function getGeneratedImagePreviewSrc(e) {
   return Wr(e) !== "always" || br(e) == null ? null : L(e);
-}
-function shouldHideInlineActivityAgent(e) {
-  let { showInlineActivity } = e;
-  return !showInlineActivity;
-}
-function shouldShowInlineActivityAgent(e) {
-  let { showInlineActivity } = e;
-  return showInlineActivity;
 }
 var Av,
   jv,
