@@ -822,13 +822,9 @@ import {
   parseBerryDisplayTurnId,
 } from "./local-conversation-thread-parts/turn-request-index";
 import { getLocalConversationTurnSearchKey } from "./local-conversation-thread-parts/turn-search-key";
-import {
-  createBrowserUseSummaryRows,
-  createBrowserUseSummarySyncKey,
-  subscribeToBrowserUseSummaryChanges,
-  type BrowserUseSummary,
-} from "./local-conversation-thread-parts/browser-use-summary";
+import type { BrowserUseSummary } from "./local-conversation-thread-parts/browser-use-summary";
 import { BrowserUseSummaryList } from "./local-conversation-thread-parts/browser-use-summary-list";
+import { useBrowserUseSummaries } from "./local-conversation-thread-parts/browser-use-summary-store";
 import { ComputerUsePictureInPictureRow } from "./local-conversation-thread-parts/computer-use-pip-row";
 const joinLocalEnvironmentRepoPath = M;
 
@@ -8880,31 +8876,9 @@ function useLocalConversationSummaryPanelModel(e) {
     v = W(re),
     y = W(ga.tabs$),
     b = W(Ja.tabs$),
-    x,
-    S;
-  x = () =>
-    o == null
-      ? ""
-      : createBrowserUseSummarySyncKey({
-          bottomPanelTabs: b,
-          conversationId: o,
-          isMultiBrowserTabsGateEnabled: v,
-          rightPanelTabs: y,
-        });
-  S = () =>
-    o == null
-      ? ""
-      : createBrowserUseSummarySyncKey({
-          bottomPanelTabs: b,
-          conversationId: o,
-          isMultiBrowserTabsGateEnabled: v,
-          rightPanelTabs: y,
-        });
-  let C = By.useSyncExternalStore(subscribeToBrowserUseSummaryChanges, x, S),
-    w = createBrowserUseSummaryRows({
+    w = useBrowserUseSummaries({
       blankTitle: ni,
       bottomPanelTabs: b,
-      browserUseSummarySyncKey: C,
       conversationId: o,
       isMultiBrowserTabsGateEnabled: v,
       rightPanelTabs: y,
@@ -8945,13 +8919,11 @@ function Fy(e) {
   return e.type === "mcpToolCall" && e.server !== "node_repl";
 }
 var zy,
-  By,
   Vy,
   Hy,
   initLocalConversationSummaryPanelSignals = once(() => {
     zy = q();
     c();
-    By = toEsModule(G(), 1);
     nt();
     Nt();
     Ka();

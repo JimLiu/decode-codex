@@ -27,8 +27,8 @@ export type BrowserPanelTabLike = {
 } | null;
 
 export type BrowserUseSummaryPanelTabs = {
-  bottomPanelTabs: BrowserPanelTabLike[];
-  rightPanelTabs: BrowserPanelTabLike[];
+  bottomPanelTabs: readonly BrowserPanelTabLike[];
+  rightPanelTabs: readonly BrowserPanelTabLike[];
 };
 
 export const subscribeToBrowserUseSummaryChanges =
