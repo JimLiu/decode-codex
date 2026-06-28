@@ -4,10 +4,11 @@ import {
   aD as formatShellCommand,
   bF as initPathHelpers,
   iD as initCommandMarkdownRuntime,
-  kj as normalizeConfigPath,
   Oj as normalizeArtifactPathKey,
   wj as initArtifactPreviewRuntime,
 } from "../vendor/appg-thread-shared-runtime";
+import { normalizeConfigPath } from "./config-path-runtime";
+
 import {
   isAbsolutePath,
   normalizeWorkspacePath,

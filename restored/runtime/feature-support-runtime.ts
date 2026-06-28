@@ -1,13 +1,16 @@
 // Restored from ref/webview/assets/custom-avatars-query-Bodwj3U-.js
 // Boundary facade for custom avatars, pet install state, and workspace dependency UI helpers.
 import {
-  BV as getJsxRuntime,
-  JV as initReactRuntime,
-  qV as getChunkModuleExports,
   WA as initAppServicesRuntime,
   yV as createSignal,
   YN as sendHostRequest,
 } from "../vendor/appg-thread-shared-runtime";
+import {
+  getJsxRuntime,
+  initReactRuntime,
+  getChunkModuleExports,
+} from "./shared-utility-runtime";
+
 import { initVscodeBridgeRuntime as initPetInstallSignalRuntime } from "./platform-content-runtime";
 
 import { initQueryDurationConstants } from "./host-query-runtime";

@@ -1,16 +1,21 @@
 // Restored from ref/webview/assets/local-conversation-page-D7JrTtqP.js
 // Local conversation page container runtime bindings and side-effect helpers.
 import {
-  JV as initReactRuntime,
   SP as initMotionRuntime,
   VE as initGlobalStateQueryRuntime,
-  ak as initAppServerRequestBridge,
   bF as initIntlMessageRuntime,
-  kj as normalizeConfigPath,
-  ok as sendAppServerRequest,
-  qV as getChunkModuleExports,
-  qj as useStatsigGate,
 } from "../vendor/appg-thread-shared-runtime";
+import {
+  initReactRuntime,
+  getChunkModuleExports,
+} from "../runtime/shared-utility-runtime";
+import {
+  initAppServerRequestRuntime as initAppServerRequestBridge,
+  sendAppServerRequest,
+} from "../runtime/app-server-request";
+import { normalizeConfigPath } from "../runtime/config-path-runtime";
+import { useStatsigGate } from "../runtime/feature-gate-runtime";
+
 import { initVscodeBridgeRuntime as initVscodeApiBridge } from "../runtime/platform-content-runtime";
 
 import {

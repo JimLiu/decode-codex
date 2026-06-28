@@ -1,9 +1,8 @@
 // Restored from ref/webview/assets/local-conversation-thread-BwqAGxoz.js
 // Low-level initialization helpers for the local conversation thread chunk.
-import {
-  lA as initThreadAuxiliaryRuntimeRaw,
-  qV as getChunkModuleExportsRaw,
-} from "../../vendor/appg-thread-shared-runtime";
+import { lA as initThreadAuxiliaryRuntimeRaw } from "../../vendor/appg-thread-shared-runtime";
+import { getChunkModuleExports as getChunkModuleExportsRaw } from "../../runtime/shared-utility-runtime";
+
 import {
   Rv as initMarkdownUtilityNoopRaw,
   Ux as initAgentMentionMapRaw,

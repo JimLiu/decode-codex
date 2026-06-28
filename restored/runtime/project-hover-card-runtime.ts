@@ -9,12 +9,8 @@ import {
   cM as initModalRuntime,
   HE as useHostConfigById,
   HI as parseProjectWritableRoots,
-  jM as initPersistentSignalRuntime,
-  JV as initReactRuntime,
   KE as initKeyboardShortcutRuntime,
-  MM as createPersistentSignal,
   qE as useRemoteHostConfigs,
-  qV as getChunkModuleExports,
   rF as defineMessages,
   Sj as normalizeTextForCompare,
   uM as toastControllerSignal,
@@ -22,6 +18,13 @@ import {
   VI as getProjectWritableRootsForDisplay,
   wj as initStringNormalizeRuntime,
 } from "../vendor/appg-thread-shared-runtime";
+import {
+  initPersistentSignalRuntime,
+  initReactRuntime,
+  createPersistentSignal,
+  getChunkModuleExports,
+} from "./shared-utility-runtime";
+
 import { initVscodeBridgeRuntime as initVscodeApiBridge } from "./platform-content-runtime";
 
 import {

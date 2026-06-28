@@ -5,7 +5,6 @@ import {
   ak as initSideConversationPromptProducer,
   cM as initToastRuntime,
   cP as initThreadActionMenuRuntime,
-  JV as initReactRuntime,
   ok as runConversationAction,
   SV as initQueryRuntime,
   tM as modelSelectionSignal,
@@ -14,6 +13,8 @@ import {
   uP as useThreadCommandHandler,
   YN as sendHostRequest,
 } from "../vendor/appg-thread-shared-runtime";
+import { initReactRuntime } from "../runtime/shared-utility-runtime";
+
 import { initVscodeBridgeRuntime as initDeveloperInstructionsProducer } from "../runtime/platform-content-runtime";
 import {
   appLogger as logger,
