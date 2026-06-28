@@ -43,10 +43,6 @@ import {
   initBackgroundAgentAvatarChunk,
 } from "../../ui/background-agent-avatar";
 import {
-  er as BackgroundAgentIdenticon,
-  tr as initBackgroundAgentIdenticonChunk,
-} from "../../boundaries/current-ref/profile-page-producer";
-import {
   clearStoppedPendingProcessRows,
   getPendingBackgroundProcessRow,
   initActiveConversationProcessRowsChunk,
@@ -201,6 +197,7 @@ type BackgroundTerminalStatusIconProps = {
 const BACKGROUND_TERMINAL_STARTING_ROW_TTL_MS = 10_000;
 const backgroundTerminalActionButtonClassName =
   "flex h-4 w-4 shrink-0 cursor-interaction items-center justify-center rounded-sm border-0 bg-transparent p-0 text-token-text-tertiary hover:text-token-foreground focus:outline-none data-[state=open]:text-token-foreground";
+const BackgroundAgentIdenticon = BackgroundAgentAvatar;
 
 export function ThreadSummaryBackgroundActivityRows({
   backgroundAgents,
@@ -458,7 +455,6 @@ const initThreadSummaryBackgroundActivityRowsChunk = once(() => {
   initTooltipPrimitives();
   initDiffStatsChunk();
   initBackgroundAgentAvatarChunk();
-  initBackgroundAgentIdenticonChunk();
   initSummaryPanelExpandableList();
   initSummaryPanelRowChunk();
 });
