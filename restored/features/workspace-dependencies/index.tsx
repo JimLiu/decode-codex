@@ -5,13 +5,13 @@ import React from "react";
 import clsx from "clsx";
 import { once } from "../../runtime/commonjs-interop";
 import {
-  BV as getJsxRuntime,
-  JV as initReactRuntime,
-  VP as initClassNameRuntime,
-  na as FallbackGlobeIcon,
-  qV as getChunkModuleExports,
-  ra as initGlobeIconChunk,
-} from "../../boundaries/current-ref/appg-thread-shared-producer";
+  FallbackGlobeIcon,
+  getChunkModuleExports,
+  getJsxRuntime,
+  initClassNameRuntime,
+  initGlobeIconChunk,
+  initReactRuntime,
+} from "../../runtime/feature-support-runtime";
 
 export type ImageWithFallbackIconProps = {
   className?: string;

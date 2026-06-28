@@ -2,13 +2,13 @@
 // Pet install preview/install session state for the current Codex webview.
 import { once } from "../runtime/commonjs-interop";
 import {
-  $N as initPetInstallSignalRuntime,
-  $P as initAppScope,
-  AB as initScopeRuntime,
-  QP as appScopeRoot,
-  YN as sendHostRequest,
-  yV as createSignal,
-} from "../boundaries/current-ref/appg-thread-shared-producer";
+  appScopeRoot,
+  createSignal,
+  initAppScope,
+  initPetInstallSignalRuntime,
+  initScopeRuntime,
+  sendHostRequest,
+} from "../runtime/feature-support-runtime";
 
 export interface PetInstallParams {
   name: string;

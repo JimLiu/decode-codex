@@ -7,11 +7,11 @@ import {
 } from "../boundaries/app-scope";
 import { once } from "../runtime/commonjs-interop";
 import {
-  $P as initAppScope,
-  AB as initScopeRuntime,
-  WA as initAppServicesRuntime,
-  oP as initQueryDurationConstants,
-} from "../boundaries/current-ref/appg-thread-shared-producer";
+  initAppScope,
+  initAppServicesRuntime,
+  initQueryDurationConstants,
+  initScopeRuntime,
+} from "../runtime/feature-support-runtime";
 import { appServices } from "../boundaries/rpc.facade";
 import { globalSettingKeys } from "../boundaries/src-l0hb-mz-p";
 import {
