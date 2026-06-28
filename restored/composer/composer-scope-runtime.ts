@@ -2,9 +2,11 @@
 // Composer scope initialization and scope token for local conversation panels.
 import {
   AB as initScopeRuntime,
+} from "../vendor/appg-thread-shared-runtime";
+import {
   Al as initComposerScope,
   wl as composerScope,
-} from "../vendor/appg-thread-shared-runtime";
+} from "../vendor/pull-request-thread-actions-runtime";
 
 export { composerScope };
 

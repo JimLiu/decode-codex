@@ -2,9 +2,11 @@
 // Platform-content gate and VS Code bridge initialization helpers.
 import {
   $N as initVscodeApiBridge,
+} from "../vendor/appg-thread-shared-runtime";
+import {
   Ga as initElectronPlatformContent,
   Wa as PlatformContentGate,
-} from "../vendor/appg-thread-shared-runtime";
+} from "../vendor/pull-request-thread-actions-runtime";
 
 export { PlatformContentGate };
 

@@ -4,10 +4,12 @@ import {
   ZN as createHostQuerySignalRaw,
   aP as QUERY_DURATIONS,
   eP as useHostQueryRaw,
-  fu as initTaskWorkspaceQueryRuntime,
   oP as initQueryDurationConstants,
-  pu as useDebouncedValueRaw,
 } from "../vendor/appg-thread-shared-runtime";
+import {
+  fu as initTaskWorkspaceQueryRuntime,
+  pu as useDebouncedValueRaw,
+} from "../vendor/pull-request-thread-actions-runtime";
 
 export { QUERY_DURATIONS };
 
