@@ -13002,6 +13002,86 @@
       "status": "done",
       "note": "Semantic lodash-style at/baseRest/baseFlatten helper shared by local conversation and pull request chunks.",
       "lastUpdated": "2026-06-27T22:52:23.233Z"
+    },
+    "app-main-DxUcMyo0": {
+      "restored": "app-shell/app-main.tsx",
+      "exports": {},
+      "status": "done",
+      "aliasOf": "app-main-lwTO-JL9",
+      "note": "Current synced Electron main-window bootstrap. Semantic app-main runtime bindings were updated to the current producer aliases used by app-main-DxUcMyo0.",
+      "lastUpdated": "2026-06-28T20:55:00.000Z"
+    },
+    "local-conversation-thread-BwqAGxoz": {
+      "restored": "conversations/local-conversation-thread.tsx",
+      "exports": {
+        "A": "LocalConversationSummaryPanel",
+        "C": "useLocalConversationSummaryPanelModel",
+        "D": "usePinnedSummaryPanelLayout",
+        "E": "initLocalConversationArtifacts",
+        "F": "isRecentLocalEnvironmentAction",
+        "I": "ThreadFindNavigationRail",
+        "L": "initThreadFindNavigationRail",
+        "M": "ThreadSummaryPanelChrome",
+        "N": "initThreadSummaryPanelChrome",
+        "O": "initPinnedSummaryPanelState",
+        "P": "initLocalEnvironmentRecentActions",
+        "R": "initReviewSearchHighlighter",
+        "S": "initLocalConversationSummaryPanelSignals",
+        "T": "initLocalConversationArtifactSignals",
+        "_": "initConversationSearchHelpers",
+        "a": "initLocalConversationThreadChunk",
+        "b": "renderLocalConversationMarkdownForTurns",
+        "c": "initMarkConversationReadEffect",
+        "d": "openBackgroundAgentThreadTab",
+        "f": "shouldShowInlineActivityForRightPanel",
+        "g": "createLocalConversationSearchAdapter",
+        "h": "localConversationVisibleTurnEntriesSignal",
+        "i": "LocalConversationThread",
+        "j": "initLocalConversationGitSummary",
+        "k": "pinnedSummaryPanelState",
+        "l": "useMarkConversationReadOnVisibility",
+        "m": "initLocalConversationTurnSelectors",
+        "n": "LocalConversationSummaryThread",
+        "o": "initLocalConversationThreadRoute",
+        "p": "initBackgroundAgentThreadTab",
+        "r": "LocalConversationSideChatThread",
+        "s": "useResumeLocalConversation",
+        "t": "LocalConversationMainThread",
+        "u": "initBackgroundAgentThreadTabs",
+        "v": "formatBackgroundAgentDisplayName",
+        "w": "localConversationOutputArtifactsSignal",
+        "x": "initConversationMarkdownRenderer",
+        "y": "initThreadScrollState",
+        "z": "useReviewSearchHighlights"
+      },
+      "status": "done",
+      "aliasOf": "local-conversation-thread-Bf38rCmF",
+      "note": "Current synced local-conversation-thread chunk preserves the same public export alias surface as local-conversation-thread-Bf38rCmF; mapped to the existing semantic split barrel and parts.",
+      "lastUpdated": "2026-06-28T20:55:00.000Z"
+    },
+    "app-DvOUyjQD": {
+      "restored": "app-shell/empty-app-initializer.ts",
+      "exports": {
+        "t": "initEmptyAppChunk"
+      },
+      "status": "done",
+      "aliasOf": "app-K22tSs_z",
+      "note": "Current app bootstrap chunk is the same empty Rolldown initializer.",
+      "lastUpdated": "2026-06-28T20:55:00.000Z"
+    },
+    "app-initial~app-main~register-app-actions-BK6a07gO": {
+      "restored": "app-shell/register-app-actions.ts",
+      "exports": {
+        "a": "createWindowAppAction",
+        "i": "createWindowAppActionRunMap",
+        "n": "registerWindowsTabsOpenHandler",
+        "o": "initAppActionHelpersChunk",
+        "r": "windowsTabsOpenAction",
+        "t": "initRegisterAppActionsChunk"
+      },
+      "status": "done",
+      "note": "Current register-app-actions producer matches the existing app-shell action registration surface with updated app-action schema imports.",
+      "lastUpdated": "2026-06-28T20:55:00.000Z"
     }
   }
 }

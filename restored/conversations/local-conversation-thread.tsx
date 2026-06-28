@@ -1,5 +1,5 @@
-// Restored from ref/webview/assets/local-conversation-thread-Bf38rCmF.js
-// Public barrel for the local conversation thread feature chunk. Implementation lives in semantic local-conversation-thread-parts modules while current-ref producer imports are still being restored.
+// Restored from ref/webview/assets/local-conversation-thread-BwqAGxoz.js
+// Public barrel for the local conversation thread feature chunk. The current chunk keeps the same public export aliases as local-conversation-thread-Bf38rCmF; implementation lives in semantic local-conversation-thread-parts modules while producer imports are still being restored.
 export { shouldShowInlineActivityForRightPanel } from "./local-conversation-thread-parts/inline-activity-panel";
 export { formatBackgroundAgentDisplayName } from "./local-conversation-thread-parts/local-conversation-chrome-extension-header";
 export {

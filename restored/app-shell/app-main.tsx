@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/app-main-lwTO-JL9.js
+// Restored from ref/webview/assets/app-main-DxUcMyo0.js
 // Electron main-window bootstrap for the Codex webview application.
 import React from "react";
 import { createRoot } from "react-dom/client";
@@ -15,6 +15,7 @@ import {
   initCodexAppChunk,
   initProjectsAppEntryChunk,
   initProjectsSharedRuntimeChunk,
+  initRendererErrorBoundaryState,
   isCompactWindowPreferred,
   logAppMainStatsigRenderRequest,
   refreshStatsigDiagnostics,
@@ -121,6 +122,7 @@ const initAppMainChunk = once(() => {
   initAppLoggingChunk();
   initAutomationsStateChunk();
   initAppRuntimeChunk();
+  initRendererErrorBoundaryState();
   initCodexAppChunk();
   initAppFeatureRuntimeChunk();
   initEmptyAppChunk();
