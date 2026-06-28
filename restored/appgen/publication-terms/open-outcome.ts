@@ -15,6 +15,8 @@ import type {
   HostConfigForResourceOpen,
 } from "./resource-opener-types";
 
+export const READ_FILE_SAMPLE_MAX_FILE_BYTES = 10 * 1024 * 1024;
+
 const UNSUPPORTED_PREVIEW_TYPE_BY_EXTENSION = new Map([
   ["doc", "word-document"],
   ["docx", "word-document"],
@@ -104,7 +106,10 @@ export function shouldUseExternalFileManager({
   );
 }
 
-function getReviewPreviewKind(path: string, contentKind?: FileContentKind) {
+export function getReviewPreviewKind(
+  path: string,
+  contentKind?: FileContentKind,
+) {
   return contentKind === "image"
     ? "image"
     : contentKind === "pdf"
@@ -122,7 +127,25 @@ function getReviewPreviewKind(path: string, contentKind?: FileContentKind) {
                 : null;
 }
 
-function getUnsupportedPreviewType(
+export function getResourcePreviewParseMode(
+  path: string,
+  contentKind?: FileContentKind,
+) {
+  if (contentKind === "image" || contentKind === "pdf") return "always";
+  if (contentKind != null && contentKind !== "text") return "none";
+
+  const imagePreviewMode = getImagePreviewDisplayMode(path);
+  if (contentKind == null && imagePreviewMode === "always") return "always";
+  if (
+    (contentKind == null && imagePreviewMode === "toggle") ||
+    isMarkdownPreviewPath(path) ||
+    isPdbPath(path)
+  )
+    return "toggle";
+  return contentKind == null && isPdfPreviewPath(path) ? "always" : "none";
+}
+
+export function getUnsupportedPreviewType(
   path: string,
   contentKind?: FileContentKind,
 ) {
@@ -156,7 +179,10 @@ function getUnsupportedPreviewType(
   return null;
 }
 
-function isPreviewableInSidePanel(path: string, contentKind?: FileContentKind) {
+export function isPreviewableInSidePanel(
+  path: string,
+  contentKind?: FileContentKind,
+) {
   return (
     getReviewPreviewKind(path, contentKind) != null ||
     getUnsupportedPreviewType(path, contentKind) == null ||
@@ -232,7 +258,7 @@ function isPdbPath(path: string) {
   return dotIndex > 0 && basename.slice(dotIndex + 1) === "pdb";
 }
 
-function lookupMimeType(path: string) {
+export function lookupMimeType(path: string) {
   const extension = getPathExtension(path);
   if (extension == null) return "unknown";
   switch (extension) {
@@ -272,3 +298,7 @@ function lookupMimeType(path: string) {
       return "unknown";
   }
 }
+
+export function initReadFileMetadataLimitsChunk(): void {}
+
+export function initUnsupportedPreviewTypeChunk(): void {}

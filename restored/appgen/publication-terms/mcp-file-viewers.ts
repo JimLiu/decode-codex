@@ -11,6 +11,8 @@ export const mcpCapabilityFileViewerState = Symbol.for(
   "codex.restored.mcp-capability-file-viewers",
 );
 
+export function initMcpResourceReadParamsChunk(): void {}
+
 export function findMatchingMcpCapabilityFileViewer(
   path: string,
   fileViewers: readonly unknown[],

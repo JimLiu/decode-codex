@@ -55,9 +55,11 @@ export type McpCapabilityFileViewer = {
   extensions?: readonly string[];
   hostId?: string;
   icon?: unknown;
+  resourceUri?: string;
   server?: string;
+  serverTools?: unknown[];
   title?: string;
-  tool?: { name?: string };
+  tool?: { name?: string } | unknown;
 };
 
 export type McpHostResourceReader = (resource: {

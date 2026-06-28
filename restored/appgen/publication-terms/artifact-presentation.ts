@@ -16,6 +16,13 @@ const ARTIFACT_IMPORT_KIND_BY_EXTENSION = new Map([
 
 export function initArtifactImportPresentationChunk(): void {}
 
+export function getArtifactImportKindForPath(path: string): string | null {
+  const extension = getPathExtension(path);
+  return extension == null
+    ? null
+    : (ARTIFACT_IMPORT_KIND_BY_EXTENSION.get(extension) ?? null);
+}
+
 export function shouldParseArtifactPreviewForImportKind(
   importKind: string,
 ): boolean {
@@ -36,11 +43,7 @@ export function shouldParseArtifactPreviewForImportKind(
 }
 
 export function getArtifactImportPresentation(path: string) {
-  const extension = getPathExtension(path);
-  const importKind =
-    extension == null
-      ? null
-      : (ARTIFACT_IMPORT_KIND_BY_EXTENSION.get(extension) ?? null);
+  const importKind = getArtifactImportKindForPath(path);
   if (importKind == null) return null;
 
   switch (importKind) {
