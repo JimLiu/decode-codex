@@ -7,19 +7,18 @@ import {
   type ReactNode,
 } from "react";
 import { once } from "../../runtime/commonjs-interop";
+import { classNames, initClassNameRuntime } from "../../utils/class-names";
 import {
   $N as initVscodeApiBridge,
   $P as initAppScope,
   AB as initScopeRuntime,
   AN as initSpinnerComponent,
-  BP as classNames,
   Fx as initEnvironmentTerminalController,
   Gi as DropdownMenu,
   IB as useSignalValue,
   Ix as environmentTerminalControllerService,
   QP as appScope,
   SV as initQueryRuntime,
-  VP as initClassNameRuntime,
   aM as RefreshIcon,
   ak as initAppServerRequestBridge,
   FB as useScope,

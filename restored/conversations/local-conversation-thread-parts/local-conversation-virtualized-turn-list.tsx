@@ -3,6 +3,7 @@
 import React from "react";
 import { flushSync as flushSyncReactUpdates } from "react-dom";
 import { once } from "../../runtime/commonjs-interop";
+import { classNames, initClassNameRuntime } from "../../utils/class-names";
 import {
   initUseStableCallback,
   useStableCallback,
@@ -11,10 +12,6 @@ import {
   initWindowZoomContext,
   useWindowZoom,
 } from "../../utils/window-zoom-context";
-import {
-  BP as classNames,
-  VP as initClassNameRuntime,
-} from "../../boundaries/current-ref/appg-thread-shared-producer";
 import {
   buildThreadVirtualizerLayout,
   getDistanceFromBottomForCenteredTurn,

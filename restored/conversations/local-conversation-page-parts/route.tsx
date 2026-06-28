@@ -2,6 +2,7 @@
 import React from "react";
 
 import { once } from "../../runtime/commonjs-interop";
+import { classNames } from "../../utils/class-names";
 import {
   initUseStableCallback,
   useStableCallback,
@@ -12,7 +13,6 @@ import {
   AB as initScopeRuntime,
   AV as initReactQueryRuntime,
   A_ as appShellTabIds,
-  BP as classNames,
   DL as normalizeWorkspacePath,
   DN as Button,
   FB as useScope,

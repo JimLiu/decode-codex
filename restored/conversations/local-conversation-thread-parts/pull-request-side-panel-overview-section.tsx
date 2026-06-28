@@ -2,10 +2,9 @@
 // Pull request side-panel overview section and reviewer badges.
 import type { ReactElement, SVGProps } from "react";
 import { once } from "../../runtime/commonjs-interop";
+import { classNames, initClassNameRuntime } from "../../utils/class-names";
 import {
   AN as initSpinnerComponent,
-  BP as classNames,
-  VP as initClassNameRuntime,
   iF as initIntlRuntime,
   hM as initTooltipPrimitives,
   kN as SpinnerIcon,
