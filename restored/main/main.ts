@@ -10,6 +10,15 @@ import {
   invokeWorkerMainRpcHandler,
   isWorkerMainRpcRequest,
 } from "./workers/worker-main-rpc";
+import {
+  createMainWorkerBusController,
+  MainWorkerAppEventBus,
+  MainWorkerThreadManager,
+  WorkerBusMessageHandler,
+  WorkerInvocationSampler,
+  workerRequestChannel,
+  workerResponseChannel,
+} from "./workers/main-worker-bus";
 
 type MainStartupPhase = {
   key: string;
@@ -421,7 +430,7 @@ function shouldHandleStateDatabaseOpenError(error: unknown): boolean {
 function createMainStartupOpenBoundaryError(): Error {
   return Object.assign(
     Error(
-      "main--VWTbRdF remains an open restoration boundary: the startup phase map, updater bridge helpers, and worker main-RPC helper contracts are recovered, but window services, app-server lifecycle, worker manager construction, tray/menu assembly, IPC registration, and telemetry still require semantic restoration.",
+      "main--VWTbRdF remains an open restoration boundary: the startup phase map, updater bridge helpers, worker main-RPC helper contracts, and main-side worker bus manager are recovered, but window services, app-server lifecycle, tray/menu assembly, IPC registration, and telemetry still require semantic restoration.",
     ),
     {
       code: OPEN_RESTORATION_BOUNDARY_CODE,
@@ -448,6 +457,15 @@ function createMainStartupOpenBoundaryError(): Error {
         createOpenInShortcutMainRpcHandler,
         invokeWorkerMainRpcHandler,
         isWorkerMainRpcRequest,
+      },
+      mainWorkerBusHelpers: {
+        createMainWorkerBusController,
+        MainWorkerAppEventBus,
+        MainWorkerThreadManager,
+        WorkerBusMessageHandler,
+        WorkerInvocationSampler,
+        workerRequestChannel,
+        workerResponseChannel,
       },
     },
   );
