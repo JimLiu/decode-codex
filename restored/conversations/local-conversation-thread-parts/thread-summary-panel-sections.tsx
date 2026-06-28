@@ -79,7 +79,7 @@ import {
   showRightPanel,
   workspaceRouteStateSignal,
 } from "../../runtime/thread-summary-panel-runtime";
-import { conversationTitleSignal } from "../../runtime/local-conversation-state";
+import { conversationTitleSignal } from "./local-conversation-state";
 import { rightPanelTabsStore } from "../../app-shell/thread-panel-tabs-store";
 import {
   automationsQuerySignal as automationDataSignal,

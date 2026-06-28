@@ -13,7 +13,7 @@ import {
   initConversationStateRuntime,
 } from "../../runtime/conversation-state-runtime";
 import { useStableCallback } from "../../utils/use-stable-callback";
-import { refreshConversationHistorySignals } from "../../runtime/local-conversation-state";
+import { refreshConversationHistorySignals } from "./local-conversation-state";
 import { createLatestTurnSubmitPlacementSnapshot } from "./latest-turn-submit-placement";
 import { shouldShowScrollToBottomButton } from "./scroll-to-bottom-state";
 

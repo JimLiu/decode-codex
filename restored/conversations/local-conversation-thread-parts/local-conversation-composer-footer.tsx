@@ -36,7 +36,7 @@ import {
   localConversationRouteScope,
 } from "../../runtime/local-conversation-route-runtime";
 import { getLocalThreadConversationIdFromRoute } from "../../runtime/local-thread-route";
-import { setActiveConversationSourceContext } from "../../runtime/local-conversation-state";
+import { setActiveConversationSourceContext } from "./local-conversation-state";
 import {
   FormattedMessage,
   useIntl,

@@ -30,7 +30,7 @@ import {
   initPlatformContentRuntime,
   PlatformContentGate,
 } from "../../runtime/platform-content-runtime";
-import { conversationTitleSignal } from "../../runtime/local-conversation-state";
+import { conversationTitleSignal } from "./local-conversation-state";
 import {
   ChromeExtensionHeader,
   initChromeExtensionHeaderChunk,
