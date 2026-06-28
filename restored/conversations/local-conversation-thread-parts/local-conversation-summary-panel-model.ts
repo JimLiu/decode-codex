@@ -44,7 +44,7 @@ import {
   installedMcpAppIdsSignal,
 } from "../../runtime/thread-summary-panel-runtime";
 import { conversationTitleSignal } from "../../runtime/local-conversation-state";
-import { rightPanelTabsStore } from "../../runtime/thread-panel-tabs-store";
+import { rightPanelTabsStore } from "../../app-shell/thread-panel-tabs-store";
 import { useIsBackgroundSubagentsEnabled as isBackgroundSubagentsEnabled } from "../../utils/use-is-background-subagents-enabled";
 import {
   collectConversationProcessRows,

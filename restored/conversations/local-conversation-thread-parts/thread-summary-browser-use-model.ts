@@ -11,7 +11,7 @@ import { useSignalValue } from "../../runtime/app-scope-hooks";
 import {
   bottomPanelTabsStore,
   rightPanelTabsStore,
-} from "../../runtime/thread-panel-tabs-store";
+} from "../../app-shell/thread-panel-tabs-store";
 import type { BrowserUseSummary } from "./browser-use-summary";
 import { useBrowserUseSummaries } from "./browser-use-summary-store";
 

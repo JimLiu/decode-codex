@@ -80,7 +80,7 @@ import {
   workspaceRouteStateSignal,
 } from "../../runtime/thread-summary-panel-runtime";
 import { conversationTitleSignal } from "../../runtime/local-conversation-state";
-import { rightPanelTabsStore } from "../../runtime/thread-panel-tabs-store";
+import { rightPanelTabsStore } from "../../app-shell/thread-panel-tabs-store";
 import {
   automationsQuerySignal as automationDataSignal,
   initAutomationsQueryChunk as initAutomationDataSignalChunk,

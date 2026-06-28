@@ -13,7 +13,7 @@ import {
 import {
   initRightPanelTabsStoreChunk,
   rightPanelTabsStore,
-} from "../../runtime/thread-panel-tabs-store";
+} from "../../app-shell/thread-panel-tabs-store";
 import {
   BackgroundAgentAvatar,
   initBackgroundAgentAvatarChunk,
