@@ -2,6 +2,13 @@
 // Browser sidebar comment runtime document-context public surface.
 
 export { BrowserSidebarDocumentContextResolver } from "./document-context-resolver";
+export { normalizeCssColorValue } from "./colors";
+export {
+  DEFAULT_DESIGN_GROUP_ATTRIBUTE,
+  mergeDesignStyleDeclarationValues,
+  readDesignStyleDeclarations,
+  serializeDesignDraftStyles,
+} from "./design-css";
 export {
   createGoogleDocsDocumentContext,
   isGoogleWorkspaceDocumentUrl,
@@ -25,6 +32,10 @@ export type {
   BrowserSidebarRect,
   BrowserSidebarSize,
 } from "./geometry";
+export type {
+  BrowserSidebarDesignStyleDeclaration,
+  BrowserSidebarDesignStyleDraft,
+} from "./design-css";
 export type {
   BrowserSidebarAnchorLike,
   BrowserSidebarDocumentContextInput,

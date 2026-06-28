@@ -18,7 +18,7 @@
       "boundary": true,
       "vendor": "runtime",
       "openBoundary": true,
-      "note": "Semantic preload IPC bridge, host message queue, navigation/image hooks, WebMCP shim, Google Workspace document-context helpers, and overlay geometry utilities restored; browser sidebar React overlay rendering, anchoring, screenshots, and design editor UI remain open app-runtime boundaries."
+      "note": "Semantic preload IPC bridge, host message queue, navigation/image hooks, WebMCP shim, Google Workspace document-context helpers, overlay geometry utilities, and design CSS/color helpers restored; browser sidebar React overlay rendering, anchoring, screenshots, and design editor UI remain open app-runtime boundaries."
     },
     "child-process-snapshot-worker": {
       "restored": "workers/child-process-snapshot-worker.ts",
