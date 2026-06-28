@@ -1,9 +1,9 @@
-// Restored from ref/webview/assets/app-initial~app-main~remote-conversation-page~plugin-detail-page~new-thread-panel-page~appg~ijdupmx5-CdYgxe-b.js
+// Restored from ref/webview/assets/local-conversation-thread-BwqAGxoz.js
 // Conversation title formatting and id normalization helpers used by the local summary panel.
 import {
-  iO as formatConversationTitleTextRaw,
-  rO as initConversationTitleFormatterRaw,
-} from "../../vendor/appg-thread-shared-runtime";
+  G_ as initConversationTitleFormatterRaw,
+  K_ as formatConversationTitleTextRaw,
+} from "../../vendor/projects-app-shared-runtime";
 import { normalizeConversationId } from "../../boundaries/src-l0hb-mz-p";
 
 export function initConversationTitleRuntime(): void {
