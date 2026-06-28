@@ -4,35 +4,51 @@ import React from "react";
 import { once } from "../../runtime/commonjs-interop";
 import { Button, initButtonComponentPrimitives } from "../../ui/button";
 import {
-  $N as initVscodeApiBridge,
-  $P as initAppScope,
-  $h as getHostConfigKey,
-  AB as initScopeRuntime,
-  AV as initReactQueryRuntime,
-  Bh as useHostMutation,
-  DL as normalizeWorkspacePath,
-  FB as useScope,
-  Fx as initEnvironmentTerminalController,
-  GE as initLocalHostConstants,
-  HE as useHostConfigById,
-  Ix as environmentTerminalControllerService,
-  MV as useMutation,
-  Nh as initGitBranchQueryRuntime,
-  Op as initConversationStateSelectors,
-  PB as useScopedValue,
-  QP as appScope,
-  VE as initHostConfigHelpers,
-  ag as initWorktreeCheckMutationRuntime,
-  bF as initPathHelpers,
-  cM as initToastRuntime,
-  cm as conversationHostIdSignal,
-  eg as initWorktreeRestoreMutationRuntime,
-  mP as logger,
-  pP as initLoggerRuntime,
-  tp as hostConnectionStatusSignal,
-  uM as toastSignal,
-  zV as useQueryClient,
-} from "../../boundaries/current-ref/appg-thread-shared-producer";
+  appLogger as logger,
+  initAppLoggerRuntime,
+} from "../../runtime/app-logger";
+import { useScope, useScopedValue } from "../../runtime/app-scope-hooks";
+import {
+  appScopeRoot as appScope,
+  initAppScopeSignalRuntime,
+} from "../../runtime/app-scope-runtime";
+import {
+  initAppServerMutationRuntime,
+  useMutation,
+  useQueryClient,
+} from "../../runtime/app-server-mutation-runtime";
+import {
+  conversationHostIdSignal,
+  initConversationStateRuntime,
+} from "../../runtime/conversation-state-runtime";
+import {
+  environmentTerminalControllerService,
+  initEnvironmentTerminalRuntime,
+} from "../../runtime/environment-terminal-runtime";
+import { initGitBranchQueryRuntime } from "../../runtime/git-query-runtime";
+import {
+  getHostConfigKey,
+  initHostConfigRuntime,
+  initLocalHostConstantsRuntime,
+  useHostConfigById,
+  type HostConfigRecord,
+} from "../../runtime/host-config-runtime";
+import { useHostMutation } from "../../runtime/host-mutation-runtime";
+import {
+  hostConnectionStatusSignal,
+  initLocalConversationComposerRuntime,
+} from "../../runtime/local-conversation-composer-runtime";
+import {
+  initToastSignalRuntime,
+  toastSignal,
+} from "../../runtime/local-conversation-route-runtime";
+import { normalizeWorkspacePath } from "../../runtime/output-artifact-runtime";
+import { initPathHelpersRuntime } from "../../runtime/path-helpers-runtime";
+import { initVscodeBridgeRuntime } from "../../runtime/platform-content-runtime";
+import {
+  initWorktreeCheckMutationRuntime,
+  initWorktreeRestoreMutationRuntime,
+} from "../../runtime/worktree-restore-runtime";
 import {
   $n as initWorktreeStatusQuerySignalChunk,
   Bn as worktreeStatusQuerySignal,
@@ -124,7 +140,7 @@ function WorktreeRestoreBanner({
   threadHostId,
 }: WorktreeRestoreBannerProps) {
   let scope = useScope(appScope),
-    host = useHostConfigById(threadHostId),
+    host = useHostConfigById<HostConfigRecord>(threadHostId),
     hostKey = getHostConfigKey(host),
     intl = useIntl(),
     queryClient = useQueryClient(),
@@ -337,23 +353,24 @@ function useMutationForWorktreeCheck({
 }
 
 export const initWorktreeRestoreBannerChunk = once(() => {
-  initReactQueryRuntime();
-  initScopeRuntime();
-  initPathHelpers();
+  initAppServerMutationRuntime();
+  initAppScopeSignalRuntime();
+  initPathHelpersRuntime();
   initIntlRuntime();
-  initConversationStateSelectors();
+  initConversationStateRuntime();
   initWorktreeStatusQuerySignalChunk();
   initButtonComponentPrimitives();
-  initToastRuntime();
+  initToastSignalRuntime();
   initGitBranchQueryRuntime();
   initWorktreeCheckMutationRuntime();
   initWorktreeRestoreMutationRuntime();
-  initAppScope();
-  initLocalHostConstants();
-  initHostConfigHelpers();
-  initEnvironmentTerminalController();
-  initLoggerRuntime();
+  initAppScopeSignalRuntime();
+  initLocalHostConstantsRuntime();
+  initHostConfigRuntime();
+  initEnvironmentTerminalRuntime();
+  initAppLoggerRuntime();
   initWorktreeStatusQueryInvalidationChunk();
   initGitMetadataQueryHelpersChunk();
-  initVscodeApiBridge();
+  initVscodeBridgeRuntime();
+  initLocalConversationComposerRuntime();
 });

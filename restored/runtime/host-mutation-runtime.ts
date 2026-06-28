@@ -28,7 +28,7 @@ export type HostMutation<
     variables: TVariables,
     options?: HostMutationOptions<TData, TVariables>,
   ) => void;
-  mutateAsync?: (
+  mutateAsync: (
     variables: TVariables,
     options?: HostMutationOptions<TData, TVariables>,
   ) => Promise<TData>;

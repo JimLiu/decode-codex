@@ -2,6 +2,7 @@
 // React Query mutation helpers for app-server backed local features.
 import {
   AV as initReactQueryRuntime,
+  MV as useMutationRaw,
   tP as useAppServerMutationRaw,
   XN as createQueryKeyRaw,
   zV as useQueryClientRaw,
@@ -61,6 +62,13 @@ export function useAppServerMutation<
     TData,
     TVariables
   >;
+}
+
+export function useMutation<
+  TData = unknown,
+  TVariables = Record<string, unknown>,
+>(options: unknown): AppServerMutation<TData, TVariables> {
+  return useMutationRaw(options) as AppServerMutation<TData, TVariables>;
 }
 
 export function createQueryKey(
