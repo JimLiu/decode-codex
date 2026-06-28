@@ -13,6 +13,10 @@ export {
   initWindowZoomContext as DM,
   useWindowZoom as kM,
 } from "../../utils/window-zoom-context";
+export {
+  KeyboardShortcutKeycap as vM,
+  initKeyboardShortcutKeycap as yM,
+} from "../../ui/keyboard-shortcut-keycap";
 export { useStableCallback as xM } from "../../utils/use-stable-callback";
 export { scaleCssPxByWindowZoom as OM } from "../../utils/window-zoom-scale";
 export * from "../../../ref/webview/assets/app-initial~app-main~remote-conversation-page~plugin-detail-page~new-thread-panel-page~appg~ijdupmx5-CdYgxe-b.js";

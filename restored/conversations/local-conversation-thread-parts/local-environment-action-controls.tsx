@@ -1,6 +1,10 @@
 // Restored from ref/webview/assets/local-conversation-thread-Bf38rCmF.js
 import { useState, type ReactNode } from "react";
 import { once } from "../../runtime/commonjs-interop";
+import {
+  initKeyboardShortcutKeycap,
+  KeyboardShortcutKeycap,
+} from "../../ui/keyboard-shortcut-keycap";
 import { useStableCallback } from "../../utils/use-stable-callback";
 import {
   $N as initVscodeApiBridge,
@@ -50,13 +54,11 @@ import {
   Uf as initHostWorkspaceQueries,
   Uh as useGitAvailabilityQuery,
   Vi as SettingsGearIcon,
-  vM as KeyboardShortcutKeycap,
   Wa as PlatformContentGate,
   wM as CheckIcon,
   wV as useSignalState,
   wj as initConfigPathHelpers,
   Xi as MenuSeparator,
-  yM as initKeyboardShortcutKeycap,
   yP as initPersistedSignalRuntime,
   Zi as initDropdownMenuPrimitives,
   ju as useOsInfo,
@@ -179,9 +181,7 @@ type RegisterLocalEnvironmentActionCommandProps = {
   onRunAction: (request: LocalEnvironmentActionRunRequest) => void;
 };
 
-type LocalEnvironmentActionShortcutBadgeProps = {
-  commandId: string;
-};
+type LocalEnvironmentActionShortcutBadgeProps = { commandId: string };
 
 const joinLocalEnvironmentRepoPath = joinPath;
 const EMPTY_LOCAL_ENVIRONMENT_ACTION_ITEMS: LocalEnvironmentActionRunRequest[] =

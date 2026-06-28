@@ -11177,8 +11177,8 @@
     "app-initial~app-main~remote-conversation-page~plugin-detail-page~new-thread-panel-page~appg~ijdupmx5-CdYgxe-b": {
       "restored": "boundaries/current-ref/appg-thread-shared-producer.ts",
       "status": "boundary",
-      "note": "Current ref boundary for local-conversation-thread/app-shell. F_/getRouteThreadId, bz/normalizeBrowserTabId, DM/initWindowZoomContext, kM/useWindowZoom, Mj/getScrollDistanceFromBottomPx, Nj/initReverseScrollUtilities, OM/scaleCssPxByWindowZoom, P_/getLocalThreadConversationIdFromRoute, and xM/useStableCallback are now explicitly backed by restored runtime/utils/app-shell modules, and local thread/page/app-shell callers import those semantic modules directly; remaining exports stay raw passthrough until deep-restored.",
-      "lastUpdated": "2026-06-28T03:18:05.000Z"
+      "note": "Current ref boundary for local-conversation-thread/app-shell. F_/getRouteThreadId, bz/normalizeBrowserTabId, DM/initWindowZoomContext, kM/useWindowZoom, Mj/getScrollDistanceFromBottomPx, Nj/initReverseScrollUtilities, OM/scaleCssPxByWindowZoom, P_/getLocalThreadConversationIdFromRoute, vM/KeyboardShortcutKeycap, yM/initKeyboardShortcutKeycap, and xM/useStableCallback are now explicitly backed by restored runtime/utils/ui/app-shell modules, and local thread/page/app-shell callers import those semantic modules directly; remaining exports stay raw passthrough until deep-restored.",
+      "lastUpdated": "2026-06-28T03:23:52.000Z"
     },
     "app-initial~app-main~remote-conversation-page~new-thread-panel-page~projects-index-page~app~ovcriy74-KTK3czaX": {
       "restored": "boundaries/current-ref/projects-app-shared-producer.ts",
