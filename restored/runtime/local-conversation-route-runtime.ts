@@ -3,6 +3,7 @@
 import {
   AB as initScopeRuntime,
   AI as getLocalConversationPathRaw,
+  Ev as useLocationRaw,
   I_ as initRouteScope,
   M_ as localConversationRouteScope,
   O_ as initConversationRouteSourceHelpers,
@@ -19,6 +20,12 @@ export type NavigateOptions = {
 };
 
 export type Navigate = (to: string, options?: NavigateOptions) => void;
+export type RouteLocation = {
+  hash: string;
+  pathname: string;
+  search: string;
+  state?: unknown;
+};
 
 export { localConversationRouteScope, toastSignal };
 
@@ -32,6 +39,10 @@ export function getHotkeyWindowThreadPath(conversationId: string): string {
 
 export function useNavigate(): Navigate {
   return useNavigateRaw() as Navigate;
+}
+
+export function useLocation(): RouteLocation {
+  return useLocationRaw() as RouteLocation;
 }
 
 export function initLocalConversationRouteRuntime(): void {

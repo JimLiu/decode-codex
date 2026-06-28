@@ -25,45 +25,46 @@ import {
   useStableCallback,
 } from "../../utils/use-stable-callback";
 import {
-  $N as initVscodeApiBridge,
-  $P as initAppScope,
-  AB as initScopeRuntime,
-  Au as initOsInfoQuery,
-  bF as initPathHelpers,
-  bP as createPersistedSignal,
-  Bh as useHostMutation,
-  DL as normalizeWorkspacePath,
-  Dj as joinPath,
-  Ev as useLocation,
-  FB as useScope,
-  Fx as initEnvironmentTerminalController,
-  Ga as initElectronPlatformContent,
-  Hh as initGitQueryKeyHelpers,
-  Ix as environmentTerminalControllerService,
-  kj as normalizeConfigPath,
-  lL as LOCAL_ENVIRONMENT_CONFIG_PATH_SETTING_KEY,
-  Ln as initKeyboardModifierState,
-  mP as logger,
-  Mi as initModalRegistrySignal,
-  Mu as initHostCodexHomeQuery,
-  mv as initCurrentRefViewRuntime,
-  Nh as initGitBranchQueryRuntime,
-  Ov as useNavigate,
-  PB as useScopedValue,
-  Pi as openScopedModal,
-  pP as initLoggerRuntime,
-  QP as appScope,
-  Rn as useCommandRegistration,
-  SV as initQueryRuntime,
-  Uf as initHostWorkspaceQueries,
-  Uh as useGitAvailabilityQuery,
-  Wa as PlatformContentGate,
-  wV as useSignalState,
-  wj as initConfigPathHelpers,
-  yP as initPersistedSignalRuntime,
-  ju as useOsInfo,
-  eP as useHostQuery,
-} from "../../boundaries/current-ref/appg-thread-shared-producer";
+  appScope,
+  createPersistedSignal,
+  environmentTerminalControllerService,
+  initAppScopeSignalRuntime,
+  initAppLoggerRuntime,
+  initConfigPathRuntime,
+  initEnvironmentTerminalRuntime,
+  initGitBranchQueryRuntime,
+  initGitQueryKeyHelpers,
+  initHostWorktreeContextRuntime,
+  initHostWorkspaceQueries,
+  initKeyboardModifierStateRuntime,
+  initOsInfoQueryRuntime,
+  initLocalConversationNavigationRuntime,
+  initLocalEnvironmentConfigRuntime,
+  initModalRuntime,
+  initOutputArtifactRuntime,
+  initPathHelpersRuntime,
+  initPersistedSignalRuntime,
+  initPlatformContentRuntime,
+  initSignalStateRuntime,
+  initVscodeBridgeRuntime,
+  joinPath,
+  LOCAL_ENVIRONMENT_CONFIG_PATH_SETTING_KEY,
+  logger,
+  normalizeConfigPath,
+  normalizeWorkspacePath,
+  openScopedModal,
+  PlatformContentGate,
+  useCommandRegistration,
+  useGitAvailabilityQuery,
+  useHostMutation,
+  useHostQuery,
+  useLocation,
+  useNavigate,
+  useOsInfo,
+  useScope,
+  useScopedValue,
+  useSignalState,
+} from "../../runtime/local-environment-action-controls-runtime";
 import {
   $i as initConversationRemoteStateHelpers,
   ba as initLocalEnvironmentSelectionRuntime,
@@ -948,35 +949,34 @@ function LocalEnvironmentActionShortcutBadge({
 }
 
 const initLocalConversationEnvironmentStateChunk = once(() => {
-  initScopeRuntime();
-  initPathHelpers();
+  initAppScopeSignalRuntime();
+  initPathHelpersRuntime();
   initGitBranchQueryRuntime();
   initUseGitConfigValueChunk();
   initGitQueryKeyHelpers();
-  initAppScope();
-  initConfigPathHelpers();
-  initVscodeApiBridge();
-  initHostCodexHomeQuery();
+  initConfigPathRuntime();
+  initVscodeBridgeRuntime();
+  initHostWorktreeContextRuntime();
 });
 
 export const initLocalEnvironmentActionControlsChunk = once(() => {
   initLocalEnvironmentSelectionRuntime();
-  initQueryRuntime();
-  initScopeRuntime();
+  initSignalStateRuntime();
+  initAppScopeSignalRuntime();
   initIntlRuntime();
-  initCurrentRefViewRuntime();
+  initLocalEnvironmentConfigRuntime();
   initConversationRemoteStateHelpers();
   initThreadSidePanelTabRegistryChunk();
-  initKeyboardModifierState();
+  initKeyboardModifierStateRuntime();
   initButtonComponentPrimitives();
   initDropdownMenuPrimitives();
   initKeyboardShortcutKeycap();
-  initModalRegistrySignal();
+  initModalRuntime();
   initTooltipPrimitives();
-  initElectronPlatformContent();
+  initPlatformContentRuntime();
   initCommandMenuItemComponent();
   initGitQueryKeyHelpers();
-  initOsInfoQuery();
+  initOsInfoQueryRuntime();
   initCheckmarkIcon();
   initPlusIcon();
   initSettingsGearIcon();
@@ -985,13 +985,15 @@ export const initLocalEnvironmentActionControlsChunk = once(() => {
   initAddLocalEnvironmentActionFormChunk();
   initRecentLocalEnvironmentActionsSignal();
   initLocalConversationEnvironmentStateChunk();
-  initAppScope();
+  initAppScopeSignalRuntime();
   initLocalEnvironmentActionIconChunk();
   initProfileGitSummaryRuntime();
   initLocalEnvironmentDefaultsChunk();
-  initEnvironmentTerminalController();
-  initLoggerRuntime();
-  initConfigPathHelpers();
+  initEnvironmentTerminalRuntime();
+  initAppLoggerRuntime();
+  initConfigPathRuntime();
   initUseStableCallback();
   initHostWorkspaceQueries();
+  initOutputArtifactRuntime();
+  initLocalConversationNavigationRuntime();
 });
