@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/local-conversation-thread-Bf38rCmF.js
+// Restored from ref/webview/assets/local-conversation-thread-BwqAGxoz.js
 import { defineMessages } from "../../vendor/react-intl";
 import type { BackgroundTerminalStatus } from "./background-terminal-state";
 

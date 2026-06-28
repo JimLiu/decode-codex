@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/local-conversation-thread-Bf38rCmF.js
+// Restored from ref/webview/assets/local-conversation-thread-BwqAGxoz.js
 // Builds the visible turn entry model for the local conversation thread.
 import { once } from "../../runtime/commonjs-interop";
 import { isRenderableLocalConversationTurn } from "./conversation-turn-rendering";

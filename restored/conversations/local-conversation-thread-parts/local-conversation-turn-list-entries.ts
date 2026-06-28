@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/local-conversation-thread-Bf38rCmF.js
+// Restored from ref/webview/assets/local-conversation-thread-BwqAGxoz.js
 // Local conversation turn-row entry assembly and structural reuse checks.
 import { collectGeneratedImagesForVisibleTurns } from "./visible-turn-generated-images";
 

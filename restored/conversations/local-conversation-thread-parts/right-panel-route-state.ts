@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/local-conversation-thread-Bf38rCmF.js
+// Restored from ref/webview/assets/local-conversation-thread-BwqAGxoz.js
 // Route matching helper for full-width local conversation right panels.
 
 export interface FullWidthRightPanelRouteState {

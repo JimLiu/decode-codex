@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/local-conversation-thread-Bf38rCmF.js
+// Restored from ref/webview/assets/local-conversation-thread-BwqAGxoz.js
 // Data model for the local conversation summary panel.
 import { once } from "../../runtime/commonjs-interop";
 import {

@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/local-conversation-thread-Bf38rCmF.js
+// Restored from ref/webview/assets/local-conversation-thread-BwqAGxoz.js
 // Resume local conversations, including retry and user-visible failure handling.
 import React from "react";
 import { once } from "../../runtime/commonjs-interop";

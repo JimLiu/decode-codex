@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/local-conversation-thread-Bf38rCmF.js
+// Restored from ref/webview/assets/local-conversation-thread-BwqAGxoz.js
 // Persisted scroll-state signal for local conversation thread layouts.
 import { once } from "../../runtime/commonjs-interop";
 import {

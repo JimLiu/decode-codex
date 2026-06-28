@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/local-conversation-thread-Bf38rCmF.js
+// Restored from ref/webview/assets/local-conversation-thread-BwqAGxoz.js
 // Chrome extension header for local conversation threads.
 import type { ReactNode } from "react";
 import { once } from "../../runtime/commonjs-interop";

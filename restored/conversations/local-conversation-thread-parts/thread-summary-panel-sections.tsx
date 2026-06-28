@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/local-conversation-thread-Bf38rCmF.js
+// Restored from ref/webview/assets/local-conversation-thread-BwqAGxoz.js
 // Summary panel section assembly for outputs, background tasks, browser tabs, sources, plan, automation, and git environment state.
 import type { ComponentType } from "react";
 import { once } from "../../runtime/commonjs-interop";

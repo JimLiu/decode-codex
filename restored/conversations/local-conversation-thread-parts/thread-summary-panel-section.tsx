@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/local-conversation-thread-Bf38rCmF.js
+// Restored from ref/webview/assets/local-conversation-thread-BwqAGxoz.js
 // Accordion/dropdown section primitive for the local conversation summary panel.
 import type { MouseEventHandler, ReactNode, Ref } from "react";
 import { useEffect, useImperativeHandle } from "react";

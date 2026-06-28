@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/local-conversation-thread-Bf38rCmF.js
+// Restored from ref/webview/assets/local-conversation-thread-BwqAGxoz.js
 // Dynamic import dependency list for the thread user-message navigation rail.
 export const threadUserMessageNavigationRailDeps = [
   "../../threads/thread-user-message-navigation-rail",

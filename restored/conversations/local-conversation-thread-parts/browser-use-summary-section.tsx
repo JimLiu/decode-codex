@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/local-conversation-thread-Bf38rCmF.js
+// Restored from ref/webview/assets/local-conversation-thread-BwqAGxoz.js
 // Browser-use summary section title and content for the local conversation side panel.
 import { FormattedMessage } from "../../vendor/react-intl";
 import type { BrowserUseSummary } from "./browser-use-summary";

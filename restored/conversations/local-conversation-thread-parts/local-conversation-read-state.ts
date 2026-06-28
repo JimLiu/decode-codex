@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/local-conversation-thread-Bf38rCmF.js
+// Restored from ref/webview/assets/local-conversation-thread-BwqAGxoz.js
 // Mark local conversations as read when visible and their read marker changes.
 import React from "react";
 import { useAppScopeValue } from "../../boundaries/app-scope";

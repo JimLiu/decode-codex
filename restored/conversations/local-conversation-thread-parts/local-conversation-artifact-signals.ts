@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/local-conversation-thread-Bf38rCmF.js
+// Restored from ref/webview/assets/local-conversation-thread-BwqAGxoz.js
 // Scoped artifact signals for local conversation output resources.
 import { once } from "../../runtime/commonjs-interop";
 import {

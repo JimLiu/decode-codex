@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/local-conversation-thread-Bf38rCmF.js
+// Restored from ref/webview/assets/local-conversation-thread-BwqAGxoz.js
 // Navigation and missing-conversation state helpers for local conversation threads.
 import React from "react";
 import { useScope } from "../../runtime/app-scope-hooks";

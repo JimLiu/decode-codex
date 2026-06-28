@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/local-conversation-thread-Bf38rCmF.js
+// Restored from ref/webview/assets/local-conversation-thread-BwqAGxoz.js
 // Virtualized local conversation turn list and per-turn measurement behavior.
 import React from "react";
 import { flushSync as flushSyncReactUpdates } from "react-dom";

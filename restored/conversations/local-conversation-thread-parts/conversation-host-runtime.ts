@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/local-conversation-thread-Bf38rCmF.js
+// Restored from ref/webview/assets/local-conversation-thread-BwqAGxoz.js
 // Conversation host API and agent-mode hooks used by local thread content.
 import {
   ed as useConversationHostApiRaw,

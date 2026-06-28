@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/local-conversation-thread-Bf38rCmF.js
+// Restored from ref/webview/assets/local-conversation-thread-BwqAGxoz.js
 // Scroll restoration, older-history loading, and submit-placement behavior for local conversation frames.
 import React from "react";
 import { appLogger, initAppLoggerRuntime } from "../../runtime/app-logger";

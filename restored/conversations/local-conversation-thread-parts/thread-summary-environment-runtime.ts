@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/local-conversation-thread-Bf38rCmF.js
+// Restored from ref/webview/assets/local-conversation-thread-BwqAGxoz.js
 // Thread summary environment, remote handoff, terminal, and pull-request controls.
 import {
   $i as getConversationRemoteState,

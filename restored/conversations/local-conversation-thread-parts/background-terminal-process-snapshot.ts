@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/local-conversation-thread-Bf38rCmF.js
+// Restored from ref/webview/assets/local-conversation-thread-BwqAGxoz.js
 // Background terminal process snapshot selectors for local conversation panels.
 
 interface ProcessStartedAtSnapshot {

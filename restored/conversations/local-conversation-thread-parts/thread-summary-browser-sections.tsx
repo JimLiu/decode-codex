@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/local-conversation-thread-Bf38rCmF.js
+// Restored from ref/webview/assets/local-conversation-thread-BwqAGxoz.js
 // Browser and Computer Use PiP sections for the local conversation summary panel.
 import { once } from "../../runtime/commonjs-interop";
 import { useIntl } from "../../vendor/react-intl";

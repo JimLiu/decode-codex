@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/local-conversation-thread-Bf38rCmF.js
+// Restored from ref/webview/assets/local-conversation-thread-BwqAGxoz.js
 // Scoped selectors for visible local-conversation turns and subagent response state.
 import { once } from "../../runtime/commonjs-interop";
 import { isEqualT as createIsEqual } from "../../vendor/lodash-is-equal";

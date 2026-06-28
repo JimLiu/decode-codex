@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/local-conversation-thread-Bf38rCmF.js
+// Restored from ref/webview/assets/local-conversation-thread-BwqAGxoz.js
 // GitHub pull-request summary signals, queries, and create-PR workflow controls.
 import {
   _i as githubCliAvailabilitySignal,

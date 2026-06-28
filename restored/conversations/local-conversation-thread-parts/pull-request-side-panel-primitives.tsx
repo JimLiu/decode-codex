@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/local-conversation-thread-Bf38rCmF.js
+// Restored from ref/webview/assets/local-conversation-thread-BwqAGxoz.js
 // Shared pull request side-panel primitives and merge-conflict file rows.
 import type { KeyboardEvent, MouseEvent, ReactNode, SVGProps } from "react";
 import { ChevronIcon, initChevronDownIcon } from "../../icons/chevron-icon";

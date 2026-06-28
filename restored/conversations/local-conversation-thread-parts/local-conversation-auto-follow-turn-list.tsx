@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/local-conversation-thread-Bf38rCmF.js
+// Restored from ref/webview/assets/local-conversation-thread-BwqAGxoz.js
 // Latest-turn auto-follow wrapper for the local conversation virtualized turn list.
 import React from "react";
 import { once } from "../../runtime/commonjs-interop";

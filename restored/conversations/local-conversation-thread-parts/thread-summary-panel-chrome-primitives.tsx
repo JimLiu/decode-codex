@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/local-conversation-thread-Bf38rCmF.js
+// Restored from ref/webview/assets/local-conversation-thread-BwqAGxoz.js
 // Layout primitives for the local conversation summary-panel chrome.
 import type { ComponentProps, MouseEventHandler, ReactNode } from "react";
 import { motion } from "framer-motion";

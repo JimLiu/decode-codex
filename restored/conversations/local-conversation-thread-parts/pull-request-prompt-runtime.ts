@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/local-conversation-thread-Bf38rCmF.js
+// Restored from ref/webview/assets/local-conversation-thread-BwqAGxoz.js
 // Local-thread bridge for pull-request prompt and review-comment helpers.
 export {
   getThreadBranchMismatchState,

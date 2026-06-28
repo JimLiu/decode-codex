@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/local-conversation-thread-Bf38rCmF.js
+// Restored from ref/webview/assets/local-conversation-thread-BwqAGxoz.js
 // Browser-use summary helpers for the local conversation side panel.
 import { getBrowserSidebarTabIds } from "../../browser/browser-sidebar-open-source";
 import { browserSidebarManager } from "../../browser/sidebar-manager";

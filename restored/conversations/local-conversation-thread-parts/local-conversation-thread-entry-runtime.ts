@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/local-conversation-thread-Bf38rCmF.js
+// Restored from ref/webview/assets/local-conversation-thread-BwqAGxoz.js
 // Entry-thread UI components and side-panel helpers used by local conversation routes.
 import type { ComponentType } from "react";
 import { _c as getSidePanelTargetStoreRaw } from "../../vendor/projects-app-shared-runtime";

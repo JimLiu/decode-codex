@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/local-conversation-thread-Bf38rCmF.js
+// Restored from ref/webview/assets/local-conversation-thread-BwqAGxoz.js
 // Output artifact list for the local conversation summary panel.
 import type { MouseEvent, SVGProps } from "react";
 import { GlobeIcon, initGlobeIcon } from "../../icons/globe-icon";

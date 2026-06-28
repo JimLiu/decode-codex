@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/local-conversation-thread-Bf38rCmF.js
+// Restored from ref/webview/assets/local-conversation-thread-BwqAGxoz.js
 // Viewport state helpers for the local conversation virtualized turn list.
 import {
   buildThreadVirtualizerLayout,

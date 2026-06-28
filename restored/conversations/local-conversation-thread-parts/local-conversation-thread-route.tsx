@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/local-conversation-thread-Bf38rCmF.js
+// Restored from ref/webview/assets/local-conversation-thread-BwqAGxoz.js
 // Route-level thread composition for the local conversation screen.
 import { once } from "../../runtime/commonjs-interop";
 import { useStableCallback } from "../../utils/use-stable-callback";

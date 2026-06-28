@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/local-conversation-thread-Bf38rCmF.js
+// Restored from ref/webview/assets/local-conversation-thread-BwqAGxoz.js
 // App-shell route entry components for main, summary, and side-chat local conversation threads.
 import React, { useState, type ReactNode } from "react";
 import { once } from "../../runtime/commonjs-interop";

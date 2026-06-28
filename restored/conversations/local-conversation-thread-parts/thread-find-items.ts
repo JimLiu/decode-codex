@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/local-conversation-thread-Bf38rCmF.js
+// Restored from ref/webview/assets/local-conversation-thread-BwqAGxoz.js
 // Thread-find navigation items for visible local conversation turns.
 import { once } from "../../runtime/commonjs-interop";
 import { initThreadFindPreviewRuntime } from "./conversation-content-runtime";

@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/local-conversation-thread-Bf38rCmF.js
+// Restored from ref/webview/assets/local-conversation-thread-BwqAGxoz.js
 // Scroll button visibility helper for local conversation thread state.
 
 const responseSpacerScrollThresholdPx = 24;

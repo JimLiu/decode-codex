@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/local-conversation-thread-Bf38rCmF.js
+// Restored from ref/webview/assets/local-conversation-thread-BwqAGxoz.js
 // Scroll layout and background-agent context wrapper for local conversation bodies.
 import React, { type ReactNode } from "react";
 import { once } from "../../runtime/commonjs-interop";

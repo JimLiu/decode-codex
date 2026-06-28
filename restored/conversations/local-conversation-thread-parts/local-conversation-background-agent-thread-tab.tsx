@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/local-conversation-thread-Bf38rCmF.js
+// Restored from ref/webview/assets/local-conversation-thread-BwqAGxoz.js
 // Opens background-agent conversation threads as right-panel tabs.
 import type { ComponentType, ReactNode } from "react";
 import { once } from "../../runtime/commonjs-interop";

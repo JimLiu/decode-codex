@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/local-conversation-thread-Bf38rCmF.js
+// Restored from ref/webview/assets/local-conversation-thread-BwqAGxoz.js
 // Response-spacer constants and scroll measurement helpers for latest-turn follow mode.
 import { getScrollDistanceFromBottomPx } from "../../utils/reverse-scroll-distance";
 import { scaleCssPxByWindowZoom } from "../../utils/window-zoom-scale";

@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/local-conversation-thread-Bf38rCmF.js
+// Restored from ref/webview/assets/local-conversation-thread-BwqAGxoz.js
 // Boundary initializer facade for the local conversation thread entry chunk.
 import {
   A as initThreadCommandRuntime,

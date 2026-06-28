@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/local-conversation-thread-Bf38rCmF.js
+// Restored from ref/webview/assets/local-conversation-thread-BwqAGxoz.js
 // Computer Use picture-in-picture visibility control for the thread side panel.
 import type { SVGProps } from "react";
 import { FormattedMessage } from "../../vendor/react-intl";

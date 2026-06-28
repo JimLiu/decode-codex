@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/local-conversation-thread-Bf38rCmF.js
+// Restored from ref/webview/assets/local-conversation-thread-BwqAGxoz.js
 // Scroll padding and DOM measurement helpers for the local conversation turn list.
 import { scaleCssPxByWindowZoom } from "../../utils/window-zoom-scale";
 

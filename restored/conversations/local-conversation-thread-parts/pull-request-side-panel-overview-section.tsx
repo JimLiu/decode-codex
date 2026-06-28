@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/local-conversation-thread-Bf38rCmF.js
+// Restored from ref/webview/assets/local-conversation-thread-BwqAGxoz.js
 // Pull request side-panel overview section and reviewer badges.
 import type { ReactElement, SVGProps } from "react";
 import { GitBranchIcon, initGitBranchIcon } from "../../icons/git-branch-icon";

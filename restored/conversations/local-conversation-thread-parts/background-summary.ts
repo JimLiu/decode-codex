@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/local-conversation-thread-Bf38rCmF.js
+// Restored from ref/webview/assets/local-conversation-thread-BwqAGxoz.js
 // Background agent and terminal summary helpers for the local conversation panel.
 
 interface BackgroundAgentVisibilityState {

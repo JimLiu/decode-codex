@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/local-conversation-thread-Bf38rCmF.js
+// Restored from ref/webview/assets/local-conversation-thread-BwqAGxoz.js
 // Turn-entry and request-index helpers for visible local conversation turns.
 
 const berryDisplayTurnIdPattern = /^(.*)-berry-display-(\d+)$/;

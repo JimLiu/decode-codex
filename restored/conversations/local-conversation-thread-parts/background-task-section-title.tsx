@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/local-conversation-thread-Bf38rCmF.js
+// Restored from ref/webview/assets/local-conversation-thread-BwqAGxoz.js
 // Background-task section titles for the local conversation summary panel.
 import { FormattedMessage } from "../../vendor/react-intl";
 

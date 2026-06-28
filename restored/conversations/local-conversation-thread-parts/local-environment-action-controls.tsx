@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/local-conversation-thread-Bf38rCmF.js
+// Restored from ref/webview/assets/local-conversation-thread-BwqAGxoz.js
 import { useState, type ReactNode } from "react";
 import { CheckMdIcon, initCheckmarkIcon } from "../../icons/check-md-icon";
 import { initPlusIcon, PlusIcon } from "../../icons/plus-icon";

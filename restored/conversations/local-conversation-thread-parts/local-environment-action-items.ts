@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/local-conversation-thread-Bf38rCmF.js
+// Restored from ref/webview/assets/local-conversation-thread-BwqAGxoz.js
 // Local-environment action item, path, and run-id helpers.
 
 export interface LocalEnvironmentActionLike {

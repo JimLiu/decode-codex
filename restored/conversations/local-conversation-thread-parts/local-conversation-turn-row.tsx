@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/local-conversation-thread-Bf38rCmF.js
+// Restored from ref/webview/assets/local-conversation-thread-BwqAGxoz.js
 // Local conversation turn row renderer and per-turn error fallback.
 import React from "react";
 import { useScope } from "../../runtime/app-scope-hooks";

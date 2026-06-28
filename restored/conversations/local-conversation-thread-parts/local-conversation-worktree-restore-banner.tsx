@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/local-conversation-thread-Bf38rCmF.js
+// Restored from ref/webview/assets/local-conversation-thread-BwqAGxoz.js
 // Missing managed-worktree restore banner for local conversation thread frames.
 import React from "react";
 import { once } from "../../runtime/commonjs-interop";

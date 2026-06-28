@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/local-conversation-thread-Bf38rCmF.js
+// Restored from ref/webview/assets/local-conversation-thread-BwqAGxoz.js
 // Pull request status detail rows plus chat-attachment helpers for PR checks, review comments, and merge conflicts.
 import { once } from "../../runtime/commonjs-interop";
 import { useScope, useScopedValue } from "../../runtime/app-scope-hooks";

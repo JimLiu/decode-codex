@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/local-conversation-thread-Bf38rCmF.js
+// Restored from ref/webview/assets/local-conversation-thread-BwqAGxoz.js
 // Scheduled automation row for the local conversation summary panel.
 import { once } from "../../runtime/commonjs-interop";
 import { useScope } from "../../runtime/app-scope-hooks";

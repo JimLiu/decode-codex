@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/local-conversation-thread-Bf38rCmF.js
+// Restored from ref/webview/assets/local-conversation-thread-BwqAGxoz.js
 // Visible local conversation content: app-shell source registration, content search, thread-find rail, and turn-list wiring.
 import React, { type ComponentType } from "react";
 import { once } from "../../runtime/commonjs-interop";

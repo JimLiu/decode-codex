@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/local-conversation-thread-Bf38rCmF.js
+// Restored from ref/webview/assets/local-conversation-thread-BwqAGxoz.js
 // Comments section for the pull request side panel.
 import type { ReactNode } from "react";
 import { once } from "../../runtime/commonjs-interop";

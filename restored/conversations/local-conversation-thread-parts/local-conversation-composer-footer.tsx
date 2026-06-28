@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/local-conversation-thread-Bf38rCmF.js
+// Restored from ref/webview/assets/local-conversation-thread-BwqAGxoz.js
 // Composer footer surface for the local conversation thread.
 import React, { type ComponentType } from "react";
 import { once } from "../../runtime/commonjs-interop";

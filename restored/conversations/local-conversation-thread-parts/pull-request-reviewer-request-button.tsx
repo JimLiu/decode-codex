@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/local-conversation-thread-Bf38rCmF.js
+// Restored from ref/webview/assets/local-conversation-thread-BwqAGxoz.js
 // Reviewer request popover used from the pull request side-panel overview row.
 import { useState, type ReactNode } from "react";
 import { initPlusIcon, PlusIcon } from "../../icons/plus-icon";

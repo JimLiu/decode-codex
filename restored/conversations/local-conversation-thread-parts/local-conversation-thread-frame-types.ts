@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/local-conversation-thread-Bf38rCmF.js
+// Restored from ref/webview/assets/local-conversation-thread-BwqAGxoz.js
 // Type contracts shared by the local conversation thread frame and content.
 import type { ComponentType, ReactNode } from "react";
 import type { VirtualizedTurnListContracts } from "./local-conversation-virtualized-turn-list-types";

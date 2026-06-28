@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/local-conversation-thread-Bf38rCmF.js
+// Restored from ref/webview/assets/local-conversation-thread-BwqAGxoz.js
 // Browser-use summary external-store hook for the local conversation side panel.
 import { useSyncExternalStore } from "react";
 import {

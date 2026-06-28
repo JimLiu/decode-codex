@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/local-conversation-thread-Bf38rCmF.js
+// Restored from ref/webview/assets/local-conversation-thread-BwqAGxoz.js
 // Observed row wrapper for local conversation virtualized turn list items.
 import React from "react";
 import { useStableCallback } from "../../utils/use-stable-callback";

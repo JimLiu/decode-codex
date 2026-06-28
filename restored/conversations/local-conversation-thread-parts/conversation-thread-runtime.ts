@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/local-conversation-thread-Bf38rCmF.js
+// Restored from ref/webview/assets/local-conversation-thread-BwqAGxoz.js
 // Low-level initialization helpers for the local conversation thread chunk.
 import {
   Rv as initMarkdownUtilityNoopRaw,

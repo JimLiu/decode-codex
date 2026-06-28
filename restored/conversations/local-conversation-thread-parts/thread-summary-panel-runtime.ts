@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/local-conversation-thread-Bf38rCmF.js
+// Restored from ref/webview/assets/local-conversation-thread-BwqAGxoz.js
 // Thread summary panel animation config and route-scoped signal helpers.
 import {
   $i as initSummaryPanelAnimationConfig,

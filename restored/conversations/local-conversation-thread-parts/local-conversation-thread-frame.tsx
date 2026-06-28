@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/local-conversation-thread-Bf38rCmF.js
+// Restored from ref/webview/assets/local-conversation-thread-BwqAGxoz.js
 // Frame-level app-shell, composer footer, scroll layout, and background-agent wiring for local conversation threads.
 import React from "react";
 import { once } from "../../runtime/commonjs-interop";

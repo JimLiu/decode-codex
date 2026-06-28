@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/local-conversation-thread-Bf38rCmF.js
+// Restored from ref/webview/assets/local-conversation-thread-BwqAGxoz.js
 // Dialog and controller for forking a local conversation from an older turn.
 import React from "react";
 import { GitBranchIcon, initGitBranchIcon } from "../../icons/git-branch-icon";
