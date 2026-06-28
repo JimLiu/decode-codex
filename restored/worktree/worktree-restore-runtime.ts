@@ -8,7 +8,7 @@ import {
 import {
   ag as initWorktreeCheckMutationRuntimeRaw,
   eg as initWorktreeRestoreMutationRuntimeRaw,
-} from "../vendor/appg-thread-shared-runtime";
+} from "../vendor/projects-app-shared-runtime";
 import {
   $n as initWorktreeStatusQuerySignalChunkRaw,
   Bn as worktreeStatusQuerySignal,

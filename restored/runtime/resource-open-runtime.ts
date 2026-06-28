@@ -9,7 +9,7 @@ import {
   ms as resolveInlineableLocalImagePathRaw,
   r_ as getImagePreviewDisplayModeRaw,
   za as openInBrowserFromEventRaw,
-} from "../vendor/appg-thread-shared-runtime";
+} from "../vendor/projects-app-shared-runtime";
 import {
   Gd as initGeneratedImagePreviewRuntimeRaw,
   Jt as openGeneratedImagePreviewTabRaw,

@@ -6,7 +6,7 @@ import {
   Pv as renderConversationTurnForArtifactsRaw,
   Ug as collectAssistantOutputArtifactsRaw,
   Wg as initMarkdownResourceHelpersRaw,
-} from "../../vendor/appg-thread-shared-runtime";
+} from "../../vendor/projects-app-shared-runtime";
 import {
   Dt as resolveVisibleGeneratedImageOutputsRaw,
   lt as initRenderedTurnOutputItemGroupingRaw,

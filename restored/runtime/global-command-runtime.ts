@@ -4,7 +4,7 @@ import {
   Bn as initGlobalCommandHandlersRaw,
   R as initSlashIconRaw,
   Vn as dispatchGlobalCommandRaw,
-} from "../vendor/appg-thread-shared-runtime";
+} from "../vendor/projects-app-shared-runtime";
 
 export function initGlobalCommandHandlersRuntime(): void {
   initGlobalCommandHandlersRaw();

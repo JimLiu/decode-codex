@@ -5,7 +5,7 @@ import {
   ny as initAppToolSourceMatcherCache,
   oy as initIdentifierTitleFormatter,
   ty as getAppToolSourceMetadataRaw,
-} from "../vendor/appg-thread-shared-runtime";
+} from "../vendor/projects-app-shared-runtime";
 import {
   Ar as parseMcpAppIdFromToolCallIdRaw,
   Mr as initMcpAppIdHelpersRaw,

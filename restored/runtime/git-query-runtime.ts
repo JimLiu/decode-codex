@@ -6,7 +6,7 @@ import {
   Nh as initGitBranchQueryRuntimeRaw,
   Uf as initHostWorkspaceQueriesRaw,
   Uh as useGitAvailabilityQueryRaw,
-} from "../vendor/appg-thread-shared-runtime";
+} from "../vendor/projects-app-shared-runtime";
 
 export type GitAvailabilityQueryResult<TResult = unknown> = {
   data?: TResult;

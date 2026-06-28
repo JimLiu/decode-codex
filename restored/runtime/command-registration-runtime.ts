@@ -3,7 +3,7 @@
 import {
   Ln as initKeyboardModifierStateRaw,
   Rn as useCommandRegistrationRaw,
-} from "../vendor/appg-thread-shared-runtime";
+} from "../vendor/projects-app-shared-runtime";
 
 export type CommandRegistrationOptions = {
   contextHandler?: (context: unknown) => void;

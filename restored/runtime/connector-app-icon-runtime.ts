@@ -5,7 +5,7 @@ import {
   io as getKnownAppIconById,
   oo as initKnownAppIconRegistry,
   to as initConnectorAppIconRuntime,
-} from "../vendor/appg-thread-shared-runtime";
+} from "../vendor/projects-app-shared-runtime";
 
 export {
   ConnectorAppIcon,

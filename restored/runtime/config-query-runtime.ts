@@ -3,7 +3,7 @@
 import {
   Sf as initConfigQueryRuntimeRaw,
   Tf as mcpServersQuerySignal,
-} from "../vendor/appg-thread-shared-runtime";
+} from "../vendor/projects-app-shared-runtime";
 
 export { mcpServersQuerySignal };
 

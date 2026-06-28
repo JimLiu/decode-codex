@@ -4,7 +4,7 @@ import {
   Fx as initEnvironmentTerminalControllerRaw,
   Ix as environmentTerminalControllerService,
   js as environmentTerminalControllerSignal,
-} from "../vendor/appg-thread-shared-runtime";
+} from "../vendor/projects-app-shared-runtime";
 
 export type EnvironmentTerminalRunAction = {
   command: string;

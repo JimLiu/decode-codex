@@ -2,7 +2,7 @@
 // Host-scoped mutation hook facade.
 import {
   Bh as useHostMutationRaw,
-} from "../vendor/appg-thread-shared-runtime";
+} from "../vendor/projects-app-shared-runtime";
 
 export type HostMutationOptions<TData, TVariables> = {
   onError?: (error: unknown, variables: TVariables, context: unknown) => void;

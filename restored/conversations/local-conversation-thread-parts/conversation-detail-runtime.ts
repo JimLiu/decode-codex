@@ -4,7 +4,7 @@ import {
   Sc as useConversationDetailModeRaw,
   bc as initConversationDetailModeConstantsRaw,
   _c as CONVERSATION_DETAIL_STEPS_PROSE,
-} from "../../vendor/appg-thread-shared-runtime";
+} from "../../vendor/projects-app-shared-runtime";
 
 export { CONVERSATION_DETAIL_STEPS_PROSE };
 
