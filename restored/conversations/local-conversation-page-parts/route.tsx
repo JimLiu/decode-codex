@@ -2,6 +2,7 @@
 import React from "react";
 
 import { once } from "../../runtime/commonjs-interop";
+import { useStableCallback } from "../../utils/use-stable-callback";
 import {
   $N as initVscodeApiBridge,
   $P as initAppScope,
@@ -57,7 +58,6 @@ import {
   sv as pendingProjectlessLocalConversationSignal,
   um as rolloutPathSignal,
   vm as subagentParentThreadIdSignal,
-  xM as useStableCallback,
   yv as Navigate,
   zo as useAppsQuery,
 } from "../../boundaries/current-ref/appg-thread-shared-producer";

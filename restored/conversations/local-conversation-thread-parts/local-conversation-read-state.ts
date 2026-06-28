@@ -3,6 +3,7 @@
 import React from "react";
 import { useAppScopeValue } from "../../boundaries/app-scope";
 import { once } from "../../runtime/commonjs-interop";
+import { useStableCallback } from "../../utils/use-stable-callback";
 import {
   Ep as conversationUnreadSignal,
   Kp as conversationReadStateSignal,
@@ -12,7 +13,6 @@ import {
   ak as initAppServerRequestBridge,
   bM as initKeyboardShortcutLabel,
   ok as sendAppServerRequest,
-  xM as useStableCallback,
   AB as initScopeRuntime,
 } from "../../boundaries/current-ref/appg-thread-shared-producer";
 import {

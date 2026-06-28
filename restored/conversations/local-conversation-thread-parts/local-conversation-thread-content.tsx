@@ -2,6 +2,7 @@
 // Visible local conversation content: app-shell source registration, content search, thread-find rail, and turn-list wiring.
 import React, { type ComponentType } from "react";
 import { once } from "../../runtime/commonjs-interop";
+import { useStableCallback } from "../../utils/use-stable-callback";
 import {
   $j as initStatsigGateSignals,
   $p as modelProviderSignal,
@@ -43,7 +44,6 @@ import {
   uM as toastSignal,
   vm as subagentParentThreadIdSignal,
   wV as useSignalState,
-  xM as useStableCallback,
   zo as useAppsQuery,
 } from "../../boundaries/current-ref/appg-thread-shared-producer";
 import {

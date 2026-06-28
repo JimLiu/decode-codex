@@ -2,6 +2,7 @@
 // Frame-level app-shell, composer footer, scroll layout, and background-agent wiring for local conversation threads.
 import React from "react";
 import { once } from "../../runtime/commonjs-interop";
+import { useStableCallback } from "../../utils/use-stable-callback";
 import {
   AB as initScopeRuntime,
   FB as useScope,
@@ -12,7 +13,6 @@ import {
   PB as useScopedValue,
   qj as useStatsigGate,
   vm as subagentParentThreadIdSignal,
-  xM as useStableCallback,
 } from "../../boundaries/current-ref/appg-thread-shared-producer";
 import { jr as liveMcpAppFrameSignal } from "../../boundaries/current-ref/projects-app-shared-producer";
 import { initBackgroundAgentThreadTab } from "./local-conversation-background-agent-thread-tab";

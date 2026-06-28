@@ -2,6 +2,7 @@
 // Output resource open handlers for the local conversation summary panel.
 import type { MouseEvent } from "react";
 import { once } from "../../runtime/commonjs-interop";
+import { useStableCallback } from "../../utils/use-stable-callback";
 import {
   En as toAppFsUrl,
   La as initExternalUrlHelpers,
@@ -10,7 +11,6 @@ import {
   bR as isFileUrlLikeTarget,
   ms as resolveInlineableLocalImagePath,
   r_ as getImagePreviewDisplayMode,
-  xM as useStableCallback,
   za as openInBrowserFromEvent,
 } from "../../boundaries/current-ref/appg-thread-shared-producer";
 import {

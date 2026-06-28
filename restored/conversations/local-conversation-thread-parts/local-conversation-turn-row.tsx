@@ -2,6 +2,7 @@
 // Local conversation turn row renderer and per-turn error fallback.
 import React from "react";
 import { once } from "../../runtime/commonjs-interop";
+import { useStableCallback } from "../../utils/use-stable-callback";
 import {
   AB as initScopeRuntime,
   DN as Button,
@@ -12,7 +13,6 @@ import {
   bM as initKeyboardShortcutLabel,
   iF as initIntlRuntime,
   sF as FormattedMessage,
-  xM as useStableCallback,
 } from "../../boundaries/current-ref/appg-thread-shared-producer";
 import {
   Ja as initTurnErrorBoundarySupport,

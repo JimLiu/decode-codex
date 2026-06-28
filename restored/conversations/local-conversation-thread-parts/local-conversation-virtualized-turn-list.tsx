@@ -3,13 +3,13 @@
 import React from "react";
 import { flushSync as flushSyncReactUpdates } from "react-dom";
 import { once } from "../../runtime/commonjs-interop";
+import { useStableCallback } from "../../utils/use-stable-callback";
 import {
   BP as classNames,
   DM as initWindowZoomContext,
   VP as initClassNameRuntime,
   bM as initKeyboardShortcutLabel,
   kM as useWindowZoom,
-  xM as useStableCallback,
 } from "../../boundaries/current-ref/appg-thread-shared-producer";
 import {
   buildThreadVirtualizerLayout,

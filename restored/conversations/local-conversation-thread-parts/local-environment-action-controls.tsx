@@ -1,6 +1,7 @@
 // Restored from ref/webview/assets/local-conversation-thread-Bf38rCmF.js
 import { useState, type ReactNode } from "react";
 import { once } from "../../runtime/commonjs-interop";
+import { useStableCallback } from "../../utils/use-stable-callback";
 import {
   $N as initVscodeApiBridge,
   $P as initAppScope,
@@ -54,7 +55,6 @@ import {
   wM as CheckIcon,
   wV as useSignalState,
   wj as initConfigPathHelpers,
-  xM as useStableCallback,
   Xi as MenuSeparator,
   yM as initKeyboardShortcutKeycap,
   yP as initPersistedSignalRuntime,

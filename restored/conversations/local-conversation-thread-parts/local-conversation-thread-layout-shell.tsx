@@ -2,7 +2,7 @@
 // ThreadLayout shell for local conversation pages and app-shell outlets.
 import React, { type ReactNode } from "react";
 import { once } from "../../runtime/commonjs-interop";
-import { xM as useStableCallback } from "../../boundaries/current-ref/appg-thread-shared-producer";
+import { useStableCallback } from "../../utils/use-stable-callback";
 import { vn as AppShellOverlayOutlet } from "../../boundaries/current-ref/projects-app-shared-producer";
 import { qa as ErrorBoundary } from "../../boundaries/current-ref/pull-request-thread-actions-producer";
 import { rt as AppShellElementContext } from "../../boundaries/current-ref/appgen-library-hot-producer";

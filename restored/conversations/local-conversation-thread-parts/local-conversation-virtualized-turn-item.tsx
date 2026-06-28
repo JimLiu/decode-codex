@@ -1,7 +1,7 @@
 // Restored from ref/webview/assets/local-conversation-thread-Bf38rCmF.js
 // Observed row wrapper for local conversation virtualized turn list items.
 import React from "react";
-import { xM as useStableCallback } from "../../boundaries/current-ref/appg-thread-shared-producer";
+import { useStableCallback } from "../../utils/use-stable-callback";
 import type { VirtualizedTurnListContracts } from "./local-conversation-virtualized-turn-list-types";
 
 type VirtualizedTurnItemProps = VirtualizedTurnListContracts["itemProps"];

@@ -2,6 +2,7 @@
 // Scroll restoration, older-history loading, and submit-placement behavior for local conversation frames.
 import React from "react";
 import { once } from "../../runtime/commonjs-interop";
+import { useStableCallback } from "../../utils/use-stable-callback";
 import {
   Np as conversationHistoryCompleteSignal,
   Op as initConversationStateSelectors,
@@ -10,7 +11,6 @@ import {
   mP as logger,
   ok as sendAppServerRequest,
   pP as initLoggerRuntime,
-  xM as useStableCallback,
 } from "../../boundaries/current-ref/appg-thread-shared-producer";
 import { un as refreshConversationHistorySignals } from "../../boundaries/current-ref/projects-app-shared-producer";
 import { createLatestTurnSubmitPlacementSnapshot } from "./latest-turn-submit-placement";

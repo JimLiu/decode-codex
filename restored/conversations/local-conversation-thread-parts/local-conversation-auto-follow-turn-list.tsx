@@ -2,6 +2,7 @@
 // Latest-turn auto-follow wrapper for the local conversation virtualized turn list.
 import React from "react";
 import { once } from "../../runtime/commonjs-interop";
+import { useStableCallback } from "../../utils/use-stable-callback";
 import {
   $P as initAppScope,
   AB as initScopeRuntime,
@@ -16,7 +17,6 @@ import {
   SP as initMotionRuntime,
   bM as initKeyboardShortcutLabel,
   kM as useWindowZoom,
-  xM as useStableCallback,
 } from "../../boundaries/current-ref/appg-thread-shared-producer";
 import { initThreadScrollLayoutStyleChunk } from "../../utils/thread-scroll-layout";
 import {

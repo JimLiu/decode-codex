@@ -11177,8 +11177,8 @@
     "app-initial~app-main~remote-conversation-page~plugin-detail-page~new-thread-panel-page~appg~ijdupmx5-CdYgxe-b": {
       "restored": "boundaries/current-ref/appg-thread-shared-producer.ts",
       "status": "boundary",
-      "note": "Current ref passthrough boundary for local-conversation-thread; open until this producer is deep-restored semantically.",
-      "lastUpdated": "2026-06-27T03:16:46.000Z"
+      "note": "Current ref boundary for local-conversation-thread. xM/useStableCallback is now explicitly backed by restored/utils/use-stable-callback and local thread/page callers import that semantic module directly; remaining exports stay raw passthrough until deep-restored.",
+      "lastUpdated": "2026-06-28T02:43:43.000Z"
     },
     "app-initial~app-main~remote-conversation-page~new-thread-panel-page~projects-index-page~app~ovcriy74-KTK3czaX": {
       "restored": "boundaries/current-ref/projects-app-shared-producer.ts",

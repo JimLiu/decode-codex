@@ -1,6 +1,7 @@
 // Restored from ref/webview/assets/local-conversation-thread-Bf38rCmF.js
 // Route-level thread composition for the local conversation screen.
 import { once } from "../../runtime/commonjs-interop";
+import { useStableCallback } from "../../utils/use-stable-callback";
 import {
   $P as initAppScope,
   AB as initScopeRuntime,
@@ -25,7 +26,6 @@ import {
   pP as initLoggerRuntime,
   Sm as threadSourceSignal,
   vm as subagentParentThreadIdSignal,
-  xM as useStableCallback,
   yv as Navigate,
   zo as useAppsQuery,
 } from "../../boundaries/current-ref/appg-thread-shared-producer";

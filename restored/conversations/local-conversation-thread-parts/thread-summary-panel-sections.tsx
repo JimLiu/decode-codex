@@ -2,6 +2,7 @@
 // Summary panel section assembly for outputs, background tasks, browser tabs, sources, plan, automation, and git environment state.
 import type { ComponentType } from "react";
 import { once } from "../../runtime/commonjs-interop";
+import { useStableCallback } from "../../utils/use-stable-callback";
 import { isEqualT as createIsEqual } from "../../vendor/lodash-is-equal";
 import {
   $N as initVscodeApiBridge,
@@ -40,7 +41,6 @@ import {
   pP as initLoggerRuntime,
   qj as useStatsigGate,
   uM as toastSignal,
-  xM as useStableCallback,
   _c as CONVERSATION_DETAIL_STEPS_PROSE,
   eP as useHostQuery,
   tP as useAppServerMutation,

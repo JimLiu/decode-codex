@@ -2,6 +2,7 @@
 // Composer footer surface for the local conversation thread.
 import React, { type ComponentType } from "react";
 import { once } from "../../runtime/commonjs-interop";
+import { useStableCallback } from "../../utils/use-stable-callback";
 import {
   $P as initAppScope,
   AB as initScopeRuntime,
@@ -24,7 +25,6 @@ import {
   pp as shouldResumeConversationSignal,
   tp as hostConnectionStatusSignal,
   wP as initLocalConversationComposerBridge,
-  xM as useStableCallback,
 } from "../../boundaries/current-ref/appg-thread-shared-producer";
 import {
   Vn as localWorkspaceMaterializationSignal,
