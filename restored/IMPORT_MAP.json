@@ -10864,8 +10864,8 @@
         "t": "GitBranchSwitcher",
         "u": "initGitBranchSearchQuery"
       },
-      "status": "draft",
-      "note": "Public draft organized for the updated ref chunk; not promoted until shared app-initial producer imports are restored and quality-gate passes."
+      "status": "done",
+      "note": "Split into semantic branch query, dialog, dropdown, and runtime facade modules; quality-gate and consumer builds pass."
     },
     "app-initial~app-main~remote-conversation-page~onboarding-page~hotkey-window-thread-page~thr~b0jzjd62-JuRN2k_O": {
       "restored": "git/git-review-primitives.tsx",
