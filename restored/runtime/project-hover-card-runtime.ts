@@ -6,7 +6,6 @@ import {
 } from "../boundaries/src-l0hb-mz-p";
 import {
   $N as initVscodeApiBridge,
-  AV as initReactQueryRuntime,
   bF as initIntlMessageRuntime,
   cM as initModalRuntime,
   HE as useHostConfigById,
@@ -19,13 +18,16 @@ import {
   qV as getChunkModuleExports,
   rF as defineMessages,
   Sj as normalizeTextForCompare,
-  tP as useAppServerMutation,
   uM as toastControllerSignal,
   VE as initGlobalStateQueryRuntime,
   VI as getProjectWritableRootsForDisplay,
   wj as initStringNormalizeRuntime,
-  zV as useQueryClient,
 } from "../vendor/appg-thread-shared-runtime";
+import {
+  initReactQueryRuntime,
+  useAppServerMutation,
+  useQueryClient,
+} from "./app-server-mutation-runtime";
 import {
   bi as initButtonRuntime,
   ci as initNotificationRuntime,

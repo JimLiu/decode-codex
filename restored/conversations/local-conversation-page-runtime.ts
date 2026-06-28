@@ -2,7 +2,6 @@
 // Local conversation page container runtime bindings and side-effect helpers.
 import {
   $N as initVscodeApiBridge,
-  AV as initReactQueryRuntime,
   JV as initReactRuntime,
   SP as initMotionRuntime,
   VE as initGlobalStateQueryRuntime,
@@ -28,6 +27,7 @@ import {
   useScopedValue,
   useSignalValue,
 } from "../runtime/app-scope-hooks";
+import { initReactQueryRuntime } from "../runtime/app-server-mutation-runtime";
 import {
   Sl as activeWorkspaceDiffSignal,
   nc as appShellIntlSignal,

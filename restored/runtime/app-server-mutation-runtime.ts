@@ -1,7 +1,7 @@
 // Restored from ref/webview/assets/app-initial~app-main~remote-conversation-page~plugin-detail-page~new-thread-panel-page~appg~ijdupmx5-CdYgxe-b.js
 // React Query mutation helpers for app-server backed local features.
 import {
-  AV as initReactQueryRuntime,
+  AV as initReactQueryRuntimeRaw,
   MV as useMutationRaw,
   tP as useAppServerMutationRaw,
   XN as createQueryKeyRaw,
@@ -52,16 +52,22 @@ export function initAppServerMutationRuntime(): void {
   initVscodeBridgeRuntime();
 }
 
+export function initReactQueryRuntime(): void {
+  initReactQueryRuntimeRaw();
+}
+
 export function useAppServerMutation<
   TData = unknown,
   TVariables = Record<string, unknown>,
->(mutationName: string, options?: unknown): AppServerMutation<TData, TVariables> {
-  return (options === undefined
-    ? useAppServerMutationRaw(mutationName)
-    : useAppServerMutationRaw(mutationName, options)) as AppServerMutation<
-    TData,
-    TVariables
-  >;
+>(
+  mutationName: string,
+  options?: unknown,
+): AppServerMutation<TData, TVariables> {
+  return (
+    options === undefined
+      ? useAppServerMutationRaw(mutationName)
+      : useAppServerMutationRaw(mutationName, options)
+  ) as AppServerMutation<TData, TVariables>;
 }
 
 export function useMutation<
