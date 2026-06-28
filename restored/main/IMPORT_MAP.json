@@ -175,7 +175,7 @@
       "boundary": true,
       "vendor": "runtime",
       "openBoundary": true,
-      "note": "Workspace-root selection, app:// protocol handling, deep-link routing, SQLite recovery, Owl feature bootstrap/cache state, file-backed global state, and desktop settings-store config/migration paths restored; updater manager, Sentry/OpenTelemetry, and shared-node runtime exports still require semantic restoration."
+      "note": "Workspace-root selection, app:// protocol handling, deep-link routing, SQLite recovery, Owl feature bootstrap/cache state, file-backed global state, desktop settings-store config/migration paths, and updater/Sparkle lifecycle manager restored; Sentry/OpenTelemetry SDK boundary remains vendor-owned, and shared-node runtime exports still require semantic restoration."
     }
   }
 }
