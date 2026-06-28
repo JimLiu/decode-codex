@@ -18,15 +18,13 @@ import {
   Tl as SummaryPanelPullRequestControls,
 } from "../vendor/profile-page-runtime";
 import {
+  CloudEnvironmentDropdown,
+  initCloudEnvironmentDropdownChunk as initCloudEnvironmentDropdownChunkRaw,
+  initLocalRemoteDropdownChunk as initLocalRemoteDropdownChunkRaw,
   initThreadHandoffSummaryHelpersChunk as initThreadHandoffHelpersChunkRaw,
+  LocalRemoteDropdown,
   shouldShowThreadHandoffInSummary,
 } from "../thread-summary/local-remote-dropdown";
-import {
-  CloudEnvironmentDropdown,
-  n as initLocalRemoteDropdownChunkRaw,
-  o as initCloudEnvironmentDropdownChunkRaw,
-  LocalRemoteDropdown,
-} from "../vendor/local-remote-dropdown-runtime";
 
 export {
   CloudEnvironmentDropdown,

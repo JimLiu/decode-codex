@@ -1,17 +1,19 @@
 // Restored from ref/webview/assets/local-remote-dropdown-BcmhHtfg.js
-// Vendored compatibility facade for the still-large local/remote dropdown UI.
+// Compatibility facade preserving the original short exports.
 export {
-  a as CloudEnvironmentDropdown,
-  c,
-  n as initLocalRemoteDropdownChunk,
-  o as initCloudEnvironmentDropdownChunk,
-  s,
-  t as LocalRemoteDropdown,
-} from "../../ref/webview/assets/local-remote-dropdown-BcmhHtfg.js";
+  CloudEnvironmentDropdown,
+  CloudEnvironmentDropdown as a,
+  isComposerModeVisibleInLocalRemoteDropdown as c,
+  initThreadHandoffSummaryHelpersChunk as i,
+  initLocalRemoteDropdownChunk,
+  initLocalRemoteDropdownChunk as n,
+  initCloudEnvironmentDropdownChunk,
+  initCloudEnvironmentDropdownChunk as o,
+  shouldShowThreadHandoffInSummary,
+  shouldShowThreadHandoffInSummary as r,
+  initLocalRemoteDropdownStateChunk as s,
+  LocalRemoteDropdown,
+  LocalRemoteDropdown as t,
+} from "../thread-summary/local-remote-dropdown";
 
-export {
-  a,
-  n,
-  o,
-  t,
-} from "../../ref/webview/assets/local-remote-dropdown-BcmhHtfg.js";
+export * from "../thread-summary/local-remote-dropdown";
