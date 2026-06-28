@@ -8712,7 +8712,8 @@
       "status": "done"
     },
     "thread-side-panel-active-signals-C1-SoZ32": {
-      "restored": "runtime/thread-side-panel-active-signals.tsx",
+      "restored": "app-shell/thread-side-panel-active-signals.tsx",
+      "notes": "runtime/thread-side-panel-active-signals.tsx remains as a compatibility barrel.",
       "exports": {
         "a": "subscribeBrowserSidebarTweaksSubmit",
         "i": "BrowserSidebarTweaksIcon",
