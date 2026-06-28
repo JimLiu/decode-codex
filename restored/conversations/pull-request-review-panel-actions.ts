@@ -11,4 +11,3 @@ export {
   Xc as resetReviewPanelEmptyState,
   Zc as revealChangedFilesInReviewPanel,
 } from "../vendor/pull-request-thread-actions-runtime";
-

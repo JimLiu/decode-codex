@@ -78,7 +78,11 @@ function getSelectionCopyPayload(
   targetContainer: HTMLElement,
   selection = targetContainer.ownerDocument.getSelection(),
 ): CopyPayload | null {
-  if (selection == null || selection.rangeCount === 0 || selection.isCollapsed) {
+  if (
+    selection == null ||
+    selection.rangeCount === 0 ||
+    selection.isCollapsed
+  ) {
     return null;
   }
 
@@ -108,7 +112,8 @@ function getRangeCopyPayload(
 
   if (copyMode === "code-block") {
     const codeText =
-      copyWrapper?.getAttribute(MARKDOWN_COPY_TEXT_ATTR) ?? copyRange.toString();
+      copyWrapper?.getAttribute(MARKDOWN_COPY_TEXT_ATTR) ??
+      copyRange.toString();
     return {
       htmlText: createCodeBlock(targetContainer.ownerDocument, codeText)
         .outerHTML,
@@ -152,7 +157,10 @@ function getSingleMarkdownCopyWrapper(
   range: Range,
   targetContainer: HTMLElement,
 ): Element | null {
-  const startWrapper = closestElement(range.startContainer, MARKDOWN_COPY_SELECTOR);
+  const startWrapper = closestElement(
+    range.startContainer,
+    MARKDOWN_COPY_SELECTOR,
+  );
   const endWrapper = closestElement(range.endContainer, MARKDOWN_COPY_SELECTOR);
   return startWrapper != null &&
     startWrapper === endWrapper &&
@@ -175,11 +183,16 @@ function appendSanitizedNode(
   document: Document,
 ): void {
   if (sourceNode.nodeType === Node.TEXT_NODE) {
-    parentNode.appendChild(document.createTextNode(sourceNode.textContent ?? ""));
+    parentNode.appendChild(
+      document.createTextNode(sourceNode.textContent ?? ""),
+    );
     return;
   }
 
-  if (!(sourceNode instanceof Element) || shouldSkipElementForCopy(sourceNode)) {
+  if (
+    !(sourceNode instanceof Element) ||
+    shouldSkipElementForCopy(sourceNode)
+  ) {
     return;
   }
 
@@ -206,7 +219,9 @@ function appendSanitizedNode(
   }
 
   if (copyMode === "code-block") {
-    parentNode.appendChild(createCodeBlock(document, collectCopyText(sourceNode)));
+    parentNode.appendChild(
+      createCodeBlock(document, collectCopyText(sourceNode)),
+    );
     return;
   }
 
@@ -256,7 +271,9 @@ function shouldSkipElementForCopy(element: Element): boolean {
 
 function getMarkdownCopyMode(element: Element | null): MarkdownCopyMode | null {
   const value = element?.getAttribute(MARKDOWN_COPY_ATTR);
-  return value === "exclude" || value === "inline-code" || value === "code-block"
+  return value === "exclude" ||
+    value === "inline-code" ||
+    value === "code-block"
     ? value
     : null;
 }
@@ -276,7 +293,10 @@ function collectCopyText(node: Node): string {
   );
 }
 
-function wrapFragmentChildren(fragment: DocumentFragment, tagName: string): void {
+function wrapFragmentChildren(
+  fragment: DocumentFragment,
+  tagName: string,
+): void {
   const wrapper = fragment.ownerDocument.createElement(tagName);
   wrapper.append(...Array.from(fragment.childNodes));
   fragment.append(wrapper);
@@ -290,7 +310,10 @@ function createCodeBlock(document: Document, codeText: string): HTMLElement {
   return preElement;
 }
 
-function rangeIsContainedBy(range: Range, targetContainer: HTMLElement): boolean {
+function rangeIsContainedBy(
+  range: Range,
+  targetContainer: HTMLElement,
+): boolean {
   return (
     targetContainer.contains(range.startContainer) &&
     targetContainer.contains(range.endContainer)
@@ -306,7 +329,10 @@ function expandRangeAroundClosest(range: Range, selector: string): void {
 }
 
 function closestElement(node: Node, selector: string): Element | null {
-  return (node instanceof Element ? node : node.parentElement)?.closest(selector) ?? null;
+  return (
+    (node instanceof Element ? node : node.parentElement)?.closest(selector) ??
+    null
+  );
 }
 
 function normalizeMathFragment(fragment: DocumentFragment): DocumentFragment {
@@ -315,7 +341,9 @@ function normalizeMathFragment(fragment: DocumentFragment): DocumentFragment {
   )) {
     element.remove();
   }
-  for (const element of Array.from(fragment.querySelectorAll(KATEX_MATHML_SELECTOR))) {
+  for (const element of Array.from(
+    fragment.querySelectorAll(KATEX_MATHML_SELECTOR),
+  )) {
     const annotation = element.querySelector(TEX_ANNOTATION_SELECTOR);
     if (annotation != null) {
       annotation.textContent = `${INLINE_MATH_DELIMITERS[0]}${
@@ -374,7 +402,9 @@ function nodeToPlainText(node: Node): string {
 
   switch (node.tagName) {
     case "TABLE":
-      return Array.from(node.querySelectorAll("tr")).map(tableRowToText).join("\n");
+      return Array.from(node.querySelectorAll("tr"))
+        .map(tableRowToText)
+        .join("\n");
     case "TR":
       return `${tableRowToText(node)}\n`;
     case "THEAD":

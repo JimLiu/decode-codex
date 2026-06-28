@@ -38,4 +38,3 @@ export function initPullRequestSidePanelPositionRuntime(): void {
   initThreadSidePanelRuntimeChunkRaw();
   initThreadSidePanelPositioningChunkRaw();
 }
-

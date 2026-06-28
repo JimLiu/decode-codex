@@ -25,7 +25,10 @@ const POSIX_HOME_PATTERN = /^\/(?:Users|home)\/[^/]+(?=\/|$)/;
 const WINDOWS_HOME_PATTERN = /^[A-Za-z]:\/Users\/[^/]+(?=\/|$)/;
 const LINE_SUFFIX_PATTERN = /^(.*?)(:\d+(?:-\d+)?)$/;
 
-function renderTitledMarkdownBlock(title: string, content: string): string | null {
+function renderTitledMarkdownBlock(
+  title: string,
+  content: string,
+): string | null {
   const escapedContent = escapeDetailsHtmlTags(content).trim();
   return escapedContent.length === 0 ? null : `${title}\n\n${escapedContent}`;
 }
@@ -39,10 +42,15 @@ function renderMetadataBlock(
     const escapedLine = escapeDetailsHtmlTags(line);
     return escapedLine.trim().length === 0 ? [] : [escapedLine];
   });
-  return contentLines.length === 0 ? title : `${title}\n\n${contentLines.join("\n")}`;
+  return contentLines.length === 0
+    ? title
+    : `${title}\n\n${contentLines.join("\n")}`;
 }
 
-function appendMarkdownSection(sections: string[], section: string | null): void {
+function appendMarkdownSection(
+  sections: string[],
+  section: string | null,
+): void {
   if (section != null && section.trim().length > 0) sections.push(section);
 }
 
@@ -85,7 +93,10 @@ function normalizeLineEndings(content: string): string {
   return content.replaceAll(/\r\n?/g, "\n");
 }
 
-function normalizeMessageMarkdown(content: string, pathContext: PathContext): string {
+function normalizeMessageMarkdown(
+  content: string,
+  pathContext: PathContext,
+): string {
   return rewriteMarkdownLinks(
     cleanMarkdownLines(
       normalizeLineEndings(rewriteMarkdownResourceLinks(content)),
@@ -107,7 +118,10 @@ function cleanMarkdownLines(content: string): string {
     .replaceAll(/\n{3,}/g, "\n\n");
 }
 
-function rewriteMarkdownLinks(content: string, pathContext: PathContext): string {
+function rewriteMarkdownLinks(
+  content: string,
+  pathContext: PathContext,
+): string {
   return content.replaceAll(
     MARKDOWN_LINK_TARGET_PATTERN,
     (fullMatch, rawTarget, titleSuffix) => {
@@ -116,7 +130,10 @@ function rewriteMarkdownLinks(content: string, pathContext: PathContext): string
       const unwrappedTarget = targetWasAngleWrapped
         ? rawTarget.slice(1, -1)
         : rawTarget;
-      const rewrittenTarget = rewriteLinkTargetPath(unwrappedTarget, pathContext);
+      const rewrittenTarget = rewriteLinkTargetPath(
+        unwrappedTarget,
+        pathContext,
+      );
       return rewrittenTarget === unwrappedTarget
         ? fullMatch
         : `](${wrapMarkdownLinkTarget(rewrittenTarget, targetWasAngleWrapped)}${titleSuffix ?? ""})`;
@@ -124,12 +141,20 @@ function rewriteMarkdownLinks(content: string, pathContext: PathContext): string
   );
 }
 
-function rewriteLinkTargetPath(target: string, pathContext: PathContext): string {
+function rewriteLinkTargetPath(
+  target: string,
+  pathContext: PathContext,
+): string {
   const { path } = splitPathLineSuffix(target);
-  return isAbsolutePath(path) ? formatRelativePath(target, pathContext) : target;
+  return isAbsolutePath(path)
+    ? formatRelativePath(target, pathContext)
+    : target;
 }
 
-function wrapMarkdownLinkTarget(target: string, forceAngleWrap: boolean): string {
+function wrapMarkdownLinkTarget(
+  target: string,
+  forceAngleWrap: boolean,
+): string {
   return forceAngleWrap || /[\s()]/.test(target) ? `<${target}>` : target;
 }
 
@@ -144,7 +169,10 @@ function formatReadableRelativePath(
   return formatInlineCode(ensureRelativePathPrefix(path, pathContext));
 }
 
-function ensureRelativePathPrefix(path: string, pathContext: PathContext): string {
+function ensureRelativePathPrefix(
+  path: string,
+  pathContext: PathContext,
+): string {
   const formattedPath = formatRelativePath(path, pathContext);
   return formattedPath === "." ||
     formattedPath === "~" ||
@@ -161,13 +189,20 @@ function formatRelativePath(path: string, pathContext: PathContext): string {
   const normalizedPath = normalizeConfigPath(basePath);
   const cwdRelativePath = relativizePath(normalizedPath, pathContext.cwd, ".");
   if (cwdRelativePath != null) return `${cwdRelativePath}${lineSuffix}`;
-  const homeRelativePath = relativizePath(normalizedPath, pathContext.homeDir, "~");
+  const homeRelativePath = relativizePath(
+    normalizedPath,
+    pathContext.homeDir,
+    "~",
+  );
   return homeRelativePath == null
     ? `${normalizedPath}${lineSuffix}`
     : `${homeRelativePath}${lineSuffix}`;
 }
 
-function splitPathLineSuffix(path: string): { path: string; lineSuffix: string } {
+function splitPathLineSuffix(path: string): {
+  path: string;
+  lineSuffix: string;
+} {
   const match = LINE_SUFFIX_PATTERN.exec(path);
   return match?.[1] == null || match[2] == null || !isAbsolutePath(match[1])
     ? {
@@ -235,7 +270,9 @@ function formatHtmlCode(content: string): string {
 
 function formatCodeBlock(language: string, content: string): string {
   const normalizedContent = normalizeLineEndings(content).trimEnd();
-  const fence = "`".repeat(Math.max(3, longestBacktickRun(normalizedContent) + 1));
+  const fence = "`".repeat(
+    Math.max(3, longestBacktickRun(normalizedContent) + 1),
+  );
   return `${fence}${language}\n${normalizedContent}\n${fence}`;
 }
 
@@ -284,7 +321,9 @@ function summarizeExplorationItems(items: readonly MarkdownRecord[]): string {
     formatCount(searchCount, "search", "searches"),
     formatCount(listCount, "list", "lists"),
   ].filter((summary): summary is string => summary != null);
-  return summaries.length === 0 ? "Explored" : `Explored ${summaries.join(", ")}`;
+  return summaries.length === 0
+    ? "Explored"
+    : `Explored ${summaries.join(", ")}`;
 }
 
 function summarizeCollapsedToolActivity(summary: MarkdownRecord): string {
@@ -372,7 +411,10 @@ function appendCountSummary(
   }
 }
 
-function appendTimedOutRequestSummary(summaries: string[], count: number): void {
+function appendTimedOutRequestSummary(
+  summaries: string[],
+  count: number,
+): void {
   const formattedCount = formatCount(count, "request", "requests");
   if (formattedCount != null) summaries.push(`${formattedCount} timed out`);
 }

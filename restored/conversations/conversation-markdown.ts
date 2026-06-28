@@ -403,7 +403,9 @@ function renderConversationItemMarkdown(
         item.planContent,
       ]);
     case "remote-task-created":
-      return renderMetadataBlock("Remote task created", [`Task ID: ${item.taskId}`]);
+      return renderMetadataBlock("Remote task created", [
+        `Task ID: ${item.taskId}`,
+      ]);
     case "context-compaction":
       return renderMetadataBlock("Context compaction", [
         `Source: ${item.source}`,
@@ -450,7 +452,10 @@ function renderConversationItemMarkdown(
 
 function renderUserMessage(
   item: AnyRecord,
-  { escapeDetailsTags = false, pathContext = EMPTY_PATH_CONTEXT }: MarkdownRenderOptions = {},
+  {
+    escapeDetailsTags = false,
+    pathContext = EMPTY_PATH_CONTEXT,
+  }: MarkdownRenderOptions = {},
 ): string | null {
   const sections: string[] = [];
   const message = normalizeMessageMarkdown(item.message, pathContext).trim();
@@ -480,7 +485,9 @@ function collectUserContextLines(
   if (item.attachments.length > 0) {
     lines.push("Attachments:");
     for (const attachment of item.attachments) {
-      lines.push(`- ${attachment.label}: ${formatPathInline(attachment.path, pathContext)}`);
+      lines.push(
+        `- ${attachment.label}: ${formatPathInline(attachment.path, pathContext)}`,
+      );
     }
   }
   if (item.images.length > 0) {
@@ -493,17 +500,23 @@ function collectUserContextLines(
     lines.push("Comments:");
     for (const comment of item.comments) {
       const lineRange =
-        comment.lineRange == null ? "" : ` ${formatInlineCode(comment.lineRange)}`;
+        comment.lineRange == null
+          ? ""
+          : ` ${formatInlineCode(comment.lineRange)}`;
       lines.push(
         `- ${formatRelativePath(comment.path, pathContext)}${lineRange}: ${normalizeLineEndings(comment.body).replaceAll("\n", " ")}`,
       );
     }
   }
-  if (item.referencesPriorConversation) lines.push("Referenced prior conversation");
+  if (item.referencesPriorConversation)
+    lines.push("Referenced prior conversation");
   if (item.reviewMode) lines.push("Mode: code review");
   if (item.pullRequestFixMode) lines.push("Mode: pull request fix");
   if (item.autoResolveSync) lines.push("Mode: auto resolve merge");
-  if (item.pullRequestCheckNames != null && item.pullRequestCheckNames.length > 0) {
+  if (
+    item.pullRequestCheckNames != null &&
+    item.pullRequestCheckNames.length > 0
+  ) {
     lines.push(`Pull request checks: ${item.pullRequestCheckNames.join(", ")}`);
   }
   if (item.pullRequestMergeConflictNumber !== undefined) {
@@ -518,7 +531,10 @@ function collectUserContextLines(
 
 function renderAssistantMessage(
   item: AnyRecord,
-  { escapeDetailsTags = false, pathContext = EMPTY_PATH_CONTEXT }: MarkdownRenderOptions = {},
+  {
+    escapeDetailsTags = false,
+    pathContext = EMPTY_PATH_CONTEXT,
+  }: MarkdownRenderOptions = {},
 ): string | null {
   const content = normalizeMessageMarkdown(item.content, pathContext).trim();
   if (content.length === 0) return null;
@@ -532,10 +548,14 @@ function renderExecItem(item: AnyRecord): string {
   const aggregatedOutput = item.output?.aggregatedOutput;
   if (aggregatedOutput != null) {
     const output = normalizeLineEndings(aggregatedOutput);
-    if (output.trim().length > 0) sections.push(formatCodeBlock("text", output));
+    if (output.trim().length > 0)
+      sections.push(formatCodeBlock("text", output));
   }
   sections.push(formatExecutionStatus(item));
-  appendMarkdownSection(sections, renderAutomaticApprovalReviews(item.automaticApprovalReviews));
+  appendMarkdownSection(
+    sections,
+    renderAutomaticApprovalReviews(item.automaticApprovalReviews),
+  );
   return wrapDetails(`Ran ${formatHtmlCode(command)}`, sections.join("\n\n"));
 }
 
@@ -585,7 +605,9 @@ function renderMcpToolCall(item: AnyRecord): string {
       `${item.invocation.server}.${item.invocation.tool}`,
     )}`,
   );
-  sections.push(formatCodeBlock("json", stringifyJson(item.invocation.arguments)));
+  sections.push(
+    formatCodeBlock("json", stringifyJson(item.invocation.arguments)),
+  );
   appendMarkdownSection(
     sections,
     renderAutomaticApprovalReviews(item.automaticApprovalReviews),
@@ -604,7 +626,9 @@ function renderMcpToolCall(item: AnyRecord): string {
     .join("\n\n");
   if (textContent.length > 0) sections.push(textContent);
   if (item.result.structuredContent != null) {
-    sections.push(formatCodeBlock("json", stringifyJson(item.result.structuredContent)));
+    sections.push(
+      formatCodeBlock("json", stringifyJson(item.result.structuredContent)),
+    );
   }
   return sections.join("\n\n");
 }
@@ -624,7 +648,8 @@ function renderMcpContentBlock(content: AnyRecord): string {
     case "embedded_resource": {
       const title =
         content.resource.title ?? content.resource.name ?? content.resource.uri;
-      return content.resource.text != null && content.resource.text.trim().length > 0
+      return content.resource.text != null &&
+        content.resource.text.trim().length > 0
         ? `${escapeDetailsHtmlTags(`Resource: ${title}`)}\n\n${formatCodeBlock(
             "text",
             content.resource.text,
@@ -649,34 +674,54 @@ function renderAutomaticApprovalReview(item: AnyRecord): string {
 function renderAutomaticApprovalReviews(
   items: readonly AnyRecord[] | null | undefined,
 ): string | null {
-  return items == null ? null : items.map(renderAutomaticApprovalReview).join("\n\n");
+  return items == null
+    ? null
+    : items.map(renderAutomaticApprovalReview).join("\n\n");
 }
 
-function renderGeneratedImage(src: string | null | undefined, status: string): string {
+function renderGeneratedImage(
+  src: string | null | undefined,
+  status: string,
+): string {
   return src == null
     ? renderMetadataBlock("Generated image", [`Status: ${status}`])
     : `Generated image\n\n![Generated image](${src})`;
 }
 
-function renderAgentActivityUnit(item: AnyRecord, pathContext: PathContext): string | null {
+function renderAgentActivityUnit(
+  item: AnyRecord,
+  pathContext: PathContext,
+): string | null {
   if (item.kind === "collapsed-tool-activity") {
     const summary = summarizeCollapsedToolActivity(item.summary);
-    if (!shouldRenderCollapsedActivityDetails(CONVERSATION_DETAIL_LEVEL, item.units)) {
+    if (
+      !shouldRenderCollapsedActivityDetails(
+        CONVERSATION_DETAIL_LEVEL,
+        item.units,
+      )
+    ) {
       const lines = item.units
         .flatMap((unit: AnyRecord) => summarizeActivityUnit(unit, pathContext))
         .map((line: string) => `- ${line}`);
-      return lines.length === 0 ? summary : wrapDetails(summary, lines.join("\n"));
+      return lines.length === 0
+        ? summary
+        : wrapDetails(summary, lines.join("\n"));
     }
     if (item.units.length === 1) {
       const singleUnit = item.units[0];
-      if (singleUnit?.kind === "entry" && singleUnit.entry.kind === "exploration") {
+      if (
+        singleUnit?.kind === "entry" &&
+        singleUnit.entry.kind === "exploration"
+      ) {
         return renderActivityEntry(singleUnit, pathContext);
       }
     }
     return wrapDetails(
       summary,
       item.units
-        .map((unit: AnyRecord) => renderCollapsedActivityEntry(unit, pathContext))
+        .map((unit: AnyRecord) =>
+          renderCollapsedActivityEntry(unit, pathContext),
+        )
         .filter((content: string | null) => content != null)
         .join("\n\n"),
     );
@@ -714,7 +759,9 @@ function renderToolActivityBulletList(
   pathContext: PathContext,
 ): string | null {
   const lines = summarizeActivityUnit(item, pathContext);
-  return lines.length === 0 ? null : lines.map((line) => `- ${line}`).join("\n");
+  return lines.length === 0
+    ? null
+    : lines.map((line) => `- ${line}`).join("\n");
 }
 
 function summarizeActivityUnit(
@@ -730,7 +777,9 @@ function summarizeActivityUnit(
     : item.entry.item.type === "patch"
       ? [
           ...summarizePatchChanges(item.entry.item, pathContext),
-          ...formatApprovalReviewLines(item.entry.item.automaticApprovalReviews),
+          ...formatApprovalReviewLines(
+            item.entry.item.automaticApprovalReviews,
+          ),
         ]
       : [];
 }
@@ -747,16 +796,23 @@ function formatApprovalReviewLines(
           : [`Auto-review risk: ${item.riskLevel}`]),
         ...(item.rationale == null
           ? []
-          : [`Auto-review rationale: ${escapeDetailsHtmlTags(item.rationale)}`]),
+          : [
+              `Auto-review rationale: ${escapeDetailsHtmlTags(item.rationale)}`,
+            ]),
       ]);
 }
 
 function getParsedCommandLabel(item: AnyRecord): string {
   const parsedCommand = item.parsedCmd.cmd.trim();
-  return parsedCommand.length === 0 ? formatShellCommand(item.cmd) : parsedCommand;
+  return parsedCommand.length === 0
+    ? formatShellCommand(item.cmd)
+    : parsedCommand;
 }
 
-function summarizePatchChanges(item: AnyRecord, pathContext: PathContext): string[] {
+function summarizePatchChanges(
+  item: AnyRecord,
+  pathContext: PathContext,
+): string[] {
   const grantPathContext =
     item.grantRoot == null ? pathContext : createPathContext(item.grantRoot);
   return Object.entries(item.changes).flatMap(([path, change]) => {
@@ -781,13 +837,17 @@ function formatPatchActivityVerb(changeType: string): string {
   }
 }
 
-function renderActivityEntry(item: AnyRecord, pathContext: PathContext): string | null {
+function renderActivityEntry(
+  item: AnyRecord,
+  pathContext: PathContext,
+): string | null {
   if (item.kind === "web-search-group") {
     return wrapDetails(
       "Searched the web",
       item.items
-        .map((searchItem: AnyRecord) =>
-          `- Searched the web for ${formatInlineCode(searchItem.query)}`,
+        .map(
+          (searchItem: AnyRecord) =>
+            `- Searched the web for ${formatInlineCode(searchItem.query)}`,
         )
         .join("\n"),
     );

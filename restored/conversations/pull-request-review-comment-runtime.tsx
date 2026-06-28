@@ -67,4 +67,3 @@ export function initPullRequestReviewCommentNavigationRuntime(): void {
 export function initThreadBranchComparisonRuntime(): void {
   initThreadBranchComparisonChunkRaw();
 }
-
