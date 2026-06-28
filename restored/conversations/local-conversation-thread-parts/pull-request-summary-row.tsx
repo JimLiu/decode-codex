@@ -19,11 +19,6 @@ import {
   za as openInBrowserFromEvent,
 } from "../../boundaries/current-ref/appg-thread-shared-producer";
 import {
-  Bt as buildPullRequestBrowserSidebarItems,
-  Vt as initPullRequestBrowserSidebarItemsChunk,
-  zt as canShowPullRequestBrowserSidebarMenu,
-} from "../../boundaries/current-ref/pull-request-thread-actions-producer";
-import {
   initPullRequestAnalyticsChunk,
   logPullRequestViewedFromSidePanel,
   trackPullRequestAction,
@@ -38,6 +33,10 @@ import {
   BrowserSidebarMenu,
   initBrowserSidebarMenuChunk,
 } from "../../ui/browser-sidebar-menu";
+import {
+  buildExternalLinkContextMenuItems,
+  canOpenExternalLinkInBrowserSidebar,
+} from "../../utils/external-link";
 
 type PullRequestBoardItem = {
   number?: number | null;
@@ -177,7 +176,7 @@ export function PullRequestSummaryRow({
   if (
     conversationId == null ||
     pullRequestUrl == null ||
-    !canShowPullRequestBrowserSidebarMenu({
+    !canOpenExternalLinkInBrowserSidebar({
       href: pullRequestUrl,
       isBrowserSidebarEnabled,
     })
@@ -185,7 +184,7 @@ export function PullRequestSummaryRow({
     return rowNode;
   }
 
-  let browserSidebarItems = buildPullRequestBrowserSidebarItems({
+  let browserSidebarItems = buildExternalLinkContextMenuItems({
     conversationId,
     href: pullRequestUrl,
     initiator: "side_panel_menu",
@@ -234,7 +233,6 @@ export const initPullRequestSummaryRowChunk = once(() => {
   initScopeRuntime();
   initBrowserFeatureAvailabilitySignals();
   initBrowserSidebarMenuChunk();
-  initPullRequestBrowserSidebarItemsChunk();
   initExternalUrlHelpers();
   initExternalLinkIconChunk();
   initPullRequestAnalyticsChunk();
