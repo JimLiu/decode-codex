@@ -13,4 +13,5 @@ export {
   localWorkspaceMaterializationSignal,
   threadComposerContext,
   ThreadComposerFooter,
+  useLocalConversationComposerRuntime,
 } from "../composer/local-conversation-composer-bridge";

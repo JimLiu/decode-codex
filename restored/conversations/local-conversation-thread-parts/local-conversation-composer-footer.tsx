@@ -28,6 +28,7 @@ import {
   backgroundAgentsSignal,
   threadComposerContext,
   ThreadComposerFooter,
+  useLocalConversationComposerRuntime,
 } from "../../runtime/local-conversation-composer-runtime";
 import {
   initConversationRouteSourceRuntime,
@@ -144,7 +145,7 @@ export function LocalConversationComposerFooter({
 }: LocalConversationComposerFooterProps) {
   let scope = useScope(localConversationRouteScope);
   React.useContext(threadComposerContext);
-  initLocalConversationComposerRuntime();
+  useLocalConversationComposerRuntime();
 
   let hostConnectionStatus = useScopedValue(hostConnectionStatusSignal, hostId),
     hasConversationTurns = !!useScopedValue(

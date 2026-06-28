@@ -2,7 +2,7 @@
 // Local conversation composer bridge and host connection signals.
 import { appServerConnectionStateSignal as hostConnectionStatusSignal } from "../boundaries/thread-context-inputs.facade";
 import { LOCAL_HOST_ID } from "../boundaries/use-host-config.facade";
-import { wP as initLocalConversationComposerBridge } from "../vendor/appg-thread-shared-runtime";
+import { wP as useReducedMotionPreference } from "../vendor/appg-thread-shared-runtime";
 import {
   Vn as localWorkspaceMaterializationSignal,
   cs as backgroundAgentsSignal,
@@ -28,7 +28,11 @@ export {
 };
 
 export function initLocalConversationComposerRuntime(): void {
-  initLocalConversationComposerBridge();
+  initThreadComposerFooterChunk();
+}
+
+export function useLocalConversationComposerRuntime(): void {
+  useReducedMotionPreference();
 }
 
 export function initThreadComposerFooterRuntime(): void {
