@@ -1,0 +1,22 @@
+// Restored from ref/webview/assets/electron-menu-shortcuts-j6UKqTX5.js
+export { isMouseNavigationKey } from "./queries";
+export { splitAcceleratorSequence } from "./formatting";
+export { isCommandAvailableInHost } from "./queries";
+export { THREAD_SLOT_COMMAND_IDS } from "./command-groups";
+export { getCodexCommand } from "./queries";
+export { getCommandKeybindings } from "./queries";
+export { isOsGlobalShortcutCommand } from "./queries";
+export { allowsBareModifierGlobalShortcut } from "./queries";
+export { KEYBINDING_LABEL_DEBOUNCE_MS } from "./formatting";
+export { areEquivalentCommandIds } from "./queries";
+export { commandHasDescription } from "./queries";
+export { formatAccelerator } from "./formatting";
+export { COMMAND_MENU_GROUP_ORDER } from "./command-groups";
+export { getDefaultKeybindingsForCommand } from "./queries";
+export { getCommandShortcutLabel } from "./queries";
+export { ENVIRONMENT_ACTION_COMMAND_IDS } from "./command-groups";
+export { isMacOSPlatform } from "./formatting";
+export { isKnownCodexCommand } from "./queries";
+export { isElectronRuntimeCommand } from "./queries";
+export { CODEX_COMMANDS } from "./command-definitions";
+export { isCommandMenuCommand } from "./queries";
