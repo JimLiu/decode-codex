@@ -5,11 +5,11 @@ import {
   ny as initAppToolSourceMatcherCache,
   oy as initIdentifierTitleFormatter,
   ty as getAppToolSourceMetadataRaw,
-} from "../boundaries/current-ref/appg-thread-shared-producer";
+} from "../vendor/appg-thread-shared-runtime";
 import {
   Ar as parseMcpAppIdFromToolCallIdRaw,
   Mr as initMcpAppIdHelpersRaw,
-} from "../boundaries/current-ref/projects-app-shared-producer";
+} from "../vendor/projects-app-shared-runtime";
 
 export type AppToolSourceLookup = {
   apps: readonly unknown[];

@@ -3,11 +3,11 @@
 import {
   ho as resolveConversationServiceTierRaw,
   mo as initProjectsAppSharedProducerRaw,
-} from "../boundaries/current-ref/projects-app-shared-producer";
+} from "../vendor/projects-app-shared-runtime";
 import {
-  initThreadFindNavigationRail as initProfilePageProducerRaw,
+  In as initProfilePageProducerRaw,
   Nf as useProfileConversationAgentModeRaw,
-} from "../boundaries/current-ref/profile-page-producer";
+} from "../vendor/profile-page-runtime";
 
 export type ProfileConversationAgentModeState = {
   activeMode?: {

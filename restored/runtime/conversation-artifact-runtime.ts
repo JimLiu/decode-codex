@@ -6,13 +6,13 @@ import {
   Pv as renderConversationTurnForArtifactsRaw,
   Ug as collectAssistantOutputArtifactsRaw,
   Wg as initMarkdownResourceHelpersRaw,
-} from "../boundaries/current-ref/appg-thread-shared-producer";
+} from "../vendor/appg-thread-shared-runtime";
 import {
   Dt as resolveVisibleGeneratedImageOutputsRaw,
   lt as initRenderedTurnOutputItemGroupingRaw,
   Ot as initVisibleGeneratedImageOutputChunkRaw,
   ut as collectRenderedTurnOutputItemsRaw,
-} from "../boundaries/current-ref/profile-page-producer";
+} from "../vendor/profile-page-runtime";
 
 export type RenderConversationTurnOptions = {
   isBackgroundSubagentsEnabled?: boolean;

@@ -9,11 +9,11 @@ import {
   ms as resolveInlineableLocalImagePathRaw,
   r_ as getImagePreviewDisplayModeRaw,
   za as openInBrowserFromEventRaw,
-} from "../boundaries/current-ref/appg-thread-shared-producer";
+} from "../vendor/appg-thread-shared-runtime";
 import {
   Gd as initGeneratedImagePreviewRuntimeRaw,
   Jt as openGeneratedImagePreviewTabRaw,
-} from "../boundaries/current-ref/profile-page-producer";
+} from "../vendor/profile-page-runtime";
 
 export type OpenInBrowserFromEventOptions = {
   event: unknown;

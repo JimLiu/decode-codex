@@ -17,11 +17,11 @@ export {
   Sa as LOCAL_ENVIRONMENT_ACTION_COMMAND_IDS,
   u as refreshWorktreeEnvironmentConfigValue,
   Yi as localEnvironmentActionShortcutSignal,
-} from "../boundaries/current-ref/projects-app-shared-producer";
+} from "../vendor/projects-app-shared-runtime";
 export {
   Bu as initProfileGitSummaryRuntime,
   Vu as setActiveSettingsHost,
-} from "../boundaries/current-ref/profile-page-producer";
+} from "../vendor/profile-page-runtime";
 export {
   appLogger as logger,
   initAppLoggerRuntime,

@@ -15,8 +15,8 @@ import {
   cM as initToastRuntime,
   uM as toastSignal,
   yv as Navigate,
-} from "../boundaries/current-ref/appg-thread-shared-producer";
-import { Ja as isHotkeyWindowRouteRaw } from "../boundaries/current-ref/profile-page-producer";
+} from "../vendor/appg-thread-shared-runtime";
+import { Ja as isHotkeyWindowRouteRaw } from "../vendor/profile-page-runtime";
 
 export type NavigateOptions = {
   replace?: boolean;

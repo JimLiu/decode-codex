@@ -4,7 +4,7 @@ import type { ComponentType } from "react";
 import {
   ag as initWorktreeCheckMutationRuntimeRaw,
   eg as initWorktreeRestoreMutationRuntimeRaw,
-} from "../boundaries/current-ref/appg-thread-shared-producer";
+} from "../vendor/appg-thread-shared-runtime";
 import {
   $n as initWorktreeStatusQuerySignalChunkRaw,
   Bn as worktreeStatusQuerySignal,
@@ -14,7 +14,7 @@ import {
   Po as initGitMetadataQueryHelpersChunkRaw,
   Qn as SummaryPanelBannerRaw,
   Rn as checkManagedWorktreeRaw,
-} from "../boundaries/current-ref/profile-page-producer";
+} from "../vendor/profile-page-runtime";
 
 export const SummaryPanelBanner =
   SummaryPanelBannerRaw as ComponentType<Record<string, unknown>>;

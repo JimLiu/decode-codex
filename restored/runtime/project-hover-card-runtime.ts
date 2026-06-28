@@ -57,7 +57,7 @@ import {
   yi as LocalProjectFallbackIcon,
   zV as useQueryClient,
   _i as initDialogRuntime,
-} from "../boundaries/current-ref/appg-thread-shared-producer";
+} from "../vendor/appg-thread-shared-runtime";
 import {
   initRemoteConnectionStateChunk,
   initRemoteProjectIconChunk,
@@ -69,7 +69,7 @@ import {
 import {
   Gd as initProfileIconsChunk,
   Wd as RowActionChevronIcon,
-} from "../boundaries/current-ref/profile-page-producer";
+} from "../vendor/profile-page-runtime";
 
 export {
   ActivityIcon,

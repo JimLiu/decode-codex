@@ -5,7 +5,7 @@ import {
   gi as initGithubCliAvailabilitySignalChunkRaw,
   pi as pullRequestStatusQuerySignal,
   vi as initPullRequestStatusQueryChunkRaw,
-} from "../boundaries/current-ref/projects-app-shared-producer";
+} from "../vendor/projects-app-shared-runtime";
 import {
   $l as createPullRequestActionStateSignal,
   Al as useHeadBranchQuery,
@@ -20,7 +20,7 @@ import {
   kl as initCreatePullRequestWorkflowRuntimeChunkRaw,
   nu as cancelCreatePullRequestWorkflow,
   zl as CreatePullRequestWorkflowPhaseLabel,
-} from "../boundaries/current-ref/profile-page-producer";
+} from "../vendor/profile-page-runtime";
 
 export {
   activeWorkflowSignal,
