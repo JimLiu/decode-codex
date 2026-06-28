@@ -207,8 +207,8 @@ import {
   bd as ze,
 } from "../boundaries/current-ref/profile-page-producer";
 import {
-  T as He,
-  E as Ve,
+  initArtifactImportPresentationChunk as He,
+  shouldParseArtifactPreviewForImportKind as Ve,
 } from "../boundaries/current-ref/appgen-publication-terms-producer";
 import {
   initArtifactAnalyticsChunk as qe,
