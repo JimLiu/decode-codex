@@ -29,7 +29,6 @@ import {
   ErrorBoundary,
   initializeRendererSentry,
 } from "../runtime/error-boundary";
-import { Ja as initPullRequestThreadActionsChunk } from "../boundaries/current-ref/pull-request-thread-actions-producer";
 import {
   appgenPublicationTermsSidePanelHandler,
   initPublicationTermsHandlerRegistryChunk,
@@ -124,7 +123,6 @@ function installGlobalErrorForwarders(): void {
 const initAppMainChunk = once(() => {
   initRegisterAppActionsChunk();
   initProjectsAppEntryChunk();
-  initPullRequestThreadActionsChunk();
   initAppFallbackChunk();
   initProjectsSharedRuntimeChunk();
   initPublicationTermsHandlerRegistryChunk();
