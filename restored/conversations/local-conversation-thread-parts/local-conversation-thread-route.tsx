@@ -3,30 +3,36 @@
 import { once } from "../../runtime/commonjs-interop";
 import { useStableCallback } from "../../utils/use-stable-callback";
 import {
-  $P as initAppScope,
-  AB as initScopeRuntime,
-  FB as useScope,
-  IB as useSignalValue,
-  M_ as localConversationRouteScope,
-  Op as initConversationStateSelectors,
-  PB as useScopedValue,
-  PI as getHotkeyWindowFallbackPath,
-  Tp as hasConversationSignal,
-  Uf as initHostWorkspaceQueries,
-  VE as initHostConfigHelpers,
-  Wa as PlatformContentGate,
-  ak as initAppServerRequestBridge,
-  bF as initPathHelpers,
-  cM as initToastRuntime,
-  cP as initVscodeMessageBridge,
-  cm as conversationHostIdSignal,
-  gp as conversationCwdSignal,
-  pP as initLoggerRuntime,
-  Sm as threadSourceSignal,
-  vm as subagentParentThreadIdSignal,
-  yv as Navigate,
-  zo as useAppsQuery,
-} from "../../boundaries/current-ref/appg-thread-shared-producer";
+  initAppLoggerRuntime,
+} from "../../runtime/app-logger";
+import {
+  useScope,
+  useScopedValue,
+  useSignalValue,
+} from "../../runtime/app-scope-hooks";
+import { initAppScopeSignalRuntime } from "../../runtime/app-scope-runtime";
+import { initAppServerRequestRuntime } from "../../runtime/app-server-request";
+import { useAppsQuery } from "../../runtime/connector-apps-runtime";
+import {
+  conversationCwdSignal,
+  conversationHostIdSignal,
+  hasConversationSignal,
+  initConversationStateRuntime,
+  subagentParentThreadIdSignal,
+  threadSourceSignal,
+} from "../../runtime/conversation-state-runtime";
+import { initHostWorkspaceQueries } from "../../runtime/git-query-runtime";
+import { initHostConfigRuntime } from "../../runtime/host-config-runtime";
+import {
+  getHotkeyWindowFallbackPath,
+  initLocalConversationRouteRuntime,
+  initToastSignalRuntime,
+  localConversationRouteScope,
+  Navigate,
+} from "../../runtime/local-conversation-route-runtime";
+import { initPathHelpersRuntime } from "../../runtime/path-helpers-runtime";
+import { PlatformContentGate } from "../../runtime/platform-content-runtime";
+import { initVscodeMessageRuntime } from "../../runtime/vscode-message-runtime";
 import { getLocalThreadConversationIdFromRoute } from "../../runtime/local-thread-route";
 import { rightPanelFullWidthSignal } from "../../runtime/app-shell-frame";
 import { ErrorBoundary as ThreadSummaryPanelErrorBoundary } from "../../runtime/error-boundary";
@@ -251,20 +257,20 @@ function LocalConversationThreadRoute({
 }
 
 export const initLocalConversationThreadRoute = once(() => {
-  initScopeRuntime();
-  initPathHelpers();
+  initAppScopeSignalRuntime();
+  initPathHelpersRuntime();
   initIntlRuntime();
-  initConversationStateSelectors();
-  initAppServerRequestBridge();
-  initToastRuntime();
+  initConversationStateRuntime();
+  initAppServerRequestRuntime();
+  initToastSignalRuntime();
   initResumeLocalConversationChunk();
   initLocalConversationNavigationHelpers();
   initSummaryPanelErrorFallbackChunk();
   initChromeExtensionConversationHeaderChunk();
-  initVscodeMessageBridge();
-  initAppScope();
+  initVscodeMessageRuntime();
+  initAppScopeSignalRuntime();
   initHostWorkspaceQueries();
-  initHostConfigHelpers();
-  initLoggerRuntime();
+  initHostConfigRuntime();
+  initAppLoggerRuntime();
   LocalConversationMainThread.initChunk();
 });

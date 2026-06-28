@@ -8,10 +8,12 @@ import {
   M_ as localConversationRouteScope,
   O_ as initConversationRouteSourceHelpers,
   OI as getHotkeyWindowThreadPathRaw,
+  PI as getHotkeyWindowFallbackPathRaw,
   Ov as useNavigateRaw,
   bF as initConversationPromptContextRuntime,
   cM as initToastRuntime,
   uM as toastSignal,
+  yv as Navigate,
 } from "../boundaries/current-ref/appg-thread-shared-producer";
 
 export type NavigateOptions = {
@@ -27,7 +29,7 @@ export type RouteLocation = {
   state?: unknown;
 };
 
-export { localConversationRouteScope, toastSignal };
+export { localConversationRouteScope, Navigate, toastSignal };
 
 export function getLocalConversationPath(conversationId: string): string {
   return getLocalConversationPathRaw(conversationId);
@@ -35,6 +37,12 @@ export function getLocalConversationPath(conversationId: string): string {
 
 export function getHotkeyWindowThreadPath(conversationId: string): string {
   return getHotkeyWindowThreadPathRaw(conversationId);
+}
+
+export function getHotkeyWindowFallbackPath(
+  hasConfiguredLauncherHotkey: boolean,
+): string {
+  return getHotkeyWindowFallbackPathRaw(hasConfiguredLauncherHotkey);
 }
 
 export function useNavigate(): Navigate {

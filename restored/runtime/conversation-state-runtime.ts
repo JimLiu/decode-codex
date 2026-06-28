@@ -11,6 +11,7 @@ import {
   Np as conversationHistoryCompleteSignal,
   Op as initConversationStateSelectors,
   Rf as workspaceRootsSignal,
+  Sm as threadSourceSignal,
   Tp as hasConversationSignal,
   Tm as conversationTurnCountSignal,
   Xp as latestConversationTurnSignal,
@@ -48,6 +49,7 @@ export {
   shouldResumeConversationSignal,
   storedThreadBranchSignal,
   subagentParentThreadIdSignal,
+  threadSourceSignal,
   workspaceRootsSignal,
 };
 
