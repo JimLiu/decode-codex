@@ -18,11 +18,11 @@ import {
   wj as initArtifactPreviewRuntime,
 } from "../../boundaries/current-ref/appg-thread-shared-producer";
 import {
-  Fi as AppgenAppIcon,
-  Ni as getAppgenArtifactUrlLabel,
-  Pi as initAppgenArtifactUrlHelpers,
-  Ii as initAppgenArtifactIconChunk,
-} from "../../boundaries/current-ref/pull-request-thread-actions-producer";
+  AppgenAppIcon,
+  getAppgenArtifactUrlLabel,
+  initAppgenArtifactIconChunk,
+  initAppgenArtifactUrlHelpers,
+} from "../../appgen/artifacts";
 import {
   Gd as initGeneratedImagePreviewRuntime,
   Jt as openGeneratedImagePreviewTab,
