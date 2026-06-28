@@ -4,9 +4,7 @@ import { once } from "../../runtime/commonjs-interop";
 import { initButtonComponentPrimitives } from "../../ui/button";
 import { initUseStableCallback } from "../../utils/use-stable-callback";
 import { initWindowZoomContext } from "../../utils/window-zoom-context";
-import {
-  initAppLoggerRuntime,
-} from "../../runtime/app-logger";
+import { initAppLoggerRuntime } from "../../runtime/app-logger";
 import { initAppScopeSignalRuntime } from "../../runtime/app-scope-runtime";
 import { initAppServerRequestRuntime } from "../../runtime/app-server-request";
 import { initComposerScopeRuntime } from "../../runtime/composer-scope-runtime";
@@ -34,36 +32,32 @@ import { initPathHelpersRuntime } from "../../runtime/path-helpers-runtime";
 import { initPlatformContentRuntime } from "../../runtime/platform-content-runtime";
 import { initSignalStateRuntime } from "../../runtime/signal-state-runtime";
 import {
-  A as Di,
-  Mr as Qi,
-  Td as initProjectsActionRuntime,
-  Wl as fa,
-  b as Sa,
-  cn as Ea,
-  mo as Ha,
-  sd as Xa,
-  ts as Qa,
-  vd as ro,
-  yc as ho,
-  yn as _o,
-} from "../../boundaries/current-ref/projects-app-shared-producer";
+  initAppgenLibraryHotChunk,
+  initAppgenLibraryRuntime,
+  initConversationDisplayTitleSignalsRuntime,
+  initConversationMarkdownCopyRuntime,
+  initConversationReadStateRuntime,
+  initConversationThreadHostRuntime,
+  initLocalConversationArtifactsRuntime,
+  initPlatformContentBridgeRuntime,
+  initPlanSidePanelRuntime,
+  initProfileComposerSupportRuntime,
+  initProfileConversationSourceRuntime,
+  initProfileHotkeyThreadRuntime,
+  initProfileThreadRenderSupportRuntime,
+  initProfileThreadSearchRuntime,
+  initProjectSharedBaseRuntime,
+  initProjectsActionRuntime,
+  initSummaryPanelSourceHelpersRuntime,
+  initThreadCommandRuntime,
+  initThreadFindSupportRuntime,
+  initThreadSidePanelSupportRuntime,
+  initThreadSourceSupportRuntime,
+  initThreadSummaryRouteRuntime,
+  initWorkspaceRouteQueryRuntime,
+  initWorkspaceRouteStateRuntime,
+} from "../../runtime/local-conversation-thread-init-runtime";
 import { initMarkdownCopyHelpers } from "../conversation-copy";
-import {
-  $n as vs,
-  In as Ns,
-  St as tc,
-  Tu as rc,
-  ar as mc,
-  cc as gc,
-  jt as Ac,
-  ls as Pc,
-  qa as Vc,
-  sa as Wc,
-} from "../../boundaries/current-ref/profile-page-producer";
-import {
-  it as initAppgenLibraryHotChunk,
-  n as initAppgenLibraryRuntime,
-} from "../../boundaries/current-ref/appgen-library-hot-producer";
 import { initThreadSwitchTimingTrackerChunk } from "../../automation/heartbeat-automation-eligibility";
 import { initLauncherHotkeyStateChunk } from "../../features/hotkey-window-state";
 import { initScrollToBottomButtonChunk } from "../../utils/scroll-to-bottom-buton";
@@ -110,7 +104,7 @@ export const initLocalConversationArtifacts = once(() => {
   initMotionSignalRuntime();
   initAppScopeSignalRuntime();
   initProjectsActionRuntime();
-  Xa();
+  initLocalConversationArtifactsRuntime();
   initPinnedSummaryPanelState();
 });
 
@@ -126,33 +120,33 @@ export const initLocalConversationThreadChunk = once(() => {
   initPathHelpersRuntime();
   initIntlRuntime();
   initLocalEnvironmentConfigRuntime();
-  gc();
+  initProfileComposerSupportRuntime();
   initThreadInternalStateRuntime();
   initConversationStateRuntime();
   initAppServerRequestRuntime();
   initThreadAuxiliaryRuntime();
-  Ha();
+  initConversationThreadHostRuntime();
   initWindowZoomContext();
   initAutomationHistoryItemsChunk();
-  ro();
-  vs();
+  initConversationReadStateRuntime();
+  initProfileThreadSearchRuntime();
   initButtonComponentPrimitives();
-  rc();
+  initConversationMarkdownCopyRuntime();
   initMarkdownCopyHelpers();
   initModalRuntime();
   initScrollToBottomButtonChunk();
   initToastSignalRuntime();
-  Wc();
+  initPlatformContentBridgeRuntime();
   initPlatformContentRuntime();
   initAppgenLibraryRuntime();
   initAppgenLibraryHotChunk();
-  tc();
-  Ea();
-  Qa();
+  initPlanSidePanelRuntime();
+  initWorkspaceRouteStateRuntime();
+  initWorkspaceRouteQueryRuntime();
   initReviewSearchHighlighter();
-  Di();
+  initThreadCommandRuntime();
   initLauncherHotkeyStateChunk();
-  Vc();
+  initProfileHotkeyThreadRuntime();
   initThreadSwitchTimingTrackerChunk();
   initConnectorAppsRuntime();
   initAppScopeSignalRuntime();
@@ -162,34 +156,34 @@ export const initLocalConversationThreadChunk = once(() => {
   initStatsigFeatureGateRuntime();
   initConversationRouteSourceRuntime();
   initLocalConversationThreadFrameChunk();
-  ho();
+  initThreadSidePanelSupportRuntime();
   initThreadScrollControllerContextChunk();
   initThreadFindNavigationRail();
   initThreadFindNavigationRailNoopChunk();
-  Pc();
+  initSummaryPanelSourceHelpersRuntime();
   initLocalConversationGitSummary();
   initLocalConversationArtifacts();
   initLocalConversationSummaryPanelSignals();
   initAppLoggerRuntime();
   initUseStableCallback();
-  Ns();
+  initProfileThreadRenderSupportRuntime();
   initWorktreeRestoreBannerChunk();
   initConversationMarkdownRenderer();
   initThreadScrollState();
-  Qi();
-  _o();
-  mc();
+  initThreadSummaryRouteRuntime();
+  initThreadSourceSupportRuntime();
+  initProfileConversationSourceRuntime();
   initMarkdownUtilityNoop();
-  Ac();
+  initThreadFindSupportRuntime();
   initLocalConversationSearchAdapterChunk();
   initConversationSearchUnitExtractor();
   initLocalConversationTurnSelectors();
   initThreadScrollStateSignal();
   initVisibleTurnGeneratedImagesCollector();
   initBackgroundAgentThreadTab();
-  fa();
+  initConversationDisplayTitleSignalsRuntime();
   initBackgroundAgentThreadTabs();
-  Sa();
+  initProjectSharedBaseRuntime();
   initThreadOverflowMenuChunk();
   initMarkConversationReadEffect();
   initLocalConversationThreadRoute();

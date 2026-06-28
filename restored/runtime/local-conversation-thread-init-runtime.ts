@@ -1,0 +1,59 @@
+// Restored from ref/webview/assets/local-conversation-thread-Bf38rCmF.js
+// Boundary initializer facade for the local conversation thread entry chunk.
+import {
+  A as initThreadCommandRuntime,
+  Mr as initThreadSummaryRouteRuntime,
+  Td as initProjectsActionRuntime,
+  Wl as initConversationDisplayTitleSignalsRuntime,
+  b as initProjectSharedBaseRuntime,
+  cn as initWorkspaceRouteStateRuntime,
+  mo as initConversationThreadHostRuntime,
+  sd as initLocalConversationArtifactsRuntime,
+  ts as initWorkspaceRouteQueryRuntime,
+  vd as initConversationReadStateRuntime,
+  yc as initThreadSidePanelSupportRuntime,
+  yn as initThreadSourceSupportRuntime,
+} from "../boundaries/current-ref/projects-app-shared-producer";
+import {
+  $n as initProfileThreadSearchRuntime,
+  In as initProfileThreadRenderSupportRuntime,
+  St as initPlanSidePanelRuntime,
+  Tu as initConversationMarkdownCopyRuntime,
+  ar as initProfileConversationSourceRuntime,
+  cc as initProfileComposerSupportRuntime,
+  jt as initThreadFindSupportRuntime,
+  ls as initSummaryPanelSourceHelpersRuntime,
+  qa as initProfileHotkeyThreadRuntime,
+  sa as initPlatformContentBridgeRuntime,
+} from "../boundaries/current-ref/profile-page-producer";
+import {
+  it as initAppgenLibraryHotChunk,
+  n as initAppgenLibraryRuntime,
+} from "../boundaries/current-ref/appgen-library-hot-producer";
+
+export {
+  initAppgenLibraryHotChunk,
+  initAppgenLibraryRuntime,
+  initConversationDisplayTitleSignalsRuntime,
+  initConversationMarkdownCopyRuntime,
+  initConversationReadStateRuntime,
+  initConversationThreadHostRuntime,
+  initLocalConversationArtifactsRuntime,
+  initPlatformContentBridgeRuntime,
+  initPlanSidePanelRuntime,
+  initProfileComposerSupportRuntime,
+  initProfileConversationSourceRuntime,
+  initProfileHotkeyThreadRuntime,
+  initProfileThreadRenderSupportRuntime,
+  initProfileThreadSearchRuntime,
+  initProjectSharedBaseRuntime,
+  initProjectsActionRuntime,
+  initSummaryPanelSourceHelpersRuntime,
+  initThreadCommandRuntime,
+  initThreadFindSupportRuntime,
+  initThreadSidePanelSupportRuntime,
+  initThreadSourceSupportRuntime,
+  initThreadSummaryRouteRuntime,
+  initWorkspaceRouteQueryRuntime,
+  initWorkspaceRouteStateRuntime,
+};
