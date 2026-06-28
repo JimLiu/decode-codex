@@ -1,23 +1,29 @@
 // Restored from ref/webview/assets/local-conversation-thread-Bf38rCmF.js
 // Pull request side-panel tab content, body queries, and opener.
 import React, { type MouseEvent, type ReactNode } from "react";
-import { once } from "../../runtime/commonjs-interop";
 import {
-  $N as initVscodeApiBridge,
-  AB as initScopeRuntime,
-  Al as initComposerScope,
-  FB as useScope,
-  IB as useSignalValue,
-  Wa as PlatformContentGate,
-  aP as QUERY_DURATIONS,
-  eP as useHostQuery,
-  en as ExternalLinkIcon,
-  oP as initQueryDurationConstants,
-  tn as initExternalLinkIconChunk,
-  wl as composerScope,
-  za as openInBrowserFromEvent,
-  La as initExternalUrlHelpers,
-} from "../../boundaries/current-ref/appg-thread-shared-producer";
+  ExternalLinkIcon,
+  initExternalLinkIconChunk,
+} from "../../icons/external-link-icon";
+import { once } from "../../runtime/commonjs-interop";
+import { useScope, useSignalValue } from "../../runtime/app-scope-hooks";
+import {
+  composerScope,
+  initComposerScopeRuntime,
+} from "../../runtime/composer-scope-runtime";
+import {
+  initHostQueryRuntime,
+  QUERY_DURATIONS,
+  useHostQuery,
+} from "../../runtime/host-query-runtime";
+import {
+  PlatformContentGate,
+  initVscodeBridgeRuntime,
+} from "../../runtime/platform-content-runtime";
+import {
+  initResourceOpenRuntime,
+  openInBrowserFromEvent,
+} from "../../runtime/resource-open-runtime";
 import {
   Cl as pullRequestCurrentBranchSignal,
   _c as threadSidePanelPositionControllers,
@@ -380,13 +386,12 @@ function getPullRequestDiffFileDisplayPath(diffFile: PullRequestDiffFile) {
 }
 
 const initPullRequestSidePanelDetailsChunk = once(() => {
-  initScopeRuntime();
+  initComposerScopeRuntime();
   initUnifiedDiffFileSummariesChunk();
   initThreadBranchComparisonChunk();
   initPullRequestCurrentBranchSignalChunk();
-  initComposerScope();
-  initQueryDurationConstants();
-  initVscodeApiBridge();
+  initHostQueryRuntime();
+  initVscodeBridgeRuntime();
   initPullRequestSidePanelChecksSectionChunk();
   initPullRequestSidePanelCommentsSectionChunk();
   initPullRequestSidePanelConflictsSectionChunk();
@@ -507,10 +512,10 @@ let PullRequestSidePanelTabContent: (
 
 const initPullRequestSidePanelTabChunk = once(() => {
   initIntlRuntime();
-  initExternalUrlHelpers();
+  initResourceOpenRuntime();
   initExternalLinkIconChunk();
-  initQueryDurationConstants();
-  initVscodeApiBridge();
+  initHostQueryRuntime();
+  initVscodeBridgeRuntime();
   initPullRequestMergeActionsChunk();
   initPullRequestSidePanelDetailsChunk();
   PullRequestSidePanelTabContent = function PullRequestSidePanelTabContent({
