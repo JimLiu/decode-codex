@@ -22,7 +22,12 @@ import {
 import {
   hostConnectionStatusSignal,
   initLocalConversationComposerRuntime,
+  initThreadComposerFooterRuntime,
   LOCAL_HOST_ID,
+  localWorkspaceMaterializationSignal,
+  backgroundAgentsSignal,
+  threadComposerContext,
+  ThreadComposerFooter,
 } from "../../runtime/local-conversation-composer-runtime";
 import {
   initConversationRouteSourceRuntime,
@@ -30,16 +35,7 @@ import {
   localConversationRouteScope,
 } from "../../runtime/local-conversation-route-runtime";
 import { getLocalThreadConversationIdFromRoute } from "../../runtime/local-thread-route";
-import {
-  Vn as localWorkspaceMaterializationSignal,
-  cs as backgroundAgentsSignal,
-} from "../../boundaries/current-ref/profile-page-producer";
 import { setActiveConversationSourceContext } from "../../runtime/local-conversation-state";
-import {
-  $ as threadComposerContext,
-  et as initThreadComposerFooterChunk,
-  t as ThreadComposerFooter,
-} from "../../boundaries/current-ref/appgen-library-hot-producer";
 import {
   FormattedMessage,
   useIntl,
@@ -299,5 +295,5 @@ export const initLocalConversationComposerFooterChunk = once(() => {
   initConversationStateRuntime();
   initConversationRouteSourceRuntime();
   initLocalConversationComposerRuntime();
-  initThreadComposerFooterChunk();
+  initThreadComposerFooterRuntime();
 });
