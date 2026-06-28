@@ -46,19 +46,16 @@ import { normalizeWorkspacePath } from "../../runtime/output-artifact-runtime";
 import { initPathHelpersRuntime } from "../../runtime/path-helpers-runtime";
 import { initVscodeBridgeRuntime } from "../../runtime/platform-content-runtime";
 import {
+  checkManagedWorktree,
+  getGitMetadataQueryKey,
+  initGitMetadataQueryHelpersRuntime,
   initWorktreeCheckMutationRuntime,
   initWorktreeRestoreMutationRuntime,
+  initWorktreeStatusQueryRuntime,
+  SummaryPanelBanner,
+  worktreeStatusQueryKey,
+  worktreeStatusQuerySignal,
 } from "../../runtime/worktree-restore-runtime";
-import {
-  $n as initWorktreeStatusQuerySignalChunk,
-  Bn as worktreeStatusQuerySignal,
-  In as initWorktreeStatusQueryInvalidationChunk,
-  Ln as worktreeStatusQueryKey,
-  No as getGitMetadataQueryKey,
-  Po as initGitMetadataQueryHelpersChunk,
-  Qn as SummaryPanelBanner,
-  Rn as checkManagedWorktree,
-} from "../../boundaries/current-ref/profile-page-producer";
 import {
   initIntlRuntime,
   useIntl,
@@ -358,7 +355,7 @@ export const initWorktreeRestoreBannerChunk = once(() => {
   initPathHelpersRuntime();
   initIntlRuntime();
   initConversationStateRuntime();
-  initWorktreeStatusQuerySignalChunk();
+  initWorktreeStatusQueryRuntime();
   initButtonComponentPrimitives();
   initToastSignalRuntime();
   initGitBranchQueryRuntime();
@@ -369,8 +366,7 @@ export const initWorktreeRestoreBannerChunk = once(() => {
   initHostConfigRuntime();
   initEnvironmentTerminalRuntime();
   initAppLoggerRuntime();
-  initWorktreeStatusQueryInvalidationChunk();
-  initGitMetadataQueryHelpersChunk();
+  initGitMetadataQueryHelpersRuntime();
   initVscodeBridgeRuntime();
   initLocalConversationComposerRuntime();
 });
