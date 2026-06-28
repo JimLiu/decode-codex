@@ -20,4 +20,7 @@ export function XIcon(props: IconProps) {
     </svg>
   );
 }
+
+export function initXIcon(): void {}
+
 export default XIcon;

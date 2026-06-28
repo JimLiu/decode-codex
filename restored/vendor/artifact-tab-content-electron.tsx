@@ -120,13 +120,12 @@ const __vite__mapDeps = (
 ) => i.map((item) => d[item]);
 import { once as e, toEsModule as t } from "../runtime/commonjs-interop";
 import {
-  M_ as ee,
-  MA as g,
-  I_ as m,
-  pv as M,
-  fv as re,
-  NA as v,
-} from "../vendor/appg-thread-shared-runtime";
+  artifactRouteScope as ee,
+  getFallbackArtifactConversationId as re,
+  initArtifactPanelRuntime as M,
+  initArtifactRouteScopeRuntime as m,
+} from "../boundaries/current-ref/artifact-tab-content-producer";
+import { initXIcon as v, XIcon as g } from "../icons/x-icon";
 import {
   Button as c,
   DropdownMenu as d,
