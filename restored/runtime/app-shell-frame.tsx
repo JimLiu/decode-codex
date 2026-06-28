@@ -5,7 +5,7 @@ import {
   vn as AppShellOverlayOutlet,
   yd as rightPanelFullWidthSignal,
 } from "../boundaries/current-ref/projects-app-shared-producer";
-import { rt as AppShellElementContext } from "../boundaries/current-ref/appgen-library-hot-producer";
+import { AppShellElementContext } from "../app-shell/app-shell-element-context";
 
 export {
   AppShellElementContext,

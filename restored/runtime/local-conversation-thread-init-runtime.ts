@@ -26,10 +26,11 @@ import {
   qa as initProfileHotkeyThreadRuntime,
   sa as initPlatformContentBridgeRuntime,
 } from "../boundaries/current-ref/profile-page-producer";
-import {
-  it as initAppgenLibraryHotChunk,
-  n as initAppgenLibraryRuntime,
-} from "../boundaries/current-ref/appgen-library-hot-producer";
+import { initAppShellElementContextChunk } from "../app-shell/app-shell-element-context";
+import { initThreadComposerFooterChunk } from "../composer/thread-composer-footer";
+
+const initAppgenLibraryHotChunk = initAppShellElementContextChunk;
+const initAppgenLibraryRuntime = initThreadComposerFooterChunk;
 
 export {
   initAppgenLibraryHotChunk,

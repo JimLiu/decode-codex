@@ -4,4 +4,8 @@ export {
   initThreadComposerContextChunk as et,
   ThreadComposerFooter as t,
 } from "../../composer/thread-composer-footer";
+export {
+  initAppShellElementContextChunk as it,
+  AppShellElementContext as rt,
+} from "../../app-shell/app-shell-element-context";
 export * from "../../vendor/appgen-library-hot-runtime";
