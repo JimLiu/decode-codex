@@ -3,6 +3,12 @@ import React from "react";
 
 import { once } from "../../runtime/commonjs-interop";
 import { Button, initButtonComponentPrimitives } from "../../ui/button";
+import {
+  initPopoverPrimitives,
+  Popover as PopoverRoot,
+  PopoverContent,
+  PopoverTrigger,
+} from "../../ui/popover";
 import { classNames } from "../../utils/class-names";
 import {
   initUseStableCallback,
@@ -40,10 +46,7 @@ import {
   bF as initIntlMessageRuntime,
   cm as conversationHostIdSignal,
   cv as sourceWorkspaceRootAfterRestoreSignal,
-  di as PopoverRoot,
-  gi as initPopoverPrimitives,
   gp as conversationCwdSignal,
-  hi as PopoverTrigger,
   iF as initReactIntlRuntime,
   jm as conversationModeSignal,
   kj as normalizeConfigPath,
@@ -51,7 +54,6 @@ import {
   li as ProjectAvatar,
   lm as conversationResumeStateSignal,
   mv as initCurrentRefViewRuntime,
-  pi as PopoverContent,
   qV as getChunkModuleExports,
   qj as useStatsigGate,
   sF as FormattedMessage,

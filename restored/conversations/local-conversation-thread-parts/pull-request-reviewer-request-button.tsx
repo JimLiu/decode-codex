@@ -1,7 +1,7 @@
 // Restored from ref/webview/assets/local-conversation-thread-Bf38rCmF.js
 // Reviewer request popover used from the pull request side-panel overview row.
 import { useState, type ReactNode } from "react";
-import { PlusIcon } from "../../icons/plus-icon";
+import { initPlusIcon, PlusIcon } from "../../icons/plus-icon";
 import { once } from "../../runtime/commonjs-interop";
 import { Button, initButtonComponentPrimitives } from "../../ui/button";
 import {
@@ -9,27 +9,28 @@ import {
   initSearchIcon,
 } from "../../ui/dropdown/search";
 import { initDropdownMenuPrimitives } from "../../ui/dropdown";
+import {
+  initPopoverPrimitives,
+  Popover as PopoverRoot,
+  PopoverContent,
+  PopoverTitle as ScreenReaderTitle,
+  PopoverTrigger,
+} from "../../ui/popover";
 import { initSpinnerComponent, Spinner } from "../../ui/spinner";
 import {
   $N as initVscodeApiBridge,
   $P as initAppScope,
   AB as initScopeRuntime,
   QP as appScope,
-  Rj as initScreenReaderTitleChunk,
   ZN as createHostQuerySignal,
   aP as QUERY_DURATIONS,
   cM as initToastRuntime,
-  di as PopoverRoot,
   fu as initTaskWorkspaceQueryRuntime,
-  hi as PopoverTrigger,
-  mi as ScreenReaderTitle,
   oP as initQueryDurationConstants,
-  pi as PopoverContent,
   pu as useDebouncedValue,
   uM as toastSignal,
   PB as useScopedValue,
   FB as useScope,
-  gi as initPopoverPrimitives,
 } from "../../boundaries/current-ref/appg-thread-shared-producer";
 import {
   initShareInviteAutocompleteChunk,
@@ -512,7 +513,7 @@ export const initRequestPullRequestReviewersButtonChunk = once(() => {
   initShareInviteAutocompleteChunk();
   initSpinnerComponent();
   initToastRuntime();
-  initScreenReaderTitleChunk();
+  initPlusIcon();
   initSearchIcon();
   initPullRequestUpdateMutationChunk();
   initPullRequestAnalyticsChunk();

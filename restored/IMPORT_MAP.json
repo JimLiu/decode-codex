@@ -2086,7 +2086,8 @@
       "restored": "icons/plus-icon.tsx",
       "exports": {
         "t": "PlusIcon",
-        "PlusIcon": "PlusIcon"
+        "PlusIcon": "PlusIcon",
+        "initPlusIcon": "initPlusIcon"
       },
       "status": "done"
     },
@@ -6892,7 +6893,8 @@
         "i": "Popover",
         "n": "PopoverTrigger",
         "r": "PopoverContent",
-        "t": "PopoverTitle"
+        "t": "PopoverTitle",
+        "initPopoverPrimitives": "initPopoverPrimitives"
       },
       "status": "done"
     },
@@ -11177,7 +11179,7 @@
     "app-initial~app-main~remote-conversation-page~plugin-detail-page~new-thread-panel-page~appg~ijdupmx5-CdYgxe-b": {
       "restored": "boundaries/current-ref/appg-thread-shared-producer.ts",
       "status": "boundary",
-      "note": "Current ref boundary for local-conversation-thread/app-shell. Ai/initDialogLayoutComponents, AN/initSpinnerComponent, Ao/initGitBranchIcon, BP/classNames, Di/DialogSection, DN/Button, Ei/DialogHeader, F_/getRouteThreadId, Gi/DropdownMenu, Hi/initSettingsGearIcon, hM/initTooltipPrimitives, Ki/DropdownSubmenuItem, Lj/PlusIcon, kN/Spinner, ko/GitBranchIcon, mM/TooltipProvider, Oi/DialogFieldStack, ON/initButtonComponentPrimitives, pM/Tooltip, qi/Dropdown menu namespace, Ti/DialogFooterActions, TM/initCheckmarkIcon, va/AppDialog, VP/initClassNameRuntime, Vi/SettingsGearIcon, wi/DialogBody, aM/RefreshIcon, bz/normalizeBrowserTabId, bM/initUseStableCallback, DM/initWindowZoomContext, ea/DropdownSearchIcon, iF/initIntlRuntime, kM/useWindowZoom, lF/useIntl, Mj/getScrollDistanceFromBottomPx, Nj/initReverseScrollUtilities, oM/initRefreshIcon, OM/scaleCssPxByWindowZoom, P_/getLocalThreadConversationIdFromRoute, RP/ChevronIcon, sF/FormattedMessage, ta/initSearchIcon, vM/KeyboardShortcutKeycap, wM/CheckMdIcon, Xi/DropdownSeparator, xa/initAppDialog, xM/useStableCallback, yM/initKeyboardShortcutKeycap, Zi/initDropdownMenuPrimitives, and zP/initChevronDownIcon are now explicitly backed by restored runtime/utils/ui/app-shell/icon/vendor modules, and local thread/page/app-shell callers import those semantic modules directly; remaining exports stay raw passthrough until deep-restored.",
+      "note": "Current ref boundary for local-conversation-thread/app-shell. Ai/initDialogLayoutComponents, AN/initSpinnerComponent, Ao/initGitBranchIcon, BP/classNames, Di/DialogSection, di/Popover, DN/Button, Ei/DialogHeader, F_/getRouteThreadId, gi/initPopoverPrimitives, Gi/DropdownMenu, hi/PopoverTrigger, Hi/initSettingsGearIcon, hM/initTooltipPrimitives, Ki/DropdownSubmenuItem, Lj/PlusIcon, kN/Spinner, ko/GitBranchIcon, mi/PopoverTitle, mM/TooltipProvider, Oi/DialogFieldStack, ON/initButtonComponentPrimitives, pi/PopoverContent, pM/Tooltip, qi/Dropdown menu namespace, Rj/initPlusIcon, Ti/DialogFooterActions, TM/initCheckmarkIcon, va/AppDialog, VP/initClassNameRuntime, Vi/SettingsGearIcon, wi/DialogBody, aM/RefreshIcon, bz/normalizeBrowserTabId, bM/initUseStableCallback, DM/initWindowZoomContext, ea/DropdownSearchIcon, iF/initIntlRuntime, kM/useWindowZoom, lF/useIntl, Mj/getScrollDistanceFromBottomPx, Nj/initReverseScrollUtilities, oM/initRefreshIcon, OM/scaleCssPxByWindowZoom, P_/getLocalThreadConversationIdFromRoute, RP/ChevronIcon, sF/FormattedMessage, ta/initSearchIcon, vM/KeyboardShortcutKeycap, wM/CheckMdIcon, Xi/DropdownSeparator, xa/initAppDialog, xM/useStableCallback, yM/initKeyboardShortcutKeycap, Zi/initDropdownMenuPrimitives, and zP/initChevronDownIcon are now explicitly backed by restored runtime/utils/ui/app-shell/icon/vendor modules, and local thread/page/app-shell callers import those semantic modules directly; remaining exports stay raw passthrough until deep-restored.",
       "lastUpdated": "2026-06-28T04:19:52.000Z"
     },
     "app-initial~app-main~remote-conversation-page~new-thread-panel-page~projects-index-page~app~ovcriy74-KTK3czaX": {

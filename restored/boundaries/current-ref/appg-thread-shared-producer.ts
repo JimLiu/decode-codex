@@ -29,7 +29,7 @@ export {
   CheckMdIcon as wM,
   initCheckmarkIcon as TM,
 } from "../../icons/check-md-icon";
-export { PlusIcon as Lj } from "../../icons/plus-icon";
+export { initPlusIcon as Rj, PlusIcon as Lj } from "../../icons/plus-icon";
 export {
   RefreshIcon as aM,
   initRefreshIcon as oM,
@@ -49,6 +49,13 @@ export {
   DropdownSubmenuItem as Ki,
   initDropdownMenuPrimitives as Zi,
 } from "../../ui/dropdown";
+export {
+  initPopoverPrimitives as gi,
+  Popover as di,
+  PopoverContent as pi,
+  PopoverTitle as mi,
+  PopoverTrigger as hi,
+} from "../../ui/popover";
 export {
   initTooltipPrimitives as hM,
   Tooltip as pM,
