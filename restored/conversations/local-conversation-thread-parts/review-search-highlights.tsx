@@ -7,13 +7,13 @@ import {
   initDynamicModulePreloadRuntime,
   preloadDynamicImport,
 } from "../../runtime/dynamic-module-preload";
-import { initSearchIcon } from "../../ui/dropdown/search";
+import { useSignalValue } from "../../runtime/app-scope-hooks";
+import { initAppScopeSignalRuntime } from "../../runtime/app-scope-runtime";
 import {
-  AB as initScopeRuntime,
-  IB as useSignalValue,
-  Gj as initStatsigFeatureGateHooks,
-  qj as useStatsigGate,
-} from "../../boundaries/current-ref/appg-thread-shared-producer";
+  initStatsigFeatureGateRuntime,
+  useStatsigGate,
+} from "../../runtime/feature-gate-runtime";
+import { initSearchIcon } from "../../ui/dropdown/search";
 import {
   Bo as conversationSearchResultSignal,
   Cs as setContentSearchMatchIdAttribute,
@@ -217,7 +217,7 @@ export function useReviewSearchHighlights(props: ReviewSearchHighlightsProps) {
 }
 
 export const initReviewSearchHighlighter = once(() => {
-  initScopeRuntime();
+  initAppScopeSignalRuntime();
   initContentSearchRuntime();
   initSearchIcon();
   initConversationSearchSignals();
@@ -272,7 +272,7 @@ export function ThreadFindNavigationRail(props: ThreadFindNavigationRailProps) {
 
 export const initThreadFindNavigationRail = once(() => {
   initLazyNavigationRailRuntime();
-  initStatsigFeatureGateHooks();
+  initStatsigFeatureGateRuntime();
   initDynamicModulePreloadRuntime();
   LazyThreadUserMessageNavigationRail = createLazyNavigationRailComponent(
     async () =>

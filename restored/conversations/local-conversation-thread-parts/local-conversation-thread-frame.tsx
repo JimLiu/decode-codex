@@ -4,16 +4,22 @@ import React from "react";
 import { once } from "../../runtime/commonjs-interop";
 import { useStableCallback } from "../../utils/use-stable-callback";
 import {
-  AB as initScopeRuntime,
-  FB as useScope,
-  Gj as initStatsigFeatureGateHooks,
-  IB as useSignalValue,
-  M_ as localConversationRouteScope,
-  Op as initConversationStateSelectors,
-  PB as useScopedValue,
-  qj as useStatsigGate,
-  vm as subagentParentThreadIdSignal,
-} from "../../boundaries/current-ref/appg-thread-shared-producer";
+  useScope,
+  useScopedValue,
+  useSignalValue,
+} from "../../runtime/app-scope-hooks";
+import {
+  initConversationStateRuntime,
+  subagentParentThreadIdSignal,
+} from "../../runtime/conversation-state-runtime";
+import {
+  initStatsigFeatureGateRuntime,
+  useStatsigGate,
+} from "../../runtime/feature-gate-runtime";
+import {
+  initLocalConversationRouteRuntime,
+  localConversationRouteScope,
+} from "../../runtime/local-conversation-route-runtime";
 import { liveMcpAppFrameSignal } from "../../runtime/app-shell-frame";
 import { initBackgroundAgentThreadTab } from "./local-conversation-background-agent-thread-tab";
 import { openBackgroundAgentFromThread } from "./local-conversation-background-agent-open";
@@ -209,9 +215,9 @@ export function LocalConversationThreadFrame({
 }
 
 export const initLocalConversationThreadFrameChunk = once(() => {
-  initScopeRuntime();
-  initConversationStateSelectors();
-  initStatsigFeatureGateHooks();
+  initLocalConversationRouteRuntime();
+  initConversationStateRuntime();
+  initStatsigFeatureGateRuntime();
   initMarkConversationReadEffect();
   initBackgroundAgentThreadTab();
   initLocalConversationThreadLayoutShellChunk();
