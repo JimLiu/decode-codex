@@ -12,6 +12,7 @@ export {
   initWindowVisibilitySignal as G,
   windowVisibleSignal as W,
 } from "../../runtime/window-focus-state";
+export { appgenPublicationTermsSidePanelHandler as i } from "../../appgen/publication-terms/side-panel-handler";
 export {
   Bt as LocalConversationDiffSummaryView,
   Jt as ComposerDismissableLayer,

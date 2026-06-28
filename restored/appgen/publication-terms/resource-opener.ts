@@ -14,6 +14,7 @@ import {
   kL as readFileContentSampleByteLimit,
   o_ as isMarkdownPreviewPath,
   r_ as getImagePreviewDisplayMode,
+  Sj as getPathBasename,
   s_ as isPdfPreviewPath,
   wj as initArtifactPreviewRuntime,
   xL as isRemoteHostConfig,
@@ -64,6 +65,24 @@ type ReadFileMetadata = {
   contentKind?: FileContentKind;
   isFile: boolean;
 };
+
+export type McpCapabilityFileViewer = {
+  extensions?: readonly string[];
+  hostId?: string;
+  icon?: unknown;
+  server?: string;
+  title?: string;
+  tool?: { name?: string };
+};
+
+export type McpHostResourceReader = (resource: {
+  _meta?: unknown;
+  uri: string;
+}) => Promise<Record<string, unknown> | null>;
+
+type McpFileViewerReadContents = (
+  representation: "auto" | "blob" | "text",
+) => Promise<Record<string, unknown>> | Record<string, unknown>;
 
 type FileContentKind =
   | "archive"
@@ -141,14 +160,22 @@ export function openWorkspaceResource({
     hostId,
   };
 
-  if (target != null || openMode === "workspace" || persistPreferredTargetPath != null) {
+  if (
+    target != null ||
+    openMode === "workspace" ||
+    persistPreferredTargetPath != null
+  ) {
     openFile(openFileRequest);
     return;
   }
 
   if (
     !modifiedClick &&
-    shouldOpenFileUrlThroughWorkspace({ browserSidebarEnabled, hostConfig, path })
+    shouldOpenFileUrlThroughWorkspace({
+      browserSidebarEnabled,
+      hostConfig,
+      path,
+    })
   ) {
     openFile({ path, cwd, hostId });
     return;
@@ -161,7 +188,8 @@ export function openWorkspaceResource({
       return;
     }
 
-    const absolutePath = cwd == null ? path : resolveWorkspacePathFromCwd(cwd, path);
+    const absolutePath =
+      cwd == null ? path : resolveWorkspacePathFromCwd(cwd, path);
     const localHostConfig =
       hostConfig != null && !isRemoteHostConfig(hostConfig) ? hostConfig : null;
     const hasMcpCapabilityFileViewer =
@@ -285,24 +313,27 @@ function getMatchingMcpCapabilityFileViewer(
   }
 }
 
-function findMatchingMcpCapabilityFileViewer(
+export function findMatchingMcpCapabilityFileViewer(
   path: string,
   fileViewers: readonly unknown[],
 ) {
   const normalizedPath = path.toLowerCase();
-  let bestViewer: unknown = null;
+  let bestViewer: McpCapabilityFileViewer | null = null;
   let bestLength = 0;
 
   for (const fileViewer of fileViewers) {
     const extensions = getFileViewerExtensions(fileViewer);
     for (const extension of extensions) {
-      const normalizedExtension = extension.trim().replace(/^\.+/u, "").toLowerCase();
+      const normalizedExtension = extension
+        .trim()
+        .replace(/^\.+/u, "")
+        .toLowerCase();
       if (
         normalizedExtension.length > 0 &&
         normalizedPath.endsWith(`.${normalizedExtension}`) &&
         normalizedExtension.length > bestLength
       ) {
-        bestViewer = fileViewer;
+        bestViewer = fileViewer as McpCapabilityFileViewer;
         bestLength = normalizedExtension.length;
       }
     }
@@ -315,8 +346,74 @@ function getFileViewerExtensions(fileViewer: unknown) {
   if (fileViewer == null || typeof fileViewer !== "object") return [];
   const extensions = (fileViewer as { extensions?: unknown }).extensions;
   return Array.isArray(extensions)
-    ? extensions.filter((extension): extension is string => typeof extension === "string")
+    ? extensions.filter(
+        (extension): extension is string => typeof extension === "string",
+      )
     : [];
+}
+
+export function createFileViewerToolArguments(
+  path: string,
+  resourceUri: string,
+) {
+  return { file: { name: getPathBasename(path), resourceUri } };
+}
+
+export function createMcpFileViewerHostResource({
+  fileViewer,
+  path,
+  readContents,
+  resourceUri,
+}: {
+  fileViewer: McpCapabilityFileViewer;
+  path: string;
+  readContents: McpFileViewerReadContents;
+  resourceUri: string;
+}): McpHostResourceReader {
+  return async (resource) => {
+    if (!isGeneratedMcpResourceUri(resource.uri, resourceUri)) return null;
+    return {
+      extension: getFileViewerExtensionForPath(path, fileViewer),
+      ...(await readContents(parseMcpResourceRepresentation(resource._meta))),
+    };
+  };
+}
+
+function parseMcpResourceRepresentation(
+  meta: unknown,
+): "auto" | "blob" | "text" {
+  const representation =
+    meta != null && typeof meta === "object"
+      ? (meta as { "openai/resource"?: { representation?: unknown } })[
+          "openai/resource"
+        ]?.representation
+      : undefined;
+  if (representation == null) return "auto";
+  if (representation === "blob" || representation === "text")
+    return representation;
+  throw Object.assign(Error("Invalid MCP resource read params"), {
+    code: -32602,
+  });
+}
+
+function isGeneratedMcpResourceUri(uri: string, resourceUri: string) {
+  return (
+    resourceUri.startsWith("codex-resource://") &&
+    (uri === resourceUri || uri.startsWith(`${resourceUri}/`))
+  );
+}
+
+function getFileViewerExtensionForPath(
+  path: string,
+  fileViewer: McpCapabilityFileViewer,
+) {
+  const normalizedPath = path.toLowerCase();
+  return (
+    getFileViewerExtensions(fileViewer)
+      .map((extension) => extension.trim().replace(/^\.+/u, "").toLowerCase())
+      .filter((extension) => normalizedPath.endsWith(`.${extension}`))
+      .sort((left, right) => right.length - left.length)[0] ?? ""
+  );
 }
 
 function readFileMetadata({
@@ -386,10 +483,12 @@ function logOpenOutcome(
   } catch {}
 }
 
-function getArtifactImportPresentation(path: string) {
+export function getArtifactImportPresentation(path: string) {
   const extension = getPathExtension(path);
   const importKind =
-    extension == null ? null : ARTIFACT_IMPORT_KIND_BY_EXTENSION.get(extension) ?? null;
+    extension == null
+      ? null
+      : (ARTIFACT_IMPORT_KIND_BY_EXTENSION.get(extension) ?? null);
   if (importKind == null) return null;
 
   switch (importKind) {
@@ -427,12 +526,17 @@ function getReviewPreviewKind(path: string, contentKind?: FileContentKind) {
                 : null;
 }
 
-function getUnsupportedPreviewType(path: string, contentKind?: FileContentKind) {
+function getUnsupportedPreviewType(
+  path: string,
+  contentKind?: FileContentKind,
+) {
   if (contentKind === "image" || contentKind === "pdf") return null;
 
   const extension = getPathExtension(path);
   const unsupportedType =
-    extension == null ? null : UNSUPPORTED_PREVIEW_TYPE_BY_EXTENSION.get(extension) ?? null;
+    extension == null
+      ? null
+      : (UNSUPPORTED_PREVIEW_TYPE_BY_EXTENSION.get(extension) ?? null);
   if (
     unsupportedType != null &&
     (contentKind == null ||
@@ -487,7 +591,11 @@ function shouldUseExternalFileManager({
 }
 
 function getHostKind(hostConfig?: HostConfigForResourceOpen | null) {
-  return hostConfig == null ? "unknown" : isRemoteHostConfig(hostConfig) ? "remote" : "local";
+  return hostConfig == null
+    ? "unknown"
+    : isRemoteHostConfig(hostConfig)
+      ? "remote"
+      : "local";
 }
 
 function getOpenOutcome({
@@ -543,7 +651,9 @@ function isPdbPath(path: string) {
     normalizedPath.lastIndexOf("\\"),
   );
   const basename =
-    lastSlashIndex >= 0 ? normalizedPath.slice(lastSlashIndex + 1) : normalizedPath;
+    lastSlashIndex >= 0
+      ? normalizedPath.slice(lastSlashIndex + 1)
+      : normalizedPath;
   const dotIndex = basename.lastIndexOf(".");
   return dotIndex > 0 && basename.slice(dotIndex + 1) === "pdb";
 }
@@ -589,7 +699,7 @@ function lookupMimeType(path: string) {
   }
 }
 
-const mcpCapabilityFileViewerState = Symbol.for(
+export const mcpCapabilityFileViewerState = Symbol.for(
   "codex.restored.mcp-capability-file-viewers",
 );
 
@@ -600,8 +710,3 @@ export const initWorkspaceResourceOpenerChunk = once(() => {
   initFileTypeDetectionHelpers();
   initPublicationTermsHandlerRegistryChunk();
 });
-
-export {
-  initWorkspaceResourceOpenerChunk as _,
-  openWorkspaceResource as v,
-};

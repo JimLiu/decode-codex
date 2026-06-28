@@ -19,7 +19,6 @@ import {
 } from "../boundaries/current-ref/projects-app-shared-producer";
 import {
   c as initAutomationsRuntimeChunk,
-  i as appgenPublicationTermsHandler,
   n as windowsTabsOpenHandler,
   r as initAutomationsStateChunk,
   s as CodexApp,
@@ -34,7 +33,9 @@ import {
   uo as initDesktopNotificationRuntime,
 } from "../boundaries/current-ref/pull-request-thread-actions-producer";
 import {
+  appgenPublicationTermsSidePanelHandler,
   initPublicationTermsHandlerRegistryChunk,
+  initPublicationTermsSidePanelHandlerChunk,
   registerPublicationTermsSidePanelHandler,
 } from "../appgen/publication-terms";
 import {
@@ -56,9 +57,12 @@ let codexRoot: ReactRoot;
 async function renderElectronAppRoot(): Promise<void> {
   await prepareAppMainRender();
   await refreshStatsigDiagnostics();
-  appMainLogger.info("[statsig-refresh-diagnostics] React root render requested", {
-    safe: { windowType: "electron" },
-  });
+  appMainLogger.info(
+    "[statsig-refresh-diagnostics] React root render requested",
+    {
+      safe: { windowType: "electron" },
+    },
+  );
   codexRoot.render(
     <React.StrictMode>
       <ErrorBoundary name="App" fallback={<AppFallback />}>
@@ -125,6 +129,7 @@ const initAppMainChunk = once(() => {
   initAppFallbackChunk();
   initProjectsSharedRuntimeChunk();
   initPublicationTermsHandlerRegistryChunk();
+  initPublicationTermsSidePanelHandlerChunk();
   initAutomationsRuntimeChunk();
   initAppLoggingChunk();
   initAutomationsStateChunk();
@@ -136,7 +141,9 @@ const initAppMainChunk = once(() => {
 
   const urlSearchParams = new URL(window.location.href).searchParams;
   const codexOs = detectCodexOs();
-  registerPublicationTermsSidePanelHandler(appgenPublicationTermsHandler);
+  registerPublicationTermsSidePanelHandler(
+    appgenPublicationTermsSidePanelHandler,
+  );
   registerWindowsTabsOpenHandler(windowsTabsOpenHandler);
 
   document.documentElement.dataset.codexWindowType = "electron";

@@ -11189,6 +11189,7 @@
       "restored": "app-shell/app-fallback.tsx",
       "exports": {
         "G": "initWindowVisibilitySignal",
+        "i": "appgenPublicationTermsSidePanelHandler",
         "Ln": "AppFallback",
         "Rn": "initAppFallbackChunk",
         "W": "windowVisibleSignal",
@@ -11197,7 +11198,7 @@
       },
       "status": "partial",
       "boundary": "boundaries/current-ref/automations-page-producer.ts",
-      "note": "Partial app-shell/local-thread restore: Electron root fallback lives in app-shell/app-fallback.tsx; local-thread window focus state lives in runtime/window-focus-state.ts; automation inbox hook/init lives in utils/use-automation-history-items.ts. App shell handlers, CodexApp, automation state, and remaining route/UI exports continue through the current-ref compatibility boundary.",
+      "note": "Partial app-shell/local-thread restore: Electron root fallback lives in app-shell/app-fallback.tsx; appgen publication-terms side-panel handler lives in appgen/publication-terms/side-panel-handler.ts; local-thread window focus state lives in runtime/window-focus-state.ts; automation inbox hook/init lives in utils/use-automation-history-items.ts. CodexApp, windows.tabs.open, automation state, and remaining route/UI exports continue through the current-ref compatibility boundary.",
       "lastUpdated": "2026-06-28T00:00:00.000Z"
     },
     "app-initial~app-main~worktree-init-v2-page~remote-conversation-page~new-thread-panel-page~o~bj5tp28r-CQrj7g91": {
@@ -11243,16 +11244,20 @@
       "splitDirectory": "appgen/publication-terms",
       "exports": {
         "A": "initPublicationTermsHandlerRegistryChunk",
+        "G": "findMatchingMcpCapabilityFileViewer",
         "H": "getMcpServerLogo",
+        "K": "createFileViewerToolArguments",
         "U": "initMcpServerLogoHelpers",
+        "W": "createMcpFileViewerHostResource",
         "_": "initWorkspaceResourceOpenerChunk",
         "j": "registerPublicationTermsSidePanelHandler",
-        "v": "openWorkspaceResource"
+        "v": "openWorkspaceResource",
+        "w": "getArtifactImportPresentation"
       },
       "status": "partial",
       "boundary": "boundaries/current-ref/appgen-publication-terms-producer.ts",
-      "note": "Partial semantic restore for app-shell/local-conversation/sidebar consumers: handler registry, MCP server logo selection, and workspace resource opener now live under appgen/publication-terms; unused exports remain available through the current-ref compatibility boundary.",
-      "lastUpdated": "2026-06-27T23:40:56.000Z"
+      "note": "Partial semantic restore for app-shell/local-conversation/sidebar consumers: handler registry, MCP server logo selection, workspace resource opener, artifact presentation detection, and MCP file-viewer helpers now live under appgen/publication-terms; unused exports remain available through the current-ref compatibility boundary.",
+      "lastUpdated": "2026-06-28T00:00:00.000Z"
     },
     "app-initial~app-main~remote-conversation-page~pull-requests-page~onboarding-page~projects-i~easvi6ps-Cs84X9Ip": {
       "restored": "automation/automation-schedule/index.ts",

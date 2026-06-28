@@ -5,6 +5,7 @@ import { once } from "../../runtime/commonjs-interop";
 export type PublicationTermsNavigationTarget =
   | "artifact"
   | "mcpCapabilityFileViewer"
+  | "reviewFileSource"
   | "textFileEditor"
   | string;
 
@@ -15,13 +16,14 @@ export type PublicationTermsSidePanelOptions = {
   icon?: unknown;
   isPreview?: boolean;
   line?: number | null;
+  target?: string;
   title?: string | null;
 };
 
 export type PublicationTermsSidePanelHandler = (
   scope: unknown,
   path: string,
-  options: PublicationTermsSidePanelOptions,
+  options?: PublicationTermsSidePanelOptions,
 ) => PublicationTermsNavigationTarget | null | undefined;
 
 let publicationTermsSidePanelHandler: PublicationTermsSidePanelHandler | null =
@@ -40,8 +42,3 @@ export function registerPublicationTermsSidePanelHandler(
 ): void {
   publicationTermsSidePanelHandler = handler;
 }
-
-export {
-  initPublicationTermsHandlerRegistryChunk as A,
-  registerPublicationTermsSidePanelHandler as j,
-};
