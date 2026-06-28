@@ -3,10 +3,7 @@
 import { appServerConnectionStateSignal as hostConnectionStatusSignal } from "../boundaries/thread-context-inputs.facade";
 import { LOCAL_HOST_ID } from "../boundaries/use-host-config.facade";
 import { useSystemPrefersReducedMotion } from "../utils/reduced-motion-preference";
-import {
-  Vn as localWorkspaceMaterializationSignal,
-  cs as backgroundAgentsSignal,
-} from "../vendor/profile-page-runtime";
+import { cs as backgroundAgentsSignal } from "../vendor/profile-page-runtime";
 
 import {
   initThreadComposerFooterChunk,
@@ -22,7 +19,6 @@ export {
   backgroundAgentsSignal,
   hostConnectionStatusSignal,
   LOCAL_HOST_ID,
-  localWorkspaceMaterializationSignal,
   threadComposerContext,
   ThreadComposerFooter,
 };

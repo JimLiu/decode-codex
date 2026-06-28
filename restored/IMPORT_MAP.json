@@ -10801,7 +10801,7 @@
         "z": "useReviewSearchHighlights"
       },
       "status": "done",
-      "note": "Promoted semantic split for the updated local conversation thread chunk. Public barrel and local-conversation-thread-parts files pass quality-gate --check-format; composer bridge helpers are split through composer/local-conversation-composer-bridge.tsx with the reduced-motion hook restored semantically in utils/reduced-motion-preference.ts, PR review-comment prompt helpers through conversations/pull-request-review-comment-runtime.tsx, and PR side-panel helpers through conversations/pull-request-side-panel-runtime.tsx. Remaining current-ref producer boundaries stay tracked separately and do not block this feature chunk mapping.",
+      "note": "Promoted semantic split for the updated local conversation thread chunk. Public barrel and local-conversation-thread-parts files pass quality-gate --check-format; composer bridge helpers are split through composer/local-conversation-composer-bridge.tsx with the reduced-motion hook restored semantically in utils/reduced-motion-preference.ts and local workspace materialization derived through runtime/worktree-restore-runtime.ts, PR review-comment prompt helpers through conversations/pull-request-review-comment-runtime.tsx, and PR side-panel helpers through conversations/pull-request-side-panel-runtime.tsx. Remaining current-ref producer boundaries stay tracked separately and do not block this feature chunk mapping.",
       "lastUpdated": "2026-06-27T18:08:06.264Z"
     },
     "thread-overflow-menu-CM-Eo7JH": {

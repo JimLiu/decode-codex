@@ -1,5 +1,11 @@
 // Restored from ref/webview/assets/local-conversation-thread-Bf38rCmF.js
 // Stable runtime path for local conversation composer helpers.
+import { initLocalConversationComposerRuntime as initLocalConversationComposerBridgeRuntime } from "../composer/local-conversation-composer-bridge";
+import {
+  initWorktreeStatusQueryRuntime,
+  localWorkspaceMaterializationSignal,
+} from "./worktree-restore-runtime";
+
 export type {
   ThreadComposerFooterProps,
   ThreadComposerFooterSideConversationRequest,
@@ -7,11 +13,15 @@ export type {
 export {
   backgroundAgentsSignal,
   hostConnectionStatusSignal,
-  initLocalConversationComposerRuntime,
   initThreadComposerFooterRuntime,
   LOCAL_HOST_ID,
-  localWorkspaceMaterializationSignal,
   threadComposerContext,
   ThreadComposerFooter,
   useLocalConversationComposerRuntime,
 } from "../composer/local-conversation-composer-bridge";
+export { localWorkspaceMaterializationSignal };
+
+export function initLocalConversationComposerRuntime(): void {
+  initLocalConversationComposerBridgeRuntime();
+  initWorktreeStatusQueryRuntime();
+}

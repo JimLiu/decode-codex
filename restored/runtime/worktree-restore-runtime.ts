@@ -2,6 +2,10 @@
 // Managed worktree restore mutation runtime helpers.
 import type { ComponentType } from "react";
 import {
+  appScopeL as createScopedSignalFamily,
+  appScopeRoot,
+} from "../boundaries/app-scope";
+import {
   ag as initWorktreeCheckMutationRuntimeRaw,
   eg as initWorktreeRestoreMutationRuntimeRaw,
 } from "../vendor/appg-thread-shared-runtime";
@@ -16,10 +20,32 @@ import {
   Rn as checkManagedWorktreeRaw,
 } from "../vendor/profile-page-runtime";
 
-export const SummaryPanelBanner =
-  SummaryPanelBannerRaw as ComponentType<Record<string, unknown>>;
+export const SummaryPanelBanner = SummaryPanelBannerRaw as ComponentType<
+  Record<string, unknown>
+>;
 
 export { worktreeStatusQuerySignal, worktreeStatusQueryKey };
+
+type WorktreeStatusQueryData = {
+  kind?: string;
+} | null;
+type WorktreeStatusQueryState = {
+  data?: WorktreeStatusQueryData;
+  isError?: boolean;
+};
+
+export const localWorkspaceMaterializationSignal = createScopedSignalFamily(
+  appScopeRoot,
+  (conversationId, { get }) => {
+    const query = get<WorktreeStatusQueryState | null>(
+      worktreeStatusQuerySignal,
+      conversationId,
+    );
+    if (query?.isError) return "unavailable";
+    if (query?.data == null) return "loading";
+    return query.data.kind ?? "unavailable";
+  },
+);
 
 export function initWorktreeCheckMutationRuntime(): void {
   initWorktreeCheckMutationRuntimeRaw();
