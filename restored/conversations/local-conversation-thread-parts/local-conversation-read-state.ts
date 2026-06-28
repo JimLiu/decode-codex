@@ -2,21 +2,23 @@
 // Mark local conversations as read when visible and their read marker changes.
 import React from "react";
 import { useAppScopeValue } from "../../boundaries/app-scope";
+import {
+  initAppServerRequestRuntime,
+  sendAppServerRequest,
+} from "../../runtime/app-server-request";
+import { initAppScopeSignalRuntime } from "../../runtime/app-scope-runtime";
+import { useScopedValue } from "../../runtime/app-scope-hooks";
 import { once } from "../../runtime/commonjs-interop";
+import {
+  conversationReadStateSignal,
+  conversationUnreadSignal,
+  initConversationStateRuntime,
+  latestConversationTurnSignal,
+} from "../../runtime/conversation-state-runtime";
 import {
   initUseStableCallback,
   useStableCallback,
 } from "../../utils/use-stable-callback";
-import {
-  Ep as conversationUnreadSignal,
-  Kp as conversationReadStateSignal,
-  Op as initConversationStateSelectors,
-  PB as useScopedValue,
-  Xp as latestConversationTurnSignal,
-  ak as initAppServerRequestBridge,
-  ok as sendAppServerRequest,
-  AB as initScopeRuntime,
-} from "../../boundaries/current-ref/appg-thread-shared-producer";
 import {
   initWindowVisibilitySignal,
   windowVisibleSignal,
@@ -86,9 +88,9 @@ export function useMarkConversationReadOnVisibility(
 }
 
 export const initMarkConversationReadEffect = once(() => {
-  initScopeRuntime();
-  initConversationStateSelectors();
-  initAppServerRequestBridge();
+  initAppScopeSignalRuntime();
+  initConversationStateRuntime();
+  initAppServerRequestRuntime();
   initWindowVisibilitySignal();
   initUseStableCallback();
 });

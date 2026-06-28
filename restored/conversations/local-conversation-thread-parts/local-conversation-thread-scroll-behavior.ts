@@ -1,17 +1,18 @@
 // Restored from ref/webview/assets/local-conversation-thread-Bf38rCmF.js
 // Scroll restoration, older-history loading, and submit-placement behavior for local conversation frames.
 import React from "react";
-import { once } from "../../runtime/commonjs-interop";
-import { useStableCallback } from "../../utils/use-stable-callback";
+import { appLogger, initAppLoggerRuntime } from "../../runtime/app-logger";
 import {
-  Np as conversationHistoryCompleteSignal,
-  Op as initConversationStateSelectors,
-  PB as useScopedValue,
-  ak as initAppServerRequestBridge,
-  mP as logger,
-  ok as sendAppServerRequest,
-  pP as initLoggerRuntime,
-} from "../../boundaries/current-ref/appg-thread-shared-producer";
+  initAppServerRequestRuntime,
+  sendAppServerRequest,
+} from "../../runtime/app-server-request";
+import { useScopedValue } from "../../runtime/app-scope-hooks";
+import { once } from "../../runtime/commonjs-interop";
+import {
+  conversationHistoryCompleteSignal,
+  initConversationStateRuntime,
+} from "../../runtime/conversation-state-runtime";
+import { useStableCallback } from "../../utils/use-stable-callback";
 import { refreshConversationHistorySignals } from "../../runtime/local-conversation-state";
 import { createLatestTurnSubmitPlacementSnapshot } from "./latest-turn-submit-placement";
 import { shouldShowScrollToBottomButton } from "./scroll-to-bottom-state";
@@ -94,7 +95,7 @@ export function useLocalConversationThreadScrollBehavior({
           ? "stop"
           : "continue";
       } catch (error) {
-        logger.warning("Failed to load older thread history", {
+        appLogger.warning("Failed to load older thread history", {
           safe: {
             conversationId,
           },
@@ -211,7 +212,7 @@ export function useLocalConversationThreadScrollBehavior({
 }
 
 export const initLocalConversationThreadScrollBehaviorChunk = once(() => {
-  initConversationStateSelectors();
-  initAppServerRequestBridge();
-  initLoggerRuntime();
+  initConversationStateRuntime();
+  initAppServerRequestRuntime();
+  initAppLoggerRuntime();
 });

@@ -3,11 +3,13 @@
 import type { ComponentType, ReactNode } from "react";
 import { once } from "../../runtime/commonjs-interop";
 import {
-  Op as initConversationStateSelectors,
-  Tp as hasConversationSignal,
-  ak as initAppServerRequestBridge,
-  ok as sendAppServerRequest,
-} from "../../boundaries/current-ref/appg-thread-shared-producer";
+  initAppServerRequestRuntime,
+  sendAppServerRequest,
+} from "../../runtime/app-server-request";
+import {
+  hasConversationSignal,
+  initConversationStateRuntime,
+} from "../../runtime/conversation-state-runtime";
 import {
   initRightPanelTabsStoreChunk,
   rightPanelTabsStore,
@@ -66,8 +68,8 @@ export async function openBackgroundAgentThreadTab(
 }
 
 export const initBackgroundAgentThreadTabs = once(() => {
-  initConversationStateSelectors();
-  initAppServerRequestBridge();
+  initConversationStateRuntime();
+  initAppServerRequestRuntime();
   initRightPanelTabsStoreChunk();
   initBackgroundAgentAvatarChunk();
 });
