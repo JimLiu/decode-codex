@@ -2,19 +2,12 @@
 // Local conversation page container runtime bindings and side-effect helpers.
 import {
   $N as initVscodeApiBridge,
-  $P as initAppScope,
-  AB as initScopeRuntime,
   AV as initReactQueryRuntime,
-  FB as useScope,
-  IB as useSignalValue,
   JV as initReactRuntime,
-  PB as useScopedValue,
-  QP as appScope,
   SP as initMotionRuntime,
   VE as initGlobalStateQueryRuntime,
   ak as initAppServerRequestBridge,
   bF as initIntlMessageRuntime,
-  dV as createDerivedSignal,
   kj as normalizeConfigPath,
   ok as sendAppServerRequest,
   qV as getChunkModuleExports,
@@ -24,6 +17,17 @@ import {
   normalizeConversationId as toConversationId,
   normalizeWorkspacePath,
 } from "../boundaries/src-l0hb-mz-p";
+import {
+  appScope,
+  createDerivedSignal,
+  initAppScope,
+  initScopeRuntime,
+} from "../runtime/app-scope-runtime";
+import {
+  useScope,
+  useScopedValue,
+  useSignalValue,
+} from "../runtime/app-scope-hooks";
 import {
   Sl as activeWorkspaceDiffSignal,
   nc as appShellIntlSignal,

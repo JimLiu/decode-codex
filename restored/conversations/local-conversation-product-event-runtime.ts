@@ -1,21 +1,25 @@
 // Restored from ref/webview/assets/local-conversation-stream-role-product-event-DHQpO55W.js
 // Runtime bindings for local conversation stream-role and heartbeat host events.
 import {
-  $P as initAppScope,
-  AB as initScopeRuntime,
   cP as initVscodeMessageBridge,
-  FB as useScope,
   gE as streamRoleProductEvent,
   Gj as initStatsigFeatureGateHooks,
-  IB as useSignalValue,
   JV as initReactRuntime,
   kE as initProductEventRuntime,
   lP as vscodeMessageBridge,
-  PB as useScopedValue,
-  QP as appScope,
   qV as getChunkModuleExports,
   qj as useStatsigGate,
 } from "../vendor/appg-thread-shared-runtime";
+import {
+  appScope,
+  initAppScope,
+  initScopeRuntime,
+} from "../runtime/app-scope-runtime";
+import {
+  useScope,
+  useScopedValue,
+  useSignalValue,
+} from "../runtime/app-scope-hooks";
 import {
   CS as initThreadStateSignalRuntime,
   I_ as initRouteScope,

@@ -1,8 +1,8 @@
 // Restored from ref/webview/assets/app-initial~app-main~remote-conversation-page~plugin-detail-page~new-thread-panel-page~appg~ijdupmx5-CdYgxe-b.js
 // App-scope signal primitives shared by restored conversation/runtime modules.
 import {
-  $P as initAppScope,
-  AB as initScopeRuntime,
+  $P as initAppScopeRaw,
+  AB as initScopeRuntimeRaw,
   QP as appScopeRoot,
   bV as createScopedSignalRaw,
   dV as createDerivedSignalRaw,
@@ -21,6 +21,15 @@ export type ScopedSignalFamilyInitializer<TKey, TValue> = (
 ) => TValue;
 
 export { appScopeRoot };
+export const appScope = appScopeRoot;
+
+export function initScopeRuntime(): void {
+  initScopeRuntimeRaw();
+}
+
+export function initAppScope(): void {
+  initAppScopeRaw();
+}
 
 export function initAppScopeSignalRuntime(): void {
   initScopeRuntime();
