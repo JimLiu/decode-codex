@@ -1,12 +1,11 @@
 // Restored from ref/webview/assets/local-conversation-thread-BwqAGxoz.js
 // Local conversation title/source context signals backed by the projects app bundle.
 import {
-  Kl as conversationTitleSignal,
-  cs as setConversationSourceContext,
-  un as refreshConversationHistorySignals,
-} from "../../vendor/projects-app-shared-runtime";
-
-type ConversationSourceScope = unknown;
+  conversationTitleSignal,
+  refreshConversationHistorySignals,
+  setConversationSourceContext,
+  type ConversationSourceScope,
+} from "../../runtime/conversation-state-runtime";
 
 export { conversationTitleSignal, refreshConversationHistorySignals };
 
