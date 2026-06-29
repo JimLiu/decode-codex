@@ -1,3 +1,4 @@
+// Restored from ref/webview/assets/app-initial~app-main~worktree-init-v2-page~remote-conversation-page~pull-requests-page~plug~kmtatxxf-DEE2TwPG.js
 // Current-ref boundary for project hover card internals still owned by the
 // pull-request/projects shared chunk.
 import type { ComponentPropsWithoutRef, ComponentType, ReactNode } from "react";
