@@ -6,6 +6,15 @@ export {
   getJsxRuntime,
   initReactRuntime,
 } from "./app-main-react-runtime";
+export {
+  findSingleMatchingCodexAppForPlugin,
+  initAppPluginMatchingRuntime,
+  pluginMatchesCodexApp,
+} from "./app-main-plugin-matching";
+export type {
+  CodexAppPluginMatchApp,
+  CodexAppPluginMatchPlugin,
+} from "./app-main-plugin-matching";
 
 type AppMainLogLevel = "trace" | "debug" | "info" | "warning" | "error";
 type AppMainLogTags = {

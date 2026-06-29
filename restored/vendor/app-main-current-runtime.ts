@@ -3,9 +3,16 @@
 // direct ref imports while the large producer chunks are restored incrementally.
 export {
   appMainLogger,
+  findSingleMatchingCodexAppForPlugin,
   hostMessageBridge,
   initAppLoggingChunk,
+  initAppPluginMatchingRuntime,
   initAppRuntimeChunk,
+  pluginMatchesCodexApp,
+} from "../runtime/app-main-host-runtime";
+export type {
+  CodexAppPluginMatchApp,
+  CodexAppPluginMatchPlugin,
 } from "../runtime/app-main-host-runtime";
 export {
   connectAppHostServices,
