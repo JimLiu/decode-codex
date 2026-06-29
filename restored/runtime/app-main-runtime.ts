@@ -1,29 +1,39 @@
 // Restored from ref/webview/assets/app-main-DxUcMyo0.js
-// Semantic app-main runtime bindings backed by the current app-main producer chunks.
+// Semantic app-main runtime bindings backed by restored app-main producer chunks.
+import { isCurrentCompactWindow } from "../features/is-compact-window-context";
 import {
   CodexApp,
-  appMainLogger,
-  connectAppHostServices,
-  findSingleMatchingCodexAppForPlugin,
-  getCodexWindowChrome,
-  hostMessageBridge,
-  initAppFeatureRuntimeChunk,
-  initAppHostServicesRuntimeChunk,
-  initAppLoggingChunk,
-  initAppPluginMatchingRuntime,
-  initAppRuntimeChunk,
   initAutomationsRuntimeChunk,
   initAutomationsStateChunk,
   initCodexAppChunk,
-  initErrorBoundaryRuntimeChunk,
-  initRendererSentryRuntimeChunk,
+} from "../vendor/automations-page-runtime";
+import {
+  connectAppHostServices,
+  initAppHostServicesRuntimeChunk,
+} from "./app-host-services-runtime";
+import {
+  appMainLogger,
+  hostMessageBridge,
+  initAppLoggingChunk,
+  initAppRuntimeChunk,
+} from "./app-main-host-runtime";
+import {
+  findSingleMatchingCodexAppForPlugin,
+  initAppPluginMatchingRuntime,
   pluginMatchesCodexApp,
-  readCompactWindowPreference,
-} from "../vendor/app-main-current-runtime";
+} from "./app-main-plugin-matching";
 import type {
   CodexAppPluginMatchApp,
   CodexAppPluginMatchPlugin,
-} from "../vendor/app-main-current-runtime";
+} from "./app-main-plugin-matching";
+import {
+  initErrorBoundaryRuntimeChunk,
+  initRendererSentryRuntimeChunk,
+} from "./renderer-error-boundary-runtime";
+import {
+  getCodexWindowChrome,
+  initAppFeatureRuntimeChunk,
+} from "./window-chrome-runtime";
 
 export type CodexOs = "win32" | "darwin" | "linux" | "unknown";
 export type RendererLogLevel = "error" | "info" | "warn";
@@ -72,5 +82,5 @@ export function getElectronWindowChrome(codexOs: CodexOs): string {
 }
 
 export function isCompactWindowPreferred(): boolean {
-  return readCompactWindowPreference();
+  return isCurrentCompactWindow();
 }
