@@ -15287,7 +15287,7 @@
         "yw": "useStableCallback"
       },
       "status": "partial",
-      "note": "Current app-main/new-thread producer now has an explicit boundary barrel for 86 confirmed aliases used by restored modules: app-host services, persistent signals, side-panel tabs, global-state queries, Statsig feature gates/loading/client experiment access, React Router hooks, host config helpers, git branch query helpers, config/user-config query helpers, app-server requests, query invalidation broadcast helpers, Codex request helpers, reduced-motion state, conversation markdown/path/personality helpers, parse-diff/lodash utility aliases, thread handoff UUID/update helpers, pull-request action analytics, publication open-file analytics, and artifact annotation analytics. eo is shared by host-cache and host-config callers and is mapped to the broader getHostCacheKey name; Df is the product logger initializer. The two legacy compatibility export-star facades for projects/profile aliases and the remaining large producer surface are still open partial boundaries. Yn is routed to workspaceRootOptionsQuery for onboarding projectless completion checks. Added os-info, config requirements, current-host, and read-config aliases needed by the Windows sandbox setup/readiness chunk.",
+      "note": "Current app-main/new-thread producer has an explicit boundary barrel for confirmed aliases used by restored modules: app-host services, persistent signals, side-panel tabs, global-state queries, Statsig feature gates/loading/client experiment access, React Router hooks, host config helpers, git branch query helpers, config/user-config query helpers, app-server requests, query invalidation broadcast helpers, Codex request helpers, reduced-motion state, conversation markdown/path/personality helpers, parse-diff/lodash utility aliases, thread handoff UUID/update helpers, pull-request action analytics, publication open-file analytics, artifact annotation analytics, product-logger/referral descriptors, dialog/radix/spinner primitives, stable callbacks, path/resource helpers, and basic sidebar preference/thread-key bridge aliases. eo is shared by host-cache and host-config callers and is mapped to the broader getHostCacheKey name; Df is the product logger initializer. The remaining sidebar ordering/project assignment, usage-credit, and query-key producer aliases are still open partial boundaries. Yn is routed to workspaceRootOptionsQuery for onboarding projectless completion checks. Added os-info, config requirements, current-host, and read-config aliases needed by the Windows sandbox setup/readiness chunk.",
       "lastUpdated": "2026-06-29T00:00:00.000Z"
     },
     "app-initial~app-main~onboarding-page-BUwCKIcU": {
@@ -16665,7 +16665,7 @@
         "ba": "initPackageIconChunk",
         "xa": "SettingsGearIcon",
         "ya": "PackageIcon",
-        "At": "Dialog",
+        "At": "useNavigateToLocalConversation",
         "Jo": "ArchiveIcon",
         "Ko": "PinIcon",
         "Ni": "MoreHorizontalIcon",
@@ -16674,13 +16674,13 @@
         "dr": "initEditIconChunk",
         "dt": "CommentIcon",
         "ft": "initCommentIconChunk",
-        "kt": "DropdownMenuItem",
+        "kt": "initNavigateToLocalConversationRuntimeChunk",
         "qo": "isResourcePathInsideProjectlessOutput",
         "ur": "EditIcon"
       },
-      "status": "partial",
+      "status": "done",
       "boundary": "boundaries/current-ref/hotkey-thread-diff-producer.ts",
-      "note": "Compact-window route-context helper reused by the app-main shell preference alias, initial-route snapshot initializer consumed by app-main home-route setup, composer chrome aliases, folded @pierre/diffs parseDiffFromFiles, pull-request comment card and description markdown aliases, thread-overflow icon aliases, document/plugin/package icon aliases, RelativeTime formatting aliases, projectless-output path helper, and the current diff/highlight helper aliases consumed by unified-diff-file-summaries are routed through semantic modules. Remaining exports in this broad producer chunk remain an open partial boundary.",
+      "note": "Current app-main-facing aliases in this broad producer are routed through semantic modules: compact-window route context, initial-route snapshot, composer chrome, folded @pierre/diffs parseDiffFromFiles, pull-request markdown/card helpers, thread navigation, thread-overflow icons, document/plugin/package icons, RelativeTime formatting, projectless-output paths, and diff/highlight helpers.",
       "lastUpdated": "2026-06-29T00:00:00.000Z"
     },
     "app-initial~app-main~remote-conversation-page~projects-index-page~hotkey-window-thread-page~ki4n9fl3-zz_Wr7F0": {
@@ -20792,10 +20792,10 @@
         "ft": "initCommentIconChunk",
         "ur": "EditIcon"
       },
-      "status": "partial",
+      "status": "done",
       "boundary": "boundaries/current-ref/hotkey-thread-diff-producer.ts",
       "aliasOf": "app-initial~app-main~remote-conversation-page~pull-requests-page~onboarding-page~hotkey-win~fzw0jvy4-rg89odR_",
-      "note": "Worktree/new-thread route alias for the shared fzw0jvy4 producer. The confirmed comment/edit icon aliases are routed through the semantic hotkey-thread-diff producer; the remaining raw aliases stay covered by the aliased partial boundary.",
+      "note": "Worktree/new-thread route alias for the shared fzw0jvy4 producer. The confirmed comment/edit icon aliases are routed through the semantic hotkey-thread-diff producer.",
       "lastUpdated": "2026-06-29T00:00:00.000Z"
     },
     "app-main-Dldh3K_n": {

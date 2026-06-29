@@ -20,3 +20,5 @@ export function useNavigateToLocalConversation(): NavigateToLocalConversation {
     });
   });
 }
+
+export function initNavigateToLocalConversationRuntimeChunk(): void {}

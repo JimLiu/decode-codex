@@ -63,6 +63,11 @@ export {
 } from "../../utils/format-relative-date-time";
 
 export {
+  initNavigateToLocalConversationRuntimeChunk,
+  useNavigateToLocalConversation,
+} from "../../utils/use-navigate-to-local-conversation";
+
+export {
   applyCodexThemeToElement,
   getCodeThemeRegistration,
   isCodeThemeId as isKnownCodeThemeId,

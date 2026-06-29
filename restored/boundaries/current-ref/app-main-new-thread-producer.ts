@@ -1,7 +1,10 @@
 // Restored from ref/webview/assets/app-initial~app-main~worktree-init-v2-page~remote-conversation-page~new-thread-panel-page~o~bj5tp28r-Dcs9S3fj.js
 // Explicit barrel for the bj5 app-main/new-thread producer aliases that have
 // been split into semantic runtime modules.
-import { c as getStatsigClientRaw } from "@statsig/js-client";
+import {
+  c as getStatsigClientRaw,
+  o as readStatsigGateValue,
+} from "@statsig/js-client";
 
 type StatsigExperimentClient = {
   getExperiment: (
@@ -54,6 +57,7 @@ export {
   initFeatureGateSignalRuntime,
   initStatsigFeatureGateRuntime,
   useStatsigGate,
+  useStatsigGate as useFeatureGateValue,
   useStatsigLoading,
   useStatsigLayer,
 } from "../../runtime/feature-gate-runtime";
@@ -70,7 +74,12 @@ export {
   useGlobalSettingValue,
 } from "../../runtime/git-branch-switcher-runtime";
 
-export { initConversationStateRuntime } from "../../runtime/conversation-state-runtime";
+export {
+  conversationCollaborationModeSignal,
+  conversationHostIdSignal,
+  hasConversationSignal,
+  initConversationStateRuntime,
+} from "../../runtime/conversation-state-runtime";
 
 export {
   USER_CONFIG_QUERY_KEY,
@@ -182,13 +191,40 @@ export {
   logProductEvent,
 } from "../../runtime/artifact-analytics-runtime";
 
+export {
+  ___productLoggerT as productLoggerAction,
+  __productLoggerR as productLoggerSignal,
+  _productLoggerJn as codexReferralInviteModalBackendErrorType,
+  codexThreadSwitchCompletedEvent,
+  codexThreadSwitchKind,
+  productLoggerQn as codexReferralInviteModalAction,
+  productLoggerXn as codexReferralInviteModalEvent,
+  productLoggerYn as codexReferralInviteModalErrorResponsibility,
+} from "../../generated/product-logger";
+
 export { useLocation, useNavigate } from "../../vendor/react-router";
 
 export { Tooltip, initTooltipRuntimeChunk } from "../../ui/tooltip-b";
 
 export { Button, initButtonComponentPrimitives } from "../../ui/button";
 
+export { DialogContent, DialogPortal } from "../../ui/dialog-layout";
+
+export {
+  DismissableLayer,
+  FocusScope,
+  Portal,
+  Presence,
+  RemoveScroll,
+} from "../../vendor/radix-primitives";
+
+export { Spinner, initSpinnerComponent } from "../../ui/spinner";
+
 export { initXIcon, XIcon } from "../../icons/x-icon";
+
+export { CheckCircleIcon } from "../../icons/check-circle-icon";
+
+export { ChevronRightIcon } from "../../icons/chevron-right-icon";
 
 export {
   appgenPublicationTermsDisclosureSignal,
@@ -212,7 +248,86 @@ export {
 
 export { baseIteratee } from "../../utils/markdown-to-search-text";
 
+export { dismissTooltips } from "../../utils/tooltip-dismiss";
+
+export {
+  initUseStableCallback as initStableCallbackRuntimeChunk,
+  useStableCallback,
+} from "../../utils/use-stable-callback";
+
+export {
+  composeEventHandlers,
+  createSlotComponent,
+  normalizeFilesystemPathForDisplay,
+  Primitive,
+} from "../../vendor/app-main-current-runtime";
+
+export {
+  composeRefs,
+  initComposeRefsChunk as initComposeRefsRuntime,
+} from "../../utils/compose-refs";
+
+export { arrayMove } from "../../vendor/dnd-kit-sortable";
+
+export {
+  initPathHelpersRuntime as initPathRuntimeChunk,
+  joinPath,
+} from "../../runtime/path-helpers-runtime";
+
+export { getPathBasename } from "../../runtime/path-basename-runtime";
+
+export { toastSignal } from "../../runtime/toast-runtime";
+
+export { normalizeFilesystemPath } from "../rpc.facade";
+
+export { isWindowsStyleAbsolutePath } from "../../conversations/fork-conversation-panel-state-deps";
+
+export { isPathInCodexWorktree } from "../../vendor/worktree-path-runtime";
+
+export { openInBrowserFromEvent } from "../../runtime/resource-open-runtime";
+
+export { useStatsigClient } from "@statsig/react-bindings";
+
+export {
+  createLocalConversationRouteTarget as createLocalConversationRoute,
+  getLocalConversationPath as routeToLocalConversation,
+} from "../../conversations/local-conversation-route-runtime";
+
+export { initNewThreadRouteContextChunk } from "../../composer/new-thread-route-context";
+
+export { createConnectionProjectGroup } from "../../vendor/pull-request-thread-actions-runtime";
+
+export {
+  isArtifactAnnotationCommentAttachment,
+  isPdfCommentAttachment,
+  moveThreadIdBefore,
+} from "../src-l0hb/runtime-helpers";
+
+export { createLocalConversationPath } from "../src-l0hb/paths";
+
+export {
+  getSidebarThreadRoutePath,
+  makeSidebarThreadKey as createSidebarThreadKey,
+} from "../../threads/sidebar-thread-keys";
+
+export {
+  projectlessSidebarChatsFirstSignal as sidebarShowChatsFirstSignal,
+  sidebarCollapsedGroupsSignal as sidebarCollapsedProjectGroupsSignal,
+  sidebarSectionCollapsedSignal,
+  sidebarThreadSortKeySignal as threadSortModeSignal,
+} from "../../threads/sidebar-signals";
+
+export {
+  flatProjectSidebarModeSignal as sidebarInitialModeSignal,
+  flatProjectSidebarPreferencesSignal as sidebarSortPreferenceSignal,
+  flatProjectSidebarProjectSortModeSignal as projectSortModeSignal,
+  initFlatProjectSidebarStateChunk as initSidebarSettingsRuntimeChunk,
+  sidebarChatOrderSignal as sidebarManualThreadOrderSignal,
+} from "../../sidebar/flat-project-sidebar-state";
+
 export const getStatsigClient = getStatsigClientRaw;
+
+export { readStatsigGateValue };
 
 export function getStatsigExperiment(
   client: StatsigExperimentClient,
@@ -233,3 +348,65 @@ export function initReactRouterRuntimeChunk(): void {}
 export function initSystemThemeVariantRuntimeChunk(): void {}
 
 export function initTerminalSessionSnapshotStoreChunk(): void {}
+
+export function initAriaHiddenRuntime(): void {}
+
+export function initArchiveConversationRuntimeChunk(): void {}
+
+export function initArchiveDialogRuntimeChunk(): void {}
+
+export function initComposedRefsRuntime(): void {}
+
+export function initComposerFooterStylesChunk(): void {}
+
+export function initDialogDescriptionRuntimeChunk(): void {}
+
+export function initDialogDismissableLayerRuntime(): void {}
+
+export function initDialogFocusRuntime(): void {}
+
+export function initDialogRuntimeChunk(): void {}
+
+export function initDialogStyleRuntime(): void {}
+
+export function initDialogStyleRuntimeChunk(): void {}
+
+export function initDialogWarningsRuntime(): void {}
+
+export function initDialogTriggerRuntimeChunk(): void {}
+
+export function initDialogWarningsRuntimeChunk(): void {}
+
+export function initDismissableLayerRuntime(): void {}
+
+export function initFileTreeContextMenuRuntimeChunk(): void {}
+
+export function initFocusScopeRuntime(): void {}
+
+export function initForkConversationRequestRuntimeChunk(): void {}
+
+export function initGlobalStateReaderRuntimeChunk(): void {}
+
+export function initLatestTurnStatusRuntime(): void {}
+
+export function initLocalEnvironmentQueryRuntimeChunk(): void {}
+
+export function initPortalRuntime(): void {}
+
+export function initPrimitiveRuntime(): void {}
+
+export function initProjectGroupsRuntimeChunk(): void {}
+
+export function initRecentConversationSortRuntimeChunk(): void {}
+
+export function initReferralInviteAnalyticsRuntimeChunk(): void {}
+
+export function initSidebarRecencyRuntimeChunk(): void {}
+
+export function initSidebarTaskKeyRuntimeChunk(): void {}
+
+export function initUsageSettingsAccessRuntimeChunk(): void {}
+
+export function initUsageSettingsSignalChunk(): void {}
+
+export function initWarningContextRuntime(): void {}
