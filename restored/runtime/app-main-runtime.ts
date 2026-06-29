@@ -12,10 +12,17 @@ import {
   initCodexAppChunk,
   initErrorBoundaryRuntimeChunk,
   initRendererSentryRuntimeChunk,
+  findSingleMatchingCodexAppForPlugin,
+  initAppPluginMatchingRuntime,
+  pluginMatchesCodexApp,
   readCompactWindowPreference,
   connectAppHostServices,
   appMainLogger,
   hostMessageBridge,
+} from "../vendor/app-main-current-runtime";
+import type {
+  CodexAppPluginMatchApp,
+  CodexAppPluginMatchPlugin,
 } from "../vendor/app-main-current-runtime";
 
 export type CodexOs = "win32" | "darwin" | "linux" | "unknown";
@@ -32,8 +39,12 @@ export {
   initCodexAppChunk,
   initErrorBoundaryRuntimeChunk,
   initRendererSentryRuntimeChunk,
+  findSingleMatchingCodexAppForPlugin,
+  initAppPluginMatchingRuntime,
+  pluginMatchesCodexApp,
   connectAppHostServices,
 };
+export type { CodexAppPluginMatchApp, CodexAppPluginMatchPlugin };
 
 export function logAppMainStatsigRenderRequest(): void {
   appMainLogger.info(
