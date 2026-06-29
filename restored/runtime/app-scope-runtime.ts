@@ -1,13 +1,16 @@
-// Restored from ref/webview/assets/app-initial~app-main~remote-conversation-page~plugin-detail-page~new-thread-panel-page~appg~ijdupmx5-CdYgxe-b.js
+// Restored from ref/webview/assets/app-initial~app-main~worktree-init-v2-page~remote-conversation-page~new-thread-panel-page~o~dv5z3ftk-BhBbJNnt.js
+// AppScope root is restored from ref/webview/assets/app-initial~app-main~remote-conversation-page~onboarding-page~projects-index-page~hotkey-wi~nek76pmq-C240EGR1.js.
 // App-scope signal primitives shared by restored conversation/runtime modules.
 import {
-  $P as initAppScopeRaw,
-  AB as initScopeRuntimeRaw,
-  QP as appScopeRoot,
-  bV as createScopedSignalRaw,
-  dV as createDerivedSignalRaw,
-  fV as createScopedSignalFamilyRaw,
-} from "../vendor/appg-thread-shared-runtime";
+  Ao as initScopeRuntimeRaw,
+  Ds as createScopedSignalRaw,
+  Os as createScopedSignalFamilyRaw,
+  ys as createDerivedSignalRaw,
+} from "../../ref/webview/assets/app-initial~app-main~worktree-init-v2-page~remote-conversation-page~new-thread-panel-page~o~dv5z3ftk-BhBbJNnt.js";
+import {
+  _ as initAppScopeRaw,
+  g as appScopeRoot,
+} from "../../ref/webview/assets/app-initial~app-main~remote-conversation-page~onboarding-page~projects-index-page~hotkey-wi~nek76pmq-C240EGR1.js";
 
 export type ScopedSignalGetter = {
   get<TValue = unknown>(signal: unknown, key?: unknown): TValue;
