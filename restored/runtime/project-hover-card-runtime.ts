@@ -36,32 +36,29 @@ import {
   useQueryClient,
 } from "./app-server-mutation-runtime";
 import {
-  bi as initButtonRuntime,
-  ci as initNotificationRuntime,
-  da as initLocalProjectActionsRuntime,
-  jr as threadAttentionCountsSignal,
-  kr as initClassNamesRuntime,
-  qn as openLocalProjectEditModal,
-  si as ProjectAvatar,
-  ua as initPanelRuntime,
-  Un as initSvgIconRuntime,
-  vi as updateWorkspaceRootLabel,
-  yi as LocalProjectFallbackIcon,
-  _i as initDialogRuntime,
-} from "../vendor/pull-request-thread-actions-runtime";
-import {
   classNames,
+  initAppDialog,
+  initButtonComponentPrimitives,
   FormattedMessage,
   GlobeIcon,
-  initClassNameRuntime as initInlinePopoverRuntime,
+  initClassNameRuntime,
+  initDialogLayoutComponents,
   initGlobeIcon as initSignalHooksRuntime,
   initIntlRuntime as initReactIntlRuntime,
-  initSettingsGearIcon as initWorkspaceRootLabelRuntime,
+  initSettingsGearIcon,
   initSpinnerComponent,
   SettingsGearIcon as EditProjectIcon,
   Spinner as ActivityIcon,
   useIntl,
 } from "../boundaries/current-ref/appg-thread-shared-producer";
+import {
+  initProjectHoverCardCurrentRefRuntime,
+  LocalProjectFallbackIcon,
+  openLocalProjectEditModal,
+  ProjectAvatar,
+  threadAttentionCountsSignal,
+  updateWorkspaceRootLabel,
+} from "../boundaries/current-ref/project-hover-card-producer";
 import {
   initRemoteConnectionStateChunk,
   initRemoteProjectIconChunk,
@@ -95,7 +92,7 @@ export type ProjectWritableRootsDisplayOptions = {
   projectWritableRoots: ProjectWritableRootsByProject;
 };
 
-export function parseProjectWritableRoots(
+function parseProjectWritableRoots(
   value: unknown,
 ): ProjectWritableRootsByProject {
   if (!isRecord(value)) return {};
@@ -119,7 +116,7 @@ export function parseProjectWritableRoots(
   return writableRoots;
 }
 
-export function getProjectWritableRootsForDisplay(
+function getProjectWritableRootsForDisplay(
   options: ProjectWritableRootsDisplayOptions,
 ): string[] {
   if (Object.hasOwn(options.projectWritableRoots, options.projectId)) {
@@ -144,22 +141,22 @@ function isProjectWritableRoot(value: unknown): value is ProjectWritableRoot {
   return value.label === undefined || typeof value.label === "string";
 }
 
-export function useRemoteHostConfigs(): unknown[] {
+function useRemoteHostConfigs(): unknown[] {
   return (useSharedObjectRemoteHostConfigs() ?? []) as unknown[];
 }
 
-export function initKeyboardShortcutRuntime(): void {
+function initKeyboardShortcutRuntime(): void {
   // Current ProjectHoverCard no longer initializes the old keyboard-shortcut runtime.
 }
 
-export function getGlobalSettingValue<TData = unknown>(
+function getGlobalSettingValue<TData = unknown>(
   get: unknown,
   key: unknown,
 ): TData | undefined {
   return getGlobalStateValue<TData>(get, key);
 }
 
-export async function setGlobalSettingValue(
+async function setGlobalSettingValue(
   scope: unknown,
   key: unknown,
   value: unknown,
@@ -168,19 +165,54 @@ export async function setGlobalSettingValue(
   await setGlobalStateValue(scope, key, value, options);
 }
 
-export function useGlobalStateQuery<TData = unknown>(
-  key: unknown,
-  options?: unknown,
-) {
+function useGlobalStateQuery<TData = unknown>(key: unknown, options?: unknown) {
   return useGlobalStateQueryRuntime<TData>(key, options);
 }
 
-export function initGlobalSettingsRuntime(): void {
+function initGlobalSettingsRuntime(): void {
   initGlobalStateQueryRuntime();
 }
 
-export function initCodexAppFrameRuntime(): void {
+function initCodexAppFrameRuntime(): void {
   // Current ProjectHoverCard chunk no longer has a separate app-frame initializer.
+}
+
+function initButtonRuntime(): void {
+  initButtonComponentPrimitives();
+}
+
+function initClassNamesRuntime(): void {
+  initClassNameRuntime();
+}
+
+function initDialogRuntime(): void {
+  initAppDialog();
+  initDialogLayoutComponents();
+}
+
+function initInlinePopoverRuntime(): void {
+  initClassNameRuntime();
+}
+
+function initLocalProjectActionsRuntime(): void {
+  initProjectHoverCardCurrentRefRuntime();
+}
+
+function initNotificationRuntime(): void {
+  // Current project hover card uses the app-scope toast controller directly.
+}
+
+function initPanelRuntime(): void {
+  // Current project hover card no longer has a separate panel primitive chunk.
+}
+
+function initSvgIconRuntime(): void {
+  // SVG icons are restored as plain React components.
+}
+
+function initWorkspaceRootLabelRuntime(): void {
+  initSettingsGearIcon();
+  initProjectHoverCardCurrentRefRuntime();
 }
 
 export {
