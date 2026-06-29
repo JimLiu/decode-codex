@@ -12433,12 +12433,17 @@
     "app-initial~app-main~remote-conversation-page~onboarding-page~hotkey-window-thread-page~thr~jv7rs281-DxRnxRkd": {
       "restored": "utils/unified-diff-file-summaries.ts",
       "exports": {
+        "a": "sumBy",
         "i": "parseUnifiedDiffFileSummaries",
-        "r": "initUnifiedDiffFileSummariesChunk"
+        "n": "initUnifiedDiffFileSummaryStatsChunk",
+        "o": "initUnifiedDiffHighlightRuntimeChunk",
+        "r": "initUnifiedDiffFileSummariesChunk",
+        "s": "registerCustomHighlightTheme",
+        "t": "getUnifiedDiffFileStats"
       },
-      "status": "partial",
-      "note": "Deep-restored the unified-diff summary exports used by pull-request-side-panel-tab via the restored parse-diff runtime; remaining hotkey/thread-shell exports still need semantic restoration.",
-      "lastUpdated": "2026-06-28T00:00:00.000Z"
+      "status": "done",
+      "note": "Legacy hash is no longer present in the current ref; its unified-diff helper surface is covered by the current Cvc3K8GC chunk and restored in utils/unified-diff-file-summaries.ts.",
+      "lastUpdated": "2026-06-29T00:00:00.000Z"
     },
     "app-initial~app-main~remote-conversation-page~onboarding-page~hotkey-window-thread-page~thr~jv7rs281-Cvc3K8GC": {
       "restored": "utils/unified-diff-file-summaries.ts",
@@ -12655,9 +12660,9 @@
         "m": "initScrollToBottomButtonChunk",
         "p": "ScrollToBottomButton"
       },
-      "status": "partial",
-      "note": "Deep-restored the ScrollToBottomButton exports used by local-conversation composer footer and moved the public wrapper into threads/scroll-to-bottom-button.tsx; remaining pets/general-settings exports still need semantic restoration.",
-      "lastUpdated": "2026-06-28T00:00:00.000Z"
+      "status": "done",
+      "note": "Legacy hash is no longer present in the current ref; its recorded ScrollToBottomButton export surface is restored in threads/scroll-to-bottom-button.tsx, while the current D0OOyiXs general-settings runtime is mapped separately.",
+      "lastUpdated": "2026-06-29T00:00:00.000Z"
     },
     "app-initial~app-main~onboarding-page~appearance-settings~general-settings-Dkbr2b2v": {
       "restored": "icons/pull-request-comment-icon.tsx",
