@@ -1,4 +1,62 @@
 // Restored from ref/webview/assets/app-initial~app-main~onboarding-page~select-workspace-page-BQtGPtqt.js
-// Semantic alias layer for onboarding select-workspace current runtime.
-// prettier-ignore
-export { _ as OnboardingSelectWorkspaceCurrentExportUnderscoreAlias, a as OnboardingSelectWorkspaceCurrentExportLowerAAlias, A as OnboardingSelectWorkspaceCurrentExportUpperAAlias, b as OnboardingSelectWorkspaceCurrentExportLowerBAlias, c as OnboardingSelectWorkspaceCurrentExportLowerCAlias, C as OnboardingSelectWorkspaceCurrentExportUpperCAlias, d as OnboardingSelectWorkspaceCurrentExportLowerDAlias, D as OnboardingSelectWorkspaceCurrentExportUpperDAlias, E as OnboardingSelectWorkspaceCurrentExportUpperEAlias, f as OnboardingSelectWorkspaceCurrentExportLowerFAlias, F as OnboardingSelectWorkspaceCurrentExportUpperFAlias, g as OnboardingSelectWorkspaceCurrentExportLowerGAlias, h as OnboardingSelectWorkspaceCurrentExportLowerHAlias, i as OnboardingSelectWorkspaceCurrentExportLowerIAlias, I as OnboardingSelectWorkspaceCurrentExportUpperIAlias, j as OnboardingSelectWorkspaceCurrentExportLowerJAlias, k as OnboardingSelectWorkspaceCurrentExportLowerKAlias, l as OnboardingSelectWorkspaceCurrentExportLowerLAlias, L as OnboardingSelectWorkspaceCurrentExportUpperLAlias, m as OnboardingSelectWorkspaceCurrentExportLowerMAlias, M as OnboardingSelectWorkspaceCurrentExportUpperMAlias, n as OnboardingSelectWorkspaceCurrentExportLowerNAlias, N as OnboardingSelectWorkspaceCurrentExportUpperNAlias, o as OnboardingSelectWorkspaceCurrentExportLowerOAlias, O as OnboardingSelectWorkspaceCurrentExportUpperOAlias, p as OnboardingSelectWorkspaceCurrentExportLowerPAlias, P as OnboardingSelectWorkspaceCurrentExportUpperPAlias, r as OnboardingSelectWorkspaceCurrentExportLowerRAlias, s as OnboardingSelectWorkspaceCurrentExportLowerSAlias, S as OnboardingSelectWorkspaceCurrentExportUpperSAlias, t as OnboardingSelectWorkspaceCurrentExportLowerTAlias, T as OnboardingSelectWorkspaceCurrentExportUpperTAlias, u as OnboardingSelectWorkspaceCurrentExportLowerUAlias, v as OnboardingSelectWorkspaceCurrentExportLowerVAlias, w as OnboardingSelectWorkspaceCurrentExportLowerWAlias, x as OnboardingSelectWorkspaceCurrentExportLowerXAlias, y as OnboardingSelectWorkspaceCurrentExportLowerYAlias } from "../../boundaries/current-ref/current-app-initial-onboarding-select-workspace-current-runtime-producer";
+// Onboarding and workspace-onboarding state aliases for the select workspace flow.
+import {
+  initOnboardingStateChunk,
+  initOnboardingStateStorageKeysChunk,
+} from "../../onboarding/onboarding-state";
+import { initWorkspaceOnboardingControllerChunk } from "../../onboarding/workspace-onboarding-controller";
+import { initWorkspaceOnboardingExperimentChunk } from "../../onboarding/workspace-onboarding-experiment";
+import { initUseIsRemoteHostChunk } from "../../utils/use-is-remote-host";
+
+export {
+  hasCompletedProjectlessOnboardingSignal,
+  hideFirstNewThreadOnboardingPromosAtom,
+  hideGoogleTilesDebugOverrideSignal,
+  homepageOnboardingTilesDebugOverrideAtom,
+  initOnboardingStateChunk,
+  initOnboardingStateStorageKeysChunk,
+  isBeforeWorkspaceExperimentCutoff,
+  lastCompletedOnboardingAtom,
+  lastCompletedOnboardingStorageKey,
+  onboardingMailProviderDebugOverrideSignal,
+  onboardingOverrideAtom,
+  onboardingPluginChecklistActiveAtom,
+  pluginSuggestionsV2EnabledAtCompletionAtom,
+  primaryRuntimeInstallReadyAtom,
+  primaryRuntimeInstallRequestedAtom,
+  projectlessOnboardingCompletedAtom,
+  projectlessOnboardingCompletedStorageKey,
+  shouldHideFirstNewThreadOnboardingPromos,
+  welcomeOnboardingPendingAtom,
+  welcomeV2OnboardingStorageKey,
+  welcomeV2RoleStateAtom,
+  workspaceExperimentAssignmentAtom,
+  workspaceOnboardingAutolaunchAppliedAtom,
+} from "../../onboarding/onboarding-state";
+export {
+  getWorkspaceOnboardingPlaygroundName,
+  shouldShowDirectWorkspacePicker,
+  useTeenOnboardingEligibility,
+  useWorkspaceOnboardingAutoLaunch,
+  useWorkspaceOnboardingExperiment,
+} from "../../onboarding/workspace-onboarding-controller";
+export {
+  initWorkspaceOnboardingExperimentChunk,
+  isDirectFolderPickerArm,
+  isModalCopyCtaPlaygroundArm,
+  WORKSPACE_ONBOARDING_EXPERIMENT_ID,
+  WORKSPACE_ONBOARDING_PLAYGROUND_NAME,
+  WORKSPACE_ONBOARDING_V2_ARM,
+} from "../../onboarding/workspace-onboarding-experiment";
+export {
+  initUseIsRemoteHostChunk,
+  useIsRemoteHost,
+} from "../../utils/use-is-remote-host";
+
+export function initOnboardingSelectWorkspaceCurrentRuntimeChunk(): void {
+  initOnboardingStateChunk();
+  initWorkspaceOnboardingControllerChunk();
+  initWorkspaceOnboardingExperimentChunk();
+  initUseIsRemoteHostChunk();
+  initOnboardingStateStorageKeysChunk();
+}
