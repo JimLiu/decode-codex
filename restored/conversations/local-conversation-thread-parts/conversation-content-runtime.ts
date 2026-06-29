@@ -12,7 +12,6 @@ import {
   ho as resolveServiceTierForModelRaw,
   qo as diffSourceSignal,
   u as localConversationMessages,
-  un as waitForThreadLayoutTickRaw,
   Mv as isRenderableConversationTurnRaw,
   fh as initGitActionDirectiveRuntime,
   ph as parseGitActionDirectivesRaw,
@@ -143,7 +142,18 @@ export function resolveServiceTierForModel(
 }
 
 export function waitForThreadLayoutTick(): Promise<void> {
-  return waitForThreadLayoutTickRaw() as Promise<void>;
+  if (
+    typeof window === "undefined" ||
+    typeof window.requestAnimationFrame !== "function"
+  ) {
+    return Promise.resolve();
+  }
+
+  return new Promise((resolve) => {
+    window.requestAnimationFrame(() => {
+      window.requestAnimationFrame(() => resolve());
+    });
+  });
 }
 
 export function registerContentSearchRevealHandler(
