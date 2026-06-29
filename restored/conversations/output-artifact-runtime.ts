@@ -1,13 +1,15 @@
 // Restored from ref/webview/assets/app-initial~app-main~remote-conversation-page~plugin-detail-page~new-thread-panel-page~appg~ijdupmx5-CdYgxe-b.js
 // Path, markdown-resource, and output-artifact helpers for conversation summaries.
+import { lD as initMarkdownArtifactRenderingHelpers } from "../vendor/appg-thread-shared-runtime";
 import {
-  Aj as resolveWorkspacePathFromCwdRaw,
-  Oj as normalizeArtifactPathKeyRaw,
-  bR as isFileUrlLikeTargetRaw,
-  lD as initMarkdownArtifactRenderingHelpers,
-  uD as mapTurnStatusToOutputStatusRaw,
-  vR as normalizeHrefRaw,
-} from "../vendor/appg-thread-shared-runtime";
+  Qg as mapTurnStatusToOutputStatusRaw,
+  _x as normalizeArtifactPathKeyRaw,
+  yx as resolveWorkspacePathFromCwdRaw,
+} from "../../ref/webview/assets/app-initial~app-main~worktree-init-v2-page~remote-conversation-page~new-thread-panel-page~o~bj5tp28r-Dcs9S3fj.js";
+import {
+  gi as isFileUrlLikeTargetRaw,
+  mi as normalizeHrefRaw,
+} from "../../ref/webview/assets/app-initial~app-main~worktree-init-v2-page~remote-conversation-page~pull-requests-page~plug~kmtatxxf-DEE2TwPG.js";
 import { initConversationPromptContextRuntime } from "../runtime/conversation-prompt-context-runtime";
 import { initArtifactPreviewRuntime } from "../runtime/artifact-preview-runtime";
 
