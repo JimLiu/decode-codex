@@ -1,9 +1,5 @@
 // Restored from ref/webview/assets/conversation-markdown-BBR-zfID.js
 // Boundary facade for conversation markdown rendering and formatting helpers.
-import {
-  Kg as initCommandMarkdownRuntime,
-  qg as formatShellCommand,
-} from "../../ref/webview/assets/app-initial~app-main~worktree-init-v2-page~remote-conversation-page~new-thread-panel-page~o~bj5tp28r-Dcs9S3fj.js";
 import { initPathHelpersRuntime as initPathHelpers } from "./path-helpers-runtime";
 import { initArtifactPreviewRuntime } from "./artifact-preview-runtime";
 
@@ -37,6 +33,31 @@ import {
   Wv as rewriteMarkdownResourceLinks,
   zv as renderChangeAsUnifiedDiff,
 } from "../vendor/projects-app-shared-runtime";
+
+function quoteShellArgument(argument: string) {
+  return argument === ""
+    ? "''"
+    : /[^\w@%\-+=:,./]/.test(argument)
+      ? (`'` + argument.replace(/('+)/g, `'"$1"'`) + `'`).replace(
+          /^''|''$/g,
+          "",
+        )
+      : argument;
+}
+
+function formatShellCommandArgument(argument: string) {
+  return /^[A-Za-z0-9_@+=:,./-]+$/.test(argument)
+    ? argument
+    : !/[`$\\!]/.test(argument) && !argument.includes(`"`)
+      ? `"${argument}"`
+      : quoteShellArgument(argument);
+}
+
+function formatShellCommand(command: readonly string[]) {
+  return command.map(formatShellCommandArgument).join(" ");
+}
+
+function initCommandMarkdownRuntime() {}
 
 export {
   closeActivitySlices,
