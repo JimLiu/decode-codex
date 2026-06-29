@@ -99,22 +99,27 @@ import {
   initArtifactPanelRuntime as M,
   initArtifactRouteScopeRuntime as m,
 } from "../boundaries/current-ref/artifact-tab-content-producer";
+import { getRouteThreadId as u } from "../app-shell/app-view-route-helpers";
 import { initXIcon as v, XIcon as g } from "../icons/x-icon";
+import { Button as c, initButtonComponentPrimitives as y } from "../ui/button";
 import {
-  Button as c,
   DropdownMenu as d,
-  initIntlRuntime as E,
-  useStableCallback as ie,
-  FormattedMessage as L,
-  classNames as o,
-  useIntl as O,
   Dropdown as P,
   initDropdownMenuPrimitives as S,
-  initUseStableCallback as te,
-  getRouteThreadId as u,
+} from "../ui/dropdown";
+import {
+  classNames as o,
   initClassNameRuntime as x,
-  initButtonComponentPrimitives as y,
-} from "../boundaries/current-ref/appg-thread-shared-producer";
+} from "../utils/class-names";
+import {
+  initUseStableCallback as te,
+  useStableCallback as ie,
+} from "../utils/use-stable-callback";
+import {
+  FormattedMessage as L,
+  initIntlRuntime as E,
+  useIntl as O,
+} from "./react-intl";
 import {
   initReactQueryRuntime as a,
   useMutation as _,
