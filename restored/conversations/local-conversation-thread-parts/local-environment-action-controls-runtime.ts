@@ -9,19 +9,17 @@ export {
   initWorkspaceRootDisplayNameRuntime,
 } from "../../workspace/workspace-root-display-name";
 export {
-  $i as initConversationRemoteStateHelpers,
-  ba as initLocalEnvironmentSelectionRuntime,
-  d as useLocalEnvironmentSelectionState,
-  Ga as MoreHorizontalIcon,
-  Ka as initMoreHorizontalIcon,
-  Sa as LOCAL_ENVIRONMENT_ACTION_COMMAND_IDS,
-  u as refreshWorktreeEnvironmentConfigValue,
-  Yi as localEnvironmentActionShortcutSignal,
-} from "../../vendor/projects-app-shared-runtime";
-export {
-  Bu as initProfileGitSummaryRuntime,
-  Vu as setActiveSettingsHost,
-} from "../../vendor/profile-page-runtime";
+  initConversationRemoteStateHelpers,
+  initLocalEnvironmentSelectionRuntime,
+  initMoreHorizontalIcon,
+  initProfileGitSummaryRuntime,
+  localEnvironmentActionShortcutSignal,
+  LOCAL_ENVIRONMENT_ACTION_COMMAND_IDS,
+  MoreHorizontalIcon,
+  refreshWorktreeEnvironmentConfigValue,
+  setActiveSettingsHost,
+  useLocalEnvironmentSelectionState,
+} from "../../runtime/local-environment-action-controls-runtime";
 export {
   appLogger as logger,
   initAppLoggerRuntime,
