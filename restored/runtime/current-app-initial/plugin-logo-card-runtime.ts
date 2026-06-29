@@ -1,4 +1,14 @@
 // Restored from ref/webview/assets/app-initial~app-main~remote-conversation-page~pull-requests-page~plugin-detail-page~new-thr~ny8xzqbh-ClcWSvU7.js
-// Semantic alias layer for plugin logo card runtime.
-// prettier-ignore
-export { a as PluginLogoCardExportLowerAAlias, c as PluginLogoCardExportLowerCAlias, i as PluginLogoCardExportLowerIAlias, n as PluginLogoCardExportLowerNAlias, o as PluginLogoCardExportLowerOAlias, r as PluginLogoCardExportLowerRAlias, s as PluginLogoCardExportLowerSAlias, t as PluginLogoCardExportLowerTAlias } from "../../boundaries/current-ref/current-app-initial-plugin-logo-card-runtime-producer";
+// App brand loading logo helpers shared by plugin and conversation surfaces.
+export { HomepageLogoIcon as CodexKnotLogoIcon } from "../../icons/homepage-logo-icon";
+export { AppBrandLogo } from "../../ui/app-brand-logo";
+export { AppLoadingScreen } from "../../ui/app-loading-screen";
+export { dataUrlFromSvg as svgToDataImageUri } from "../../utils/data-url-from";
+
+export function initBrandLogoDataUrlRuntimeChunk(): void {}
+
+export function initCodexKnotLogoIconChunk(): void {}
+
+export function initAppBrandLogoChunk(): void {}
+
+export function initAppLoadingScreenChunk(): void {}

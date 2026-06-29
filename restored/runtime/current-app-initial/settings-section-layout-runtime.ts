@@ -1,4 +1,7 @@
 // Restored from ref/webview/assets/app-initial~app-main~settings-page~open-source-licenses-page~skills-settings~plugins-settin~cxbtmbfc-Bhanoo2P.js
-// Semantic alias layer for settings section layout runtime.
-// prettier-ignore
-export { n as SettingsSectionLayoutExportLowerNAlias, r as SettingsSectionLayoutExportLowerRAlias, t as SettingsSectionLayoutExportLowerTAlias } from "../../boundaries/current-ref/current-app-initial-settings-section-layout-runtime-producer";
+// Settings content layout aliases shared by settings and plugin settings surfaces.
+export {
+  initSettingsContentLayoutChunk,
+  SettingsContentLayout,
+  SettingsContentNavigationTargetProvider,
+} from "../../ui/settings-content-layout";

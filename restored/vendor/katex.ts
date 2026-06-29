@@ -1,4 +1,5 @@
 // Restored from ref/webview/assets/katex--WVKgE7E.js
+// Current ref alias: ref/webview/assets/katex-CjHJ1D7d.js
 // Katex chunk restored from the Codex webview bundle.
 var katexT = class _katexT extends Error {
     constructor(katexParam93, katexParam94) {

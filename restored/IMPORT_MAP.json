@@ -2345,6 +2345,17 @@
       "aliasOf": "cytoscape-cose-bilkent-3yd98erd",
       "lastUpdated": "2026-06-29T00:00:00.000Z"
     },
+    "cytoscape-cose-bilkent-Cew5xac-": {
+      "restored": "vendor/cytoscape-cose-bilkent.ts",
+      "exports": {
+        "t": "loadCytoscapeCoseBilkent"
+      },
+      "status": "done",
+      "aliasOf": "cytoscape-cose-bilkent-CZ_nfQWZ",
+      "note": "Current ref cytoscape-cose-bilkent UMD wrapper; public export t loads the cytoscape-cose-bilkent package.",
+      "stage3Accepted": true,
+      "lastUpdated": "2026-06-29T22:20:00.000Z"
+    },
     "cytoscape-fcose-CYmUq-SS": {
       "restored": "vendor/cytoscape-fcose.ts",
       "exports": {
@@ -2361,6 +2372,17 @@
       "aliasOf": "cytoscape-fcose-CYmUq-SS",
       "lastUpdated": "2026-06-29T00:00:00.000Z"
     },
+    "cytoscape-fcose-q4BaAAiB": {
+      "restored": "vendor/cytoscape-fcose.ts",
+      "exports": {
+        "t": "loadCytoscapeFcose"
+      },
+      "status": "done",
+      "aliasOf": "cytoscape-fcose-w_4iexyA",
+      "note": "Current ref cytoscape-fcose UMD wrapper; public export t loads the cytoscape-fcose package.",
+      "stage3Accepted": true,
+      "lastUpdated": "2026-06-29T22:20:00.000Z"
+    },
     "docx-preview-Mi4H0G1I": {
       "restored": "vendor/docx-preview.ts",
       "status": "done"
@@ -2373,6 +2395,17 @@
       },
       "aliasOf": "docx-preview-Mi4H0G1I",
       "lastUpdated": "2026-06-29T00:00:00.000Z"
+    },
+    "docx-preview-G1XqxLZP": {
+      "restored": "vendor/docx-preview.ts",
+      "status": "done",
+      "exports": {
+        "renderAsync": "renderAsync"
+      },
+      "aliasOf": "docx-preview-dx1eKBjU",
+      "note": "Current ref docx-preview UMD bundle with renderAsync as the only public export.",
+      "stage3Accepted": true,
+      "lastUpdated": "2026-06-29T22:20:00.000Z"
     },
     "__vite-browser-external-EPeb3y57": {
       "restored": "runtime/vite-browser-external.ts",
@@ -3418,6 +3451,17 @@
         "u": "katexU"
       },
       "status": "done"
+    },
+    "katex-CjHJ1D7d": {
+      "restored": "vendor/katex.ts",
+      "exports": {
+        "default": "katexC"
+      },
+      "status": "done",
+      "aliasOf": "katex--WVKgE7E",
+      "note": "Current ref full KaTeX bundle exposes the katex object as the default export.",
+      "stage3Accepted": true,
+      "lastUpdated": "2026-06-29T22:20:00.000Z"
     },
     "katex-DZmv-8PO": {
       "restored": "utils/katex.ts",
@@ -26047,68 +26091,68 @@
     "app-initial~app-main~settings-page~open-source-licenses-page~skills-settings~plugins-settin~cxbtmbfc-Bhanoo2P": {
       "restored": "runtime/current-app-initial/settings-section-layout-runtime.ts",
       "exports": {
-        "n": "SettingsSectionLayoutExportLowerNAlias",
-        "r": "SettingsSectionLayoutExportLowerRAlias",
-        "t": "SettingsSectionLayoutExportLowerTAlias"
+        "n": "SettingsContentNavigationTargetProvider",
+        "r": "initSettingsContentLayoutChunk",
+        "t": "SettingsContentLayout"
       },
       "status": "done",
-      "note": "Current ref settings section layout runtime restored as a semantic alias layer over boundaries/current-ref/current-app-initial-settings-section-layout-runtime-producer.ts.",
+      "note": "Current ref settings section layout runtime restored as semantic aliases over ui/settings-content-layout.tsx.",
       "stage3Accepted": true,
-      "lastUpdated": "2026-06-29T19:53:12.718Z"
+      "lastUpdated": "2026-06-29T22:14:00.000Z"
     },
     "app-initial~app-main~remote-conversation-page~appgen-library-page~local-conversation-page-DAngUxdy": {
       "restored": "runtime/current-app-initial/conversation-dialog-layer-runtime.ts",
       "exports": {
-        "a": "ConversationDialogLayerExportLowerAAlias",
-        "i": "ConversationDialogLayerExportLowerIAlias",
-        "n": "ConversationDialogLayerExportLowerNAlias",
-        "r": "ConversationDialogLayerExportLowerRAlias",
-        "t": "ConversationDialogLayerExportLowerTAlias"
+        "a": "initThreadLayoutChunk",
+        "i": "ThreadLayout",
+        "n": "initRightPanelComposerOverlayChunk",
+        "r": "threadContentClassName",
+        "t": "RightPanelComposerOverlay"
       },
       "status": "done",
-      "note": "Current ref conversation dialog layer runtime restored as a semantic alias layer over boundaries/current-ref/current-app-initial-conversation-dialog-layer-runtime-producer.ts.",
+      "note": "Current ref conversation dialog layer runtime restored as conversation thread layout and right-panel composer overlay helpers.",
       "stage3Accepted": true,
-      "lastUpdated": "2026-06-29T19:53:12.718Z"
+      "lastUpdated": "2026-06-29T22:09:00.000Z"
     },
     "app-initial~app-main~agent-settings-D9wGrgBN": {
       "restored": "runtime/current-app-initial/agent-settings-diagnostics-runtime.ts",
       "exports": {
-        "a": "AgentSettingsDiagnosticsExportLowerAAlias",
-        "c": "AgentSettingsDiagnosticsExportLowerCAlias",
-        "d": "AgentSettingsDiagnosticsExportLowerDAlias",
-        "f": "AgentSettingsDiagnosticsExportLowerFAlias",
-        "i": "AgentSettingsDiagnosticsExportLowerIAlias",
-        "l": "AgentSettingsDiagnosticsExportLowerLAlias",
-        "m": "AgentSettingsDiagnosticsExportLowerMAlias",
-        "n": "AgentSettingsDiagnosticsExportLowerNAlias",
-        "o": "AgentSettingsDiagnosticsExportLowerOAlias",
-        "p": "AgentSettingsDiagnosticsExportLowerPAlias",
-        "r": "AgentSettingsDiagnosticsExportLowerRAlias",
-        "s": "AgentSettingsDiagnosticsExportLowerSAlias",
-        "t": "AgentSettingsDiagnosticsExportLowerTAlias",
-        "u": "AgentSettingsDiagnosticsExportLowerUAlias"
+        "a": "formatPrimaryRuntimeDiagnosticsFailedEvent",
+        "c": "PRIMARY_RUNTIME_INSTALL_COMMAND_FEATURE_ID",
+        "d": "cancelPrimaryRuntimeInstall",
+        "f": "hasPendingPrimaryRuntimeInstall",
+        "i": "formatPrimaryRuntimeDiagnosticsEvent",
+        "l": "PRIMARY_RUNTIME_SETTINGS_FEATURE_ID",
+        "m": "requestPrimaryRuntimeInstall",
+        "n": "isPrimaryRuntimeInstallAbortError",
+        "o": "formatPrimaryRuntimeDependenciesResetEvent",
+        "p": "initPrimaryRuntimeInstallRequestStateChunk",
+        "r": "installPrimaryRuntime",
+        "s": "initPrimaryRuntimeInstallEventFormattersChunk",
+        "t": "initPrimaryRuntimeInstallActionChunk",
+        "u": "initPrimaryRuntimeFeatureFlagsChunk"
       },
       "status": "done",
-      "note": "Current ref agent settings diagnostics runtime restored as a semantic alias layer over boundaries/current-ref/current-app-initial-agent-settings-diagnostics-runtime-producer.ts.",
+      "note": "Current ref agent settings diagnostics runtime restored as primary-runtime install, reset, and diagnostics helpers over shared semantic runtime modules.",
       "stage3Accepted": true,
-      "lastUpdated": "2026-06-29T19:53:12.718Z"
+      "lastUpdated": "2026-06-29T22:02:00.000Z"
     },
     "app-initial~app-main~remote-conversation-page~pull-requests-page~plugin-detail-page~new-thr~ny8xzqbh-ClcWSvU7": {
       "restored": "runtime/current-app-initial/plugin-logo-card-runtime.ts",
       "exports": {
-        "a": "PluginLogoCardExportLowerAAlias",
-        "c": "PluginLogoCardExportLowerCAlias",
-        "i": "PluginLogoCardExportLowerIAlias",
-        "n": "PluginLogoCardExportLowerNAlias",
-        "o": "PluginLogoCardExportLowerOAlias",
-        "r": "PluginLogoCardExportLowerRAlias",
-        "s": "PluginLogoCardExportLowerSAlias",
-        "t": "PluginLogoCardExportLowerTAlias"
+        "a": "CodexKnotLogoIcon",
+        "c": "initBrandLogoDataUrlRuntimeChunk",
+        "i": "initAppBrandLogoChunk",
+        "n": "initAppLoadingScreenChunk",
+        "o": "initCodexKnotLogoIconChunk",
+        "r": "AppBrandLogo",
+        "s": "svgToDataImageUri",
+        "t": "AppLoadingScreen"
       },
       "status": "done",
-      "note": "Current ref plugin logo card runtime restored as a semantic alias layer over boundaries/current-ref/current-app-initial-plugin-logo-card-runtime-producer.ts.",
+      "note": "Current ref plugin logo card runtime restored as app brand loading logo helpers over shared semantic UI modules.",
       "stage3Accepted": true,
-      "lastUpdated": "2026-06-29T19:53:12.718Z"
+      "lastUpdated": "2026-06-29T21:55:00.000Z"
     },
     "app-initial~app-main~worktree-init-v2-page~hotkey-window-worktree-init-page~local-conversation-page-BwSKiuwm": {
       "restored": "runtime/current-app-initial/worktree-init-thread-title-runtime.ts",
