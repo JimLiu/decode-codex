@@ -1,11 +1,10 @@
 // Restored from ref/webview/assets/local-conversation-thread-BwqAGxoz.js
 // GitHub pull-request summary signals, queries, and create-PR workflow controls.
 import {
-  _i as githubCliAvailabilitySignal,
-  gi as initGithubCliAvailabilitySignalChunkRaw,
-  pi as pullRequestStatusQuerySignal,
-  vi as initPullRequestStatusQueryChunkRaw,
-} from "../../vendor/projects-app-shared-runtime";
+  githubCliAvailabilitySignal,
+  initPullRequestGitSummaryStateRuntime,
+  pullRequestStatusQuerySignal,
+} from "../../runtime/pull-request-git-summary-state-runtime";
 import {
   $l as createPullRequestActionStateSignal,
   Al as useHeadBranchQuery,
@@ -44,7 +43,6 @@ export function initPullRequestGitSummaryRuntime(): void {
   initCreatePullRequestWorkflowPhaseLabelChunkRaw();
   initCreatePullRequestControlsChunkRaw();
   initCreatePullRequestActionStateChunkRaw();
-  initPullRequestStatusQueryChunkRaw();
-  initGithubCliAvailabilitySignalChunkRaw();
+  initPullRequestGitSummaryStateRuntime();
   initBranchChangesIconRuntime();
 }
