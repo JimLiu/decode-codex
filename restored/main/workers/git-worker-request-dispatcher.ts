@@ -40,6 +40,7 @@ import { readCurrentBranch } from "./git-worker-current-branch";
 import { readBranchDiffStats } from "./git-worker-diff-stats";
 import { readGitOrigins } from "./git-worker-origin-queries";
 import { readStableMetadata } from "./git-worker-repo-queries";
+import { initializeGitRepository } from "./git-worker-init-repo";
 import { readReviewDiff } from "./git-worker-review/file-diff";
 import { readReviewSummary } from "./git-worker-review/metadata";
 import { readReviewPatch } from "./git-worker-review/patch";
@@ -560,6 +561,16 @@ export class GitWorkerRequestDispatcher {
             value: requireStringParam(params, "value", { allowEmpty: true }),
           }),
         });
+      }
+      case "git-init-repo": {
+        const params = requireRecordParams(request);
+        return ok(
+          await initializeGitRepository({
+            cwd: requireStringParam(params, "cwd", { allowEmpty: true }),
+            host: context.host,
+            signal: context.signal,
+          }),
+        );
       }
       case "set-worktree-owner-thread": {
         const params = requireRecordParams(request);
