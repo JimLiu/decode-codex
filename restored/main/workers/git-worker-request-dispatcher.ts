@@ -43,6 +43,7 @@ import { readBranchDiffStats } from "./git-worker-diff-stats";
 import { cleanupHostHandoffTransfer } from "./git-worker-host-handoff";
 import { readGitOrigins } from "./git-worker-origin-queries";
 import { readStableMetadata } from "./git-worker-repo-queries";
+import { GitWorkerRepoWatchManager } from "./git-worker-repo-watch";
 import { initializeGitRepository } from "./git-worker-init-repo";
 import { readReviewDiff } from "./git-worker-review/file-diff";
 import { readReviewSummary } from "./git-worker-review/metadata";
@@ -130,6 +131,7 @@ let gitAvailabilityCache: GitAvailabilityCacheEntry | null = null;
 export class GitWorkerRequestDispatcher {
   private readonly canceledRequests = new Set<string>();
   private readonly inFlightRequests = new Map<string, AbortController>();
+  private readonly repoWatchManager: GitWorkerRepoWatchManager;
   private readonly uncancelableRequestIds = new Set<string>();
   private localGitAvailable: boolean | null = null;
 
@@ -138,7 +140,11 @@ export class GitWorkerRequestDispatcher {
     private readonly postMessage: (message: GitWorkerOutboundMessage) => void,
     private readonly featureContext: WorkerFeatureContext,
     private readonly options: GitWorkerRequestDispatcherOptions = {},
-  ) {}
+  ) {
+    this.repoWatchManager = new GitWorkerRepoWatchManager({
+      emit: (event) => this.postWorkerEvent(event),
+    });
+  }
 
   handleRequest(request: GitWorkerRequest): void {
     void this.handleRequestAsync(request);
@@ -243,13 +249,22 @@ export class GitWorkerRequestDispatcher {
         return ok({ available: context.available });
       case "stable-metadata": {
         const params = requireRecordParams(request);
-        return ok(
-          await readStableMetadata({
-            cwd: requireStringParam(params, "cwd"),
-            host: context.host,
-            signal: context.signal,
-          }),
-        );
+        const cwd = requireStringParam(params, "cwd");
+        const metadata = await readStableMetadata({
+          cwd,
+          host: context.host,
+          signal: context.signal,
+        });
+        await this.repoWatchManager.resolveStableMetadataWatchState({
+          cwd,
+          host: context.host,
+          metadata,
+          watchForGitInit: optionalBooleanOrNullParam(
+            params,
+            "watchForGitInit",
+          ),
+        });
+        return ok(metadata);
       }
       case "current-branch": {
         const params = requireRecordParams(request);
@@ -482,6 +497,50 @@ export class GitWorkerRequestDispatcher {
           }),
         );
       }
+      case "invalidate-stable-metadata":
+        this.repoWatchManager.invalidateStableMetadata();
+        return ok({ success: true });
+      case "invalidate-git-read-caches": {
+        const params = requireRecordParams(request);
+        await this.repoWatchManager.invalidateGitReadCaches({
+          clearUntrackedPathsCache: optionalBooleanParam(
+            params,
+            "clearUntrackedPathsCache",
+          ),
+          host: context.host,
+          paths:
+            params.paths == null
+              ? null
+              : requireStringArrayParam(params, "paths"),
+          root: requireStringParam(params, "root"),
+        });
+        return ok({ success: true });
+      }
+      case "dispose-git-init-watch": {
+        const params = requireRecordParams(request);
+        this.repoWatchManager.disposeGitInitWatcher(
+          requireStringParam(params, "cwd"),
+          context.host,
+        );
+        return ok({ success: true });
+      }
+      case "watch-repo": {
+        const params = requireRecordParams(request);
+        await this.repoWatchManager.ensureWatching({
+          commonDir: requireStringParam(params, "commonDir"),
+          host: context.host,
+          root: requireStringParam(params, "root"),
+        });
+        return ok({ success: true });
+      }
+      case "unwatch-repo": {
+        const params = requireRecordParams(request);
+        this.repoWatchManager.unwatchRepo(
+          requireStringParam(params, "root"),
+          context.host,
+        );
+        return ok({ success: true });
+      }
       case "status-summary": {
         const params = requireRecordParams(request);
         return ok(
@@ -698,6 +757,14 @@ export class GitWorkerRequestDispatcher {
       response: { id: request.id, method: request.method, result },
     });
   }
+
+  private postWorkerEvent(event: unknown): void {
+    this.postMessage({
+      type: "worker-event",
+      workerId: this.workerId,
+      event,
+    });
+  }
 }
 
 function ok(value: unknown): RpcResult {
@@ -759,6 +826,16 @@ function optionalBooleanParam(
 ): boolean {
   const value = params[key];
   if (value == null) return false;
+  if (typeof value === "boolean") return value;
+  throw Error(`Git worker parameter '${key}' must be a boolean`);
+}
+
+function optionalBooleanOrNullParam(
+  params: Record<string, unknown>,
+  key: string,
+): boolean | null {
+  const value = params[key];
+  if (value == null) return null;
   if (typeof value === "boolean") return value;
   throw Error(`Git worker parameter '${key}' must be a boolean`);
 }
