@@ -6673,12 +6673,27 @@
       "status": "done"
     },
     "sectioned-page-OCNQDwEC": {
-      "restored": "ui/sectioned-page.tsx",
+      "restored": "ui/sectioned-page/index.ts",
       "exports": {
         "n": "SectionedPageSection",
         "t": "SectionedPage"
       },
       "status": "done"
+    },
+    "sectioned-page-BgyNiIIs": {
+      "restored": "ui/sectioned-page/index.ts",
+      "exports": {
+        "n": "SectionedPageSection",
+        "r": "initSectionedPageChunk",
+        "t": "SectionedPage",
+        "SectionedPageSection": "SectionedPageSection",
+        "initSectionedPageChunk": "initSectionedPageChunk",
+        "SectionedPage": "SectionedPage"
+      },
+      "status": "done",
+      "aliasOf": "sectioned-page-OCNQDwEC",
+      "note": "Current synced sectioned page chunk split into typed layout, navigation, registry, and section modules with an initializer export.",
+      "lastUpdated": "2026-06-29T00:00:00.000Z"
     },
     "banner-NiedSf5B": {
       "restored": "ui/banner.tsx",
