@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/local-conversation-thread-Bf38rCmF.js
+// Restored from ref/webview/assets/local-conversation-thread-BwqAGxoz.js
 // Host Codex-home and managed worktree path helpers for local conversation surfaces.
 import { isPathInCodexWorktree } from "../vendor/worktree-path-runtime";
 import {

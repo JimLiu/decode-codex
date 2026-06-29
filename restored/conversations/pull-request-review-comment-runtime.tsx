@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/local-conversation-thread-Bf38rCmF.js
+// Restored from ref/webview/assets/local-conversation-thread-BwqAGxoz.js
 // Pull-request prompt copy, review-comment attachment state, and comment-card helpers.
 import {
   Av as getReviewCommentAttachmentKeyValueRaw,

@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/local-conversation-thread-Bf38rCmF.js
+// Restored from ref/webview/assets/local-conversation-thread-BwqAGxoz.js
 // MCP app frame overlay outlet and route-level app-shell frame signals.
 import type { ComponentType } from "react";
 import {

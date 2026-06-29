@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/local-conversation-thread-Bf38rCmF.js
+// Restored from ref/webview/assets/local-conversation-thread-BwqAGxoz.js
 // Local conversation composer runtime bridge and worktree materialization state.
 import { initLocalConversationComposerRuntime as initLocalConversationComposerBridgeRuntime } from "./local-conversation-composer-bridge";
 import {

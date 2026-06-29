@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/local-conversation-thread-Bf38rCmF.js
+// Restored from ref/webview/assets/local-conversation-thread-BwqAGxoz.js
 // Motion values, animation helpers, and reduced-motion signal facade.
 import {
   JC as initReducedMotionPreference,

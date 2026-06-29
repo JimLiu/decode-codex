@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/local-conversation-thread-Bf38rCmF.js
+// Restored from ref/webview/assets/local-conversation-thread-BwqAGxoz.js
 // App-shell panel tab stores backed by the current projects app bundle.
 import {
   Jl as initRightPanelTabsStoreChunk,

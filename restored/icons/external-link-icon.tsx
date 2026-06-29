@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/local-conversation-thread-Bf38rCmF.js
+// Restored from ref/webview/assets/local-conversation-thread-BwqAGxoz.js
 // Semantic external-link icon wrapper used by conversation summary rows.
 import type { ComponentType, SVGProps } from "react";
 import { LinkExternalIcon } from "./link-external-icon";

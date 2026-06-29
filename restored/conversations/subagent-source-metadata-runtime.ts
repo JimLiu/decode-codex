@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/local-conversation-thread-Bf38rCmF.js
+// Restored from ref/webview/assets/local-conversation-thread-BwqAGxoz.js
 // Subagent source metadata reader shared by conversation background-agent helpers.
 import { Zy as getSubagentSourceMetadataRaw } from "../vendor/projects-app-shared-runtime";
 

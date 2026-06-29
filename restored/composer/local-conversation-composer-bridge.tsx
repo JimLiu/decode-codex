@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/local-conversation-thread-Bf38rCmF.js
+// Restored from ref/webview/assets/local-conversation-thread-BwqAGxoz.js
 // Local conversation composer bridge and host connection signals.
 import { appServerConnectionStateSignal as hostConnectionStatusSignal } from "../boundaries/thread-context-inputs.facade";
 import { LOCAL_HOST_ID } from "../boundaries/use-host-config.facade";

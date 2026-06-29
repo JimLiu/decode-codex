@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/local-conversation-thread-Bf38rCmF.js
+// Restored from ref/webview/assets/local-conversation-thread-BwqAGxoz.js
 // Pull-request side-panel positioning and description markdown runtime helpers.
 import {
   Cl as pullRequestCurrentBranchSignal,

@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/local-conversation-thread-Bf38rCmF.js
+// Restored from ref/webview/assets/local-conversation-thread-BwqAGxoz.js
 // Automation route helpers bridged from the current profile-page runtime.
 import {
   Ar as initAutomationRouteHelpersRaw,
