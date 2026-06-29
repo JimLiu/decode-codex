@@ -1,37 +1,29 @@
 // Restored from ref/webview/assets/app-main-DxUcMyo0.js
 // Semantic app-main runtime bindings backed by the current app-main producer chunks.
 import {
-  initAutomationsRuntimeChunk,
-  initAutomationsStateChunk,
   CodexApp,
-  initCodexAppChunk,
-} from "../vendor/automations-page-runtime";
-import {
-  initErrorBoundaryRuntimeChunk,
-  initRendererSentryRuntimeChunk,
-} from "./renderer-error-boundary-runtime";
-import {
   appMainLogger,
+  connectAppHostServices,
   findSingleMatchingCodexAppForPlugin,
+  getCodexWindowChrome,
   hostMessageBridge,
+  initAppFeatureRuntimeChunk,
+  initAppHostServicesRuntimeChunk,
   initAppLoggingChunk,
   initAppPluginMatchingRuntime,
   initAppRuntimeChunk,
+  initAutomationsRuntimeChunk,
+  initAutomationsStateChunk,
+  initCodexAppChunk,
+  initErrorBoundaryRuntimeChunk,
+  initRendererSentryRuntimeChunk,
   pluginMatchesCodexApp,
-} from "./app-main-host-runtime";
+  readCompactWindowPreference,
+} from "../vendor/app-main-current-runtime";
 import type {
   CodexAppPluginMatchApp,
   CodexAppPluginMatchPlugin,
-} from "./app-main-host-runtime";
-import {
-  connectAppHostServices,
-  initAppHostServicesRuntimeChunk,
-} from "./app-host-services-runtime";
-import {
-  getCodexWindowChrome,
-  initAppFeatureRuntimeChunk,
-} from "./window-chrome-runtime";
-import { isCurrentCompactWindow as readCompactWindowPreference } from "../features/is-compact-window-context";
+} from "../vendor/app-main-current-runtime";
 
 export type CodexOs = "win32" | "darwin" | "linux" | "unknown";
 export type RendererLogLevel = "error" | "info" | "warn";
