@@ -1,4 +1,4 @@
-// Restored from ref/.vite/build/main--VWTbRdF.js
+// Restored from ref/.vite/build/main-r5HnecX_.js
 // Shared protocol types for the main-process worker bus.
 
 import type { IpcMainInvokeEvent } from "electron";

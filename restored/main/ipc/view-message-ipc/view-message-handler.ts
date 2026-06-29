@@ -1,4 +1,4 @@
-// Restored from ref/.vite/build/main--VWTbRdF.js
+// Restored from ref/.vite/build/main-r5HnecX_.js
 // Main renderer message dispatcher for window routing and app state changes.
 
 import { app, ipcMain, type WebContents } from "electron";

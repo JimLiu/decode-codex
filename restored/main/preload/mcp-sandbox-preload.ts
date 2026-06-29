@@ -1,5 +1,5 @@
 // Restored from ref/.vite/build/sandbox-preload.js
-// sandbox-preload chunk restored from the Codex webview bundle.
+// sandbox-preload chunk restored from the Codex Electron main bundle.
 // MCP app sandbox preload handshake and origin validation.
 
 import { ipcRenderer } from "electron";

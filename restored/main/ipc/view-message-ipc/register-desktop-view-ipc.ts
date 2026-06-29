@@ -1,4 +1,4 @@
-// Restored from ref/.vite/build/main--VWTbRdF.js
+// Restored from ref/.vite/build/main-r5HnecX_.js
 // Aggregate registration for view-message, sidebar, metrics, and debug IPC.
 
 import type { WebContents } from "electron";

@@ -1,5 +1,5 @@
-// Restored from ref/.vite/build/file-based-logger-D5VNAgCV.js
-// file-based-logger-D5VNAgCV chunk restored from the Codex webview bundle.
+// Restored from ref/.vite/build/file-based-logger-7hbAyAYH.js
+// file-based-logger-7hbAyAYH chunk restored from the Codex Electron main bundle.
 import { shouldUseOwlAppShell } from "./app-shell";
 import { BuildFlavor } from "./build-flavor";
 import { createFileBasedLogger } from "./file-based-logger";

@@ -1,4 +1,4 @@
-// Restored from ref/.vite/build/main--VWTbRdF.js
+// Restored from ref/.vite/build/main-r5HnecX_.js
 // Public surface for the native About dialog restoration.
 
 export {

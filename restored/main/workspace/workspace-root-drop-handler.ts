@@ -1,4 +1,4 @@
-// Restored from ref/.vite/build/workspace-root-drop-handler-Cejfos9U.js
+// Restored from ref/.vite/build/workspace-root-drop-handler-DbDnwAf_.js
 // Typed open boundary for the mixed workspace-root, updater, protocol, and Sentry chunk.
 import { createHash, randomUUID } from "node:crypto";
 import {

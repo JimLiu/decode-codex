@@ -1,4 +1,4 @@
-// Restored from ref/.vite/build/main--VWTbRdF.js
+// Restored from ref/.vite/build/main-r5HnecX_.js
 // Worker main-RPC response wrappers and handler invocation.
 
 import type {

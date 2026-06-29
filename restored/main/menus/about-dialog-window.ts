@@ -1,4 +1,4 @@
-// Restored from ref/.vite/build/main--VWTbRdF.js
+// Restored from ref/.vite/build/main-r5HnecX_.js
 // Native About dialog window lifecycle.
 
 import { app, BrowserWindow, nativeTheme, screen } from "electron";

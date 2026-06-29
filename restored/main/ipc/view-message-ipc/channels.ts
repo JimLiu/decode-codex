@@ -1,4 +1,4 @@
-// Restored from ref/.vite/build/main--VWTbRdF.js
+// Restored from ref/.vite/build/main-r5HnecX_.js
 // IPC channel names used by renderer view-message handlers.
 
 export const MESSAGE_FROM_VIEW_CHANNEL = "codex_desktop:message-from-view";

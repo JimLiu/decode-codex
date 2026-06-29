@@ -1,5 +1,5 @@
-// Restored from ref/.vite/build/feedback-desktop-log-archive-C5uB_-XF.js
-// feedback-desktop-log-archive-C5uB_-XF chunk restored from the Codex webview bundle.
+// Restored from ref/.vite/build/feedback-desktop-log-archive-DeZjTyj3.js
+// feedback-desktop-log-archive-DeZjTyj3 chunk restored from the Codex Electron main bundle.
 import * as crypto from "node:crypto";
 import * as fs from "node:fs/promises";
 import * as os from "node:os";

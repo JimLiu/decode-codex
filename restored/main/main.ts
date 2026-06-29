@@ -1,4 +1,4 @@
-// Restored from ref/.vite/build/main--VWTbRdF.js
+// Restored from ref/.vite/build/main-r5HnecX_.js
 // Main Electron startup entry point and top-level app wiring.
 
 import * as path from "node:path";

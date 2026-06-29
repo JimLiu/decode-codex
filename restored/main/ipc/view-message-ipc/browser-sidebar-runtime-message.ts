@@ -1,4 +1,4 @@
-// Restored from ref/.vite/build/main--VWTbRdF.js
+// Restored from ref/.vite/build/main-r5HnecX_.js
 // Browser sidebar runtime IPC validation and window-context dispatch.
 
 import { BrowserWindow, ipcMain, type WebContents } from "electron";

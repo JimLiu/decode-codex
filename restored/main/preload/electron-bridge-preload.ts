@@ -1,5 +1,5 @@
 // Restored from ref/.vite/build/preload.js
-// preload chunk restored from the Codex webview bundle.
+// preload chunk restored from the Codex Electron main bundle.
 // Electron preload bridge for the main Codex webview.
 
 import { contextBridge, ipcRenderer, webUtils } from "electron";

@@ -1,4 +1,4 @@
-// Restored from ref/.vite/build/main--VWTbRdF.js
+// Restored from ref/.vite/build/main-r5HnecX_.js
 // Renderer-to-worker bus bridge.
 
 import { randomUUID } from "node:crypto";

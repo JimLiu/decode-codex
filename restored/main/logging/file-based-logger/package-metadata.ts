@@ -1,5 +1,5 @@
-// Restored from ref/.vite/build/file-based-logger-D5VNAgCV.js
-// file-based-logger-D5VNAgCV chunk restored from the Codex webview bundle.
+// Restored from ref/.vite/build/file-based-logger-7hbAyAYH.js
+// file-based-logger-7hbAyAYH chunk restored from the Codex Electron main bundle.
 import * as fs from "node:fs";
 import * as path from "node:path";
 import type { PackageMetadataOptions } from "./types";

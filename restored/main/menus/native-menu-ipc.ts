@@ -1,4 +1,4 @@
-// Restored from ref/.vite/build/main--VWTbRdF.js
+// Restored from ref/.vite/build/main-r5HnecX_.js
 // Native application-menu and context-menu IPC handlers for the webview bridge.
 
 import { existsSync } from "node:fs";

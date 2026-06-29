@@ -1,5 +1,5 @@
-// Restored from ref/.vite/build/codex-micro-service-DMYylm8w.js
-// codex-micro-service-DMYylm8w chunk restored from the Codex webview bundle.
+// Restored from ref/.vite/build/codex-micro-service-rjpeLKbm.js
+// codex-micro-service-rjpeLKbm chunk restored from the Codex Electron main bundle.
 import { createRequire } from "node:module";
 import * as sharedRuntime from "../boundaries/shared-node-runtime.facade";
 type StructuredLogger = {

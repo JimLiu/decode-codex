@@ -1,4 +1,4 @@
-// Restored from ref/.vite/build/main--VWTbRdF.js
+// Restored from ref/.vite/build/main-r5HnecX_.js
 // Shared types for renderer view-message IPC routing.
 
 import type { BrowserWindow, IpcMainInvokeEvent, WebContents } from "electron";

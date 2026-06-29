@@ -1,4 +1,4 @@
-// Restored from ref/.vite/build/main--VWTbRdF.js
+// Restored from ref/.vite/build/main-r5HnecX_.js
 // Desktop tray controller and native tray menu assembly.
 
 import { app, Menu, Tray, type MenuItemConstructorOptions } from "electron";

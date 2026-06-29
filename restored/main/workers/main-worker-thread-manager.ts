@@ -1,4 +1,4 @@
-// Restored from ref/.vite/build/main--VWTbRdF.js
+// Restored from ref/.vite/build/main-r5HnecX_.js
 // Worker thread lifecycle and main-RPC bridge for Electron main.
 
 import { dirname, join } from "node:path";

@@ -1,4 +1,4 @@
-// Restored from ref/.vite/build/main--VWTbRdF.js
+// Restored from ref/.vite/build/main-r5HnecX_.js
 // Native app icon resolution for About and menu-owned windows.
 
 import { execFile } from "node:child_process";

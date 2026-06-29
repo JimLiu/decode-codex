@@ -1,4 +1,4 @@
-// Restored from ref/.vite/build/src-Bnhv1yNK.js
+// Restored from ref/.vite/build/src-C3H9d_bd.js
 //
 // Selective runtime facade for the mixed shared-node chunk. The original chunk
 // also contains bundled Zod and third-party utilities; those remain excluded.
@@ -41,6 +41,36 @@ type DesktopSettingDefinition = {
   schema: RuntimeSchema;
   vscode?: unknown;
 };
+
+export const threadFollowerRequestVersions = {
+  "thread-stream-state-changed": 8,
+  "thread-read-state-changed": 1,
+  "thread-archived": 2,
+  "thread-unarchived": 1,
+  "thread-follower-start-turn": 1,
+  "thread-follower-load-complete-history": 1,
+  "thread-follower-compact-thread": 1,
+  "thread-follower-steer-turn": 1,
+  "thread-follower-interrupt-turn": 2,
+  "thread-follower-update-thread-settings": 1,
+  "thread-follower-edit-last-user-turn": 2,
+  "thread-follower-command-approval-decision": 1,
+  "thread-follower-file-approval-decision": 1,
+  "thread-follower-permissions-request-approval-response": 1,
+  "thread-follower-submit-user-input": 1,
+  "thread-follower-submit-mcp-server-elicitation-response": 1,
+  "thread-follower-set-queued-follow-ups-state": 1,
+  "thread-queued-followups-changed": 1,
+} as const;
+
+export type ThreadFollowerRequestType =
+  keyof typeof threadFollowerRequestVersions;
+
+export function getThreadFollowerRequestVersion(requestType: string): number {
+  return (
+    threadFollowerRequestVersions[requestType as ThreadFollowerRequestType] ?? 0
+  );
+}
 
 const requireFromFacade = createRequire(import.meta.url);
 

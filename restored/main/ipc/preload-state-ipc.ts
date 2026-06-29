@@ -1,4 +1,4 @@
-// Restored from ref/.vite/build/main--VWTbRdF.js
+// Restored from ref/.vite/build/main-r5HnecX_.js
 // Synchronous preload-state IPC and native theme broadcasts for the webview.
 
 import {

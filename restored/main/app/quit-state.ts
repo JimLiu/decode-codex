@@ -1,4 +1,4 @@
-// Restored from ref/.vite/build/main--VWTbRdF.js
+// Restored from ref/.vite/build/main-r5HnecX_.js
 // Temporary quit approval state used by updater installs and app shutdown.
 
 type UnrefableTimer = ReturnType<typeof setTimeout> & {

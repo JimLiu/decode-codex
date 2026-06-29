@@ -1,4 +1,4 @@
-// Restored from ref/.vite/build/main--VWTbRdF.js
+// Restored from ref/.vite/build/main-r5HnecX_.js
 // Native About dialog HTML renderer.
 
 import type { AboutDialogHtmlOptions } from "./about-dialog-types";

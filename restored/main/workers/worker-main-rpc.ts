@@ -1,4 +1,4 @@
-// Restored from ref/.vite/build/main--VWTbRdF.js
+// Restored from ref/.vite/build/main-r5HnecX_.js
 // Public worker main-RPC surface re-exported for the Electron main process.
 
 export { createComputerUseCaptureMainRpcHandler } from "./worker-main-rpc/computer-use-handler";

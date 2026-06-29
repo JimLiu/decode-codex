@@ -1,4 +1,4 @@
-// Restored from ref/.vite/build/main--VWTbRdF.js
+// Restored from ref/.vite/build/main-r5HnecX_.js
 // Recoverable Chromium child-process-gone detection and deduplicated logging.
 
 import type { ChildProcessGoneDetails, StructuredLogger } from "./types";

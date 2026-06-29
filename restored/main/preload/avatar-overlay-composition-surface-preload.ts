@@ -1,5 +1,5 @@
 // Restored from ref/.vite/build/avatar-overlay-composition-surface-preload.js
-// avatar-overlay-composition-surface-preload chunk restored from the Codex webview bundle.
+// avatar-overlay-composition-surface-preload chunk restored from the Codex Electron main bundle.
 // Avatar overlay composition surface preload bridge.
 
 import { ipcRenderer } from "electron";
