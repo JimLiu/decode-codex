@@ -13109,13 +13109,13 @@
       "lastUpdated": "2026-06-28T21:05:00.000Z"
     },
     "app-initial~app-main~onboarding-page-BUwCKIcU": {
-      "restored": "vendor/app-main-current-runtime.ts",
+      "restored": "app-shared-runtime.ts",
       "exports": {
         "og": "getCodexWindowChrome",
         "sg": "initAppFeatureRuntimeChunk"
       },
-      "status": "partial",
-      "note": "Current app-main onboarding/shared producer facade for window chrome and feature runtime initialization; full producer remains an open partial boundary.",
+      "status": "restored-wiring",
+      "note": "App code semantically restored across restored/ domain folders (composer/, review/, conversations/, onboarding/, terminal/, automations/, ui/, plugins/, worktree/, image-side-panel/, utils/, app-shell/, settings/, browser/, find/, thread/, runtime/, connectors/, sidebar/, icons/, github/, collaboration/). Bundled vendor (react/react-dom/react-intl/xterm/d3/@dnd-kit/anser/rrule/marked) boundary-ized to npm. app-shared-runtime.ts is the 1280-symbol public barrel; it re-exports from the ref chunk as an open boundary while per-symbol wiring to restored modules and boundaries/*.facade resolution complete. 0-export internal sub-modules (batches 38/39/47-52) remain to be restored.",
       "lastUpdated": "2026-06-28T21:05:00.000Z"
     },
     "app-initial~app-main~worktree-init-v2-page~appgen-settings-page~page~appgen-page~remote-con~di269h6j-x1JD0lOF": {
