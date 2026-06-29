@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/legacy-video-plugins-BKJsmZCC.js
+// Restored from ref/webview/assets/legacy-video-plugins-B3g7QTf7.js
 export type LegacyVideoPluginTarget = {
   _plugins?: unknown;
 };

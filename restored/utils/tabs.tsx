@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/tabs-kToUPTsC.js
+// Restored from ref/webview/assets/tabs-BAeCIxNQ.js
 // Updated with exports from ref/webview/assets/tabs-Bltkr1kO.js.
 import clsx from "clsx";
 import type { MouseEventHandler, ReactNode, Ref, WheelEvent } from "react";

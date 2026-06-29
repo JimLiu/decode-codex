@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/use-home-directory-7PtGooXU.js
+// Restored from ref/webview/assets/use-home-directory-BQI_zVh8.js
 // Home directory query hooks for a selected host.
 
 import { _appScopeA as useScopedSignalValue } from "../boundaries/app-scope";

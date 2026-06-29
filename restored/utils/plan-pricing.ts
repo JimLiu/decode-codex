@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/plan-pricing-BL-ew2t5.js
+// Restored from ref/webview/assets/plan-pricing-L0fVJY25.js
 // Also matches ref/webview/assets/plan-pricing-dtn4oxxh.js.
 import { once } from "../runtime/commonjs-interop";
 

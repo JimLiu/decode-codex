@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/open-in-targets-query-B1vT8sW1.js
+// Restored from ref/webview/assets/open-in-targets-query-iQfifJeS.js
 // Open-in-targets query restored from the current Codex webview bundle.
 import { _appScopeM } from "../boundaries/app-scope";
 import { vscodeApiUnderscore, vscodeApiU } from "../boundaries/vscode-api";

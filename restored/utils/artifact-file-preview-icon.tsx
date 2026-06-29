@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/artifact-file-preview-icon-LMyZNsDA.js
+// Restored from ref/webview/assets/artifact-file-preview-icon-CMIbYvOS.js
 // Also matches ref/webview/assets/artifact-file-preview-icon-DejMdUR4.js.
 // Artifact file preview icon restored from the Codex webview bundle.
 import type { ComponentType, SVGProps } from "react";

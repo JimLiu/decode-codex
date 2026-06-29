@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/init-B2r4ykR3.js
+// Restored from ref/webview/assets/init-DU5j7PcD.js
 // init-B2r4ykR3 chunk restored from the Codex webview bundle.
 type RangeDomainInitializer = {
   range(value?: unknown): {

@@ -15100,6 +15100,326 @@
       "note": "Current locale-data chunk keeps the restored locale export API.",
       "aliasOf": "zh-TW-DZA9KvlM",
       "lastUpdated": "2026-06-29T00:00:00.000Z"
+    },
+    "apps-availability-D1MVObnB": {
+      "restored": "utils/apps-availability.ts",
+      "exports": {
+        "n": "useAppsAvailability",
+        "t": "initAppsAvailabilityChunk"
+      },
+      "status": "done",
+      "note": "Current utility chunk keeps the restored public API; alias added after current ref sync.",
+      "aliasOf": "apps-availability-Bwg8fjlM",
+      "lastUpdated": "2026-06-29T00:00:00.000Z"
+    },
+    "array-Q5SdTH7L": {
+      "restored": "utils/array.ts",
+      "exports": {
+        "t": "array"
+      },
+      "status": "done",
+      "aliasOf": "array-hqvMvHot",
+      "lastUpdated": "2026-06-29T00:00:00.000Z",
+      "note": "Current utility chunk keeps the restored public API; alias added after current ref sync."
+    },
+    "artifact-file-preview-icon-CMIbYvOS": {
+      "restored": "utils/artifact-file-preview-icon.tsx",
+      "exports": {
+        "n": "initArtifactFilePreviewIconChunk",
+        "t": "ArtifactFilePreviewIcon"
+      },
+      "status": "done",
+      "aliasOf": "artifact-file-preview-icon-LMyZNsDA",
+      "lastUpdated": "2026-06-29T00:00:00.000Z",
+      "note": "Current utility chunk keeps the restored public API; alias added after current ref sync."
+    },
+    "chunk-KS23V3DP-CXu2WtWu": {
+      "restored": "utils/chunk-ks23-v3-dp.ts",
+      "exports": {
+        "t": "ChunkKS23V3DP"
+      },
+      "status": "done",
+      "aliasOf": "chunk-KS23V3DP-aPas0hZ5",
+      "lastUpdated": "2026-06-29T00:00:00.000Z",
+      "note": "Current utility chunk keeps the restored public API; alias added after current ref sync."
+    },
+    "control-group-g0j1uRO5": {
+      "restored": "utils/control-group.tsx",
+      "exports": {
+        "t": "ControlGroup"
+      },
+      "status": "done",
+      "aliasOf": "control-group-D6VRtZJR",
+      "lastUpdated": "2026-06-29T00:00:00.000Z",
+      "note": "Current utility chunk keeps the restored public API; alias added after current ref sync."
+    },
+    "edit_files_animation-DbcPz_Aa": {
+      "restored": "utils/edit-files-animation.ts",
+      "exports": {
+        "default": "editFilesAnimation"
+      },
+      "status": "done",
+      "aliasOf": "edit_files_animation-DXBLSnEM",
+      "lastUpdated": "2026-06-29T00:00:00.000Z",
+      "note": "Current utility chunk keeps the restored public API; alias added after current ref sync."
+    },
+    "gracefulDecodeURIComponent-LfJMBovP": {
+      "restored": "utils/graceful-decode-uri-component.ts",
+      "exports": {
+        "t": "gracefulDecodeURIComponent"
+      },
+      "status": "done",
+      "aliasOf": "gracefulDecodeURIComponent-DByonkCa",
+      "lastUpdated": "2026-06-29T00:00:00.000Z",
+      "note": "Current utility chunk keeps the restored public API; alias added after current ref sync."
+    },
+    "highlight-code-CpOO4cTB": {
+      "restored": "utils/highlight-code.ts",
+      "exports": {
+        "highlightCode": "highlightCode"
+      },
+      "status": "done",
+      "aliasOf": "highlight-code-BntQZ0HZ",
+      "lastUpdated": "2026-06-29T00:00:00.000Z",
+      "note": "Current utility chunk keeps the restored public API; alias added after current ref sync."
+    },
+    "hotkey-window-detail-layout-BKPOZ5YH": {
+      "restored": "utils/hotkey-window-detail-layout.tsx",
+      "exports": {
+        "HotkeyWindowDetailLayout": "HotkeyWindowDetailLayout"
+      },
+      "status": "done",
+      "aliasOf": "hotkey-window-detail-layout-psE94glX",
+      "lastUpdated": "2026-06-29T00:00:00.000Z",
+      "note": "Current utility chunk keeps the restored public API; alias added after current ref sync."
+    },
+    "init-DU5j7PcD": {
+      "restored": "utils/init.ts",
+      "exports": {
+        "t": "init"
+      },
+      "status": "done",
+      "aliasOf": "init-B2r4ykR3",
+      "lastUpdated": "2026-06-29T00:00:00.000Z",
+      "note": "Current utility chunk keeps the restored public API; alias added after current ref sync."
+    },
+    "is-plan-event-enabled-Cr4BiXzc": {
+      "restored": "utils/is-plan-event-enabled.ts",
+      "exports": {
+        "t": "isPlanEventEnabled"
+      },
+      "status": "done",
+      "aliasOf": "is-plan-event-enabled-yBXVgx1W",
+      "lastUpdated": "2026-06-29T00:00:00.000Z",
+      "note": "Current utility chunk keeps the restored public API; alias added after current ref sync."
+    },
+    "legacy-video-plugins-B3g7QTf7": {
+      "restored": "utils/legacy-video-plugins.ts",
+      "exports": {
+        "loadLegacyVideoPlugins": "loadLegacyVideoPlugins"
+      },
+      "status": "done",
+      "aliasOf": "legacy-video-plugins-BKJsmZCC",
+      "lastUpdated": "2026-06-29T00:00:00.000Z",
+      "note": "Current utility chunk keeps the restored public API; alias added after current ref sync."
+    },
+    "open-in-targets-query-iQfifJeS": {
+      "restored": "utils/open-in-targets-query.ts",
+      "exports": {
+        "n": "openInTargetsQuery",
+        "t": "initOpenInTargetsQueryChunk"
+      },
+      "status": "done",
+      "note": "Current utility chunk keeps the restored public API; alias added after current ref sync.",
+      "aliasOf": "open-in-targets-query-B1vT8sW1",
+      "lastUpdated": "2026-06-29T00:00:00.000Z"
+    },
+    "ordinal-BBV4AAIZ": {
+      "restored": "utils/ordinal.ts",
+      "exports": {
+        "t": "Ordinal"
+      },
+      "status": "done",
+      "aliasOf": "ordinal-jw163_Ud",
+      "lastUpdated": "2026-06-29T00:00:00.000Z",
+      "note": "Current utility chunk keeps the restored public API; alias added after current ref sync."
+    },
+    "permission-request-model-DtxJl8qA": {
+      "restored": "utils/permission-request-model.ts",
+      "exports": {
+        "n": "initPermissionRequestModelChunk",
+        "t": "permissionRequestModel"
+      },
+      "status": "done",
+      "note": "Current utility chunk keeps the restored public API; alias added after current ref sync.",
+      "aliasOf": "permission-request-model-CdaesUo1",
+      "lastUpdated": "2026-06-29T00:00:00.000Z"
+    },
+    "plan-pricing-L0fVJY25": {
+      "restored": "utils/plan-pricing.ts",
+      "exports": {
+        "n": "formatPlanPriceParts",
+        "t": "formatPlanPrice"
+      },
+      "status": "done",
+      "aliasOf": "plan-pricing-dtn4oxxh",
+      "lastUpdated": "2026-06-29T00:00:00.000Z",
+      "note": "Current utility chunk keeps the restored public API; alias added after current ref sync."
+    },
+    "routing-middleware-BMBY4FI3": {
+      "restored": "utils/routing-middleware.ts",
+      "exports": {
+        "tsubMiddleware": "tsubMiddleware"
+      },
+      "status": "done",
+      "aliasOf": "routing-middleware-n84m0mKl",
+      "lastUpdated": "2026-06-29T00:00:00.000Z",
+      "note": "Current utility chunk keeps the restored public API; alias added after current ref sync."
+    },
+    "run_command_animation-Bc7b6FLY": {
+      "restored": "utils/run-command-animation.ts",
+      "exports": {
+        "default": "runCommandAnimation"
+      },
+      "status": "done",
+      "aliasOf": "run_command_animation-5_Btvv_W",
+      "lastUpdated": "2026-06-29T00:00:00.000Z",
+      "note": "Current utility chunk keeps the restored public API; alias added after current ref sync."
+    },
+    "schema-filter-CwY0F20C": {
+      "restored": "utils/schema-filter.ts",
+      "exports": {
+        "schemaFilter": "schemaFilter"
+      },
+      "status": "done",
+      "aliasOf": "schema-filter-r146tzO0",
+      "lastUpdated": "2026-06-29T00:00:00.000Z",
+      "note": "Current utility chunk keeps the restored public API; alias added after current ref sync."
+    },
+    "segmented-toggle-WuxzI5uh": {
+      "restored": "utils/segmented-toggle.tsx",
+      "exports": {
+        "t": "SegmentedToggle"
+      },
+      "status": "done",
+      "aliasOf": "segmented-toggle-De13HuEU",
+      "lastUpdated": "2026-06-29T00:00:00.000Z",
+      "note": "Current utility chunk keeps the restored public API; alias added after current ref sync."
+    },
+    "settings-empty-state-CM9NvhM7": {
+      "restored": "utils/settings-empty-state.tsx",
+      "exports": {
+        "t": "SettingsEmptyState"
+      },
+      "status": "done",
+      "aliasOf": "settings-empty-state-BJurZrU4",
+      "lastUpdated": "2026-06-29T00:00:00.000Z",
+      "note": "Current utility chunk keeps the restored public API; alias added after current ref sync."
+    },
+    "setup-codex-wizard-step-view-DkZFzDpn": {
+      "restored": "utils/setup-codex-wizard-step-view.ts",
+      "exports": {
+        "t": "useSetupCodexWizardStepView"
+      },
+      "status": "done",
+      "aliasOf": "setup-codex-wizard-step-view-BQ0iTw_T",
+      "lastUpdated": "2026-06-29T00:00:00.000Z",
+      "note": "Current utility chunk keeps the restored public API; alias added after current ref sync."
+    },
+    "tabs-BAeCIxNQ": {
+      "restored": "utils/tabs.tsx",
+      "exports": {
+        "n": "initTabsChunk",
+        "t": "Tabs"
+      },
+      "status": "done",
+      "aliasOf": "tabs-kToUPTsC",
+      "lastUpdated": "2026-06-29T00:00:00.000Z",
+      "note": "Current utility chunk keeps the restored public API; alias added after current ref sync."
+    },
+    "use-ascii-engine-rUFCM5yi": {
+      "restored": "utils/use-ascii-engine.tsx",
+      "exports": {
+        "n": "AsciiCanvas",
+        "t": "useAsciiEngine"
+      },
+      "status": "done",
+      "aliasOf": "use-ascii-engine-B9cDslGS",
+      "lastUpdated": "2026-06-29T00:00:00.000Z",
+      "note": "Current utility chunk keeps the restored public API; alias added after current ref sync."
+    },
+    "use-avatar-options-C2NT8j2m": {
+      "restored": "utils/use-avatar-options.ts",
+      "exports": {
+        "t": "useAvatarOptions"
+      },
+      "status": "done",
+      "aliasOf": "use-avatar-options-CgrFoUM_",
+      "lastUpdated": "2026-06-29T00:00:00.000Z",
+      "note": "Current utility chunk keeps the restored public API; alias added after current ref sync."
+    },
+    "use-element-in-view-lTZiz79I": {
+      "restored": "utils/use-element-in-view.ts",
+      "exports": {
+        "t": "useElementInView"
+      },
+      "status": "done",
+      "aliasOf": "use-element-in-view-DpAyOq4x",
+      "lastUpdated": "2026-06-29T00:00:00.000Z",
+      "note": "Current utility chunk keeps the restored public API; alias added after current ref sync."
+    },
+    "use-floating-window-pointer-interactivity-E5PfEveH": {
+      "restored": "utils/use-floating-window-pointer-interactivity.ts",
+      "exports": {
+        "t": "useFloatingWindowPointerInteractivity"
+      },
+      "status": "done",
+      "aliasOf": "use-floating-window-pointer-interactivity-BkGtHiAv",
+      "lastUpdated": "2026-06-29T00:00:00.000Z",
+      "note": "Current utility chunk keeps the restored public API; alias added after current ref sync."
+    },
+    "use-git-recent-branches-C6O5sB4S": {
+      "restored": "utils/use-git-recent-branches.ts",
+      "exports": {
+        "t": "useGitRecentBranches",
+        "n": "initUseGitRecentBranchesChunk"
+      },
+      "status": "done",
+      "note": "Current utility chunk keeps the restored public API; alias added after current ref sync.",
+      "aliasOf": "use-git-recent-branches-Bf3U6kni",
+      "lastUpdated": "2026-06-29T00:00:00.000Z"
+    },
+    "use-home-directory-BQI_zVh8": {
+      "restored": "utils/use-home-directory.ts",
+      "exports": {
+        "n": "useHomeDirectoryQuery",
+        "t": "useHomeDirectory"
+      },
+      "status": "done",
+      "aliasOf": "use-home-directory-CVo0R7Wz",
+      "lastUpdated": "2026-06-29T00:00:00.000Z",
+      "note": "Current utility chunk keeps the restored public API; alias added after current ref sync."
+    },
+    "use-hotkey-window-dismiss-on-escape-Dpt2emga": {
+      "restored": "utils/use-hotkey-window-dismiss-on-escape.ts",
+      "exports": {
+        "t": "useHotkeyWindowDismissOnEscape"
+      },
+      "status": "done",
+      "aliasOf": "use-hotkey-window-dismiss-on-escape-CATf2BNk",
+      "lastUpdated": "2026-06-29T00:00:00.000Z",
+      "note": "Current utility chunk keeps the restored public API; alias added after current ref sync."
+    },
+    "use-media-query-B9nva7HK": {
+      "restored": "utils/use-media-query.ts",
+      "exports": {
+        "n": "useMediaQuery",
+        "t": "initUseMediaQueryChunk"
+      },
+      "status": "done",
+      "aliasOf": "use-media-query-_Pl2VYyH",
+      "lastUpdated": "2026-06-29T00:00:00.000Z",
+      "note": "Current utility chunk keeps the restored public API; alias added after current ref sync."
     }
   }
 }

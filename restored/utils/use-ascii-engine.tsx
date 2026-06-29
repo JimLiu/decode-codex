@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/use-ascii-engine-B9cDslGS.js
+// Restored from ref/webview/assets/use-ascii-engine-rUFCM5yi.js
 // Renders generated ASCII frames to a crisp canvas and drives the login/onboarding ASCII animation.
 import React from "react";
 type AsciiEngineMode = "noise" | "video" | "composite";

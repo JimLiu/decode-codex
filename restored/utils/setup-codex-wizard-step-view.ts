@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/setup-codex-wizard-step-view-BS-WCe9O.js
+// Restored from ref/webview/assets/setup-codex-wizard-step-view-DkZFzDpn.js
 // Tracks one-time onboarding wizard step view events.
 
 import { useEffect, useRef } from "react";

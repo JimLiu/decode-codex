@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/schema-filter-r146tzO0.js
+// Restored from ref/webview/assets/schema-filter-CwY0F20C.js
 // schema-filter-r146tzO0 chunk restored from the Codex webview bundle.
 import { isPlanEventEnabled } from "./is-plan-event-enabled";
 type PlanEventConfig = {

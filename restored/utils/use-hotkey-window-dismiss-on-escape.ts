@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/use-hotkey-window-dismiss-on-escape-CATf2BNk.js; synced with ref/webview/assets/use-hotkey-window-dismiss-on-escape-VmyxFZVg.js.
+// Restored from ref/webview/assets/use-hotkey-window-dismiss-on-escape-Dpt2emga.js
 import React from "react";
 import { appServices } from "../boundaries/rpc.facade";
 

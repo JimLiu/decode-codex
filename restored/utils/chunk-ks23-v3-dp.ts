@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/chunk-KS23V3DP-DDeE2zpr.js
+// Restored from ref/webview/assets/chunk-KS23V3DP-CXu2WtWu.js
 // Mermaid package metadata shared by generated Mermaid diagram chunks.
 
 import { once } from "../runtime/commonjs-interop";

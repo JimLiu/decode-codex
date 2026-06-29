@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/control-group-D6VRtZJR.js; synced with ref/webview/assets/control-group-D_h8av5f.js.
+// Restored from ref/webview/assets/control-group-g0j1uRO5.js
 // control-group-D6VRtZJR chunk restored from the Codex webview bundle.
 import type { ReactNode } from "react";
 import clsx from "clsx";

@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/hotkey-window-detail-layout-psE94glX.js
+// Restored from ref/webview/assets/hotkey-window-detail-layout-BKPOZ5YH.js
 
 import React, { type ReactNode } from "react";
 import { vscodeApiF } from "../boundaries/vscode-api";

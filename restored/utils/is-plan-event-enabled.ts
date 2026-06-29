@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/is-plan-event-enabled-yBXVgx1W.js
+// Restored from ref/webview/assets/is-plan-event-enabled-Cr4BiXzc.js
 // is-plan-event-enabled-yBXVgx1W chunk restored from the Codex webview bundle.
 type PlanEventDefaults = {
   __default?: {

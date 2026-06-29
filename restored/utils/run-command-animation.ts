@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/run_command_animation-5_Btvv_W.js
+// Restored from ref/webview/assets/run_command_animation-Bc7b6FLY.js
 // RunCommandAnimation chunk restored from the Codex webview bundle.
 export const runCommandAnimation = {
   v: "5.7.0",

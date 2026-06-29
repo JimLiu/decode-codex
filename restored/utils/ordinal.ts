@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/ordinal-jw163_Ud.js
+// Restored from ref/webview/assets/ordinal-BBV4AAIZ.js
 // ordinal-jw163_Ud chunk restored from the Codex webview bundle.
 import { init } from "./init";
 type InternKey = unknown;

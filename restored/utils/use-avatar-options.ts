@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/use-avatar-options-B31DUULL.js
+// Restored from ref/webview/assets/use-avatar-options-C2NT8j2m.js
 import { _appScopeS as useSignalValue } from "../boundaries/app-scope";
 import { once } from "../runtime/commonjs-interop";
 import {

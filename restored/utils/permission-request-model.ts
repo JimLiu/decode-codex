@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/permission-request-model-CdaesUo1.js
+// Restored from ref/webview/assets/permission-request-model-DtxJl8qA.js
 // Permission request model restored from the current Codex webview bundle.
 type FileSystemSpecialPath =
   | { kind: "root" }

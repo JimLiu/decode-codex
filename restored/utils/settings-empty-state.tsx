@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/settings-empty-state-DoYKl5S1.js
+// Restored from ref/webview/assets/settings-empty-state-CM9NvhM7.js
 // Shared empty-state container for settings pages.
 
 import type { ReactNode } from "react";

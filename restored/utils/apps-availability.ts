@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/apps-availability-DNfyqHL8.js
+// Restored from ref/webview/assets/apps-availability-D1MVObnB.js
 import {
   _appScopeA as useAppScopeQuery,
   _appScopeO as useAppScope,

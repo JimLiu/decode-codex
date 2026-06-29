@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/highlight-code-BntQZ0HZ.js
+// Restored from ref/webview/assets/highlight-code-CpOO4cTB.js
 // highlight-code-BntQZ0HZ chunk restored from the Codex webview bundle.
 import highlightJs from "highlight.js/lib/core";
 import arduino from "highlight.js/lib/languages/arduino";
