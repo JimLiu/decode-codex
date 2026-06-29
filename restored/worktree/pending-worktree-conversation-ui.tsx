@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/worktree-init-v2-page-BAfwy1p_.js
+// Restored from ref/webview/assets/worktree-init-v2-page-CAOv319r.js
 // Pending worktree route UI and recovery flow.
 import React, { type ReactNode } from "react";
 import { Navigate, useParams } from "../vendor/react-router";
@@ -66,7 +66,10 @@ import {
   oa as UserMessageBubbleRaw,
   zt as PullRequestNumberBadgeRaw,
 } from "../vendor/profile-page-runtime";
-import { Rt as useComposerPrefillRaw } from "../vendor/pull-request-thread-actions-runtime";
+import {
+  initComposerPrefillChunk as initComposerPrefillChunkRaw,
+  useComposerPrefill as useComposerPrefillRaw,
+} from "../boundaries/current-ref/composer-prefill-producer";
 
 type AppScopeLike = {
   get<TValue = unknown>(signal: unknown, key?: unknown): TValue;
@@ -179,6 +182,7 @@ export const initPendingWorktreeChunk = once(() => {
   initLocalConversationNavigationRuntime();
   initAppServerMutationRuntime();
   initButtonComponentPrimitives();
+  initComposerPrefillChunkRaw();
 });
 
 export function PendingWorktreeConversation({
