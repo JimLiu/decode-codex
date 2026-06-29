@@ -3,7 +3,7 @@
 
 import { readFile, writeFile } from "node:fs/promises";
 import { join } from "node:path";
-import { zr as parseTomlConfig } from "../../boundaries/shared-node-runtime.facade";
+import { parseTomlConfig } from "../../boundaries/shared-node-runtime.facade";
 import { COMPUTER_USE_PLUGIN_NAME, PREVIOUS_NOTIFY_ARG } from "./constants";
 import { isPathInsideRoot } from "./paths";
 import type { LocalMigrationLogger } from "./types";

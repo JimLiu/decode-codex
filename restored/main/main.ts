@@ -739,9 +739,13 @@ function registerMainIpcHandlers({
 async function runMainAppStartup(): Promise<void> {
   const runtime = getDesktopRuntimeState();
   const buildFlavor = runtime.buildFlavor as BuildFlavorValue;
-  const rootLogger = (sharedRuntime.ei as () => StructuredRootLogger)();
+  const rootLogger = (
+    sharedRuntime.getRootStructuredLogger as () => StructuredRootLogger
+  )();
   const startupLogger = (
-    sharedRuntime.ti as (scope: string) => StructuredRootLogger
+    sharedRuntime.createScopedStructuredLogger as (
+      scope: string,
+    ) => StructuredRootLogger
   )("startup");
   const errorReporter = createDesktopErrorReporter(runtime.desktopSentry);
   const telemetry = createStartupTelemetryHelpers({

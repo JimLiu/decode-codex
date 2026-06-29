@@ -280,7 +280,9 @@ type ProcessWithLinkedBinding = NodeJS.Process & {
 };
 
 const requireFromWorkspaceBoundary = createRequire(import.meta.url);
-const loggerFactory = sharedRuntime.ni as (scope: string) => () => {
+const loggerFactory = sharedRuntime.createLazyScopedStructuredLogger as (
+  scope: string,
+) => () => {
   error(message: string, details?: unknown): void;
   debug?(message: string, details?: unknown): void;
   info?(message: string, details?: unknown): void;
@@ -315,11 +317,14 @@ function logScopedMessage(
   }
   logger.debug?.(message, details);
 }
-const parseAppBrand = sharedRuntime.xc as (
+const parseAppBrand = sharedRuntime.parseRuntimeAppBrand as (
   value: string | undefined,
 ) => unknown;
-const defaultBrand = (sharedRuntime.yc as { Codex?: unknown }).Codex;
-const brandDisplayName = sharedRuntime.bc as (brand: unknown) => string;
+const defaultBrand = (sharedRuntime.RuntimeAppBrands as { Codex?: unknown })
+  .Codex;
+const brandDisplayName = sharedRuntime.getRuntimeAppBrandDisplayName as (
+  brand: unknown,
+) => string;
 
 const AVATAR_OVERLAY_OPEN_CHANNEL = "electron-avatar-overlay-open";
 const LOCAL_REMOTE_CONTROL_INSTALLATION_ID_KEY =
@@ -593,21 +598,21 @@ function hasPathTraversal(value: string): boolean {
 }
 
 function normalizeBundlePath(value: string): string {
-  const normalize = sharedRuntime.Ts as
+  const normalize = sharedRuntime.normalizePathSeparators as
     | ((pathValue: string) => string)
     | undefined;
   return typeof normalize === "function" ? normalize(value) : value;
 }
 
 function toNativeFilePath(value: string): string {
-  const convert = sharedRuntime.Es as
+  const convert = sharedRuntime.stripLeadingSlashFromWindowsDrivePath as
     | ((pathValue: string) => string)
     | undefined;
   return typeof convert === "function" ? convert(value) : value;
 }
 
 function isSafeAbsoluteFilePath(value: string): boolean {
-  const isSafe = sharedRuntime.Ss as
+  const isSafe = sharedRuntime.isAbsoluteFilePath as
     | ((pathValue: string) => boolean)
     | undefined;
   if (typeof isSafe === "function") return isSafe(value);
@@ -989,8 +994,8 @@ function normalizeOwlFeatureNames(featureNames: unknown): string[] {
 }
 
 function getSupportedOwlFeatureNames(): readonly string[] | null {
-  return Array.isArray(sharedRuntime.qi)
-    ? (sharedRuntime.qi as readonly string[])
+  return Array.isArray(sharedRuntime.owlFeatureNames)
+    ? (sharedRuntime.owlFeatureNames as readonly string[])
     : null;
 }
 
@@ -1098,8 +1103,8 @@ function createDesktopRuntimePaths({ moduleDir }: { moduleDir: string }): {
   globalState: KeyValueStore;
   settingsStore: SettingsStoreBoundary;
 } {
-  (sharedRuntime.Ar as (() => void) | undefined)?.();
-  const codexHome = (sharedRuntime.Ur as () => string)();
+  (sharedRuntime.openDesktopStateDatabase as (() => void) | undefined)?.();
+  const codexHome = (sharedRuntime.resolveCodexHome as () => string)();
   const desktopRoot = path.join(moduleDir, "..", "..");
   const repoRoot = path.join(desktopRoot, "..");
   const globalStatePath = path.join(codexHome, ".codex-global-state.json");
@@ -1115,10 +1120,16 @@ function createDesktopRuntimePaths({ moduleDir }: { moduleDir: string }): {
     process.platform === "win32" &&
     process.env.WSL_DISTRO_NAME == null &&
     settingsStore.getEffective(getRunCodexInWslSettingKey()) === true &&
-    (sharedRuntime.Kr as (() => unknown | null) | undefined)?.() != null;
-  (sharedRuntime.Yr as ((callback: () => boolean) => void) | undefined)?.(
-    () => shouldSpawnInsideWsl,
-  );
+    (
+      sharedRuntime.resolveDefaultWslDistro as
+        | (() => unknown | null)
+        | undefined
+    )?.() != null;
+  (
+    sharedRuntime.registerShouldSpawnInsideWsl as
+      | ((callback: () => boolean) => void)
+      | undefined
+  )?.(() => shouldSpawnInsideWsl);
   applyNativeThemeSource(
     String(
       settingsStore.getEffective(getAppearanceThemeSettingKey()) ?? "system",
@@ -1670,7 +1681,7 @@ class DesktopUpdateManagerImpl implements DesktopUpdateManager {
 
   private resolveWindowsStoreBuildVersion(): string {
     const appVersion = app.getVersion().trim();
-    const normalizeVersion = sharedRuntime.mc as
+    const normalizeVersion = sharedRuntime.windowsVersionFromBuildVersion as
       | ((value: string) => string)
       | undefined;
     try {
@@ -2962,7 +2973,7 @@ function relaunchNotificationPeriodMs(policy: RelaunchPolicy): number {
 
 function isCurrentBuildOlderThanDays(days: number | null): boolean {
   if (days == null || days < 7) return false;
-  const parseBuildDate = sharedRuntime.fc as
+  const parseBuildDate = sharedRuntime.dateFromDateEncodedBuildVersion as
     | ((version: string) => Date | null)
     | undefined;
   const buildDate = parseBuildDate?.(app.getVersion()) ?? null;
@@ -3090,7 +3101,7 @@ function installDesktopLogBridge(
   const consoleLog = createConsoleLogWriter();
   const enabledLevelSet = new Set(enabledLevels);
   const shouldLog = (level: string) => {
-    const runtimeShouldLog = sharedRuntime.h as
+    const runtimeShouldLog = sharedRuntime.isLogLevelEnabled as
       | ((level: string, enabled: Iterable<string>) => boolean)
       | undefined;
     return typeof runtimeShouldLog === "function"
@@ -3131,7 +3142,7 @@ function installDesktopLogBridge(
       logAtLevel(level, message, details),
     dispose() {},
   };
-  const registerLogger = sharedRuntime.ii as
+  const registerLogger = sharedRuntime.registerRootStructuredLogger as
     | ((logger: typeof registeredLogger) => void)
     | undefined;
   registerLogger?.(registeredLogger);
@@ -3174,7 +3185,7 @@ function parseCodexDeepLink(value: string): DeepLinkRoute | null {
       if (deepLinkPathSegments(url)[0] === "new") {
         return parseNewThreadDeepLink(url) ?? { kind: "newThread" };
       }
-      const parseLocalConversation = sharedRuntime.ha as
+      const parseLocalConversation = sharedRuntime.parseCodexThreadDeepLink as
         | ((
             url: URL,
             options: { allowExtraPathSegments: boolean },
@@ -3316,7 +3327,7 @@ function parsePluginDetailDeepLink(url: URL): DeepLinkRoute | null {
   if (extraSegment != null) return null;
   const pluginName = decodeDeepLinkSegment(encodedPluginName);
   if (pluginName == null) return null;
-  const toPluginId = sharedRuntime.da as
+  const toPluginId = sharedRuntime.parsePluginIdentifier as
     | ((name: string) => unknown)
     | undefined;
   const pluginId = toPluginId?.(pluginName);
@@ -3326,7 +3337,9 @@ function parsePluginDetailDeepLink(url: URL): DeepLinkRoute | null {
     hostId: deepLinkSearchParam(url, "hostId"),
     pluginId,
     source:
-      deepLinkSearchParam(url, "source") === "manage" ? sharedRuntime.aa : null,
+      deepLinkSearchParam(url, "source") === "manage"
+        ? sharedRuntime.pluginManagePermission
+        : null,
   };
 }
 
@@ -3390,17 +3403,17 @@ function decodeDeepLinkSegment(value: string | undefined): string | null {
 }
 
 function isValidMarketplaceName(value: string | undefined): boolean {
-  const validate = sharedRuntime.ma as
+  const validate = sharedRuntime.isSafePathSegment as
     | ((name: string | undefined) => boolean)
     | undefined;
   return typeof validate === "function" ? validate(value) : Boolean(value);
 }
 
 function isSafeMarketplacePath(value: string): boolean {
-  const isSafePath = sharedRuntime.Ss as
+  const isSafePath = sharedRuntime.isAbsoluteFilePath as
     | ((pathValue: string) => boolean)
     | undefined;
-  const isPluginPathBlocked = sharedRuntime.Cs as
+  const isPluginPathBlocked = sharedRuntime.isUncPath as
     | ((pathValue: string) => boolean)
     | undefined;
   const safe =
@@ -3422,7 +3435,9 @@ function isWindowsProjectPath(value: string): boolean {
 
 function normalizeError(error: unknown): Error {
   if (error instanceof Error) return error;
-  const convert = sharedRuntime.bs as ((error: unknown) => Error) | undefined;
+  const convert = sharedRuntime.toError as
+    | ((error: unknown) => Error)
+    | undefined;
   return typeof convert === "function" ? convert(error) : Error(String(error));
 }
 
@@ -3436,8 +3451,12 @@ function createDeepLinkCoordinator({
 }: DeepLinkCoordinatorOptions): DeepLinkCoordinator {
   const pendingRoutes: DeepLinkRoute[] = [];
   const logger =
-    typeof sharedRuntime.ei === "function"
-      ? (sharedRuntime.ei as () => ReturnType<typeof runtimeLogger>)()
+    typeof sharedRuntime.getRootStructuredLogger === "function"
+      ? (
+          sharedRuntime.getRootStructuredLogger as () => ReturnType<
+            typeof runtimeLogger
+          >
+        )()
       : runtimeLogger();
 
   async function flushPendingDeepLinks(): Promise<void> {
@@ -3516,7 +3535,9 @@ function createDeepLinkCoordinator({
 }
 
 async function verifyStateDatabaseAvailable(): Promise<boolean> {
-  const openSqliteDatabase = sharedRuntime.Ar as (() => unknown) | undefined;
+  const openSqliteDatabase = sharedRuntime.openDesktopStateDatabase as
+    | (() => unknown)
+    | undefined;
   const database = openSqliteDatabase?.();
   if (database == null) {
     throw Error("SQLite is only available in the Electron app.");
@@ -4026,7 +4047,7 @@ const settingsLogger = loggerFactory("settings-store");
 function loadDesktopConfigFromToml(filePath: string): Record<string, unknown> {
   if (!existsSync(filePath)) return {};
   try {
-    const parseToml = sharedRuntime.zr as
+    const parseToml = sharedRuntime.parseTomlConfig as
       | ((text: string) => unknown)
       | undefined;
     if (typeof parseToml !== "function") return {};
@@ -4157,9 +4178,10 @@ function readLegacySettingValue(
         return undefined;
       }
       if (definition.key === getDefaultServiceTierSettingKey()) {
-        const readDefaultServiceTier = sharedRuntime.zi as
-          | ((atoms: Record<string, unknown>) => unknown)
-          | undefined;
+        const readDefaultServiceTier =
+          sharedRuntime.readDefaultServiceTierAtom as
+            | ((atoms: Record<string, unknown>) => unknown)
+            | undefined;
         return readDefaultServiceTier?.(persistedAtoms) ?? undefined;
       }
       return persistedAtoms[definition.hostStorage.key];
@@ -4261,7 +4283,7 @@ function safeParseSettingValue(
 
 function serializeDesktopSettingValue(key: string, value: unknown): unknown {
   const schema = getDesktopSettingSchema(key);
-  const serialize = sharedRuntime.Di as
+  const serialize = sharedRuntime.serializeSettingForToml as
     | ((schema: unknown, value: unknown) => unknown)
     | undefined;
   return typeof serialize === "function" && schema != null
@@ -4271,7 +4293,7 @@ function serializeDesktopSettingValue(key: string, value: unknown): unknown {
 
 function deserializeDesktopSettingValue(key: string, value: unknown): unknown {
   const schema = getDesktopSettingSchema(key);
-  const deserialize = sharedRuntime.Ei as
+  const deserialize = sharedRuntime.deserializeSettingFromToml as
     | ((schema: unknown, value: unknown) => unknown)
     | undefined;
   return typeof deserialize === "function" && schema != null
@@ -4280,7 +4302,7 @@ function deserializeDesktopSettingValue(key: string, value: unknown): unknown {
 }
 
 function getDesktopSettingDefinitions(): DesktopSettingDefinition[] {
-  const definitions = sharedRuntime.Oi as unknown;
+  const definitions = sharedRuntime.desktopSettingDefinitions as unknown;
   return Array.isArray(definitions)
     ? definitions.filter(isDesktopSettingDefinition)
     : [];
@@ -4289,7 +4311,7 @@ function getDesktopSettingDefinitions(): DesktopSettingDefinition[] {
 function getDesktopSettingDefinition(
   key: string,
 ): DesktopSettingDefinition | null {
-  const getDefinition = sharedRuntime.Si as
+  const getDefinition = sharedRuntime.getDesktopSettingDefinition as
     | ((key: string) => unknown)
     | undefined;
   const definition = getDefinition?.(key);
@@ -4297,7 +4319,9 @@ function getDesktopSettingDefinition(
 }
 
 function getDesktopSettingSchema(key: string): unknown {
-  const getSchema = sharedRuntime.Ci as ((key: string) => unknown) | undefined;
+  const getSchema = sharedRuntime.getDesktopSettingSchema as
+    | ((key: string) => unknown)
+    | undefined;
   return getSchema?.(key) ?? getDesktopSettingDefinition(key)?.schema;
 }
 
@@ -4373,21 +4397,21 @@ function persistGlobalStateMap(
 }
 
 function getDefaultGlobalStateValue(key: string): unknown {
-  const getDefault = sharedRuntime.Os as
+  const getDefault = sharedRuntime.getDefaultGlobalStateValue as
     | ((key: string) => unknown | null | undefined)
     | undefined;
   return getDefault?.(key) ?? null;
 }
 
 function getDefaultDesktopSettingValue(key: string): unknown {
-  const getSettingDefinition = sharedRuntime.Si as
+  const getSettingDefinition = sharedRuntime.getDesktopSettingDefinition as
     | ((key: string) => { default?: unknown } | null | undefined)
     | undefined;
   return getSettingDefinition?.(key)?.default;
 }
 
 function getDesktopFirstSeenAtMsKey(): string {
-  const desktopStateKeys = sharedRuntime.Ds as
+  const desktopStateKeys = sharedRuntime.desktopGlobalStateKeys as
     | { DESKTOP_FIRST_SEEN_AT_MS?: string }
     | undefined;
   return (
@@ -4396,7 +4420,7 @@ function getDesktopFirstSeenAtMsKey(): string {
 }
 
 function getWorkspaceRootOptionsKey(): string {
-  const desktopStateKeys = sharedRuntime.Ds as
+  const desktopStateKeys = sharedRuntime.desktopGlobalStateKeys as
     | { WORKSPACE_ROOT_OPTIONS?: string }
     | undefined;
   return (
@@ -4405,14 +4429,14 @@ function getWorkspaceRootOptionsKey(): string {
 }
 
 function getAppearanceThemeSettingKey(): string {
-  const appearanceSettings = sharedRuntime.Li as
+  const appearanceSettings = sharedRuntime.appearanceSettingDefinitions as
     | { theme?: { key?: string } }
     | undefined;
   return appearanceSettings?.theme?.key ?? "appearanceTheme";
 }
 
 function getRunCodexInWslSettingKey(): string {
-  const composerSettings = sharedRuntime.Pi as
+  const composerSettings = sharedRuntime.desktopPreferenceSettingDefinitions as
     | { runCodexInWsl?: { key?: string } }
     | undefined;
   return (
@@ -4421,14 +4445,14 @@ function getRunCodexInWslSettingKey(): string {
 }
 
 function getFollowUpQueueModeSettingKey(): string {
-  const composerSettings = sharedRuntime.Pi as
+  const composerSettings = sharedRuntime.desktopPreferenceSettingDefinitions as
     | { followUpQueueMode?: { key?: string } }
     | undefined;
   return composerSettings?.followUpQueueMode?.key ?? "followUpQueueMode";
 }
 
 function getComposerEnterBehaviorSettingKey(): string {
-  const composerSettings = sharedRuntime.Pi as
+  const composerSettings = sharedRuntime.desktopPreferenceSettingDefinitions as
     | { composerEnterBehavior?: { key?: string } }
     | undefined;
   return (
@@ -4437,7 +4461,7 @@ function getComposerEnterBehaviorSettingKey(): string {
 }
 
 function getKeepRemoteControlAwakeSettingKey(): string {
-  const composerSettings = sharedRuntime.Pi as
+  const composerSettings = sharedRuntime.desktopPreferenceSettingDefinitions as
     | { keepRemoteControlAwakeWhilePluggedIn?: { key?: string } }
     | undefined;
   return (
@@ -4447,7 +4471,7 @@ function getKeepRemoteControlAwakeSettingKey(): string {
 }
 
 function getPreventSleepWhileRunningSettingKey(): string {
-  const composerSettings = sharedRuntime.Pi as
+  const composerSettings = sharedRuntime.desktopPreferenceSettingDefinitions as
     | { preventSleepWhileRunning?: { key?: string } }
     | undefined;
   return (
@@ -4457,7 +4481,7 @@ function getPreventSleepWhileRunningSettingKey(): string {
 }
 
 function getDefaultServiceTierSettingKey(): string {
-  const serviceTierSettings = sharedRuntime.ji as
+  const serviceTierSettings = sharedRuntime.persistedAtomSettingDefinitions as
     | { defaultServiceTier?: { key?: string } }
     | undefined;
   return serviceTierSettings?.defaultServiceTier?.key ?? "default-service-tier";
@@ -4526,7 +4550,7 @@ function normalizeStructuredLogDetails(
 }
 
 function formatStructuredLogDetails(details: Record<string, unknown>): string {
-  const runtimeFormatter = sharedRuntime.$r as
+  const runtimeFormatter = sharedRuntime.formatStructuredLogDetails as
     | ((details: Record<string, unknown>) => string)
     | undefined;
   if (typeof runtimeFormatter === "function") return runtimeFormatter(details);

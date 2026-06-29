@@ -46,7 +46,8 @@ type StructuredLogger = {
 type LoggerFactory = (scope: string) => () => StructuredLogger;
 const DEFAULT_TRACE_REASON = "Desktop content trace recording";
 const gzip = promisify(zlib.gzip);
-const createScopedLogger = sharedRuntime.ni as LoggerFactory;
+const createScopedLogger =
+  sharedRuntime.createLazyScopedStructuredLogger as LoggerFactory;
 const logger = createScopedLogger("content-tracing");
 async function uploadTraceRecording({
   tracePath,

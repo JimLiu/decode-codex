@@ -74,14 +74,15 @@ export function getThreadFollowerRequestVersion(requestType: string): number {
 
 const requireFromFacade = createRequire(import.meta.url);
 
-export const yc = {
+export const RuntimeAppBrands = {
   Codex: "codex",
   ChatGPT: "chatgpt",
 } as const;
 
-export type RuntimeAppBrand = (typeof yc)[keyof typeof yc];
+export type RuntimeAppBrand =
+  (typeof RuntimeAppBrands)[keyof typeof RuntimeAppBrands];
 
-export const ks = {
+export const BuildFlavors = {
   Dev: "dev",
   Agent: "agent",
   Nightly: "nightly",
@@ -108,47 +109,54 @@ export const ks = {
   },
 };
 
-export function bc(brand: unknown): string | undefined {
+export function getRuntimeAppBrandDisplayName(
+  brand: unknown,
+): string | undefined {
   switch (brand) {
-    case yc.Codex:
+    case RuntimeAppBrands.Codex:
       return "Codex";
-    case yc.ChatGPT:
+    case RuntimeAppBrands.ChatGPT:
       return "ChatGPT";
     default:
       return undefined;
   }
 }
 
-export function xc(value: string | undefined): RuntimeAppBrand | null {
+export function parseRuntimeAppBrand(
+  value: string | undefined,
+): RuntimeAppBrand | null {
   const trimmed = value?.trim();
-  return trimmed === yc.Codex || trimmed === yc.ChatGPT ? trimmed : null;
+  return trimmed === RuntimeAppBrands.Codex ||
+    trimmed === RuntimeAppBrands.ChatGPT
+    ? trimmed
+    : null;
 }
 
 function buildFlavorSuffix(buildFlavor: string): string | null {
   switch (buildFlavor) {
-    case ks.Dev:
+    case BuildFlavors.Dev:
       return "Dev";
-    case ks.Agent:
+    case BuildFlavors.Agent:
       return "Agent";
-    case ks.Nightly:
+    case BuildFlavors.Nightly:
       return "Nightly";
-    case ks.InternalAlpha:
+    case BuildFlavors.InternalAlpha:
       return "Alpha";
-    case ks.PublicBeta:
+    case BuildFlavors.PublicBeta:
       return "Beta";
-    case ks.Prod:
+    case BuildFlavors.Prod:
       return null;
     default:
       return null;
   }
 }
 
-export function Ca(
+export function formatRuntimeAppName(
   buildFlavor: string,
-  brand: RuntimeAppBrand = yc.Codex,
+  brand: RuntimeAppBrand = RuntimeAppBrands.Codex,
 ): string {
   const suffix = buildFlavorSuffix(buildFlavor);
-  const displayName = bc(brand) ?? "Codex";
+  const displayName = getRuntimeAppBrandDisplayName(brand) ?? "Codex";
   return suffix == null ? displayName : `${displayName} (${suffix})`;
 }
 
@@ -222,7 +230,7 @@ class BufferedStructuredLogger implements StructuredLogger {
 let rootLogger: StructuredLogger = new BufferedStructuredLogger();
 let loggerWasRegistered = false;
 
-export function ii(logger: StructuredLogger): void {
+export function registerRootStructuredLogger(logger: StructuredLogger): void {
   if (
     loggerWasRegistered &&
     typeof process !== "undefined" &&
@@ -236,11 +244,13 @@ export function ii(logger: StructuredLogger): void {
   rootLogger = logger;
 }
 
-export function ei(): StructuredLogger {
+export function getRootStructuredLogger(): StructuredLogger {
   return rootLogger;
 }
 
-export function $r(details: Record<string, unknown>): string {
+export function formatStructuredLogDetails(
+  details: Record<string, unknown>,
+): string {
   const normalized: Record<string, unknown> = {};
   for (const [key, value] of Object.entries(details)) {
     if (key === "error" && value instanceof Error) {
@@ -279,14 +289,18 @@ function formatLogValue(value: unknown): string {
   return inspect(value);
 }
 
-export function ti(scope: string): StructuredLogger {
+export function createScopedStructuredLogger(scope: string): StructuredLogger {
   const prefix = `[${scope}] `;
   const write = (
     level: string,
     message: string,
     details?: StructuredLogDetails,
   ): void => {
-    ei().log(level, `${prefix}${message}`, normalizeLogDetails(details));
+    getRootStructuredLogger().log(
+      level,
+      `${prefix}${message}`,
+      normalizeLogDetails(details),
+    );
   };
   return {
     trace: (message, details) => write("trace", message, details),
@@ -295,14 +309,16 @@ export function ti(scope: string): StructuredLogger {
     warning: (message, details) => write("warning", message, details),
     error: (message, details) => write("error", message, details),
     log: write,
-    dispose: () => ei().dispose(),
+    dispose: () => getRootStructuredLogger().dispose(),
   };
 }
 
-export function ni(scope: string): () => StructuredLogger {
+export function createLazyScopedStructuredLogger(
+  scope: string,
+): () => StructuredLogger {
   let logger: StructuredLogger | null = null;
   return () => {
-    logger ??= ti(scope);
+    logger ??= createScopedStructuredLogger(scope);
     return logger;
   };
 }
@@ -315,7 +331,7 @@ const logLevelRank: Record<string, number> = {
   trace: 4,
 };
 
-export function h(level: string, maxLevel: string): boolean {
+export function isLogLevelEnabled(level: string, maxLevel: string): boolean {
   return (logLevelRank[level] ?? 99) <= (logLevelRank[maxLevel] ?? 99);
 }
 
@@ -326,7 +342,9 @@ const crashReporterEnv = new Set([
   "ELECTRON_CRASH_REPORTER_PROCESS_TYPE",
 ]);
 
-export function Qr<T extends Record<string, string | undefined>>(env: T): T {
+export function removeCrashReporterEnv<
+  T extends Record<string, string | undefined>,
+>(env: T): T {
   const cloned = { ...env };
   for (const key of Object.keys(cloned)) {
     if (crashReporterEnv.has(key.toUpperCase())) delete cloned[key];
@@ -334,7 +352,7 @@ export function Qr<T extends Record<string, string | undefined>>(env: T): T {
   return cloned;
 }
 
-export const Ds = {
+export const desktopGlobalStateKeys = {
   DESKTOP_FIRST_SEEN_AT_MS: "desktop-first-seen-at-ms",
   WORKSPACE_ROOT_OPTIONS: "electron-saved-workspace-roots",
   WORKSPACE_ROOT_LABELS: "electron-workspace-root-labels",
@@ -363,29 +381,29 @@ export const Ds = {
 };
 
 const defaultGlobalStateValues: Record<string, unknown> = {
-  [Ds.GIT_ALWAYS_FORCE_PUSH]: false,
-  [Ds.GIT_CREATE_PULL_REQUEST_AS_DRAFT]: true,
-  [Ds.GIT_PULL_REQUEST_MERGE_METHOD]: "merge",
-  [Ds.GIT_BRANCH_PREFIX]: "codex/",
-  [Ds.GIT_COMMIT_INSTRUCTIONS]: "",
-  [Ds.GIT_PR_INSTRUCTIONS]: "",
-  [Ds.SIDEBAR_PROJECT_THREAD_ORDERS]: {},
-  [Ds.PROJECT_APPEARANCES]: {},
-  [Ds.ADDED_REMOTE_CONTROL_ENV_IDS]: [],
-  [Ds.CODEX_MOBILE_SETUP_COMPLETED]: false,
-  [Ds.AMBIENT_SUGGESTIONS_ENABLED]: true,
-  [Ds.IA_WAITING_ON_USER_FOLLOWUP_SECONDS]: 1800,
-  [Ds.HOTKEY_WINDOW_PROJECTLESS_DEFAULT_ENABLED]: false,
-  [Ds.GLOBAL_DICTATION_KEEP_VISIBLE]: false,
-  [Ds.WORKTREE_AUTO_CLEANUP_ENABLED]: true,
-  [Ds.WORKTREE_KEEP_COUNT]: 15,
-  [Ds.BROWSER_DOWNLOAD_DIRECTORY]: null,
-  [Ds.BROWSER_DOWNLOAD_PROMPT_ENABLED]: false,
-  [Ds.DOCK_ICON_PREFERENCE]: "app-default",
-  [Ds.REDUCED_MOTION_PREFERENCE]: "system",
+  [desktopGlobalStateKeys.GIT_ALWAYS_FORCE_PUSH]: false,
+  [desktopGlobalStateKeys.GIT_CREATE_PULL_REQUEST_AS_DRAFT]: true,
+  [desktopGlobalStateKeys.GIT_PULL_REQUEST_MERGE_METHOD]: "merge",
+  [desktopGlobalStateKeys.GIT_BRANCH_PREFIX]: "codex/",
+  [desktopGlobalStateKeys.GIT_COMMIT_INSTRUCTIONS]: "",
+  [desktopGlobalStateKeys.GIT_PR_INSTRUCTIONS]: "",
+  [desktopGlobalStateKeys.SIDEBAR_PROJECT_THREAD_ORDERS]: {},
+  [desktopGlobalStateKeys.PROJECT_APPEARANCES]: {},
+  [desktopGlobalStateKeys.ADDED_REMOTE_CONTROL_ENV_IDS]: [],
+  [desktopGlobalStateKeys.CODEX_MOBILE_SETUP_COMPLETED]: false,
+  [desktopGlobalStateKeys.AMBIENT_SUGGESTIONS_ENABLED]: true,
+  [desktopGlobalStateKeys.IA_WAITING_ON_USER_FOLLOWUP_SECONDS]: 1800,
+  [desktopGlobalStateKeys.HOTKEY_WINDOW_PROJECTLESS_DEFAULT_ENABLED]: false,
+  [desktopGlobalStateKeys.GLOBAL_DICTATION_KEEP_VISIBLE]: false,
+  [desktopGlobalStateKeys.WORKTREE_AUTO_CLEANUP_ENABLED]: true,
+  [desktopGlobalStateKeys.WORKTREE_KEEP_COUNT]: 15,
+  [desktopGlobalStateKeys.BROWSER_DOWNLOAD_DIRECTORY]: null,
+  [desktopGlobalStateKeys.BROWSER_DOWNLOAD_PROMPT_ENABLED]: false,
+  [desktopGlobalStateKeys.DOCK_ICON_PREFERENCE]: "app-default",
+  [desktopGlobalStateKeys.REDUCED_MOTION_PREFERENCE]: "system",
 };
 
-export function Os(key: string): unknown {
+export function getDefaultGlobalStateValue(key: string): unknown {
   return defaultGlobalStateValues[key];
 }
 
@@ -484,7 +502,7 @@ function persistedAtomSetting(options: {
   };
 }
 
-export const Li = {
+export const appearanceSettingDefinitions = {
   theme: configurationSetting({
     agentAccess: "read-write",
     default: "system",
@@ -496,19 +514,19 @@ export const Li = {
     agentAccess: "read-write",
     default: "app-default",
     description: "Preferred macOS Dock icon",
-    key: Ds.DOCK_ICON_PREFERENCE,
+    key: desktopGlobalStateKeys.DOCK_ICON_PREFERENCE,
     schema: enumSchema(["app-default", "codex-light", "codex-dark"] as const),
   }),
   reducedMotionPreference: globalStateSetting({
     agentAccess: "read-write",
     default: "system",
     description: "Whether Codex reduces interface motion",
-    key: Ds.REDUCED_MOTION_PREFERENCE,
+    key: desktopGlobalStateKeys.REDUCED_MOTION_PREFERENCE,
     schema: enumSchema(["system", "on", "off"] as const),
   }),
 };
 
-export const Pi = {
+export const desktopPreferenceSettingDefinitions = {
   dictationDictionary: configurationSetting({
     agentAccess: "read-write",
     default: [],
@@ -589,12 +607,12 @@ export const Pi = {
     agentAccess: "read-write",
     default: false,
     description: "Whether new popout-window chats default to projectless mode",
-    key: Ds.HOTKEY_WINDOW_PROJECTLESS_DEFAULT_ENABLED,
+    key: desktopGlobalStateKeys.HOTKEY_WINDOW_PROJECTLESS_DEFAULT_ENABLED,
     schema: booleanSchema,
   }),
 };
 
-export const ji = {
+export const persistedAtomSettingDefinitions = {
   defaultServiceTier: persistedAtomSetting({
     agentAccess: "read-write",
     default: null,
@@ -616,42 +634,42 @@ const gitSettings = {
     agentAccess: "read-write",
     default: "codex/",
     description: "Prefix for branches Codex creates",
-    key: Ds.GIT_BRANCH_PREFIX,
+    key: desktopGlobalStateKeys.GIT_BRANCH_PREFIX,
     schema: stringSchema,
   }),
   alwaysForcePush: globalStateSetting({
     agentAccess: "read-write",
     default: false,
     description: "Whether Codex always force-pushes branches",
-    key: Ds.GIT_ALWAYS_FORCE_PUSH,
+    key: desktopGlobalStateKeys.GIT_ALWAYS_FORCE_PUSH,
     schema: booleanSchema,
   }),
   createPullRequestAsDraft: globalStateSetting({
     agentAccess: "read-write",
     default: true,
     description: "Whether Codex creates pull requests as drafts",
-    key: Ds.GIT_CREATE_PULL_REQUEST_AS_DRAFT,
+    key: desktopGlobalStateKeys.GIT_CREATE_PULL_REQUEST_AS_DRAFT,
     schema: booleanSchema,
   }),
   pullRequestMergeMethod: globalStateSetting({
     agentAccess: "read-write",
     default: "merge",
     description: "Preferred pull request merge method",
-    key: Ds.GIT_PULL_REQUEST_MERGE_METHOD,
+    key: desktopGlobalStateKeys.GIT_PULL_REQUEST_MERGE_METHOD,
     schema: enumSchema(["merge", "squash"] as const),
   }),
   commitInstructions: globalStateSetting({
     agentAccess: "read-only",
     default: "",
     description: "Custom git commit instructions",
-    key: Ds.GIT_COMMIT_INSTRUCTIONS,
+    key: desktopGlobalStateKeys.GIT_COMMIT_INSTRUCTIONS,
     schema: stringSchema,
   }),
   pullRequestInstructions: globalStateSetting({
     agentAccess: "read-only",
     default: "",
     description: "Custom pull request instructions",
-    key: Ds.GIT_PR_INSTRUCTIONS,
+    key: desktopGlobalStateKeys.GIT_PR_INSTRUCTIONS,
     schema: stringSchema,
   }),
 };
@@ -662,14 +680,14 @@ const browserSettings = {
     default: null,
     description:
       "Folder where files downloaded by the in-app browser are saved",
-    key: Ds.BROWSER_DOWNLOAD_DIRECTORY,
+    key: desktopGlobalStateKeys.BROWSER_DOWNLOAD_DIRECTORY,
     schema: nullableStringSchema,
   }),
   promptForDownloadLocation: globalStateSetting({
     agentAccess: "hidden",
     default: false,
     description: "Whether manual browser downloads ask where to save each file",
-    key: Ds.BROWSER_DOWNLOAD_PROMPT_ENABLED,
+    key: desktopGlobalStateKeys.BROWSER_DOWNLOAD_PROMPT_ENABLED,
     schema: booleanSchema,
   }),
 };
@@ -679,44 +697,54 @@ const worktreeSettings = {
     agentAccess: "read-write",
     default: true,
     description: "Whether Codex automatically cleans up old worktrees",
-    key: Ds.WORKTREE_AUTO_CLEANUP_ENABLED,
+    key: desktopGlobalStateKeys.WORKTREE_AUTO_CLEANUP_ENABLED,
     schema: booleanSchema,
   }),
   keepCount: globalStateSetting({
     agentAccess: "read-write",
     default: 15,
     description: "How many recent worktrees Codex keeps",
-    key: Ds.WORKTREE_KEEP_COUNT,
+    key: desktopGlobalStateKeys.WORKTREE_KEEP_COUNT,
     schema: numberSchema,
   }),
 };
 
-export const Oi: DesktopSettingDefinition[] = [
-  ...Object.values(Li),
-  ...Object.values(Pi),
-  ...Object.values(ji),
+export const desktopSettingDefinitions: DesktopSettingDefinition[] = [
+  ...Object.values(appearanceSettingDefinitions),
+  ...Object.values(desktopPreferenceSettingDefinitions),
+  ...Object.values(persistedAtomSettingDefinitions),
   ...Object.values(gitSettings),
   ...Object.values(browserSettings),
   ...Object.values(worktreeSettings),
 ];
 
 const settingsByKey = new Map(
-  Oi.map((definition) => [definition.key, definition]),
+  desktopSettingDefinitions.map((definition) => [definition.key, definition]),
 );
 
-export function Si(key: string): DesktopSettingDefinition | undefined {
+export function getDesktopSettingDefinition(
+  key: string,
+): DesktopSettingDefinition | undefined {
   return settingsByKey.get(key);
 }
 
-export function Ci(key: string): RuntimeSchema | undefined {
-  return Si(key)?.schema;
+export function getDesktopSettingSchema(
+  key: string,
+): RuntimeSchema | undefined {
+  return getDesktopSettingDefinition(key)?.schema;
 }
 
-export function Di(_schema: unknown, value: unknown): unknown {
+export function serializeSettingForToml(
+  _schema: unknown,
+  value: unknown,
+): unknown {
   return serializeTomlCompatibleValue(value);
 }
 
-export function Ei(_schema: unknown, value: unknown): unknown {
+export function deserializeSettingFromToml(
+  _schema: unknown,
+  value: unknown,
+): unknown {
   return value;
 }
 
@@ -731,7 +759,9 @@ function serializeTomlCompatibleValue(value: unknown): unknown {
   );
 }
 
-export function zi(atoms: Record<string, unknown>): unknown {
+export function readDefaultServiceTierAtom(
+  atoms: Record<string, unknown>,
+): unknown {
   if (!Object.prototype.hasOwnProperty.call(atoms, "default-service-tier")) {
     return null;
   }
@@ -739,7 +769,7 @@ export function zi(atoms: Record<string, unknown>): unknown {
   return typeof value === "string" && value.length > 0 ? value : null;
 }
 
-export function Ts(value: string): string {
+export function normalizePathSeparators(value: string): string {
   return value.replace(/\\/g, "/");
 }
 
@@ -748,23 +778,23 @@ const slashPrefixedWindowsDrivePath = /^\/[A-Za-z]:[\\/]/;
 const windowsUncPath = /^\\\\[^\\]+\\[^\\]+/;
 const posixUncPath = /^\/\/[^/]+\/[^/]+/;
 
-export function Cs(value: string): boolean {
+export function isUncPath(value: string): boolean {
   return windowsUncPath.test(value) || posixUncPath.test(value);
 }
 
-export function Ss(value: string): boolean {
+export function isAbsoluteFilePath(value: string): boolean {
   return (
     (value.startsWith("/") && !value.startsWith("//")) ||
     windowsDrivePath.test(value) ||
-    Cs(value)
+    isUncPath(value)
   );
 }
 
-export function Es(value: string): string {
+export function stripLeadingSlashFromWindowsDrivePath(value: string): string {
   return slashPrefixedWindowsDrivePath.test(value) ? value.slice(1) : value;
 }
 
-export function bs(error: unknown): Error {
+export function toError(error: unknown): Error {
   if (error instanceof Error) return error;
   if (typeof error === "string") return Error(error);
   if (
@@ -782,16 +812,16 @@ export function bs(error: unknown): Error {
   }
 }
 
-export const aa = "manage";
+export const pluginManagePermission = "manage";
 
 const pluginIdPattern =
   /^(plugins_[0-9a-f]{32}|(?:plugins~)?Plugin_[0-9a-f]{32}|plugin_[A-Za-z0-9][A-Za-z0-9_-]{0,247})$/;
 
-export function da(pluginName: string): string | null {
+export function parsePluginIdentifier(pluginName: string): string | null {
   return pluginIdPattern.test(pluginName) ? pluginName : null;
 }
 
-export function ma(value: string | undefined): boolean {
+export function isSafePathSegment(value: string | undefined): boolean {
   return (
     value != null &&
     value.length > 0 &&
@@ -802,7 +832,7 @@ export function ma(value: string | undefined): boolean {
   );
 }
 
-export function ha(
+export function parseCodexThreadDeepLink(
   input: URL | string,
   { allowExtraPathSegments = false }: { allowExtraPathSegments?: boolean } = {},
 ): {
@@ -845,32 +875,32 @@ export function ha(
 let shouldSpawnInsideWsl: (() => boolean) | null = null;
 let cachedWslDistro: string | null | undefined;
 
-export function Yr(callback: () => boolean): void {
+export function registerShouldSpawnInsideWsl(callback: () => boolean): void {
   if (shouldSpawnInsideWsl != null) {
     throw Error("shouldSpawnInsideWsl already set");
   }
   shouldSpawnInsideWsl = callback;
 }
 
-export function Kr(force = false): string | null {
+export function resolveDefaultWslDistro(force = false): string | null {
   if (process.platform !== "win32") return null;
   if (!force && cachedWslDistro !== undefined) return cachedWslDistro;
   try {
     execFileSync("wsl.exe", ["--status"], {
-      env: Qr(process.env),
+      env: removeCrashReporterEnv(process.env),
       timeout: 3000,
       windowsHide: true,
     });
     const verbose = decodeCommandOutput(
       execFileSync("wsl.exe", ["--list", "--verbose"], {
-        env: Qr(process.env),
+        env: removeCrashReporterEnv(process.env),
         timeout: 3000,
         windowsHide: true,
       }),
     );
     const quiet = decodeCommandOutput(
       execFileSync("wsl.exe", ["--list", "--quiet"], {
-        env: Qr(process.env),
+        env: removeCrashReporterEnv(process.env),
         timeout: 3000,
         windowsHide: true,
       }),
@@ -884,7 +914,7 @@ export function Kr(force = false): string | null {
       null;
     return cachedWslDistro;
   } catch (error) {
-    ei().error("[wsl] error retrieving eligible distro", {
+    getRootStructuredLogger().error("[wsl] error retrieving eligible distro", {
       safe: { error: String(error) },
       sensitive: {},
     });
@@ -930,13 +960,13 @@ function decodeCommandOutput(output: Buffer | string): string {
     .trim();
 }
 
-export function Ur({
+export function resolveCodexHome({
   preferWsl = false,
 }: { preferWsl?: boolean } = {}): string {
   if (preferWsl && process.platform === "win32") {
     const resolved = resolveCodexHomeFromWsl();
     if (resolved) return resolved;
-    ei().info(
+    getRootStructuredLogger().info(
       "[resolveCodexHome] Falling back to host home directory because WSL CODEX_HOME could not be resolved",
     );
   }
@@ -954,7 +984,7 @@ function resolveCodexHomeFromWsl(): string | null {
           "-lc",
           'printf %s "${CODEX_HOME:-$HOME/.codex}"',
         ],
-        { env: Qr(process.env), windowsHide: true },
+        { env: removeCrashReporterEnv(process.env), windowsHide: true },
       ),
     );
     if (!output) return null;
@@ -963,7 +993,7 @@ function resolveCodexHomeFromWsl(): string | null {
     }
     const translated = decodeCommandOutput(
       execFileSync("wsl.exe", ["wslpath", "-w", output], {
-        env: Qr(process.env),
+        env: removeCrashReporterEnv(process.env),
         windowsHide: true,
       }),
     );
@@ -973,7 +1003,7 @@ function resolveCodexHomeFromWsl(): string | null {
   }
 }
 
-export const qi = [
+export const owlFeatureNames = [
   "OwlAutofillAndPasswords",
   "OwlAuth",
   "OwlDownloads",
@@ -988,7 +1018,7 @@ export const qi = [
 const semanticVersionPattern =
   /^(?<major>0|[1-9]\d*)\.(?<minor>0|[1-9]\d*)\.(?<patch>0|[1-9]\d*)(?<suffix>(?:-[0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*)?(?:\+[0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*)?)$/;
 
-export function fc(version: string): Date | null {
+export function dateFromDateEncodedBuildVersion(version: string): Date | null {
   let parsed;
   try {
     parsed = parseSemanticVersion(version).version;
@@ -1023,7 +1053,7 @@ export function fc(version: string): Date | null {
   );
 }
 
-export function mc(version: string): string {
+export function windowsVersionFromBuildVersion(version: string): string {
   const parsed = parseSemanticVersion(version);
   if (!isDateEncodedBuildVersion(parsed.version)) {
     return `${formatVersion(parsed.version)}.0`;
@@ -1091,7 +1121,9 @@ function parseMonthDay(value: string): { day: number; month: number } | null {
 
 let stateDatabase: unknown = null;
 
-export function Ar(options?: { databaseFileName?: string }): unknown {
+export function openDesktopStateDatabase(options?: {
+  databaseFileName?: string;
+}): unknown {
   if (!process.versions.electron) return null;
   if (stateDatabase != null) return stateDatabase;
   const Database = requireFromFacade("better-sqlite3");
@@ -1101,13 +1133,17 @@ export function Ar(options?: { databaseFileName?: string }): unknown {
     (!process.env.BUILD_FLAVOR && process.env.NODE_ENV === "production")
       ? "codex.db"
       : "codex-dev.db");
-  const databasePath = path.join(Ur(), "sqlite", databaseFileName);
+  const databasePath = path.join(
+    resolveCodexHome(),
+    "sqlite",
+    databaseFileName,
+  );
   mkdirSync(path.dirname(databasePath), { recursive: true });
   stateDatabase = new Database(databasePath);
   return stateDatabase;
 }
 
-export function zr(text: string): Record<string, unknown> {
+export function parseTomlConfig(text: string): Record<string, unknown> {
   const root: Record<string, unknown> = {};
   let current = root;
   for (const rawLine of text.split(/\r?\n/)) {
@@ -1249,7 +1285,7 @@ function parseTomlArray(value: string): unknown[] {
   return items.map(parseTomlValue);
 }
 
-export function Rc(status: string): number | undefined {
+export function colorNumberForDeviceStatus(status: string): number | undefined {
   switch (status) {
     case "working":
       return 3166206;

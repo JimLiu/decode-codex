@@ -4,7 +4,7 @@
 import { join } from "node:path";
 import { app, nativeImage, type NativeImage } from "electron";
 import {
-  yc,
+  RuntimeAppBrands,
   type RuntimeAppBrand,
 } from "../boundaries/shared-node-runtime.facade";
 import {
@@ -73,13 +73,16 @@ export function getWindowsTrayIconName(
   buildFlavor: BuildFlavorValue,
   appBrand: RuntimeAppBrand,
 ): string {
-  if (buildFlavor === BuildFlavor.Agent && appBrand === yc.ChatGPT) {
+  if (
+    buildFlavor === BuildFlavor.Agent &&
+    appBrand === RuntimeAppBrands.ChatGPT
+  ) {
     return "icon-agent.ico";
   }
   switch (appBrand) {
-    case yc.Codex:
+    case RuntimeAppBrands.Codex:
       return "codex-tray.ico";
-    case yc.ChatGPT:
+    case RuntimeAppBrands.ChatGPT:
       return "chatgpt-tray.ico";
   }
 }
@@ -88,9 +91,9 @@ export function getDarwinTrayTemplateIconNames(
   appBrand: RuntimeAppBrand,
 ): [string, string] {
   switch (appBrand) {
-    case yc.Codex:
+    case RuntimeAppBrands.Codex:
       return ["codexTemplate.png", "codexTemplate@2x.png"];
-    case yc.ChatGPT:
+    case RuntimeAppBrands.ChatGPT:
       return ["chatgptTemplate.png", "chatgptTemplate@2x.png"];
   }
 }

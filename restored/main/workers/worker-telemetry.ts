@@ -3,9 +3,9 @@
 
 import { randomUUID } from "node:crypto";
 import {
-  $r as formatStructuredLogFields,
-  h as shouldLogAtLevel,
-  ii as installStructuredLogger,
+  formatStructuredLogDetails as formatStructuredLogFields,
+  isLogLevelEnabled as shouldLogAtLevel,
+  registerRootStructuredLogger as installStructuredLogger,
 } from "../boundaries/shared-node-runtime.facade";
 import { createFileBasedLogger } from "../logging/file-based-logger";
 import type { LoggerSink } from "../logging/file-based-logger";

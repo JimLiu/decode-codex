@@ -9,7 +9,7 @@ import { dirname, extname, join } from "node:path";
 import { promisify } from "node:util";
 import { app, nativeImage } from "electron";
 import {
-  yc,
+  RuntimeAppBrands,
   type RuntimeAppBrand,
 } from "../boundaries/shared-node-runtime.facade";
 import {
@@ -24,7 +24,7 @@ import type {
 const execFileAsync = promisify(execFile);
 
 export async function loadAboutDialogIcons({
-  appBrand = yc.Codex,
+  appBrand = RuntimeAppBrands.Codex,
   buildFlavor,
   macAppBundlePath,
   platform = process.platform,
@@ -68,10 +68,10 @@ export async function loadAboutDialogIcons({
 export function getWindowIconBaseName(
   buildFlavor: BuildFlavorValue,
   platform: NodeJS.Platform,
-  appBrand: RuntimeAppBrand = yc.Codex,
+  appBrand: RuntimeAppBrand = RuntimeAppBrands.Codex,
 ): string {
   if (
-    appBrand === yc.ChatGPT &&
+    appBrand === RuntimeAppBrands.ChatGPT &&
     (platform === "darwin" || platform === "win32")
   ) {
     switch (buildFlavor) {

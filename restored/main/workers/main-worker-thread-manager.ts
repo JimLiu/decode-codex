@@ -5,7 +5,7 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { Worker } from "node:worker_threads";
 import { app } from "electron";
-import { ti } from "../boundaries/shared-node-runtime.facade";
+import { createScopedStructuredLogger } from "../boundaries/shared-node-runtime.facade";
 import {
   isWorkerMainRpcRequest,
   type WorkerMainRpcContext,
@@ -95,7 +95,7 @@ export class MainWorkerThreadManager {
 
   private ensureWorker(): WorkerThreadLike {
     if (this.worker != null) return this.worker;
-    const logger = ti("worker-manager");
+    const logger = createScopedStructuredLogger("worker-manager");
     const workerScriptPath =
       this.options.workerScriptPath ??
       join(dirname(fileURLToPath(import.meta.url)), "worker.js");
@@ -161,7 +161,7 @@ export class MainWorkerThreadManager {
     worker: WorkerThreadLike,
     request: WorkerMainRpcRequest,
   ): Promise<void> {
-    const logger = ti("worker-manager");
+    const logger = createScopedStructuredLogger("worker-manager");
     if (request.workerId !== this.id) {
       logger.warning("Received main RPC request for wrong worker", {
         safe: {
@@ -238,10 +238,13 @@ export class MainWorkerThreadManager {
       },
       this.createMainRpcHandlerContext(worker),
     ).catch((error) => {
-      ti("worker-manager").warning("Worker exit cleanup failed", {
-        safe: {},
-        sensitive: { error },
-      });
+      createScopedStructuredLogger("worker-manager").warning(
+        "Worker exit cleanup failed",
+        {
+          safe: {},
+          sensitive: { error },
+        },
+      );
     });
   }
 }

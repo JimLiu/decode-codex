@@ -2,7 +2,7 @@
 // Renderer-to-worker bus bridge.
 
 import { randomUUID } from "node:crypto";
-import { ti } from "../boundaries/shared-node-runtime.facade";
+import { createScopedStructuredLogger } from "../boundaries/shared-node-runtime.facade";
 import type { WorkerMainRpcHandler } from "./worker-main-rpc";
 import {
   workerResponseChannel,
@@ -23,7 +23,9 @@ export class WorkerBusMessageHandler {
     (message: WorkerOutboundMessage) => void
   >();
   private readonly knownWebContents = new Set<WebContentsLike>();
-  private readonly logger = ti("worker-bus-message-handler");
+  private readonly logger = createScopedStructuredLogger(
+    "worker-bus-message-handler",
+  );
   private readonly onWorkerRequestSent: (() => void) | null;
   private readonly pending = new Map<string, WebContentsLike>();
   private readonly pendingRequestFromHost = new Map<

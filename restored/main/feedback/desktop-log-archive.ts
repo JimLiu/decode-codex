@@ -27,7 +27,8 @@ type StructuredLogger = {
 };
 type LoggerFactory = (scope: string) => () => StructuredLogger;
 const gzip = promisify(zlib.gzip);
-const createScopedLogger = sharedRuntime.ni as LoggerFactory;
+const createScopedLogger =
+  sharedRuntime.createLazyScopedStructuredLogger as LoggerFactory;
 const logger = createScopedLogger("feedback-desktop-log-archive");
 const TAR_BLOCK_BYTES = 512;
 const TAR_END_BLOCKS = 2;

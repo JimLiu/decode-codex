@@ -125,8 +125,12 @@ type CodexMicroServiceOptions = {
   onJoystickEvent(event: JoystickEvent): void;
 };
 const requireFromRestoredModule = createRequire(import.meta.url);
-const logger = (sharedRuntime.ti as LoggerFactory)("CodexMicroService");
-const colorForThreadStatus = sharedRuntime.Rc as (status: string) => number;
+const logger = (sharedRuntime.createScopedStructuredLogger as LoggerFactory)(
+  "CodexMicroService",
+);
+const colorForThreadStatus = sharedRuntime.colorNumberForDeviceStatus as (
+  status: string,
+) => number;
 const {
   ConnectionEventType,
   DeviceType,

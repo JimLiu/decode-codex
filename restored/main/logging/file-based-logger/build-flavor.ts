@@ -14,8 +14,9 @@ import type {
   WindowsStoreConfig,
   WindowsUpdaterConfig,
 } from "./types";
-const sharedBuildFlavor = sharedRuntime.ks as BuildFlavorApi;
-const createScopedLogger = sharedRuntime.ni as LoggerFactory;
+const sharedBuildFlavor = sharedRuntime.BuildFlavors as BuildFlavorApi;
+const createScopedLogger =
+  sharedRuntime.createLazyScopedStructuredLogger as LoggerFactory;
 const buildFlavorLogger = createScopedLogger("build-flavor");
 const releaseBuildFlavors = [
   sharedBuildFlavor.Nightly,

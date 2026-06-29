@@ -3,7 +3,7 @@
 
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
-import { zr as parseTomlConfig } from "../../boundaries/shared-node-runtime.facade";
+import { parseTomlConfig } from "../../boundaries/shared-node-runtime.facade";
 import type { NotifyConfigStatus } from "./types";
 
 const PREVIOUS_NOTIFY_ARG = "--previous-notify";

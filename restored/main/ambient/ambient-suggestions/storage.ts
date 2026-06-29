@@ -11,7 +11,7 @@ import {
   writeFileSync,
 } from "node:fs";
 import { dirname, join } from "node:path";
-import { Ur as resolveCodexHome } from "../../boundaries/shared-node-runtime.facade";
+import { resolveCodexHome } from "../../boundaries/shared-node-runtime.facade";
 import type {
   AmbientSuggestion,
   AmbientSuggestionDomain,

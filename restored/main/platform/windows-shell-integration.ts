@@ -4,7 +4,7 @@
 import { execFile } from "node:child_process";
 import { promisify } from "node:util";
 import { app } from "electron";
-import { ei } from "../boundaries/shared-node-runtime.facade";
+import { getRootStructuredLogger } from "../boundaries/shared-node-runtime.facade";
 
 export type WindowsRegistryEntry = {
   key: string;
@@ -80,10 +80,13 @@ export async function registerWindowsFolderContextMenu({
       ),
     );
   } catch (error) {
-    ei().warning("Failed to register Windows folder context menu", {
-      safe: {},
-      sensitive: { error },
-    });
+    getRootStructuredLogger().warning(
+      "Failed to register Windows folder context menu",
+      {
+        safe: {},
+        sensitive: { error },
+      },
+    );
   }
 }
 

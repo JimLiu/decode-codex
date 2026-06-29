@@ -56,11 +56,13 @@ type ParsedHdiutilInfo = {
 };
 
 const execFileAsync = promisify(execFile);
-const logger = (sharedRuntime.ei as () => StructuredLogger)();
-const cloneProcessEnv = sharedRuntime.Qr as (
+const logger = (
+  sharedRuntime.getRootStructuredLogger as () => StructuredLogger
+)();
+const cloneProcessEnv = sharedRuntime.removeCrashReporterEnv as (
   env: NodeJS.ProcessEnv,
 ) => NodeJS.ProcessEnv;
-const formatAppName = sharedRuntime.Ca as (
+const formatAppName = sharedRuntime.formatRuntimeAppName as (
   buildFlavor: BuildFlavorValue,
   brand: unknown,
 ) => string;
