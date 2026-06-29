@@ -1,16 +1,5 @@
 // Restored from ref/webview/assets/git-branch-switcher-Cb06tz5G.js
 
-import {
-  Ba as updateGitMetadataCache,
-  Ha as useGitOperationQuery,
-  Ma as createHostQueryOptions,
-  eo as getHostCacheKey,
-  go as setConversationBranchOverride,
-  ho as initConversationBranchOverrideRuntime,
-  no as createGitRootQueryOptions,
-  ro as initGitRootQueryRuntime,
-  rw as useGlobalSettingValue,
-} from "../../ref/webview/assets/app-initial~app-main~worktree-init-v2-page~remote-conversation-page~new-thread-panel-page~o~bj5tp28r-Dcs9S3fj.js";
 import { ws as createQuerySignalFamily } from "../../ref/webview/assets/app-initial~app-main~worktree-init-v2-page~remote-conversation-page~new-thread-panel-page~o~dv5z3ftk-BhBbJNnt.js";
 import {
   Button,
@@ -43,6 +32,21 @@ import {
 import { appScope, initAppScope, initScopeRuntime } from "./app-scope-runtime";
 import { useScope, useScopedValue } from "./app-scope-hooks";
 import { initConversationStateRuntime as initConversationStateSelectors } from "./conversation-state-runtime";
+import {
+  initConversationBranchOverrideRuntime,
+  setConversationBranchOverride,
+} from "./git-query/conversation-branch-override";
+import { useGlobalSettingValue } from "./git-query/global-setting-value";
+import {
+  updateGitMetadataCache,
+  useGitOperationQuery,
+} from "./git-query/operation-query";
+import {
+  createHostQueryOptions,
+  createGitRootQueryOptions,
+  initGitRootQueryRuntime,
+} from "./git-query/query-options";
+import { getHostCacheKey } from "./git-query/query-keys";
 import {
   initGitBranchQueryRuntime,
   initGitQueryKeyHelpers,
