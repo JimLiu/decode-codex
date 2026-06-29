@@ -16,9 +16,9 @@ export {
   initAppFeatureRuntimeChunk,
 } from "../runtime/window-chrome-runtime";
 export {
-  _ as initRendererErrorBoundaryStateChunk,
-  n as initProjectsSharedRuntimeChunk,
-} from "../../ref/webview/assets/app-initial~app-main~worktree-init-v2-page~appgen-settings-page~page~appgen-page~remote-con~di269h6j-x1JD0lOF.js";
+  initErrorBoundaryRuntimeChunk,
+  initRendererSentryRuntimeChunk,
+} from "../runtime/renderer-error-boundary-runtime";
 export { isCurrentCompactWindow as readCompactWindowPreference } from "../features/is-compact-window-context";
 export {
   CodexApp,

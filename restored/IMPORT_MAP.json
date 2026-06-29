@@ -14020,14 +14020,14 @@
       "lastUpdated": "2026-06-29T00:00:00.000Z"
     },
     "app-initial~app-main~worktree-init-v2-page~appgen-settings-page~page~appgen-page~remote-con~di269h6j-x1JD0lOF": {
-      "restored": "vendor/app-main-current-runtime.ts",
+      "restored": "runtime/renderer-error-boundary-runtime.ts",
       "exports": {
-        "_": "initRendererErrorBoundaryStateChunk",
-        "n": "initProjectsSharedRuntimeChunk"
+        "_": "initRendererSentryRuntimeChunk",
+        "n": "initErrorBoundaryRuntimeChunk"
       },
       "status": "partial",
-      "note": "Current app-main renderer boundary/projects shared producer facade; full producer remains an open partial boundary.",
-      "lastUpdated": "2026-06-28T21:05:00.000Z"
+      "note": "App-main renderer Sentry and ErrorBoundary init aliases are restored as compatibility initializers; other exports in the broad producer chunk remain an open partial boundary.",
+      "lastUpdated": "2026-06-29T00:00:00.000Z"
     },
     "app-initial~app-main~remote-conversation-page~pull-requests-page~onboarding-page~hotkey-win~fzw0jvy4-rg89odR_": {
       "restored": "features/is-compact-window-context.ts",

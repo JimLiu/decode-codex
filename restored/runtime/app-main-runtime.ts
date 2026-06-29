@@ -9,9 +9,9 @@ import {
   initAutomationsRuntimeChunk,
   initAutomationsStateChunk,
   initCodexAppChunk,
+  initErrorBoundaryRuntimeChunk,
   initProjectsAppEntryChunk,
-  initProjectsSharedRuntimeChunk,
-  initRendererErrorBoundaryStateChunk,
+  initRendererSentryRuntimeChunk,
   readCompactWindowPreference,
   connectAppHostServices,
   appMainLogger,
@@ -29,14 +29,11 @@ export {
   initAutomationsRuntimeChunk,
   initAutomationsStateChunk,
   initCodexAppChunk,
+  initErrorBoundaryRuntimeChunk,
   initProjectsAppEntryChunk,
-  initProjectsSharedRuntimeChunk,
+  initRendererSentryRuntimeChunk,
   connectAppHostServices,
 };
-
-export function initRendererErrorBoundaryState(): void {
-  initRendererErrorBoundaryStateChunk();
-}
 
 export function logAppMainStatsigRenderRequest(): void {
   appMainLogger.info(

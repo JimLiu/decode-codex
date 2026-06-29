@@ -13,9 +13,9 @@ import {
   initAutomationsRuntimeChunk,
   initAutomationsStateChunk,
   initCodexAppChunk,
+  initErrorBoundaryRuntimeChunk,
   initProjectsAppEntryChunk,
-  initProjectsSharedRuntimeChunk,
-  initRendererErrorBoundaryState,
+  initRendererSentryRuntimeChunk,
   isCompactWindowPreferred,
   logAppMainStatsigRenderRequest,
   connectAppHostServices,
@@ -115,14 +115,14 @@ const initAppMainChunk = once(() => {
   initRegisterAppActionsChunk();
   initProjectsAppEntryChunk();
   initAppFallbackChunk();
-  initProjectsSharedRuntimeChunk();
+  initErrorBoundaryRuntimeChunk();
   initPublicationTermsHandlerRegistryChunk();
   initPublicationTermsSidePanelHandlerChunk();
   initAutomationsRuntimeChunk();
   initAppLoggingChunk();
   initAutomationsStateChunk();
   initAppRuntimeChunk();
-  initRendererErrorBoundaryState();
+  initRendererSentryRuntimeChunk();
   initCodexAppChunk();
   initAppFeatureRuntimeChunk();
   initEmptyAppChunk();
