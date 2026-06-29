@@ -2,10 +2,10 @@
 // Thread composer footer entry and context wiring.
 import type { ComponentType, Context, ReactNode } from "react";
 import {
-  $ as rawThreadComposerContext,
-  et as initRawThreadComposerContextChunk,
-  n as initRawThreadComposerFooterChunk,
-  t as RawThreadComposerFooter,
+  initThreadComposerContextChunk as initRawThreadComposerContextChunk,
+  initThreadComposerFooterChunk as initRawThreadComposerFooterChunk,
+  threadComposerContext as rawThreadComposerContext,
+  ThreadComposerFooter as RawThreadComposerFooter,
 } from "../vendor/appgen-library-hot-runtime";
 
 export type ThreadComposerFooterSideConversationRequest = {
