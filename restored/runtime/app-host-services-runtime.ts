@@ -44,7 +44,11 @@ type AppHostServicesBridge = {
 
 const canonicalHistoryTurnCache = new WeakMap<object, readonly unknown[]>();
 
-export const appHostServices = appHostServicesRaw as AppHostServicesBridge;
+export const appHostServices = new Proxy({} as AppHostServicesBridge, {
+  get(_target, property) {
+    return Reflect.get(getConnectedAppHostServices(), property);
+  },
+});
 
 export const createPersistentSignal =
   createPersistedSignal as PersistentSignalFactory;
@@ -73,6 +77,12 @@ export function initAppHostServicesRuntimeChunk(): void {
 
 export async function connectAppHostServices(): Promise<void> {
   await connectAppHostServicesRaw();
+}
+
+function getConnectedAppHostServices(): AppHostServicesBridge {
+  const services = appHostServicesRaw as AppHostServicesBridge | undefined;
+  if (services == null) throw new Error("App host services are not connected.");
+  return services;
 }
 
 export function initProductEventRuntime(): void {}
