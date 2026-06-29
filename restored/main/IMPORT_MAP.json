@@ -102,6 +102,7 @@
         "plugins/bundled-plugin-marketplace/descriptors/index.ts",
         "plugins/bundled-plugin-marketplace/errors.ts",
         "plugins/bundled-plugin-marketplace/folder-removal.ts",
+        "plugins/bundled-plugin-marketplace/install-failures.ts",
         "plugins/bundled-plugin-marketplace/install-helpers.ts",
         "plugins/bundled-plugin-marketplace/manifest-io.ts",
         "plugins/bundled-plugin-marketplace/materialize.ts",

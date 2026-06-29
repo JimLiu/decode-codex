@@ -8,6 +8,7 @@ export * from "./copy";
 export * from "./descriptors";
 export * from "./errors";
 export * from "./folder-removal";
+export * from "./install-failures";
 export * from "./install-helpers";
 export * from "./manifest-io";
 export * from "./materialize";
