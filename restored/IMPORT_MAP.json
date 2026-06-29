@@ -14047,6 +14047,7 @@
         "Kv": "rightPanelTabsStore",
         "Rv": "currentRouteHostIdSignal",
         "Sl": "primeBrowserTabTransfers",
+        "Zu": "AppShellOverlayOutlet",
         "Wv": "bottomPanelTabsStore",
         "_l": "openThreadBrowserSidePanelTabWithPendingState",
         "bl": "openThreadReviewSidePanelTab",
@@ -14057,6 +14058,7 @@
         "ml": "openSessionSandboxSidePanel",
         "of": "closeThreadMcpAppSidePanelTab",
         "og": "getCodexWindowChrome",
+        "nf": "liveMcpAppFrameSignal",
         "pl": "initThreadSidePanelTabsChunk",
         "sf": "getThreadMcpAppSidePanelTabId",
         "sg": "initAppFeatureRuntimeChunk",
@@ -14066,7 +14068,7 @@
         "yl": "openThreadLastTurnReviewSidePanelTab"
       },
       "status": "partial",
-      "note": "Current app-main window chrome helper aliases, app-view route host-id selector, app-shell right/bottom panel tab stores, and thread side-panel tab helpers are restored in runtime/window-chrome-runtime.ts, app-shell/thread-panel-tabs-store.ts, and app-shell/thread-side-panel-tabs.ts. The broader BUwCKIcU shared commons barrel remains represented separately by app-shared-runtime.ts while its many unrelated exports are incrementally wired to semantic modules.",
+      "note": "Current app-main window chrome helper aliases, app-view route host-id selector, app-shell right/bottom panel tab stores, thread side-panel tab helpers, and MCP app frame overlay aliases are restored in runtime/window-chrome-runtime.ts, app-shell/thread-panel-tabs-store.ts, app-shell/thread-side-panel-tabs.ts, and app-shell/mcp-app-frame.tsx. The broader BUwCKIcU shared commons barrel remains represented separately by app-shared-runtime.ts while its many unrelated exports are incrementally wired to semantic modules.",
       "lastUpdated": "2026-06-29T00:00:00.000Z"
     },
     "app-initial~app-main~worktree-init-v2-page~appgen-settings-page~page~appgen-page~remote-con~di269h6j-x1JD0lOF": {
