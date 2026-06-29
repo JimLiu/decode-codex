@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/architectureDiagram-Q4EWVU46-C9aYmC2s.js
+// Restored from ref/webview/assets/architectureDiagram-Q4EWVU46-mJ7dSian.js
 // ArchitectureDiagramQ4EWVU46 chunk restored from the Codex webview bundle.
 import { toEsModule } from "../runtime/commonjs-interop";
 import { Src } from "./roughjs-geometry";

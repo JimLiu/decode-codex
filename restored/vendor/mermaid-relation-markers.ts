@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/chunk-HN2XXSSU-dadJeUL1.js
+// Restored from ref/webview/assets/chunk-HN2XXSSU-BPyoUjyB.js
 // ChunkHN2XXSSU chunk restored from the Codex webview bundle.
 import { chunkAGHRB4JFN } from "./dompurify";
 var chunkHN2XXSSUN = {

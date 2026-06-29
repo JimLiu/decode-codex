@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/chunk-MI3HLSF2-DUVSUh0R.js
+// Restored from ref/webview/assets/chunk-MI3HLSF2-Cyapgrol.js
 // ChunkMI3HLSF2 chunk restored from the Codex webview bundle.
 import { chunkAGHRB4JFN } from "./dompurify";
 function chunkMI3HLSF2Helper1(chunkMI3HLSF2Param227) {

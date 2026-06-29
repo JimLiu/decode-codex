@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/chunk-QN33PNHL-DvZPbBsU.js
+// Restored from ref/webview/assets/chunk-QN33PNHL-AbzhC4my.js
 // ChunkQN33PNHL chunk restored from the Codex webview bundle.
 import { chunkAGHRB4JFN, chunkAGHRB4JFR } from "./dompurify";
 import { _chunkABZYJK2DN } from "./katex-auto-render";

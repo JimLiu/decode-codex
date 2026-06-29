@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/chunk-EXTU4WIE-DyDLNYc8.js
+// Restored from ref/webview/assets/chunk-EXTU4WIE-fqByunxs.js
 // ChunkEXTU4WIE chunk restored from the Codex webview bundle.
 import { Src } from "./roughjs-geometry";
 import { chunkAGHRB4JFN } from "./dompurify";

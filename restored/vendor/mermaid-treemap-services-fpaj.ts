@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/chunk-FWNWRKHM-DRtw95ir.js
+// Restored from ref/webview/assets/chunk-FWNWRKHM-CrY4401d.js
 // ChunkFWNWRKHM chunk restored from the Codex webview bundle.
 import {
   chunkFPAJGGOCD,

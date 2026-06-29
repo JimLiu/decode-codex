@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/chunk-TZMSLE5B-BvWo7845.js
+// Restored from ref/webview/assets/chunk-TZMSLE5B-DErk67ZI.js
 // ChunkTZMSLE5B chunk restored from the Codex webview bundle.
 import { chunkAGHRB4JFN } from "./dompurify";
 import { _chunkABZYJK2DA } from "./katex-auto-render";

@@ -14210,6 +14210,258 @@
       "aliasOf": "esm-DbqKqkZh",
       "lastUpdated": "2026-06-29T00:00:00.000Z",
       "note": "Current Iconify core chunk keeps the restored public API and adds c/s internal exports."
+    },
+    "chunk-ATLVNIR6-DShFhP4G": {
+      "restored": "vendor/chunk-atlvnir6.ts",
+      "exports": {
+        "a": "chunkATLVNIR6R",
+        "i": "chunkATLVNIR6I",
+        "n": "chunkATLVNIR6A",
+        "r": "chunkATLVNIR6N",
+        "t": "chunkATLVNIR6T"
+      },
+      "status": "done",
+      "aliasOf": "chunk-ATLVNIR6-D9WszxCx",
+      "lastUpdated": "2026-06-29T00:00:00.000Z",
+      "note": "Current vendor chunk keeps the restored public API and adds o internal export."
+    },
+    "chunk-EXTU4WIE-fqByunxs": {
+      "restored": "vendor/chunk-extu4-wie.ts",
+      "exports": {
+        "t": "chunkEXTU4WIE"
+      },
+      "status": "done",
+      "aliasOf": "chunk-EXTU4WIE-DyDLNYc8",
+      "lastUpdated": "2026-06-29T00:00:00.000Z",
+      "note": "Current vendor chunk keeps the restored public API and adds n internal export."
+    },
+    "chunk-JZLCHNYA-Dn_DumwI": {
+      "restored": "vendor/chunk-jzlchnya.ts",
+      "exports": {
+        "a": "chunkJZLCHNYAT",
+        "c": "chunkJZLCHNYAI",
+        "i": "chunkJZLCHNYAN",
+        "l": "chunkJZLCHNYAL",
+        "n": "chunkJZLCHNYAC",
+        "o": "chunkJZLCHNYAA",
+        "r": "chunkJZLCHNYAO",
+        "s": "chunkJZLCHNYAR",
+        "t": "chunkJZLCHNYAS",
+        "u": "chunkJZLCHNYAU"
+      },
+      "status": "done",
+      "aliasOf": "chunk-JZLCHNYA-HNai7LB6",
+      "lastUpdated": "2026-06-29T00:00:00.000Z",
+      "note": "Current vendor chunk keeps the restored public API and adds d internal export."
+    },
+    "chunk-QN33PNHL-AbzhC4my": {
+      "restored": "vendor/chunk-qn33-pnhl-dv-z-pb-bs-u.ts",
+      "exports": {
+        "t": "chunkQN33PNHL"
+      },
+      "status": "done",
+      "aliasOf": "chunk-QN33PNHL-DvZPbBsU",
+      "lastUpdated": "2026-06-29T00:00:00.000Z",
+      "note": "Current vendor chunk keeps the restored public API and adds n internal export."
+    },
+    "chunk-TZMSLE5B-DErk67ZI": {
+      "restored": "vendor/chunk-tzmsle5b.ts",
+      "exports": {
+        "a": "chunkTZMSLE5BT",
+        "i": "chunkTZMSLE5BS",
+        "n": "chunkTZMSLE5BR",
+        "o": "chunkTZMSLE5BO",
+        "r": "chunkTZMSLE5BN",
+        "s": "chunkTZMSLE5BA",
+        "t": "chunkTZMSLE5BI"
+      },
+      "status": "done",
+      "aliasOf": "chunk-TZMSLE5B-BvWo7845",
+      "lastUpdated": "2026-06-29T00:00:00.000Z",
+      "note": "Current vendor chunk keeps the restored public API and adds c internal export."
+    },
+    "chunk-ABZYJK2D-Ugtemmk_": {
+      "restored": "vendor/katex-auto-render.ts",
+      "exports": {
+        "A": "_chunkABZYJK2DW",
+        "B": "chunkABZYJK2DN",
+        "C": "chunkABZYJK2DF",
+        "D": "chunkABZYJK2DY",
+        "E": "chunkABZYJK2DW",
+        "F": "chunkABZYJK2DS",
+        "G": "_chunkABZYJK2DR",
+        "H": "_chunkABZYJK2DP",
+        "I": "_chunkABZYJK2DM",
+        "J": "_chunkABZYJK2DD",
+        "K": "_chunkABZYJK2DS",
+        "L": "chunkABZYJK2DQ",
+        "M": "_chunkABZYJK2DI",
+        "N": "chunkABZYJK2DA",
+        "O": "_chunkABZYJK2DX",
+        "P": "_chunkABZYJK2DU",
+        "R": "_chunkABZYJK2DJ",
+        "S": "_chunkABZYJK2DH",
+        "T": "chunkABZYJK2DB",
+        "U": "_chunkABZYJK2DC",
+        "V": "chunkABZYJK2DE",
+        "W": "_chunkABZYJK2DF",
+        "X": "_chunkABZYJK2DG",
+        "Y": "chunkABZYJK2DI",
+        "_": "chunkABZYJK2DJ",
+        "a": "_chunkABZYJK2DK",
+        "b": "_chunkABZYJK2DL",
+        "c": "_chunkABZYJK2DN",
+        "d": "chunkABZYJK2DO",
+        "f": "_chunkABZYJK2DT",
+        "g": "chunkABZYJK2DU",
+        "h": "chunkABZYJK2DV",
+        "i": "chunkABZYJK2DX",
+        "j": "chunkABZYJK2DUnderscore",
+        "k": "_chunkABZYJK2DA",
+        "l": "_chunkABZYJK2DB",
+        "m": "chunkABZYJK2DC",
+        "n": "chunkABZYJK2DD",
+        "o": "chunkABZYJK2DG",
+        "p": "chunkABZYJK2DH",
+        "q": "chunkABZYJK2DK",
+        "r": "chunkABZYJK2DL",
+        "s": "chunkABZYJK2DM",
+        "t": "_chunkABZYJK2DO",
+        "u": "chunkABZYJK2DP",
+        "v": "chunkABZYJK2DR",
+        "w": "chunkABZYJK2DT",
+        "x": "_chunkABZYJK2DV",
+        "y": "_chunkABZYJK2DY",
+        "z": "chunkABZYJK2DZ"
+      },
+      "status": "done",
+      "aliasOf": "chunk-ABZYJK2D-8WiwWXHe",
+      "lastUpdated": "2026-06-29T00:00:00.000Z",
+      "note": "Current vendor chunk keeps the restored public API and adds Q/Z internal exports."
+    },
+    "architectureDiagram-Q4EWVU46-mJ7dSian": {
+      "restored": "vendor/mermaid-architecture-diagram-k5.ts",
+      "exports": {
+        "diagram": "ArchitectureDiagramQ4EWVU46"
+      },
+      "status": "done",
+      "aliasOf": "architectureDiagram-Q4EWVU46-C9aYmC2s",
+      "lastUpdated": "2026-06-29T00:00:00.000Z",
+      "note": "Current vendor chunk keeps the restored public API."
+    },
+    "chunk-O7ZBX7Z2-DYQIo95F": {
+      "restored": "vendor/mermaid-architecture-services-fpaj.ts",
+      "exports": {
+        "n": "chunkO7ZBX7Z2N",
+        "t": "chunkO7ZBX7Z2T"
+      },
+      "status": "done",
+      "aliasOf": "chunk-O7ZBX7Z2-B9AHjHvq",
+      "lastUpdated": "2026-06-29T00:00:00.000Z",
+      "note": "Current vendor chunk keeps the restored public API and adds r internal export."
+    },
+    "chunk-B4BG7PRW-BZlC62tO": {
+      "restored": "vendor/mermaid-class-diagram-fpaj.ts",
+      "exports": {
+        "i": "chunkB4BG7PRWI",
+        "n": "chunkB4BG7PRWN",
+        "r": "chunkB4BG7PRWR",
+        "t": "chunkB4BG7PRWT"
+      },
+      "status": "done",
+      "aliasOf": "chunk-B4BG7PRW-YMKrAsOx",
+      "lastUpdated": "2026-06-29T00:00:00.000Z",
+      "note": "Current vendor chunk keeps the restored public API and adds a internal export."
+    },
+    "chunk-LBM3YZW2-CrUBqdFe": {
+      "restored": "vendor/mermaid-info-services-fpaj.ts",
+      "exports": {
+        "n": "chunkLBM3YZW2N",
+        "t": "chunkLBM3YZW2T"
+      },
+      "status": "done",
+      "aliasOf": "chunk-LBM3YZW2-C9W8CgCb",
+      "lastUpdated": "2026-06-29T00:00:00.000Z",
+      "note": "Current vendor chunk keeps the restored public API and adds r internal export."
+    },
+    "chunk-N4CR4FBY-Ce3D8TBD": {
+      "restored": "vendor/mermaid-layout-loader-fpaj.ts",
+      "exports": {
+        "n": "chunkN4CR4FBYN",
+        "r": "chunkN4CR4FBYR",
+        "t": "chunkN4CR4FBYT"
+      },
+      "status": "done",
+      "aliasOf": "chunk-N4CR4FBY-ClZLl4Py",
+      "lastUpdated": "2026-06-29T00:00:00.000Z",
+      "note": "Current vendor chunk keeps the restored public API and adds i internal export."
+    },
+    "chunk-76Q3JFCE-eYhmDldQ": {
+      "restored": "vendor/mermaid-packet-services-fpaj.ts",
+      "exports": {
+        "n": "chunk76Q3JFCEN",
+        "t": "chunk76Q3JFCET"
+      },
+      "status": "done",
+      "aliasOf": "chunk-76Q3JFCE-Bhgg5xKY",
+      "lastUpdated": "2026-06-29T00:00:00.000Z",
+      "note": "Current vendor chunk keeps the restored public API and adds r internal export."
+    },
+    "chunk-T53DSG4Q-DP2fFD_m": {
+      "restored": "vendor/mermaid-pie-services-fpaj.ts",
+      "exports": {
+        "n": "chunkT53DSG4QN",
+        "t": "chunkT53DSG4QT"
+      },
+      "status": "done",
+      "aliasOf": "chunk-T53DSG4Q-DwpHe3Zz",
+      "lastUpdated": "2026-06-29T00:00:00.000Z",
+      "note": "Current vendor chunk keeps the restored public API and adds r internal export."
+    },
+    "chunk-LHMN2FUI-B5ppzfo9": {
+      "restored": "vendor/mermaid-radar-services-fpaj.ts",
+      "exports": {
+        "n": "chunkLHMN2FUIN",
+        "t": "chunkLHMN2FUIT"
+      },
+      "status": "done",
+      "aliasOf": "chunk-LHMN2FUI-BO1BbTL6",
+      "lastUpdated": "2026-06-29T00:00:00.000Z",
+      "note": "Current vendor chunk keeps the restored public API and adds r internal export."
+    },
+    "chunk-HN2XXSSU-BPyoUjyB": {
+      "restored": "vendor/mermaid-relation-markers.ts",
+      "exports": {
+        "n": "chunkHN2XXSSUN",
+        "r": "chunkHN2XXSSUR",
+        "t": "chunkHN2XXSSUT"
+      },
+      "status": "done",
+      "aliasOf": "chunk-HN2XXSSU-dadJeUL1",
+      "lastUpdated": "2026-06-29T00:00:00.000Z",
+      "note": "Current vendor chunk keeps the restored public API and adds i internal export."
+    },
+    "chunk-FWNWRKHM-CrY4401d": {
+      "restored": "vendor/mermaid-treemap-services-fpaj.ts",
+      "exports": {
+        "n": "chunkFWNWRKHMN",
+        "t": "chunkFWNWRKHMT"
+      },
+      "status": "done",
+      "aliasOf": "chunk-FWNWRKHM-DRtw95ir",
+      "lastUpdated": "2026-06-29T00:00:00.000Z",
+      "note": "Current vendor chunk keeps the restored public API and adds r internal export."
+    },
+    "chunk-MI3HLSF2-Cyapgrol": {
+      "restored": "vendor/mermaid-utils.ts",
+      "exports": {
+        "n": "chunkMI3HLSF2N",
+        "t": "chunkMI3HLSF2T"
+      },
+      "status": "done",
+      "aliasOf": "chunk-MI3HLSF2-DUVSUh0R",
+      "lastUpdated": "2026-06-29T00:00:00.000Z",
+      "note": "Current vendor chunk keeps the restored public API and adds r internal export."
     }
   }
 }
