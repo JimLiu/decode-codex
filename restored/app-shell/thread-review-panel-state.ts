@@ -1,12 +1,15 @@
 // Restored from ref/webview/assets/app-initial~app-main~worktree-init-v2-page~remote-conversation-page~new-thread-panel-page~o~bj5tp28r-Dcs9S3fj.js
 // Thread review panel selection helpers backed by the current projects app bundle.
+import { reviewBaseBranchOverrideKey } from "../boundaries/onboarding-commons-externals.facade";
 import {
-  dl as setReviewBaseBranchForThread,
-  ko as focusReviewFilePath,
-  vl as setReviewPanelView,
-} from "../vendor/projects-app-shared-runtime";
+  setReviewBaseBranchOverride,
+  setReviewDiffFilter,
+} from "../review/review-diff-model";
+import { revealReviewFile } from "../review/review-file-navigation";
 
-type ThreadReviewPanelScope = unknown;
+type ThreadReviewPanelScope = {
+  value?: unknown;
+};
 
 export type ThreadReviewPanelView =
   | "last-turn"
@@ -21,19 +24,35 @@ export function selectThreadReviewBaseBranch(
   threadId: string | null,
   baseBranch: string,
 ): void {
-  setReviewBaseBranchForThread(scope, threadId, baseBranch);
+  setReviewBaseBranchOverride(
+    scope as never,
+    getReviewBaseBranchOverrideKey(scope, threadId),
+    baseBranch,
+  );
 }
 
 export function selectThreadReviewView(
   scope: ThreadReviewPanelScope,
   view: ThreadReviewPanelView,
 ): void {
-  setReviewPanelView(scope, view);
+  setReviewDiffFilter(scope as never, view);
 }
 
 export function focusThreadReviewPath(
   scope: ThreadReviewPanelScope,
   path: string,
 ): void {
-  focusReviewFilePath(scope, path);
+  revealReviewFile(scope as never, path);
+}
+
+function getReviewBaseBranchOverrideKey(
+  scope: ThreadReviewPanelScope,
+  threadId: string | null,
+): unknown {
+  return reviewBaseBranchOverrideKey(
+    scope.value ??
+      (threadId == null
+        ? null
+        : { routeKind: "local-thread", conversationId: threadId }),
+  );
 }
