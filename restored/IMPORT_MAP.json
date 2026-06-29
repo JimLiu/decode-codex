@@ -14037,11 +14037,12 @@
     "app-initial~app-main~onboarding-page-BUwCKIcU": {
       "restored": "runtime/window-chrome-runtime.ts",
       "exports": {
+        "Rv": "currentRouteHostIdSignal",
         "og": "getCodexWindowChrome",
         "sg": "initAppFeatureRuntimeChunk"
       },
       "status": "partial",
-      "note": "Current app-main window chrome helper aliases are restored in runtime/window-chrome-runtime.ts. The broader BUwCKIcU shared commons barrel remains represented separately by app-shared-runtime.ts while its many unrelated exports are incrementally wired to semantic modules.",
+      "note": "Current app-main window chrome helper aliases and app-view route host-id selector are restored in runtime/window-chrome-runtime.ts. The broader BUwCKIcU shared commons barrel remains represented separately by app-shared-runtime.ts while its many unrelated exports are incrementally wired to semantic modules.",
       "lastUpdated": "2026-06-29T00:00:00.000Z"
     },
     "app-initial~app-main~worktree-init-v2-page~appgen-settings-page~page~appgen-page~remote-con~di269h6j-x1JD0lOF": {
