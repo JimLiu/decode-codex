@@ -91,7 +91,7 @@
       "boundary": true,
       "vendor": "runtime",
       "openBoundary": true,
-      "note": "Semantic worker shell, original nested request/response protocol, Computer Use capture start/watchUpdates dispatcher, Computer Use native Apple Event bridge, OpenIn custom-target command/icon handling, built-in OpenIn target command/icon registry, OpenIn target launch/open helpers, worker feature-context mapping, worker-side remote execution-host RPC client, local execution-host filesystem/process/watch client, worker telemetry user/log-sink helper metadata, and Git worker request lifecycle/cancellation/availability checks restored; concrete Git operation handlers and Sentry/Datadog runtime wiring remain open app-runtime boundaries."
+      "note": "Semantic worker shell, original nested request/response protocol, Computer Use capture start/watchUpdates dispatcher, Computer Use native Apple Event bridge, OpenIn custom-target command/icon handling, built-in OpenIn target command/icon registry, OpenIn target launch/open helpers, worker feature-context mapping, worker-side remote execution-host RPC client, local execution-host filesystem/process/watch client, worker telemetry user/log-sink helper metadata, Git worker request lifecycle/cancellation/availability checks, and concrete Git branch query handlers for current-branch/recent-branches/branch-exists restored; stateful Git operations, repository metadata caches, review/worktree handlers, and Sentry/Datadog runtime wiring remain open app-runtime boundaries."
     },
     "main--VWTbRdF": {
       "restored": "main.ts",

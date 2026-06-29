@@ -1,11 +1,15 @@
 // Restored from ref/.vite/build/worker.js
-// Git worker request lifecycle, cancellation, and availability checks.
+// Git worker lifecycle, availability checks, and branch query handlers.
 
 import { spawnSync } from "node:child_process";
 import { accessSync, constants } from "node:fs";
 import { posix, win32 } from "node:path";
 import type { WorkerFeatureContext } from "./worker-feature-context";
-import type { WorkerExecutionHostConfig } from "./worker-execution-host-client";
+import type {
+  WorkerExecutionHostClient,
+  WorkerExecutionHostConfig,
+} from "./worker-execution-host-client";
+import { runGitCommand } from "./git-worker-commands";
 import type { RpcResult } from "./worker-main-rpc-client";
 import { toRpcError } from "./worker-runtime-utils";
 
@@ -151,6 +155,8 @@ export class GitWorkerRequestDispatcher {
           platform: process.platform,
           spawnInsideWsl: this.options.spawnInsideWsl === true,
         }),
+        host: executionHost,
+        signal: abortController.signal,
       });
     } catch (error) {
       result = fallbackGitErrorResult(request, error);
@@ -169,12 +175,48 @@ export class GitWorkerRequestDispatcher {
 
   private async dispatchGitRequest(
     request: GitWorkerRequest,
-    context: { available: boolean },
+    context: {
+      available: boolean;
+      host: WorkerExecutionHostClient;
+      signal: AbortSignal;
+    },
   ): Promise<RpcResult> {
     switch (request.method) {
       case "availability":
         this.localGitAvailable = context.available;
         return ok({ available: context.available });
+      case "current-branch": {
+        const params = requireRecordParams(request);
+        return ok({
+          branch: await readCurrentBranch(
+            context.host,
+            requireStringParam(params, "root"),
+            context.signal,
+          ),
+        });
+      }
+      case "recent-branches": {
+        const params = requireRecordParams(request);
+        return ok({
+          branches: await readRecentBranches({
+            host: context.host,
+            limit: clampRecentBranchLimit(params.limit),
+            root: requireStringParam(params, "root"),
+            signal: context.signal,
+          }),
+        });
+      }
+      case "branch-exists": {
+        const params = requireRecordParams(request);
+        return ok({
+          exists: await branchExists({
+            branch: requireStringParam(params, "branch"),
+            host: context.host,
+            root: requireStringParam(params, "root"),
+            signal: context.signal,
+          }),
+        });
+      }
     }
     throw openRestorationBoundaryError(
       `Git worker method '${request.method}' remains an open restoration boundary.`,
@@ -192,6 +234,113 @@ export class GitWorkerRequestDispatcher {
 
 function ok(value: unknown): RpcResult {
   return { type: "ok", value };
+}
+
+async function readCurrentBranch(
+  host: WorkerExecutionHostClient,
+  root: string,
+  signal: AbortSignal,
+): Promise<string | null> {
+  const branchResult = await runGitCommand({
+    args: ["rev-parse", "--abbrev-ref", "HEAD"],
+    cwd: root,
+    host,
+    signal,
+  });
+  if (
+    branchResult.success &&
+    branchResult.stdout &&
+    branchResult.stdout !== "HEAD"
+  ) {
+    return branchResult.stdout;
+  }
+
+  const symbolicHeadResult = await runGitCommand({
+    args: ["symbolic-ref", "--quiet", "--short", "HEAD"],
+    cwd: root,
+    host,
+    signal,
+  });
+  return symbolicHeadResult.success && symbolicHeadResult.stdout
+    ? symbolicHeadResult.stdout
+    : null;
+}
+
+async function readRecentBranches({
+  host,
+  limit,
+  root,
+  signal,
+}: {
+  host: WorkerExecutionHostClient;
+  limit: number;
+  root: string;
+  signal: AbortSignal;
+}): Promise<string[]> {
+  const result = await runGitCommand({
+    args: [
+      "for-each-ref",
+      `--count=${limit}`,
+      "--sort=-committerdate",
+      "refs/heads",
+      "--format=%(refname:short)",
+    ],
+    cwd: root,
+    host,
+    signal,
+  });
+  return result.success && result.stdout
+    ? result.stdout
+        .split("\n")
+        .map((branch) => branch.trim())
+        .filter((branch) => branch.length > 0)
+    : [];
+}
+
+async function branchExists({
+  branch,
+  host,
+  root,
+  signal,
+}: {
+  branch: string;
+  host: WorkerExecutionHostClient;
+  root: string;
+  signal: AbortSignal;
+}): Promise<boolean> {
+  const result = await runGitCommand({
+    args: ["show-ref", "--verify", "--quiet", gitBranchRef(branch)],
+    cwd: root,
+    host,
+    signal,
+  });
+  return result.success && result.code === 0;
+}
+
+function gitBranchRef(branch: string): string {
+  return branch.startsWith("refs/") ? branch : `refs/heads/${branch}`;
+}
+
+function clampRecentBranchLimit(value: unknown): number {
+  const limit =
+    typeof value === "number" && Number.isFinite(value) ? value : 10;
+  return Math.max(1, Math.min(Math.trunc(limit), 100));
+}
+
+function requireRecordParams(
+  request: GitWorkerRequest,
+): Record<string, unknown> {
+  if (isRecord(request.params)) return request.params;
+  throw Error(`Git worker method '${request.method}' requires parameters`);
+}
+
+function requireStringParam(
+  params: Record<string, unknown>,
+  key: string,
+): string {
+  const value = params[key];
+  if (typeof value === "string" && value.length > 0) return value;
+  throw Error(`Git worker parameter '${key}' must be a non-empty string`);
 }
 
 function fallbackGitErrorResult(
