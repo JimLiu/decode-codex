@@ -17,6 +17,14 @@ import {
   clampBranchSearchLimit,
   searchBranches,
 } from "./git-worker-branch-search";
+import { readCatFile } from "./git-worker-cat-file";
+import {
+  readConfigValueForScope,
+  readSubmodulePaths,
+} from "./git-worker-config-queries";
+import { readGitOrigins } from "./git-worker-origin-queries";
+import { readStableMetadata } from "./git-worker-repo-queries";
+import { readIndexInfo, readStatusSummary } from "./git-worker-status-queries";
 import { runGitCommand } from "./git-worker-commands";
 import type { RpcResult } from "./worker-main-rpc-client";
 import { toRpcError } from "./worker-runtime-utils";
@@ -193,6 +201,16 @@ export class GitWorkerRequestDispatcher {
       case "availability":
         this.localGitAvailable = context.available;
         return ok({ available: context.available });
+      case "stable-metadata": {
+        const params = requireRecordParams(request);
+        return ok(
+          await readStableMetadata({
+            cwd: requireStringParam(params, "cwd"),
+            host: context.host,
+            signal: context.signal,
+          }),
+        );
+      }
       case "current-branch": {
         const params = requireRecordParams(request);
         return ok({
@@ -295,6 +313,71 @@ export class GitWorkerRequestDispatcher {
             currentBranch: optionalStringParam(params, "currentBranch"),
             host: context.host,
             root: requireStringParam(params, "root"),
+            signal: context.signal,
+          }),
+        });
+      }
+      case "status-summary": {
+        const params = requireRecordParams(request);
+        return ok(
+          await readStatusSummary({
+            cwd: requireStringParam(params, "cwd"),
+            host: context.host,
+            signal: context.signal,
+          }),
+        );
+      }
+      case "submodule-paths": {
+        const params = requireRecordParams(request);
+        return ok({
+          paths: await readSubmodulePaths({
+            host: context.host,
+            root: requireStringParam(params, "root"),
+            signal: context.signal,
+          }),
+        });
+      }
+      case "cat-file": {
+        const params = requireRecordParams(request);
+        return ok(
+          await readCatFile({
+            cwd: requireStringParam(params, "cwd"),
+            fallbackToDisk: optionalBooleanParam(params, "fallbackToDisk"),
+            host: context.host,
+            oid: optionalStringParam(params, "oid"),
+            path: requireStringParam(params, "path", { allowEmpty: true }),
+            signal: context.signal,
+          }),
+        );
+      }
+      case "index-info": {
+        const params = requireRecordParams(request);
+        return ok(
+          await readIndexInfo({
+            cwd: requireStringParam(params, "cwd"),
+            host: context.host,
+            signal: context.signal,
+          }),
+        );
+      }
+      case "config-value": {
+        const params = requireRecordParams(request);
+        return ok({
+          value: await readConfigValueForScope({
+            host: context.host,
+            key: requireStringParam(params, "key"),
+            root: requireStringParam(params, "root"),
+            scope: optionalStringParam(params, "scope"),
+            signal: context.signal,
+          }),
+        });
+      }
+      case "git-origins": {
+        const params = requireRecordParams(request);
+        return ok({
+          origins: await readGitOrigins({
+            dirs: requireStringArrayParam(params, "dirs"),
+            host: context.host,
             signal: context.signal,
           }),
         });
@@ -729,6 +812,16 @@ function requireStringArrayParam(
     return value;
   }
   throw Error(`Git worker parameter '${key}' must be a string array`);
+}
+
+function optionalBooleanParam(
+  params: Record<string, unknown>,
+  key: string,
+): boolean {
+  const value = params[key];
+  if (value == null) return false;
+  if (typeof value === "boolean") return value;
+  throw Error(`Git worker parameter '${key}' must be a boolean`);
 }
 
 function fallbackGitErrorResult(
