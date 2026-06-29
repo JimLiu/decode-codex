@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/experimental-feature-visibility-BwMbMzzx.js
+// Restored from ref/webview/assets/experimental-feature-visibility-Bvp90zWX.js
 // Visibility predicate for experimental feature rows.
 const HIDDEN_BETA_FEATURES = new Set([
   "memories",

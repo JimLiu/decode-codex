@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/git-settings-Bv6LnZbi.js
+// Restored from ref/webview/assets/git-settings-DOXloXQ3.js
 // Git settings page restored from the Codex webview bundle.
 import React, { type ChangeEvent } from "react";
 import { useGateValue } from "@statsig/react-bindings";

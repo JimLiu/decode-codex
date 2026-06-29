@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/mermaid-diagram-ClGkKF0e.js
+// Restored from ref/webview/assets/mermaid-diagram-ipLA6Do3.js
 // mermaid-diagram-ClGkKF0e chunk restored from the Codex webview bundle.
 import React from "react";
 import clsx from "clsx";

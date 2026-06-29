@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/artifact-analytics-D0odHltv.js
+// Restored from ref/webview/assets/artifact-analytics-DeyIRgFu.js
 // Supersedes historical restore from ref/webview/assets/artifact-analytics-FNBRBLp1.js.
 // Product analytics helpers for artifact annotation flows.
 import {

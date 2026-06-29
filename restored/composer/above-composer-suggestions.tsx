@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/above-composer-suggestions-CAXbkE_4.js
+// Restored from ref/webview/assets/above-composer-suggestions-B2GDwQ90.js
 // Above-composer suggestion chips from the Codex webview bundle.
 import React, {
   useMemo,

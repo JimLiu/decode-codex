@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/thread-layout-4YZWZt2v.js
+// Restored from ref/webview/assets/app-initial~app-main~worktree-init-v2-page~remote-conversation-page~new-thread-panel-page~a~hqj10sd5-C_H_yI8D.js
 // thread-layout-4YZWZt2v chunk restored from the Codex webview bundle.
 // Also covers ref/webview/assets/app-initial~app-main~worktree-init-v2-page~remote-conversation-page~new-thread-panel-page~a~hqj10sd5-DiinfLhP.js.
 import React from "react";

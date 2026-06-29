@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/animated-icon-vdVLnP6G.js
+// Restored from ref/webview/assets/animated-icon-56GzdVTe.js
 // Animated icon component backed by lazy lottie data, SVG fallbacks, and the dotLottie runtime.
 import React, {
   type ComponentType,

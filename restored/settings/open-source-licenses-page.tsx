@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/open-source-licenses-page-BeKIrKdc.js
+// Restored from ref/webview/assets/open-source-licenses-page-BDuF6z8x.js
 // open-source-licenses-page-BeKIrKdc chunk restored from the Codex webview bundle.
 import { appScopeRoot, useAppScopeValue } from "../boundaries/app-scope";
 import { createVscodeQueryOptions, vscodeApiU } from "../boundaries/vscode-api";

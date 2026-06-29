@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/pop-in-mac-CWawUykk.js
+// Restored from ref/webview/assets/app-initial~app-main~remote-conversation-page~projects-index-page~hotkey-window-thread-page~o5l7nhuo-yccnYlvy.js
 // Semantic icon module: named React component with JSX return value.
 
 import type { SVGProps } from "react";

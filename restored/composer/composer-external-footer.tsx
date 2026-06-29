@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/composer-external-footer-vmMFWT5Y.js
+// Restored from ref/webview/assets/composer-external-footer-BFeCW1bq.js
 // Composer footer orchestration for run location, branch, project, and environment controls.
 
 import { useEffect, useState } from "react";

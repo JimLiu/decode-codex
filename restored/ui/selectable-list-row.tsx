@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/selectable-list-row-QBnMjnV3.js
+// Restored from ref/webview/assets/selectable-list-row-CackmjJs.js
 // Updated with exports from ref/webview/assets/selectable-list-row-Bm082MDr.js.
 import clsx from "clsx";
 import type {

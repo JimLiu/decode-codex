@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/feature-catalog-CkClCF_S.js
+// Restored from ref/webview/assets/feature-catalog-BWlM7gWG.js
 // Supersedes historical restore from ref/webview/assets/feature-catalog-BEkS6jMH.js.
 import React from "react";
 import clsx from "clsx";

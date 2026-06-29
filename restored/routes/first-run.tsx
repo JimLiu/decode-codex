@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/first-run-Db14L1Gy.js
+// Restored from ref/webview/assets/first-run-Dv_mcmnN.js
 // first-run-Db14L1Gy chunk restored from the Codex webview bundle.
 import React from "react";
 import type { ComponentType, SVGProps } from "react";

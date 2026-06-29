@@ -15733,6 +15733,451 @@
       "note": "Current animation/theme chunk keeps the restored public API; alias added after current ref sync.",
       "aliasOf": "vercel-light-C2_H1SoG",
       "lastUpdated": "2026-06-29T00:00:00.000Z"
+    },
+    "thread-app-shell-chrome-CQAvK3Rf": {
+      "restored": "app-shell/thread-app-shell-chrome-entry.ts",
+      "exports": {
+        "ThreadAppShellChrome": "ThreadAppShellChrome"
+      },
+      "status": "done",
+      "aliasOf": "thread-app-shell-chrome-DBT2t1lC",
+      "lastUpdated": "2026-06-29T00:00:00.000Z",
+      "note": "Current app chunk keeps the restored public export surface; alias added after current ref sync."
+    },
+    "thread-browser-panel-tabs-B0_gHvSH": {
+      "restored": "app-shell/thread-browser-panel-tabs.ts",
+      "exports": {
+        "getConversationBrowserTabIdsForTransfer": "getConversationBrowserTabIdsForTransfer",
+        "getLastFocusedBrowserTabId": "getLastFocusedBrowserTabId"
+      },
+      "status": "done",
+      "aliasOf": "thread-browser-panel-tabs-DuBf4ycc",
+      "lastUpdated": "2026-06-29T00:00:00.000Z",
+      "note": "Current app chunk keeps the restored public export surface; alias added after current ref sync."
+    },
+    "app-initial~app-main~hotkey-window-thread-page~automations-page~local-conversation-page-Dacd6Pdw": {
+      "restored": "automation/heartbeat-permissions.ts",
+      "exports": {
+        "a": "serializedHeartbeatPermissionsSignal",
+        "i": "heartbeatThreadPermissionsByIdSignal",
+        "n": "getHeartbeatTurnPermissions",
+        "o": "initHeartbeatPermissionsChunk",
+        "r": "resolveHeartbeatPermissions",
+        "t": "updateHeartbeatPermissionsByThreadId"
+      },
+      "status": "done",
+      "note": "Current app chunk keeps the restored public export surface; alias added after current ref sync.",
+      "lastUpdated": "2026-06-29T00:00:00.000Z",
+      "aliasOf": "app-initial~app-main~hotkey-window-thread-page~automations-page~local-conversation-page-BdwGathX"
+    },
+    "browser-use-elevated-risk-learn-more-url-SLRkBp9s": {
+      "restored": "browser/browser-use-elevated-risk-learn-more-url.ts",
+      "exports": {
+        "n": "getBrowserUseElevatedRiskLearnMoreUrl",
+        "r": "initializeBrowserUseElevatedRiskLearnMoreUrlChunk",
+        "t": "BROWSER_USE_ELEVATED_RISK_LEARN_MORE_CONFIG_ID"
+      },
+      "status": "done",
+      "aliasOf": "browser-use-elevated-risk-learn-more-url-BBUxFihc",
+      "lastUpdated": "2026-06-29T00:00:00.000Z",
+      "note": "Current app chunk keeps the restored public export surface; alias added after current ref sync."
+    },
+    "browser-sidebar-hidden-background-webview-host-BWupD_uZ": {
+      "restored": "browser/hidden-background-webview-host.tsx",
+      "exports": {
+        "HiddenBackgroundBrowserWebviewHost": "HiddenBackgroundBrowserWebviewHost"
+      },
+      "status": "done",
+      "aliasOf": "browser-sidebar-hidden-background-webview-host-CMUP5iJT",
+      "lastUpdated": "2026-06-29T00:00:00.000Z",
+      "note": "Current app chunk keeps the restored public export surface; alias added after current ref sync."
+    },
+    "browser-sidebar-hidden-browser-use-webview-host-y6an5M4y": {
+      "restored": "browser/hidden-browser-use-webview-host.tsx",
+      "exports": {
+        "HiddenBrowserUseWebviewHost": "HiddenBrowserUseWebviewHost"
+      },
+      "status": "done",
+      "aliasOf": "browser-sidebar-hidden-browser-use-webview-host-_NfLzTex",
+      "lastUpdated": "2026-06-29T00:00:00.000Z",
+      "note": "Current app chunk keeps the restored public export surface; alias added after current ref sync."
+    },
+    "share-invite-autocomplete-C1_VemDe": {
+      "restored": "collaboration/share-invite-autocomplete.tsx",
+      "exports": {
+        "n": "initShareInviteAutocompleteChunk",
+        "t": "ShareInviteAutocomplete"
+      },
+      "status": "done",
+      "aliasOf": "share-invite-autocomplete-DUiU0DI5",
+      "lastUpdated": "2026-06-29T00:00:00.000Z",
+      "note": "Current app chunk keeps the restored public export surface; alias added after current ref sync."
+    },
+    "above-composer-suggestions-B2GDwQ90": {
+      "restored": "composer/above-composer-suggestions.tsx",
+      "exports": {
+        "AboveComposerSuggestions": "AboveComposerSuggestions"
+      },
+      "status": "done",
+      "aliasOf": "above-composer-suggestions-CAXbkE_4",
+      "lastUpdated": "2026-06-29T00:00:00.000Z",
+      "note": "Current app chunk keeps the restored public export surface; alias added after current ref sync."
+    },
+    "ambient-suggestions-connected-apps-consent-DEdjluUh": {
+      "restored": "composer/ambient-suggestions-connected-apps-consent.ts",
+      "exports": {
+        "i": "initAmbientSuggestionsConnectedAppsConsentChunk",
+        "n": "hasDismissedAmbientSuggestionsConnectAppsRowSignal",
+        "r": "hasSeenAmbientSuggestionsConnectedAppsConsentSignal",
+        "t": "filterAccessibleEnabledAmbientSuggestionApps"
+      },
+      "status": "done",
+      "aliasOf": "ambient-suggestions-connected-apps-consent-DQKvmN_n",
+      "lastUpdated": "2026-06-29T00:00:00.000Z",
+      "note": "Current app chunk keeps the restored public export surface; alias added after current ref sync."
+    },
+    "composer-external-footer-BFeCW1bq": {
+      "restored": "composer/composer-external-footer.tsx",
+      "exports": {
+        "ComposerExternalFooter": "ComposerExternalFooter"
+      },
+      "status": "done",
+      "aliasOf": "composer-external-footer-vmMFWT5Y",
+      "lastUpdated": "2026-06-29T00:00:00.000Z",
+      "note": "Current app chunk keeps the restored public export surface; alias added after current ref sync."
+    },
+    "composer-footer-branch-switcher-DTXIl3e6": {
+      "restored": "composer/composer-footer-branch-switcher/index.ts",
+      "exports": {
+        "a": "ComposerFooterBranchBadge",
+        "i": "initComposerFooterBranchSwitcherChunk",
+        "n": "initComposerFooterInlineBranchSwitcherChunk",
+        "o": "initComposerFooterBranchBadgeChunk",
+        "r": "ComposerFooterBranchSwitcher",
+        "t": "ComposerFooterInlineBranchSwitcher"
+      },
+      "status": "done",
+      "aliasOf": "composer-footer-branch-switcher-GaN7fzcq",
+      "lastUpdated": "2026-06-29T00:00:00.000Z",
+      "note": "Current app chunk keeps the restored public export surface; alias added after current ref sync."
+    },
+    "use-debug-panel-Bp7WBTu3": {
+      "restored": "debug/debug-panel.ts",
+      "exports": {
+        "a": "useIsDebugPanelEnabled",
+        "c": "registerDebugPanelSource",
+        "i": "initDebugPanelRuntime",
+        "l": "initDebugPanelSourceRuntime",
+        "n": "createDebugPanelSourceId",
+        "o": "useDebugPanelSources",
+        "r": "unregisterDebugPanelSource",
+        "s": "getEditedFilesFromTurns",
+        "t": "getReferencedFilesFromTurns"
+      },
+      "status": "done",
+      "boundary": "boundaries/current-ref/debug-panel-producer.ts",
+      "note": "Current app chunk keeps the restored public export surface; alias added after current ref sync.",
+      "lastUpdated": "2026-06-29T00:00:00.000Z",
+      "aliasOf": "use-debug-panel-BOtarLIY"
+    },
+    "local-environments-utils-DmgonwT7": {
+      "restored": "environments/local-environments-utils/index.ts",
+      "exports": {
+        "a": "serializeLocalEnvironmentConfig",
+        "c": "normalizePlatformScripts",
+        "d": "LOCAL_ENVIRONMENT_ACTION_ICON_OPTIONS",
+        "f": "initLocalEnvironmentActionIconOptionsChunk",
+        "i": "DEFAULT_SETUP_SCRIPT",
+        "l": "initLocalEnvironmentDefaultsChunk",
+        "m": "initLocalEnvironmentActionIconChunk",
+        "n": "DEFAULT_CLEANUP_SCRIPT",
+        "o": "createLocalEnvironmentAction",
+        "p": "LocalEnvironmentActionIcon",
+        "r": "LOCAL_ENVIRONMENT_PLATFORMS",
+        "s": "cloneLocalEnvironmentActions",
+        "t": "DEFAULT_RUN_COMMAND",
+        "u": "selectLocalEnvironmentAfterRefresh"
+      },
+      "status": "done",
+      "aliasOf": "local-environments-utils-CkypnJBW",
+      "lastUpdated": "2026-06-29T00:00:00.000Z",
+      "note": "Current app chunk keeps the restored public export surface; alias added after current ref sync."
+    },
+    "artifact-analytics-DeyIRgFu": {
+      "restored": "features/artifact-analytics.ts",
+      "exports": {
+        "a": "trackArtifactAnnotationCanceled",
+        "i": "trackArtifactAnnotationSubmitted",
+        "n": "trackArtifactAnnotationSaved",
+        "r": "trackArtifactAnnotationStarted",
+        "t": "initArtifactAnalyticsChunk"
+      },
+      "status": "done",
+      "note": "Current app chunk keeps the restored public export surface; alias added after current ref sync.",
+      "lastUpdated": "2026-06-29T00:00:00.000Z",
+      "aliasOf": "artifact-analytics-D0odHltv"
+    },
+    "experimental-feature-visibility-Bvp90zWX": {
+      "restored": "features/experimental-features/visibility.ts",
+      "exports": {
+        "n": "isExperimentalFeatureVisible",
+        "t": "initExperimentalFeatureVisibilityChunk"
+      },
+      "status": "done",
+      "note": "Current app chunk keeps the restored public export surface; alias added after current ref sync.",
+      "aliasOf": "experimental-feature-visibility-BwMbMzzx",
+      "lastUpdated": "2026-06-29T00:00:00.000Z"
+    },
+    "feature-catalog-BWlM7gWG": {
+      "restored": "features/feature-catalog.tsx",
+      "exports": {
+        "a": "initFeatureCatalogFindBarChunk",
+        "i": "FeatureCatalogFindBar",
+        "n": "getFeatureCatalogRows",
+        "r": "initFeatureCatalogDataChunk",
+        "t": "getFeatureCatalogItems"
+      },
+      "status": "done",
+      "note": "Current app chunk keeps the restored public export surface; alias added after current ref sync.",
+      "lastUpdated": "2026-06-29T00:00:00.000Z",
+      "aliasOf": "feature-catalog-CkClCF_S"
+    },
+    "app-initial~app-main~remote-conversation-page~pull-requests-page~projects-index-page~hotkey~ek7ayrmo-CGSZn3BZ": {
+      "restored": "github/pull-request-checks-summary.tsx",
+      "exports": {
+        "a": "initPullRequestChecksStatusLabelChunk",
+        "c": "HeartbeatAutomationCheckRing",
+        "i": "pullRequestChecksStatusLabel",
+        "l": "initHeartbeatAutomationCheckRingChunk",
+        "n": "initAttachedHeartbeatAutomationLookupChunk",
+        "o": "HeartbeatAutomationIcon",
+        "r": "PullRequestChecksSummary",
+        "s": "initHeartbeatAutomationIconChunk",
+        "t": "getAttachedHeartbeatAutomationForThread"
+      },
+      "status": "done",
+      "aliasOf": "app-initial~app-main~remote-conversation-page~pull-requests-page~projects-index-page~hotkey~ek7ayrmo-BLROoMi3",
+      "lastUpdated": "2026-06-29T00:00:00.000Z",
+      "note": "Current app chunk keeps the restored public export surface; alias added after current ref sync."
+    },
+    "home-artifact-templates-DEAd_KXL": {
+      "restored": "home/artifact-templates.tsx",
+      "exports": {
+        "HomeArtifactTemplates": "HomeArtifactTemplates"
+      },
+      "status": "done",
+      "aliasOf": "home-artifact-templates-BqtjKj4m",
+      "lastUpdated": "2026-06-29T00:00:00.000Z",
+      "note": "Current app chunk keeps the restored public export surface; alias added after current ref sync."
+    },
+    "home-use-cases-data-hIxZSoyH": {
+      "restored": "home/home-use-cases-data.ts",
+      "exports": {
+        "n": "getAutomationHomeUseCases",
+        "r": "initHomeUseCasesDataChunk",
+        "t": "HOME_USE_CASES"
+      },
+      "status": "done",
+      "note": "Current app chunk keeps the restored public export surface; alias added after current ref sync.",
+      "aliasOf": "home-use-cases-data-B74wpFte",
+      "lastUpdated": "2026-06-29T00:00:00.000Z"
+    },
+    "app-initial~app-main~remote-conversation-page~projects-index-page~hotkey-window-thread-page~o5l7nhuo-yccnYlvy": {
+      "restored": "icons/pop-in-mac-icon.tsx",
+      "exports": {
+        "n": "initPopInMacIconChunk",
+        "t": "PopInMacIcon"
+      },
+      "status": "done",
+      "note": "Current app chunk keeps the restored public export surface; alias added after current ref sync.",
+      "lastUpdated": "2026-06-29T00:00:00.000Z",
+      "aliasOf": "app-initial~app-main~remote-conversation-page~projects-index-page~hotkey-window-thread-page~o5l7nhuo-CRoJfHHc"
+    },
+    "mermaid-diagram-ipLA6Do3": {
+      "restored": "markdown/mermaid-diagram-renderer.tsx",
+      "exports": {
+        "MermaidDiagramRenderer": "MermaidDiagramRenderer"
+      },
+      "status": "done",
+      "aliasOf": "mermaid-diagram-ClGkKF0e",
+      "lastUpdated": "2026-06-29T00:00:00.000Z",
+      "note": "Current app chunk keeps the restored public export surface; alias added after current ref sync."
+    },
+    "first-run-Dv_mcmnN": {
+      "restored": "routes/first-run.tsx",
+      "exports": {
+        "FirstRunPage": "FirstRunPage"
+      },
+      "status": "done",
+      "aliasOf": "first-run-Db14L1Gy",
+      "lastUpdated": "2026-06-29T00:00:00.000Z",
+      "note": "Current app chunk keeps the restored public export surface; alias added after current ref sync."
+    },
+    "cloud-environments-settings-page-C8x5EwUe": {
+      "restored": "settings/cloud-environments-settings-page/index.tsx",
+      "exports": {
+        "CloudEnvironmentsSettingsPage": "CloudEnvironmentsSettingsPage"
+      },
+      "status": "done",
+      "aliasOf": "cloud-environments-settings-page-Cx0Mfko0",
+      "lastUpdated": "2026-06-29T00:00:00.000Z",
+      "note": "Current app chunk keeps the restored public export surface; alias added after current ref sync."
+    },
+    "cloud-preferences-settings-BEKBzFdU": {
+      "restored": "settings/cloud-preferences-settings.tsx",
+      "exports": {
+        "CloudPreferencesSettings": "CloudPreferencesSettings"
+      },
+      "status": "done",
+      "aliasOf": "cloud-preferences-settings-DFJ0Jg4r",
+      "lastUpdated": "2026-06-29T00:00:00.000Z",
+      "note": "Current app chunk keeps the restored public export surface; alias added after current ref sync."
+    },
+    "code-review-settings-CaOOur3O": {
+      "restored": "settings/code-review-settings.tsx",
+      "exports": {
+        "CodeReviewSettings": "CodeReviewSettings"
+      },
+      "status": "done",
+      "aliasOf": "code-review-settings-DnoRR0qO",
+      "lastUpdated": "2026-06-29T00:00:00.000Z",
+      "note": "Current app chunk keeps the restored public export surface; alias added after current ref sync."
+    },
+    "git-settings-DOXloXQ3": {
+      "restored": "settings/git-settings/index.tsx",
+      "exports": {
+        "GitSettings": "GitSettings"
+      },
+      "status": "done",
+      "aliasOf": "git-settings-Bv6LnZbi",
+      "lastUpdated": "2026-06-29T00:00:00.000Z",
+      "note": "Current app chunk keeps the restored public export surface; alias added after current ref sync."
+    },
+    "keyboard-shortcuts-settings-B7yKcmRD": {
+      "restored": "settings/keyboard-shortcuts-settings/index.tsx",
+      "exports": {
+        "KeyboardShortcutsSettings": "KeyboardShortcutsSettings"
+      },
+      "status": "done",
+      "aliasOf": "keyboard-shortcuts-settings-BuLGCo4B",
+      "lastUpdated": "2026-06-29T00:00:00.000Z",
+      "note": "Current app chunk keeps the restored public export surface; alias added after current ref sync."
+    },
+    "open-source-licenses-page-BDuF6z8x": {
+      "restored": "settings/open-source-licenses-page.tsx",
+      "exports": {
+        "OpenSourceLicensesPage": "OpenSourceLicensesPage"
+      },
+      "status": "done",
+      "aliasOf": "open-source-licenses-page-BeKIrKdc",
+      "lastUpdated": "2026-06-29T00:00:00.000Z",
+      "note": "Current app chunk keeps the restored public export surface; alias added after current ref sync."
+    },
+    "worktrees-settings-page-DWPENrfK": {
+      "restored": "settings/worktrees-settings-page/index.tsx",
+      "exports": {
+        "WorktreesSettingsPage": "WorktreesSettingsPage"
+      },
+      "status": "done",
+      "aliasOf": "worktrees-settings-page-KeLyIYZM",
+      "lastUpdated": "2026-06-29T00:00:00.000Z",
+      "note": "Current app chunk keeps the restored public export surface; alias added after current ref sync."
+    },
+    "app-initial~app-main~worktree-init-v2-page~remote-conversation-page~new-thread-panel-page~a~hqj10sd5-C_H_yI8D": {
+      "restored": "threads/thread-layout.tsx",
+      "note": "Current app chunk keeps the restored public export surface; alias added after current ref sync.",
+      "exports": {
+        "n": "ThreadLayout",
+        "r": "initThreadLayoutChunk",
+        "t": "threadContentClassName"
+      },
+      "status": "done",
+      "aliasOf": "app-initial~app-main~worktree-init-v2-page~remote-conversation-page~new-thread-panel-page~a~hqj10sd5-DiinfLhP",
+      "lastUpdated": "2026-06-29T00:00:00.000Z"
+    },
+    "thread-scroll-layout-mKm5Xueq": {
+      "restored": "threads/thread-scroll-layout/index.tsx",
+      "note": "Current app chunk keeps the restored public export surface; alias added after current ref sync.",
+      "exports": {
+        "t": "ThreadScrollLayout",
+        "n": "initThreadScrollLayoutChunk",
+        "r": "initThreadScrollLayoutStyleChunk"
+      },
+      "status": "done",
+      "aliasOf": "thread-scroll-layout-BNp7nttn",
+      "lastUpdated": "2026-06-29T00:00:00.000Z"
+    },
+    "thread-scroll-controller-context-value-BJ43mkT0": {
+      "restored": "threads/thread-scroll-layout/scroll-controller-context.ts",
+      "note": "Current app chunk keeps the restored public export surface; alias added after current ref sync.",
+      "exports": {
+        "n": "initThreadScrollControllerContextChunk",
+        "r": "useThreadScrollController",
+        "t": "threadScrollControllerContext"
+      },
+      "status": "done",
+      "aliasOf": "thread-scroll-controller-context-value-Cl6S6mDJ",
+      "lastUpdated": "2026-06-29T00:00:00.000Z"
+    },
+    "thread-user-message-navigation-rail-DIEtpbgb": {
+      "restored": "threads/thread-user-message-navigation-rail/index.tsx",
+      "note": "Current app chunk keeps the restored public export surface; alias added after current ref sync.",
+      "exports": {
+        "ThreadUserMessageNavigationRail": "ThreadUserMessageNavigationRail"
+      },
+      "status": "done",
+      "aliasOf": "thread-user-message-navigation-rail-Mi2GE36I",
+      "lastUpdated": "2026-06-29T00:00:00.000Z"
+    },
+    "thread-virtualizer-j4nMuJ6u": {
+      "restored": "threads/thread-virtualizer.tsx",
+      "exports": {
+        "a": "getRangeAnchoredAtTurn",
+        "i": "getVisibleThreadRange",
+        "n": "getDistanceFromBottomForPreservedAnchor",
+        "o": "initThreadVirtualizerChunk",
+        "r": "getDistanceFromBottomForCenteredTurn",
+        "t": "buildThreadVirtualizerLayout"
+      },
+      "status": "done",
+      "aliasOf": "thread-virtualizer-Cf6Pz8xO",
+      "lastUpdated": "2026-06-29T00:00:00.000Z",
+      "note": "Current app chunk keeps the restored public export surface; alias added after current ref sync."
+    },
+    "animated-icon-56GzdVTe": {
+      "restored": "ui/animated-icon.tsx",
+      "exports": {
+        "n": "initAnimatedIconModule",
+        "t": "AnimatedIcon"
+      },
+      "status": "done",
+      "note": "Current app chunk keeps the restored public export surface; alias added after current ref sync.",
+      "aliasOf": "animated-icon-vdVLnP6G",
+      "lastUpdated": "2026-06-29T00:00:00.000Z"
+    },
+    "page-search-input-Fp7_sG04": {
+      "restored": "ui/page-search-input.tsx",
+      "exports": {
+        "n": "initPageSearchInputChunk",
+        "t": "PageSearchInput"
+      },
+      "status": "done",
+      "note": "Current app chunk keeps the restored public export surface; alias added after current ref sync.",
+      "lastUpdated": "2026-06-29T00:00:00.000Z",
+      "aliasOf": "page-search-input-DLGrsDpo"
+    },
+    "selectable-list-row-CackmjJs": {
+      "restored": "ui/selectable-list-row.tsx",
+      "exports": {
+        "i": "getSelectableListRowButtonProps",
+        "n": "initSelectableListRowChunk",
+        "r": "initSelectableListRowButtonPropsChunk",
+        "t": "SelectableListRow"
+      },
+      "status": "done",
+      "aliasOf": "selectable-list-row-Bm082MDr",
+      "lastUpdated": "2026-06-29T00:00:00.000Z",
+      "note": "Current app chunk keeps the restored public export surface; alias added after current ref sync."
     }
   }
 }

@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/home-artifact-templates-BqtjKj4m.js
+// Restored from ref/webview/assets/home-artifact-templates-DEAd_KXL.js
 // home-artifact-templates-BqtjKj4m chunk restored from the Codex webview bundle.
 import React from "react";
 import {

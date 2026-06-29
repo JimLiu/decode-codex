@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/composer-footer-branch-switcher-GaN7fzcq.js
+// Restored from ref/webview/assets/composer-footer-branch-switcher-DTXIl3e6.js
 // Public exports for composer footer branch controls.
 export {
   BranchIcon,

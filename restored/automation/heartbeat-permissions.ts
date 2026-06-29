@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/heartbeat-automation-permissions-CKjRbTXW.js
+// Restored from ref/webview/assets/app-initial~app-main~hotkey-window-thread-page~automations-page~local-conversation-page-Dacd6Pdw.js
 // heartbeat-automation-permissions-CKjRbTXW chunk restored from the Codex webview bundle.
 // Also covers ref/webview/assets/app-initial~app-main~hotkey-window-thread-page~automations-page~local-conversation-page-BdwGathX.js.
 import {

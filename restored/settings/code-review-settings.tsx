@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/code-review-settings-DnoRR0qO.js
+// Restored from ref/webview/assets/code-review-settings-CaOOur3O.js
 // Settings page for automatic Codex pull request code review preferences.
 
 import { type ReactNode } from "react";

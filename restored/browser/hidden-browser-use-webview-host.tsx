@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/browser-sidebar-hidden-browser-use-webview-host-_NfLzTex.js
+// Restored from ref/webview/assets/browser-sidebar-hidden-browser-use-webview-host-y6an5M4y.js
 // Keeps hidden browser-use webviews mounted for tabs that are not visible in a panel.
 import React, { useMemo, useRef, useSyncExternalStore } from "react";
 import {

@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/thread-virtualizer-BihN83qB.js
+// Restored from ref/webview/assets/thread-virtualizer-j4nMuJ6u.js
 // thread-virtualizer-BihN83qB chunk restored from the Codex webview bundle.
 const DEFAULT_TURN_HEIGHT_PX = 280;
 

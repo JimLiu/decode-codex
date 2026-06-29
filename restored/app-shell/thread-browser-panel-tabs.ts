@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/thread-browser-panel-tabs-xnatAPyu.js
+// Restored from ref/webview/assets/thread-browser-panel-tabs-B0_gHvSH.js
 // Updated with exports from ref/webview/assets/thread-browser-panel-tabs-DuBf4ycc.js.
 import {
   getBrowserTabConversationKey,

@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/pull-request-checks-summary-D7bXjzVs.js
+// Restored from ref/webview/assets/app-initial~app-main~remote-conversation-page~pull-requests-page~projects-index-page~hotkey~ek7ayrmo-CGSZn3BZ.js
 // Also covers ref/webview/assets/app-initial~app-main~remote-conversation-page~pull-requests-page~projects-index-page~hotkey~ek7ayrmo-BLROoMi3.js.
 import { FormattedMessage } from "react-intl";
 import { CheckCircleFilledIcon } from "../icons/check-circle-filled-icon";

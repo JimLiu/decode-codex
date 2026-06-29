@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/cloud-preferences-settings-DFJ0Jg4r.js
+// Restored from ref/webview/assets/cloud-preferences-settings-BEKBzFdU.js
 // cloud-preferences-settings-DFJ0Jg4r chunk restored from the Codex webview bundle.
 import React from "react";
 import { _appScopeO, _appScopeT } from "../boundaries/app-scope";

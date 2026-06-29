@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/browser-sidebar-hidden-background-webview-host-Dh1K2IP3.js
+// Restored from ref/webview/assets/browser-sidebar-hidden-background-webview-host-BWupD_uZ.js
 // browser-sidebar-hidden-background-webview-host-Dh1K2IP3 chunk restored from the Codex webview bundle.
 import React, { useMemo, useRef, useSyncExternalStore } from "react";
 import { useAppScopeValue } from "../boundaries/app-scope";

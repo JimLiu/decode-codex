@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/thread-scroll-layout-BNp7nttn.js
+// Restored from ref/webview/assets/thread-scroll-layout-mKm5Xueq.js
 // Also covers ref/webview/assets/thread-scroll-layout-DsxWR6SP.js.
 import React from "react";
 import clsx from "clsx";
