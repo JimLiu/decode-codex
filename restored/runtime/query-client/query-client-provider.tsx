@@ -16,3 +16,5 @@ export function QueryClientScopeProvider({
     </AppScopeQueryClientProvider>
   );
 }
+
+export function initQueryClientScopeProviderChunk(): void {}
