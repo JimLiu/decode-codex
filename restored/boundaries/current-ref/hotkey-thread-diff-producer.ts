@@ -43,6 +43,16 @@ export {
 } from "../../appgen/appgen-announcement-modal";
 
 export {
+  initPullRequestCommentCardChunk,
+  PullRequestCommentCard,
+} from "../../conversations/pull-request-comment-card";
+
+export {
+  initPullRequestDescriptionMarkdownRendererChunk,
+  PullRequestDescriptionMarkdown,
+} from "../../conversations/pull-request-description-markdown-renderer";
+
+export {
   initInitialRouteRuntime,
   isCurrentCompactWindow,
 } from "../../features/is-compact-window-context";
