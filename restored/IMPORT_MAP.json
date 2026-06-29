@@ -13557,6 +13557,23 @@
       "note": "Synced current custom avatar query chunk with semantic query key, query signals, and runtime initializer while preserving older helper exports in the shared feature module.",
       "lastUpdated": "2026-06-27T21:15:59.158Z"
     },
+    "custom-avatars-query-DmvmZtl9": {
+      "restored": "features/custom-avatars-query.ts",
+      "exports": {
+        "i": "selectedCustomAvatarRefreshQuery",
+        "n": "customAvatarsQuery",
+        "r": "initCustomAvatarsQueryChunk",
+        "t": "CUSTOM_AVATARS_QUERY_KEY",
+        "CUSTOM_AVATARS_QUERY_KEY": "CUSTOM_AVATARS_QUERY_KEY",
+        "customAvatarsQuery": "customAvatarsQuery",
+        "selectedCustomAvatarRefreshQuery": "selectedCustomAvatarRefreshQuery",
+        "initCustomAvatarsQueryChunk": "initCustomAvatarsQueryChunk"
+      },
+      "status": "done",
+      "aliasOf": "custom-avatars-query-Bodwj3U-",
+      "note": "Current custom avatar query chunk keeps the same query-key, query-signal, selected-avatar refresh, and initializer surface as the existing semantic restore.",
+      "lastUpdated": "2026-06-29T00:00:00.000Z"
+    },
     "use-avatar-options-B31DUULL": {
       "restored": "utils/use-avatar-options.ts",
       "exports": {
