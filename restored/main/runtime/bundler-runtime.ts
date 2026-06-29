@@ -18,15 +18,15 @@ const requireFromRestoredRuntime = createRequire(import.meta.url);
  * This mirrors the helper emitted by the bundle for side-effectful module
  * initializers that should be evaluated on first use.
  */
-function createLazyInitializer<T>(initializer: (previous?: T) => T): () => T {
-  let pending: ((previous?: T) => T) | null = initializer;
+function createLazyInitializer<T>(initializer: (sentinel: 0) => T): () => T {
+  let pending: ((sentinel: 0) => T) | null = initializer;
   let value: T;
 
   return () => {
     if (pending) {
       const run = pending;
       pending = null;
-      value = run(value);
+      value = run(0);
     }
 
     return value;
@@ -60,7 +60,7 @@ function defineGetterNamespace<TNamespace extends object = MutableExports>(
 ): TNamespace {
   const namespace: MutableExports = {};
 
-  for (const key of Object.keys(getters)) {
+  for (const key in getters) {
     Object.defineProperty(namespace, key, {
       enumerable: true,
       get: getters[key],
