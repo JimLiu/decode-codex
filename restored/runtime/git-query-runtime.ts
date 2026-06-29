@@ -4,7 +4,6 @@ import {
   Au as initOsInfoQueryRaw,
   Hh as initGitQueryKeyHelpersRaw,
   Nh as initGitBranchQueryRuntimeRaw,
-  Uf as initHostWorkspaceQueriesRaw,
   Uh as useGitAvailabilityQueryRaw,
 } from "../vendor/projects-app-shared-runtime";
 
@@ -27,9 +26,9 @@ export function initGitBranchQueryRuntime(): void {
   initGitBranchQueryRuntimeRaw();
 }
 
-export function initHostWorkspaceQueries(): void {
-  initHostWorkspaceQueriesRaw();
-}
+// Current bj5tp28r Uf is a CodexAppshotCaptureStarted event descriptor, not the
+// old workspace-query initializer alias.
+export function initHostWorkspaceQueries(): void {}
 
 export function useGitAvailabilityQuery<TResult = unknown>(
   cwd: string | null | undefined,

@@ -16,10 +16,6 @@ import {
   _u as createBaseAt,
 } from "../vendor/pull-request-thread-actions-runtime";
 import { initClassNameRuntime } from "../boundaries/current-ref/appg-thread-shared-producer";
-import {
-  Uf as initHostWorkspaceQueries,
-  ub as initOnboardingWizardTrackingRuntime,
-} from "../vendor/projects-app-shared-runtime";
 import { initAppScope, initScopeRuntime } from "./app-scope-runtime";
 
 const MAX_SAFE_INTEGER = 9007199254740991;
@@ -113,6 +109,12 @@ export function createIsArguments() {
     return objectToString.call(value) === "[object Arguments]";
   };
 }
+
+// Current bj5tp28r Uf/ub aliases are not these initializers; keep the legacy init
+// hooks as explicit no-ops until their current producer aliases are restored.
+export function initHostWorkspaceQueries(): void {}
+
+export function initOnboardingWizardTrackingRuntime(): void {}
 
 export {
   createBaseAt,
