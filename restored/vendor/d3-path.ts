@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/path-BiIEs4Yy.js
+// Restored from ref/webview/assets/path-DSoH76MG.js
 // Path chunk restored from the Codex webview bundle.
 export function pathN(_pathN) {
   return function () {

@@ -1,5 +1,5 @@
-// Restored from ref/webview/assets/rpc-B-UGFAxq.js
-// Also matches ref/webview/assets/rpc-Cp252OZG.js.
+// Restored from ref/webview/assets/rpc-tZApRqpy.js
+// Also matches ref/webview/assets/rpc-B-UGFAxq.js and rpc-Cp252OZG.js.
 // RPC app-host wrapper restored from the Codex webview bundle.
 import {
   appHost,

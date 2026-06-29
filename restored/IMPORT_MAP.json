@@ -2361,6 +2361,15 @@
       },
       "status": "done"
     },
+    "core-CCcWj3EO": {
+      "restored": "vendor/highlight-js-core.ts",
+      "exports": {
+        "t": "loadHighlightJsCore"
+      },
+      "status": "done",
+      "aliasOf": "core-CpC1jq0N",
+      "lastUpdated": "2026-06-29T00:00:00.000Z"
+    },
     "highlight-code-BntQZ0HZ": {
       "restored": "utils/highlight-code.ts",
       "exports": {
@@ -2460,6 +2469,27 @@
       },
       "status": "done"
     },
+    "math-B6qc64Y3": {
+      "restored": "vendor/d3-geo-math.ts",
+      "exports": {
+        "a": "mathA",
+        "c": "mathC",
+        "d": "mathD",
+        "f": "mathF",
+        "i": "mathI",
+        "l": "mathL",
+        "n": "mathN",
+        "o": "mathO",
+        "p": "mathP",
+        "r": "mathR",
+        "s": "mathS",
+        "t": "mathT",
+        "u": "mathU"
+      },
+      "status": "done",
+      "aliasOf": "math-BO6C2O78",
+      "lastUpdated": "2026-06-29T00:00:00.000Z"
+    },
     "path-BiIEs4Yy": {
       "restored": "vendor/d3-path.ts",
       "exports": {
@@ -2467,6 +2497,16 @@
         "t": "pathT"
       },
       "status": "done"
+    },
+    "path-DSoH76MG": {
+      "restored": "vendor/d3-path.ts",
+      "exports": {
+        "n": "pathN",
+        "t": "pathT"
+      },
+      "status": "done",
+      "aliasOf": "path-BiIEs4Yy",
+      "lastUpdated": "2026-06-29T00:00:00.000Z"
     },
     "Tableau10-BYZHCNVA": {
       "restored": "vendor/d3-tableau10.ts",
@@ -2510,6 +2550,19 @@
         "t": "defaultLocaleT"
       },
       "status": "done"
+    },
+    "defaultLocale-I5DW1pOv": {
+      "restored": "vendor/d3-format-default-locale.ts",
+      "exports": {
+        "a": "defaultLocaleA",
+        "i": "defaultLocaleI",
+        "n": "defaultLocaleN",
+        "r": "defaultLocaleR",
+        "t": "defaultLocaleT"
+      },
+      "status": "done",
+      "aliasOf": "defaultLocale-gPb_B8uX",
+      "lastUpdated": "2026-06-29T00:00:00.000Z"
     },
     "invert-D9sJN2p1": {
       "restored": "vendor/color-convert.ts",
@@ -9775,6 +9828,17 @@
         "initializeAppHostServices": "initializeAppHostServices"
       },
       "status": "done"
+    },
+    "rpc-tZApRqpy": {
+      "restored": "runtime/rpc-b-ugf-axq.tsx",
+      "exports": {
+        "appHost": "appHost",
+        "appServices": "appServices",
+        "initializeAppHostServices": "initializeAppHostServices"
+      },
+      "status": "done",
+      "aliasOf": "rpc-B-UGFAxq",
+      "lastUpdated": "2026-06-29T00:00:00.000Z"
     },
     "get-skill-icon-BdVrkuXU": {
       "restored": "utils/get-skill-icon.tsx",

@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/math-BO6C2O78.js
+// Restored from ref/webview/assets/math-B6qc64Y3.js
 // Math chunk restored from the Codex webview bundle.
 var mathU = Math.PI,
   mathS = mathU / 2;

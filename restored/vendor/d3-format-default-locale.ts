@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/defaultLocale-gPb_B8uX.js
+// Restored from ref/webview/assets/defaultLocale-I5DW1pOv.js
 // DefaultLocale chunk restored from the Codex webview bundle.
 function defaultLocaleHelper1(defaultLocaleParam16) {
   return Math.abs((defaultLocaleParam16 = Math.round(defaultLocaleParam16))) >=
