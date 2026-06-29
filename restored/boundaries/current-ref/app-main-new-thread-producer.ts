@@ -278,8 +278,9 @@ export {
   useStableCallback,
 } from "../../utils/use-stable-callback";
 
+export { composeEventHandlers } from "../../vendor/radix-event-helpers";
+
 export {
-  composeEventHandlers,
   createSlotComponent,
   normalizeFilesystemPathForDisplay,
   Primitive,

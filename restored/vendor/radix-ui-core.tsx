@@ -492,4 +492,5 @@ function distHelper11({ defaultProp, onChange }) {
 function distHelper12(distParam46) {
   return typeof distParam46 == "function";
 }
+export { distD as composeEventHandlers };
 export { distC, distN, distO, distR, distS };
