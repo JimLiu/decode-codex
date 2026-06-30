@@ -7276,7 +7276,12 @@
         "n": "primaryRuntimeInstallStatusMessage",
         "t": "primaryRuntimeInstallProgress"
       },
-      "status": "done"
+      "status": "done",
+      "note": "Historical primary-runtime install status message helper retained in runtime/primary-runtime-install-status-message.tsx; the current synced ref no longer has this standalone hash, and the same progress/message logic appears inside the current app-main onboarding bundle.",
+      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "stage3Accepted": true,
+      "stage3AcceptedAt": "2026-06-30T00:00:00.000Z",
+      "stage3Review": "Host self-review: verified the current app-initial~app-main~onboarding-page-CgNc-Bk2 bundle still contains the same progress thresholds and localConversation.primaryRuntimeInstallStatus message ids; the public TSX file uses typed status phases, local vendor/react-intl imports, and passes quality-gate."
     },
     "app-identity-CAX6mMBt": {
       "restored": "utils/app-identity.ts",

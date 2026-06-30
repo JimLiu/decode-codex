@@ -1,25 +1,30 @@
 // Restored from ref/webview/assets/primary-runtime-install-status-message-9X-UzhFS.js
-import { FormattedMessage } from "react-intl";
-type PrimaryRuntimeInstallStatus =
+import type { ReactElement } from "react";
+import { FormattedMessage } from "../vendor/react-intl";
+
+export type PrimaryRuntimeInstallPhase =
+  | "checking"
+  | "configuring"
+  | "downloading"
+  | "error"
+  | "extracting"
+  | "installed"
+  | "ready"
+  | "validating"
+  | "verifying";
+
+export type PrimaryRuntimeInstallStatus =
   | undefined
   | {
       downloadedBytes?: number | null;
-      phase:
-        | "checking"
-        | "configuring"
-        | "downloading"
-        | "error"
-        | "extracting"
-        | "installed"
-        | "ready"
-        | "validating"
-        | "verifying";
+      phase: PrimaryRuntimeInstallPhase;
       totalBytes?: number | null;
     };
+
 export function primaryRuntimeInstallStatusMessage(
   status: PrimaryRuntimeInstallStatus,
   percent: number,
-) {
+): ReactElement {
   switch (status?.phase) {
     case undefined:
     case "checking":
@@ -59,7 +64,7 @@ export function primaryRuntimeInstallStatusMessage(
 }
 export function primaryRuntimeInstallProgress(
   status: PrimaryRuntimeInstallStatus,
-) {
+): number {
   if (status == null) {
     return 0;
   }
