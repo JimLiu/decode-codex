@@ -6948,6 +6948,16 @@
       },
       "status": "done"
     },
+    "settings-external-section-acD-8PK7": {
+      "restored": "settings/settings-external-section.tsx",
+      "exports": {
+        "SettingsExternalSection": "SettingsExternalSection"
+      },
+      "status": "done",
+      "aliasOf": "settings-external-section-j-RLbjnz",
+      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "note": "Current ref hash keeps the restored external settings section placeholder surface."
+    },
     "command-keybindings-2FWPR3Ii": {
       "restored": "utils/command-keybindings.ts",
       "exports": {
