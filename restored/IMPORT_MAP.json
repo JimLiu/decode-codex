@@ -2639,7 +2639,10 @@
     },
     "useForm-Dc2s3Q7s": {
       "restored": "vendor/tanstack-react-form.ts",
-      "status": "done"
+      "status": "done",
+      "stage3Accepted": true,
+      "stage3AcceptedAt": "2026-06-30T00:00:00.000Z",
+      "stage3Review": "Host self-review: historical useForm-Dc2s3Q7s is absent from the current ref, current esm-BrsRQYxN preserves the TanStack React Form useForm export plus initializer, and vendor/tanstack-react-form.ts is a compact @tanstack/react-form re-export that passes quality-gate."
     },
     "client-C1mrATqU": {
       "restored": "vendor/react-dom-client.ts",
@@ -8947,7 +8950,10 @@
         "n": "Command",
         "t": "useCommandState"
       },
-      "status": "done"
+      "status": "done",
+      "stage3Accepted": true,
+      "stage3AcceptedAt": "2026-06-30T00:00:00.000Z",
+      "stage3Review": "Host self-review: compared the stored original dist-BLGenw3M.js export table (K as n, X as t) to vendor/cmdk.tsx; the restored module preserves Command and useCommandState as a cmdk vendor facade and passes quality-gate."
     },
     "browser-profile-import-dialog-D1qMiO6m": {
       "restored": "ui/browser-profile-import-dialog.tsx",
@@ -8991,7 +8997,10 @@
         "s": "Route",
         "t": "NavigationType",
         "u": "matchPath"
-      }
+      },
+      "stage3Accepted": true,
+      "stage3AcceptedAt": "2026-06-30T00:00:00.000Z",
+      "stage3Review": "Host self-review: compared the stored original chunk-LFPYN7LY-h_ROgi7V.js export table to vendor/react-router.ts; the restored module preserves the mapped React Router exports as a third-party re-export shim and passes quality-gate."
     },
     "use-active-conversation-id-CAmguZaf": {
       "restored": "utils/use-active-conversation-id.ts",
@@ -35799,7 +35808,10 @@
       "status": "done",
       "aliasOf": "useForm-Dc2s3Q7s",
       "lastUpdated": "2026-06-30T00:00:00.000-05:00",
-      "note": "Current Rolldown TanStack React Form chunk re-derived from esm-BrsRQYxN.js; n is useForm and t is the initializer thunk."
+      "note": "Current Rolldown TanStack React Form chunk re-derived from esm-BrsRQYxN.js; n is useForm and t is the initializer thunk.",
+      "stage3Accepted": true,
+      "stage3AcceptedAt": "2026-06-30T00:00:00.000Z",
+      "stage3Review": "Host self-review: parsed current ref esm-BrsRQYxN.js and verified it exports Xe as n and Qe as t; vendor/tanstack-react-form.ts preserves useForm plus initTanstackReactFormChunk and passes quality-gate."
     },
     "chunk-DI55MBZ5-6W-fDgmq": {
       "restored": "vendor/mermaid-state-diagram-fpaj.ts",
