@@ -16889,7 +16889,7 @@
       "lastUpdated": "2026-06-29T00:00:00.000Z"
     },
     "app-initial~app-main~appgen-library-page-B4-cMcQI": {
-      "restored": "boundaries/current-ref/appgen-library-page-icon-producer.ts",
+      "restored": "appgen/library-page-icon.ts",
       "exports": {
         "n": "initAppgenLibraryIconChunk",
         "t": "LibraryIcon"
@@ -22910,7 +22910,7 @@
       "stage3Review": "Host self-review: quality-gate and prettier passed on the mapped public file; file read end-to-end against Stage 3 E1-E4."
     },
     "app-initial~app-main~appgen-library-page-BfbI4bIH": {
-      "restored": "boundaries/current-ref/appgen-library-page-icon-producer.ts",
+      "restored": "appgen/library-page-icon.ts",
       "exports": {
         "n": "initAppgenLibraryIconChunk",
         "t": "LibraryIcon"
