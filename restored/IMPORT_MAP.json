@@ -19470,8 +19470,11 @@
         "t": "DEFAULT_PROGRESS_DURATION_MS"
       },
       "status": "done",
-      "note": "Current tiny app-main dependency that initializes the shared 60 second progress countdown duration.",
-      "lastUpdated": "2026-06-29T00:00:00.000Z"
+      "note": "Historical tiny app-main dependency retained as runtime/progress-duration-constants.ts. The current ref no longer contains this exact jqxaf9bd hash; the restored surface initializes the shared 60 second progress countdown duration.",
+      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "stage3Accepted": true,
+      "stage3AcceptedAt": "2026-06-30T00:00:00.000Z",
+      "stage3Review": "Host self-review: current ref no longer contains jqxaf9bd-D06wdm98, runtime/progress-duration-constants.ts passes quality-gate, and both recorded aliases are exported by the semantic constants module."
     },
     "app-initial~app-main~pets-settings-eXPTB2Dp": {
       "restored": "features/avatar-overlay-open-state.ts",
