@@ -10890,7 +10890,10 @@
       "status": "done",
       "aliasOf": "infoDiagram-42DDH7IO-CA5dZBgd",
       "lastUpdated": "2026-06-30T00:00:00.000Z",
-      "note": "Current Mermaid diagram definition wrapper preserves the restored public export surface."
+      "note": "Current Mermaid diagram definition wrapper preserves the restored public export surface.",
+      "stage3Accepted": true,
+      "stage3AcceptedAt": "2026-06-30T22:35:00.000Z",
+      "stage3Review": "Host self-review: current ref infoDiagram-42DDH7IO-By7WsAd5.js exports f as diagram after initializing parser, d3 selection, graph sizing, and mermaid parser-core dependencies; vendor/mermaid-info-diagram-k5.ts preserves the fixed 11.14.0 version renderer surface and passes quality-gate."
     },
     "infoDiagram-42DDH7IO-3khaWBDB": {
       "restored": "vendor/mermaid-info-diagram-k5.ts",
