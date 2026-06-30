@@ -1,7 +1,9 @@
 // Restored from ref/webview/assets/plugin-uninstall-dialog-B-C7-Phm.js
+// Also matches ref/webview/assets/plugin-uninstall-dialog-B0r3acO1.js.
 // Confirmation dialog for uninstalling or removing a plugin.
 
 import type { ReactNode } from "react";
+import { once } from "../runtime/commonjs-interop";
 import { defineMessages, FormattedMessage } from "../vendor/react-intl";
 import { Button } from "./button";
 import {
@@ -22,6 +24,7 @@ type PluginUninstallDialogProps = {
   open: boolean;
   pluginDisplayName: ReactNode;
 };
+export const initPluginUninstallDialogChunk = once(() => {});
 const messages = defineMessages({
   disable: {
     id: "plugins.card.uninstallConfirm.disable",

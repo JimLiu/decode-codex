@@ -285,6 +285,25 @@ export function vscodeApiUnderscore<TVariables = unknown, TResult = unknown>(
   };
 }
 
+export function vscodeApiS<TVariables = unknown, TResult = unknown>(
+  commandOrOptions: string | MutationOptions<TVariables, TResult>,
+  options: MutationOptions<TVariables, TResult> = {},
+): ReturnType<typeof vscodeApiUnderscore<TVariables, TResult>> {
+  return typeof commandOrOptions === "string"
+    ? vscodeApiUnderscore({
+        ...options,
+        mutationFn:
+          options.mutationFn ??
+          ((variables: TVariables) =>
+            callCodexVscodeApi<TResult>(commandOrOptions, {
+              params: variables,
+            })),
+      })
+    : vscodeApiUnderscore(commandOrOptions);
+}
+
+export const _vscodeApiS = vscodeApiS;
+
 export function vscodeApiO<T = unknown>(
   commandOrOptions: string | QueryOptions<T>,
   options: QueryOptions<T> = {},

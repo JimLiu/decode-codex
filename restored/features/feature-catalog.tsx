@@ -1,5 +1,6 @@
 // Restored from ref/webview/assets/feature-catalog-BWlM7gWG.js
 // Supersedes historical restore from ref/webview/assets/feature-catalog-BEkS6jMH.js.
+// Also matches ref/webview/assets/feature-catalog-CkE810ru.js.
 import React from "react";
 import clsx from "clsx";
 import { once } from "../runtime/commonjs-interop";

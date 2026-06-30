@@ -1,4 +1,5 @@
 // Restored from ref/webview/assets/use-recommended-skills-Dpf-Uwom.js
+// Also matches ref/webview/assets/use-recommended-skills-CV2-DQzf.js.
 import * as React from "react";
 import {
   _vscodeApiO,
@@ -12,6 +13,7 @@ import {
   getRecommendedSkillStatsigOverride,
   useRecommendedSkillStatsigOverrides,
 } from "../plugins/recommended-skill-statsig-overrides";
+import { once } from "../runtime/commonjs-interop";
 type RecommendedSkill = {
   id: string;
   name: string;
@@ -29,6 +31,7 @@ type InstallRecommendedSkillOptions = {
   installRoot?: string | null;
   skill: RecommendedSkill;
 };
+export const initUseRecommendedSkillsChunk = once(() => {});
 function useRecommendedSkills({
   hostId,
   loadOnMount = true,
