@@ -9499,7 +9499,11 @@
         "n": "chunk7N4EOEYRN",
         "t": "chunk7N4EOEYRT"
       },
-      "status": "done"
+      "status": "done",
+      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "stage3Accepted": true,
+      "stage3AcceptedAt": "2026-06-30T00:00:00.000Z",
+      "stage3Review": "Host self-review: vendor/mermaid-architecture-services-k5.ts restores the Mermaid architecture parser service with semantic classes, preserves n/t aliases, and passes quality-gate."
     },
     "chunk-AA7GKIK3-Bic0nqP_": {
       "restored": "vendor/mermaid-pie-services-k5.ts",
@@ -9683,7 +9687,10 @@
       "status": "done",
       "aliasOf": "chunk-7N4EOEYR-BEkdQLCb",
       "lastUpdated": "2026-06-30T00:00:00.000Z",
-      "note": "Current Mermaid K5 service wrapper preserves the restored parser service export surface."
+      "note": "Current Mermaid K5 service wrapper preserves the restored parser service export surface.",
+      "stage3Accepted": true,
+      "stage3AcceptedAt": "2026-06-30T00:00:00.000Z",
+      "stage3Review": "Host self-review: current ref exports f as n and d as t for the architecture service; vendor/mermaid-architecture-services-k5.ts preserves those aliases and passes quality-gate."
     },
     "chunk-7N4EOEYR-CfJFZH_K": {
       "restored": "vendor/mermaid-architecture-services-k5.ts",
@@ -9694,7 +9701,10 @@
       "status": "done",
       "aliasOf": "chunk-7N4EOEYR-BEkdQLCb",
       "lastUpdated": "2026-06-30T00:00:00.000Z",
-      "note": "Current Mermaid K5 service wrapper preserves the restored parser service export surface."
+      "note": "Current Mermaid K5 service wrapper preserves the restored parser service export surface.",
+      "stage3Accepted": true,
+      "stage3AcceptedAt": "2026-06-30T00:00:00.000Z",
+      "stage3Review": "Host self-review: current ref exports f as n and d as t for the architecture service; vendor/mermaid-architecture-services-k5.ts preserves those aliases and passes quality-gate."
     },
     "chunk-7N4EOEYR-D3vBGdWK": {
       "restored": "vendor/mermaid-architecture-services-k5.ts",
@@ -9705,7 +9715,10 @@
       "status": "done",
       "aliasOf": "chunk-7N4EOEYR-BEkdQLCb",
       "lastUpdated": "2026-06-30T00:00:00.000Z",
-      "note": "Current Mermaid K5 service wrapper preserves the restored parser service export surface."
+      "note": "Current Mermaid K5 service wrapper preserves the restored parser service export surface.",
+      "stage3Accepted": true,
+      "stage3AcceptedAt": "2026-06-30T00:00:00.000Z",
+      "stage3Review": "Host self-review: current ref exports f as n and d as t for the architecture service; vendor/mermaid-architecture-services-k5.ts preserves those aliases and passes quality-gate."
     },
     "chunk-7N4EOEYR-DUByuvQa": {
       "restored": "vendor/mermaid-architecture-services-k5.ts",
@@ -9717,7 +9730,10 @@
       "status": "done",
       "aliasOf": "chunk-7N4EOEYR-BEkdQLCb",
       "lastUpdated": "2026-06-30T00:00:00.000Z",
-      "note": "Current Rolldown lazy-init variant maps the init alias to the restored eager ESM initializer compatibility export."
+      "note": "Current Rolldown lazy-init variant maps the init alias to the restored eager ESM initializer compatibility export.",
+      "stage3Accepted": true,
+      "stage3AcceptedAt": "2026-06-30T00:00:00.000Z",
+      "stage3Review": "Host self-review: current Rolldown variant exports f as n, lazy init g as r, and service module h as t; vendor/mermaid-architecture-services-k5.ts preserves n/t plus initChunk7N4EOEYR and passes quality-gate."
     },
     "chunk-AA7GKIK3-Bui0LsHR": {
       "restored": "vendor/mermaid-pie-services-k5.ts",
@@ -9965,7 +9981,11 @@
       "exports": {
         "createArchitectureServices": "architectureYZFGNWBL"
       },
-      "status": "done"
+      "status": "done",
+      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "stage3Accepted": true,
+      "stage3AcceptedAt": "2026-06-30T00:00:00.000Z",
+      "stage3Review": "Host self-review: vendor/mermaid-architecture-definition-k5.ts is a thin Mermaid architecture definition wrapper, preserves createArchitectureServices, imports the restored service module, and passes quality-gate."
     },
     "gitGraph-7Q5UKJZL-RtuWf9d8": {
       "restored": "vendor/mermaid-git-graph-definition-k5.ts",
@@ -23781,7 +23801,10 @@
       "status": "done",
       "aliasOf": "architecture-YZFGNWBL-hfWpxWZF",
       "lastUpdated": "2026-06-30T00:00:00.000Z",
-      "note": "Current Mermaid vendor wrapper preserves the restored public export surface."
+      "note": "Current Mermaid vendor wrapper preserves the restored public export surface.",
+      "stage3Accepted": true,
+      "stage3AcceptedAt": "2026-06-30T00:00:00.000Z",
+      "stage3Review": "Host self-review: current ref wrapper exports e as createArchitectureServices from chunk-7N4EOEYR-D3vBGdWK; vendor/mermaid-architecture-definition-k5.ts preserves that public surface and passes quality-gate."
     },
     "architecture-YZFGNWBL-C8vux8W8": {
       "restored": "vendor/mermaid-architecture-definition-k5.ts",
@@ -23791,7 +23814,10 @@
       "status": "done",
       "aliasOf": "architecture-YZFGNWBL-hfWpxWZF",
       "lastUpdated": "2026-06-30T00:00:00.000Z",
-      "note": "Current Mermaid vendor wrapper preserves the restored public export surface."
+      "note": "Current Mermaid vendor wrapper preserves the restored public export surface.",
+      "stage3Accepted": true,
+      "stage3AcceptedAt": "2026-06-30T00:00:00.000Z",
+      "stage3Review": "Host self-review: current ref wrapper exports e as createArchitectureServices from chunk-7N4EOEYR-CfJFZH_K; vendor/mermaid-architecture-definition-k5.ts preserves that public surface and passes quality-gate."
     },
     "pie-7BOR55EZ-38iymO54": {
       "restored": "vendor/mermaid-pie-definition-fpaj.ts",
@@ -23969,7 +23995,10 @@
       "status": "done",
       "aliasOf": "architecture-YZFGNWBL-hfWpxWZF",
       "lastUpdated": "2026-06-30T00:00:00.000Z",
-      "note": "Current Mermaid vendor wrapper preserves the restored public export surface."
+      "note": "Current Mermaid vendor wrapper preserves the restored public export surface.",
+      "stage3Accepted": true,
+      "stage3AcceptedAt": "2026-06-30T00:00:00.000Z",
+      "stage3Review": "Host self-review: current Rolldown wrapper initializes parser runtime, exports n as createArchitectureServices, and maps to vendor/mermaid-architecture-definition-k5.ts, which preserves the surface and passes quality-gate."
     },
     "architecture-YZFGNWBL-rarOtu8-": {
       "restored": "vendor/mermaid-architecture-definition-k5.ts",
@@ -23979,7 +24008,10 @@
       "status": "done",
       "aliasOf": "architecture-YZFGNWBL-hfWpxWZF",
       "lastUpdated": "2026-06-30T00:00:00.000Z",
-      "note": "Current Mermaid architecture vendor wrapper preserves the restored public export surface."
+      "note": "Current Mermaid architecture vendor wrapper preserves the restored public export surface.",
+      "stage3Accepted": true,
+      "stage3AcceptedAt": "2026-06-30T00:00:00.000Z",
+      "stage3Review": "Host self-review: current ref wrapper exports e as createArchitectureServices from chunk-7N4EOEYR-BdYlf3CM; vendor/mermaid-architecture-definition-k5.ts preserves that public surface and passes quality-gate."
     },
     "document-BYhvo62S": {
       "restored": "vendor/document-schema-entry-current.ts",
