@@ -2834,7 +2834,11 @@
         "r": "defaultLocaleR",
         "t": "defaultLocaleT"
       },
-      "status": "done"
+      "status": "done",
+      "lastUpdated": "2026-06-30T21:53:11.000Z",
+      "stage3Accepted": true,
+      "stage3AcceptedAt": "2026-06-30T21:53:11.000Z",
+      "stage3Review": "Host self-review: historical D3 format default-locale hash is absent from the current ref, current defaultLocale-I5DW1pOv preserves the a/i/n/r/t export aliases, vendor/d3-format-default-locale.ts exports the corresponding locale helpers, and the vendored quality gate plus export coverage pass."
     },
     "defaultLocale-I5DW1pOv": {
       "restored": "vendor/d3-format-default-locale.ts",
@@ -2847,7 +2851,10 @@
       },
       "status": "done",
       "aliasOf": "defaultLocale-gPb_B8uX",
-      "lastUpdated": "2026-06-29T00:00:00.000Z"
+      "lastUpdated": "2026-06-30T21:53:11.000Z",
+      "stage3Accepted": true,
+      "stage3AcceptedAt": "2026-06-30T21:53:11.000Z",
+      "stage3Review": "Host self-review: current D3 format default-locale chunk maps to vendor/d3-format-default-locale.ts; sourcemap is referenced but absent, the current export table aliases a/i/n/r/t match the import map, and the restored vendored module passes quality gate."
     },
     "invert-D9sJN2p1": {
       "restored": "vendor/color-convert.ts",
@@ -8531,7 +8538,10 @@
       "status": "done",
       "aliasOf": "settings-external-section-j-RLbjnz",
       "lastUpdated": "2026-06-30T00:00:00.000Z",
-      "note": "Current ref hash keeps the restored external settings section placeholder surface."
+      "note": "Current ref hash keeps the restored external settings section placeholder surface.",
+      "stage3Accepted": true,
+      "stage3AcceptedAt": "2026-06-30T23:05:00.000Z",
+      "stage3Review": "Host self-review: current ref settings-external-section-acD-8PK7.js exports SettingsExternalSection and renders the same SettingsContentLayout title/subtitle placeholder; restored/settings/settings-external-section.tsx preserves the surface and passes quality-gate."
     },
     "command-keybindings-2FWPR3Ii": {
       "restored": "utils/command-keybindings.ts",
@@ -17507,7 +17517,10 @@
       "status": "done",
       "aliasOf": "git-submodule-paths-query-CONsZjeg",
       "lastUpdated": "2026-06-30T00:00:00.000Z",
-      "note": "Current ref hash keeps the restored git submodule path signal, query signal, and initializer surface."
+      "note": "Current ref hash keeps the restored git submodule path signal, query signal, and initializer surface.",
+      "stage3Accepted": true,
+      "stage3AcceptedAt": "2026-06-30T23:05:00.000Z",
+      "stage3Review": "Host self-review: current ref git-submodule-paths-query-BqRPUZJD.js export table maps n/r/t to computed submodule paths signal, initializer, and query signal; restored/github/git-submodule-paths-query.tsx preserves the submodule-paths query params/options and passes quality-gate."
     },
     "use-codex-worktrees-CPZNHmi3": {
       "restored": "utils/use-codex-worktrees.ts",
