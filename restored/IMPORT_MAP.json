@@ -2474,6 +2474,16 @@
       "aliasOf": "core-CpC1jq0N",
       "lastUpdated": "2026-06-29T00:00:00.000Z"
     },
+    "core-DMiaGTKr": {
+      "restored": "vendor/highlight-js-core.ts",
+      "exports": {
+        "t": "loadHighlightJsCore"
+      },
+      "status": "done",
+      "aliasOf": "core-CpC1jq0N",
+      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "note": "Current highlight.js core wrapper preserves the restored loader export surface."
+    },
     "highlight-code-BntQZ0HZ": {
       "restored": "utils/highlight-code.ts",
       "exports": {
@@ -3875,6 +3885,16 @@
       "aliasOf": "sankeyDiagram-TZEHDZUN-XAdBsdDZ",
       "lastUpdated": "2026-06-29T00:00:00.000Z"
     },
+    "sankeyDiagram-TZEHDZUN-CpIVIte0": {
+      "restored": "vendor/sankey-diagram-tzehdzun-x-ad-bsd-dz.ts",
+      "exports": {
+        "diagram": "SankeyDiagramTZEHDZUN"
+      },
+      "status": "done",
+      "aliasOf": "sankeyDiagram-TZEHDZUN-XAdBsdDZ",
+      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "note": "Current Mermaid diagram wrapper preserves the restored public export surface."
+    },
     "timeline-definition-IT6M3QCI-Bx_6jO7O": {
       "restored": "vendor/timeline-definition-it6-m3-qci.ts",
       "exports": {
@@ -5094,6 +5114,46 @@
       },
       "status": "done"
     },
+    "sankeyDiagram-XADWPNL6-C6dQzajN": {
+      "restored": "vendor/sankey-diagram-xadwpnl6.ts",
+      "exports": {
+        "diagram": "SankeyDiagramXADWPNL6"
+      },
+      "status": "done",
+      "aliasOf": "sankeyDiagram-XADWPNL6-CXgjy9x6",
+      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "note": "Current Mermaid diagram wrapper preserves the restored public export surface."
+    },
+    "sankeyDiagram-XADWPNL6-BTTFHYdQ": {
+      "restored": "vendor/sankey-diagram-xadwpnl6.ts",
+      "exports": {
+        "diagram": "SankeyDiagramXADWPNL6"
+      },
+      "status": "done",
+      "aliasOf": "sankeyDiagram-XADWPNL6-CXgjy9x6",
+      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "note": "Current Mermaid diagram wrapper preserves the restored public export surface."
+    },
+    "sankeyDiagram-XADWPNL6-CU3Fq4lv": {
+      "restored": "vendor/sankey-diagram-xadwpnl6.ts",
+      "exports": {
+        "diagram": "SankeyDiagramXADWPNL6"
+      },
+      "status": "done",
+      "aliasOf": "sankeyDiagram-XADWPNL6-CXgjy9x6",
+      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "note": "Current Mermaid diagram wrapper preserves the restored public export surface."
+    },
+    "sankeyDiagram-XADWPNL6-zd2yvcuO": {
+      "restored": "vendor/sankey-diagram-xadwpnl6.ts",
+      "exports": {
+        "diagram": "SankeyDiagramXADWPNL6"
+      },
+      "status": "done",
+      "aliasOf": "sankeyDiagram-XADWPNL6-CXgjy9x6",
+      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "note": "Current Mermaid diagram wrapper preserves the restored public export surface."
+    },
     "_basePickBy-X1_M8KZ0": {
       "restored": "vendor/lodash-base-pick-by.ts",
       "exports": {
@@ -5413,6 +5473,46 @@
         "diagram": "IshikawaDiagramUXIWVN3A"
       },
       "status": "done"
+    },
+    "ishikawaDiagram-UXIWVN3A-DlFUyCNo": {
+      "restored": "vendor/ishikawa-diagram-uxiwvn3a.ts",
+      "exports": {
+        "diagram": "IshikawaDiagramUXIWVN3A"
+      },
+      "status": "done",
+      "aliasOf": "ishikawaDiagram-UXIWVN3A-C0OZiin8",
+      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "note": "Current Mermaid diagram wrapper preserves the restored public export surface."
+    },
+    "ishikawaDiagram-UXIWVN3A-DpvBJxBD": {
+      "restored": "vendor/ishikawa-diagram-uxiwvn3a.ts",
+      "exports": {
+        "diagram": "IshikawaDiagramUXIWVN3A"
+      },
+      "status": "done",
+      "aliasOf": "ishikawaDiagram-UXIWVN3A-C0OZiin8",
+      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "note": "Current Mermaid diagram wrapper preserves the restored public export surface."
+    },
+    "ishikawaDiagram-UXIWVN3A-DYU67qHx": {
+      "restored": "vendor/ishikawa-diagram-uxiwvn3a.ts",
+      "exports": {
+        "diagram": "IshikawaDiagramUXIWVN3A"
+      },
+      "status": "done",
+      "aliasOf": "ishikawaDiagram-UXIWVN3A-C0OZiin8",
+      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "note": "Current Mermaid diagram wrapper preserves the restored public export surface."
+    },
+    "ishikawaDiagram-UXIWVN3A-BT5D3Jbq": {
+      "restored": "vendor/ishikawa-diagram-uxiwvn3a.ts",
+      "exports": {
+        "diagram": "IshikawaDiagramUXIWVN3A"
+      },
+      "status": "done",
+      "aliasOf": "ishikawaDiagram-UXIWVN3A-C0OZiin8",
+      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "note": "Current Mermaid diagram wrapper preserves the restored public export surface."
     },
     "journeyDiagram-VCZTEJTY-D0GHB_lA": {
       "restored": "vendor/journey-diagram-vcztejty.ts",
@@ -8159,6 +8259,26 @@
       },
       "status": "done"
     },
+    "kanban-definition-6JOO6SKY-DCWk4nX3": {
+      "restored": "vendor/mermaid-kanban-definition.ts",
+      "exports": {
+        "diagram": "kanbanDefinition6JOO6SKY"
+      },
+      "status": "done",
+      "aliasOf": "kanban-definition-6JOO6SKY-cHI15BWA",
+      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "note": "Current Mermaid diagram definition wrapper preserves the restored public export surface."
+    },
+    "kanban-definition-6JOO6SKY-o31w_Pvs": {
+      "restored": "vendor/mermaid-kanban-definition.ts",
+      "exports": {
+        "diagram": "kanbanDefinition6JOO6SKY"
+      },
+      "status": "done",
+      "aliasOf": "kanban-definition-6JOO6SKY-cHI15BWA",
+      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "note": "Current Mermaid diagram definition wrapper preserves the restored public export surface."
+    },
     "dagre-6UL2VRFP-DHAAtlj_": {
       "restored": "vendor/mermaid-dagre-renderer.ts",
       "exports": {
@@ -8174,6 +8294,16 @@
       "status": "done",
       "aliasOf": "dagre-6UL2VRFP-DHAAtlj_",
       "lastUpdated": "2026-06-29T00:00:00.000Z"
+    },
+    "dagre-6UL2VRFP-CTBugNjf": {
+      "restored": "vendor/mermaid-dagre-renderer.ts",
+      "exports": {
+        "render": "dagre6UL2VRFP"
+      },
+      "status": "done",
+      "aliasOf": "dagre-6UL2VRFP-DHAAtlj_",
+      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "note": "Current Mermaid renderer wrapper preserves the restored public export surface."
     },
     "remote-text-edit-session-DjCWscO4": {
       "restored": "generated/remote-text-edit-session.tsx",
@@ -8887,6 +9017,16 @@
       },
       "status": "done"
     },
+    "architectureDiagram-Q4EWVU46-C8BX1EHA": {
+      "restored": "vendor/mermaid-architecture-diagram-k5.ts",
+      "exports": {
+        "diagram": "ArchitectureDiagramQ4EWVU46"
+      },
+      "status": "done",
+      "aliasOf": "architectureDiagram-Q4EWVU46-C9aYmC2s",
+      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "note": "Current Mermaid diagram wrapper preserves the restored public export surface."
+    },
     "diagram-5BDNPKRD-CNeveAHh": {
       "restored": "vendor/mermaid-tree-view-diagram-k5.ts",
       "exports": {
@@ -9243,6 +9383,16 @@
       "aliasOf": "gitGraphDiagram-NY62KEGX-lV4TXvsv",
       "lastUpdated": "2026-06-29T00:00:00.000Z"
     },
+    "gitGraphDiagram-NY62KEGX-DaFudJe8": {
+      "restored": "vendor/mermaid-git-graph-diagram-fpaj.ts",
+      "exports": {
+        "diagram": "gitGraphDiagramNY62KEGX"
+      },
+      "status": "done",
+      "aliasOf": "gitGraphDiagram-NY62KEGX-lV4TXvsv",
+      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "note": "Current Mermaid diagram wrapper preserves the restored public export surface."
+    },
     "infoDiagram-F6ZHWCRC-CZZfMpuV": {
       "restored": "vendor/mermaid-info-diagram-fpaj.ts",
       "exports": {
@@ -9515,6 +9665,16 @@
       "aliasOf": "mindmap-definition-VGOIOE7T-CravxLKD",
       "lastUpdated": "2026-06-29T00:00:00.000Z"
     },
+    "mindmap-definition-VGOIOE7T-Z2Xz4DAU": {
+      "restored": "vendor/mermaid-mindmap-definition-fpaj.ts",
+      "exports": {
+        "diagram": "MindmapDefinitionVGOIOE7T"
+      },
+      "status": "done",
+      "aliasOf": "mindmap-definition-VGOIOE7T-CravxLKD",
+      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "note": "Current Mermaid diagram definition wrapper preserves the restored public export surface."
+    },
     "requirementDiagram-UZGBJVZJ-CREo4bNX": {
       "restored": "vendor/mermaid-requirement-diagram-fpaj.ts",
       "exports": {
@@ -9590,6 +9750,26 @@
         "diagram": "MindmapDefinitionQFDTVHPH"
       },
       "status": "done"
+    },
+    "mindmap-definition-QFDTVHPH-Dn6j3A3z": {
+      "restored": "vendor/mermaid-mindmap-definition-k5.ts",
+      "exports": {
+        "diagram": "MindmapDefinitionQFDTVHPH"
+      },
+      "status": "done",
+      "aliasOf": "mindmap-definition-QFDTVHPH-BlP876d6",
+      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "note": "Current Mermaid diagram definition wrapper preserves the restored public export surface."
+    },
+    "mindmap-definition-QFDTVHPH-soHV76HJ": {
+      "restored": "vendor/mermaid-mindmap-definition-k5.ts",
+      "exports": {
+        "diagram": "MindmapDefinitionQFDTVHPH"
+      },
+      "status": "done",
+      "aliasOf": "mindmap-definition-QFDTVHPH-BlP876d6",
+      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "note": "Current Mermaid diagram definition wrapper preserves the restored public export surface."
     },
     "requirementDiagram-MS252O5E-C4g-RuEW": {
       "restored": "vendor/mermaid-requirement-diagram-k5.ts",
@@ -9884,6 +10064,36 @@
         "default": "MermaidCore"
       },
       "status": "done"
+    },
+    "mermaid.core-C6FbNonK": {
+      "restored": "vendor/mermaid-core.ts",
+      "exports": {
+        "default": "MermaidCore"
+      },
+      "status": "done",
+      "aliasOf": "mermaid.core-eIokQLcr",
+      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "note": "Current Mermaid core wrapper preserves the restored default export surface."
+    },
+    "mermaid.core-D2hEPHXS": {
+      "restored": "vendor/mermaid-core.ts",
+      "exports": {
+        "default": "MermaidCore"
+      },
+      "status": "done",
+      "aliasOf": "mermaid.core-eIokQLcr",
+      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "note": "Current Mermaid core wrapper preserves the restored default export surface."
+    },
+    "mermaid.core-BKPz4kKV": {
+      "restored": "vendor/mermaid-core.ts",
+      "exports": {
+        "default": "MermaidCore"
+      },
+      "status": "done",
+      "aliasOf": "mermaid.core-eIokQLcr",
+      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "note": "Current Mermaid core wrapper preserves the restored default export surface."
     },
     "mermaid-diagram-ClGkKF0e": {
       "restored": "markdown/mermaid-diagram-renderer.tsx",
