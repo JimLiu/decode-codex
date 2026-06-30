@@ -1,216 +1,95 @@
 // Restored from ref/webview/assets/app-initial~app-main~automations-page-Bc0ZtIBr.js
-// Home page route wrapper, electron surface, and main page body.
+// Main home page body for extension, browser, and Electron shells.
 import React, {
+  Suspense,
   useCallback,
   useEffect,
   useEffectEvent,
   useRef,
   useState,
-  Suspense,
   type ReactNode,
 } from "react";
-import { FormattedMessage, useIntl } from "../vendor/react-intl";
-import { useAuth } from "../auth/use-auth";
+import { useIntl } from "../../vendor/react-intl";
+import { useAuth } from "../../auth/use-auth";
 import {
-  useNavigate,
   useLocation,
-} from "../conversations/local-conversation-route-runtime";
-import { useOpenUpgradePlan } from "../settings/upgrade-plan-entry";
-import { useFeatureGate } from "../boundaries/statsig.facade";
-import { useWorkspaceOnboardingAutoLaunch } from "../runtime/current-app-initial/onboarding-select-workspace-current-runtime";
-import { ThreadAppShellChrome } from "../app-shell/thread-app-shell-chrome";
-import { HomeArtifactTemplates } from "./artifact-templates";
-import { HomeConversationStarters } from "./home-conversation-starters";
-import { HomePrefillArtifactPreview } from "./home-prefill-artifact-preview";
-import { HomeAnnouncements } from "../app-shell/home-announcements";
-
-// Facade re-exports for symbols not yet in restored/ — each typed `any`
-/* TODO: identify source for each binding */
+  useNavigate,
+} from "../../conversations/local-conversation-route-runtime";
+import { useOpenUpgradePlan } from "../../settings/upgrade-plan-entry";
+import { useFeatureGate } from "../../boundaries/statsig.facade";
+import { useWorkspaceOnboardingAutoLaunch } from "../../runtime/current-app-initial/onboarding-select-workspace-current-runtime";
+import { ThreadAppShellChrome } from "../../app-shell/thread-app-shell-chrome";
+import { HomeAnnouncements } from "../../app-shell/home-announcements";
+import { HomeArtifactTemplates } from "../artifact-templates";
+import { HomeConversationStarters } from "../home-conversation-starters";
+import { HomePrefillArtifactPreview } from "../home-prefill-artifact-preview";
 import {
-  ScopedContextProvider,
-  PlatformGate,
-  sidePanelSlots,
-  useNullAppShellRef,
-  useStore,
-  useSignalValue,
-  currentRouteSignal,
-  diffSourceSignal,
-  browserHostInfoSignal,
   browserHostIdSignal,
-  workspaceContextSignal,
-  workspaceGroupsSignal,
-  workspaceRootsSignal,
-  isRemoteProjectPendingSignal,
-  isPullRequestSyncEnabledSignal,
-  isHomeSidePanelExpandedSignal,
-  HomeScrollContainerContext,
-  ElectronSurface,
-  DiffSourceDisplay,
-  HomeComposer,
-  HomeAmbientSuggestionsContent,
-  HomeStartActionsBar,
-  HomeHeader,
-  LocalConversationStateEffect,
-  RemoteConversationStateEffect,
-  HomeLogoIcon,
+  browserHostInfoSignal,
+  buildDiffCommentsPayload,
   clsx as cn,
-  threadFooterClassName,
-  motionTransitionConfig,
-  motionLayoutDiv as MotionDiv,
-  useRemoteProjects,
-  useDetailLevel,
+  currentRouteSignal,
+  electronBridgeDispatch,
   EVERYDAY_WORK_DETAIL_LEVEL,
+  HomeAmbientSuggestionsContent,
+  HomeComposer,
+  HomeHeader,
+  HomeLogoIcon,
+  HomeScrollContainerContext,
+  HomeStartActionsBar,
+  isHomeSidePanelExpandedSignal,
+  isPullRequestSyncEnabledSignal,
+  isRemoteProjectPendingSignal,
+  isWorkspaceOnboardingExperimentArm,
+  LocalConversationStateEffect,
+  logWorkspaceOnboardingEvent,
+  motionLayoutDiv as MotionDiv,
+  motionTransitionConfig,
   normalizeWorkspaceRoot,
+  onboardingDefaultProjectName,
+  openRemoteProjectModal,
+  PlatformGate,
+  RemoteConversationStateEffect,
+  setDraftConversationId,
+  sidePanelSlots,
+  threadFooterClassName,
+  updateDiffComments,
+  getPlanInfo,
+  useAccountInfoQuery,
   useAccountsQuery,
   useCurrentUserQuery,
-  useAccountInfoQuery,
+  useDetailLevel,
   useDraftLocation,
-  useIsElectron,
-  useHomeComposerKeyboardShortcuts,
-  getPlanInfo,
-  useGetPricingUrl,
-  useIsUpgradeEligible,
-  initDiffSource,
-  openRemoteProjectModal,
-  logWorkspaceOnboardingEvent,
-  workspaceOnboardingNavigationEvent,
-  isWorkspaceOnboardingExperimentArm,
-  onboardingDefaultProjectName,
-  electronBridgeDispatch,
   useElectronMessageHandler,
+  useGetPricingUrl,
+  useHomeComposerKeyboardShortcuts,
+  useIsElectron,
+  useIsUpgradeEligible,
   useRegisterSidePanelAction,
-  updateDiffComments,
-  setDraftConversationId,
-  navigateToProject,
-  buildDiffCommentsPayload,
-  CommandMenuItem,
-  CommandMenuGroup,
-  useCommandMenuRegistration,
-  SparklesIcon,
-  ComposerButton,
-} from "../boundaries/onboarding-commons-externals.facade";
+  useRemoteProjects,
+  useSignalValue,
+  useStore,
+  workspaceContextSignal,
+  workspaceGroupsSignal,
+  workspaceOnboardingNavigationEvent,
+  workspaceRootsSignal,
+} from "../../boundaries/onboarding-commons-externals.facade";
+import { GetPlusButton } from "./get-plus-button";
+import { HomeSwitchWorkspaceCommand } from "./home-switch-workspace-command";
 
-export interface HomeNewChatPageProps {
-  announcementStorybookOverride?: ReactNode;
-  routeProjectId?: string | null;
-}
 export interface HomePageBodyProps {
   announcementStorybookOverride?: ReactNode;
   routeProjectId: string | null;
 }
 
-function getProjectKey(g: { projectId: string; label?: string | null }) {
-  return `${g.projectId}:${g.label}`;
-}
-function prefetchUpgradePlanDialog() {
-  import("../settings/upgrade-plan-dialog").catch(() => undefined);
-}
-
-export interface GetPlusButtonProps {
-  onClick: (e: React.MouseEvent) => void;
-}
-export function GetPlusButton({ onClick }: GetPlusButtonProps) {
-  return (
-    <ComposerButton
-      className="!bg-token-charts-purple/10 !text-token-charts-purple hover:!bg-token-charts-purple/20"
-      color="secondary"
-      onClick={onClick}
-      onFocus={prefetchUpgradePlanDialog}
-      onPointerEnter={prefetchUpgradePlanDialog}
-      size="composerSm"
-    >
-      <SparklesIcon className="icon-xxs" />
-      <FormattedMessage
-        id="home.header.getPlus"
-        defaultMessage="Get Plus"
-        description="Upsell button label shown in the new thread page header for free users"
-      />
-    </ComposerButton>
-  );
-}
-
-export function HomeSwitchWorkspaceCommand() {
-  const appScopeStore = useStore(currentRouteSignal);
-  const navigate = useNavigate();
-  const groups = useSignalValue(workspaceGroupsSignal) as any[];
-  const depKey = groups.map(getProjectKey).join("|");
-  const render = useCallback(
-    (close: () => void) =>
-      groups.length === 0 ? null : (
-        <CommandMenuGroup
-          heading={
-            <span className="block px-2 pt-2 text-sm text-token-description-foreground">
-              <FormattedMessage
-                id="codex.commandMenu.switchWorkspace"
-                defaultMessage="Switch project"
-                description="Command group label in the command menu for switching the active workspace on the home page"
-              />
-            </span>
-          }
-          className="flex flex-col"
-          style={{ gap: "var(--spacing)" }}
-          key="group-switch-workspace"
-        >
-          {groups.map((g: any) => (
-            <CommandMenuItem
-              key={g.projectId}
-              value={g.label ?? ""}
-              title={g.label ?? ""}
-              onSelect={() => {
-                navigateToProject(appScopeStore, navigate, g);
-                close();
-              }}
-            />
-          ))}
-        </CommandMenuGroup>
-      ),
-    [appScopeStore, navigate, groups],
-  );
-  useCommandMenuRegistration({
-    id: "home-switch-workspace",
-    order: 1000,
-    enabled: groups.length > 0,
-    dependencies: [depKey],
-    render,
-  });
-  return null;
-}
-
-export function HomeElectronSurface() {
-  const appScopeStore = useStore(currentRouteSignal);
-  const diffSource = useSignalValue(diffSourceSignal);
-  useEffect(() => {
-    initDiffSource(appScopeStore, "diff");
-  }, [appScopeStore]);
-  return (
-    <>
-      <ElectronSurface />
-      <DiffSourceDisplay diffSource={diffSource} />
-    </>
-  );
-}
-
-export function HomeNewChatPage({
-  announcementStorybookOverride,
-  routeProjectId = null,
-}: HomeNewChatPageProps) {
-  const newChatRef = useNullAppShellRef("chatgpt.supportsNewChatKeyShortcut");
-  return (
-    <ScopedContextProvider>
-      <div
-        className="flex h-full flex-col"
-        data-vscode-context='{"chatgpt.supportsNewChatMenu": true}'
-        tabIndex={0}
-        ref={newChatRef}
-      >
-        <HomeElectronSurface />
-        <HomePageBody
-          announcementStorybookOverride={announcementStorybookOverride}
-          routeProjectId={routeProjectId}
-        />
-      </div>
-    </ScopedContextProvider>
-  );
+interface HomeWorkspaceGroup {
+  projectId: string;
+  projectKind?: string;
+  isLocalProject?: boolean;
+  repositoryData?: unknown;
+  hostId?: string | null;
+  label?: string | null;
+  path?: string | null;
 }
 
 export function HomePageBody({
@@ -219,22 +98,43 @@ export function HomePageBody({
 }: HomePageBodyProps) {
   const currentRoute = useStore(currentRouteSignal);
   const intl = useIntl();
-  const browserHostInfo = useSignalValue(browserHostInfoSignal) as any;
+  const browserHostInfo = useSignalValue(browserHostInfoSignal) as {
+    display_name: string;
+  };
   const hostId = useSignalValue(browserHostIdSignal) as string;
   const { authMethod, email, planAtLogin } = useAuth();
-  const { data: accountsData } = useAccountsQuery() as any;
-  const { data: currentUserData } = useCurrentUserQuery() as any;
+  const { data: accountsData } = useAccountsQuery() as {
+    data?: { accounts?: unknown[] };
+  };
+  const { data: currentUserData } = useCurrentUserQuery() as {
+    data?: { plan_type?: string };
+  };
   const isEverydayWorkMode = useDetailLevel() === EVERYDAY_WORK_DETAIL_LEVEL;
   const navigate = useNavigate();
   const isElectron = useIsElectron() as () => boolean;
-  const location = useLocation() as any;
+  const location = useLocation() as {
+    key: string;
+    state?: {
+      hideHomeSuggestionsForCurrentEntry?: boolean;
+      pendingLocalProjectPreviousWorkspaceRoot?: string;
+      pendingViewAction?: string;
+      prefillArtifactPreviewFiles?: unknown[];
+      prefillCwd?: string;
+      sidebarOnboardingChecklistCompletionOnSubmit?: unknown;
+    };
+  };
   const locationState = location.state;
-  const ctx = useSignalValue(workspaceContextSignal) as any;
-  const groups = useSignalValue(workspaceGroupsSignal) as any[];
+  const projectContext = useSignalValue(workspaceContextSignal) as {
+    kind: string;
+    cwd?: string | null;
+  };
+  const groups = useSignalValue(workspaceGroupsSignal) as HomeWorkspaceGroup[];
   const isRemoteProjectPending = useSignalValue(
     isRemoteProjectPendingSignal,
   ) as boolean;
-  const rootsData = useSignalValue(workspaceRootsSignal) as any;
+  const rootsData = useSignalValue(workspaceRootsSignal) as {
+    roots?: string[];
+  };
   const isPRSyncEnabled = useSignalValue(
     isPullRequestSyncEnabledSignal,
   ) as boolean;
@@ -243,22 +143,41 @@ export function HomePageBody({
   ) as boolean;
   const { data: accountInfoData } = useAccountInfoQuery("account-info", {
     queryConfig: { enabled: authMethod === "chatgpt" },
-  }) as any;
+  }) as { data?: { email?: string; plan?: string } };
   const {
     autoLaunchAction,
     isRemoteHost,
     setWorkspaceOnboardingAutoLaunchApplied,
     workspaceOnboardingExperimentArm,
-  } = useWorkspaceOnboardingAutoLaunch() as any;
+  } = useWorkspaceOnboardingAutoLaunch() as {
+    autoLaunchAction?: string;
+    isRemoteHost?: boolean;
+    setWorkspaceOnboardingAutoLaunchApplied: (applied: boolean) => void;
+    workspaceOnboardingExperimentArm?: unknown;
+  };
   const autoLaunchAppliedRef = useRef(false);
   const { isLoading, selectedRemoteProject, selectedRemoteProjectId } =
-    useRemoteProjects() as any;
+    useRemoteProjects() as {
+      isLoading?: boolean;
+      selectedRemoteProject?: {
+        id?: string | null;
+        hostId?: string | null;
+        label?: string | null;
+        remotePath?: string | null;
+      } | null;
+      selectedRemoteProjectId?: string | null;
+    };
 
-  const routeCtx =
-    (currentRoute as any).value?.routeKind === "home"
-      ? (currentRoute as any).value.projectContext
-      : null;
-  const pendingId =
+  const routeValue = currentRoute.value as
+    | {
+        routeKind?: string;
+        projectContext?: { projectId?: string | null } | null;
+        clientThreadId?: string | null;
+      }
+    | undefined;
+  const routeContext =
+    routeValue?.routeKind === "home" ? routeValue.projectContext : null;
+  const pendingProjectId =
     selectedRemoteProjectId ??
     (locationState?.prefillCwd != null &&
     locationState?.pendingLocalProjectPreviousWorkspaceRoot !== undefined &&
@@ -266,14 +185,15 @@ export function HomePageBody({
       locationState.pendingLocalProjectPreviousWorkspaceRoot
       ? locationState.prefillCwd
       : (rootsData?.roots?.[0] ?? null));
-  const activeProjectId = routeCtx?.projectId ?? routeProjectId ?? pendingId;
+  const activeProjectId =
+    routeContext?.projectId ?? routeProjectId ?? pendingProjectId;
   const isProjectSelectionPending =
-    routeCtx == null &&
+    routeContext == null &&
     routeProjectId == null &&
     (isLoading || (selectedRemoteProjectId == null && isRemoteProjectPending));
 
   const activeGroup =
-    groups.find((g: any) => g.projectId === activeProjectId) ?? null;
+    groups.find((group) => group.projectId === activeProjectId) ?? null;
   const homeRunLocationRemoteProject =
     activeGroup?.projectKind === "remote" && activeGroup.hostId != null
       ? {
@@ -289,27 +209,24 @@ export function HomePageBody({
     (activeGroup != null &&
     (activeGroup.projectKind !== "local" || !activeGroup.isLocalProject)
       ? activeGroup.repositoryData != null
-      : ctx.kind === "git") || homeRunLocationRemoteProject != null;
+      : projectContext.kind === "git") || homeRunLocationRemoteProject != null;
 
   const draftLocationId = useDraftLocation({ entrypoint: "home" }) as string;
-  const browserConversationId = (currentRoute as any).value?.clientThreadId as
-    | string
-    | null;
+  const browserConversationId = routeValue?.clientThreadId ?? null;
   const handleLocalConversationCreated = useCallback(
     async (conversationId: string, state: unknown) => {
-      updateDiffComments(currentRoute, "diff_comments", (c: unknown) =>
+      updateDiffComments(currentRoute, "diff_comments", (comments: unknown) =>
         buildDiffCommentsPayload({
           sourceConversationId: draftLocationId,
           targetConversationId: conversationId,
-          diffComments: c,
+          diffComments: comments,
         }),
       );
       setDraftConversationId(currentRoute, {
         conversationId,
         draftThreadLocationId: draftLocationId,
       });
-      if ((isElectron as any)())
-        await navigate(`/local/${conversationId}`, { state });
+      if (isElectron()) await navigate(`/local/${conversationId}`, { state });
     },
     [currentRoute, draftLocationId, isElectron, navigate],
   );
@@ -337,8 +254,9 @@ export function HomePageBody({
 
   const workspaceRoot = isRemoteHost
     ? null
-    : ((ctx.cwd != null ? normalizeWorkspaceRoot(ctx.cwd) : null) ??
-      normalizeWorkspaceRoot("~"));
+    : ((projectContext.cwd != null
+        ? normalizeWorkspaceRoot(projectContext.cwd)
+        : null) ?? normalizeWorkspaceRoot("~"));
   const showSuggestions =
     locationState?.sidebarOnboardingChecklistCompletionOnSubmit == null &&
     locationState?.hideHomeSuggestionsForCurrentEntry !== true;
@@ -362,9 +280,7 @@ export function HomePageBody({
     (result: { success: boolean }) => {
       if (!result.success) return;
       if (
-        (isWorkspaceOnboardingExperimentArm as any)(
-          workspaceOnboardingExperimentArm,
-        )
+        isWorkspaceOnboardingExperimentArm(workspaceOnboardingExperimentArm)
       ) {
         logWorkspaceOnboardingEvent(
           currentRoute,
@@ -380,20 +296,24 @@ export function HomePageBody({
     },
   );
 
-  const navigateReplacingState = useEffectEvent((s: unknown) => {
-    navigate("/", { replace: true, state: s });
+  const navigateReplacingState = useEffectEvent((state: unknown) => {
+    navigate("/", { replace: true, state });
   });
   useEffect(() => {
     if (locationState?.pendingViewAction !== "open-create-remote-project-modal")
       return;
     openRemoteProjectModal({ setActive: true });
-    const { pendingViewAction: _v, ...rest } = locationState ?? {};
+    const { pendingViewAction: _viewAction, ...rest } = locationState ?? {};
     navigateReplacingState(rest);
-  }, [locationState]);
+  }, [locationState, navigateReplacingState]);
 
   useRegisterSidePanelAction((action: unknown) => {
-    import("../app-shell/thread-side-panel-tabs").then(
-      ({ toggleThreadSidePanel }: any) => {
+    import("../../app-shell/thread-side-panel-tabs").then(
+      ({
+        toggleThreadSidePanel,
+      }: {
+        toggleThreadSidePanel: (scope: unknown, action: unknown) => void;
+      }) => {
         toggleThreadSidePanel(currentRoute, action);
       },
     );
@@ -402,12 +322,12 @@ export function HomePageBody({
   const isSidePanelCollapsed = isPRSyncEnabled && isSidePanelExpanded;
   const upgradeCta = keyboardShortcuts ? (
     <GetPlusButton
-      onClick={(e) =>
+      onClick={(event) =>
         openUpgradePlan({
           scope: currentRoute,
           currentPlan: pricePlan,
           defaultTab: "personal",
-          event: e,
+          event,
           getPricingUrl,
           source: "home_upgrade_cta",
         })
@@ -481,7 +401,9 @@ export function HomePageBody({
               <PlatformGate extension>
                 <HomeComposer
                   className="electron:hidden"
-                  hideRunLocationDropdownOverride={ctx.kind !== "git"}
+                  hideRunLocationDropdownOverride={
+                    projectContext.kind !== "git"
+                  }
                   placeholderText={placeholder}
                   hideArtifactPluginSuggestions
                   freeUpsellButton={upgradeCta}
@@ -521,7 +443,7 @@ export function HomePageBody({
                         isEverydayWorkMode={isEverydayWorkMode}
                         isProjectSelectionPending={isProjectSelectionPending}
                         workspaceGroups={groups}
-                        projectContext={ctx}
+                        projectContext={projectContext}
                       />
                     </div>
                     <div className="sticky top-0 z-10 mx-auto flex w-[min(100%,var(--thread-content-max-width))] min-w-0 flex-col gap-2 px-panel pt-5 electron:bg-token-main-surface-primary">
@@ -529,9 +451,10 @@ export function HomePageBody({
                         <HomeComposer
                           className="w-full"
                           aboveComposerContent={
-                            workspaceRoot == null && ctx.cwd != null ? (
+                            workspaceRoot == null &&
+                            projectContext.cwd != null ? (
                               <HomeConversationStarters
-                                activeWorkspaceRoot={ctx.cwd}
+                                activeWorkspaceRoot={projectContext.cwd}
                                 hostId={hostId}
                                 portalTarget={null}
                               />
