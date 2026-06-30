@@ -1,5 +1,5 @@
-// Restored from ref/webview/assets/chunk-ORNJ4GCN-Dtggxgv1.js
-// ChunkORNJ4GCN chunk restored from the Codex webview bundle.
+// Restored from ref/webview/assets/chunk-ORNJ4GCN-UdwLKAZZ.js
+// Mermaid tree-view diagram service module restored from the Codex webview bundle.
 import {
   chunkK5T4RW27D,
   chunkK5T4RW27G,
@@ -11,22 +11,16 @@ import {
   chunkK5T4RW27Underscore,
   chunkK5T4RW27V,
 } from "./mermaid-parser-runtime-k5";
-var chunkORNJ4GCNValue1 = class extends chunkK5T4RW27N {
+var TreeViewValueConverter = class extends chunkK5T4RW27N {
     static {
       chunkK5T4RW27M(this, "TreeViewValueConverter");
     }
-    runCustomConverter(
-      chunkORNJ4GCNParam1,
-      chunkORNJ4GCNParam2,
-      chunkORNJ4GCNParam3,
-    ) {
-      if (chunkORNJ4GCNParam1.name === "INDENTATION")
-        return chunkORNJ4GCNParam2?.length || 0;
-      if (chunkORNJ4GCNParam1.name === "STRING2")
-        return chunkORNJ4GCNParam2.substring(1, chunkORNJ4GCNParam2.length - 1);
+    runCustomConverter(token, text, context) {
+      if (token.name === "INDENTATION") return text?.length || 0;
+      if (token.name === "STRING2") return text.substring(1, text.length - 1);
     }
   },
-  chunkORNJ4GCNValue2 = class extends chunkK5T4RW27T {
+  TreeViewTokenBuilder = class extends chunkK5T4RW27T {
     static {
       chunkK5T4RW27M(this, "TreeViewTokenBuilder");
     }
@@ -34,40 +28,46 @@ var chunkORNJ4GCNValue1 = class extends chunkK5T4RW27N {
       super(["treeView-beta"]);
     }
   },
-  chunkORNJ4GCNT = {
+  treeViewServiceModule = {
     parser: {
       TokenBuilder: chunkK5T4RW27M(
-        () => new chunkORNJ4GCNValue2(),
+        () => new TreeViewTokenBuilder(),
         "TokenBuilder",
       ),
       ValueConverter: chunkK5T4RW27M(
-        () => new chunkORNJ4GCNValue1(),
+        () => new TreeViewValueConverter(),
         "ValueConverter",
       ),
     },
   };
-function chunkORNJ4GCNN(chunkORNJ4GCNParam4 = chunkK5T4RW27H) {
-  let chunkORNJ4GCNValue3 = chunkK5T4RW27G(
-      chunkK5T4RW27V(chunkORNJ4GCNParam4),
+function createTreeViewServices(parserConfig = chunkK5T4RW27H) {
+  let sharedServices = chunkK5T4RW27G(
+      chunkK5T4RW27V(parserConfig),
       chunkK5T4RW27S,
     ),
-    chunkORNJ4GCNValue4 = chunkK5T4RW27G(
+    treeViewServices = chunkK5T4RW27G(
       chunkK5T4RW27Underscore({
-        shared: chunkORNJ4GCNValue3,
+        shared: sharedServices,
       }),
       chunkK5T4RW27D,
-      chunkORNJ4GCNT,
+      treeViewServiceModule,
     );
   return (
-    chunkORNJ4GCNValue3.ServiceRegistry.register(chunkORNJ4GCNValue4),
+    sharedServices.ServiceRegistry.register(treeViewServices),
     {
-      shared: chunkORNJ4GCNValue3,
-      TreeView: chunkORNJ4GCNValue4,
+      shared: sharedServices,
+      TreeView: treeViewServices,
     }
   );
 }
-function initChunkORNJ4GCN() {
+function initChunkORNJ4GCN(): void {
   // Restored ESM modules initialize eagerly; keep the current chunk init export compatible.
 }
-chunkK5T4RW27M(chunkORNJ4GCNN, "createTreeViewServices");
-export { chunkORNJ4GCNN, initChunkORNJ4GCN, chunkORNJ4GCNT };
+chunkK5T4RW27M(createTreeViewServices, "createTreeViewServices");
+export {
+  createTreeViewServices,
+  createTreeViewServices as chunkORNJ4GCNN,
+  initChunkORNJ4GCN,
+  treeViewServiceModule,
+  treeViewServiceModule as chunkORNJ4GCNT,
+};

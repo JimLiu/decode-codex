@@ -1,5 +1,5 @@
-// Restored from ref/webview/assets/chunk-CIAEETIT-DnOj_Z7m.js
-// ChunkCIAEETIT chunk restored from the Codex webview bundle.
+// Restored from ref/webview/assets/chunk-CIAEETIT-Ch0jAfU2.js
+// Mermaid Wardley diagram service module restored from the Codex webview bundle.
 import {
   chunkK5T4RW27G,
   chunkK5T4RW27H,
@@ -10,53 +10,55 @@ import {
   chunkK5T4RW27Underscore,
   chunkK5T4RW27V,
 } from "./mermaid-parser-runtime-k5";
-var chunkCIAEETITValue1 = class extends chunkK5T4RW27N {
+var WardleyValueConverter = class extends chunkK5T4RW27N {
     static {
       chunkK5T4RW27M(this, "WardleyValueConverter");
     }
-    runCustomConverter(
-      chunkCIAEETITParam1,
-      chunkCIAEETITParam2,
-      chunkCIAEETITParam3,
-    ) {
-      switch (chunkCIAEETITParam1.name.toUpperCase()) {
+    runCustomConverter(token, text, context) {
+      switch (token.name.toUpperCase()) {
         case "LINK_LABEL":
-          return chunkCIAEETITParam2.substring(1).trim();
+          return text.substring(1).trim();
         default:
           return;
       }
     }
   },
-  chunkCIAEETITT = {
+  wardleyServiceModule = {
     parser: {
       ValueConverter: chunkK5T4RW27M(
-        () => new chunkCIAEETITValue1(),
+        () => new WardleyValueConverter(),
         "ValueConverter",
       ),
     },
   };
-function chunkCIAEETITN(chunkCIAEETITParam4 = chunkK5T4RW27H) {
-  let chunkCIAEETITValue2 = chunkK5T4RW27G(
-      chunkK5T4RW27V(chunkCIAEETITParam4),
+function createWardleyServices(parserConfig = chunkK5T4RW27H) {
+  let sharedServices = chunkK5T4RW27G(
+      chunkK5T4RW27V(parserConfig),
       chunkK5T4RW27S,
     ),
-    chunkCIAEETITValue3 = chunkK5T4RW27G(
+    wardleyServices = chunkK5T4RW27G(
       chunkK5T4RW27Underscore({
-        shared: chunkCIAEETITValue2,
+        shared: sharedServices,
       }),
       chunkK5T4RW27P,
-      chunkCIAEETITT,
+      wardleyServiceModule,
     );
   return (
-    chunkCIAEETITValue2.ServiceRegistry.register(chunkCIAEETITValue3),
+    sharedServices.ServiceRegistry.register(wardleyServices),
     {
-      shared: chunkCIAEETITValue2,
-      Wardley: chunkCIAEETITValue3,
+      shared: sharedServices,
+      Wardley: wardleyServices,
     }
   );
 }
-function initChunkCIAEETIT() {
+function initChunkCIAEETIT(): void {
   // Restored ESM modules initialize eagerly; keep the current chunk init export compatible.
 }
-chunkK5T4RW27M(chunkCIAEETITN, "createWardleyServices");
-export { chunkCIAEETITN, initChunkCIAEETIT, chunkCIAEETITT };
+chunkK5T4RW27M(createWardleyServices, "createWardleyServices");
+export {
+  createWardleyServices,
+  createWardleyServices as chunkCIAEETITN,
+  initChunkCIAEETIT,
+  wardleyServiceModule,
+  wardleyServiceModule as chunkCIAEETITT,
+};

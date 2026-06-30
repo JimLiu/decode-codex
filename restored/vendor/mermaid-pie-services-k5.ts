@@ -1,6 +1,5 @@
-// Restored from ref/webview/assets/chunk-AA7GKIK3-Bic0nqP_.js
-// ChunkAA7GKIK3 chunk restored from the Codex webview bundle.
-// Updated with aliases from ref/webview/assets/chunk-AA7GKIK3-DYzvk-tv.js.
+// Restored from ref/webview/assets/chunk-AA7GKIK3-DYzvk-tv.js
+// Mermaid pie diagram service module restored from the Codex webview bundle.
 import {
   chunkK5T4RW27G,
   chunkK5T4RW27H,
@@ -12,7 +11,7 @@ import {
   chunkK5T4RW27Underscore,
   chunkK5T4RW27V,
 } from "./mermaid-parser-runtime-k5";
-var chunkAA7GKIK3Value1 = class extends chunkK5T4RW27T {
+var PieTokenBuilder = class extends chunkK5T4RW27T {
     static {
       chunkK5T4RW27M(this, "PieTokenBuilder");
     }
@@ -20,53 +19,55 @@ var chunkAA7GKIK3Value1 = class extends chunkK5T4RW27T {
       super(["pie", "showData"]);
     }
   },
-  chunkAA7GKIK3Value2 = class extends chunkK5T4RW27N {
+  PieValueConverter = class extends chunkK5T4RW27N {
     static {
       chunkK5T4RW27M(this, "PieValueConverter");
     }
-    runCustomConverter(
-      chunkAA7GKIK3Param2,
-      chunkAA7GKIK3Param3,
-      chunkAA7GKIK3Param4,
-    ) {
-      if (chunkAA7GKIK3Param2.name === "PIE_SECTION_LABEL")
-        return chunkAA7GKIK3Param3.replace(/"/g, "").trim();
+    runCustomConverter(token, text, context) {
+      if (token.name === "PIE_SECTION_LABEL")
+        return text.replace(/"/g, "").trim();
     }
   },
-  chunkAA7GKIK3T = {
+  pieServiceModule = {
     parser: {
       TokenBuilder: chunkK5T4RW27M(
-        () => new chunkAA7GKIK3Value1(),
+        () => new PieTokenBuilder(),
         "TokenBuilder",
       ),
       ValueConverter: chunkK5T4RW27M(
-        () => new chunkAA7GKIK3Value2(),
+        () => new PieValueConverter(),
         "ValueConverter",
       ),
     },
   };
-function chunkAA7GKIK3N(chunkAA7GKIK3Param1 = chunkK5T4RW27H) {
-  let chunkAA7GKIK3Value3 = chunkK5T4RW27G(
-      chunkK5T4RW27V(chunkAA7GKIK3Param1),
+function createPieServices(parserConfig = chunkK5T4RW27H) {
+  let sharedServices = chunkK5T4RW27G(
+      chunkK5T4RW27V(parserConfig),
       chunkK5T4RW27S,
     ),
-    chunkAA7GKIK3Value4 = chunkK5T4RW27G(
+    pieServices = chunkK5T4RW27G(
       chunkK5T4RW27Underscore({
-        shared: chunkAA7GKIK3Value3,
+        shared: sharedServices,
       }),
       chunkK5T4RW27L,
-      chunkAA7GKIK3T,
+      pieServiceModule,
     );
   return (
-    chunkAA7GKIK3Value3.ServiceRegistry.register(chunkAA7GKIK3Value4),
+    sharedServices.ServiceRegistry.register(pieServices),
     {
-      shared: chunkAA7GKIK3Value3,
-      Pie: chunkAA7GKIK3Value4,
+      shared: sharedServices,
+      Pie: pieServices,
     }
   );
 }
-function initChunkAA7GKIK3() {
+function initChunkAA7GKIK3(): void {
   // Restored ESM modules initialize eagerly; keep the current chunk init export compatible.
 }
-chunkK5T4RW27M(chunkAA7GKIK3N, "createPieServices");
-export { chunkAA7GKIK3N, initChunkAA7GKIK3, chunkAA7GKIK3T };
+chunkK5T4RW27M(createPieServices, "createPieServices");
+export {
+  createPieServices,
+  createPieServices as chunkAA7GKIK3N,
+  initChunkAA7GKIK3,
+  pieServiceModule,
+  pieServiceModule as chunkAA7GKIK3T,
+};

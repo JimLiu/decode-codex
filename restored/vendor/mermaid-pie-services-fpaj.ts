@@ -1,5 +1,5 @@
-// Restored from ref/webview/assets/chunk-T53DSG4Q-DP2fFD_m.js
-// ChunkT53DSG4Q chunk restored from the Codex webview bundle.
+// Restored from ref/webview/assets/chunk-T53DSG4Q-m0Nw3lHx.js
+// Mermaid pie diagram service module restored from the Codex webview bundle.
 import {
   chunkFPAJGGOCF,
   chunkFPAJGGOCG,
@@ -11,7 +11,7 @@ import {
   chunkFPAJGGOCS,
   chunkFPAJGGOCT,
 } from "./mermaid-parser-runtime-fpajggoc";
-var chunkT53DSG4QValue1 = class extends chunkFPAJGGOCT {
+var PieTokenBuilder = class extends chunkFPAJGGOCT {
     static {
       chunkFPAJGGOCF(this, "PieTokenBuilder");
     }
@@ -19,53 +19,55 @@ var chunkT53DSG4QValue1 = class extends chunkFPAJGGOCT {
       super(["pie", "showData"]);
     }
   },
-  chunkT53DSG4QValue2 = class extends chunkFPAJGGOCN {
+  PieValueConverter = class extends chunkFPAJGGOCN {
     static {
       chunkFPAJGGOCF(this, "PieValueConverter");
     }
-    runCustomConverter(
-      chunkT53DSG4QParam2,
-      chunkT53DSG4QParam3,
-      chunkT53DSG4QParam4,
-    ) {
-      if (chunkT53DSG4QParam2.name === "PIE_SECTION_LABEL")
-        return chunkT53DSG4QParam3.replace(/"/g, "").trim();
+    runCustomConverter(token, text, context) {
+      if (token.name === "PIE_SECTION_LABEL")
+        return text.replace(/"/g, "").trim();
     }
   },
-  chunkT53DSG4QT = {
+  pieServiceModule = {
     parser: {
       TokenBuilder: chunkFPAJGGOCF(
-        () => new chunkT53DSG4QValue1(),
+        () => new PieTokenBuilder(),
         "TokenBuilder",
       ),
       ValueConverter: chunkFPAJGGOCF(
-        () => new chunkT53DSG4QValue2(),
+        () => new PieValueConverter(),
         "ValueConverter",
       ),
     },
   };
-function chunkT53DSG4QN(chunkT53DSG4QParam1 = chunkFPAJGGOCP) {
-  let chunkT53DSG4QValue3 = chunkFPAJGGOCM(
-      chunkFPAJGGOCG(chunkT53DSG4QParam1),
+function createPieServices(parserConfig = chunkFPAJGGOCP) {
+  let sharedServices = chunkFPAJGGOCM(
+      chunkFPAJGGOCG(parserConfig),
       chunkFPAJGGOCS,
     ),
-    chunkT53DSG4QValue4 = chunkFPAJGGOCM(
+    pieServices = chunkFPAJGGOCM(
       chunkFPAJGGOCH({
-        shared: chunkT53DSG4QValue3,
+        shared: sharedServices,
       }),
       chunkFPAJGGOCL,
-      chunkT53DSG4QT,
+      pieServiceModule,
     );
   return (
-    chunkT53DSG4QValue3.ServiceRegistry.register(chunkT53DSG4QValue4),
+    sharedServices.ServiceRegistry.register(pieServices),
     {
-      shared: chunkT53DSG4QValue3,
-      Pie: chunkT53DSG4QValue4,
+      shared: sharedServices,
+      Pie: pieServices,
     }
   );
 }
-function initChunkT53DSG4Q() {
+function initChunkT53DSG4Q(): void {
   // Restored ESM modules initialize eagerly; keep the current chunk init export compatible.
 }
-chunkFPAJGGOCF(chunkT53DSG4QN, "createPieServices");
-export { chunkT53DSG4QN, initChunkT53DSG4Q, chunkT53DSG4QT };
+chunkFPAJGGOCF(createPieServices, "createPieServices");
+export {
+  createPieServices,
+  createPieServices as chunkT53DSG4QN,
+  initChunkT53DSG4Q,
+  pieServiceModule,
+  pieServiceModule as chunkT53DSG4QT,
+};
