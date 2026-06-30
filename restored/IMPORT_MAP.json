@@ -31904,6 +31904,250 @@
       "vendor": "stylis",
       "lastUpdated": "2026-06-30T08:12:20.343Z",
       "note": "Current Stylis bundle matched stock compile/serialize/stringify exports; initializer is represented as a no-op."
+    },
+    "above-composer-suggestions-EVJBi7fI": {
+      "restored": "composer/above-composer-suggestions.tsx",
+      "exports": {
+        "AboveComposerSuggestions": "AboveComposerSuggestions"
+      },
+      "aliasOf": "above-composer-suggestions-CAXbkE_4",
+      "note": "Current above-composer-suggestions hash preserves the semantic public export surface; aliases re-derived from above-composer-suggestions-EVJBi7fI.js.",
+      "status": "done",
+      "lastUpdated": "2026-06-30T00:00:00.000Z"
+    },
+    "appshots-settings-RmZiMnx3": {
+      "restored": "settings/appshots-settings.tsx",
+      "exports": {
+        "AppshotsSettings": "AppshotsSettings"
+      },
+      "aliasOf": "appshots-settings-Yk90QG0U",
+      "note": "Current appshots-settings hash preserves the semantic public export surface; aliases re-derived from appshots-settings-RmZiMnx3.js.",
+      "status": "done",
+      "lastUpdated": "2026-06-30T00:00:00.000Z"
+    },
+    "artifact-tab-content.electron-CoTXiI_o": {
+      "restored": "ui/artifact-tab-content.tsx",
+      "exports": {
+        "ArtifactTabContent": "ArtifactTabContent"
+      },
+      "aliasOf": "artifact-tab-content.electron-xyz2yen7",
+      "note": "Current artifact-tab-content.electron hash preserves the semantic public export surface; aliases re-derived from artifact-tab-content.electron-CoTXiI_o.js.",
+      "status": "done",
+      "lastUpdated": "2026-06-30T00:00:00.000Z"
+    },
+    "browser-profile-import-dialog-Gr1b2Z7w": {
+      "restored": "ui/browser-profile-import-dialog.tsx",
+      "exports": {
+        "BrowserProfileImportDialogModal": "BrowserProfileImportDialogModal"
+      },
+      "aliasOf": "browser-profile-import-dialog-D1qMiO6m",
+      "note": "Current browser-profile-import-dialog hash preserves the semantic public export surface; aliases re-derived from browser-profile-import-dialog-Gr1b2Z7w.js.",
+      "status": "done",
+      "lastUpdated": "2026-06-30T00:00:00.000Z"
+    },
+    "cloud-environments-settings-page-DBIXWMQN": {
+      "restored": "settings/cloud-environments-settings-page/index.tsx",
+      "exports": {
+        "CloudEnvironmentsSettingsPage": "CloudEnvironmentsSettingsPage"
+      },
+      "aliasOf": "cloud-environments-settings-page-Cx0Mfko0",
+      "note": "Current cloud-environments-settings-page hash preserves the semantic public export surface; aliases re-derived from cloud-environments-settings-page-DBIXWMQN.js.",
+      "status": "done",
+      "lastUpdated": "2026-06-30T00:00:00.000Z"
+    },
+    "cloud-preferences-settings-DhNHe3Nv": {
+      "restored": "settings/cloud-preferences-settings.tsx",
+      "exports": {
+        "CloudPreferencesSettings": "CloudPreferencesSettings"
+      },
+      "aliasOf": "cloud-preferences-settings-DFJ0Jg4r",
+      "note": "Current cloud-preferences-settings hash preserves the semantic public export surface; aliases re-derived from cloud-preferences-settings-DhNHe3Nv.js.",
+      "status": "done",
+      "lastUpdated": "2026-06-30T00:00:00.000Z"
+    },
+    "code-review-settings-z8ACadqs": {
+      "restored": "settings/code-review-settings.tsx",
+      "exports": {
+        "CodeReviewSettings": "CodeReviewSettings"
+      },
+      "aliasOf": "code-review-settings-DnoRR0qO",
+      "note": "Current code-review-settings hash preserves the semantic public export surface; aliases re-derived from code-review-settings-z8ACadqs.js.",
+      "status": "done",
+      "lastUpdated": "2026-06-30T00:00:00.000Z"
+    },
+    "composer-external-footer-BnOdOmQM": {
+      "restored": "composer/composer-external-footer.tsx",
+      "exports": {
+        "ComposerExternalFooter": "ComposerExternalFooter"
+      },
+      "aliasOf": "composer-external-footer-vmMFWT5Y",
+      "note": "Current composer-external-footer hash preserves the semantic public export surface; aliases re-derived from composer-external-footer-BnOdOmQM.js.",
+      "status": "done",
+      "lastUpdated": "2026-06-30T00:00:00.000Z"
+    },
+    "conversation-markdown-B6eEpGgd": {
+      "restored": "conversations/conversation-markdown.ts",
+      "exports": {
+        "renderConversationMarkdown": "renderConversationMarkdown"
+      },
+      "aliasOf": "conversation-markdown-BjFKV53f",
+      "note": "Current conversation-markdown hash preserves the semantic public export surface; aliases re-derived from conversation-markdown-B6eEpGgd.js.",
+      "status": "done",
+      "lastUpdated": "2026-06-30T00:00:00.000Z"
+    },
+    "first-run-wJZq0dYc": {
+      "restored": "routes/first-run.tsx",
+      "exports": {
+        "FirstRunPage": "FirstRunPage"
+      },
+      "aliasOf": "first-run-Db14L1Gy",
+      "note": "Current first-run hash preserves the semantic public export surface; aliases re-derived from first-run-wJZq0dYc.js.",
+      "status": "done",
+      "lastUpdated": "2026-06-30T00:00:00.000Z"
+    },
+    "git-settings-Cv4Hezof": {
+      "restored": "settings/git-settings/index.tsx",
+      "exports": {
+        "GitSettings": "GitSettings"
+      },
+      "aliasOf": "git-settings-Bv6LnZbi",
+      "note": "Current git-settings hash preserves the semantic public export surface; aliases re-derived from git-settings-Cv4Hezof.js.",
+      "status": "done",
+      "lastUpdated": "2026-06-30T00:00:00.000Z"
+    },
+    "global-dictation-page-CND2x2T2": {
+      "restored": "features/global-dictation-page/index.tsx",
+      "exports": {
+        "GlobalDictationPage": "GlobalDictationPage"
+      },
+      "aliasOf": "global-dictation-page-BV05fEU5",
+      "note": "Current global-dictation-page hash preserves the semantic public export surface; aliases re-derived from global-dictation-page-CND2x2T2.js.",
+      "status": "done",
+      "lastUpdated": "2026-06-30T00:00:00.000Z"
+    },
+    "highlight-code-Bv8OoAm9": {
+      "restored": "utils/highlight-code.ts",
+      "exports": {
+        "highlightCode": "highlightCode"
+      },
+      "aliasOf": "highlight-code-BntQZ0HZ",
+      "note": "Current highlight-code hash preserves the semantic public export surface; aliases re-derived from highlight-code-Bv8OoAm9.js.",
+      "status": "done",
+      "lastUpdated": "2026-06-30T00:00:00.000Z"
+    },
+    "keyboard-shortcuts-settings-CTlFYERg": {
+      "restored": "settings/keyboard-shortcuts-settings/index.tsx",
+      "exports": {
+        "KeyboardShortcutsSettings": "KeyboardShortcutsSettings"
+      },
+      "aliasOf": "keyboard-shortcuts-settings-BuLGCo4B",
+      "note": "Current keyboard-shortcuts-settings hash preserves the semantic public export surface; aliases re-derived from keyboard-shortcuts-settings-CTlFYERg.js.",
+      "status": "done",
+      "lastUpdated": "2026-06-30T00:00:00.000Z"
+    },
+    "local-conversation-page-B5rs1it6": {
+      "restored": "conversations/local-conversation-page.tsx",
+      "exports": {
+        "LocalConversationPage": "LocalConversationPage"
+      },
+      "aliasOf": "local-conversation-page-C379OsPf",
+      "note": "Current local-conversation-page hash preserves the semantic public export surface; aliases re-derived from local-conversation-page-B5rs1it6.js.",
+      "status": "done",
+      "lastUpdated": "2026-06-30T00:00:00.000Z"
+    },
+    "mcp-settings-BYrm_Fbg": {
+      "restored": "settings/mcp-settings.tsx",
+      "exports": {
+        "McpSettings": "McpSettings"
+      },
+      "aliasOf": "mcp-settings-Cq9pFeQZ",
+      "note": "Current mcp-settings hash preserves the semantic public export surface; aliases re-derived from mcp-settings-BYrm_Fbg.js.",
+      "status": "done",
+      "lastUpdated": "2026-06-30T00:00:00.000Z"
+    },
+    "mermaid-diagram-CVBcf6fK": {
+      "restored": "markdown/mermaid-diagram-renderer.tsx",
+      "exports": {
+        "MermaidDiagramRenderer": "MermaidDiagramRenderer"
+      },
+      "aliasOf": "mermaid-diagram-ClGkKF0e",
+      "note": "Current mermaid-diagram hash preserves the semantic public export surface; aliases re-derived from mermaid-diagram-CVBcf6fK.js.",
+      "status": "done",
+      "lastUpdated": "2026-06-30T00:00:00.000Z"
+    },
+    "preview-DAZTnBWb": {
+      "restored": "ui/pdb-preview/index.tsx",
+      "exports": {
+        "PdbPreviewFromFile": "PdbPreviewFromFile"
+      },
+      "aliasOf": "preview-DvaTfwxN",
+      "note": "Current preview hash preserves the semantic public export surface; aliases re-derived from preview-DAZTnBWb.js.",
+      "status": "done",
+      "lastUpdated": "2026-06-30T00:00:00.000Z"
+    },
+    "thread-user-message-navigation-rail-DP1Of3Tk": {
+      "restored": "threads/thread-user-message-navigation-rail/index.tsx",
+      "exports": {
+        "ThreadUserMessageNavigationRail": "ThreadUserMessageNavigationRail"
+      },
+      "aliasOf": "thread-user-message-navigation-rail-Mi2GE36I",
+      "note": "Current thread-user-message-navigation-rail hash preserves the semantic public export surface; aliases re-derived from thread-user-message-navigation-rail-DP1Of3Tk.js.",
+      "status": "done",
+      "lastUpdated": "2026-06-30T00:00:00.000Z"
+    },
+    "workbook-from-markdown-6t79Mo_W": {
+      "restored": "utils/workbook-from-markdown.ts",
+      "exports": {
+        "buildTableValuesFromMarkdown": "buildTableValuesFromMarkdown",
+        "sanitizeSheetName": "sanitizeSheetName"
+      },
+      "aliasOf": "workbook-from-markdown-Do0YNaaN",
+      "note": "Current workbook-from-markdown hash preserves the semantic public export surface; aliases re-derived from workbook-from-markdown-6t79Mo_W.js.",
+      "status": "done",
+      "lastUpdated": "2026-06-30T00:00:00.000Z"
+    },
+    "workbook-from-markdown-C4PJVkUA": {
+      "restored": "utils/workbook-from-markdown.ts",
+      "exports": {
+        "buildTableValuesFromMarkdown": "buildTableValuesFromMarkdown",
+        "sanitizeSheetName": "sanitizeSheetName"
+      },
+      "aliasOf": "workbook-from-markdown-Do0YNaaN",
+      "note": "Current workbook-from-markdown hash preserves the semantic public export surface; aliases re-derived from workbook-from-markdown-C4PJVkUA.js.",
+      "status": "done",
+      "lastUpdated": "2026-06-30T00:00:00.000Z"
+    },
+    "workbook-from-markdown-WDutqDfH": {
+      "restored": "utils/workbook-from-markdown.ts",
+      "exports": {
+        "buildTableValuesFromMarkdown": "buildTableValuesFromMarkdown",
+        "sanitizeSheetName": "sanitizeSheetName"
+      },
+      "aliasOf": "workbook-from-markdown-Do0YNaaN",
+      "note": "Current workbook-from-markdown hash preserves the semantic public export surface; aliases re-derived from workbook-from-markdown-WDutqDfH.js.",
+      "status": "done",
+      "lastUpdated": "2026-06-30T00:00:00.000Z"
+    },
+    "workbook-from-markdown-raPrwWad": {
+      "restored": "utils/workbook-from-markdown.ts",
+      "exports": {
+        "buildTableValuesFromMarkdown": "buildTableValuesFromMarkdown",
+        "sanitizeSheetName": "sanitizeSheetName"
+      },
+      "aliasOf": "workbook-from-markdown-Do0YNaaN",
+      "note": "Current workbook-from-markdown hash preserves the semantic public export surface; aliases re-derived from workbook-from-markdown-raPrwWad.js.",
+      "status": "done",
+      "lastUpdated": "2026-06-30T00:00:00.000Z"
+    },
+    "worktrees-settings-page-DXtwfjjn": {
+      "restored": "settings/worktrees-settings-page/index.tsx",
+      "exports": {
+        "WorktreesSettingsPage": "WorktreesSettingsPage"
+      },
+      "aliasOf": "worktrees-settings-page-KeLyIYZM",
+      "note": "Current worktrees-settings-page hash preserves the semantic public export surface; aliases re-derived from worktrees-settings-page-DXtwfjjn.js.",
+      "status": "done",
+      "lastUpdated": "2026-06-30T00:00:00.000Z"
     }
   }
 }
