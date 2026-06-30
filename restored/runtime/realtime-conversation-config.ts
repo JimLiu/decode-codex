@@ -20,27 +20,28 @@ type RealtimeConversationConfig = RealtimeConfigResolution & {
   override: RealtimeVoiceConfigOverride;
   statsigValue: RealtimeVoiceConfig;
 };
-const realtimeConversationConfigT: RealtimeVoiceConfigOverride = {
+const DEFAULT_REALTIME_VOICE_CONFIG_OVERRIDE: RealtimeVoiceConfigOverride = {
   enabled: false,
   config: "",
 };
-const realtimeConversationConfigN = createPersistedSignal(
+const realtimeVoiceConfigOverrideSignal = createPersistedSignal(
   "realtime-voice-config-override",
-  realtimeConversationConfigT,
+  DEFAULT_REALTIME_VOICE_CONFIG_OVERRIDE,
 );
-function realtimeConversationConfigR(): RealtimeConversationConfig {
+function useRealtimeConversationConfig(): RealtimeConversationConfig {
   const { value } = useDynamicConfig("1193530394") as {
     value: RealtimeVoiceConfig;
   };
   const override =
-    (useAppScopeValue(realtimeConversationConfigN) as
+    (useAppScopeValue(realtimeVoiceConfigOverrideSignal) as
       | RealtimeVoiceConfigOverride
       | null
       | undefined) ??
     ((getPersistedAtomValue(
       "realtime-voice-config-override",
-      realtimeConversationConfigT,
-    ) ?? realtimeConversationConfigT) as RealtimeVoiceConfigOverride);
+      DEFAULT_REALTIME_VOICE_CONFIG_OVERRIDE,
+    ) ??
+      DEFAULT_REALTIME_VOICE_CONFIG_OVERRIDE) as RealtimeVoiceConfigOverride);
   const resolved = resolveRealtimeVoiceConfig(value, {
     canUseLocalOverride: false,
     override,
@@ -101,7 +102,7 @@ function parseRealtimeVoiceConfigOverride(
   }
 }
 export {
-  realtimeConversationConfigN,
-  realtimeConversationConfigR,
-  realtimeConversationConfigT,
+  DEFAULT_REALTIME_VOICE_CONFIG_OVERRIDE,
+  realtimeVoiceConfigOverrideSignal,
+  useRealtimeConversationConfig,
 };

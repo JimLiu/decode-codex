@@ -7526,7 +7526,11 @@
         "n": "requestUserInputAutoResolutionState",
         "t": "applyRequestUserInputAutoResolutionChange"
       },
-      "status": "done"
+      "status": "done",
+      "stage3Accepted": true,
+      "stage3AcceptedAt": "2026-06-30T20:58:29.065Z",
+      "stage3Review": "Host self-review: runtime/request-user-input-auto-resolution.tsx is a typed auto-resolution persisted-signal helper with semantic request update/removal handling and passes quality-gate.",
+      "lastUpdated": "2026-06-30T20:58:29.065Z"
     },
     "thread-handoff-composer-block-state-C7-ef4-4": {
       "restored": "threads/thread-handoff-composer-block-state.tsx",
@@ -7565,7 +7569,11 @@
         "r": "osInfoQuery",
         "t": "resolveCodexPlatform"
       },
-      "status": "done"
+      "status": "done",
+      "stage3Accepted": true,
+      "stage3AcceptedAt": "2026-06-30T20:58:29.065Z",
+      "stage3Review": "Host self-review: runtime/platform.tsx semantically resolves Codex platform values from host os-info or browser navigator fallback and passes quality-gate.",
+      "lastUpdated": "2026-06-30T20:58:29.065Z"
     },
     "use-os-info-C5UGPaac": {
       "restored": "utils/use-os-info.ts",
@@ -7832,7 +7840,11 @@
         "r": "setRequestLanguage",
         "t": "codexRequest"
       },
-      "status": "done"
+      "status": "done",
+      "stage3Accepted": true,
+      "stage3AcceptedAt": "2026-06-30T20:58:29.065Z",
+      "stage3Review": "Host self-review: runtime/request.ts restores the Codex request client with path/query interpolation, request headers, streaming support, language state, and failure logging; it passes quality-gate.",
+      "lastUpdated": "2026-06-30T20:58:29.065Z"
     },
     "onboarding-mail-provider-DwX9H-oo": {
       "restored": "onboarding/onboarding-mail-provider.ts",
@@ -8081,7 +8093,11 @@
         "r": "isApplicationMenuWindowChrome",
         "t": "useWindowControlsSafeArea"
       },
-      "status": "done"
+      "status": "done",
+      "stage3Accepted": true,
+      "stage3AcceptedAt": "2026-06-30T20:58:29.065Z",
+      "stage3Review": "Host self-review: runtime/use-window-controls-safe-area.ts semantically restores native/application-menu window-controls safe-area calculations and React overlay/fullscreen listeners; it passes quality-gate.",
+      "lastUpdated": "2026-06-30T20:58:29.065Z"
     },
     "app-preloader-C9cwS2Vy": {
       "restored": "ui/app-preloader.tsx",
@@ -11705,7 +11721,11 @@
         "x": "isDraftClientThreadIdActive",
         "y": "getCurrentThreadIdForConversation"
       },
-      "status": "done"
+      "status": "done",
+      "stage3Accepted": true,
+      "stage3AcceptedAt": "2026-06-30T20:58:29.065Z",
+      "stage3Review": "Host self-review: runtime/persisted-signal/index.ts is a semantic barrel over the restored persisted-signal route, tab, and thread state modules with alias compatibility preserved; it passes quality-gate.",
+      "lastUpdated": "2026-06-30T20:58:29.065Z"
     },
     "permissions-mode-visibility-BRJnTR2q": {
       "restored": "icons/permissions-mode-visibility-icon.tsx",
@@ -11966,20 +11986,28 @@
     "route-scope-provider-DTX8-kkG": {
       "restored": "runtime/route-scope-provider.tsx",
       "exports": {
-        "n": "routeScopeProviderN",
-        "r": "routeScopeProviderR",
-        "t": "routeScopeProviderT"
+        "n": "routeScopeImportStatusSignal",
+        "r": "runRouteScopeImport",
+        "t": "RouteScopeProvider"
       },
-      "status": "done"
+      "status": "done",
+      "stage3Accepted": true,
+      "stage3AcceptedAt": "2026-06-30T20:58:29.065Z",
+      "stage3Review": "Host self-review: runtime/route-scope-provider.tsx now uses semantic exports for route-scope import status, import execution, and the RouteScopeProvider component; it passes quality-gate.",
+      "lastUpdated": "2026-06-30T20:58:29.065Z"
     },
     "realtime-conversation-config-ldDeUVCM": {
       "restored": "runtime/realtime-conversation-config.ts",
       "exports": {
-        "n": "realtimeConversationConfigN",
-        "r": "realtimeConversationConfigR",
-        "t": "realtimeConversationConfigT"
+        "n": "realtimeVoiceConfigOverrideSignal",
+        "r": "useRealtimeConversationConfig",
+        "t": "DEFAULT_REALTIME_VOICE_CONFIG_OVERRIDE"
       },
-      "status": "done"
+      "status": "done",
+      "stage3Accepted": true,
+      "stage3AcceptedAt": "2026-06-30T20:58:29.065Z",
+      "stage3Review": "Host self-review: runtime/realtime-conversation-config.ts now uses semantic exports for the realtime voice config override signal, default override, and hook-style resolver; it preserves Statsig/local override behavior and passes quality-gate.",
+      "lastUpdated": "2026-06-30T20:58:29.065Z"
     },
     "right-panel-composer-overlay-scroll-reserve-Bv3fhxvQ": {
       "restored": "composer/right-panel-composer-overlay-scroll-reserve.ts",
@@ -12781,7 +12809,11 @@
         "n": "QueryClient",
         "t": "QueryClientScopeProvider"
       },
-      "status": "done"
+      "status": "done",
+      "stage3Accepted": true,
+      "stage3AcceptedAt": "2026-06-30T20:58:29.065Z",
+      "stage3Review": "Host self-review: runtime/query-client/index.tsx is a semantic QueryClient barrel over the restored query-client runtime and passes quality-gate.",
+      "lastUpdated": "2026-06-30T20:58:29.065Z"
     },
     "thread-context-inputs-B6tQCr7t": {
       "restored": "boundaries/thread-context-inputs.facade.ts",
@@ -13500,7 +13532,11 @@
         "appServices": "appServices",
         "initializeAppHostServices": "initializeAppHostServices"
       },
-      "status": "done"
+      "status": "done",
+      "stage3Accepted": true,
+      "stage3AcceptedAt": "2026-06-30T20:58:29.065Z",
+      "stage3Review": "Host self-review: runtime/rpc-b-ugf-axq.tsx is an alias-compatible RPC app-host wrapper over the restored runtime facade and passes quality-gate.",
+      "lastUpdated": "2026-06-30T20:58:29.065Z"
     },
     "rpc-tZApRqpy": {
       "restored": "runtime/rpc-b-ugf-axq.tsx",
@@ -13511,7 +13547,10 @@
       },
       "status": "done",
       "aliasOf": "rpc-B-UGFAxq",
-      "lastUpdated": "2026-06-29T00:00:00.000Z"
+      "lastUpdated": "2026-06-30T20:58:29.065Z",
+      "stage3Accepted": true,
+      "stage3AcceptedAt": "2026-06-30T20:58:29.065Z",
+      "stage3Review": "Host self-review: runtime/rpc-b-ugf-axq.tsx is an alias-compatible RPC app-host wrapper over the restored runtime facade and passes quality-gate."
     },
     "rpc-CoQWhzCy": {
       "restored": "runtime/rpc-b-ugf-axq.tsx",
@@ -13576,7 +13615,11 @@
         "t": "windowsTabsOpenRequestSchema"
       },
       "status": "done",
-      "note": "Synced review target with the current app-main/profile schema: windows.tabs.open accepts a baseBranch review request that selects branch view."
+      "note": "Synced review target with the current app-main/profile schema: windows.tabs.open accepts a baseBranch review request that selects branch view.",
+      "stage3Accepted": true,
+      "stage3AcceptedAt": "2026-06-30T20:58:29.065Z",
+      "stage3Review": "Host self-review: runtime/windows-tabs-open-schema.ts semantically restores the windows.tabs.open action schema including file, browser, terminal, and review targets, and passes quality-gate.",
+      "lastUpdated": "2026-06-30T20:58:29.065Z"
     },
     "use-hotkey-window-dismiss-on-escape-CATf2BNk": {
       "restored": "utils/use-hotkey-window-dismiss-on-escape.ts",
@@ -13614,7 +13657,11 @@
         "r": "windowsTabsOpenAction",
         "t": "registerWindowsTabsOpenHandler"
       },
-      "status": "done"
+      "status": "done",
+      "stage3Accepted": true,
+      "stage3AcceptedAt": "2026-06-30T20:58:29.065Z",
+      "stage3Review": "Host self-review: runtime/windows-tabs-open.ts semantically restores window app-action wrapping, run-map creation, windows.tabs.open dispatch, and handler registration; it passes quality-gate.",
+      "lastUpdated": "2026-06-30T20:58:29.065Z"
     },
     "get-move-to-local-targets-DiY2bn2e": {
       "restored": "utils/get-move-to-local-targets.ts",
@@ -13634,7 +13681,11 @@
         "s": "isPrimaryRuntimeInstallProgressPhase",
         "t": "finishPrimaryRuntimeInstallBeforeFirstTurn"
       },
-      "status": "done"
+      "status": "done",
+      "stage3Accepted": true,
+      "stage3AcceptedAt": "2026-06-30T20:58:29.065Z",
+      "stage3Review": "Host self-review: runtime/primary-runtime-install-state.ts semantically restores primary-runtime install request queueing, cancellation, release/status signals, progress classification, and first-turn finish timeout logging; it passes quality-gate.",
+      "lastUpdated": "2026-06-30T20:58:29.065Z"
     },
     "primary-runtime-install-action-Cpk3XYUC": {
       "restored": "runtime/primary-runtime-install-action.ts",
@@ -13680,7 +13731,11 @@
         "s": "parseAcceptedConversationalOnboardingTaskResult",
         "t": "runAppActionInPrimaryWindow"
       },
-      "status": "done"
+      "status": "done",
+      "stage3Accepted": true,
+      "stage3AcceptedAt": "2026-06-30T20:58:29.065Z",
+      "stage3Review": "Host self-review: runtime/run-app-action-in-primary-window.ts semantically restores app-action dispatch to the primary window and conversational onboarding output validation; it passes quality-gate.",
+      "lastUpdated": "2026-06-30T20:58:29.065Z"
     },
     "hotkey-window-detail-layout-psE94glX": {
       "restored": "utils/hotkey-window-detail-layout.tsx",
@@ -13969,7 +14024,11 @@
         "t": "ErrorBoundary",
         "u": "initializeRendererSentry"
       },
-      "status": "done"
+      "status": "done",
+      "stage3Accepted": true,
+      "stage3AcceptedAt": "2026-06-30T20:58:29.065Z",
+      "stage3Review": "Host self-review: runtime/error-boundary/index.tsx is a semantic barrel for renderer Sentry setup, app-update recovery state, and ErrorBoundary exports; it passes quality-gate.",
+      "lastUpdated": "2026-06-30T20:58:29.065Z"
     },
     "use-diff-comment-sources-K8MB00rv": {
       "restored": "github/diff-comments/use-diff-comment-sources/index.ts",
@@ -14751,7 +14810,11 @@
         "appServices": "appServices",
         "initializeAppHostServices": "initializeAppHostServices"
       },
-      "status": "done"
+      "status": "done",
+      "stage3Accepted": true,
+      "stage3AcceptedAt": "2026-06-30T20:58:29.065Z",
+      "stage3Review": "Host self-review: runtime/rpc-b-ugf-axq.tsx is an alias-compatible RPC app-host wrapper over the restored runtime facade and passes quality-gate.",
+      "lastUpdated": "2026-06-30T20:58:29.065Z"
     },
     "use-media-query-CUpGkpzI": {
       "restored": "utils/use-media-query.ts",

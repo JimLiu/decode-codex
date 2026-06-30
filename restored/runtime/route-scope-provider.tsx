@@ -37,32 +37,32 @@ type RouteScopeProviderProps = {
   children: React.ReactNode;
   route: RouteLocation;
 };
-export const routeScopeProviderN = createAppScopeSignal(appScopeRoot, {
+export const routeScopeImportStatusSignal = createAppScopeSignal(appScopeRoot, {
   status: "idle",
 } satisfies RouteScopeImportStatus);
-export async function routeScopeProviderR(
+export async function runRouteScopeImport(
   routeScopeStore: RouteScopeStore,
   importRoute: () => Promise<void> | void,
 ): Promise<void> {
-  routeScopeStore.set(routeScopeProviderN, {
+  routeScopeStore.set(routeScopeImportStatusSignal, {
     status: "importing",
     startedAtMs: Date.now(),
   });
   try {
     await importRoute();
-    routeScopeStore.set(routeScopeProviderN, {
+    routeScopeStore.set(routeScopeImportStatusSignal, {
       status: "success",
       completedAtMs: Date.now(),
     });
   } catch (error) {
-    routeScopeStore.set(routeScopeProviderN, {
+    routeScopeStore.set(routeScopeImportStatusSignal, {
       status: "error",
       completedAtMs: Date.now(),
     });
     throw error;
   }
 }
-export function routeScopeProviderT({
+export function RouteScopeProvider({
   children,
   route,
 }: RouteScopeProviderProps): React.ReactElement {
