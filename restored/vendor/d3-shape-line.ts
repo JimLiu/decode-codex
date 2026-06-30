@@ -1,100 +1,133 @@
 // Restored from ref/webview/assets/line-DIsP-Yv_.js
-// Line chunk restored from the Codex webview bundle.
+// D3 line generator restored from the Codex webview bundle.
 import { pathN, pathT } from "./d3-path";
 import { array } from "../utils/array";
 import { monotoneR } from "./d3-curve-monotone";
-function lineHelper1(lineParam8) {
-  return lineParam8[0];
+
+type LineDatum = any;
+type LineData = LineDatum[];
+type LineAccessor = (datum: LineDatum, index: number, data: LineData) => any;
+type LineDefinedAccessor = (
+  datum: LineDatum,
+  index: number,
+  data: LineData,
+) => boolean;
+type LineContext = {
+  lineStart(): void;
+  lineEnd(): void;
+  point(x: number, y: number): void;
+};
+type LineCurveFactory = (context: any) => LineContext;
+type LineGenerator = {
+  (data: Iterable<LineDatum> | ArrayLike<LineDatum>): string | null | undefined;
+  x(): LineAccessor;
+  x(accessor: LineAccessor | number): LineGenerator;
+  y(): LineAccessor;
+  y(accessor: LineAccessor | number): LineGenerator;
+  defined(): LineDefinedAccessor;
+  defined(defined: LineDefinedAccessor | boolean): LineGenerator;
+  curve(): LineCurveFactory;
+  curve(curveFactory: LineCurveFactory): LineGenerator;
+  context(): any;
+  context(context: any): LineGenerator;
+};
+
+function defaultXAccessor(point: unknown[]) {
+  return point[0];
 }
-function lineHelper2(lineParam9) {
-  return lineParam9[1];
+function defaultYAccessor(point: unknown[]) {
+  return point[1];
 }
-export function line(_line, lineParam1) {
-  var lineValue1 = pathN(true),
-    lineValue2 = null,
-    lineValue3 = monotoneR,
-    lineValue4 = null,
-    lineValue5 = pathT(lineHelper3);
-  _line =
-    typeof _line == "function"
-      ? _line
-      : _line === undefined
-        ? lineHelper1
-        : pathN(_line);
-  lineParam1 =
-    typeof lineParam1 == "function"
-      ? lineParam1
-      : lineParam1 === undefined
-        ? lineHelper2
-        : pathN(lineParam1);
-  function lineHelper3(lineParam2) {
-    var lineValue6,
-      lineValue7 = (lineParam2 = array(lineParam2)).length,
-      lineValue8,
-      lineValue9 = false,
-      lineValue10;
+export function line(
+  xAccessorInput?: LineAccessor | number,
+  yAccessorInput?: LineAccessor | number,
+): LineGenerator {
+  var definedAccessor = pathN(true),
+    outputContext = null,
+    curveFactory: LineCurveFactory = monotoneR,
+    lineOutput: LineContext | null = null;
+  var lineGenerator = createLinePath as LineGenerator,
+    pathFactory = pathT(lineGenerator);
+  var xAccessor =
+    typeof xAccessorInput == "function"
+      ? xAccessorInput
+      : xAccessorInput === undefined
+        ? defaultXAccessor
+        : pathN(xAccessorInput);
+  var yAccessor =
+    typeof yAccessorInput == "function"
+      ? yAccessorInput
+      : yAccessorInput === undefined
+        ? defaultYAccessor
+        : pathN(yAccessorInput);
+  function createLinePath(
+    data: Iterable<LineDatum> | ArrayLike<LineDatum>,
+  ): string | null | undefined {
+    var index,
+      points = array(data),
+      pointCount = points.length,
+      datum,
+      isDefinedSegment = false,
+      pathBuffer;
     for (
-      lineValue2 ?? (lineValue4 = lineValue3((lineValue10 = lineValue5()))),
-        lineValue6 = 0;
-      lineValue6 <= lineValue7;
-      ++lineValue6
+      outputContext ??
+        (lineOutput = curveFactory((pathBuffer = pathFactory()))),
+        index = 0;
+      index <= pointCount;
+      ++index
     ) {
       !(
-        lineValue6 < lineValue7 &&
-        lineValue1(
-          (lineValue8 = lineParam2[lineValue6]),
-          lineValue6,
-          lineParam2,
-        )
-      ) === lineValue9 &&
-        ((lineValue9 = !lineValue9)
-          ? lineValue4.lineStart()
-          : lineValue4.lineEnd());
-      lineValue9 &&
-        lineValue4.point(
-          +_line(lineValue8, lineValue6, lineParam2),
-          +lineParam1(lineValue8, lineValue6, lineParam2),
+        index < pointCount &&
+        definedAccessor((datum = points[index]), index, points)
+      ) === isDefinedSegment &&
+        ((isDefinedSegment = !isDefinedSegment)
+          ? lineOutput!.lineStart()
+          : lineOutput!.lineEnd());
+      isDefinedSegment &&
+        lineOutput!.point(
+          +xAccessor(datum, index, points),
+          +yAccessor(datum, index, points),
         );
     }
-    if (lineValue10) return ((lineValue4 = null), lineValue10 + "" || null);
+    if (pathBuffer) return ((lineOutput = null), pathBuffer + "" || null);
   }
   return (
-    (lineHelper3.x = function (lineParam4) {
+    (lineGenerator.x = function (accessor) {
       return arguments.length
-        ? ((_line =
-            typeof lineParam4 == "function" ? lineParam4 : pathN(+lineParam4)),
-          lineHelper3)
-        : _line;
+        ? ((xAccessor =
+            typeof accessor == "function" ? accessor : pathN(+accessor)),
+          lineGenerator)
+        : xAccessor;
     }),
-    (lineHelper3.y = function (lineParam5) {
+    (lineGenerator.y = function (accessor) {
       return arguments.length
-        ? ((lineParam1 =
-            typeof lineParam5 == "function" ? lineParam5 : pathN(+lineParam5)),
-          lineHelper3)
-        : lineParam1;
+        ? ((yAccessor =
+            typeof accessor == "function" ? accessor : pathN(+accessor)),
+          lineGenerator)
+        : yAccessor;
     }),
-    (lineHelper3.defined = function (lineParam3) {
+    (lineGenerator.defined = function (defined) {
       return arguments.length
-        ? ((lineValue1 =
-            typeof lineParam3 == "function" ? lineParam3 : pathN(!!lineParam3)),
-          lineHelper3)
-        : lineValue1;
+        ? ((definedAccessor =
+            typeof defined == "function" ? defined : pathN(!!defined)),
+          lineGenerator)
+        : definedAccessor;
     }),
-    (lineHelper3.curve = function (lineParam7) {
+    (lineGenerator.curve = function (nextCurveFactory) {
       return arguments.length
-        ? ((lineValue3 = lineParam7),
-          lineValue2 != null && (lineValue4 = lineValue3(lineValue2)),
-          lineHelper3)
-        : lineValue3;
+        ? ((curveFactory = nextCurveFactory),
+          outputContext != null && (lineOutput = curveFactory(outputContext)),
+          lineGenerator)
+        : curveFactory;
     }),
-    (lineHelper3.context = function (lineParam6) {
+    (lineGenerator.context = function (nextContext) {
       return arguments.length
-        ? (lineParam6 == null
-            ? (lineValue2 = lineValue4 = null)
-            : (lineValue4 = lineValue3((lineValue2 = lineParam6))),
-          lineHelper3)
-        : lineValue2;
+        ? (nextContext == null
+            ? (outputContext = lineOutput = null)
+            : (lineOutput = curveFactory((outputContext = nextContext))),
+          lineGenerator)
+        : outputContext;
     }),
-    lineHelper3
+    lineGenerator
   );
 }

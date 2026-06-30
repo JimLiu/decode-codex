@@ -1,77 +1,94 @@
-// Restored from ref/webview/assets/query-string-CoYNflPh.js
-// QueryString chunk restored from the Codex webview bundle.
+// Restored from ref/webview/assets/query-string-rxmEnTXH.js
+// Segment query-string middleware restored from the Codex webview bundle.
 import { helpersI } from "./segment-helpers";
 import { gracefulDecodeURIComponent } from "../utils/graceful-decode-uri-component";
-function queryStringHelper1(queryStringParam2, queryStringParam3) {
-  return Object.keys(queryStringParam3).reduce(function (
-    accumulator,
-    _QueryString,
-  ) {
-    if (_QueryString.startsWith(queryStringParam2)) {
-      var queryStringValue17 = _QueryString.substr(queryStringParam2.length);
-      accumulator[queryStringValue17] = queryStringParam3[_QueryString];
+
+type SegmentQueryParams = Record<string, string | undefined>;
+type SegmentQueryStringFilters = {
+  aid?: RegExp;
+  uid?: RegExp;
+};
+type SegmentQueryStringTarget = {
+  options: {
+    useQueryString?: false | SegmentQueryStringFilters;
+  };
+  identify(userId: string, traits: SegmentQueryParams): unknown;
+  setAnonymousId(anonymousId: string): unknown;
+  track(eventName: string, properties: SegmentQueryParams): unknown;
+};
+
+function pickPrefixedQueryParams(
+  prefix: string,
+  queryParams: SegmentQueryParams,
+) {
+  return Object.keys(queryParams).reduce(function (accumulator, queryKey) {
+    if (queryKey.startsWith(prefix)) {
+      var strippedKey = queryKey.substr(prefix.length);
+      accumulator[strippedKey] = queryParams[queryKey];
     }
     return accumulator;
-  }, {});
+  }, {} as SegmentQueryParams);
 }
-export function QueryString(_QueryString, queryStringParam1) {
-  var queryStringValue1 = document.createElement("a");
-  queryStringValue1.href = queryStringParam1;
-  var queryStringValue2 = queryStringValue1.search
-      .slice(1)
-      .split("&")
-      .reduce(function (accumulator, current) {
-        var __QueryString = current.split("="),
-          queryStringValue18 = __QueryString[0],
-          queryStringValue19 = __QueryString[1];
-        return (
-          (accumulator[queryStringValue18] =
-            gracefulDecodeURIComponent(queryStringValue19)),
-          accumulator
-        );
-      }, {}),
-    queryStringValue3 = [],
-    queryStringValue4 = queryStringValue2.ajs_uid,
-    queryStringValue5 = queryStringValue2.ajs_event,
-    queryStringValue6 = queryStringValue2.ajs_aid,
-    queryStringValue7 = helpersI(_QueryString.options.useQueryString)
-      ? _QueryString.options.useQueryString
-      : {},
-    queryStringValue8 = queryStringValue7.aid,
-    queryStringValue9 =
-      queryStringValue8 === undefined ? /.+/ : queryStringValue8,
-    queryStringValue10 = queryStringValue7.uid,
-    queryStringValue11 =
-      queryStringValue10 === undefined ? /.+/ : queryStringValue10;
-  if (queryStringValue6) {
-    var queryStringValue12 = Array.isArray(queryStringValue2.ajs_aid)
-      ? queryStringValue2.ajs_aid[0]
-      : queryStringValue2.ajs_aid;
-    queryStringValue9.test(queryStringValue12) &&
-      _QueryString.setAnonymousId(queryStringValue12);
+
+function firstQueryValue(value: string | string[] | undefined) {
+  return Array.isArray(value) ? value[0] : value;
+}
+
+function parseQueryParams(url: string) {
+  var anchor = document.createElement("a");
+  anchor.href = url;
+  return anchor.search
+    .slice(1)
+    .split("&")
+    .reduce(function (accumulator, current) {
+      var keyValuePair = current.split("="),
+        queryKey = keyValuePair[0],
+        queryValue = keyValuePair[1];
+      return (
+        (accumulator[queryKey] = gracefulDecodeURIComponent(queryValue)),
+        accumulator
+      );
+    }, {} as SegmentQueryParams);
+}
+
+export function QueryString(
+  analytics: SegmentQueryStringTarget,
+  url: string,
+): Promise<unknown[]> {
+  var queryParams = parseQueryParams(url),
+    queuedCalls: unknown[] = [],
+    userIdParam = queryParams.ajs_uid,
+    eventNameParam = queryParams.ajs_event,
+    anonymousIdParam = queryParams.ajs_aid,
+    queryStringFilters = (
+      helpersI(analytics.options.useQueryString)
+        ? analytics.options.useQueryString
+        : {}
+    ) as SegmentQueryStringFilters,
+    anonymousIdFilter = queryStringFilters.aid,
+    anonymousIdPattern =
+      anonymousIdFilter === undefined ? /.+/ : anonymousIdFilter,
+    userIdFilter = queryStringFilters.uid,
+    userIdPattern = userIdFilter === undefined ? /.+/ : userIdFilter;
+  if (anonymousIdParam) {
+    var anonymousId = firstQueryValue(queryParams.ajs_aid);
+    anonymousId &&
+      anonymousIdPattern.test(anonymousId) &&
+      analytics.setAnonymousId(anonymousId);
   }
-  if (queryStringValue4) {
-    var queryStringValue13 = Array.isArray(queryStringValue2.ajs_uid)
-      ? queryStringValue2.ajs_uid[0]
-      : queryStringValue2.ajs_uid;
-    if (queryStringValue11.test(queryStringValue13)) {
-      var queryStringValue14 = queryStringHelper1(
-        "ajs_trait_",
-        queryStringValue2,
-      );
-      queryStringValue3.push(
-        _QueryString.identify(queryStringValue13, queryStringValue14),
-      );
+  if (userIdParam) {
+    var userId = firstQueryValue(queryParams.ajs_uid);
+    if (userId && userIdPattern.test(userId)) {
+      var traits = pickPrefixedQueryParams("ajs_trait_", queryParams);
+      queuedCalls.push(analytics.identify(userId, traits));
     }
   }
-  if (queryStringValue5) {
-    var queryStringValue15 = Array.isArray(queryStringValue2.ajs_event)
-        ? queryStringValue2.ajs_event[0]
-        : queryStringValue2.ajs_event,
-      queryStringValue16 = queryStringHelper1("ajs_prop_", queryStringValue2);
-    queryStringValue3.push(
-      _QueryString.track(queryStringValue15, queryStringValue16),
-    );
+  if (eventNameParam) {
+    var eventName = firstQueryValue(queryParams.ajs_event),
+      properties = pickPrefixedQueryParams("ajs_prop_", queryParams);
+    eventName && queuedCalls.push(analytics.track(eventName, properties));
   }
-  return Promise.all(queryStringValue3);
+  return Promise.all(queuedCalls);
 }
+
+export { QueryString as queryString };
