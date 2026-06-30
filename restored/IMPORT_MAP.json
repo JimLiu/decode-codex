@@ -2655,20 +2655,26 @@
     "path-BiIEs4Yy": {
       "restored": "vendor/d3-path.ts",
       "exports": {
-        "n": "pathN",
-        "t": "pathT"
+        "n": "constantAccessor",
+        "t": "withPathDigits"
       },
-      "status": "done"
+      "status": "done",
+      "stage3Accepted": true,
+      "stage3AcceptedAt": "2026-06-30T00:00:00.000-05:00",
+      "stage3Note": "Accepted as a typed D3 path builder and d3-shape path helper module with compatibility aliases."
     },
     "path-DSoH76MG": {
       "restored": "vendor/d3-path.ts",
       "exports": {
-        "n": "pathN",
-        "t": "pathT"
+        "n": "constantAccessor",
+        "t": "withPathDigits"
       },
       "status": "done",
       "aliasOf": "path-BiIEs4Yy",
-      "lastUpdated": "2026-06-29T00:00:00.000Z"
+      "lastUpdated": "2026-06-30T00:00:00.000-05:00",
+      "stage3Accepted": true,
+      "stage3AcceptedAt": "2026-06-30T00:00:00.000-05:00",
+      "stage3Note": "Current path-DSoH76MG aliases re-derived from the bundle tail; alias n is constantAccessor and alias t is withPathDigits."
     },
     "Tableau10-BYZHCNVA": {
       "restored": "vendor/d3-tableau10.ts",
