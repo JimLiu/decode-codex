@@ -20523,6 +20523,26 @@
       "lastUpdated": "2026-06-29T00:00:00.000Z",
       "note": "Current vendor chunk keeps the restored public API and adds d internal export."
     },
+    "chunk-JZLCHNYA-BB0008aK": {
+      "restored": "vendor/chunk-jzlchnya.ts",
+      "exports": {
+        "a": "chunkJZLCHNYAI",
+        "c": "chunkJZLCHNYAS",
+        "d": "chunkJZLCHNYAU",
+        "i": "initChunkJZLCHNYA",
+        "l": "chunkJZLCHNYAC",
+        "n": "chunkJZLCHNYAN",
+        "o": "chunkJZLCHNYAA",
+        "r": "chunkJZLCHNYAR",
+        "s": "chunkJZLCHNYAO",
+        "t": "chunkJZLCHNYAT",
+        "u": "chunkJZLCHNYAL"
+      },
+      "aliasOf": "chunk-JZLCHNYA-Dn_DumwI",
+      "note": "Current chunk-JZLCHNYA hash re-derived from chunk-JZLCHNYA-BB0008aK.js; alias i is the Rolldown lazy init thunk and alias d exposes updateNodeBounds.",
+      "status": "done",
+      "lastUpdated": "2026-06-30T00:00:00.000Z"
+    },
     "chunk-QN33PNHL-AbzhC4my": {
       "restored": "vendor/chunk-qn33-pnhl-dv-z-pb-bs-u.ts",
       "exports": {
