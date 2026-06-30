@@ -32525,10 +32525,11 @@
         "n": "useGitConfigValue",
         "t": "initUseGitConfigValueChunk"
       },
-      "aliasOf": "use-git-config-value-DPgOVHFb",
-      "note": "Current use-git-config-value hash was fingerprinted against the restored source body and preserves this public export surface.",
       "status": "done",
-      "lastUpdated": "2026-06-30T00:00:00.000Z"
+      "aliasOf": "use-git-config-value-DPgOVHFb",
+      "note": "Current use-git-config-value hash preserves the restored query option resolver hook and initializer export.",
+      "stage3Accepted": true,
+      "lastUpdated": "2026-06-30T00:00:00.000-05:00"
     },
     "use-media-query-BNTymZCj": {
       "restored": "utils/use-media-query.ts",
@@ -32585,10 +32586,11 @@
         "n": "initSegmentedToggleChunk",
         "t": "SegmentedToggle"
       },
-      "aliasOf": "segmented-toggle-CQnHwI3W",
-      "note": "Current segmented-toggle hash was fingerprinted against the restored source body and preserves this public export surface.",
       "status": "done",
-      "lastUpdated": "2026-06-30T00:00:00.000Z"
+      "aliasOf": "segmented-toggle-CQnHwI3W",
+      "note": "Current segmented-toggle hash preserves the restored component and initializer export.",
+      "stage3Accepted": true,
+      "lastUpdated": "2026-06-30T00:00:00.000-05:00"
     },
     "page-search-input-rbsdCe5M": {
       "restored": "ui/page-search-input.tsx",
@@ -32659,10 +32661,11 @@
         "n": "initTabsChunk",
         "t": "Tabs"
       },
-      "aliasOf": "tabs-Bltkr1kO",
-      "note": "Current tabs hash was fingerprinted from component/helper body strings and preserves this public export surface.",
       "status": "done",
-      "lastUpdated": "2026-06-30T00:00:00.000Z"
+      "aliasOf": "tabs-Bltkr1kO",
+      "note": "Current tabs hash preserves the restored tabs component and initializer export.",
+      "stage3Accepted": true,
+      "lastUpdated": "2026-06-30T00:00:00.000-05:00"
     },
     "feature-catalog-CkE810ru": {
       "restored": "features/feature-catalog.tsx",
@@ -32994,10 +32997,11 @@
         "r": "installPet",
         "t": "closePetInstallSession"
       },
-      "aliasOf": "pet-install-state-4FjnwCnv",
-      "note": "Current pet install state hash preserves the restored preview/install state machine export surface; aliases re-derived from pet-install-state-DxmDfR1m.js.",
       "status": "done",
-      "lastUpdated": "2026-06-30T00:00:00.000Z"
+      "aliasOf": "pet-install-state-4FjnwCnv",
+      "note": "Current pet install state hash preserves the restored preview/install state machine export surface.",
+      "stage3Accepted": true,
+      "lastUpdated": "2026-06-30T00:00:00.000-05:00"
     },
     "pull-request-check-rows-D_pDNxZg": {
       "restored": "github/pull-request-actions/index.ts",
@@ -33857,6 +33861,34 @@
       "status": "done",
       "aliasOf": "home-row-layout-CrWoAp3h",
       "note": "Current home-row-layout hash preserves the restored row layout primitives and initializer export.",
+      "stage3Accepted": true,
+      "lastUpdated": "2026-06-30T00:00:00.000-05:00"
+    },
+    "recommended-skill-statsig-overrides-CaQK62gR": {
+      "restored": "plugins/recommended-skill-statsig-overrides.ts",
+      "exports": {
+        "n": "initRecommendedSkillStatsigOverridesChunk",
+        "r": "useRecommendedSkillStatsigOverrides",
+        "t": "getRecommendedSkillStatsigOverride"
+      },
+      "status": "done",
+      "aliasOf": "recommended-skill-statsig-overrides-D2T8Gp66",
+      "note": "Current recommended skill Statsig overrides hash preserves the restored parser, hook, getter, and initializer exports.",
+      "stage3Accepted": true,
+      "lastUpdated": "2026-06-30T00:00:00.000-05:00"
+    },
+    "use-element-in-view-BYpNnWHn": {
+      "restored": "utils/use-element-in-view.ts",
+      "exports": {
+        "n": "useElementInView",
+        "t": "initUseElementInViewChunk",
+        "useElementInView": "useElementInView",
+        "initUseElementInViewChunk": "initUseElementInViewChunk",
+        "UseElementInViewOptions": "UseElementInViewOptions"
+      },
+      "status": "done",
+      "aliasOf": "use-element-in-view-CZGmoMvk",
+      "note": "Current use-element-in-view hash preserves the restored scroll/resize external-store hook and initializer export.",
       "stage3Accepted": true,
       "lastUpdated": "2026-06-30T00:00:00.000-05:00"
     }

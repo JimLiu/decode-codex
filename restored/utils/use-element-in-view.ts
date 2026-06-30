@@ -1,4 +1,5 @@
 // Restored from ref/webview/assets/use-element-in-view-lTZiz79I.js
+// Also matches ref/webview/assets/use-element-in-view-BYpNnWHn.js.
 // Tracks whether a target element intersects a scroll container.
 
 import React from "react";

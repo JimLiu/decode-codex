@@ -1,4 +1,5 @@
 // Restored from ref/webview/assets/segmented-toggle-WuxzI5uh.js
+// Also matches ref/webview/assets/segmented-toggle-DYZLeHEX.js.
 
 import React from "react";
 import clsx from "clsx";
