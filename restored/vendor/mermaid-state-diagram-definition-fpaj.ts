@@ -14,9 +14,9 @@ import {
   chunkABZYJK2DM,
 } from "./katex-auto-render";
 import {
-  chunkDI55MBZ5I,
-  chunkDI55MBZ5N,
-  chunkDI55MBZ5T,
+  getStateDiagramStyles,
+  stateDiagramParser,
+  StateDiagramDb,
 } from "./mermaid-state-diagram-fpaj";
 var stateDiagramFKZM4ZOCValue1 = chunkAGHRB4JFN(
     (stateDiagramFKZM4ZOCParam36) =>
@@ -510,13 +510,13 @@ var stateDiagramFKZM4ZOCValue1 = chunkAGHRB4JFN(
       stateDiagramFKZM4ZOCParam34,
     ) {
       switch (stateDiagramFKZM4ZOCParam34) {
-        case chunkDI55MBZ5T.relationType.AGGREGATION:
+        case StateDiagramDb.relationType.AGGREGATION:
           return "aggregation";
-        case chunkDI55MBZ5T.relationType.EXTENSION:
+        case StateDiagramDb.relationType.EXTENSION:
           return "extension";
-        case chunkDI55MBZ5T.relationType.COMPOSITION:
+        case StateDiagramDb.relationType.COMPOSITION:
           return "composition";
-        case chunkDI55MBZ5T.relationType.DEPENDENCY:
+        case StateDiagramDb.relationType.DEPENDENCY:
           return "dependency";
       }
     }, "getRelationType");
@@ -545,7 +545,7 @@ var stateDiagramFKZM4ZOCValue1 = chunkAGHRB4JFN(
         "url(" +
           stateDiagramFKZM4ZOCValue34 +
           "#" +
-          stateDiagramFKZM4ZOCValue30(chunkDI55MBZ5T.relationType.DEPENDENCY) +
+          stateDiagramFKZM4ZOCValue30(StateDiagramDb.relationType.DEPENDENCY) +
           "End)",
       ),
       stateDiagramFKZM4ZOCParam10.title !== undefined)
@@ -1012,15 +1012,15 @@ var stateDiagramFKZM4ZOCValue1 = chunkAGHRB4JFN(
     "renderDoc",
   );
 export const stateDiagramFKZM4ZOC = {
-  parser: chunkDI55MBZ5N,
+  parser: stateDiagramParser,
   get db() {
-    return new chunkDI55MBZ5T(1);
+    return new StateDiagramDb(1);
   },
   renderer: {
     setConf: stateDiagramFKZM4ZOCValue15,
     draw: stateDiagramFKZM4ZOCValue17,
   },
-  styles: chunkDI55MBZ5I,
+  styles: getStateDiagramStyles,
   init: chunkAGHRB4JFN((stateDiagramFKZM4ZOCParam40) => {
     stateDiagramFKZM4ZOCParam40.state ||= {};
     stateDiagramFKZM4ZOCParam40.state.arrowMarkerAbsolute =

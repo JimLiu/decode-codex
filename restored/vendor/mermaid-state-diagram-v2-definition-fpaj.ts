@@ -2,10 +2,10 @@
 // StateDiagramV24FDKWEC3 chunk restored from the Codex webview bundle.
 import { chunkAGHRB4JFN } from "./dompurify";
 import {
-  chunkDI55MBZ5I,
-  chunkDI55MBZ5N,
-  chunkDI55MBZ5R,
-  chunkDI55MBZ5T,
+  getStateDiagramStyles,
+  stateDiagramParser,
+  stateDiagramRenderer,
+  StateDiagramDb,
 } from "./mermaid-state-diagram-fpaj";
 
 type MermaidStateDiagramConfig = {
@@ -25,16 +25,16 @@ const initStateDiagramDefinition = chunkAGHRB4JFN(
 
 const stateDiagramDefinition = {
   get parser() {
-    return chunkDI55MBZ5N;
+    return stateDiagramParser;
   },
   get db() {
-    return new chunkDI55MBZ5T(2);
+    return new StateDiagramDb(2);
   },
   get renderer() {
-    return chunkDI55MBZ5R;
+    return stateDiagramRenderer;
   },
   get styles() {
-    return chunkDI55MBZ5I;
+    return getStateDiagramStyles;
   },
   get init() {
     return initStateDiagramDefinition;

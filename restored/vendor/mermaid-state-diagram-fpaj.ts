@@ -1,6 +1,6 @@
 // Restored from ref/webview/assets/chunk-DI55MBZ5-CK4BKk7V.js
 // Also matches current ref asset ref/webview/assets/chunk-DI55MBZ5-6W-fDgmq.js.
-// ChunkDI55MBZ5 chunk restored from the Codex webview bundle.
+// Vendored Mermaid state diagram parser, renderer, database, and stylesheet runtime.
 import { chunkS3R3BYOJC, chunkS3R3BYOJN } from "./chunk-s3r3byoj";
 import { chunkAGHRB4JFN, chunkAGHRB4JFR } from "./dompurify";
 import {
@@ -1844,7 +1844,7 @@ var chunkDI55MBZ5Value27 = `${"statediagram"}-state`,
   ),
   chunkDI55MBZ5Value41 = new Map(),
   chunkDI55MBZ5Value42 = 0;
-export const chunkDI55MBZ5R = {
+export const stateDiagramRenderer = {
   getClasses: chunkAGHRB4JFN(function (
     chunkDI55MBZ5Param108,
     chunkDI55MBZ5Param109,
@@ -1966,7 +1966,8 @@ export const chunkDI55MBZ5R = {
   }, "draw"),
   getDir: chunkDI55MBZ5Value40,
 };
-export const chunkDI55MBZ5N = chunkDI55MBZ5Value1;
+export const stateDiagramParser = chunkDI55MBZ5Value1;
+export const chunkDI55MBZ5N = stateDiagramParser;
 function chunkDI55MBZ5Helper1(
   chunkDI55MBZ5Param78 = "",
   chunkDI55MBZ5Param79 = 0,
@@ -2371,7 +2372,7 @@ var chunkDI55MBZ5Value45 = chunkAGHRB4JFN(
       JSON.parse(JSON.stringify(chunkDI55MBZ5Param113)),
     "clone",
   );
-export const chunkDI55MBZ5T = class {
+export const StateDiagramDb = class {
   constructor(chunkDI55MBZ5Param49) {
     this.version = chunkDI55MBZ5Param49;
     this.nodes = [];
@@ -2924,7 +2925,7 @@ export const chunkDI55MBZ5T = class {
     return _chunkABZYJK2DB().state;
   }
 };
-export const chunkDI55MBZ5I = chunkAGHRB4JFN(
+export const getStateDiagramStyles = chunkAGHRB4JFN(
   (chunkDI55MBZ5Param13) => `
 defs #statediagram-barbEnd {
     fill: ${chunkDI55MBZ5Param13.transitionColor};
@@ -3143,4 +3144,9 @@ g.stateGroup line {
   "getStyles",
 );
 
-export function initChunkDI55MBZ5Chunk(): void {}
+export const chunkDI55MBZ5R = stateDiagramRenderer;
+export const chunkDI55MBZ5T = StateDiagramDb;
+export const chunkDI55MBZ5I = getStateDiagramStyles;
+
+export function initMermaidStateDiagramChunk(): void {}
+export const initChunkDI55MBZ5Chunk = initMermaidStateDiagramChunk;

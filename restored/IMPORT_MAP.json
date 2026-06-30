@@ -10759,14 +10759,15 @@
     "chunk-DI55MBZ5-CK4BKk7V": {
       "restored": "vendor/mermaid-state-diagram-fpaj.ts",
       "exports": {
-        "i": "chunkDI55MBZ5I",
-        "n": "chunkDI55MBZ5N",
-        "r": "chunkDI55MBZ5R",
-        "t": "chunkDI55MBZ5T"
+        "i": "getStateDiagramStyles",
+        "n": "stateDiagramParser",
+        "r": "stateDiagramRenderer",
+        "t": "StateDiagramDb"
       },
       "status": "done",
       "stage3Accepted": true,
-      "lastUpdated": "2026-06-30T00:00:00.000-05:00"
+      "lastUpdated": "2026-06-30T00:00:00.000-05:00",
+      "stage3Note": "Accepted as a vendored Mermaid state diagram runtime with semantic parser, renderer, database, and style exports."
     },
     "artifact-analytics-FNBRBLp1": {
       "restored": "features/artifact-analytics.ts",
@@ -35255,17 +35256,18 @@
     "chunk-DI55MBZ5-6W-fDgmq": {
       "restored": "vendor/mermaid-state-diagram-fpaj.ts",
       "exports": {
-        "a": "chunkDI55MBZ5I",
-        "i": "chunkDI55MBZ5R",
-        "n": "initChunkDI55MBZ5Chunk",
-        "r": "chunkDI55MBZ5N",
-        "t": "chunkDI55MBZ5T"
+        "a": "getStateDiagramStyles",
+        "i": "stateDiagramRenderer",
+        "n": "initMermaidStateDiagramChunk",
+        "r": "stateDiagramParser",
+        "t": "StateDiagramDb"
       },
       "status": "done",
       "lastUpdated": "2026-06-30T00:00:00.000-05:00",
-      "note": "Current Rolldown Mermaid state diagram repack re-derived from chunk-DI55MBZ5-6W-fDgmq.js; a is getStyles, i is the renderer definition, n is the initializer thunk, r is the parser, and t is StateDB.",
+      "note": "Current Rolldown Mermaid state diagram repack re-derived from chunk-DI55MBZ5-6W-fDgmq.js; a is getStateDiagramStyles, i is stateDiagramRenderer, n is initMermaidStateDiagramChunk, r is stateDiagramParser, and t is StateDiagramDb.",
       "aliasOf": "chunk-DI55MBZ5-CK4BKk7V",
-      "stage3Accepted": true
+      "stage3Accepted": true,
+      "stage3Note": "Accepted as a vendored Mermaid state diagram runtime with semantic parser, renderer, database, style, and init exports."
     },
     "chunk-FPAJGGOC-Yd_bXKmT": {
       "restored": "vendor/mermaid-parser-runtime-fpajggoc.ts",
