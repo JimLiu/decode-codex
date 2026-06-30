@@ -1488,4 +1488,10 @@ export {
   baseUniqW,
   baseUniqX,
   baseUniqY,
+  baseUniqHelper2,
+  baseUniqHelper8,
+  baseUniqHelper13,
+  baseUniqHelper16,
+  baseUniqHelper17,
+  baseUniqValue14,
 };

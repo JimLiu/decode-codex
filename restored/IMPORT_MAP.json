@@ -4059,6 +4059,41 @@
       },
       "status": "done"
     },
+    "_baseUniq-_a1ah3Dc": {
+      "restored": "vendor/lodash-base-uniq.ts",
+      "exports": {
+        "C": "baseUniqA",
+        "E": "baseUniqN",
+        "S": "baseUniqD",
+        "T": "baseUniqM",
+        "_": "baseUniqHelper8",
+        "a": "_baseUniqC",
+        "b": "baseUniqT",
+        "c": "baseUniqF",
+        "d": "baseUniqH",
+        "f": "baseUniqHelper17",
+        "g": "baseUniqS",
+        "h": "baseUniqHelper13",
+        "i": "_baseUniqS",
+        "l": "baseUniqP",
+        "m": "baseUniqValue14",
+        "n": "_baseUniqN",
+        "o": "baseUniqU",
+        "p": "baseUniqHelper16",
+        "r": "_baseUniqA",
+        "s": "_baseUniqD",
+        "t": "_baseUniqT",
+        "u": "_baseUniqM",
+        "v": "baseUniqC",
+        "w": "baseUniqHelper2",
+        "x": "baseUniqE",
+        "y": "baseUniqW"
+      },
+      "status": "done",
+      "aliasOf": "_baseUniq-C2aVs9t8",
+      "note": "Current _baseUniq hash re-derived from _baseUniq-_a1ah3Dc.js; current ref exports a narrower lodash helper surface, including arrayPush/getSymbols helpers that were internal in the prior restore.",
+      "lastUpdated": "2026-06-30T00:00:00.000Z"
+    },
     "reduce-C4fu3kBc": {
       "restored": "vendor/lodash-reduce.ts",
       "exports": {
