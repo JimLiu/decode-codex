@@ -31621,6 +31621,26 @@
       "status": "done",
       "lastUpdated": "2026-06-30T00:00:00.000Z"
     },
+    "chunk-5FUZZQ4R-B3jI2rZu": {
+      "restored": "vendor/mermaid-shape-renderer.ts",
+      "exports": {
+        "a": "chunk5FUZZQ4RI",
+        "c": "chunk5FUZZQ4RS",
+        "d": "chunk5FUZZQ4RU",
+        "i": "initChunk5FUZZQ4R",
+        "l": "chunk5FUZZQ4RC",
+        "n": "chunk5FUZZQ4RN",
+        "o": "chunk5FUZZQ4RA",
+        "r": "chunk5FUZZQ4RR",
+        "s": "chunk5FUZZQ4RO",
+        "t": "chunk5FUZZQ4RT",
+        "u": "chunk5FUZZQ4RL"
+      },
+      "aliasOf": "chunk-5FUZZQ4R-B4cKsdW4",
+      "note": "Current chunk-5FUZZQ4R hash re-derived from chunk-5FUZZQ4R-B3jI2rZu.js; alias i is the Rolldown lazy init thunk and alias d exposes updateNodeBounds.",
+      "status": "done",
+      "lastUpdated": "2026-06-30T00:00:00.000Z"
+    },
     "chunk-BSJP7CBP-CXOgCIBN": {
       "restored": "vendor/chunk-bsjp7cbp.ts",
       "exports": {
