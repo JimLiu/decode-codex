@@ -1,11 +1,8 @@
-// Restored from ref/webview/assets/app-initial~app-main~remote-conversation-page~onboarding-page~hotkey-window-thread-page~app~c482ypdv-DWbVQfmz.js
+// Restored from ref/webview/assets/app-initial~app-main~remote-conversation-page~onboarding-page~hotkey-window-thread-page~app~c482ypdv-D1zCejbw.js
 
 import type { SVGProps } from "react";
-
 export type ChatBubblesIconProps = SVGProps<SVGSVGElement>;
-
 export function initChatBubblesIconChunk(): void {}
-
 export function ChatBubblesIcon(props: ChatBubblesIconProps) {
   return (
     <svg
@@ -23,5 +20,4 @@ export function ChatBubblesIcon(props: ChatBubblesIconProps) {
     </svg>
   );
 }
-
 export default ChatBubblesIcon;

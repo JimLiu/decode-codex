@@ -2,11 +2,8 @@
 // Semantic icon module for a shield alert glyph.
 
 import type { SVGProps } from "react";
-
 export type ShieldAlertIconProps = SVGProps<SVGSVGElement>;
-
 export function initShieldAlertIconChunk(): void {}
-
 export function ShieldAlertIcon(props: ShieldAlertIconProps) {
   return (
     <svg
@@ -34,5 +31,4 @@ export function ShieldAlertIcon(props: ShieldAlertIconProps) {
     </svg>
   );
 }
-
 export default ShieldAlertIcon;

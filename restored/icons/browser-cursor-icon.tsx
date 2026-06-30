@@ -2,11 +2,8 @@
 // Semantic icon module for a browser window with cursor glyph.
 
 import type { SVGProps } from "react";
-
 export type BrowserCursorIconProps = SVGProps<SVGSVGElement>;
-
 export function initBrowserCursorIconChunk(): void {}
-
 export function BrowserCursorIcon(props: BrowserCursorIconProps) {
   return (
     <svg
@@ -38,5 +35,4 @@ export function BrowserCursorIcon(props: BrowserCursorIconProps) {
     </svg>
   );
 }
-
 export default BrowserCursorIcon;

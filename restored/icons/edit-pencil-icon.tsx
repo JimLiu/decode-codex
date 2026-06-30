@@ -2,11 +2,8 @@
 // Semantic icon module for an edit pencil glyph.
 
 import type { SVGProps } from "react";
-
 export type EditPencilIconProps = SVGProps<SVGSVGElement>;
-
 export function initEditPencilIconChunk(): void {}
-
 export function EditPencilIcon(props: EditPencilIconProps) {
   return (
     <svg
@@ -24,5 +21,4 @@ export function EditPencilIcon(props: EditPencilIconProps) {
     </svg>
   );
 }
-
 export default EditPencilIcon;

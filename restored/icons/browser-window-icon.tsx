@@ -2,11 +2,8 @@
 // Semantic icon module for a browser window glyph.
 
 import type { SVGProps } from "react";
-
 export type BrowserWindowIconProps = SVGProps<SVGSVGElement>;
-
 export function initBrowserWindowIconChunk(): void {}
-
 export function BrowserWindowIcon(props: BrowserWindowIconProps) {
   return (
     <svg
@@ -34,5 +31,4 @@ export function BrowserWindowIcon(props: BrowserWindowIconProps) {
     </svg>
   );
 }
-
 export default BrowserWindowIcon;

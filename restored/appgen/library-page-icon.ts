@@ -2,5 +2,4 @@
 // Semantic facade for the appgen library page icon chunk.
 
 export { LibraryIcon } from "../icons/library-icon";
-
 export function initAppgenLibraryIconChunk(): void {}

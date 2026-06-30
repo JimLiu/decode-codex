@@ -2,11 +2,8 @@
 // Semantic icon module for a usage gauge glyph.
 
 import type { SVGProps } from "react";
-
 export type UsageGaugeIconProps = SVGProps<SVGSVGElement>;
-
 export function initUsageGaugeIconChunk(): void {}
-
 export function UsageGaugeIcon(props: UsageGaugeIconProps) {
   return (
     <svg
@@ -34,5 +31,4 @@ export function UsageGaugeIcon(props: UsageGaugeIconProps) {
     </svg>
   );
 }
-
 export default UsageGaugeIcon;

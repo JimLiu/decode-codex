@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/primary-runtime-query-keys-BCEaoICN.js
+// Restored from ref/webview/assets/app-initial~app-main~debug-window-page~agent-settings~debug-modal-Baq5IrGF.js
 
 import {
   vscodeApiF,
@@ -134,11 +134,8 @@ function buildRuntimesConfig(runtimeConfig: PrimaryRuntimeInstallConfig) {
 function primaryRuntimeDiagnosticsQueryKey(diagnosticName: string) {
   return ["app-host", "primary-runtime", "diagnostics", diagnosticName];
 }
-
 function initPrimaryRuntimeConfigChunk() {}
-
 function initPrimaryRuntimeUpdateStatusQueryKeyChunk() {}
-
 function isPrimaryRuntimeInstallConfig(
   value: unknown,
 ): value is PrimaryRuntimeInstallConfig {

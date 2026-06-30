@@ -1,11 +1,9 @@
-// Restored from ref/webview/assets/play-outline-Bc_3_YgO.js
+// Restored from ref/webview/assets/play-outline-DDngKAbi.js
 // Semantic icon module: named React component with JSX return value.
 
 import type { SVGProps } from "react";
 export type IconProps = SVGProps<SVGSVGElement>;
-
 export function initPlayOutlineIconChunk() {}
-
 export function PlayOutlineIcon(props: IconProps) {
   return (
     <svg

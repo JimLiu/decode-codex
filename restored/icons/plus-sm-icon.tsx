@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/plus-sm-CZTYJkzM.js
+// Restored from ref/webview/assets/plus-sm-KfWVXCbv.js
 // Small 16px plus icon used by profile and artifact template surfaces.
 
 import type { SVGProps } from "react";
@@ -7,14 +7,11 @@ import {
   getJsxRuntime,
   initReactRuntime,
 } from "../runtime/shared-utility-runtime";
-
 export type PlusSmIconProps = SVGProps<SVGSVGElement>;
-
 export const initPlusSmIconChunk = once(() => {
   initReactRuntime();
   getJsxRuntime();
 });
-
 export function PlusSmIcon(props: PlusSmIconProps): JSX.Element {
   return (
     <svg
@@ -32,5 +29,4 @@ export function PlusSmIcon(props: PlusSmIconProps): JSX.Element {
     </svg>
   );
 }
-
 export default PlusSmIcon;

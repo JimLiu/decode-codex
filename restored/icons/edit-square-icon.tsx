@@ -2,11 +2,8 @@
 // Semantic icon module for the square edit glyph.
 
 import type { SVGProps } from "react";
-
 export type EditSquareIconProps = SVGProps<SVGSVGElement>;
-
 export function initEditSquareIconChunk(): void {}
-
 export function EditSquareIcon(props: EditSquareIconProps) {
   return (
     <svg
@@ -30,5 +27,4 @@ export function EditSquareIcon(props: EditSquareIconProps) {
     </svg>
   );
 }
-
 export default EditSquareIcon;

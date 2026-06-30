@@ -1,11 +1,8 @@
-// Restored from ref/webview/assets/app-initial~app-main~select-workspace-page-BLN50XAC.js
+// Restored from ref/webview/assets/app-initial~app-main~select-workspace-page-DMB-jExv.js
 
 import type { SVGProps } from "react";
-
 export type NotebookPlusIconProps = SVGProps<SVGSVGElement>;
-
 export function initNotebookPlusIconChunk(): void {}
-
 export function NotebookPlusIcon(props: NotebookPlusIconProps) {
   return (
     <svg
@@ -25,5 +22,4 @@ export function NotebookPlusIcon(props: NotebookPlusIconProps) {
     </svg>
   );
 }
-
 export default NotebookPlusIcon;

@@ -1,4 +1,5 @@
 // Restored from ref/webview/assets/presentation-cLF4o2PZ.js
+// Also matches current ref asset ref/webview/assets/presentation-bl5PeYuJ.js.
 // Presentation chunk restored from the Codex webview bundle.
 import {
   presentationT as presentationAvLst,

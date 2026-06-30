@@ -2,11 +2,8 @@
 // Semantic icon module for the appgen plug/access glyph.
 
 import type { SVGProps } from "react";
-
 export type AppgenPlugIconProps = SVGProps<SVGSVGElement>;
-
 export function initAppgenPlugIconChunk(): void {}
-
 export function AppgenPlugIcon(props: AppgenPlugIconProps) {
   return (
     <svg
@@ -26,5 +23,4 @@ export function AppgenPlugIcon(props: AppgenPlugIconProps) {
     </svg>
   );
 }
-
 export default AppgenPlugIcon;

@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/use-avatar-options-C2NT8j2m.js
+// Restored from ref/webview/assets/use-avatar-options-CMZnWjwp.js
 import { _appScopeS as useSignalValue } from "../boundaries/app-scope";
 import { once } from "../runtime/commonjs-interop";
 import {
@@ -27,13 +27,11 @@ type AvatarOptionsResult = {
   isFetching: boolean;
   isLoading: boolean;
 };
-
 export const initUseAvatarOptionsChunk = once(() => {
   getChunkModuleExports();
   initScopeRuntime();
   initCustomAvatarsQueryChunk();
 });
-
 export function useAvatarOptions(): AvatarOptionsResult {
   const { data, isError, isFetching, isLoading } = useSignalValue(
     customAvatarsQuery,

@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/app-initial~app-main~remote-conversation-page~projects-index-page~hotkey-window-thread-page~o5l7nhuo-yccnYlvy.js
+// Restored from ref/webview/assets/app-initial~app-main~remote-conversation-page~projects-index-page~hotkey-window-thread-page~o5l7nhuo-DnNHJk2m.js
 // Semantic icon module: named React component with JSX return value.
 
 import type { SVGProps } from "react";
@@ -20,7 +20,5 @@ export function PopInMacIcon(props: IconProps) {
     </svg>
   );
 }
-
 export function initPopInMacIconChunk(): void {}
-
 export default PopInMacIcon;

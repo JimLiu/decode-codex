@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/browser-1Fy2HWnE.js
+// Restored from ref/webview/assets/browser-4rTfxlUZ.js
 // Vendored boundary for the bundled @lottiefiles/dotlottie-web React runtime.
 // Vendored boundary.
 import React from "react";

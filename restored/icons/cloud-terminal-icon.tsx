@@ -2,11 +2,8 @@
 // Semantic icon module for a cloud terminal glyph.
 
 import type { SVGProps } from "react";
-
 export type CloudTerminalIconProps = SVGProps<SVGSVGElement>;
-
 export function initCloudTerminalIconChunk(): void {}
-
 export function CloudTerminalIcon(props: CloudTerminalIconProps) {
   return (
     <svg
@@ -34,5 +31,4 @@ export function CloudTerminalIcon(props: CloudTerminalIconProps) {
     </svg>
   );
 }
-
 export default CloudTerminalIcon;

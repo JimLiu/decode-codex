@@ -1,9 +1,7 @@
-// Restored from ref/webview/assets/use-hotkey-window-detail-layout-QBnCCIVd.js; synced with ref/webview/assets/use-hotkey-window-detail-layout-CqbE5SNB.js.
+// Restored from ref/webview/assets/use-hotkey-window-detail-layout-D-pNZzEr.js
 
 import { createContext, useContext, useLayoutEffect } from "react";
-
 export function initHotkeyWindowDetailLayoutChunk(): void {}
-
 type HotkeyWindowDetailLayoutRegistration = unknown;
 type HotkeyWindowDetailLayoutSetter = (
   registration: HotkeyWindowDetailLayoutRegistration | null,
