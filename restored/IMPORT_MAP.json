@@ -39194,6 +39194,30 @@
       "note": "Shiki bundled language producer chunk mapped to npm leaf @shikijs/langs/php; grammar payload is intentionally not copied into restored/. Bundler init aliases are no-ops because static imports are already initialized.",
       "stage3Accepted": true,
       "lastUpdated": "2026-06-30T00:00:00.000-05:00"
+    },
+    "ruby-B0dnYYgf": {
+      "restored": "vendor/shiki-languages.ts",
+      "exports": {
+        "n": "rubyLanguageGrammars",
+        "t": "initRubyGrammarChunk"
+      },
+      "status": "done",
+      "vendor": "@shikijs/langs/ruby",
+      "note": "Shiki bundled language producer chunk mapped to npm leaf @shikijs/langs/ruby; grammar payload is intentionally not copied into restored/. Bundler init aliases are no-ops because static imports are already initialized.",
+      "stage3Accepted": true,
+      "lastUpdated": "2026-06-30T00:00:00.000-05:00"
+    },
+    "vue-DZyiWzKY": {
+      "restored": "vendor/shiki-languages.ts",
+      "exports": {
+        "n": "vueLanguageGrammars",
+        "t": "initVueGrammarChunk"
+      },
+      "status": "done",
+      "vendor": "@shikijs/langs/vue",
+      "note": "Shiki bundled language producer chunk mapped to npm leaf @shikijs/langs/vue; grammar payload is intentionally not copied into restored/. Bundler init aliases are no-ops because static imports are already initialized.",
+      "stage3Accepted": true,
+      "lastUpdated": "2026-06-30T00:00:00.000-05:00"
     }
   }
 }

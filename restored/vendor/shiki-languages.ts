@@ -212,6 +212,8 @@ import xslGrammar from "@shikijs/langs/xsl";
 import cppGrammar from "@shikijs/langs/cpp";
 import htmlDerivativeGrammar from "@shikijs/langs/html-derivative";
 import phpGrammar from "@shikijs/langs/php";
+import rubyGrammar from "@shikijs/langs/ruby";
+import vueGrammar from "@shikijs/langs/vue";
 
 type ShikiGrammarChunkInitializer = () => void;
 
@@ -299,6 +301,10 @@ const htmlDerivativeLanguageGrammars = htmlDerivativeGrammar;
 const initHtmlDerivativeGrammarChunk = initShikiGrammarChunk;
 const phpLanguageGrammars = phpGrammar;
 const initPhpGrammarChunk = initShikiGrammarChunk;
+const rubyLanguageGrammars = rubyGrammar;
+const initRubyGrammarChunk = initShikiGrammarChunk;
+const vueLanguageGrammars = vueGrammar;
+const initVueGrammarChunk = initShikiGrammarChunk;
 
 export {
   abapGrammar,
@@ -552,4 +558,8 @@ export {
   initHtmlDerivativeGrammarChunk,
   phpLanguageGrammars,
   initPhpGrammarChunk,
+  rubyLanguageGrammars,
+  initRubyGrammarChunk,
+  vueLanguageGrammars,
+  initVueGrammarChunk,
 };
