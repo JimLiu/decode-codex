@@ -14648,7 +14648,7 @@
       "lastUpdated": "2026-06-29"
     },
     "app-initial~app-main~worktree-init-v2-page~remote-conversation-page~new-thread-panel-page~o~dv5z3ftk-BhBbJNnt": {
-      "restored": "boundaries/current-ref/query-scope-runtime-producer.ts",
+      "restored": "boundaries/query-scope-current-runtime.ts",
       "exports": {
         "Ao": "initScopeRuntimeChunk",
         "Bs": "createAtom",
@@ -15091,7 +15091,7 @@
       "lastUpdated": "2026-06-29"
     },
     "app-initial~app-main~worktree-init-v2-page~remote-conversation-page~new-thread-panel-page~o~bj5tp28r-Dcs9S3fj": {
-      "restored": "boundaries/current-ref/app-main-new-thread-producer.ts",
+      "restored": "boundaries/app-main-new-thread-runtime.ts",
       "exports": {
         "_S": "createPersistentSignal",
         "_x": "normalizeArtifactPathKey",
