@@ -19439,8 +19439,11 @@
         "t": "appInfoQuerySignal"
       },
       "status": "done",
-      "note": "Current app-main app-info query producer restored as a typed runtime wrapper over the app-host service bridge and app-scope query family.",
-      "lastUpdated": "2026-06-29T00:00:00.000Z"
+      "note": "Historical app-main app-info query producer retained as an alias of the current Qj6SXl5X chunk. The typed runtime wrapper is backed by the app-host service bridge and app-scope query family.",
+      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "stage3Accepted": true,
+      "stage3AcceptedAt": "2026-06-30T00:00:00.000Z",
+      "stage3Review": "Host self-review: current ref no longer contains DCerg-br, current Qj6SXl5X exports the same n/t aliases, runtime/app-info-query-runtime.ts passes quality-gate, and both recorded aliases are covered by the semantic runtime exports."
     },
     "app-initial~app-main~remote-conversation-page~onboarding-page~projects-index-page~hotkey-wi~jqxaf9bd-D06wdm98": {
       "restored": "runtime/progress-duration-constants.ts",
@@ -27044,12 +27047,12 @@
         "t": "appInfoQuerySignal"
       },
       "status": "done",
-      "note": "Current ref chunk mapped from prior restored chunk with the same stable stem (app-initial~app-main~personalization-settings~appearance-settings~general-settings-DCerg-br). Verify source diff before treating as Stage 3 accepted for this exact hash.",
-      "lastUpdated": "2026-06-29T20:20:00.000Z",
+      "note": "Current ref app-info query chunk mapped from the prior DCerg-br stable stem. The current Qj6SXl5X asset exports the same n/t aliases, restored through runtime/app-info-query-runtime.ts.",
+      "lastUpdated": "2026-06-30T00:00:00.000Z",
       "migratedFrom": "app-initial~app-main~personalization-settings~appearance-settings~general-settings-DCerg-br",
       "stage3Accepted": true,
-      "stage3AcceptedAt": "2026-06-29T20:20:00.000Z",
-      "stage3Review": "Host self-review: quality-gate and prettier passed on the mapped public file; file read end-to-end against Stage 3 E1-E4."
+      "stage3AcceptedAt": "2026-06-30T00:00:00.000Z",
+      "stage3Review": "Host self-review: verified the current Qj6SXl5X ref asset exports n/t, runtime/app-info-query-runtime.ts is synced to that hash with DCerg-br recorded as an alias, quality-gate passes, and both mapped semantic exports are present."
     },
     "app-initial~app-main~remote-conversation-page~projects-index-page~hotkey-window-thread-page~o5l7nhuo-DnNHJk2m": {
       "restored": "icons/pop-in-mac-icon.tsx",
