@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/thread-side-panel-tabs-tc-mAOFK.js
+// Restored from ref/webview/assets/thread-side-panel-tabs-DDAJVj-n.js
 // Semantic side-panel tab barrel for the updated Codex webview bundle.
 import {
   getBrowserTabIdForSidePanelOpen,
