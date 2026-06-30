@@ -16697,7 +16697,7 @@
       "lastUpdated": "2026-06-29T00:00:00.000Z"
     },
     "app-initial~app-main~remote-conversation-page~pull-requests-page~onboarding-page~hotkey-win~fzw0jvy4-rg89odR_": {
-      "restored": "boundaries/current-ref/hotkey-thread-diff-producer.ts",
+      "restored": "runtime/hotkey-thread-diff-runtime.ts",
       "exports": {
         "Co": "getPatchFileSizeSummary",
         "So": "initParseDiffRuntimeChunk",
@@ -16773,7 +16773,7 @@
       "lastUpdated": "2026-06-29T00:00:00.000Z"
     },
     "app-initial~app-main~remote-conversation-page~projects-index-page~hotkey-window-thread-page~ki4n9fl3-zz_Wr7F0": {
-      "restored": "boundaries/current-ref/projects-hotkey-thread-producer.ts",
+      "restored": "projects/projects-hotkey-thread-runtime.ts",
       "exports": {
         "A": "initDialogLayoutComponents",
         "C": "FieldStack",
@@ -20874,7 +20874,7 @@
       }
     },
     "app-initial~app-main~worktree-init-v2-page~remote-conversation-page~new-thread-panel-page~o~fzw0jvy4-rg89odR_": {
-      "restored": "boundaries/current-ref/hotkey-thread-diff-producer.ts",
+      "restored": "runtime/hotkey-thread-diff-runtime.ts",
       "exports": {
         "dr": "initEditIconChunk",
         "dt": "CommentIcon",
