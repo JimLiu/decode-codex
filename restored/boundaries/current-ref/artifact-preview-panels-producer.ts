@@ -5,6 +5,6 @@ export { PopcornElectronDocumentPanel } from "../../../ref/webview/assets/Popcor
 export { PopcornElectronPresentationPanel } from "../../../ref/webview/assets/PopcornElectronPresentationPanel-B56eXPt5.js";
 export { PopcornElectronWorkbookPanel } from "../../../ref/webview/assets/PopcornElectronWorkbookPanel-DEXqsHf5.js";
 
-export { DocxPreviewPanel } from "../../../ref/webview/assets/docx-preview-panel-BsZXEpj7.js";
+export { DocxPreviewPanel } from "../../vendor/docx-preview-panel-current-bundle";
 export { NotebookPreviewPanel } from "../../artifacts/notebook-preview-panel";
-export { PdfPreviewPanel } from "../../../ref/webview/assets/pdf-preview-panel-KZgIg0w6.js";
+export { PdfPreviewPanel } from "../../vendor/pdf-preview-panel-current-bundle";
