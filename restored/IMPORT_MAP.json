@@ -2447,7 +2447,7 @@
     "__vite-browser-external-EPeb3y57": {
       "restored": "runtime/vite-browser-external.ts",
       "exports": {
-        "default": "default"
+        "default": "katexC"
       },
       "status": "done"
     },
@@ -17949,7 +17949,7 @@
       "lastUpdated": "2026-06-30T00:00:00.000Z"
     },
     "app-initial~app-main~onboarding-page-BUwCKIcU": {
-      "restored": "vendor/app-main-current-runtime.ts",
+      "restored": "vendor/app-main-current-runtime/index.ts",
       "exports": {
         "$": "appMainCurrentCompatSlotDollar",
         "$S": "rightPanelOpenStateKey",
@@ -25491,7 +25491,7 @@
       "stage3Review": "Host self-review: quality-gate and prettier passed on the mapped public file; file read end-to-end against Stage 3 E1-E4."
     },
     "app-initial~app-main~onboarding-page-CgNc-Bk2": {
-      "restored": "vendor/app-main-current-runtime.ts",
+      "restored": "vendor/app-main-current-runtime/index.ts",
       "exports": {
         "$": "appMainCurrentCompatSlotDollar",
         "$a": "appMainCurrentCompatSlotDollarLowerA",
