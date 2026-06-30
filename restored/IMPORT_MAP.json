@@ -20737,6 +20737,142 @@
       "lastUpdated": "2026-06-29T00:00:00.000Z",
       "note": "Current app chunk keeps the restored public export surface; alias added after current ref sync."
     },
+    "json-Bw5D3Ev3": {
+      "restored": "icons/json-icon.tsx",
+      "exports": {
+        "default": "default"
+      },
+      "status": "done",
+      "aliasOf": "json-Dg8pTDDb",
+      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "note": "Current semantic wrapper preserves the restored default export surface."
+    },
+    "header-Bee2R5p8": {
+      "restored": "browser/chrome-extension-header.tsx",
+      "exports": {
+        "Header": "Header"
+      },
+      "status": "done",
+      "aliasOf": "header-CT44CGhD",
+      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "note": "Current semantic wrapper preserves the restored public export surface."
+    },
+    "workbook-C9Gx7OEE": {
+      "restored": "utils/workbook.ts",
+      "exports": {
+        "Workbook": "Workbook"
+      },
+      "status": "done",
+      "aliasOf": "workbook-BEO_aVXz",
+      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "note": "Current semantic wrapper preserves the restored public export surface."
+    },
+    "pet-install-state-DSjWxlxg": {
+      "restored": "features/pet-install-state-entry.ts",
+      "exports": {
+        "closePetInstallSession": "closePetInstallSession",
+        "installPet": "installPet",
+        "petInstallSession$": "petInstallSession$",
+        "startPetInstallSession": "startPetInstallSession"
+      },
+      "status": "done",
+      "aliasOf": "pet-install-state-DJxALilf",
+      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "note": "Current semantic wrapper preserves the restored public export surface."
+    },
+    "remote-connections-page-2Vi91kKH": {
+      "restored": "remote/remote-connections-page.tsx",
+      "exports": {
+        "RemoteConnectionsPage": "RemoteConnectionsPage"
+      },
+      "status": "done",
+      "aliasOf": "remote-connections-page-CWiJhSOT",
+      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "note": "Current semantic wrapper preserves the restored public export surface."
+    },
+    "schema-filter-Dzj5Tjvi": {
+      "restored": "utils/schema-filter.ts",
+      "exports": {
+        "schemaFilter": "schemaFilter"
+      },
+      "status": "done",
+      "aliasOf": "schema-filter-r146tzO0",
+      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "note": "Current semantic wrapper preserves the restored public export surface."
+    },
+    "workbook-from-csv-BQ9WECVh": {
+      "restored": "utils/workbook-from-csv.ts",
+      "exports": {
+        "planCsvImport": "planCsvImport",
+        "sanitizeSheetName": "sanitizeSheetName"
+      },
+      "status": "done",
+      "aliasOf": "workbook-from-csv-Bw8OaanU",
+      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "note": "Current semantic wrapper preserves the restored public export surface."
+    },
+    "workbook-from-csv-DdquzPzc": {
+      "restored": "utils/workbook-from-csv.ts",
+      "exports": {
+        "planCsvImport": "planCsvImport",
+        "sanitizeSheetName": "sanitizeSheetName"
+      },
+      "status": "done",
+      "aliasOf": "workbook-from-csv-Bw8OaanU",
+      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "note": "Current semantic wrapper preserves the restored public export surface."
+    },
+    "workbook-from-csv-CuayXnBi": {
+      "restored": "utils/workbook-from-csv.ts",
+      "exports": {
+        "planCsvImport": "planCsvImport",
+        "sanitizeSheetName": "sanitizeSheetName"
+      },
+      "status": "done",
+      "aliasOf": "workbook-from-csv-Bw8OaanU",
+      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "note": "Current semantic wrapper preserves the restored public export surface."
+    },
+    "browser-sidebar-hidden-browser-use-webview-host-CkfqVXrj": {
+      "restored": "browser/hidden-browser-use-webview-host.tsx",
+      "exports": {
+        "HiddenBrowserUseWebviewHost": "HiddenBrowserUseWebviewHost"
+      },
+      "status": "done",
+      "aliasOf": "browser-sidebar-hidden-browser-use-webview-host-_NfLzTex",
+      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "note": "Current semantic wrapper preserves the restored public export surface."
+    },
+    "open-source-licenses-page-DiIBjlKM": {
+      "restored": "settings/open-source-licenses-page.tsx",
+      "exports": {
+        "OpenSourceLicensesPage": "OpenSourceLicensesPage"
+      },
+      "status": "done",
+      "aliasOf": "open-source-licenses-page-BeKIrKdc",
+      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "note": "Current semantic wrapper preserves the restored public export surface."
+    },
+    "hotkey-window-detail-layout-CbLgJ30Y": {
+      "restored": "utils/hotkey-window-detail-layout.tsx",
+      "exports": {
+        "HotkeyWindowDetailLayout": "HotkeyWindowDetailLayout"
+      },
+      "status": "done",
+      "aliasOf": "hotkey-window-detail-layout-psE94glX",
+      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "note": "Current semantic wrapper preserves the restored public export surface."
+    },
+    "home-artifact-templates-D0u8_Ecs": {
+      "restored": "home/artifact-templates.tsx",
+      "exports": {
+        "HomeArtifactTemplates": "HomeArtifactTemplates"
+      },
+      "status": "done",
+      "aliasOf": "home-artifact-templates-BqtjKj4m",
+      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "note": "Current semantic wrapper preserves the restored public export surface."
+    },
     "app-initial~app-main~worktree-init-v2-page~remote-conversation-page~new-thread-panel-page~a~hqj10sd5-C_H_yI8D": {
       "restored": "threads/thread-layout.tsx",
       "note": "Current app chunk keeps the restored public export surface; alias added after current ref sync.",
