@@ -41779,6 +41779,19 @@
       "stage3AcceptedAt": "2026-06-30T22:10:15.915Z",
       "stage3Review": "Host self-review: verified the current file still exports PopcornElectronDocumentPanel, rewrote all current dependency imports through restored/IMPORT_MAP.json, and passed quality gates on the backing bundle and runtime.",
       "stage3Note": "Accepted as a current-ref compatibility export over a restored-dependency backing bundle; full semantic split of the large document panel remains a later cleanup."
+    },
+    "sequenceDiagram-WL72ISMW-Cj-M6wv4": {
+      "restored": "vendor/sequence-diagram-wl72ismw.ts",
+      "exports": {
+        "diagram": "SequenceDiagramWL72ISMW"
+      },
+      "status": "done",
+      "aliasOf": "sequenceDiagram-WL72ISMW-BR6BjBF1",
+      "lastUpdated": "2026-06-30T22:12:25.052Z",
+      "note": "Current Mermaid sequence diagram wrapper preserves the restored public export surface.",
+      "stage3Accepted": true,
+      "stage3AcceptedAt": "2026-06-30T22:12:25.055Z",
+      "stage3Review": "Host self-review: current ref sequenceDiagram-WL72ISMW-Cj-M6wv4.js exports only diagram; restored/vendor/sequence-diagram-wl72ismw.ts preserves that surface through SequenceDiagramWL72ISMW and passes quality-gate --vendored."
     }
   }
 }

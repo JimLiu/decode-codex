@@ -278,3 +278,88 @@ exports) → `Bc0ZtIBr` (105 exports); aliases fully repacked (`B` went from
 `isKeyboardShortcutCommandFeatureEnabled` to `isSameProcessRow`), and 6 exports
 were net-new (remote-hosted-pip state, keyboard-shortcuts dialog, home-hero
 heading, composer-project-list init).
+
+## Aggregator-chunk restore anti-patterns
+
+Large shared runtime chunks (the `app-initial~app-main~*` family, ~43k lines)
+are aggregators: they inline the implementations of ~100 shared modules and
+re-export them under build-specific aliases. Restoring them has two orthogonal
+sub-tasks that must **both** complete:
+
+1. **Alias-map fix (delta task):** re-derive the alias→semantic-name map and
+   update `IMPORT_MAP.json` + the `boundaries/current-ref/` producer barrel.
+   This is a *narrow* sub-task that can finish in one session and is described
+   in the `current-ref` section above.
+
+2. **Body restoration (organize→promote pipeline):** deobfuscate the chunk body
+   (Stage 2 rename + polish → Stage 3 finalize → organize → promote). This
+   produces the actual source files in `restored/`. `auto-restore-full.ts`
+   generates a mechanical *checkpoint* as a starting point; that checkpoint
+   must be turned into semantic files before the chunk counts as restored.
+
+**These two sub-tasks are independent.** Finishing the alias-map fix (1) does
+NOT close the body restoration (2). The manifest `stages` fields track (2)
+only. After finishing a delta alias-map fix, always verify whether a
+mechanical checkpoint for the chunk body also needs to be promoted.
+
+### Three red flags to check before declaring done
+
+**Red flag 1 — Mechanical-name saturation.**
+After `auto-restore-full.ts` runs, count the fallback names:
+
+```bash
+grep -c '<entryBasename>Value[0-9]' _full/checkpoints/<basename>.tsx
+```
+
+If the count is **> 5,000**, the checkpoint is deep-mechanical and cannot be
+promoted as-is. Record the count in the manifest (custom `notes` field or a
+`needsAgentRewrite: true` in the auto-restore report) and reset the rename
+stage (`ledger.ts reset rename <basename>`) so no downstream process treats
+the checkpoint as promoted. Do NOT mark `stages.organized = true` based on a
+vendor facade until a semantic rewrite reduces fallback names to near-zero.
+
+**Red flag 2 — `vendor/` path for a large local chunk.**
+`plan-organize.ts` may propose `vendor/X-runtime.ts` (or `vendor/X-current-runtime.ts`)
+for any chunk whose name contains "runtime" or "current". For a `kind: local`
+chunk **> 10k lines**, the `vendor/` domain is almost certainly wrong: a
+genuine vendor entry is a small npm-shim stub (< 2 KB); a 43k-line local chunk
+needs a domain split. When you see this proposal, **reject it** and manually
+assign correct domain paths via `ledger.ts set-organization`. The `vendor/`
+domain is reserved for bare npm re-export shims and thin passthrough facades —
+not for aggregator bodies.
+
+**Red flag 3 — Inconsistent manifest stages.**
+`stages.organized = true` while `stages.renamed = false` on a `kind: local`
+chunk is a contradiction: organized means a semantic path was chosen, but
+renamed means the code identifiers were never fixed. This combination indicates
+the organize step created a *facade* (like the 6.3 KB re-export barrel at
+`vendor/automations-page-current-runtime.ts`) without actually deobfuscating
+the body. Treat it as an unfinished state: the alias-map sub-task is complete
+but the body restoration is pending.
+
+`quality-gate.ts` flags the symptom (`full-restoration-checkpoints-not-drained`)
+but does not distinguish between "checkpoint promoted" and "facade promoted".
+Until the gate is hardened for this case, the manual check is:
+
+```bash
+# A promoted aggregator body must be > 2 KB at its organize path.
+# A < 2 KB file at the organize path is a facade, not a promotion.
+wc -c restored/<organize-domain-path>
+```
+
+### Correct closure for an aggregator chunk
+
+After the alias-map fix, the completion path for the body is:
+
+1. Identify modules that are NOT yet in `restored/` by comparing the
+   consolidated export fingerprints against actual on-disk files.
+2. For each missing module: extract its definition from the ref file, run
+   Stage 2 rename + polish (`polish.ts --rename --fast --format`), and write a
+   semantic file to the appropriate domain.
+3. For modules already well-restored from a prior build: verify quality
+   (provenance header, no mechanical names, types) and cross-reference the
+   IMPORT_MAP entry to confirm the file path is correct.
+4. Once all module bodies are accounted for, update manifest stages:
+   `ledger.ts mark-done <basename>` with the correct semantic-name list.
+5. Run `quality-gate.ts restored/` over the whole target — the per-chunk
+   facade alone is NOT a passing result.
