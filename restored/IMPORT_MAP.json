@@ -5792,7 +5792,10 @@
       "exports": {
         "t": "Graphlib"
       },
-      "status": "done"
+      "status": "done",
+      "stage3Accepted": true,
+      "stage3Note": "Accepted as a typed Graphlib runtime alias that reuses the self-contained vendor/graphlib.ts implementation.",
+      "lastUpdated": "2026-06-30T00:00:00.000Z"
     },
     "c4Diagram-AHTNJAMY-D1_UKJZR": {
       "restored": "vendor/c4-diagram-ahtnjamy.ts",
@@ -34680,11 +34683,11 @@
         "t": "initGraphlibAltChunk"
       },
       "aliasOf": "graphlib-Dk1ocXNC",
-      "note": "Current graphlib hash preserves the graphlib-alt implementation and adds r/t lazy init thunk aliases.",
+      "note": "Current graphlib hash preserves the graphlib-alt export surface and adds r/t lazy init thunk aliases.",
       "stage3Accepted": true,
       "lastUpdated": "2026-06-30T14:34:18.332Z",
       "stage3AcceptedAt": "2026-06-30T14:34:18.332Z",
-      "stage3Note": "Accepted as a vendored Graphlib runtime module with current hash provenance and validated alias exports."
+      "stage3Note": "Accepted as a typed Graphlib runtime alias sharing the self-contained vendor/graphlib.ts implementation."
     },
     "graphlib-CU4GKOO2": {
       "restored": "vendor/graphlib-alt.ts",
@@ -34699,7 +34702,7 @@
       "stage3Accepted": true,
       "lastUpdated": "2026-06-30T14:38:55.554Z",
       "stage3AcceptedAt": "2026-06-30T14:38:55.554Z",
-      "stage3Note": "Accepted as the current Graphlib vendored runtime alias sharing the validated graphlib-alt module."
+      "stage3Note": "Accepted as the current Graphlib runtime alias sharing the self-contained vendor/graphlib.ts implementation."
     },
     "merge-jSBXKSH5": {
       "restored": "vendor/lodash-merge-runtime.ts",
