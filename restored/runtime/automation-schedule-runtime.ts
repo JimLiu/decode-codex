@@ -8,11 +8,11 @@ import {
   queryDurations,
 } from "./host-query-runtime";
 import {
-  cC as automationStatusValues,
-  iC as reasoningEffortValues,
-  oC as scheduleFrequencyValues,
-  rC as automationKindValues,
-  tC as executionEnvironmentValues,
+  Cu as automationStatusValues,
+  gu as executionEnvironmentValues,
+  vu as automationKindValues,
+  xu as scheduleFrequencyValues,
+  yu as reasoningEffortValues,
 } from "../vendor/projects-app-shared-runtime";
 import {
   initAppScope as initAppScopeRuntime,

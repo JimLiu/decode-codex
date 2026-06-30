@@ -11,12 +11,7 @@ export {
   Ix,
   Ob,
   TS,
-  cC,
-  iC,
-  oC,
   qx,
-  rC,
   rx,
-  tC,
   vS,
 } from "../../vendor/app-main-legacy-buw-compat-bundle";
