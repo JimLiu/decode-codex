@@ -10,6 +10,8 @@ type PlanEventOverride = {
   enabled?: boolean;
 };
 
+export function initIsPlanEventEnabledChunk(): void {}
+
 export function isPlanEventEnabled(
   defaults: PlanEventDefaults | null | undefined,
   override: PlanEventOverride | null | undefined,

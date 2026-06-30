@@ -14091,6 +14091,17 @@
       "note": "Synced current play-outline icon hash with the semantic typed icon output and chunk initializer export.",
       "lastUpdated": "2026-06-27T20:51:12.903Z"
     },
+    "play-outline-DDngKAbi": {
+      "restored": "icons/play-outline-icon.tsx",
+      "exports": {
+        "n": "initPlayOutlineIconChunk",
+        "t": "PlayOutlineIcon"
+      },
+      "status": "done",
+      "aliasOf": "play-outline-DCaifa0x",
+      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "note": "Current ref hash keeps the restored play-outline icon and initializer surface."
+    },
     "filter-BUOx0Gs-": {
       "restored": "icons/filter-icon.tsx",
       "exports": {
@@ -14230,6 +14241,17 @@
       "note": "Restored the current 16px plus-sm SVG icon as a distinct semantic icon module with runtime initializer export.",
       "lastUpdated": "2026-06-27T21:12:32.579Z"
     },
+    "plus-sm-KfWVXCbv": {
+      "restored": "icons/plus-sm-icon.tsx",
+      "exports": {
+        "n": "initPlusSmIconChunk",
+        "t": "PlusSmIcon"
+      },
+      "status": "done",
+      "aliasOf": "plus-sm-CZTYJkzM",
+      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "note": "Current ref hash keeps the restored plus-sm icon and initializer surface."
+    },
     "custom-avatars-query-Bodwj3U-": {
       "restored": "features/custom-avatars-query.ts",
       "exports": {
@@ -14355,6 +14377,18 @@
       "status": "done",
       "note": "Synced current git submodule paths query chunk to the semantic query helpers and initializer export.",
       "lastUpdated": "2026-06-27T21:30:04.717Z"
+    },
+    "git-submodule-paths-query-BqRPUZJD": {
+      "restored": "github/git-submodule-paths-query.tsx",
+      "exports": {
+        "n": "gitSubmodulePathsSignal",
+        "r": "initGitSubmodulePathsQueryChunk",
+        "t": "gitSubmodulePathsQuerySignal"
+      },
+      "status": "done",
+      "aliasOf": "git-submodule-paths-query-CONsZjeg",
+      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "note": "Current ref hash keeps the restored git submodule path signal, query signal, and initializer surface."
     },
     "use-codex-worktrees-CPZNHmi3": {
       "restored": "utils/use-codex-worktrees.ts",
@@ -19512,6 +19546,17 @@
       "lastUpdated": "2026-06-29T00:00:00.000Z",
       "note": "Current utility chunk keeps the restored public API; alias added after current ref sync."
     },
+    "gracefulDecodeURIComponent-BpW7JPKu": {
+      "restored": "utils/graceful-decode-uri-component.ts",
+      "exports": {
+        "n": "initGracefulDecodeURIComponentChunk",
+        "t": "gracefulDecodeURIComponent"
+      },
+      "status": "done",
+      "aliasOf": "gracefulDecodeURIComponent-DByonkCa",
+      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "note": "Current ref hash keeps the restored graceful URI decode helper and initializer surface."
+    },
     "highlight-code-CpOO4cTB": {
       "restored": "utils/highlight-code.ts",
       "exports": {
@@ -19552,6 +19597,17 @@
       "lastUpdated": "2026-06-29T00:00:00.000Z",
       "note": "Current utility chunk keeps the restored public API; alias added after current ref sync."
     },
+    "is-plan-event-enabled-Bmz4BLlB": {
+      "restored": "utils/is-plan-event-enabled.ts",
+      "exports": {
+        "n": "isPlanEventEnabled",
+        "t": "initIsPlanEventEnabledChunk"
+      },
+      "status": "done",
+      "aliasOf": "is-plan-event-enabled-yBXVgx1W",
+      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "note": "Current ref hash keeps the restored plan-event enablement helper and initializer surface."
+    },
     "legacy-video-plugins-B3g7QTf7": {
       "restored": "utils/legacy-video-plugins.ts",
       "exports": {
@@ -19561,6 +19617,16 @@
       "aliasOf": "legacy-video-plugins-BKJsmZCC",
       "lastUpdated": "2026-06-29T00:00:00.000Z",
       "note": "Current utility chunk keeps the restored public API; alias added after current ref sync."
+    },
+    "legacy-video-plugins-BzriPR2f": {
+      "restored": "utils/legacy-video-plugins.ts",
+      "exports": {
+        "loadLegacyVideoPlugins": "loadLegacyVideoPlugins"
+      },
+      "status": "done",
+      "aliasOf": "legacy-video-plugins-BKJsmZCC",
+      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "note": "Current ref hash keeps the restored legacy video plugin loader surface."
     },
     "open-in-targets-query-iQfifJeS": {
       "restored": "utils/open-in-targets-query.ts",
@@ -19572,6 +19638,17 @@
       "note": "Current utility chunk keeps the restored public API; alias added after current ref sync.",
       "aliasOf": "open-in-targets-query-B1vT8sW1",
       "lastUpdated": "2026-06-29T00:00:00.000Z"
+    },
+    "open-in-targets-query-CrvqPdrF": {
+      "restored": "utils/open-in-targets-query.ts",
+      "exports": {
+        "n": "openInTargetsQuery",
+        "t": "initOpenInTargetsQueryChunk"
+      },
+      "status": "done",
+      "aliasOf": "open-in-targets-query-B1vT8sW1",
+      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "note": "Current ref hash keeps the restored open-in-targets query and initializer surface."
     },
     "ordinal-BBV4AAIZ": {
       "restored": "utils/ordinal.ts",
@@ -19604,6 +19681,18 @@
       "aliasOf": "plan-pricing-dtn4oxxh",
       "lastUpdated": "2026-06-29T00:00:00.000Z",
       "note": "Current utility chunk keeps the restored public API; alias added after current ref sync."
+    },
+    "plan-pricing-DANGBAbm": {
+      "restored": "utils/plan-pricing.ts",
+      "exports": {
+        "n": "formatPlanPriceParts",
+        "r": "initPlanPricingChunk",
+        "t": "formatPlanPrice"
+      },
+      "status": "done",
+      "aliasOf": "plan-pricing-dtn4oxxh",
+      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "note": "Current ref hash keeps the restored plan price formatting helpers and initializer surface."
     },
     "routing-middleware-BMBY4FI3": {
       "restored": "utils/routing-middleware.ts",
@@ -19675,6 +19764,17 @@
       "aliasOf": "setup-codex-wizard-step-view-BQ0iTw_T",
       "lastUpdated": "2026-06-29T00:00:00.000Z",
       "note": "Current utility chunk keeps the restored public API; alias added after current ref sync."
+    },
+    "setup-codex-wizard-step-view-BVC1Ci2i": {
+      "restored": "utils/setup-codex-wizard-step-view.ts",
+      "exports": {
+        "n": "useSetupCodexWizardStepView",
+        "t": "initSetupCodexWizardStepViewChunk"
+      },
+      "status": "done",
+      "aliasOf": "setup-codex-wizard-step-view-BQ0iTw_T",
+      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "note": "Current ref hash keeps the restored setup wizard step view hook and initializer surface."
     },
     "tabs-BAeCIxNQ": {
       "restored": "utils/tabs.tsx",
@@ -19749,6 +19849,18 @@
       "aliasOf": "use-home-directory-CVo0R7Wz",
       "lastUpdated": "2026-06-29T00:00:00.000Z",
       "note": "Current utility chunk keeps the restored public API; alias added after current ref sync."
+    },
+    "use-home-directory-BujwbbZZ": {
+      "restored": "utils/use-home-directory.ts",
+      "exports": {
+        "n": "useHomeDirectory",
+        "r": "useHomeDirectoryQuery",
+        "t": "initUseHomeDirectoryChunk"
+      },
+      "status": "done",
+      "aliasOf": "use-home-directory-7PtGooXU",
+      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "note": "Current ref hash keeps the restored home-directory value hook, query hook, and initializer surface."
     },
     "use-hotkey-window-dismiss-on-escape-Dpt2emga": {
       "restored": "utils/use-hotkey-window-dismiss-on-escape.ts",
