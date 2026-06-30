@@ -9882,6 +9882,46 @@
       },
       "status": "done"
     },
+    "wardleyDiagram-NUSXRM2D-16KoivgG": {
+      "restored": "vendor/mermaid-wardley-diagram-k5.ts",
+      "exports": {
+        "diagram": "WardleyDiagramNUSXRM2D"
+      },
+      "status": "done",
+      "aliasOf": "wardleyDiagram-NUSXRM2D-DlElmt-K",
+      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "note": "Current Mermaid Wardley diagram wrapper preserves the restored public export surface."
+    },
+    "wardleyDiagram-NUSXRM2D-69lrkkvH": {
+      "restored": "vendor/mermaid-wardley-diagram-k5.ts",
+      "exports": {
+        "diagram": "WardleyDiagramNUSXRM2D"
+      },
+      "status": "done",
+      "aliasOf": "wardleyDiagram-NUSXRM2D-DlElmt-K",
+      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "note": "Current Mermaid Wardley diagram wrapper preserves the restored public export surface."
+    },
+    "wardleyDiagram-NUSXRM2D-BHC55bRN": {
+      "restored": "vendor/mermaid-wardley-diagram-k5.ts",
+      "exports": {
+        "diagram": "WardleyDiagramNUSXRM2D"
+      },
+      "status": "done",
+      "aliasOf": "wardleyDiagram-NUSXRM2D-DlElmt-K",
+      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "note": "Current Mermaid Wardley diagram wrapper preserves the restored public export surface."
+    },
+    "wardleyDiagram-NUSXRM2D-TFhnk2RP": {
+      "restored": "vendor/mermaid-wardley-diagram-k5.ts",
+      "exports": {
+        "diagram": "WardleyDiagramNUSXRM2D"
+      },
+      "status": "done",
+      "aliasOf": "wardleyDiagram-NUSXRM2D-DlElmt-K",
+      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "note": "Current Mermaid Wardley diagram wrapper preserves the restored public export surface."
+    },
     "architectureDiagram-VXUJARFQ-x16TdI-X": {
       "restored": "vendor/mermaid-architecture-diagram-fpaj.ts",
       "exports": {
@@ -10496,6 +10536,46 @@
         "diagram": "RequirementDiagramMS252O5E"
       },
       "status": "done"
+    },
+    "requirementDiagram-MS252O5E--z-7P-Ei": {
+      "restored": "vendor/mermaid-requirement-diagram-k5.ts",
+      "exports": {
+        "diagram": "RequirementDiagramMS252O5E"
+      },
+      "status": "done",
+      "aliasOf": "requirementDiagram-MS252O5E-C4g-RuEW",
+      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "note": "Current Mermaid requirement diagram wrapper preserves the restored public export surface."
+    },
+    "requirementDiagram-MS252O5E-C19AgcgF": {
+      "restored": "vendor/mermaid-requirement-diagram-k5.ts",
+      "exports": {
+        "diagram": "RequirementDiagramMS252O5E"
+      },
+      "status": "done",
+      "aliasOf": "requirementDiagram-MS252O5E-C4g-RuEW",
+      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "note": "Current Mermaid requirement diagram wrapper preserves the restored public export surface."
+    },
+    "requirementDiagram-MS252O5E-CYYPaSyf": {
+      "restored": "vendor/mermaid-requirement-diagram-k5.ts",
+      "exports": {
+        "diagram": "RequirementDiagramMS252O5E"
+      },
+      "status": "done",
+      "aliasOf": "requirementDiagram-MS252O5E-C4g-RuEW",
+      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "note": "Current Mermaid requirement diagram wrapper preserves the restored public export surface."
+    },
+    "requirementDiagram-MS252O5E-DDpGYDms": {
+      "restored": "vendor/mermaid-requirement-diagram-k5.ts",
+      "exports": {
+        "diagram": "RequirementDiagramMS252O5E"
+      },
+      "status": "done",
+      "aliasOf": "requirementDiagram-MS252O5E-C4g-RuEW",
+      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "note": "Current Mermaid requirement diagram wrapper preserves the restored public export surface."
     },
     "classDiagram-2ON5EDUG-CNv4W435": {
       "restored": "vendor/mermaid-class-diagram-definition-fpaj.ts",
@@ -33480,6 +33560,104 @@
       "note": "Current graphlib hash preserves the graphlib-alt implementation and adds r/t lazy init thunk aliases.",
       "stage3Accepted": true,
       "lastUpdated": "2026-06-30T00:00:00.000-05:00"
+    },
+    "merge-jSBXKSH5": {
+      "restored": "vendor/lodash-merge-runtime.ts",
+      "exports": {
+        "$": "_mergeX",
+        "A": "__mergeT",
+        "At": "$",
+        "B": "mergeA",
+        "C": "mergeAt",
+        "Ct": "mergeB",
+        "D": "mergeC",
+        "Dt": "mergeCt",
+        "E": "mergeD",
+        "Et": "mergeDt",
+        "F": "mergeE",
+        "Ft": "mergeEt",
+        "G": "mergeF",
+        "H": "mergeFt",
+        "I": "mergeG",
+        "It": "mergeH",
+        "J": "mergeI",
+        "K": "mergeIt",
+        "L": "mergeJ",
+        "Lt": "mergeK",
+        "M": "mergeL",
+        "Mt": "mergeLt",
+        "N": "mergeM",
+        "Nt": "mergeMt",
+        "O": "mergeN",
+        "Ot": "mergeNt",
+        "P": "mergeO",
+        "Pt": "mergeOt",
+        "Q": "mergeP",
+        "R": "mergePt",
+        "Rt": "mergeQ",
+        "S": "mergeR",
+        "St": "mergeRt",
+        "T": "mergeS",
+        "Tt": "mergeSt",
+        "U": "_mergeT",
+        "V": "mergeTt",
+        "W": "mergeU",
+        "X": "mergeV",
+        "Y": "mergeW",
+        "Z": "mergeX",
+        "_": "mergeY",
+        "_t": "mergeZ",
+        "a": "mergeUnderscore",
+        "at": "_t",
+        "b": "_mergeA",
+        "bt": "at",
+        "c": "_mergeB",
+        "ct": "mergeBt",
+        "d": "_mergeC",
+        "dt": "_mergeCt",
+        "et": "_mergeD",
+        "f": "_mergeDt",
+        "ft": "_mergeEt",
+        "g": "_mergeF",
+        "gt": "_mergeFt",
+        "h": "_mergeG",
+        "ht": "mergeGt",
+        "i": "_mergeH",
+        "it": "mergeHt",
+        "j": "_mergeI",
+        "jt": "_mergeIt",
+        "k": "_mergeJ",
+        "kt": "mergeJt",
+        "l": "_mergeK",
+        "lt": "mergeKt",
+        "m": "_mergeL",
+        "mt": "_mergeLt",
+        "n": "_mergeM",
+        "nt": "_mergeMt",
+        "o": "_mergeN",
+        "ot": "_mergeNt",
+        "p": "_mergeO",
+        "pt": "_mergeOt",
+        "q": "_mergeP",
+        "r": "_mergePt",
+        "rt": "_mergeQ",
+        "s": "_mergeR",
+        "st": "_mergeRt",
+        "t": "_mergeS",
+        "tt": "_mergeSt",
+        "u": "_mergeTt",
+        "ut": "_mergeU",
+        "v": "mergeUt",
+        "vt": "_mergeV",
+        "w": "mergeVt",
+        "wt": "_mergeW",
+        "x": "mergeWt",
+        "xt": "mergeXt",
+        "y": "_mergeY",
+        "yt": "mergeYt",
+        "z": "_mergeZ"
+      },
+      "status": "done"
     }
   }
 }
