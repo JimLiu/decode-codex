@@ -3,16 +3,18 @@
 // helpers to open, close and id the tab that hosts an MCP app's side panel.
 import { createElement } from "react";
 import {
-  sidePanelTabController,
   McpServerIcon,
   ConnectorLogoImage,
-  focusSidePanelLayout,
-  collapseSidePanelLayout,
-  tabKindIds,
 } from "../boundaries/onboarding-commons-externals.facade";
+import { rightAppShellTabController as sidePanelTabController } from "../app-shell/app-shell-tab-controller";
+import {
+  closeThreadPanel,
+  openThreadPanel,
+} from "../app-shell/thread-panel-state";
+import { PERSISTED_PANEL_KIND } from "../runtime/persisted-signal";
 
 export function mcpAppTabId(mcpAppId: string): string {
-  return `${tabKindIds.MCP_APP}:${mcpAppId}`;
+  return `${PERSISTED_PANEL_KIND.MCP_APP}:${mcpAppId}`;
 }
 
 export interface McpAppSidePanelFrameProps {
@@ -73,7 +75,7 @@ export function openMcpAppTab(store: any, options: OpenMcpAppTabOptions) {
     activate,
     onClose: onExitFullScreen,
   });
-  if (activate) focusSidePanelLayout(store);
+  if (activate) openThreadPanel(store, "right");
 }
 
 export function closeMcpAppTab(store: any, mcpAppId: string) {
@@ -85,7 +87,7 @@ export function closeMcpAppTab(store: any, mcpAppId: string) {
   ) {
     sidePanelTabController.closeTab(store, tabId);
     if (store.get(sidePanelTabController.tabs$).length === 0) {
-      collapseSidePanelLayout(store);
+      closeThreadPanel(store, "right");
     }
   }
 }
