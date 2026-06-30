@@ -1,136 +1,223 @@
 // Restored from ref/webview/assets/band-DVYrpIoC.js
-// Band chunk restored from the Codex webview bundle.
+// d3-scale band and point scales restored from the Codex webview bundle.
 import { Ordinal } from "../utils/ordinal";
 import { init } from "../utils/init";
-function bandR(bandParam1, bandParam2, _bandR) {
-  bandParam1 = +bandParam1;
-  bandParam2 = +bandParam2;
-  _bandR =
-    (bandValue15 = arguments.length) < 2
-      ? ((bandParam2 = bandParam1), (bandParam1 = 0), 1)
-      : bandValue15 < 3
-        ? 1
-        : +_bandR;
-  for (
-    var _bandT = -1,
-      bandValue15 =
-        Math.max(0, Math.ceil((bandParam2 - bandParam1) / _bandR)) | 0,
-      _bandN = Array(bandValue15);
-    ++_bandT < bandValue15;
 
-  )
-    _bandN[_bandT] = bandParam1 + _bandT * _bandR;
-  return _bandN;
-}
-function bandT() {
-  var bandValue1 = Ordinal().unknown(undefined),
-    _bandN = bandValue1.domain,
-    bandValue2 = bandValue1.range,
-    bandValue3 = 0,
-    bandValue4 = 1,
-    bandValue5,
-    bandValue6,
-    bandValue7 = false,
-    bandValue8 = 0,
-    bandValue9 = 0,
-    bandValue10 = 0.5;
-  delete bandValue1.unknown;
-  function bandHelper2() {
-    var bandValue11 = _bandN().length,
-      bandValue12 = bandValue4 < bandValue3,
-      _bandT = bandValue12 ? bandValue4 : bandValue3,
-      bandValue13 = bandValue12 ? bandValue3 : bandValue4;
-    bandValue5 =
-      (bandValue13 - _bandT) /
-      Math.max(1, bandValue11 - bandValue8 + bandValue9 * 2);
-    bandValue7 && (bandValue5 = Math.floor(bandValue5));
-    _bandT +=
-      (bandValue13 - _bandT - bandValue5 * (bandValue11 - bandValue8)) *
-      bandValue10;
-    bandValue6 = bandValue5 * (1 - bandValue8);
-    bandValue7 &&
-      ((_bandT = Math.round(_bandT)), (bandValue6 = Math.round(bandValue6)));
-    var bandValue14 = bandR(bandValue11).map(function (item) {
-      return _bandT + bandValue5 * item;
-    });
-    return bandValue2(bandValue12 ? bandValue14.reverse() : bandValue14);
+type BandScale = {
+  (value: unknown): number | undefined;
+  domain(): unknown[];
+  domain(values: Iterable<unknown>): BandScale;
+  range(): [number, number];
+  range(values: Iterable<number>): BandScale;
+  rangeRound(values: Iterable<number>): BandScale;
+  bandwidth(): number;
+  step(): number;
+  round(): boolean;
+  round(value: boolean): BandScale;
+  padding(): number;
+  padding(value: number): BandScale;
+  paddingInner(): number;
+  paddingInner(value: number): BandScale;
+  paddingOuter(): number;
+  paddingOuter(value: number): BandScale;
+  align(): number;
+  align(value: number): BandScale;
+  copy(): BandScale;
+};
+
+type OrdinalBackedBandScale = BandScale & {
+  unknown?: unknown;
+};
+
+type InitReceiver = {
+  range(value?: unknown): {
+    domain(value: unknown): unknown;
+  };
+};
+
+export function range(start: number, stop?: number, step?: number): number[] {
+  start = +start;
+  if (arguments.length < 2) {
+    stop = start;
+    start = 0;
+  } else {
+    stop = +(stop as number);
   }
-  return (
-    (bandValue1.domain = function (bandParam11) {
-      return arguments.length ? (_bandN(bandParam11), bandHelper2()) : _bandN();
-    }),
-    (bandValue1.range = function (bandParam4) {
-      return arguments.length
-        ? (([bandValue3, bandValue4] = bandParam4),
-          (bandValue3 = +bandValue3),
-          (bandValue4 = +bandValue4),
-          bandHelper2())
-        : [bandValue3, bandValue4];
-    }),
-    (bandValue1.rangeRound = function (bandParam8) {
-      return (
-        ([bandValue3, bandValue4] = bandParam8),
-        (bandValue3 = +bandValue3),
-        (bandValue4 = +bandValue4),
-        (bandValue7 = true),
-        bandHelper2()
-      );
-    }),
-    (bandValue1.bandwidth = function () {
-      return bandValue6;
-    }),
-    (bandValue1.step = function () {
-      return bandValue5;
-    }),
-    (bandValue1.round = function (bandParam9) {
-      return arguments.length
-        ? ((bandValue7 = !!bandParam9), bandHelper2())
-        : bandValue7;
-    }),
-    (bandValue1.padding = function (bandParam6) {
-      return arguments.length
-        ? ((bandValue8 = Math.min(1, (bandValue9 = +bandParam6))),
-          bandHelper2())
-        : bandValue8;
-    }),
-    (bandValue1.paddingInner = function (bandParam7) {
-      return arguments.length
-        ? ((bandValue8 = Math.min(1, bandParam7)), bandHelper2())
-        : bandValue8;
-    }),
-    (bandValue1.paddingOuter = function (bandParam10) {
-      return arguments.length
-        ? ((bandValue9 = +bandParam10), bandHelper2())
-        : bandValue9;
-    }),
-    (bandValue1.align = function (bandParam5) {
-      return arguments.length
-        ? ((bandValue10 = Math.max(0, Math.min(1, bandParam5))), bandHelper2())
-        : bandValue10;
-    }),
-    (bandValue1.copy = function () {
-      return bandT(_bandN(), [bandValue3, bandValue4])
-        .round(bandValue7)
-        .paddingInner(bandValue8)
-        .paddingOuter(bandValue9)
-        .align(bandValue10);
-    }),
-    init.apply(bandHelper2(), arguments)
-  );
+  step = arguments.length < 3 ? 1 : +(step as number);
+
+  const length = Math.max(0, Math.ceil(((stop as number) - start) / step)) | 0;
+  const values = new Array<number>(length);
+  for (let index = 0; index < length; index += 1) {
+    values[index] = start + index * step;
+  }
+  return values;
 }
-function bandHelper1(bandParam3) {
-  var bandValue16 = bandParam3.copy;
-  return (
-    (bandParam3.padding = bandParam3.paddingOuter),
-    delete bandParam3.paddingInner,
-    delete bandParam3.paddingOuter,
-    (bandParam3.copy = function () {
-      return bandHelper1(bandValue16());
-    }),
-    bandParam3
-  );
+
+export function scaleBand(): BandScale;
+export function scaleBand(outputRange: Iterable<number>): BandScale;
+export function scaleBand(
+  domainValues: Iterable<unknown>,
+  outputRange: Iterable<number>,
+): BandScale;
+export function scaleBand(
+  ...args: [] | [Iterable<number>] | [Iterable<unknown>, Iterable<number>]
+): BandScale {
+  const scale = Ordinal().unknown(undefined) as OrdinalBackedBandScale;
+  const getDomain = scale.domain;
+  const setOrdinalRange = scale.range;
+  let rangeStart = 0;
+  let rangeStop = 1;
+  let stepValue = 0;
+  let bandwidthValue = 0;
+  let roundRange = false;
+  let innerPadding = 0;
+  let outerPadding = 0;
+  let alignment = 0.5;
+
+  delete scale.unknown;
+
+  function rescale(): BandScale {
+    const domainLength = getDomain().length;
+    const reverse = rangeStop < rangeStart;
+    let start = reverse ? rangeStop : rangeStart;
+    const stop = reverse ? rangeStart : rangeStop;
+
+    stepValue =
+      (stop - start) /
+      Math.max(1, domainLength - innerPadding + outerPadding * 2);
+    if (roundRange) stepValue = Math.floor(stepValue);
+
+    start +=
+      (stop - start - stepValue * (domainLength - innerPadding)) * alignment;
+    bandwidthValue = stepValue * (1 - innerPadding);
+
+    if (roundRange) {
+      start = Math.round(start);
+      bandwidthValue = Math.round(bandwidthValue);
+    }
+
+    const positions = range(domainLength).map(
+      (index) => start + stepValue * index,
+    );
+    return setOrdinalRange(
+      reverse ? positions.reverse() : positions,
+    ) as BandScale;
+  }
+
+  scale.domain = function (values?: Iterable<unknown>): unknown[] | BandScale {
+    return arguments.length
+      ? (getDomain(values ?? []), rescale())
+      : getDomain();
+  } as BandScale["domain"];
+
+  scale.range = function (
+    values?: Iterable<number>,
+  ): [number, number] | BandScale {
+    if (!arguments.length) return [rangeStart, rangeStop];
+    const [nextStart, nextStop] = Array.from(values ?? []);
+    rangeStart = +nextStart;
+    rangeStop = +nextStop;
+    return rescale();
+  } as BandScale["range"];
+
+  scale.rangeRound = function (values: Iterable<number>): BandScale {
+    const [nextStart, nextStop] = Array.from(values);
+    rangeStart = +nextStart;
+    rangeStop = +nextStop;
+    roundRange = true;
+    return rescale();
+  };
+
+  scale.bandwidth = function (): number {
+    return bandwidthValue;
+  };
+
+  scale.step = function (): number {
+    return stepValue;
+  };
+
+  scale.round = function (value?: boolean): boolean | BandScale {
+    return arguments.length ? ((roundRange = !!value), rescale()) : roundRange;
+  } as BandScale["round"];
+
+  scale.padding = function (value?: number): number | BandScale {
+    return arguments.length
+      ? ((innerPadding = Math.min(1, (outerPadding = +value!))), rescale())
+      : innerPadding;
+  } as BandScale["padding"];
+
+  scale.paddingInner = function (value?: number): number | BandScale {
+    return arguments.length
+      ? ((innerPadding = Math.min(1, +value!)), rescale())
+      : innerPadding;
+  } as BandScale["paddingInner"];
+
+  scale.paddingOuter = function (value?: number): number | BandScale {
+    return arguments.length
+      ? ((outerPadding = +value!), rescale())
+      : outerPadding;
+  } as BandScale["paddingOuter"];
+
+  scale.align = function (value?: number): number | BandScale {
+    return arguments.length
+      ? ((alignment = Math.max(0, Math.min(1, +value!))), rescale())
+      : alignment;
+  } as BandScale["align"];
+
+  scale.copy = function (): BandScale {
+    return scaleBand(getDomain(), [rangeStart, rangeStop])
+      .round(roundRange)
+      .paddingInner(innerPadding)
+      .paddingOuter(outerPadding)
+      .align(alignment);
+  };
+
+  return init.apply(
+    rescale() as unknown as InitReceiver,
+    args as unknown as [unknown?, unknown?],
+  ) as unknown as BandScale;
 }
-export function bandN() {
-  return bandHelper1(bandT.apply(null, arguments).paddingInner(1));
+
+export function scalePoint(): BandScale;
+export function scalePoint(outputRange: Iterable<number>): BandScale;
+export function scalePoint(
+  domainValues: Iterable<unknown>,
+  outputRange: Iterable<number>,
+): BandScale;
+export function scalePoint(
+  ...args: [] | [Iterable<number>] | [Iterable<unknown>, Iterable<number>]
+): BandScale {
+  const scale = scaleBand
+    .apply(
+      null,
+      args as [Iterable<number>?] | [Iterable<unknown>, Iterable<number>],
+    )
+    .paddingInner(1);
+  const copy = scale.copy;
+
+  scale.padding = scale.paddingOuter;
+  delete (scale as Partial<BandScale>).paddingInner;
+  delete (scale as Partial<BandScale>).paddingOuter;
+  scale.copy = function (): BandScale {
+    return scalePointFromBand(copy());
+  };
+
+  return scale;
 }
-export { bandR, bandT };
+
+function scalePointFromBand(scale: BandScale): BandScale {
+  const copy = scale.copy;
+
+  scale.padding = scale.paddingOuter;
+  delete (scale as Partial<BandScale>).paddingInner;
+  delete (scale as Partial<BandScale>).paddingOuter;
+  scale.copy = function (): BandScale {
+    return scalePointFromBand(copy());
+  };
+
+  return scale;
+}
+
+export const bandR = range;
+export const bandT = scaleBand;
+export const bandN = scalePoint;

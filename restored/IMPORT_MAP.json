@@ -3131,11 +3131,13 @@
     "band-DVYrpIoC": {
       "restored": "vendor/d3-scale-band.ts",
       "exports": {
-        "n": "bandN",
-        "r": "bandR",
-        "t": "bandT"
+        "n": "scalePoint",
+        "r": "range",
+        "t": "scaleBand"
       },
-      "status": "done"
+      "status": "done",
+      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "note": "D3 band chunk exports re-derived semantically: n=scalePoint, r=range, t=scaleBand. bandN/bandR/bandT remain as restored compatibility aliases."
     },
     "chunk-4BX2VUAB-CQ4cpB2N": {
       "restored": "vendor/mermaid-accessibility.ts",
