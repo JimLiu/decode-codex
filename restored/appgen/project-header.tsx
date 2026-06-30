@@ -1,4 +1,4 @@
-// Restored from ref/webview/assets/app-initial~app-main~appgen-page~remote-conversation-page~projects-index-page~appgen-librar~i4jkvfhy-Cz2rgy0h.js
+// Restored from ref/webview/assets/app-initial~app-main~appgen-page~remote-conversation-page~projects-index-page~appgen-librar~i4jkvfhy-C3t3vyRs.js
 // Header chrome used while an Appgen pending client conversation is being prepared.
 import type { ReactNode } from "react";
 import {

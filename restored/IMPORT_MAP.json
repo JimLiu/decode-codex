@@ -2468,10 +2468,11 @@
       "restored": "vendor/docx-preview.ts",
       "status": "done",
       "note": "Historical docx-preview no-export checkpoint retained as an alias of the current G1XqxLZP chunk; the public docx-preview wrapper exports renderAsync for later hashes.",
-      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "lastUpdated": "2026-06-30T22:45:00.000Z",
       "stage3Accepted": true,
       "stage3AcceptedAt": "2026-06-30T00:00:00.000Z",
-      "stage3Review": "Host self-review: current ref no longer contains docx-preview-Mi4H0G1I, current G1XqxLZP exists, vendor/docx-preview.ts passes quality-gate, and this historical entry records no public aliases."
+      "stage3Review": "Host self-review: current ref no longer contains docx-preview-Mi4H0G1I, current G1XqxLZP exists, vendor/docx-preview.ts passes quality-gate, and this historical entry records no public aliases.",
+      "vendor": "docx-preview"
     },
     "docx-preview-dx1eKBjU": {
       "restored": "vendor/docx-preview.ts",
@@ -2480,11 +2481,12 @@
         "renderAsync": "renderAsync"
       },
       "aliasOf": "docx-preview-Mi4H0G1I",
-      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "lastUpdated": "2026-06-30T22:45:00.000Z",
       "note": "Historical docx-preview wrapper retained as an alias of the current G1XqxLZP chunk; renderAsync is restored as the public export.",
       "stage3Accepted": true,
       "stage3AcceptedAt": "2026-06-30T00:00:00.000Z",
-      "stage3Review": "Host self-review: current ref no longer contains docx-preview-dx1eKBjU, current G1XqxLZP exists, vendor/docx-preview.ts passes quality-gate, and renderAsync is exported."
+      "stage3Review": "Host self-review: current ref no longer contains docx-preview-dx1eKBjU, current G1XqxLZP exists, vendor/docx-preview.ts passes quality-gate, and renderAsync is exported.",
+      "vendor": "docx-preview"
     },
     "docx-preview-G1XqxLZP": {
       "restored": "vendor/docx-preview.ts",
@@ -2493,11 +2495,12 @@
         "renderAsync": "renderAsync"
       },
       "aliasOf": "docx-preview-dx1eKBjU",
-      "note": "Current ref docx-preview UMD bundle with renderAsync as the only public export.",
+      "note": "Current ref docx-preview UMD bundle verified by JSZip/docxjs fingerprints and represented as a thin vendor re-export.",
       "stage3Accepted": true,
-      "lastUpdated": "2026-06-30T00:00:00.000Z",
-      "stage3AcceptedAt": "2026-06-30T00:00:00.000Z",
-      "stage3Review": "Host self-review: exact current G1XqxLZP ref asset exists, vendor/docx-preview.ts passes quality-gate, and renderAsync is exported."
+      "lastUpdated": "2026-06-30T22:45:00.000Z",
+      "stage3AcceptedAt": "2026-06-30T22:45:00.000Z",
+      "stage3Review": "Host self-review: current G1XqxLZP source is a docx-preview/JSZip UMD payload, exports renderAsync, and restored/vendor/docx-preview.ts passes quality-gate --check-format as the vendor shim.",
+      "vendor": "docx-preview"
     },
     "__vite-browser-external-EPeb3y57": {
       "restored": "runtime/vite-browser-external.ts",
@@ -28179,13 +28182,12 @@
         "t": "AppgenProjectHeader"
       },
       "status": "done",
-      "boundary": "boundaries/current-ref/appgen-project-header-producer.ts",
-      "note": "Current ref chunk mapped from prior restored chunk with the same stable stem (app-initial~app-main~appgen-page~remote-conversation-page~projects-index-page~appgen-librar~i4jkvfhy-Cz2rgy0h). Verify source diff before treating as Stage 3 accepted for this exact hash.",
-      "lastUpdated": "2026-06-29T20:20:00.000Z",
+      "note": "Current ref source was reviewed against the prior stable-stem restore; export aliases n/t still resolve to initAppgenProjectHeaderChunk/AppgenProjectHeader and the current body is represented by appgen/project-header.tsx.",
+      "lastUpdated": "2026-06-30T22:35:00.000Z",
       "migratedFrom": "app-initial~app-main~appgen-page~remote-conversation-page~projects-index-page~appgen-librar~i4jkvfhy-Cz2rgy0h",
       "stage3Accepted": true,
-      "stage3AcceptedAt": "2026-06-29T20:20:00.000Z",
-      "stage3Review": "Host self-review: quality-gate and prettier passed on the mapped public file; file read end-to-end against Stage 3 E1-E4."
+      "stage3AcceptedAt": "2026-06-30T22:35:00.000Z",
+      "stage3Review": "Host self-review: current source tail exports n/t as initAppgenProjectHeaderChunk/AppgenProjectHeader; restored/appgen/project-header.tsx passed quality-gate --check-format and was read against the current source."
     },
     "app-initial~app-main~hotkey-window-thread-page~automations-page~local-conversation-page-CnYocBk6": {
       "restored": "automation/heartbeat-permissions.ts",
@@ -31518,11 +31520,13 @@
         "Zt": "d3Format"
       },
       "status": "done",
-      "note": "Current ref diagram definition runtime restored as a semantic alias layer over boundaries/current-ref/current-app-initial-diagram-definition-runtime-producer.ts, with the producer re-exporting the local vendored Mermaid bundle at vendor/diagram-definition-current-runtime.ts instead of direct ref asset passthrough.",
+      "note": "Current ref diagram/D3 runtime verified as vendored Mermaid + D3 definition code; public file is a semantic alias layer over vendor/diagram-definition-current-runtime.ts.",
       "stage3Accepted": true,
-      "lastUpdated": "2026-06-30T14:38:55.554Z",
-      "stage3AcceptedAt": "2026-06-30T14:38:55.554Z",
-      "stage3Note": "Accepted as a current-ref semantic alias layer over the restored diagram definition runtime export surface."
+      "lastUpdated": "2026-06-30T22:55:00.000Z",
+      "stage3AcceptedAt": "2026-06-30T22:55:00.000Z",
+      "stage3Note": "Accepted as a current-ref semantic alias layer over the restored diagram definition runtime export surface.",
+      "vendor": "mermaid/d3-diagram-definition-runtime",
+      "stage3Review": "Host self-review: source/export surface is D3 scale/shape/interpolate/color plus Mermaid diagram init; restored/runtime/current-app-initial/diagram-definition-runtime.ts passed quality-gate --check-format as a vendor-runtime alias layer."
     },
     "app-initial~app-main~worktree-init-v2-page~remote-conversation-page~pull-requests-page~new-~ozr5a6hk-DZC70s11": {
       "restored": "runtime/current-app-initial/pull-request-new-thread-runtime.ts",
