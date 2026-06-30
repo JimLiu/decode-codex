@@ -3,16 +3,24 @@
 import { Src } from "./roughjs-geometry";
 import { chunkAGHRB4JFN } from "./dayjs-core-alt";
 import { _chunkICPOFSXXP } from "./chunk-icpofsxx";
-export const chunk426QAEUC = chunkAGHRB4JFN((chunk426QAEUCParam1) => {
-  let { securityLevel: _chunk426QAEUC } = _chunkICPOFSXXP(),
-    chunk426QAEUCValue1 = Src("body");
-  return (
-    _chunk426QAEUC === "sandbox" &&
-      (chunk426QAEUCValue1 = Src(
-        (Src(`#i${chunk426QAEUCParam1}`).node()?.contentDocument ?? document)
-          .body,
-      )),
-    chunk426QAEUCValue1.select(`#${chunk426QAEUCParam1}`)
-  );
+
+type MermaidSecurityConfig = {
+  securityLevel?: string;
+};
+
+const selectSvgElement = chunkAGHRB4JFN((diagramId: string) => {
+  const { securityLevel } = _chunkICPOFSXXP() as MermaidSecurityConfig;
+  let rootSelection = Src("body");
+
+  if (securityLevel === "sandbox") {
+    const sandboxDocument =
+      Src(`#i${diagramId}`).node()?.contentDocument ?? document;
+    rootSelection = Src(sandboxDocument.body);
+  }
+
+  return rootSelection.select(`#${diagramId}`);
 }, "selectSvgElement");
+
+export { selectSvgElement, selectSvgElement as chunk426QAEUC };
+
 export function initChunk426QAEUC(): void {}
