@@ -37407,8 +37407,8 @@
       "restored": "vendor/mermaid-layout-loader-fpaj.ts",
       "exports": {
         "i": "chunkN4CR4FBYI",
-        "n": "chunkN4CR4FBYN",
-        "r": "chunkN4CR4FBYR",
+        "n": "initMermaidLayoutLoaderFpajChunk",
+        "r": "chunkN4CR4FBYN",
         "t": "chunkN4CR4FBYT"
       },
       "status": "done",
