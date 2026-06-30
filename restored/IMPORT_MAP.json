@@ -32781,6 +32781,26 @@
       "status": "done",
       "lastUpdated": "2026-06-30T00:00:00.000Z"
     },
+    "main-DKA-NIZV": {
+      "restored": "vendor/mermaid-main.ts",
+      "exports": {
+        "a": "mainI",
+        "c": "mainS",
+        "i": "mainR",
+        "l": "mainC",
+        "n": "mainC",
+        "o": "mainA",
+        "r": "mainN",
+        "s": "mainO",
+        "t": "mainT",
+        "u": "mainL"
+      },
+      "status": "done",
+      "aliasOf": "main-BDm-p1LA",
+      "note": "Current ref Mermaid/vscode-languageserver-types chunk reuses the existing mermaid-main runtime exports with reshuffled public tokens.",
+      "stage3Accepted": true,
+      "lastUpdated": "2026-06-30T00:00:00.000-05:00"
+    },
     "chunk-55IACEB6-C7TKde_g": {
       "restored": "vendor/chunk-55-iaceb6.ts",
       "exports": {
