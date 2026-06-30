@@ -9654,7 +9654,9 @@
       "exports": {
         "createArchitectureServices": "architectureU656AL7Q"
       },
-      "status": "done"
+      "status": "done",
+      "stage3Accepted": true,
+      "lastUpdated": "2026-06-30T00:00:00.000-05:00"
     },
     "architecture-U656AL7Q-DwwG5n5O": {
       "restored": "vendor/mermaid-architecture-definition-fpaj.ts",
@@ -9670,7 +9672,9 @@
       "exports": {
         "createGitGraphServices": "gitGraphF6HP7TQM"
       },
-      "status": "done"
+      "status": "done",
+      "stage3Accepted": true,
+      "lastUpdated": "2026-06-30T00:00:00.000-05:00"
     },
     "gitGraph-F6HP7TQM-fvR48z-j": {
       "restored": "vendor/mermaid-git-graph-definition-fpaj.ts",
@@ -9686,7 +9690,9 @@
       "exports": {
         "createInfoServices": "infoNVLQJR56"
       },
-      "status": "done"
+      "status": "done",
+      "stage3Accepted": true,
+      "lastUpdated": "2026-06-30T00:00:00.000-05:00"
     },
     "info-NVLQJR56-DYO81Ru7": {
       "restored": "vendor/mermaid-info-definition-fpaj.ts",
@@ -9702,7 +9708,9 @@
       "exports": {
         "createPacketServices": "packetBFZMPI3H"
       },
-      "status": "done"
+      "status": "done",
+      "stage3Accepted": true,
+      "lastUpdated": "2026-06-30T00:00:00.000-05:00"
     },
     "packet-BFZMPI3H-BXp3wJk9": {
       "restored": "vendor/mermaid-packet-definition-fpaj.ts",
@@ -9718,7 +9726,9 @@
       "exports": {
         "createPieServices": "pie7BOR55EZ"
       },
-      "status": "done"
+      "status": "done",
+      "stage3Accepted": true,
+      "lastUpdated": "2026-06-30T00:00:00.000-05:00"
     },
     "pie-7BOR55EZ-BDq7x-wB": {
       "restored": "vendor/mermaid-pie-definition-fpaj.ts",
@@ -9734,7 +9744,9 @@
       "exports": {
         "createRadarServices": "radarNHE76QYJ"
       },
-      "status": "done"
+      "status": "done",
+      "stage3Accepted": true,
+      "lastUpdated": "2026-06-30T00:00:00.000-05:00"
     },
     "radar-NHE76QYJ-DLr-eYFz": {
       "restored": "vendor/mermaid-radar-definition-fpaj.ts",
@@ -9750,7 +9762,9 @@
       "exports": {
         "createTreemapServices": "treemapKMMF4GRG"
       },
-      "status": "done"
+      "status": "done",
+      "stage3Accepted": true,
+      "lastUpdated": "2026-06-30T00:00:00.000-05:00"
     },
     "treemap-KMMF4GRG-Bo7ISLpJ": {
       "restored": "vendor/mermaid-treemap-definition-fpaj.ts",
@@ -20705,7 +20719,8 @@
       "status": "done",
       "aliasOf": "presentation-cLF4o2PZ",
       "note": "Current presentation schema barrel re-derived from presentation-bl5PeYuJ.js and adds embedded font schema exports.",
-      "lastUpdated": "2026-06-30T00:00:00.000Z"
+      "lastUpdated": "2026-06-30T00:00:00.000-05:00",
+      "stage3Accepted": true
     },
     "middleware-CcPovR3s": {
       "restored": "vendor/segment-middleware.ts",
@@ -23261,8 +23276,9 @@
       },
       "status": "done",
       "aliasOf": "pie-7BOR55EZ-Cel_tNJ1",
-      "lastUpdated": "2026-06-30T00:00:00.000Z",
-      "note": "Current Mermaid vendor wrapper preserves the restored public export surface."
+      "lastUpdated": "2026-06-30T00:00:00.000-05:00",
+      "note": "Current Mermaid vendor wrapper preserves the restored public export surface.",
+      "stage3Accepted": true
     },
     "pie-ZZUOXDRM-D2Nd63AV": {
       "restored": "vendor/mermaid-pie-definition-k5.ts",
@@ -23281,8 +23297,9 @@
       },
       "status": "done",
       "aliasOf": "info-NVLQJR56-CJGElsQG",
-      "lastUpdated": "2026-06-30T00:00:00.000Z",
-      "note": "Current Mermaid vendor wrapper preserves the restored public export surface."
+      "lastUpdated": "2026-06-30T00:00:00.000-05:00",
+      "note": "Current Mermaid vendor wrapper preserves the restored public export surface.",
+      "stage3Accepted": true
     },
     "info-OMHHGYJF-BlIPdxLi": {
       "restored": "vendor/mermaid-info-definition-k5.ts",
@@ -23311,8 +23328,9 @@
       },
       "status": "done",
       "aliasOf": "radar-NHE76QYJ-8GggBqpZ",
-      "lastUpdated": "2026-06-30T00:00:00.000Z",
-      "note": "Current Mermaid vendor wrapper preserves the restored public export surface."
+      "lastUpdated": "2026-06-30T00:00:00.000-05:00",
+      "note": "Current Mermaid vendor wrapper preserves the restored public export surface.",
+      "stage3Accepted": true
     },
     "radar-PYXPWWZC-DPmomhRG": {
       "restored": "vendor/mermaid-radar-definition-k5.ts",
@@ -23341,8 +23359,9 @@
       },
       "status": "done",
       "aliasOf": "treemap-KMMF4GRG-ByNQtOJN",
-      "lastUpdated": "2026-06-30T00:00:00.000Z",
-      "note": "Current Mermaid vendor wrapper preserves the restored public export surface."
+      "lastUpdated": "2026-06-30T00:00:00.000-05:00",
+      "note": "Current Mermaid vendor wrapper preserves the restored public export surface.",
+      "stage3Accepted": true
     },
     "treemap-W4RFUUIX-Bv5PPBMl": {
       "restored": "vendor/mermaid-treemap-definition-k5.ts",
@@ -23391,8 +23410,9 @@
       },
       "status": "done",
       "aliasOf": "gitGraph-F6HP7TQM-8BKmskHr",
-      "lastUpdated": "2026-06-30T00:00:00.000Z",
-      "note": "Current Mermaid vendor wrapper preserves the restored public export surface."
+      "lastUpdated": "2026-06-30T00:00:00.000-05:00",
+      "note": "Current Mermaid vendor wrapper preserves the restored public export surface.",
+      "stage3Accepted": true
     },
     "architecture-U656AL7Q-B0FT05yt": {
       "restored": "vendor/mermaid-architecture-definition-fpaj.ts",
@@ -23401,8 +23421,9 @@
       },
       "status": "done",
       "aliasOf": "architecture-U656AL7Q-Ccsrjk_f",
-      "lastUpdated": "2026-06-30T00:00:00.000Z",
-      "note": "Current Mermaid vendor wrapper preserves the restored public export surface."
+      "lastUpdated": "2026-06-30T00:00:00.000-05:00",
+      "note": "Current Mermaid vendor wrapper preserves the restored public export surface.",
+      "stage3Accepted": true
     },
     "architecture-YZFGNWBL-CxyAFunf": {
       "restored": "vendor/mermaid-architecture-definition-k5.ts",
@@ -34708,6 +34729,38 @@
       "note": "Current Mermaid/Langium parser runtime hash re-derived from chunk-FPAJGGOC-Yd_bXKmT.js. Alias reshuffle maps core/shared/inject/empty-file-system exports onto the existing restored runtime; m/p are flattened Rolldown init thunks.",
       "stage3Accepted": true,
       "lastUpdated": "2026-06-30T00:00:00.000-05:00"
+    },
+    "cytoscape.esm-gCnb3XbU": {
+      "restored": "vendor/cytoscape-runtime.ts",
+      "exports": {
+        "n": "initCytoscapeRuntimeChunk",
+        "t": "cytoscape"
+      },
+      "status": "done",
+      "lastUpdated": "2026-06-30T00:00:00.000-05:00",
+      "note": "Current Cytoscape ESM Rolldown chunk re-derived from cytoscape.esm-gCnb3XbU.js; n is the initializer thunk and t is the Cytoscape factory.",
+      "stage3Accepted": true
+    },
+    "cytoscape.esm-CPPPPA7s": {
+      "restored": "vendor/cytoscape-runtime.ts",
+      "exports": {
+        "t": "cytoscape"
+      },
+      "status": "done",
+      "lastUpdated": "2026-06-30T00:00:00.000-05:00",
+      "note": "Current Cytoscape ESM direct factory export re-derived from cytoscape.esm-CPPPPA7s.js.",
+      "stage3Accepted": true
+    },
+    "packet-BFZMPI3H-Dx-HO2F6": {
+      "restored": "vendor/mermaid-packet-definition-fpaj.ts",
+      "exports": {
+        "createPacketServices": "createPacketServices"
+      },
+      "status": "done",
+      "aliasOf": "packet-BFZMPI3H-C976HVjn",
+      "lastUpdated": "2026-06-30T00:00:00.000-05:00",
+      "note": "Current Mermaid vendor wrapper preserves the restored public export surface.",
+      "stage3Accepted": true
     }
   }
 }
