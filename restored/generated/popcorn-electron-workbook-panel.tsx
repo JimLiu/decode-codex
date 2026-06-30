@@ -1,4 +1,5 @@
 // Restored from ref/webview/assets/PopcornElectronWorkbookPanel-Drl2YYRf.js
+// Also matches current ref/webview/assets/PopcornElectronWorkbookPanel-DEXqsHf5.js.
 // PopcornElectronWorkbookPanel chunk restored from the Codex webview bundle.
 import React from "react";
 import { toEsModule } from "../runtime/commonjs-interop";
@@ -10175,9 +10176,10 @@ function popcornElectronWorkbookPanelHelper228() {
 function popcornElectronWorkbookPanelHelper229(popcornElectronWorkbookPanelParam547) {
   return popcornElectronWorkbookPanelParam547 == null ? popcornElectronWorkbookPanelHelper228() : popcornElectronWorkbookPanelImport12.load(popcornElectronWorkbookPanelParam547);
 }
-export function PopcornElectronWorkbookPanelIcon({
+export function PopcornElectronWorkbookPanel({
   className,
   externalCrdtUpdates,
+  headerTitleContent,
   headerRightContent,
   renderHeaderZoomControl,
   initialCrdtState,
@@ -10281,6 +10283,7 @@ export function PopcornElectronWorkbookPanelIcon({
         {React.createElement(popcornElectronWorkbookPanelHelper216, {
       className: "h-full min-h-0",
       controller: popcornElectronWorkbookPanelValue406,
+      headerTitleContent,
       headerRightContent,
       renderHeaderZoomControl,
       title,

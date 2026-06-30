@@ -1,4 +1,5 @@
 // Restored from ref/webview/assets/PopcornElectronDocumentPanel-LEVj37uj.js
+// Also matches current ref/webview/assets/PopcornElectronDocumentPanel-BJYIlWEb.js.
 // PopcornElectronDocumentPanel chunk restored from the Codex webview bundle.
 import React from "react";
 import clsx from "clsx";
@@ -24996,6 +24997,7 @@ function popcornElectronDocumentPanelHelper301(popcornElectronDocumentPanelParam
 export function PopcornElectronDocumentPanel({
   className,
   documentProtoVersion = 0,
+  headerTitleContent,
   headerRightContent,
   zoomToFitLabel,
   renderHeaderZoomControl,
@@ -25030,6 +25032,7 @@ export function PopcornElectronDocumentPanel({
         {React.createElement(popcornElectronDocumentPanelHelper296, {
       className: "h-full min-h-0",
       controller: popcornElectronDocumentPanelValue265,
+      headerTitleContent,
       headerRightContent,
       zoomToFitLabel,
       renderHeaderZoomControl,

@@ -1,4 +1,5 @@
 // Restored from ref/webview/assets/PopcornElectronPresentationPanel-DyLT7PAB.js
+// Also matches current ref/webview/assets/PopcornElectronPresentationPanel-B56eXPt5.js.
 // PopcornElectronPresentationPanel chunk restored from the Codex webview bundle.
 import React from "react";
 import clsx from "clsx";
@@ -5057,6 +5058,7 @@ var popcornElectronPresentationPanelValue39 = React.memo(function ({
 export function PopcornElectronPresentationPanel({
   className,
   externalCrdtUpdates,
+  headerTitleContent,
   headerRightContent,
   zoomToFitLabel,
   renderHeaderZoomControl,
@@ -5133,6 +5135,7 @@ export function PopcornElectronPresentationPanel({
         {React.createElement(popcornElectronPresentationPanelHelper90, {
       className: "h-full min-h-0",
       controller: popcornElectronPresentationPanelValue216,
+      headerTitleContent,
       headerRightContent: popcornElectronPresentationPanelValue219.length > 0 ? <>
                   {React.createElement(popcornElectronPresentationPanelHelper95, {
           count: popcornElectronPresentationPanelValue219.length
