@@ -30734,6 +30734,20 @@
         "type": "type"
       },
       "status": "done"
+    },
+    "chunk-KS23V3DP-CoFgPtnd": {
+      "restored": "utils/chunk-ks23-v3-dp.ts",
+      "exports": {
+        "n": "mermaidPackageMetadata",
+        "t": "initMermaidPackageMetadataChunk",
+        "mermaidPackageMetadata": "mermaidPackageMetadata",
+        "ChunkKS23V3DP": "ChunkKS23V3DP",
+        "initMermaidPackageMetadataChunk": "initMermaidPackageMetadataChunk"
+      },
+      "status": "done",
+      "aliasOf": "chunk-KS23V3DP-DDeE2zpr",
+      "lastUpdated": "2026-06-30T07:59:41.773Z",
+      "note": "Current Mermaid package metadata hash matches the restored semantic metadata module; alias preserves the n/t initializer export surface."
     }
   }
 }
