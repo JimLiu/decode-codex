@@ -42428,6 +42428,32 @@
       "stage3AcceptedAt": "2026-06-30T23:59:45.000Z",
       "stage3Review": "Host self-review: verified skills-page-zCIrhInI.js exports n/t, exposed them as initSkillsPageChunk and SkillsPage, rewrote dependency imports through restored/IMPORT_MAP.json, and passed quality gates on the backing bundle and runtime.",
       "stage3Note": "Accepted as a current-ref compatibility export over a restored-dependency backing bundle; full semantic split of SkillsPage remains a later cleanup."
+    },
+    "skills-page-DtQIsz1q": {
+      "restored": "runtime/current-app-initial/skills-page-route-current-runtime.ts",
+      "exports": {
+        "SkillsPage": "SkillsPage"
+      },
+      "status": "done",
+      "note": "Current SkillsPage wrapper maps to the skills page producer runtime; the wrapper initializes the producer chunk and re-exports the current route component as SkillsPage.",
+      "lastUpdated": "2026-06-30T23:59:55.000Z",
+      "stage3Accepted": true,
+      "stage3AcceptedAt": "2026-06-30T23:59:55.000Z",
+      "stage3Review": "Host self-review: verified skills-page-DtQIsz1q.js imports n/t from the current skills page producer, invokes n(), and exports t as SkillsPage; runtime wrapper preserves that surface and passes quality-gate.",
+      "stage3Note": "Accepted as a current-ref route wrapper over runtime/current-app-initial/skills-page-current-runtime.ts; the producer body remains a compatibility backing bundle pending future semantic split."
+    },
+    "skills-settings-77Mu8VFb": {
+      "restored": "runtime/current-app-initial/skills-settings-current-runtime.ts",
+      "exports": {
+        "SkillsSettings": "SkillsSettings"
+      },
+      "status": "done",
+      "note": "Current SkillsSettings hash maps to a dedicated current-ref runtime over vendor/skills-settings-current-bundle.tsx; the single semantic export is re-derived from the current file.",
+      "lastUpdated": "2026-06-30T23:59:55.000Z",
+      "stage3Accepted": true,
+      "stage3AcceptedAt": "2026-06-30T23:59:55.000Z",
+      "stage3Review": "Host self-review: verified the current file exports SkillsSettings, rewrote dependency imports through restored/IMPORT_MAP.json, and passed quality gates on the backing bundle and runtime.",
+      "stage3Note": "Accepted as a current-ref compatibility export over a restored-dependency backing bundle; full semantic split of SkillsSettings remains a later cleanup."
     }
   }
 }
