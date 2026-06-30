@@ -15426,9 +15426,9 @@
         "xt": "sidebarRecentModeSignal",
         "yw": "useStableCallback"
       },
-      "status": "partial",
-      "note": "Current app-main/new-thread producer has an explicit boundary barrel for confirmed aliases used by restored modules: app-host services, persistent signals, side-panel tabs, global-state queries, Statsig feature gates/loading/client experiment access, React Router hooks, host config helpers, git branch query helpers, config/user-config query helpers, app-server requests, query invalidation broadcast helpers, Codex request helpers, reduced-motion state, conversation markdown/path/personality helpers, parse-diff/lodash utility aliases, thread handoff UUID/update helpers, pull-request action analytics, publication open-file analytics, artifact annotation analytics, product-logger/referral descriptors, dialog/radix/spinner primitives, stable callbacks, path/resource helpers, and basic sidebar preference/thread-key bridge aliases. eo is shared by host-cache and host-config callers and is mapped to the broader getHostCacheKey name; Df is the product logger initializer. The remaining sidebar ordering/project assignment, usage-credit, and query-key producer aliases are still open partial boundaries. Yn is routed to workspaceRootOptionsQuery for onboarding projectless completion checks. Added os-info, config requirements, current-host, and read-config aliases needed by the Windows sandbox setup/readiness chunk.",
-      "lastUpdated": "2026-06-29T00:00:00.000Z"
+      "status": "done",
+      "note": "Current app-main/new-thread exact-hash runtime is complete as a semantic alias layer over vendor/app-main-legacy-deps/app-initial~app-main~worktree-init-v2-page~remote-conversation-page~new-thread-panel-page~o~bj5tp28r-Dcs9S3fj.ts. The 281 current aliases collapse to 268 unique semantic exports, matching runtime/app-main-new-thread-runtime.ts exactly; duplicate aliases such as kx/Ox, G/J, K/Y, Ln/Yn, FC/zC, ZS/CC, jC/DC, Dx/er, ls/oS, fx/dx, qy/rw, and yw/oS intentionally map to the same public names.",
+      "lastUpdated": "2026-06-30T00:00:00.000Z"
     },
     "app-initial~app-main~onboarding-page-BUwCKIcU": {
       "restored": "vendor/app-main-current-runtime.ts",

@@ -7786,7 +7786,6 @@ var sp,
         for (
           ;
           this._batches.length > n.EventRetryConstants.MAX_PENDING_BATCHES;
-
         ) {
           let e = this._batches.shift();
           e && (t += e.events.length);
@@ -8615,8 +8614,8 @@ var sp,
           let r = Math.random() * 16;
           return (
             e > 0
-              ? ((r = (e + r) % 16 | 0), (e = Math.floor(e / 16)))
-              : ((r = (t + r) % 16 | 0), (t = Math.floor(t / 16))),
+              ? ((r = ((e + r) % 16) | 0), (e = Math.floor(e / 16)))
+              : ((r = ((t + r) % 16) | 0), (t = Math.floor(t / 16))),
             (n === `x` ? r : (r & 7) | 8).toString(16)
           );
         },
@@ -9477,7 +9476,6 @@ var sp,
               this._flushInterval.hasCompletelyRecoveredFromBackoff() &&
               this.containsAtLeastOneFullBatch() &&
               (yield this._processNextBatch(a.FlushType.Limit));
-
             );
         });
       }
@@ -18200,7 +18198,6 @@ function vae(e, t) {
       p ? ((p._tokenizer = void 0), (p.previous = void 0)) : g.pop(),
       f = g.length;
     f--;
-
   ) {
     let t = s.slice(g[f], g[f + 1]),
       n = a.pop();
@@ -19904,7 +19901,6 @@ function foe(e, t, n) {
         for (
           e = r._index, r._bufferIndex < 0 && (r._bufferIndex = 0);
           r._index === e && r._bufferIndex < t.length;
-
         )
           _(t.charCodeAt(r._bufferIndex));
       else _(t);
@@ -20123,7 +20119,6 @@ function boe() {
         t = ``,
         n &&= (i.charCodeAt(0) === 65279 && u++, void 0);
       u < i.length;
-
     ) {
       if (
         ((Hy.lastIndex = u),
@@ -20365,7 +20360,6 @@ function Toe(e) {
       },
         d = -1;
       ++d < t.transforms.length;
-
     )
       r = t.transforms[d](r) || r;
     return r;
@@ -24455,7 +24449,6 @@ var IT,
         for (
           this.debug && console.log(`full input:`, `>` + this.string + `<`);
           ;
-
         ) {
           let a = this.i,
             o = this.readChar();
@@ -26034,7 +26027,6 @@ ${c}`
             for (
               c.lastIndex = 0, t = t.slice(-1 * e.length + n);
               (r = c.exec(t)) != null;
-
             ) {
               if (((i = r[1] || r[2] || r[3] || r[4] || r[5] || r[6]), !i))
                 continue;
@@ -26197,7 +26189,6 @@ ${c}`
             this.options.pedantic &&
             (e = e.replace(aE.tabCharGlobal, `    `).replace(aE.spaceLine, ``));
             e;
-
           ) {
             let r;
             if (
@@ -26358,7 +26349,6 @@ ${c}`
               for (
                 ;
                 (r = this.tokenizer.rules.inline.reflinkSearch.exec(n)) != null;
-
               )
                 e.includes(r[0].slice(r[0].lastIndexOf(`[`) + 1, -1)) &&
                   (n =
@@ -26373,7 +26363,6 @@ ${c}`
           for (
             ;
             (r = this.tokenizer.rules.inline.anyPunctuation.exec(n)) != null;
-
           )
             n =
               n.slice(0, r.index) +
@@ -29946,7 +29935,6 @@ var _M,
           for (
             x = o(C).call(e), h && (v = new h()), S = x.next(), g = 0;
             !S.done;
-
           )
             ((w = t ? d.call(t, m, S.value, g) : S.value),
               h ? ((f.value = w), p(v, g, f)) : (v[g] = w),
@@ -30328,7 +30316,6 @@ var _M,
             for (
               e = a[1][o], a[0].splice(o, 1), a[1].splice(o, 1);
               !a[0].length && l.length;
-
             )
               ((o = l.pop()),
                 (a = l.pop()),
@@ -30405,7 +30392,6 @@ var _M,
             for (
               t = o[1][s], o[0].splice(s, 1), o[1].splice(s, 1);
               !o[0].length && c.length;
-
             )
               ((s = c.pop()),
                 (o = c.pop()),
@@ -61344,7 +61330,6 @@ var R2,
       for (
         var i = -1, a = e.criteria, o = t.criteria, s = a.length, c = r.length;
         ++i < s;
-
       ) {
         var l = n(a[i], o[i]);
         if (l) return i >= c ? l : l * (r[i] == `desc` ? -1 : 1);
@@ -73972,7 +73957,6 @@ var UMe,
           for (
             var a = arguments, o = -1, s = r(a.length - t, 0), c = Array(s);
             ++o < s;
-
           )
             c[o] = a[t + o];
           o = -1;
