@@ -5150,6 +5150,32 @@
       },
       "status": "done"
     },
+    "chunk-5PVQY5BW-MckrTAit": {
+      "restored": "vendor/chunk-5pvqy5bw.ts",
+      "exports": {
+        "_": "chunk5PVQY5BWG",
+        "a": "chunk5PVQY5BWA",
+        "c": "chunk5PVQY5BWC",
+        "d": "chunk5PVQY5BWU",
+        "f": "chunk5PVQY5BWD",
+        "g": "chunk5PVQY5BWH",
+        "h": "chunk5PVQY5BWM",
+        "i": "chunk5PVQY5BWI",
+        "l": "chunk5PVQY5BWL",
+        "m": "chunk5PVQY5BWP",
+        "n": "chunk5PVQY5BWN",
+        "o": "chunk5PVQY5BWO",
+        "p": "chunk5PVQY5BWF",
+        "r": "chunk5PVQY5BWR",
+        "s": "chunk5PVQY5BWS",
+        "t": "chunk5PVQY5BWT",
+        "u": "initChunk5PVQY5BW"
+      },
+      "status": "done",
+      "aliasOf": "chunk-5PVQY5BW-CsieDbRK",
+      "note": "Current chunk-5PVQY5BW hash re-derived from chunk-5PVQY5BW-MckrTAit.js; alias u is the Rolldown lazy init thunk and alias _ exposes wrapLabel.",
+      "lastUpdated": "2026-06-30T00:00:00.000Z"
+    },
     "chunk-X2U36JSP-DWvyIaf0": {
       "restored": "vendor/chunk-x2u36jsp.ts",
       "exports": {

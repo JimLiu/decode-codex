@@ -823,6 +823,7 @@ function $(chunk5PVQY5BWParam34, chunk5PVQY5BWParam35) {
   );
 }
 chunkAGHRB4JFN($, "isLabelCoordinateInPath");
+export function initChunk5PVQY5BW(): void {}
 export {
   chunk5PVQY5BWC,
   chunk5PVQY5BWD,
