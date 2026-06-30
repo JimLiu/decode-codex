@@ -7584,6 +7584,21 @@
       "note": "Current synced sectioned page chunk split into typed layout, navigation, registry, and section modules with an initializer export.",
       "lastUpdated": "2026-06-29T00:00:00.000Z"
     },
+    "sectioned-page-I7s0PN2y": {
+      "restored": "ui/sectioned-page/index.ts",
+      "exports": {
+        "n": "SectionedPageSection",
+        "r": "initSectionedPageChunk",
+        "t": "SectionedPage",
+        "SectionedPageSection": "SectionedPageSection",
+        "initSectionedPageChunk": "initSectionedPageChunk",
+        "SectionedPage": "SectionedPage"
+      },
+      "status": "done",
+      "aliasOf": "sectioned-page-BgyNiIIs",
+      "note": "Current sectioned page hash re-derived from sectioned-page-I7s0PN2y.js; aliases n/r/t preserve the restored section component, initializer, and page component surface.",
+      "lastUpdated": "2026-06-30T00:00:00.000Z"
+    },
     "banner-NiedSf5B": {
       "restored": "ui/banner.tsx",
       "exports": {
