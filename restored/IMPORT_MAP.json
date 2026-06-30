@@ -3869,6 +3869,16 @@
       "aliasOf": "quadrantDiagram-AYHSOK5B-WVcJzsPP",
       "lastUpdated": "2026-06-29T00:00:00.000Z"
     },
+    "quadrantDiagram-AYHSOK5B-BzeqrmeH": {
+      "restored": "vendor/quadrant-diagram-ayhsok5-b-w-vc-jzs-pp.ts",
+      "exports": {
+        "diagram": "QuadrantDiagramAYHSOK5B"
+      },
+      "status": "done",
+      "aliasOf": "quadrantDiagram-AYHSOK5B-WVcJzsPP",
+      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "note": "Current Mermaid diagram wrapper preserves the restored public export surface."
+    },
     "sankeyDiagram-TZEHDZUN-XAdBsdDZ": {
       "restored": "vendor/sankey-diagram-tzehdzun-x-ad-bsd-dz.ts",
       "exports": {
@@ -5303,6 +5313,16 @@
       "aliasOf": "c4Diagram-YG6GDRKO-DjawmGRU",
       "lastUpdated": "2026-06-29T00:00:00.000Z"
     },
+    "c4Diagram-YG6GDRKO-Bm_tFvsQ": {
+      "restored": "vendor/c4-diagram-yg6gdrko.ts",
+      "exports": {
+        "diagram": "C4DiagramYG6GDRKO"
+      },
+      "status": "done",
+      "aliasOf": "c4Diagram-YG6GDRKO-DjawmGRU",
+      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "note": "Current Mermaid diagram wrapper preserves the restored public export surface."
+    },
     "chunk-JA3XYJ7Z-CjR9BG5n": {
       "restored": "vendor/chunk-ja3xyj7z.ts",
       "exports": {
@@ -5330,6 +5350,16 @@
       "status": "done",
       "aliasOf": "ganttDiagram-LVOFAZNH-yOkQF_JE",
       "lastUpdated": "2026-06-29T00:00:00.000Z"
+    },
+    "ganttDiagram-LVOFAZNH-Drr2wFg7": {
+      "restored": "vendor/gantt-diagram-lvofaznh.ts",
+      "exports": {
+        "diagram": "GanttDiagramLVOFAZNH"
+      },
+      "status": "done",
+      "aliasOf": "ganttDiagram-LVOFAZNH-yOkQF_JE",
+      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "note": "Current Mermaid diagram wrapper preserves the restored public export surface."
     },
     "journeyDiagram-XKPGCS4Q-qmAqcnof": {
       "restored": "vendor/journey-diagram-xkpgcs4q.ts",
@@ -5491,6 +5521,46 @@
       },
       "status": "done"
     },
+    "c4Diagram-AHTNJAMY-C2bB3c3H": {
+      "restored": "vendor/c4-diagram-ahtnjamy.ts",
+      "exports": {
+        "diagram": "C4DiagramAHTNJAMY"
+      },
+      "status": "done",
+      "aliasOf": "c4Diagram-AHTNJAMY-D1_UKJZR",
+      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "note": "Current Mermaid diagram wrapper preserves the restored public export surface."
+    },
+    "c4Diagram-AHTNJAMY-DcmFZGKi": {
+      "restored": "vendor/c4-diagram-ahtnjamy.ts",
+      "exports": {
+        "diagram": "C4DiagramAHTNJAMY"
+      },
+      "status": "done",
+      "aliasOf": "c4Diagram-AHTNJAMY-D1_UKJZR",
+      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "note": "Current Mermaid diagram wrapper preserves the restored public export surface."
+    },
+    "c4Diagram-AHTNJAMY-Dfq1LmIu": {
+      "restored": "vendor/c4-diagram-ahtnjamy.ts",
+      "exports": {
+        "diagram": "C4DiagramAHTNJAMY"
+      },
+      "status": "done",
+      "aliasOf": "c4Diagram-AHTNJAMY-D1_UKJZR",
+      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "note": "Current Mermaid diagram wrapper preserves the restored public export surface."
+    },
+    "c4Diagram-AHTNJAMY-gpyHKZPf": {
+      "restored": "vendor/c4-diagram-ahtnjamy.ts",
+      "exports": {
+        "diagram": "C4DiagramAHTNJAMY"
+      },
+      "status": "done",
+      "aliasOf": "c4Diagram-AHTNJAMY-D1_UKJZR",
+      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "note": "Current Mermaid diagram wrapper preserves the restored public export surface."
+    },
     "chunk-U2HBQHQK-DJ4vuuzw": {
       "restored": "vendor/chunk-u2hbqhqk.ts",
       "exports": {
@@ -5516,6 +5586,36 @@
         "diagram": "GanttDiagramT4ZO3ILL"
       },
       "status": "done"
+    },
+    "ganttDiagram-T4ZO3ILL-C66qF7V9": {
+      "restored": "vendor/gantt-diagram-t4zo3ill.ts",
+      "exports": {
+        "diagram": "GanttDiagramT4ZO3ILL"
+      },
+      "status": "done",
+      "aliasOf": "ganttDiagram-T4ZO3ILL-Bk_m_Nfg",
+      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "note": "Current Mermaid diagram wrapper preserves the restored public export surface."
+    },
+    "ganttDiagram-T4ZO3ILL-B6tUIUhi": {
+      "restored": "vendor/gantt-diagram-t4zo3ill.ts",
+      "exports": {
+        "diagram": "GanttDiagramT4ZO3ILL"
+      },
+      "status": "done",
+      "aliasOf": "ganttDiagram-T4ZO3ILL-Bk_m_Nfg",
+      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "note": "Current Mermaid diagram wrapper preserves the restored public export surface."
+    },
+    "ganttDiagram-T4ZO3ILL-Cx2zAydy": {
+      "restored": "vendor/gantt-diagram-t4zo3ill.ts",
+      "exports": {
+        "diagram": "GanttDiagramT4ZO3ILL"
+      },
+      "status": "done",
+      "aliasOf": "ganttDiagram-T4ZO3ILL-Bk_m_Nfg",
+      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "note": "Current Mermaid diagram wrapper preserves the restored public export surface."
     },
     "ishikawaDiagram-UXIWVN3A-C0OZiin8": {
       "restored": "vendor/ishikawa-diagram-uxiwvn3a.ts",
@@ -5618,6 +5718,46 @@
       },
       "status": "done"
     },
+    "sequenceDiagram-FGHM5R23-Caul4Po2": {
+      "restored": "vendor/sequence-diagram-fghm5r23.ts",
+      "exports": {
+        "diagram": "SequenceDiagramFGHM5R23"
+      },
+      "status": "done",
+      "aliasOf": "sequenceDiagram-FGHM5R23-Bh77yTp8",
+      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "note": "Current Mermaid diagram wrapper preserves the restored public export surface."
+    },
+    "sequenceDiagram-FGHM5R23-CBM3I3Og": {
+      "restored": "vendor/sequence-diagram-fghm5r23.ts",
+      "exports": {
+        "diagram": "SequenceDiagramFGHM5R23"
+      },
+      "status": "done",
+      "aliasOf": "sequenceDiagram-FGHM5R23-Bh77yTp8",
+      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "note": "Current Mermaid diagram wrapper preserves the restored public export surface."
+    },
+    "sequenceDiagram-FGHM5R23-DLI6vuzu": {
+      "restored": "vendor/sequence-diagram-fghm5r23.ts",
+      "exports": {
+        "diagram": "SequenceDiagramFGHM5R23"
+      },
+      "status": "done",
+      "aliasOf": "sequenceDiagram-FGHM5R23-Bh77yTp8",
+      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "note": "Current Mermaid diagram wrapper preserves the restored public export surface."
+    },
+    "sequenceDiagram-FGHM5R23-D2NBkDHG": {
+      "restored": "vendor/sequence-diagram-fghm5r23.ts",
+      "exports": {
+        "diagram": "SequenceDiagramFGHM5R23"
+      },
+      "status": "done",
+      "aliasOf": "sequenceDiagram-FGHM5R23-Bh77yTp8",
+      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "note": "Current Mermaid diagram wrapper preserves the restored public export surface."
+    },
     "timeline-definition-GMOUNBTQ-BhxdX_wS": {
       "restored": "vendor/timeline-definition-gmounbtq.ts",
       "exports": {
@@ -5661,6 +5801,46 @@
         "diagram": "VennDiagramDHZGUBPP"
       },
       "status": "done"
+    },
+    "vennDiagram-DHZGUBPP-cg3dM6GW": {
+      "restored": "vendor/venn-diagram-dhzgubpp.ts",
+      "exports": {
+        "diagram": "VennDiagramDHZGUBPP"
+      },
+      "status": "done",
+      "aliasOf": "vennDiagram-DHZGUBPP-DQ5AHg0F",
+      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "note": "Current Mermaid diagram wrapper preserves the restored public export surface."
+    },
+    "vennDiagram-DHZGUBPP-D0MQkkgD": {
+      "restored": "vendor/venn-diagram-dhzgubpp.ts",
+      "exports": {
+        "diagram": "VennDiagramDHZGUBPP"
+      },
+      "status": "done",
+      "aliasOf": "vennDiagram-DHZGUBPP-DQ5AHg0F",
+      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "note": "Current Mermaid diagram wrapper preserves the restored public export surface."
+    },
+    "vennDiagram-DHZGUBPP-DfN80Abn": {
+      "restored": "vendor/venn-diagram-dhzgubpp.ts",
+      "exports": {
+        "diagram": "VennDiagramDHZGUBPP"
+      },
+      "status": "done",
+      "aliasOf": "vennDiagram-DHZGUBPP-DQ5AHg0F",
+      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "note": "Current Mermaid diagram wrapper preserves the restored public export surface."
+    },
+    "vennDiagram-DHZGUBPP-Dx6qV6u9": {
+      "restored": "vendor/venn-diagram-dhzgubpp.ts",
+      "exports": {
+        "diagram": "VennDiagramDHZGUBPP"
+      },
+      "status": "done",
+      "aliasOf": "vennDiagram-DHZGUBPP-DQ5AHg0F",
+      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "note": "Current Mermaid diagram wrapper preserves the restored public export surface."
     },
     "zipObject-HR30GI0P": {
       "restored": "vendor/lodash-zip-object.ts",
@@ -5725,6 +5905,16 @@
       "aliasOf": "blockDiagram-VD42YOAC-DicrLsNJ",
       "lastUpdated": "2026-06-29T00:00:00.000Z"
     },
+    "blockDiagram-VD42YOAC-BovmTmkR": {
+      "restored": "vendor/block-diagram-vd42yoac.ts",
+      "exports": {
+        "diagram": "BlockDiagramVD42YOAC"
+      },
+      "status": "done",
+      "aliasOf": "blockDiagram-VD42YOAC-DicrLsNJ",
+      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "note": "Current Mermaid diagram wrapper preserves the restored public export surface."
+    },
     "chunk-JZLCHNYA-HNai7LB6": {
       "restored": "vendor/chunk-jzlchnya.ts",
       "exports": {
@@ -5786,6 +5976,16 @@
       "status": "done",
       "aliasOf": "xychartDiagram-PRI3JC2R-B3NKXKok",
       "lastUpdated": "2026-06-29T00:00:00.000Z"
+    },
+    "xychartDiagram-PRI3JC2R-R6XqyejF": {
+      "restored": "vendor/xychart-diagram-pri3jc2r.ts",
+      "exports": {
+        "diagram": "XychartDiagramPRI3JC2R"
+      },
+      "status": "done",
+      "aliasOf": "xychartDiagram-PRI3JC2R-B3NKXKok",
+      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "note": "Current Mermaid diagram wrapper preserves the restored public export surface."
     },
     "vscode-api-Cc4BqLmp": {
       "restored": "boundaries/vscode-api.ts",
@@ -5919,12 +6119,92 @@
       },
       "status": "done"
     },
+    "blockDiagram-DXYQGD6D-BQLFPN94": {
+      "restored": "vendor/block-diagram-dxyqgd6d.ts",
+      "exports": {
+        "diagram": "BlockDiagramDXYQGD6D"
+      },
+      "status": "done",
+      "aliasOf": "blockDiagram-DXYQGD6D-CTLy8H2I",
+      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "note": "Current Mermaid diagram wrapper preserves the restored public export surface."
+    },
+    "blockDiagram-DXYQGD6D-C5rUcNhM": {
+      "restored": "vendor/block-diagram-dxyqgd6d.ts",
+      "exports": {
+        "diagram": "BlockDiagramDXYQGD6D"
+      },
+      "status": "done",
+      "aliasOf": "blockDiagram-DXYQGD6D-CTLy8H2I",
+      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "note": "Current Mermaid diagram wrapper preserves the restored public export surface."
+    },
+    "blockDiagram-DXYQGD6D-Crb23KZL": {
+      "restored": "vendor/block-diagram-dxyqgd6d.ts",
+      "exports": {
+        "diagram": "BlockDiagramDXYQGD6D"
+      },
+      "status": "done",
+      "aliasOf": "blockDiagram-DXYQGD6D-CTLy8H2I",
+      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "note": "Current Mermaid diagram wrapper preserves the restored public export surface."
+    },
+    "blockDiagram-DXYQGD6D-B8DDITsf": {
+      "restored": "vendor/block-diagram-dxyqgd6d.ts",
+      "exports": {
+        "diagram": "BlockDiagramDXYQGD6D"
+      },
+      "status": "done",
+      "aliasOf": "blockDiagram-DXYQGD6D-CTLy8H2I",
+      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "note": "Current Mermaid diagram wrapper preserves the restored public export surface."
+    },
     "xychartDiagram-5P7HB3ND-B4TBc4oz": {
       "restored": "vendor/xychart-diagram-5p7hb3nd.ts",
       "exports": {
         "diagram": "XychartDiagram5P7HB3ND"
       },
       "status": "done"
+    },
+    "xychartDiagram-5P7HB3ND-2mFdjPYX": {
+      "restored": "vendor/xychart-diagram-5p7hb3nd.ts",
+      "exports": {
+        "diagram": "XychartDiagram5P7HB3ND"
+      },
+      "status": "done",
+      "aliasOf": "xychartDiagram-5P7HB3ND-B4TBc4oz",
+      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "note": "Current Mermaid diagram wrapper preserves the restored public export surface."
+    },
+    "xychartDiagram-5P7HB3ND-BGoJgg6P": {
+      "restored": "vendor/xychart-diagram-5p7hb3nd.ts",
+      "exports": {
+        "diagram": "XychartDiagram5P7HB3ND"
+      },
+      "status": "done",
+      "aliasOf": "xychartDiagram-5P7HB3ND-B4TBc4oz",
+      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "note": "Current Mermaid diagram wrapper preserves the restored public export surface."
+    },
+    "xychartDiagram-5P7HB3ND-D7anwSuJ": {
+      "restored": "vendor/xychart-diagram-5p7hb3nd.ts",
+      "exports": {
+        "diagram": "XychartDiagram5P7HB3ND"
+      },
+      "status": "done",
+      "aliasOf": "xychartDiagram-5P7HB3ND-B4TBc4oz",
+      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "note": "Current Mermaid diagram wrapper preserves the restored public export surface."
+    },
+    "xychartDiagram-5P7HB3ND-B8nKEa9x": {
+      "restored": "vendor/xychart-diagram-5p7hb3nd.ts",
+      "exports": {
+        "diagram": "XychartDiagram5P7HB3ND"
+      },
+      "status": "done",
+      "aliasOf": "xychartDiagram-5P7HB3ND-B4TBc4oz",
+      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "note": "Current Mermaid diagram wrapper preserves the restored public export surface."
     },
     "kanban-definition-3W4ZIXB7-DvB9N6my": {
       "restored": "vendor/kanban-definition-3w4zixb7.ts",
@@ -9829,6 +10109,16 @@
       "aliasOf": "flowDiagram-NV44I4VS-D4eH0gaV",
       "lastUpdated": "2026-06-29T00:00:00.000Z"
     },
+    "flowDiagram-NV44I4VS-HRcxTDVY": {
+      "restored": "vendor/mermaid-flow-diagram-fpaj.ts",
+      "exports": {
+        "diagram": "FlowDiagramNV44I4VS"
+      },
+      "status": "done",
+      "aliasOf": "flowDiagram-NV44I4VS-D4eH0gaV",
+      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "note": "Current Mermaid diagram wrapper preserves the restored public export surface."
+    },
     "mindmap-definition-VGOIOE7T-CravxLKD": {
       "restored": "vendor/mermaid-mindmap-definition-fpaj.ts",
       "exports": {
@@ -9973,6 +10263,36 @@
         "diagram": "FlowDiagramDWJPFMVM"
       },
       "status": "done"
+    },
+    "flowDiagram-DWJPFMVM-DNzYCR73": {
+      "restored": "vendor/mermaid-flow-diagram-k5.ts",
+      "exports": {
+        "diagram": "FlowDiagramDWJPFMVM"
+      },
+      "status": "done",
+      "aliasOf": "flowDiagram-DWJPFMVM-C76X9T8a",
+      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "note": "Current Mermaid diagram wrapper preserves the restored public export surface."
+    },
+    "flowDiagram-DWJPFMVM-Dvv6_5f0": {
+      "restored": "vendor/mermaid-flow-diagram-k5.ts",
+      "exports": {
+        "diagram": "FlowDiagramDWJPFMVM"
+      },
+      "status": "done",
+      "aliasOf": "flowDiagram-DWJPFMVM-C76X9T8a",
+      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "note": "Current Mermaid diagram wrapper preserves the restored public export surface."
+    },
+    "flowDiagram-DWJPFMVM-DkBvy4JX": {
+      "restored": "vendor/mermaid-flow-diagram-k5.ts",
+      "exports": {
+        "diagram": "FlowDiagramDWJPFMVM"
+      },
+      "status": "done",
+      "aliasOf": "flowDiagram-DWJPFMVM-C76X9T8a",
+      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "note": "Current Mermaid diagram wrapper preserves the restored public export surface."
     },
     "mindmap-definition-QFDTVHPH-BlP876d6": {
       "restored": "vendor/mermaid-mindmap-definition-k5.ts",
@@ -19484,29 +19804,30 @@
     "address-utils-CS84EMiz": {
       "restored": "vendor/xlsx-address-utils.ts",
       "exports": {
-        "_": "addressUtilsUnderscore",
-        "a": "addressUtilsA",
-        "c": "addressUtilsC",
-        "d": "addressUtilsD",
-        "f": "addressUtilsF",
-        "g": "addressUtilsG",
-        "h": "addressUtilsH",
-        "i": "addressUtilsI",
-        "l": "addressUtilsL",
-        "m": "addressUtilsM",
+        "_": "addressUtilsH",
+        "a": "addressUtilsI",
+        "b": "addressUtilsV",
+        "c": "addressUtilsS",
+        "d": "addressUtilsU",
+        "f": "addressUtilsD",
+        "g": "addressUtilsM",
+        "h": "initXlsxAddressUtilsConstantsChunk",
+        "i": "addressUtilsR",
+        "l": "addressUtilsC",
+        "m": "addressUtilsP",
         "n": "addressUtilsN",
-        "o": "addressUtilsO",
-        "p": "addressUtilsP",
-        "r": "addressUtilsR",
-        "s": "addressUtilsS",
+        "o": "addressUtilsA",
+        "p": "addressUtilsF",
+        "r": "initXlsxAddressUtilsChunk",
+        "s": "addressUtilsO",
         "t": "addressUtilsT",
-        "u": "addressUtilsU",
-        "v": "addressUtilsV"
+        "u": "addressUtilsL",
+        "v": "addressUtilsG",
+        "y": "addressUtilsUnderscore"
       },
       "status": "done",
-      "aliasOf": "address-utils-D9uhGifl",
-      "lastUpdated": "2026-06-29T00:00:00.000Z",
-      "note": "Current XLSX address-utils chunk keeps the restored public API and adds b/y internal exports."
+      "lastUpdated": "2026-06-30T08:05:41.179Z",
+      "note": "Rolldown-wrapped XLSX address utility exports re-derived from the current file; h/r are initializer thunks and b/y are real current exports."
     },
     "load-script-enBvQ5ff": {
       "restored": "vendor/segment-load-script.ts",
@@ -19840,17 +20161,18 @@
     "esm-EAsy4EQA": {
       "restored": "vendor/iconify-core.ts",
       "exports": {
-        "a": "esmA",
-        "i": "esmI",
-        "n": "esmN",
-        "o": "esmO",
-        "r": "esmR",
+        "a": "esmR",
+        "c": "esmO",
+        "i": "esmN",
+        "n": "initIconifyCoreChunk",
+        "o": "esmI",
+        "r": "initIconifyCoreRuntimeChunk",
+        "s": "esmA",
         "t": "esmT"
       },
       "status": "done",
-      "aliasOf": "esm-DbqKqkZh",
-      "lastUpdated": "2026-06-29T00:00:00.000Z",
-      "note": "Current Iconify core chunk keeps the restored public API and adds c/s internal exports."
+      "lastUpdated": "2026-06-30T08:05:41.179Z",
+      "note": "Rolldown-wrapped Iconify core exports re-derived from the current file; n/r are initializer thunks and c/s are real current exports."
     },
     "chunk-ATLVNIR6-DShFhP4G": {
       "restored": "vendor/chunk-atlvnir6.ts",
@@ -30748,6 +31070,67 @@
       "aliasOf": "chunk-KS23V3DP-DDeE2zpr",
       "lastUpdated": "2026-06-30T07:59:41.773Z",
       "note": "Current Mermaid package metadata hash matches the restored semantic metadata module; alias preserves the n/t initializer export surface."
+    },
+    "address-utils-CrPpzw-e": {
+      "restored": "vendor/xlsx-address-utils.ts",
+      "exports": {
+        "_": "addressUtilsH",
+        "a": "addressUtilsI",
+        "b": "addressUtilsV",
+        "c": "addressUtilsS",
+        "d": "addressUtilsU",
+        "f": "addressUtilsD",
+        "g": "addressUtilsM",
+        "h": "initXlsxAddressUtilsConstantsChunk",
+        "i": "addressUtilsR",
+        "l": "addressUtilsC",
+        "m": "addressUtilsP",
+        "n": "addressUtilsN",
+        "o": "addressUtilsA",
+        "p": "addressUtilsF",
+        "r": "initXlsxAddressUtilsChunk",
+        "s": "addressUtilsO",
+        "t": "addressUtilsT",
+        "u": "addressUtilsL",
+        "v": "addressUtilsG",
+        "y": "addressUtilsUnderscore"
+      },
+      "aliasOf": "address-utils-CS84EMiz",
+      "note": "Current XLSX address-utils hash matches address-utils-CS84EMiz; export aliases were re-derived from address-utils-CrPpzw-e.js.",
+      "status": "done",
+      "lastUpdated": "2026-06-30T08:05:41.179Z"
+    },
+    "thread-virtualizer-tFKjdFLY": {
+      "restored": "threads/thread-virtualizer.tsx",
+      "exports": {
+        "a": "getRangeAnchoredAtTurn",
+        "i": "getVisibleThreadRange",
+        "n": "getDistanceFromBottomForPreservedAnchor",
+        "o": "initThreadVirtualizerChunk",
+        "r": "getDistanceFromBottomForCenteredTurn",
+        "t": "buildThreadVirtualizerLayout"
+      },
+      "aliasOf": "thread-virtualizer-j4nMuJ6u",
+      "note": "Current thread virtualizer hash preserves the restored public export surface; aliases re-derived from thread-virtualizer-tFKjdFLY.js.",
+      "status": "done",
+      "lastUpdated": "2026-06-30T08:05:41.179Z"
+    },
+    "esm-CuAuNray": {
+      "restored": "vendor/iconify-core.ts",
+      "exports": {
+        "a": "esmR",
+        "c": "esmO",
+        "i": "esmN",
+        "n": "initIconifyCoreChunk",
+        "o": "esmI",
+        "r": "initIconifyCoreRuntimeChunk",
+        "s": "esmA",
+        "t": "esmT"
+      },
+      "aliasOf": "esm-EAsy4EQA",
+      "note": "Current Iconify core hash matches esm-EAsy4EQA; export aliases were re-derived from esm-CuAuNray.js.",
+      "status": "done",
+      "lastUpdated": "2026-06-30T08:05:41.179Z"
     }
   }
 }
