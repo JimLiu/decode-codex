@@ -42042,6 +42042,19 @@
       "stage3AcceptedAt": "2026-06-30T22:45:00.000Z",
       "stage3Review": "Host self-review: verified the current file exports QueuedMessageList, rewrote dependency imports through restored/IMPORT_MAP.json, and passed quality gates on the backing bundle and runtime.",
       "stage3Note": "Accepted as a current-ref compatibility export over a restored-dependency backing bundle; full semantic split of QueuedMessageList remains a later cleanup."
+    },
+    "mindmap-definition-QFDTVHPH-C-RA3VgZ": {
+      "restored": "vendor/mermaid-mindmap-definition-k5.ts",
+      "exports": {
+        "diagram": "MindmapDefinitionQFDTVHPH"
+      },
+      "status": "done",
+      "aliasOf": "mindmap-definition-QFDTVHPH-BlP876d6",
+      "lastUpdated": "2026-06-30T22:56:00.000Z",
+      "note": "Current Mermaid mindmap definition wrapper preserves the restored public export surface.",
+      "stage3Accepted": true,
+      "stage3AcceptedAt": "2026-06-30T22:56:00.000Z",
+      "stage3Review": "Host self-review: current ref mindmap-definition-QFDTVHPH-C-RA3VgZ.js exports only diagram; restored/vendor/mermaid-mindmap-definition-k5.ts preserves that surface and passes vendored quality-gate."
     }
   }
 }
