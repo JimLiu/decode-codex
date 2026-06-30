@@ -162,6 +162,8 @@ export function useAppScopeValue<T>(signal: unknown, key?: unknown): T {
 
 export const _appScopeA = useAppScopeValue;
 export const _appScopeS = useAppScopeValue;
+export const appScopeA = useAppScopeValue;
+export const appScopeS = useAppScopeValue;
 
 export function _appScopeO(): AppScopeStore {
   return rootStore;
