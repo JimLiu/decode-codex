@@ -1,14 +1,14 @@
-// Restored from ref/webview/assets/app-initial~app-main~worktree-init-v2-page~remote-conversation-page~new-thread-panel-page~o~dv5z3ftk-BhBbJNnt.js
+// Restored from ref/webview/assets/app-initial~app-main~remote-conversation-page~hotkey-window-thread-page~automations-page~th~bnlvjk3w-ClqKjb2h.js
 // Current-ref boundary for app-scope signal primitives and hooks.
 export {
-  Mo as ScopeValueProviderRaw,
-  bs as createScopedDerivedSignalFamilyRaw,
-  ws as createQuerySignalFamilyRaw,
-  Ds as createScopedSignalRaw,
-  Os as createScopedSignalFamilyRaw,
-  ys as createDerivedSignalRaw,
-  Ao as initScopeRuntimeRaw,
-  Fo as useScopeRaw,
-  Po as useScopedValueRaw,
-  Io as useSignalValueRaw,
-} from "../../vendor/app-main-legacy-deps/app-initial~app-main~worktree-init-v2-page~remote-conversation-page~new-thread-panel-page~o~dv5z3ftk-BhBbJNnt";
+  Uo as ScopeValueProviderRaw,
+  js as createScopedDerivedSignalFamilyRaw,
+  Fs as createQuerySignalFamilyRaw,
+  Rs as createScopedSignalRaw,
+  zs as createScopedSignalFamilyRaw,
+  As as createDerivedSignalRaw,
+  Vo as initScopeRuntimeRaw,
+  Ko as useScopeRaw,
+  Go as useScopedValueRaw,
+  qo as useSignalValueRaw,
+} from "../../vendor/current-app-initial-bnlvjk3w-shared-bundle";
