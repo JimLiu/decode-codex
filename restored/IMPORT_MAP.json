@@ -32614,6 +32614,89 @@
       "note": "Current chunk-HN2XXSSU hash preserves the restored relation marker helpers; aliases re-derived from the lazy-init export tail.",
       "status": "done",
       "lastUpdated": "2026-06-30T08:22:15.325Z"
+    },
+    "local-environments-utils-Y1qAyZiR": {
+      "restored": "environments/local-environments-utils/index.ts",
+      "exports": {
+        "a": "serializeLocalEnvironmentConfig",
+        "c": "normalizePlatformScripts",
+        "d": "LOCAL_ENVIRONMENT_ACTION_ICON_OPTIONS",
+        "f": "initLocalEnvironmentActionIconOptionsChunk",
+        "i": "DEFAULT_SETUP_SCRIPT",
+        "l": "initLocalEnvironmentDefaultsChunk",
+        "m": "initLocalEnvironmentActionIconChunk",
+        "n": "DEFAULT_CLEANUP_SCRIPT",
+        "o": "createLocalEnvironmentAction",
+        "p": "LocalEnvironmentActionIcon",
+        "r": "LOCAL_ENVIRONMENT_PLATFORMS",
+        "s": "cloneLocalEnvironmentActions",
+        "t": "DEFAULT_RUN_COMMAND",
+        "u": "selectLocalEnvironmentAfterRefresh"
+      },
+      "aliasOf": "local-environments-utils-CkypnJBW",
+      "note": "Current local-environments-utils hash preserves the restored local environment helper export surface; aliases re-derived from local-environments-utils-Y1qAyZiR.js.",
+      "status": "done",
+      "lastUpdated": "2026-06-30T00:00:00.000Z"
+    },
+    "pet-install-state-DxmDfR1m": {
+      "restored": "features/pet-install-state.ts",
+      "exports": {
+        "a": "startPetInstallSession",
+        "i": "petInstallSession$",
+        "n": "initPetInstallStateChunk",
+        "r": "installPet",
+        "t": "closePetInstallSession"
+      },
+      "aliasOf": "pet-install-state-4FjnwCnv",
+      "note": "Current pet install state hash preserves the restored preview/install state machine export surface; aliases re-derived from pet-install-state-DxmDfR1m.js.",
+      "status": "done",
+      "lastUpdated": "2026-06-30T00:00:00.000Z"
+    },
+    "pull-request-check-rows-D_pDNxZg": {
+      "restored": "github/pull-request-actions/index.ts",
+      "splitDirectory": "github/pull-request-actions",
+      "exports": {
+        "C": "PullRequestInlineActionButton",
+        "S": "initPullRequestCheckStatusIconChunk",
+        "_": "initPullRequestAnalyticsChunk",
+        "a": "PullRequestMergeActions",
+        "b": "logPullRequestViewedFromSidePanel",
+        "c": "initMergeWithCodexButtonChunk",
+        "d": "shouldShowMergeWithCodex",
+        "f": "initPullRequestMergeHelperPromptChunk",
+        "g": "usePullRequestMergeMutation",
+        "h": "initPullRequestMergeMutationChunk",
+        "i": "initPullRequestMetadataRowsChunk",
+        "l": "resolvePullRequestTaskRoute",
+        "m": "usePullRequestUpdateMutation",
+        "n": "initPullRequestCheckRowsChunk",
+        "o": "initPullRequestMergeActionsChunk",
+        "p": "initPullRequestUpdateMutationChunk",
+        "r": "PullRequestMetadataRows",
+        "s": "MergeWithCodexButton",
+        "t": "PullRequestCheckRows",
+        "u": "initPullRequestTaskRouteHelpersChunk",
+        "v": "trackPullRequestAction",
+        "w": "initPullRequestInlineActionButtonChunk",
+        "x": "PullRequestUnknownCheckIcon",
+        "y": "trackPullRequestKindAction"
+      },
+      "aliasOf": "pull-request-check-rows-Q1OJv6O3",
+      "note": "Current pull-request-check-rows hash preserves the semantic PR checks, merge actions, analytics, and Merge with Codex export surface; aliases re-derived from pull-request-check-rows-D_pDNxZg.js.",
+      "status": "done",
+      "lastUpdated": "2026-06-30T00:00:00.000Z"
+    },
+    "wasm-CboGkVi_": {
+      "restored": "vendor/oniguruma-wasm.ts",
+      "exports": {
+        "default": "default",
+        "getWasmInstance": "getWasmInstance",
+        "wasmBinary": "wasmBinary"
+      },
+      "aliasOf": "wasm-Cgooknyf",
+      "note": "Current Oniguruma WASM hash preserves the typed data-module export surface; aliases re-derived from wasm-CboGkVi_.js.",
+      "status": "done",
+      "lastUpdated": "2026-06-30T00:00:00.000Z"
     }
   }
 }
