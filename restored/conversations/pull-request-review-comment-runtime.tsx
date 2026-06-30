@@ -8,7 +8,7 @@ import {
 import {
   initPullRequestCommentCardChunk as initPullRequestCommentCardChunkRaw,
   PullRequestCommentCard,
-} from "../boundaries/current-ref/pull-request-comment-card-producer";
+} from "./pull-request-comment-card";
 import {
   Qc as openPullRequestReviewCommentInReviewPanel,
   eu as getThreadBranchMismatchState,

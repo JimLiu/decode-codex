@@ -11,10 +11,12 @@ import {
 } from "../vendor/projects-app-shared-runtime";
 import {
   initPullRequestDescriptionMarkdownRendererChunk as initPullRequestDescriptionMarkdownRendererChunkRaw,
+  PullRequestDescriptionMarkdown,
+} from "./pull-request-description-markdown-renderer";
+import {
   initPullRequestDescriptionMarkdownParserChunk as initPullRequestDescriptionMarkdownParserChunkRaw,
   parsePullRequestDescriptionMarkdown,
-  PullRequestDescriptionMarkdown,
-} from "../boundaries/current-ref/pull-request-description-markdown-producer";
+} from "./pull-request-description-markdown-parser";
 
 export {
   activateThreadSidePanelPosition,

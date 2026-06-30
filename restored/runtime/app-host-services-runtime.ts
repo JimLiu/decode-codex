@@ -5,7 +5,7 @@ import {
   appHostServicesRaw,
   connectAppHostServicesRaw,
   initAppHostServicesRuntimeChunkRaw,
-} from "../boundaries/current-ref/app-host-services-producer";
+} from "./current-app-initial/remote-projects-app-shared-runtime";
 
 type PersistentSignalFactory = <TValue>(
   key: string,
