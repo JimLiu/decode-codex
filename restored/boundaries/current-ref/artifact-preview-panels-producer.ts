@@ -6,5 +6,5 @@ export { PopcornElectronPresentationPanel } from "../../../ref/webview/assets/Po
 export { PopcornElectronWorkbookPanel } from "../../../ref/webview/assets/PopcornElectronWorkbookPanel-DEXqsHf5.js";
 
 export { DocxPreviewPanel } from "../../../ref/webview/assets/docx-preview-panel-BsZXEpj7.js";
-export { NotebookPreviewPanel } from "../../../ref/webview/assets/notebook-preview-panel-Bk0oKCgu.js";
+export { NotebookPreviewPanel } from "../../artifacts/notebook-preview-panel";
 export { PdfPreviewPanel } from "../../../ref/webview/assets/pdf-preview-panel-KZgIg0w6.js";

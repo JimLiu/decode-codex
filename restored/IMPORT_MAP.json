@@ -8587,6 +8587,18 @@
       },
       "status": "done"
     },
+    "notebook-preview-panel-Bk0oKCgu": {
+      "restored": "artifacts/notebook-preview-panel.tsx",
+      "exports": {
+        "NotebookPreviewPanel": "NotebookPreviewPanel"
+      },
+      "status": "done",
+      "note": "Current synced notebook preview panel deep-restored as a semantic read-only Jupyter notebook artifact renderer; artifact-preview-panels-producer now imports it locally instead of the raw ref chunk.",
+      "stage3Accepted": true,
+      "stage3AcceptedAt": "2026-06-30T00:23:54.000Z",
+      "stage3Review": "Host self-review: compared parser, metadata namespaces, output rendering branches, read-only controls, cell titles, and error/loading behavior against ref/webview/assets/notebook-preview-panel-Bk0oKCgu.js; quality-gate and no-bundle builds passed.",
+      "lastUpdated": "2026-06-30T00:23:54.000Z"
+    },
     "chunk-N4CR4FBY-ClZLl4Py": {
       "restored": "vendor/mermaid-layout-loader-fpaj.ts",
       "exports": {
