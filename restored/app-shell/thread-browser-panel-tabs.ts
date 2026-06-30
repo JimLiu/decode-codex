@@ -1,5 +1,6 @@
-// Restored from ref/webview/assets/thread-browser-panel-tabs-B0_gHvSH.js
-// Updated with exports from ref/webview/assets/thread-browser-panel-tabs-DuBf4ycc.js.
+// Restored from ref/webview/assets/thread-browser-panel-tabs-BBhz5qN_.js
+// Alias-compatible with ref/webview/assets/thread-browser-panel-tabs-B0_gHvSH.js and thread-browser-panel-tabs-DuBf4ycc.js.
+// Browser panel tab selection, transfer, and focus helpers.
 import {
   getBrowserTabConversationKey,
   type BrowserPanelLocation,
