@@ -20468,9 +20468,11 @@
         "zt": "initProjectGroupSelectionRuntimeChunk"
       },
       "status": "done",
-      "note": "Current kmtatxxf pull-request thread action runtime restored as complete semantic aliases over the synced raw chunk. Confirmed artifact preview helpers use current-hash semantics; remaining residual aliases use stable pullRequestThreadActionsExport* compatibility names.",
-      "lastUpdated": "2026-06-29T13:45:00.000Z",
-      "stage3Accepted": true
+      "note": "Historical kmtatxxf pull-request thread action runtime retained as complete semantic aliases over vendor/pull-request-thread-actions-runtime.ts. The current ref no longer contains this 566-export producer; current pull-request new-thread code is covered separately by ozr5a6hk-DZC70s11 with 130 exports, so this legacy surface must remain distinct.",
+      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "stage3Accepted": true,
+      "stage3AcceptedAt": "2026-06-30T00:00:00.000Z",
+      "stage3Review": "Host self-review: current ref no longer contains kmtatxxf-DEE2TwPG; verified the legacy raw export table has the same 566 aliases recorded in this entry and that vendor/pull-request-thread-actions-runtime.ts passes quality-gate."
     },
     "header-C6cQGe_6": {
       "restored": "browser/chrome-extension-header.tsx",
