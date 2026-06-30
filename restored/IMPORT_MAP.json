@@ -42414,6 +42414,20 @@
       "stage3AcceptedAt": "2026-06-30T23:59:30.000Z",
       "stage3Review": "Host self-review: verified the current file exports PluginsSettings, rewrote dependency imports through restored/IMPORT_MAP.json, and passed quality gates on the backing bundle and runtime.",
       "stage3Note": "Accepted as a current-ref compatibility export over a restored-dependency backing bundle; full semantic split of PluginsSettings remains a later cleanup."
+    },
+    "skills-page-zCIrhInI": {
+      "restored": "runtime/current-app-initial/skills-page-current-runtime.ts",
+      "exports": {
+        "n": "initSkillsPageChunk",
+        "t": "SkillsPage"
+      },
+      "status": "done",
+      "note": "Current SkillsPage hash maps to a dedicated current-ref runtime over vendor/skills-page-current-bundle.tsx; current aliases are re-derived from the file and exposed as initSkillsPageChunk and SkillsPage.",
+      "lastUpdated": "2026-06-30T23:59:45.000Z",
+      "stage3Accepted": true,
+      "stage3AcceptedAt": "2026-06-30T23:59:45.000Z",
+      "stage3Review": "Host self-review: verified skills-page-zCIrhInI.js exports n/t, exposed them as initSkillsPageChunk and SkillsPage, rewrote dependency imports through restored/IMPORT_MAP.json, and passed quality gates on the backing bundle and runtime.",
+      "stage3Note": "Accepted as a current-ref compatibility export over a restored-dependency backing bundle; full semantic split of SkillsPage remains a later cleanup."
     }
   }
 }
