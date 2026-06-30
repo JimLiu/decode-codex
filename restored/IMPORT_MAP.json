@@ -12133,6 +12133,30 @@
       "note": "Current synced side-panel tab chunk preserves the same public export surface as the previous restored semantic module.",
       "lastUpdated": "2026-06-29T00:00:00.000Z"
     },
+    "thread-side-panel-tabs-DDAJVj-n": {
+      "restored": "app-shell/thread-side-panel-tabs.ts",
+      "exports": {
+        "THREAD_SIDE_PANEL_TAB": "THREAD_SIDE_PANEL_TAB",
+        "closeThreadMcpAppSidePanelTab": "closeThreadMcpAppSidePanelTab",
+        "getBrowserTabIdForSidePanelOpen": "getBrowserTabIdForSidePanelOpen",
+        "getThreadMcpAppSidePanelTabId": "getThreadMcpAppSidePanelTabId",
+        "openSessionSandboxSidePanel": "openSessionSandboxSidePanel",
+        "openThreadBranchReviewSidePanelTab": "openThreadBranchReviewSidePanelTab",
+        "openThreadBrowserSidePanelTab": "openThreadBrowserSidePanelTab",
+        "openThreadBrowserSidePanelTabWithPendingState": "openThreadBrowserSidePanelTabWithPendingState",
+        "openThreadBrowserSidePanelTabWithoutAnimation": "openThreadBrowserSidePanelTabWithoutAnimation",
+        "openThreadLastTurnReviewSidePanelTab": "openThreadLastTurnReviewSidePanelTab",
+        "openThreadMcpAppSidePanelTab": "openThreadMcpAppSidePanelTab",
+        "openThreadReviewSidePanelTab": "openThreadReviewSidePanelTab",
+        "openThreadTimelineSidePanel": "openThreadTimelineSidePanel",
+        "primeBrowserTabTransfers": "primeBrowserTabTransfers",
+        "toggleThreadSidePanel": "toggleThreadSidePanel"
+      },
+      "status": "done",
+      "aliasOf": "thread-side-panel-tabs-_WbpVYWU",
+      "note": "Current ref hash preserves the restored side-panel tab public export surface.",
+      "lastUpdated": "2026-06-30T00:00:00.000Z"
+    },
     "selectable-list-row-Bm082MDr": {
       "restored": "ui/selectable-list-row.tsx",
       "exports": {
@@ -14075,6 +14099,17 @@
       "status": "done",
       "note": "Promoted current artifact preview status renderer with typed status values, exact loading/error copy, and chunk initializer export.",
       "lastUpdated": "2026-06-27T20:55:07.733Z"
+    },
+    "artifact-preview-status-jgtoNhXT": {
+      "restored": "utils/artifact-preview-status.tsx",
+      "exports": {
+        "n": "ArtifactPreviewStatus",
+        "t": "initArtifactPreviewStatusChunk"
+      },
+      "status": "done",
+      "aliasOf": "artifact-preview-status-BdDDtvat",
+      "note": "Current ref hash keeps the restored artifact preview loading/error status surface.",
+      "lastUpdated": "2026-06-30T00:00:00.000Z"
     },
     "avatar-overlay-debug-state-Bc374YAh": {
       "restored": "utils/avatar-overlay-debug-state.ts",
@@ -18065,6 +18100,17 @@
       "note": "Current avatar overlay debug state chunk keeps the restored persistent resize-button signal surface.",
       "lastUpdated": "2026-06-29T00:00:00.000Z"
     },
+    "avatar-overlay-debug-state-WM6He6by": {
+      "restored": "utils/avatar-overlay-debug-state.ts",
+      "exports": {
+        "n": "initAvatarOverlayDebugStateChunk",
+        "t": "avatarOverlayResizeButtonHiddenSignal"
+      },
+      "status": "done",
+      "aliasOf": "avatar-overlay-debug-state-Bc374YAh",
+      "note": "Current ref hash keeps the restored avatar overlay resize-button debug signal surface.",
+      "lastUpdated": "2026-06-30T00:00:00.000Z"
+    },
     "pet-install-state-4FjnwCnv": {
       "restored": "features/pet-install-state.ts",
       "exports": {
@@ -20393,6 +20439,18 @@
       "status": "done",
       "aliasOf": "thread-scroll-controller-context-value-Cl6S6mDJ",
       "lastUpdated": "2026-06-29T00:00:00.000Z"
+    },
+    "thread-scroll-controller-context-value-C-Inw11x": {
+      "restored": "threads/thread-scroll-layout/scroll-controller-context.ts",
+      "note": "Current ref hash keeps the restored thread scroll controller context surface.",
+      "exports": {
+        "n": "initThreadScrollControllerContextChunk",
+        "r": "useThreadScrollController",
+        "t": "threadScrollControllerContext"
+      },
+      "status": "done",
+      "aliasOf": "thread-scroll-controller-context-value-Cl6S6mDJ",
+      "lastUpdated": "2026-06-30T00:00:00.000Z"
     },
     "thread-user-message-navigation-rail-DIEtpbgb": {
       "restored": "threads/thread-user-message-navigation-rail/index.tsx",
