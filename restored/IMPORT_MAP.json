@@ -9661,7 +9661,10 @@
       "status": "done",
       "aliasOf": "dagre-6UL2VRFP-DHAAtlj_",
       "lastUpdated": "2026-06-30T00:00:00.000Z",
-      "note": "Current Mermaid renderer wrapper preserves the restored public export surface."
+      "note": "Current Mermaid renderer wrapper preserves the restored public export surface.",
+      "stage3Accepted": true,
+      "stage3AcceptedAt": "2026-06-30T22:21:23.000Z",
+      "stage3Review": "Host self-review: current ref dagre-6UL2VRFP-CTBugNjf.js exports only render; restored/vendor/mermaid-dagre-renderer.ts preserves that surface through dagre6UL2VRFP/render and passes vendored quality-gate."
     },
     "remote-text-edit-session-DjCWscO4": {
       "restored": "generated/remote-text-edit-session.tsx",
@@ -11461,7 +11464,10 @@
       "status": "done",
       "aliasOf": "dagre-KV5264BT-wPJhnht8",
       "lastUpdated": "2026-06-30T00:00:00.000Z",
-      "note": "Current Mermaid renderer wrapper preserves the restored public export surface."
+      "note": "Current Mermaid renderer wrapper preserves the restored public export surface.",
+      "stage3Accepted": true,
+      "stage3AcceptedAt": "2026-06-30T22:21:23.000Z",
+      "stage3Review": "Host self-review: current ref dagre-KV5264BT-DyEEluUy.js exports only render; restored/vendor/mermaid-dagre-renderer-k5.ts preserves that surface through dagreKV5264BT/render and passes vendored quality-gate."
     },
     "dagre-KV5264BT-P0bt1Ec3": {
       "restored": "vendor/mermaid-dagre-renderer-k5.ts",
@@ -11471,7 +11477,10 @@
       "status": "done",
       "aliasOf": "dagre-KV5264BT-wPJhnht8",
       "lastUpdated": "2026-06-30T00:00:00.000Z",
-      "note": "Current Mermaid renderer wrapper preserves the restored public export surface."
+      "note": "Current Mermaid renderer wrapper preserves the restored public export surface.",
+      "stage3Accepted": true,
+      "stage3AcceptedAt": "2026-06-30T22:21:23.000Z",
+      "stage3Review": "Host self-review: current ref dagre-KV5264BT-P0bt1Ec3.js exports only render; restored/vendor/mermaid-dagre-renderer-k5.ts preserves that surface through dagreKV5264BT/render and passes vendored quality-gate."
     },
     "dagre-KV5264BT-x2Ytxm3P": {
       "restored": "vendor/mermaid-dagre-renderer-k5.ts",
@@ -11481,7 +11490,10 @@
       "status": "done",
       "aliasOf": "dagre-KV5264BT-wPJhnht8",
       "lastUpdated": "2026-06-30T00:00:00.000Z",
-      "note": "Current Mermaid renderer wrapper preserves the restored public export surface."
+      "note": "Current Mermaid renderer wrapper preserves the restored public export surface.",
+      "stage3Accepted": true,
+      "stage3AcceptedAt": "2026-06-30T22:21:23.000Z",
+      "stage3Review": "Host self-review: current ref dagre-KV5264BT-x2Ytxm3P.js exports only render; restored/vendor/mermaid-dagre-renderer-k5.ts preserves that surface through dagreKV5264BT/render and passes vendored quality-gate."
     },
     "dagre-KV5264BT-DW4I2eVN": {
       "restored": "vendor/mermaid-dagre-renderer-k5.ts",
@@ -11491,7 +11503,10 @@
       "status": "done",
       "aliasOf": "dagre-KV5264BT-wPJhnht8",
       "lastUpdated": "2026-06-30T00:00:00.000Z",
-      "note": "Current Mermaid renderer wrapper preserves the restored public export surface."
+      "note": "Current Mermaid renderer wrapper preserves the restored public export surface.",
+      "stage3Accepted": true,
+      "stage3AcceptedAt": "2026-06-30T22:21:23.000Z",
+      "stage3Review": "Host self-review: current ref dagre-KV5264BT-DW4I2eVN.js exports only render; restored/vendor/mermaid-dagre-renderer-k5.ts preserves that surface through dagreKV5264BT/render and passes vendored quality-gate."
     },
     "PopcornElectronPresentationPanel-DyLT7PAB": {
       "restored": "generated/popcorn-electron-presentation-panel.tsx",
@@ -38692,7 +38707,10 @@
       "status": "done",
       "aliasOf": "chunk-N4CR4FBY-Ce3D8TBD",
       "note": "Current Mermaid layout loader aliases re-derived from chunk-N4CR4FBY-D4A2k-Kw.js; alias n is the Rolldown lazy init thunk and alias i is render.",
-      "lastUpdated": "2026-06-30T00:00:00.000Z"
+      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "stage3Accepted": true,
+      "stage3AcceptedAt": "2026-06-30T22:21:23.000Z",
+      "stage3Review": "Host self-review: current ref chunk-N4CR4FBY-D4A2k-Kw.js exports Mermaid layout loader aliases i/n/r/t; restored/vendor/mermaid-layout-loader-fpaj.ts preserves that surface and passes vendored quality-gate."
     },
     "pierre-dark-BvenaEZa": {
       "restored": "vendor/pierre-themes.ts",
