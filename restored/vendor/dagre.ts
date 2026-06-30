@@ -2585,6 +2585,7 @@ export function Dagre(dagreParam191, dagreParam192) {
     );
   });
 }
+export function initDagre(): void {}
 function dagreHelper127(dagreParam1, dagreParam2) {
   dagreParam2("    makeSpaceForEdgeLabels", () => or(dagreParam1));
   dagreParam2("    removeSelfEdges", () => dagreHelper138(dagreParam1));

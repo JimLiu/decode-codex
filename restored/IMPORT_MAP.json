@@ -5929,6 +5929,28 @@
       },
       "status": "done"
     },
+    "dagre-5oTtyBe6": {
+      "restored": "vendor/dagre.ts",
+      "exports": {
+        "n": "Dagre",
+        "t": "initDagre"
+      },
+      "status": "done",
+      "aliasOf": "dagre-DgCFaaOE",
+      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "note": "Current dagre layout hash re-derived from dagre-5oTtyBe6.js; alias t is the Rolldown lazy init thunk."
+    },
+    "dagre-BqhzN4_p": {
+      "restored": "vendor/dagre.ts",
+      "exports": {
+        "n": "Dagre",
+        "t": "initDagre"
+      },
+      "status": "done",
+      "aliasOf": "dagre-DgCFaaOE",
+      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "note": "Current dagre layout hash re-derived from dagre-BqhzN4_p.js; alias t is the Rolldown lazy init thunk."
+    },
     "main-BDm-p1LA": {
       "restored": "vendor/mermaid-main.ts",
       "exports": {
