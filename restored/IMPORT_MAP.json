@@ -12567,10 +12567,9 @@
     },
     "app-initial~app-main~onboarding-page~profile-QLPeiknY": {
       "restored": "vendor/profile-page-runtime.ts",
-      "status": "partial",
-      "note": "Legacy profile/onboarding compatibility facade. The profile-QLPeiknY chunk is absent from the current ref snapshot; the raw aliases still consumed by restored modules are all exported by the current app-main/new-thread producer chunk recorded in compatibilitySource. Keep this as an open partial boundary until the producer is semantically split.",
-      "lastUpdated": "2026-06-28T21:50:00.000Z",
-      "boundary": "boundaries/current-ref/profile-page-producer.ts",
+      "status": "done",
+      "note": "Legacy profile/onboarding chunk is absent from the current ref. The compatibility facade aliases the done current app-main/new-thread source recorded in compatibilitySource; local conversation profile helpers and their raw current-bundle aliases were verified against vendor/remote-projects-app-shared-current-bundle.ts.",
+      "lastUpdated": "2026-06-30T00:00:00.000Z",
       "compatibilitySource": "app-initial~app-main~worktree-init-v2-page~remote-conversation-page~new-thread-panel-page~o~bj5tp28r-Dcs9S3fj"
     },
     "app-initial~app-main~remote-conversation-page~new-thread-panel-page~appgen-library-page~hot~djo67r4n-CIs8dplf": {
