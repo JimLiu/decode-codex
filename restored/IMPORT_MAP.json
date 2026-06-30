@@ -3192,7 +3192,11 @@
       "exports": {
         "t": "chunkCVBHYZKI"
       },
-      "status": "done"
+      "status": "done",
+      "lastUpdated": "2026-06-30T22:05:00.000Z",
+      "stage3Accepted": true,
+      "stage3AcceptedAt": "2026-06-30T22:05:00.000Z",
+      "stage3Review": "Host self-review: vendor/mermaid-subgraph-title-margins.ts preserves the getSubGraphTitleMargins helper, exports the recorded chunkCVBHYZKI alias, and passes quality-gate --vendored."
     },
     "chunk-CVBHYZKI-CCA47Th3": {
       "restored": "vendor/mermaid-subgraph-title-margins.ts",
@@ -3354,7 +3358,11 @@
       "exports": {
         "t": "chunk4BX2VUAB"
       },
-      "status": "done"
+      "status": "done",
+      "lastUpdated": "2026-06-30T22:05:00.000Z",
+      "stage3Accepted": true,
+      "stage3AcceptedAt": "2026-06-30T22:05:00.000Z",
+      "stage3Review": "Host self-review: vendor/mermaid-accessibility.ts preserves the populateCommonDb accessibility helper, exports the recorded chunk4BX2VUAB alias, and passes quality-gate --vendored."
     },
     "chunk-QZHKN3VN-C6aDqNWX": {
       "restored": "vendor/mermaid-imperative-state.ts",
@@ -24830,8 +24838,11 @@
       },
       "status": "done",
       "aliasOf": "chunk-4BX2VUAB-CQ4cpB2N",
-      "lastUpdated": "2026-06-30T00:00:00.000Z",
-      "note": "Current Mermaid helper wrapper preserves the runtime helper-backed vendor export surface."
+      "lastUpdated": "2026-06-30T22:05:00.000Z",
+      "note": "Current Mermaid helper wrapper preserves the runtime helper-backed vendor export surface.",
+      "stage3Accepted": true,
+      "stage3AcceptedAt": "2026-06-30T22:05:00.000Z",
+      "stage3Review": "Host self-review: exact current chunk-4BX2VUAB-Bbd4mm_a ref asset exports populateCommonDb as t; vendor/mermaid-accessibility.ts exports the recorded alias and passes quality-gate --vendored."
     },
     "chunk-4BX2VUAB-CjbaQjC5": {
       "restored": "vendor/mermaid-accessibility.ts",
@@ -24840,8 +24851,11 @@
       },
       "status": "done",
       "aliasOf": "chunk-4BX2VUAB-CQ4cpB2N",
-      "lastUpdated": "2026-06-30T00:00:00.000Z",
-      "note": "Current Mermaid helper wrapper preserves the runtime helper-backed vendor export surface."
+      "lastUpdated": "2026-06-30T22:05:00.000Z",
+      "note": "Current Mermaid helper wrapper preserves the runtime helper-backed vendor export surface.",
+      "stage3Accepted": true,
+      "stage3AcceptedAt": "2026-06-30T22:05:00.000Z",
+      "stage3Review": "Host self-review: exact current chunk-4BX2VUAB-CjbaQjC5 ref asset exports populateCommonDb as t; vendor/mermaid-accessibility.ts exports the recorded alias and passes quality-gate --vendored."
     },
     "chunk-4BX2VUAB-ConBjPgp": {
       "restored": "vendor/mermaid-accessibility.ts",
@@ -24850,8 +24864,11 @@
       },
       "status": "done",
       "aliasOf": "chunk-4BX2VUAB-CQ4cpB2N",
-      "lastUpdated": "2026-06-30T00:00:00.000Z",
-      "note": "Current Mermaid helper wrapper preserves the runtime helper-backed vendor export surface."
+      "lastUpdated": "2026-06-30T22:05:00.000Z",
+      "note": "Current Mermaid helper wrapper preserves the runtime helper-backed vendor export surface.",
+      "stage3Accepted": true,
+      "stage3AcceptedAt": "2026-06-30T22:05:00.000Z",
+      "stage3Review": "Host self-review: exact current chunk-4BX2VUAB-ConBjPgp ref asset exports populateCommonDb as t; vendor/mermaid-accessibility.ts exports the recorded alias and passes quality-gate --vendored."
     },
     "stateDiagram-v2-QKLJ7IA2-Bge6W8at": {
       "restored": "vendor/mermaid-state-diagram-v2-definition-k5.ts",
