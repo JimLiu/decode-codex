@@ -1,126 +1,185 @@
-// Restored from ref/webview/assets/auto-track-BdOnR2BN.js
-// AutoTrack chunk restored from the Codex webview bundle.
+// Restored from ref/webview/assets/auto-track-B-5mUyDz.js
+// Segment auto-track link and form helpers used by the bundled analytics runtime.
 import { withTimeout } from "../utils/callback";
-function autoTrackHelper1(autoTrackParam5) {
-  var autoTrackValue12 = autoTrackParam5;
-  return !!(
-    autoTrackValue12.ctrlKey ||
-    autoTrackValue12.shiftKey ||
-    autoTrackValue12.metaKey ||
-    (autoTrackValue12.button && autoTrackValue12.button == 1)
+
+type SegmentTrackProperties = Record<string, unknown> | undefined;
+type SegmentTrackOptions = Record<string, unknown>;
+
+type SegmentAutoTrackAnalytics = {
+  settings: {
+    timeout?: number;
+  };
+  track(
+    eventName: string,
+    properties: SegmentTrackProperties,
+    options: SegmentTrackOptions,
+  ): Promise<unknown>;
+};
+
+type ResolvableTrackValue<TElement extends Element, TValue> =
+  | TValue
+  | ((element: TElement) => TValue);
+
+type ArrayLikeElements<TElement extends Element> =
+  | TElement[]
+  | NodeListOf<TElement>
+  | {
+      forEach(callback: (element: TElement) => void): void;
+    }
+  | {
+      toArray(): TElement[];
+    };
+
+type AutoTrackTargets<TElement extends Element> =
+  | TElement
+  | ArrayLikeElements<TElement>;
+
+type JQuerySubmitBinder = {
+  submit(handler: (event: Event) => void): unknown;
+};
+
+type JQueryLike = (element: Element) => JQuerySubmitBinder;
+
+type AutoTrackWindow = Window & {
+  jQuery?: JQueryLike;
+  Zepto?: JQueryLike;
+};
+
+function isModifiedClick(event: MouseEvent): boolean {
+  return event.ctrlKey || event.shiftKey || event.metaKey || event.button === 1;
+}
+
+function opensInNewWindow(element: Element, href: string | null): boolean {
+  return (element as HTMLAnchorElement).target === "_blank" && Boolean(href);
+}
+
+function preventDefaultNavigation(event: Event): void {
+  if (event.preventDefault) {
+    event.preventDefault();
+  } else {
+    (event as Event & { returnValue: boolean }).returnValue = false;
+  }
+}
+
+function resolveTrackValue<TElement extends Element, TValue>(
+  value: ResolvableTrackValue<TElement, TValue>,
+  element: TElement,
+): TValue {
+  return typeof value === "function"
+    ? (value as (element: TElement) => TValue)(element)
+    : value;
+}
+
+function getElementTargets<TElement extends Element>(
+  targets: AutoTrackTargets<TElement>,
+): TElement[] {
+  if (targets instanceof Element) return [targets as TElement];
+  if ("toArray" in targets) return targets.toArray();
+  if (Array.isArray(targets)) return targets;
+
+  const collectedTargets: TElement[] = [];
+  targets.forEach((element) => {
+    collectedTargets.push(element);
+  });
+  return collectedTargets;
+}
+
+function getLinkHref(element: Element): string | null {
+  return (
+    element.getAttribute("href") ||
+    element.getAttributeNS("http://www.w3.org/1999/xlink", "href") ||
+    element.getAttribute("xlink:href") ||
+    element.getElementsByTagName("a")[0]?.getAttribute("href") ||
+    null
   );
 }
-function autoTrackHelper2(event, autoTrackParam6) {
-  return !!(event.target === "_blank" && autoTrackParam6);
+
+function getTrackingTimeout(analytics: SegmentAutoTrackAnalytics): number {
+  return analytics.settings.timeout ?? 500;
 }
+
 export function autoTrackLink(
-  _autoTrackLink,
-  _autoTrackForm,
-  autoTrackParam1,
-  autoTrackParam2,
-) {
-  var autoTrackValue1 = this,
-    autoTrackValue2 = [];
-  return _autoTrackLink
-    ? ((autoTrackValue2 =
-        _autoTrackLink instanceof Element
-          ? [_autoTrackLink]
-          : "toArray" in _autoTrackLink
-            ? _autoTrackLink.toArray()
-            : _autoTrackLink),
-      autoTrackValue2.forEach(function (__autoTrackLink) {
-        __autoTrackLink.addEventListener(
-          "click",
-          function (event) {
-            var autoTrackValue4 =
-                _autoTrackForm instanceof Function
-                  ? _autoTrackForm(__autoTrackLink)
-                  : _autoTrackForm,
-              autoTrackValue5 =
-                autoTrackParam1 instanceof Function
-                  ? autoTrackParam1(__autoTrackLink)
-                  : autoTrackParam1,
-              autoTrackValue6 =
-                __autoTrackLink.getAttribute("href") ||
-                __autoTrackLink.getAttributeNS(
-                  "http://www.w3.org/1999/xlink",
-                  "href",
-                ) ||
-                __autoTrackLink.getAttribute("xlink:href") ||
-                __autoTrackLink
-                  .getElementsByTagName("a")[0]
-                  ?.getAttribute("href"),
-              autoTrackValue7 = withTimeout(
-                autoTrackValue1.track(
-                  autoTrackValue4,
-                  autoTrackValue5,
-                  autoTrackParam2 ?? {},
-                ),
-                autoTrackValue1.settings.timeout ?? 500,
-              );
-            !autoTrackHelper2(__autoTrackLink, autoTrackValue6) &&
-              !autoTrackHelper1(event) &&
-              autoTrackValue6 &&
-              (event.preventDefault
-                ? event.preventDefault()
-                : (event.returnValue = false),
-              autoTrackValue7
-                .catch(console.error)
-                .then(function () {
-                  window.location.href = autoTrackValue6;
-                })
-                .catch(console.error));
-          },
-          false,
+  this: SegmentAutoTrackAnalytics,
+  targets: AutoTrackTargets<Element> | undefined,
+  eventName: ResolvableTrackValue<Element, string>,
+  properties: ResolvableTrackValue<Element, SegmentTrackProperties>,
+  options?: SegmentTrackOptions,
+): SegmentAutoTrackAnalytics {
+  if (!targets) return this;
+
+  for (const linkElement of getElementTargets(targets)) {
+    linkElement.addEventListener(
+      "click",
+      (clickEvent: Event) => {
+        const resolvedEventName = resolveTrackValue(eventName, linkElement);
+        const resolvedProperties = resolveTrackValue(properties, linkElement);
+        const href = getLinkHref(linkElement);
+        const trackingCall = withTimeout(
+          this.track(resolvedEventName, resolvedProperties, options ?? {}),
+          getTrackingTimeout(this),
         );
-      }),
-      this)
-    : this;
+
+        if (
+          opensInNewWindow(linkElement, href) ||
+          isModifiedClick(clickEvent as MouseEvent) ||
+          !href
+        ) {
+          return;
+        }
+
+        preventDefaultNavigation(clickEvent);
+        trackingCall
+          .catch(console.error)
+          .then(() => {
+            window.location.href = href;
+          })
+          .catch(console.error);
+      },
+      false,
+    );
+  }
+
+  return this;
 }
+
 export function autoTrackForm(
-  autoTrackParam3,
-  autoTrackParam4,
-  _autoTrackLink,
-  _autoTrackForm,
-) {
-  var autoTrackValue3 = this;
-  return autoTrackParam3
-    ? (autoTrackParam3 instanceof HTMLFormElement &&
-        (autoTrackParam3 = [autoTrackParam3]),
-      autoTrackParam3.forEach(function (item) {
-        if (!(item instanceof Element))
-          throw TypeError("Must pass HTMLElement to trackForm/trackSubmit.");
-        var autoTrackValue8 = function (event) {
-            event.preventDefault
-              ? event.preventDefault()
-              : (event.returnValue = false);
-            var autoTrackValue10 =
-                autoTrackParam4 instanceof Function
-                  ? autoTrackParam4(item)
-                  : autoTrackParam4,
-              autoTrackValue11 =
-                _autoTrackLink instanceof Function
-                  ? _autoTrackLink(item)
-                  : _autoTrackLink;
-            withTimeout(
-              autoTrackValue3.track(
-                autoTrackValue10,
-                autoTrackValue11,
-                _autoTrackForm ?? {},
-              ),
-              autoTrackValue3.settings.timeout ?? 500,
-            )
-              .catch(console.error)
-              .then(function () {
-                item.submit();
-              })
-              .catch(console.error);
-          },
-          autoTrackValue9 = window.jQuery || window.Zepto;
-        autoTrackValue9
-          ? autoTrackValue9(item).submit(autoTrackValue8)
-          : item.addEventListener("submit", autoTrackValue8, false);
-      }),
-      this)
-    : this;
+  this: SegmentAutoTrackAnalytics,
+  targets: AutoTrackTargets<Element> | undefined,
+  eventName: ResolvableTrackValue<Element, string>,
+  properties: ResolvableTrackValue<Element, SegmentTrackProperties>,
+  options?: SegmentTrackOptions,
+): SegmentAutoTrackAnalytics {
+  if (!targets) return this;
+
+  for (const formElement of getElementTargets(targets)) {
+    if (!(formElement instanceof Element)) {
+      throw TypeError("Must pass HTMLElement to trackForm/trackSubmit.");
+    }
+
+    const submitHandler = (submitEvent: Event) => {
+      preventDefaultNavigation(submitEvent);
+
+      const resolvedEventName = resolveTrackValue(eventName, formElement);
+      const resolvedProperties = resolveTrackValue(properties, formElement);
+      withTimeout(
+        this.track(resolvedEventName, resolvedProperties, options ?? {}),
+        getTrackingTimeout(this),
+      )
+        .catch(console.error)
+        .then(() => {
+          (formElement as HTMLFormElement).submit();
+        })
+        .catch(console.error);
+    };
+    const jqueryLike =
+      (window as AutoTrackWindow).jQuery ?? (window as AutoTrackWindow).Zepto;
+
+    if (jqueryLike) {
+      jqueryLike(formElement).submit(submitHandler);
+    } else {
+      formElement.addEventListener("submit", submitHandler, false);
+    }
+  }
+
+  return this;
 }

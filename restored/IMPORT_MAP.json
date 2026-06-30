@@ -3078,7 +3078,12 @@
         "form": "autoTrackForm",
         "link": "autoTrackLink"
       },
-      "status": "done"
+      "status": "done",
+      "note": "Historical Segment auto-track helper retained in vendor/segment-auto-track.ts; the current synced ref uses auto-track-B-5mUyDz with the same form/link export surface.",
+      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "stage3Accepted": true,
+      "stage3AcceptedAt": "2026-06-30T00:00:00.000Z",
+      "stage3Review": "Host self-review: vendor/segment-auto-track.ts was rewritten with typed Segment link/form helpers, passes quality-gate, and preserves the recorded form/link aliases."
     },
     "auto-track-BdOnR2BN": {
       "restored": "vendor/segment-auto-track.ts",
@@ -3088,7 +3093,23 @@
       },
       "status": "done",
       "aliasOf": "auto-track-CVxnO46V",
-      "lastUpdated": "2026-06-29T00:00:00.000Z"
+      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "stage3Accepted": true,
+      "stage3AcceptedAt": "2026-06-30T00:00:00.000Z",
+      "stage3Review": "Host self-review: historical auto-track-BdOnR2BN has the same Segment form/link export surface covered by vendor/segment-auto-track.ts."
+    },
+    "auto-track-B-5mUyDz": {
+      "restored": "vendor/segment-auto-track.ts",
+      "exports": {
+        "form": "autoTrackForm",
+        "link": "autoTrackLink"
+      },
+      "status": "done",
+      "migratedFrom": "auto-track-BdOnR2BN",
+      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "stage3Accepted": true,
+      "stage3AcceptedAt": "2026-06-30T00:00:00.000Z",
+      "stage3Review": "Host self-review: current ref export table is export { s as form, o as link }; vendor/segment-auto-track.ts exposes those aliases as autoTrackForm and autoTrackLink and passes quality-gate."
     },
     "chunk-AGHRB4JF-DNCNxfKz": {
       "restored": "vendor/dompurify.ts",
