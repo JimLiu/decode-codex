@@ -50,9 +50,12 @@ export {
   getRegisteredThreadSidePanelTabs,
   getThreadSidePanelTabId,
   getThreadSidePanelTabOrder,
+  initThreadCommandMenuEntryRegistryChunk,
   initThreadSidePanelTabRegistryChunk,
   registerThreadSidePanelTab,
+  threadCommandMenuEntriesSignal,
   threadSidePanelTabDefinitionsSignal,
+  useRegisterThreadCommandMenuEntry,
 } from "./side-panel-tabs";
 export {
   initThreadAppShellSourcesChunk,

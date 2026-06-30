@@ -3,6 +3,7 @@
 import { useEffect, useMemo } from "react";
 
 import {
+  _appScopeO as useAppScopeStore,
   _appScopeC as createAppScopeSelector,
   appScopeRoot,
   createAppScopeSignal,
@@ -13,6 +14,8 @@ export const threadSidePanelTabDefinitionsSignal = createAppScopeSignal(
   appScopeRoot,
   [] as ThreadSidePanelTabDefinition[],
 );
+export const threadCommandMenuEntriesSignal =
+  threadSidePanelTabDefinitionsSignal;
 
 export const enabledThreadSidePanelTabsSignal = createAppScopeSelector(
   appScopeRoot,
@@ -30,6 +33,14 @@ const registeredThreadSidePanelTabs = new Map<
 export function registerThreadSidePanelTab(
   definition: ThreadSidePanelTabDefinition,
 ) {
+  const appScopeStore = useAppScopeStore() as {
+    set(
+      signal: unknown,
+      updater: (
+        currentDefinitions: readonly ThreadSidePanelTabDefinition[] | undefined,
+      ) => readonly ThreadSidePanelTabDefinition[],
+    ): void;
+  };
   const dependencyKey = useMemo(
     () =>
       definition.dependencies == null
@@ -39,12 +50,20 @@ export function registerThreadSidePanelTab(
   );
 
   useEffect(() => {
+    appScopeStore.set(threadSidePanelTabDefinitionsSignal, (current = []) =>
+      upsertThreadSidePanelTab(current, definition),
+    );
     registeredThreadSidePanelTabs.set(definition.id, definition);
     return () => {
+      appScopeStore.set(threadSidePanelTabDefinitionsSignal, (current = []) =>
+        current.filter((tab) => tab.id !== definition.id),
+      );
       registeredThreadSidePanelTabs.delete(definition.id);
     };
-  }, [definition, dependencyKey]);
+  }, [appScopeStore, definition, dependencyKey]);
 }
+
+export const useRegisterThreadCommandMenuEntry = registerThreadSidePanelTab;
 
 export function getRegisteredThreadSidePanelTabs() {
   return Array.from(registeredThreadSidePanelTabs.values())
@@ -81,4 +100,22 @@ function normalizeDependencyKey(value: unknown) {
   return value == null ? "" : String(value);
 }
 
+function upsertThreadSidePanelTab(
+  currentDefinitions: readonly ThreadSidePanelTabDefinition[],
+  definition: ThreadSidePanelTabDefinition,
+) {
+  let didReplace = false;
+  const nextDefinitions = currentDefinitions.map((tab) => {
+    if (tab.id !== definition.id) return tab;
+    didReplace = true;
+    return definition;
+  });
+  if (!didReplace) nextDefinitions.push(definition);
+  return nextDefinitions
+    .filter(isThreadSidePanelTabEnabled)
+    .sort(compareThreadSidePanelTabs);
+}
+
 export function initThreadSidePanelTabRegistryChunk() {}
+export const initThreadCommandMenuEntryRegistryChunk =
+  initThreadSidePanelTabRegistryChunk;

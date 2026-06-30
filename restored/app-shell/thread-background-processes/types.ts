@@ -8,6 +8,9 @@ export type ThreadSidePanelTabDefinition<Props = unknown> = {
   order?: number | null;
   enabled?: boolean;
   dependencies?: readonly unknown[] | null;
+  exclusive?: boolean;
+  groupKey?: string;
+  render?: (closeMenu: () => void, clearSearch?: () => void) => ReactNode;
   component?: ComponentType<Props>;
   icon?: ReactNode;
   props?: Props;
