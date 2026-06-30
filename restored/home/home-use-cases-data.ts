@@ -1,4 +1,5 @@
 // Restored from ref/webview/assets/home-use-cases-data-hIxZSoyH.js
+// Also matches ref/webview/assets/home-use-cases-data-BeTzhg1t.js.
 // Home use-case data restored from the current Codex webview bundle.
 import { defineMessage } from "react-intl";
 const HOME_USE_CASES = [
