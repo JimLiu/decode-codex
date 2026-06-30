@@ -28,8 +28,19 @@ import gruvboxDarkSoftTheme from "@shikijs/themes/gruvbox-dark-soft";
 import gruvboxLightHardTheme from "@shikijs/themes/gruvbox-light-hard";
 import gruvboxLightMediumTheme from "@shikijs/themes/gruvbox-light-medium";
 import gruvboxLightSoftTheme from "@shikijs/themes/gruvbox-light-soft";
+import horizonBrightTheme from "@shikijs/themes/horizon-bright";
+import horizonTheme from "@shikijs/themes/horizon";
+import houstonTheme from "@shikijs/themes/houston";
+import kanagawaDragonTheme from "@shikijs/themes/kanagawa-dragon";
+import kanagawaLotusTheme from "@shikijs/themes/kanagawa-lotus";
+import kanagawaWaveTheme from "@shikijs/themes/kanagawa-wave";
+import laserwaveTheme from "@shikijs/themes/laserwave";
 import lightPlusTheme from "@shikijs/themes/light-plus";
+import materialThemeTheme from "@shikijs/themes/material-theme";
 import materialThemeDarkerTheme from "@shikijs/themes/material-theme-darker";
+import materialThemeLighterTheme from "@shikijs/themes/material-theme-lighter";
+import materialThemeOceanTheme from "@shikijs/themes/material-theme-ocean";
+import materialThemePalenightTheme from "@shikijs/themes/material-theme-palenight";
 import monokaiTheme from "@shikijs/themes/monokai";
 
 export {
@@ -60,7 +71,18 @@ export {
   gruvboxLightHardTheme,
   gruvboxLightMediumTheme,
   gruvboxLightSoftTheme,
+  horizonBrightTheme,
+  horizonTheme,
+  houstonTheme,
+  kanagawaDragonTheme,
+  kanagawaLotusTheme,
+  kanagawaWaveTheme,
+  laserwaveTheme,
   lightPlusTheme,
+  materialThemeTheme,
   materialThemeDarkerTheme,
+  materialThemeLighterTheme,
+  materialThemeOceanTheme,
+  materialThemePalenightTheme,
   monokaiTheme,
 };
