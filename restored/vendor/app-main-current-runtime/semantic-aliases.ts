@@ -3,6 +3,16 @@
 // Flat boundary. Vendored app-main current runtime semantic alias barrel.
 import { getThreadManagementToolHandlers } from "../../conversations/thread-management-tool-handlers";
 
+export {
+  initReactReduxProviderRuntimeChunk,
+  ReactReduxProvider,
+} from "../react-redux-provider-runtime";
+export {
+  requireLodashGetPrototypeOf,
+  requireLodashIsPlainObject,
+} from "../lodash-object-runtime";
+export { requireReactIsRuntime } from "../react-is-runtime";
+export { requireUseSyncExternalStoreWithSelectorRuntime } from "../use-sync-external-store-selector-runtime";
 export { GlobeIcon } from "../../icons/globe-icon";
 export { AlertIcon, initAlertIconChunk } from "../../icons/alert-icon";
 export { FolderIcon, initFolderIconChunk } from "../../icons/folder-icon";
