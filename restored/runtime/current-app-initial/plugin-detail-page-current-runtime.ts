@@ -146,6 +146,7 @@ export {
   pluginDetailInstallProgressResetMs,
   pluginDetailMessages,
   pluginDetailPageAt,
+  pluginDetailPageA,
   pluginDetailPageB,
   pluginDetailPageC,
   pluginDetailPageCt,

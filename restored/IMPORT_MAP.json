@@ -42605,12 +42605,12 @@
         "CodexMobilePage": "CodexMobilePage"
       },
       "status": "done",
-      "note": "Current Codex mobile page hash maps to a dedicated current-ref runtime over vendor/codex-mobile-page-current-bundle.tsx; aliases are derived from the current file and dependencies are rewritten through restored current bundles.",
+      "note": "Current Codex mobile page hash maps to a dedicated current-ref runtime over codex-mobile/page.tsx; vendor/codex-mobile-page-current-bundle.tsx remains only as a compatibility shim.",
       "lastUpdated": "2026-06-30T23:08:42.578Z",
       "stage3Accepted": true,
       "stage3AcceptedAt": "2026-06-30T23:08:42.578Z",
-      "stage3Review": "Host self-review: parsed codex-mobile-page-CB-Xg-VQ.js exports, rebuilt the CodexMobilePage compatibility export from auto-renames.json, and rewrote dependency imports through restored/IMPORT_MAP.json with consumer rename aliases.",
-      "stage3Note": "Accepted as a current-ref compatibility export over a restored-dependency backing bundle; full semantic split of the page remains future cleanup."
+      "stage3Review": "Host self-review: parsed codex-mobile-page-CB-Xg-VQ.js exports, moved the page body into codex-mobile/page.tsx, preserved the CodexMobilePage public surface, and verified the semantic page, runtime, and compatibility shim with quality-gate.",
+      "stage3Note": "Accepted as a current-ref compatibility export over the semantic Codex Mobile page body."
     },
     "debug-modal-B1KfgYMB": {
       "restored": "runtime/current-app-initial/debug-modal-current-runtime.ts",
