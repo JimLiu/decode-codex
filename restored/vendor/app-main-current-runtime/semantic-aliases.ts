@@ -1,6 +1,7 @@
 // Restored from ref/webview/assets/app-initial~app-main~onboarding-page-CgNc-Bk2.js
 // Named app-main current runtime aliases recovered from the current producer.
 export { GlobeIcon } from "../../icons/globe-icon";
+export { FolderIcon } from "../../icons/folder-icon";
 export { composeRefs } from "../../utils/compose-refs";
 export { SettingsControlRow } from "../../ui/settings-row";
 export { composeEventHandlers } from "../radix-event-helpers";
@@ -59,7 +60,6 @@ export {
   cl as areArraysEqual,
   cm as ThreadRowEnvironmentMeta,
   cp as ThreadRowTimestamp,
-  df as FolderIcon,
   dl as SidebarRowDragHandle,
   el as initOpenInBrowserRuntimeChunk,
   eu as SidebarRowUnreadDot,
