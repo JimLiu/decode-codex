@@ -24,4 +24,11 @@ const HOOK_EVENT_NAMES: HookEventName[] = [
   "stop",
 ];
 
-export { HOOK_EVENT_NAMES, HOOK_SOURCE_GROUP_IDS, UNKNOWN_PLUGIN_ID };
+function initHooksSettingsModelConstantsChunk(): void {}
+
+export {
+  HOOK_EVENT_NAMES,
+  HOOK_SOURCE_GROUP_IDS,
+  UNKNOWN_PLUGIN_ID,
+  initHooksSettingsModelConstantsChunk,
+};

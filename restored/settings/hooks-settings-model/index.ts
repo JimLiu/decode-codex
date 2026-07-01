@@ -17,7 +17,10 @@ import {
   getPreferredHookSourceSelection,
   parseHookSourceSelection,
 } from "./selection";
-import { UNKNOWN_PLUGIN_ID } from "./constants";
+import {
+  UNKNOWN_PLUGIN_ID,
+  initHooksSettingsModelConstantsChunk,
+} from "./constants";
 
 export {
   getHooksForEvent,
@@ -34,4 +37,5 @@ export {
   getPreferredHookSourceSelection,
   UNKNOWN_PLUGIN_ID,
   findHookSourceEntry,
+  initHooksSettingsModelConstantsChunk,
 };

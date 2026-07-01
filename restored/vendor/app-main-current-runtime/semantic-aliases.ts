@@ -578,6 +578,7 @@ export {
   getDefaultPluginHookEventSelection,
   getHooksForEvent,
   getPluginHooksNeedingReview,
+  initHooksSettingsModelConstantsChunk,
   mergeHookEventOrder,
   parseHookSourceSelection,
   summarizeHookConfigEntryIssues,
