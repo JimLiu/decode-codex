@@ -22,6 +22,7 @@ export {
   useCloudEnvironmentsQuery,
   useReferralInviteMutation,
 } from "../../runtime/codex-api";
+export { LocalConversationGitActions } from "../../conversations/local-conversation-git-actions";
 export {
   browserTabIdForConversation,
   deriveBrowserConversationId,
@@ -38,6 +39,11 @@ export {
 } from "../../ui/settings-row";
 export { CHATGPT_PRICING_URL } from "../../utils/links-bd-mmkun-d";
 export { normalizeWorkspacePath } from "../../boundaries/src-l0hb/paths";
+export { setPinnedThreadsOrder } from "../../utils/set-pinned-thread";
+export {
+  initMeasuredTextCollapseRuntimeChunk,
+  useMeasuredTextCollapse,
+} from "../../utils/use-measured-text-collapse";
 export {
   getCommandExecutionText,
   initBrowserCommentAttachmentRuntime,
@@ -78,7 +84,6 @@ export {
   To as registerForkedConversation,
   Ud as ThreadRowPinAction,
   Un as hostBridge,
-  Wa as pathsMatch,
   Wd as ThreadRowUnreadState,
   Wl as SidebarListSection,
   Yd as ThreadRowHoverActions,
@@ -87,7 +92,6 @@ export {
   al as SidebarRowMenuSeparator,
   bl as openThreadReviewSidePanelTab,
   cf as openThreadMcpAppSidePanelTab,
-  cl as areArraysEqual,
   cm as ThreadRowEnvironmentMeta,
   cp as ThreadRowTimestamp,
   dl as SidebarRowDragHandle,
@@ -104,7 +108,6 @@ export {
   hp as useComposedRefs,
   ki as SidebarRowIcon,
   ld as ToastContent,
-  ll as initArrayEqualityRuntimeChunk,
   ml as openSessionSandboxSidePanel,
   mo as initForkConversationMessagesChunk,
   nf as liveMcpAppFrameSignal,
@@ -118,7 +121,6 @@ export {
   sl as SidebarRowShortcutScope,
   sm as SidebarRowContextMenuItem,
   ud as initExternalAgentImportStatusIconsChunk,
-  ul as mergeVisibleThreadOrder,
   vl as openThreadBrowserSidePanelTabWithoutAnimation,
   xl as openThreadTimelineSidePanel,
   xo as initForkConversationToastRuntime,

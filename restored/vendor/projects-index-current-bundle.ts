@@ -348,7 +348,7 @@ import {
   appMainCurrentCompatSlotUpperULowerA as pa,
   initFastServiceTierIcon as ma,
   appMainCurrentCompatSlotUpperVLowerA as ha,
-  pathsMatch as ga,
+  setPinnedThreadsOrder as ga,
   appMainCurrentCompatSlotUpperWLowerR as _a,
   appMainCurrentCompatSlotUpperWLowerT as va,
   appMainCurrentCompatSlotUpperXLowerT as ya,

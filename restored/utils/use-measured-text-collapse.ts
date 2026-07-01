@@ -21,6 +21,9 @@ type MeasuredTextCollapseOptions = TextMeasurementOptions & {
 };
 const DEFAULT_LINE_HEIGHT_MULTIPLIER = 1.5;
 const COLLAPSE_HEIGHT_TOLERANCE_PX = 1;
+
+function initMeasuredTextCollapseRuntimeChunk(): void {}
+
 function useMeasuredTextMeasurement({
   collapsedLineCount,
   fallbackFontSizePx,
@@ -153,4 +156,8 @@ function getLineHeightPx(
     ? lineHeightPx
     : fontSizePx * DEFAULT_LINE_HEIGHT_MULTIPLIER;
 }
-export { useMeasuredTextMeasurement, useMeasuredTextCollapse };
+export {
+  initMeasuredTextCollapseRuntimeChunk,
+  useMeasuredTextMeasurement,
+  useMeasuredTextCollapse,
+};
