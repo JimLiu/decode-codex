@@ -30,7 +30,7 @@ type ConversationalOnboardingRoleType = string;
 
 // --- Lifecycle ---------------------------------------------------------------
 
-export function trackConversationalOnboardingLifecycleStarted(
+function trackConversationalOnboardingLifecycleStarted(
   scope: ProductLoggerScope,
 ): void {
   emitLifecycleEvent({
@@ -39,7 +39,7 @@ export function trackConversationalOnboardingLifecycleStarted(
   });
 }
 
-export function trackConversationalOnboardingLifecycleCompleted(
+function trackConversationalOnboardingLifecycleCompleted(
   scope: ProductLoggerScope,
   selectedTask?: ConversationalOnboardingTaskId | null,
 ): void {
@@ -50,7 +50,7 @@ export function trackConversationalOnboardingLifecycleCompleted(
   });
 }
 
-export function trackConversationalOnboardingLifecycleSkipped(
+function trackConversationalOnboardingLifecycleSkipped(
   scope: ProductLoggerScope,
   selectedTask?: ConversationalOnboardingTaskId | null,
 ): void {
@@ -61,7 +61,7 @@ export function trackConversationalOnboardingLifecycleSkipped(
   });
 }
 
-export function trackConversationalOnboardingLifecycleStartFailed(
+function trackConversationalOnboardingLifecycleStartFailed(
   scope: ProductLoggerScope,
   selectedTask?: ConversationalOnboardingTaskId | null,
 ): void {
@@ -93,7 +93,7 @@ function emitLifecycleEvent({
 
 // --- App access --------------------------------------------------------------
 
-export function trackConversationalOnboardingAccessStarted(
+function trackConversationalOnboardingAccessStarted(
   scope: ProductLoggerScope,
   task: ConversationalOnboardingTaskId,
 ): void {
@@ -105,7 +105,7 @@ export function trackConversationalOnboardingAccessStarted(
   });
 }
 
-export function trackConversationalOnboardingAccessRequested(
+function trackConversationalOnboardingAccessRequested(
   scope: ProductLoggerScope,
   task: ConversationalOnboardingTaskId,
 ): void {
@@ -117,7 +117,7 @@ export function trackConversationalOnboardingAccessRequested(
   });
 }
 
-export function trackConversationalOnboardingAccessCompleted(
+function trackConversationalOnboardingAccessCompleted(
   scope: ProductLoggerScope,
   task: ConversationalOnboardingTaskId,
 ): void {
@@ -129,7 +129,7 @@ export function trackConversationalOnboardingAccessCompleted(
   });
 }
 
-export function trackConversationalOnboardingAccessHostServiceUnavailable(
+function trackConversationalOnboardingAccessHostServiceUnavailable(
   scope: ProductLoggerScope,
   task: ConversationalOnboardingTaskId,
 ): void {
@@ -140,7 +140,7 @@ export function trackConversationalOnboardingAccessHostServiceUnavailable(
   );
 }
 
-export function trackConversationalOnboardingAccessPluginUnavailable(
+function trackConversationalOnboardingAccessPluginUnavailable(
   scope: ProductLoggerScope,
   task: ConversationalOnboardingTaskId,
 ): void {
@@ -188,7 +188,7 @@ function emitAccessEvent({
 
 // --- Task execution ----------------------------------------------------------
 
-export function trackConversationalOnboardingExecutionStarted(
+function trackConversationalOnboardingExecutionStarted(
   scope: ProductLoggerScope,
   task: ConversationalOnboardingTaskId,
 ): void {
@@ -199,7 +199,7 @@ export function trackConversationalOnboardingExecutionStarted(
   });
 }
 
-export function trackConversationalOnboardingExecutionCompleted(
+function trackConversationalOnboardingExecutionCompleted(
   scope: ProductLoggerScope,
   task: ConversationalOnboardingTaskId,
 ): void {
@@ -210,7 +210,7 @@ export function trackConversationalOnboardingExecutionCompleted(
   });
 }
 
-export function trackConversationalOnboardingExecutionStartFailed(
+function trackConversationalOnboardingExecutionStartFailed(
   scope: ProductLoggerScope,
   task: ConversationalOnboardingTaskId,
 ): void {
@@ -222,7 +222,7 @@ export function trackConversationalOnboardingExecutionStartFailed(
   });
 }
 
-export function trackConversationalOnboardingExecutionCompletionMissing(
+function trackConversationalOnboardingExecutionCompletionMissing(
   scope: ProductLoggerScope,
   task: ConversationalOnboardingTaskId,
 ): void {
@@ -234,7 +234,7 @@ export function trackConversationalOnboardingExecutionCompletionMissing(
   });
 }
 
-export function trackConversationalOnboardingExecutionCancelled(
+function trackConversationalOnboardingExecutionCancelled(
   scope: ProductLoggerScope,
   task: ConversationalOnboardingTaskId,
 ): void {
@@ -265,7 +265,7 @@ function emitExecutionEvent({
 
 // --- Role / task selection ---------------------------------------------------
 
-export function trackConversationalOnboardingRoleSelected(
+function trackConversationalOnboardingRoleSelected(
   scope: ProductLoggerScope,
   roleType: ConversationalOnboardingRoleType,
 ): void {
@@ -275,7 +275,7 @@ export function trackConversationalOnboardingRoleSelected(
   });
 }
 
-export function trackConversationalOnboardingTaskSelected(
+function trackConversationalOnboardingTaskSelected(
   scope: ProductLoggerScope,
   task: ConversationalOnboardingTaskId,
 ): void {

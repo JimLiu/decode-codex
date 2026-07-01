@@ -91,7 +91,7 @@ interface DesktopNoteTaskIconProps {
   className?: string;
 }
 
-export function DesktopNoteTaskIcon({
+function DesktopNoteTaskIcon({
   className,
 }: DesktopNoteTaskIconProps): React.ReactElement {
   return <FolderDuotoneBlueIcon className={className} />;
@@ -275,7 +275,7 @@ interface DesktopNoteTaskViewProps {
   onRetryTask: () => void;
 }
 
-export function DesktopNoteTaskView({
+function DesktopNoteTaskView({
   context,
   onChooseAnotherTask,
   onRetryTask,

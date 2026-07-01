@@ -19,25 +19,25 @@ import {
 import { RawIntlProvider, useIntl } from "../vendor/react-intl";
 import type { IntlShape } from "../vendor/react-intl";
 
-export interface SampleSalesBaseDatum {
+interface SampleSalesBaseDatum {
   online: number;
   retail: number;
   corporate: number;
 }
 
-export interface SampleSalesChartDatum extends SampleSalesBaseDatum {
+interface SampleSalesChartDatum extends SampleSalesBaseDatum {
   month: string;
   monthLong: string;
   total: number;
 }
 
-export interface SampleSalesChartSeries {
+interface SampleSalesChartSeries {
   key: keyof SampleSalesBaseDatum;
   label: string;
   color: string;
 }
 
-export interface ConversationalOnboardingSampleChartModel {
+interface ConversationalOnboardingSampleChartModel {
   title: string;
   subtitle: string;
   ordersLabel: string;
@@ -46,7 +46,7 @@ export interface ConversationalOnboardingSampleChartModel {
   series: SampleSalesChartSeries[];
 }
 
-export const SAMPLE_SALES_BASE_DATA: SampleSalesBaseDatum[] = [
+const SAMPLE_SALES_BASE_DATA: SampleSalesBaseDatum[] = [
   { online: 184, retail: 96, corporate: 42 },
   { online: 196, retail: 102, corporate: 38 },
   { online: 231, retail: 110, corporate: 47 },
@@ -61,11 +61,11 @@ export const SAMPLE_SALES_BASE_DATA: SampleSalesBaseDatum[] = [
   { online: 641, retail: 432, corporate: 126 },
 ];
 
-export const SAMPLE_CHART_WIDTH = 1496;
-export const SAMPLE_CHART_HEIGHT = 970;
-export const SAMPLE_CHART_Y_TICKS = [0, 300, 600, 900, 1200];
+const SAMPLE_CHART_WIDTH = 1496;
+const SAMPLE_CHART_HEIGHT = 970;
+const SAMPLE_CHART_Y_TICKS = [0, 300, 600, 900, 1200];
 
-export function buildConversationalOnboardingSampleChartModel(
+function buildConversationalOnboardingSampleChartModel(
   intl: IntlShape,
 ): ConversationalOnboardingSampleChartModel {
   const data: SampleSalesChartDatum[] = SAMPLE_SALES_BASE_DATA.map(
@@ -158,7 +158,7 @@ interface SampleSalesBarTotalLabelProps {
   y?: unknown;
 }
 
-export function SampleSalesBarTotalLabel({
+function SampleSalesBarTotalLabel({
   formatNumber,
   value,
   width,
@@ -192,7 +192,7 @@ interface SampleSalesChartAccessibilityOverlayProps {
   model: ConversationalOnboardingSampleChartModel;
 }
 
-export function SampleSalesChartAccessibilityOverlay({
+function SampleSalesChartAccessibilityOverlay({
   model,
 }: SampleSalesChartAccessibilityOverlayProps): React.ReactElement {
   const legendColumnX = [19, 253, 512];
@@ -222,7 +222,7 @@ export function SampleSalesChartAccessibilityOverlay({
   );
 }
 
-export function ConversationalOnboardingSampleSalesChart(): React.ReactElement {
+function ConversationalOnboardingSampleSalesChart(): React.ReactElement {
   const intl = useIntl();
   const model = buildConversationalOnboardingSampleChartModel(intl);
 

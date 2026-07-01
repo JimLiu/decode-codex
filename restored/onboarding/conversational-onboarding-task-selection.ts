@@ -6,8 +6,8 @@
 import { PlanType } from "../boundaries/onboarding-commons-externals.facade";
 
 import {
-  conversationalOnboardingTasks,
   getConversationalOnboardingTaskPluginName,
+  isConversationalOnboardingMessagingTask,
 } from "./conversational-onboarding-task-registry";
 import type {
   ConversationalOnboardingPluginName,
@@ -59,12 +59,6 @@ export function mapConversationalOnboardingTasksToAppPlugins(
     if (match != null) result.set(task, match);
   }
   return result;
-}
-
-export function isConversationalOnboardingMessagingTask(
-  task: ConversationalOnboardingTaskId,
-): boolean {
-  return "getPluginName" in conversationalOnboardingTasks[task];
 }
 
 export function getAvailableConversationalOnboardingTasks(

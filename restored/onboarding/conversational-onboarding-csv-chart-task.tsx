@@ -75,7 +75,7 @@ const csvExecutionPhaseSignal = createScopedAtom<CsvExecutionPhase>(
   "minimum-generation-elapsed",
 );
 
-export function CsvChartSelectionAttachment(): React.ReactElement {
+function CsvChartSelectionAttachment(): React.ReactElement {
   const intl = useIntl();
   const fileStem = intl.formatMessage({
     id: "electron.onboarding.conversationalOnboarding.sampleCsv.filename",
@@ -99,7 +99,7 @@ interface CsvChartTaskIconProps {
   className?: string;
 }
 
-export function CsvChartTaskIcon({
+function CsvChartTaskIcon({
   className,
 }: CsvChartTaskIconProps): React.ReactElement {
   const Icon = useIsDarkMode() === true ? CsvFileDarkIcon : CsvFileLightIcon;
@@ -255,7 +255,7 @@ interface CsvChartTaskViewProps {
   onRetryTask: () => void;
 }
 
-export function CsvChartTaskView({
+function CsvChartTaskView({
   context,
   onRetryTask,
 }: CsvChartTaskViewProps): React.ReactElement | null {
@@ -412,7 +412,7 @@ function resetCsvChartTask(store: ScopedStore): void {
   store.set(csvExecutionPhaseSignal, "minimum-generation-elapsed");
 }
 
-export const csvChartTask: ConversationalOnboardingTaskBase = {
+const csvChartTaskDefinition: ConversationalOnboardingTaskBase = {
   getDeclinedRetryPrompt(intl: IntlShape) {
     return intl.formatMessage({
       id: "electron.onboarding.conversationalOnboarding.csvTaskDeclinedRetry",
@@ -450,3 +450,6 @@ export const csvChartTask: ConversationalOnboardingTaskBase = {
   start: startCsvChartTask,
   View: CsvChartTaskView,
 };
+
+export const csvChartTask: ConversationalOnboardingTaskBase =
+  csvChartTaskDefinition;

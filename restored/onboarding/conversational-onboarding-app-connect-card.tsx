@@ -29,7 +29,7 @@ type AppConnectCardProps = {
   title: ReactNode;
 };
 
-export function AppConnectCard({
+function AppConnectCard({
   actions,
   icon,
   subtitle,
@@ -70,7 +70,7 @@ type AppConnectRequestProps = {
   onRetryTask: () => void;
 };
 
-export function AppConnectRequest({
+function AppConnectRequest({
   declinedMessage,
   executionFailed,
   intro,
@@ -127,7 +127,7 @@ type AppConnectStepProps = {
   onRetryTask: () => void;
 };
 
-export function AppConnectStep({
+function AppConnectStep({
   appInfo,
   appName,
   appPluginName,
@@ -197,7 +197,7 @@ type AppConnectPermissionCardProps = {
   onDismiss: () => void;
 };
 
-export function AppConnectPermissionCard({
+function AppConnectPermissionCard({
   appInfo,
   appName,
   appPluginName,
@@ -314,7 +314,7 @@ type AppConnectStartErrorProps = {
   onRetry: () => void;
 };
 
-export function AppConnectStartError({ onRetry }: AppConnectStartErrorProps) {
+function AppConnectStartError({ onRetry }: AppConnectStartErrorProps) {
   return (
     <div className="flex items-center gap-3">
       <p>
