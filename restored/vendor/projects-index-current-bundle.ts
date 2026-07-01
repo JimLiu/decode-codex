@@ -332,7 +332,7 @@ import {
   getSidebarThreadEntityIds as Zi,
   appMainCurrentCompatSlotUpperELowerL as Qi,
   appMainCurrentCompatSlotUpperGLowerN as $i,
-  appMainCurrentCompatSlotUpperGLowerT as ea,
+  initAlertIconChunk as ea,
   setPinnedThreadOptimistically as ta,
   appMainCurrentCompatSlotUpperJLowerN as na,
   appMainCurrentCompatSlotUpperKLowerN as ra,

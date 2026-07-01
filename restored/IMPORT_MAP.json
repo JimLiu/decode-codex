@@ -26843,7 +26843,7 @@
         "Gp": "appMainCurrentCompatSlotUpperGLowerP",
         "Gr": "appMainCurrentCompatSlotUpperGLowerR",
         "Gs": "appMainCurrentCompatSlotUpperGLowerS",
-        "Gt": "appMainCurrentCompatSlotUpperGLowerT",
+        "Gt": "initAlertIconChunk",
         "Gu": "appMainCurrentCompatSlotUpperGLowerU",
         "H": "appMainCurrentCompatSlotUpperH",
         "Ha": "setPinnedThreadOptimistically",

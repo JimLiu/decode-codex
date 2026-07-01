@@ -1,7 +1,7 @@
 // Restored from ref/webview/assets/app-initial~app-main~onboarding-page-CgNc-Bk2.js
 // Named app-main current runtime aliases recovered from the current producer.
 export { GlobeIcon } from "../../icons/globe-icon";
-export { AlertIcon } from "../../icons/alert-icon";
+export { AlertIcon, initAlertIconChunk } from "../../icons/alert-icon";
 export { FolderIcon, initFolderIconChunk } from "../../icons/folder-icon";
 export { ClockIcon } from "../../icons/clock-icon";
 export { CloudIcon, initCloudIconChunk } from "../../icons/cloud-icon";
