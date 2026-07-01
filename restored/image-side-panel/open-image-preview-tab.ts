@@ -1,10 +1,10 @@
 // Restored from ref/webview/assets/app-initial~app-main~onboarding-page-BUwCKIcU.js
 // Open the generated-image preview in a right-panel tab (gated by a feature flag).
 import { createElement } from "react";
+import { ImagePreviewTabContent } from "./image-preview-tab-content";
 import {
   evaluateFeatureGate,
   previewTabManager,
-  ImagePreviewTabContent,
   ImagePreviewTabIcon,
   focusPreviewTabComposer,
 } from "../boundaries/onboarding-commons-externals.facade";
