@@ -6,6 +6,7 @@ export function initPagedAnnotationOverlayGeometryChunk(): void {}
 export function initPagedAnnotationOverlaysChunk(): void {}
 
 export {
+  ANNOTATION_ACCENT_COLOR,
   ANNOTATION_CROSSHAIR_CURSOR,
   ANNOTATION_EDITOR_ENTER_CLASS,
 } from "./paged-annotation-overlay-constants";

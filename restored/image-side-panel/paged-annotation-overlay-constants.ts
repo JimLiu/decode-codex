@@ -26,6 +26,7 @@ const CURSOR_DATA_URI = svgToDataUri(
 );
 
 export const EPSILON = 2.220446049250313e-16;
+export const ANNOTATION_ACCENT_COLOR = ACCENT_COLOR;
 export const RECT_GAP = 8;
 export const PREVIEW_HEIGHT = 32;
 export const PREVIEW_MAX_WIDTH = 294;

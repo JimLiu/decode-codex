@@ -527,6 +527,7 @@ export {
   openImagePreviewTab,
 } from "../../image-side-panel/open-image-preview-tab";
 export {
+  ANNOTATION_ACCENT_COLOR,
   ANNOTATION_CROSSHAIR_CURSOR,
   ANNOTATION_EDITOR_ENTER_CLASS,
   AnnotationHighlightRect,
@@ -538,6 +539,7 @@ export {
   initPagedAnnotationOverlayGeometryChunk,
   initPagedAnnotationOverlaysChunk,
   isToggleImageCommentShortcut,
+  CommentPreview,
   PagedAnnotationMarker,
   topRightCorner,
 } from "../../image-side-panel/paged-annotation-overlays";
