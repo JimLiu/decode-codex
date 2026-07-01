@@ -5,6 +5,10 @@
 // leading turn intro (localConversation domain).
 import { uniqBy } from "../boundaries/onboarding-commons-externals.facade";
 
+export function initTurnItemPartitioningChunk(): void {}
+
+export function initSliceTurnItemsAfterIntroChunk(): void {}
+
 export type TurnItem = {
   type: string;
   [key: string]: any;

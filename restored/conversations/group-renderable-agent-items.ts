@@ -9,6 +9,8 @@ import {
   last,
 } from "../boundaries/onboarding-commons-externals.facade";
 
+export function initRenderableAgentItemsGroupingChunk(): void {}
+
 export type AgentTurnItem = {
   type: string;
   parsedCmd?: {

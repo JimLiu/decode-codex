@@ -349,8 +349,22 @@ export {
   groupPendingMcpToolCalls,
   shouldRenderActivityGroup,
 } from "../../conversations/conversation-activity-grouping";
-export { sliceTurnItemsAfterIntro } from "../../conversations/partition-turn-items";
-export { updateCollapsedTurnState } from "../../conversations/turn-collapse-state";
+export {
+  getTurnAgentItemGroups,
+  initSliceTurnItemsAfterIntroChunk,
+  initTurnItemPartitioningChunk,
+  sliceTurnItemsAfterIntro,
+} from "../../conversations/partition-turn-items";
+export {
+  initRenderableAgentItemsGroupingChunk,
+  resolveRenderableAgentItems,
+} from "../../conversations/group-renderable-agent-items";
+export {
+  initTurnCollapseStateChunk,
+  updateCollapsedTurnState,
+} from "../../conversations/turn-collapse-state";
+export { scrollConversationItemIntoView } from "../../conversations/scroll-conversation-item-into-view";
+export { commandExecutionCommand } from "../../utils/command-execution-command";
 export {
   GoogleResourceKindIcon,
   initGoogleResourceKindIconChunk,

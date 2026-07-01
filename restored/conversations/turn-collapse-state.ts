@@ -8,6 +8,8 @@ import {
   resolveMcpAppForToolResult,
 } from "../boundaries/onboarding-commons-externals.facade";
 
+export function initTurnCollapseStateChunk(): void {}
+
 export interface RenderableTurnItem {
   type: string;
   steeringStatus?: unknown;
