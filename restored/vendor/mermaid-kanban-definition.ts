@@ -2135,3 +2135,8 @@ export const kanbanDefinition6JOO6SKY = {
     "getStyles",
   ),
 };
+
+export {
+  kanbanDefinition6JOO6SKY as KanbanDefinition6JOO6SKY,
+  kanbanDefinition6JOO6SKY as diagram,
+};

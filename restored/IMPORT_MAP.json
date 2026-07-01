@@ -42874,6 +42874,225 @@
       "stage3AcceptedAt": "2026-06-30T23:21:25.587Z",
       "stage3Review": "Host self-review: parsed avatar-overlay-page-DdqF43YR.js exports, rebuilt compatibility exports from auto-renames.json, and rewrote dependency imports through restored/IMPORT_MAP.json.",
       "stage3Note": "Accepted as a current-ref compatibility export over a restored-dependency backing bundle; full semantic split remains future cleanup."
+    },
+    "architectureDiagram-Q4EWVU46-CxNS-sgT": {
+      "restored": "vendor/mermaid-architecture-diagram-k5.ts",
+      "exports": {
+        "diagram": "ArchitectureDiagramQ4EWVU46"
+      },
+      "status": "done",
+      "aliasOf": "architectureDiagram-Q4EWVU46-mJ7dSian",
+      "note": "Current synced Mermaid architecture diagram wrapper; export table re-derived from ref/webview/assets/architectureDiagram-Q4EWVU46-CxNS-sgT.js.",
+      "stage3Accepted": true,
+      "stage3AcceptedAt": "2026-07-01T00:00:00.000Z",
+      "lastUpdated": "2026-07-01T00:00:00.000Z",
+      "stage3Review": "Host self-review: exact current ref asset architectureDiagram-Q4EWVU46-CxNS-sgT.js exists, export aliases were re-derived from the current tail export table, vendor/mermaid-architecture-diagram-k5.ts preserves the semantic surface, and the changed import-map entry is covered by quality-gate."
+    },
+    "architectureDiagram-Q4EWVU46-DXwQl5j-": {
+      "restored": "vendor/mermaid-architecture-diagram-k5.ts",
+      "exports": {
+        "diagram": "ArchitectureDiagramQ4EWVU46"
+      },
+      "status": "done",
+      "aliasOf": "architectureDiagram-Q4EWVU46-mJ7dSian",
+      "note": "Current synced Mermaid architecture diagram wrapper; export table re-derived from ref/webview/assets/architectureDiagram-Q4EWVU46-DXwQl5j-.js.",
+      "stage3Accepted": true,
+      "stage3AcceptedAt": "2026-07-01T00:00:00.000Z",
+      "lastUpdated": "2026-07-01T00:00:00.000Z",
+      "stage3Review": "Host self-review: exact current ref asset architectureDiagram-Q4EWVU46-DXwQl5j-.js exists, export aliases were re-derived from the current tail export table, vendor/mermaid-architecture-diagram-k5.ts preserves the semantic surface, and the changed import-map entry is covered by quality-gate."
+    },
+    "chunk-336JU56O-CMkn-uh4": {
+      "restored": "vendor/mermaid-layout-loader-k5.ts",
+      "exports": {
+        "n": "chunk336JU56ON",
+        "r": "chunk336JU56OR",
+        "t": "chunk336JU56OT"
+      },
+      "status": "done",
+      "aliasOf": "chunk-336JU56O-Cutebe7h",
+      "note": "Current Mermaid layout loader helper; aliases n/r/t re-derived from ref/webview/assets/chunk-336JU56O-CMkn-uh4.js.",
+      "stage3Accepted": true,
+      "stage3AcceptedAt": "2026-07-01T00:00:00.000Z",
+      "lastUpdated": "2026-07-01T00:00:00.000Z",
+      "stage3Review": "Host self-review: exact current ref asset chunk-336JU56O-CMkn-uh4.js exists, export aliases were re-derived from the current tail export table, vendor/mermaid-layout-loader-k5.ts preserves the semantic surface, and the changed import-map entry is covered by quality-gate."
+    },
+    "chunk-BSJP7CBP-DNK2-xIh": {
+      "restored": "vendor/chunk-bsjp7cbp.ts",
+      "exports": {
+        "i": "chunkBSJP7CBPR",
+        "n": "chunkBSJP7CBPN",
+        "r": "initChunkBSJP7CBP",
+        "t": "chunkBSJP7CBPT"
+      },
+      "status": "done",
+      "aliasOf": "chunk-BSJP7CBP-CrJpo2xF",
+      "note": "Current Mermaid marker geometry helper; aliases i/n/r/t re-derived from ref/webview/assets/chunk-BSJP7CBP-DNK2-xIh.js.",
+      "stage3Accepted": true,
+      "stage3AcceptedAt": "2026-07-01T00:00:00.000Z",
+      "lastUpdated": "2026-07-01T00:00:00.000Z",
+      "stage3Review": "Host self-review: exact current ref asset chunk-BSJP7CBP-DNK2-xIh.js exists, export aliases were re-derived from the current tail export table, vendor/chunk-bsjp7cbp.ts preserves the semantic surface, and the changed import-map entry is covered by quality-gate."
+    },
+    "chunk-ZZ45TVLE-B85K-is4": {
+      "restored": "vendor/chunk-zz45tvle.ts",
+      "exports": {
+        "n": "chunkZZ45TVLEN",
+        "t": "chunkZZ45TVLET"
+      },
+      "status": "done",
+      "aliasOf": "chunk-ZZ45TVLE-DzHSn4eK",
+      "note": "Current Mermaid label helper; aliases n/t re-derived from ref/webview/assets/chunk-ZZ45TVLE-B85K-is4.js.",
+      "stage3Accepted": true,
+      "stage3AcceptedAt": "2026-07-01T00:00:00.000Z",
+      "lastUpdated": "2026-07-01T00:00:00.000Z",
+      "stage3Review": "Host self-review: exact current ref asset chunk-ZZ45TVLE-B85K-is4.js exists, export aliases were re-derived from the current tail export table, vendor/chunk-zz45tvle.ts preserves the semantic surface, and the changed import-map entry is covered by quality-gate."
+    },
+    "classDiagram-6PBFFD2Q-BNwKZ-xO": {
+      "restored": "vendor/mermaid-class-diagram-definition-k5.ts",
+      "exports": {
+        "diagram": "ClassDiagram6PBFFD2Q"
+      },
+      "status": "done",
+      "aliasOf": "classDiagram-6PBFFD2Q-BezZnw5U",
+      "note": "Current Mermaid class diagram wrapper; export table re-derived from ref/webview/assets/classDiagram-6PBFFD2Q-BNwKZ-xO.js.",
+      "stage3Accepted": true,
+      "stage3AcceptedAt": "2026-07-01T00:00:00.000Z",
+      "lastUpdated": "2026-07-01T00:00:00.000Z",
+      "stage3Review": "Host self-review: exact current ref asset classDiagram-6PBFFD2Q-BNwKZ-xO.js exists, export aliases were re-derived from the current tail export table, vendor/mermaid-class-diagram-definition-k5.ts preserves the semantic surface, and the changed import-map entry is covered by quality-gate."
+    },
+    "flowDiagram-DWJPFMVM-0YuD-9Tv": {
+      "restored": "vendor/mermaid-flow-diagram-k5.ts",
+      "exports": {
+        "diagram": "FlowDiagramDWJPFMVM"
+      },
+      "status": "done",
+      "aliasOf": "flowDiagram-DWJPFMVM-DkBvy4JX",
+      "note": "Current Mermaid flow diagram wrapper; export table re-derived from ref/webview/assets/flowDiagram-DWJPFMVM-0YuD-9Tv.js.",
+      "stage3Accepted": true,
+      "stage3AcceptedAt": "2026-07-01T00:00:00.000Z",
+      "lastUpdated": "2026-07-01T00:00:00.000Z",
+      "stage3Review": "Host self-review: exact current ref asset flowDiagram-DWJPFMVM-0YuD-9Tv.js exists, export aliases were re-derived from the current tail export table, vendor/mermaid-flow-diagram-k5.ts preserves the semantic surface, and the changed import-map entry is covered by quality-gate."
+    },
+    "ganttDiagram-T4ZO3ILL-bUMNCv-k": {
+      "restored": "vendor/gantt-diagram-t4zo3ill.ts",
+      "exports": {
+        "diagram": "GanttDiagramT4ZO3ILL"
+      },
+      "status": "done",
+      "aliasOf": "ganttDiagram-T4ZO3ILL-Cx2zAydy",
+      "note": "Current Mermaid gantt diagram wrapper; export table re-derived from ref/webview/assets/ganttDiagram-T4ZO3ILL-bUMNCv-k.js.",
+      "stage3Accepted": true,
+      "stage3AcceptedAt": "2026-07-01T00:00:00.000Z",
+      "lastUpdated": "2026-07-01T00:00:00.000Z",
+      "stage3Review": "Host self-review: exact current ref asset ganttDiagram-T4ZO3ILL-bUMNCv-k.js exists, export aliases were re-derived from the current tail export table, vendor/gantt-diagram-t4zo3ill.ts preserves the semantic surface, and the changed import-map entry is covered by quality-gate."
+    },
+    "isEmpty-D7Zxz-Bs": {
+      "restored": "vendor/lodash-is-empty.ts",
+      "exports": {
+        "i": "isEmptyI",
+        "n": "isEmptyN",
+        "r": "isEmptyR",
+        "t": "isEmptyT"
+      },
+      "status": "done",
+      "aliasOf": "isEmpty-BJ4mdsaY",
+      "vendor": "lodash",
+      "note": "Current lodash isEmpty chunk; aliases i/n/r/t re-derived from ref/webview/assets/isEmpty-D7Zxz-Bs.js rather than inherited from prior repacked hashes.",
+      "stage3Accepted": true,
+      "stage3AcceptedAt": "2026-07-01T00:00:00.000Z",
+      "lastUpdated": "2026-07-01T00:00:00.000Z",
+      "stage3Review": "Host self-review: exact current ref asset isEmpty-D7Zxz-Bs.js exists, export aliases were re-derived from the current tail export table, vendor/lodash-is-empty.ts preserves the semantic surface, and the changed import-map entry is covered by quality-gate."
+    },
+    "kanban-definition-6JOO6SKY-DZb-WGcX": {
+      "restored": "vendor/mermaid-kanban-definition.ts",
+      "exports": {
+        "diagram": "KanbanDefinition6JOO6SKY"
+      },
+      "status": "done",
+      "aliasOf": "kanban-definition-6JOO6SKY-BPmh8gj-",
+      "note": "Current Mermaid kanban definition wrapper; export table re-derived from ref/webview/assets/kanban-definition-6JOO6SKY-DZb-WGcX.js.",
+      "stage3Accepted": true,
+      "stage3AcceptedAt": "2026-07-01T00:00:00.000Z",
+      "lastUpdated": "2026-07-01T00:00:00.000Z",
+      "stage3Review": "Host self-review: exact current ref asset kanban-definition-6JOO6SKY-DZb-WGcX.js exists, export aliases were re-derived from the current tail export table, vendor/mermaid-kanban-definition.ts preserves the semantic surface, and the changed import-map entry is covered by quality-gate."
+    },
+    "mermaid-parser.core-CY6PoT-_": {
+      "restored": "vendor/mermaid-parser-core-k5.ts",
+      "exports": {
+        "t": "MermaidParserCore"
+      },
+      "status": "done",
+      "aliasOf": "mermaid-parser.core-DurnYtle",
+      "note": "Current Mermaid parser core wrapper; alias t re-derived from ref/webview/assets/mermaid-parser.core-CY6PoT-_.js.",
+      "stage3Accepted": true,
+      "stage3AcceptedAt": "2026-07-01T00:00:00.000Z",
+      "lastUpdated": "2026-07-01T00:00:00.000Z",
+      "stage3Review": "Host self-review: exact current ref asset mermaid-parser.core-CY6PoT-_.js exists, export aliases were re-derived from the current tail export table, vendor/mermaid-parser-core-k5.ts preserves the semantic surface, and the changed import-map entry is covered by quality-gate."
+    },
+    "mermaid.core-iDdCGP-p": {
+      "restored": "vendor/mermaid-core.ts",
+      "exports": {
+        "default": "MermaidCore"
+      },
+      "status": "done",
+      "aliasOf": "mermaid.core-BKPz4kKV",
+      "note": "Current Mermaid core wrapper preserves the restored default export surface; export table re-derived from ref/webview/assets/mermaid.core-iDdCGP-p.js.",
+      "stage3Accepted": true,
+      "stage3AcceptedAt": "2026-07-01T00:00:00.000Z",
+      "lastUpdated": "2026-07-01T00:00:00.000Z",
+      "stage3Review": "Host self-review: exact current ref asset mermaid.core-iDdCGP-p.js exists, export aliases were re-derived from the current tail export table, vendor/mermaid-core.ts preserves the semantic surface, and the changed import-map entry is covered by quality-gate."
+    },
+    "mindmap-definition-QFDTVHPH-CD_nG-Fd": {
+      "restored": "vendor/mermaid-mindmap-definition-k5.ts",
+      "exports": {
+        "diagram": "MindmapDefinitionQFDTVHPH"
+      },
+      "status": "done",
+      "aliasOf": "mindmap-definition-QFDTVHPH-C-RA3VgZ",
+      "note": "Current Mermaid mindmap definition wrapper; export table re-derived from ref/webview/assets/mindmap-definition-QFDTVHPH-CD_nG-Fd.js.",
+      "stage3Accepted": true,
+      "stage3AcceptedAt": "2026-07-01T00:00:00.000Z",
+      "lastUpdated": "2026-07-01T00:00:00.000Z",
+      "stage3Review": "Host self-review: exact current ref asset mindmap-definition-QFDTVHPH-CD_nG-Fd.js exists, export aliases were re-derived from the current tail export table, vendor/mermaid-mindmap-definition-k5.ts preserves the semantic surface, and the changed import-map entry is covered by quality-gate."
+    },
+    "stateDiagram-FHFEXIEX-ClwlM--z": {
+      "restored": "vendor/mermaid-state-diagram-definition-k5.ts",
+      "exports": {
+        "diagram": "stateDiagramFHFEXIEX"
+      },
+      "status": "done",
+      "aliasOf": "stateDiagram-FHFEXIEX-DzzMEVvs",
+      "note": "Current Mermaid state diagram wrapper; export table re-derived from ref/webview/assets/stateDiagram-FHFEXIEX-ClwlM--z.js.",
+      "stage3Accepted": true,
+      "stage3AcceptedAt": "2026-07-01T00:00:00.000Z",
+      "lastUpdated": "2026-07-01T00:00:00.000Z",
+      "stage3Review": "Host self-review: exact current ref asset stateDiagram-FHFEXIEX-ClwlM--z.js exists, export aliases were re-derived from the current tail export table, vendor/mermaid-state-diagram-definition-k5.ts preserves the semantic surface, and the changed import-map entry is covered by quality-gate."
+    },
+    "timeline-definition-GMOUNBTQ-BZhsMWQ-": {
+      "restored": "vendor/timeline-definition-gmounbtq.ts",
+      "exports": {
+        "diagram": "timelineDefinitionGMOUNBTQ"
+      },
+      "status": "done",
+      "aliasOf": "timeline-definition-GMOUNBTQ-C_cYvj6k",
+      "note": "Current Mermaid timeline definition wrapper; export table re-derived from ref/webview/assets/timeline-definition-GMOUNBTQ-BZhsMWQ-.js.",
+      "stage3Accepted": true,
+      "stage3AcceptedAt": "2026-07-01T00:00:00.000Z",
+      "lastUpdated": "2026-07-01T00:00:00.000Z",
+      "stage3Review": "Host self-review: exact current ref asset timeline-definition-GMOUNBTQ-BZhsMWQ-.js exists, export aliases were re-derived from the current tail export table, vendor/timeline-definition-gmounbtq.ts preserves the semantic surface, and the changed import-map entry is covered by quality-gate."
+    },
+    "workbook-from-csv-DpUw-8ko": {
+      "restored": "utils/workbook-from-csv.ts",
+      "exports": {
+        "planCsvImport": "planCsvImport",
+        "sanitizeSheetName": "sanitizeSheetName"
+      },
+      "status": "done",
+      "aliasOf": "workbook-from-csv-CuayXnBi",
+      "note": "Current CSV workbook wrapper; aliases planCsvImport/sanitizeSheetName re-derived from ref/webview/assets/workbook-from-csv-DpUw-8ko.js.",
+      "stage3Accepted": true,
+      "stage3AcceptedAt": "2026-07-01T00:00:00.000Z",
+      "lastUpdated": "2026-07-01T00:00:00.000Z",
+      "stage3Review": "Host self-review: exact current ref asset workbook-from-csv-DpUw-8ko.js exists, export aliases were re-derived from the current tail export table, utils/workbook-from-csv.ts preserves the semantic surface, and the changed import-map entry is covered by quality-gate."
     }
   }
 }
