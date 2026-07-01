@@ -7,14 +7,12 @@ import { AutomationExecutionEnvironmentDropdown } from "../automation-execution-
 import { AutomationHeartbeatThreadDropdown } from "../automation-heartbeat-thread-dropdown";
 import { AutomationModelReasoningDropdown } from "../automation-model-reasoning-dropdown";
 import { AutomationSchedulePicker } from "../automation-schedule-picker";
-import {
-  AutomationDetailSection,
-  AutomationDetailRow,
-  WorkspaceFolderDropdown,
-} from "../../boundaries/onboarding-commons-externals.facade";
+import { WorkspaceFolderDropdown } from "../../boundaries/onboarding-commons-externals.facade";
 import { AUTOMATION_SIDE_PANEL_FORM_ID } from "./constants";
 import {
   AutomationDetailPill,
+  AutomationDetailRow,
+  AutomationDetailSection,
   AutomationStatusBadge,
 } from "./status-components";
 import type { AutomationSidePanelController } from "./use-automation-side-panel-controller";

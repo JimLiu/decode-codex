@@ -22,4 +22,8 @@ export function PersonalityChangedIcon(props: PersonalityChangedIconProps) {
   );
 }
 
+export function initPersonalityChangedIconChunk(): void {
+  void PersonalityChangedIcon;
+}
+
 export default PersonalityChangedIcon;

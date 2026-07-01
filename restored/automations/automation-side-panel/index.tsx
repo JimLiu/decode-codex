@@ -7,6 +7,8 @@ import type { AutomationSidePanelProps } from "./types";
 
 export {
   AutomationDetailPill,
+  AutomationDetailRow,
+  AutomationDetailSection,
   AutomationStatusBadge,
 } from "./status-components";
 export type { AutomationSession, AutomationSidePanelProps } from "./types";

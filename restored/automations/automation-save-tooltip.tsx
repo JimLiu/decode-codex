@@ -164,3 +164,7 @@ export function AutomationSaveTooltip({
     />
   );
 }
+
+export function initAutomationSaveTooltipChunk(): void {
+  void AutomationSaveTooltip;
+}

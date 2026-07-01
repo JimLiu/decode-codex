@@ -16,6 +16,10 @@ export { PinIcon, initPinIconChunk } from "../../icons/pin-icon";
 export { initUploadIconChunk, UploadIcon } from "../../icons/upload-icon";
 export { WarningIcon, initWarningIconChunk } from "../../icons/warning-icon";
 export {
+  initPersonalityChangedIconChunk,
+  PersonalityChangedIcon,
+} from "../../icons/personality-changed-icon";
+export {
   GoogleChromeIcon,
   initGoogleChromeIconChunk,
 } from "../../icons/google-chrome-icon";
@@ -520,6 +524,18 @@ export {
 export { AutomationExecutionEnvironmentDropdown } from "../../automations/automation-execution-environment-dropdown";
 export { AutomationHeartbeatThreadDropdown } from "../../automations/automation-heartbeat-thread-dropdown";
 export { AutomationModelReasoningDropdown } from "../../automations/automation-model-reasoning-dropdown";
+export {
+  AutomationSaveTooltip,
+  initAutomationSaveTooltipChunk,
+} from "../../automations/automation-save-tooltip";
+export {
+  AutomationDetailPill,
+  AutomationDetailRow,
+  AutomationDetailSection,
+  AutomationStatusBadge,
+  initAutomationDetailRowChunk,
+  initAutomationDetailSectionChunk,
+} from "../../automations/automation-side-panel/status-components";
 export {
   initThinkingShimmerChunk,
   ThinkingShimmer,
