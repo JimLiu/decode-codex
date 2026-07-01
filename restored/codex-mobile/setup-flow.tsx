@@ -1,20 +1,26 @@
 // Restored from ref/webview/assets/codex-mobile-setup-flow-XFbY7C-Z.js
-// Codex Mobile setup flow compatibility barrel.
 export {
   CodexMobileSetupFlow,
+  initCodexMobileSetupFlowChunk,
+} from "./setup-flow/flow";
+export { initMfaSetupFlowRuntime } from "./setup-flow/mfa";
+export {
   appServerRemoteControlClientsQuery,
   appServerRemoteControlClientsQuery as codexMobileSetupAppServerClientsQuery,
-  enableRemoteControlForSetup,
   filterRemoteControlClientsExceptCurrent,
-  getInitialCodexMobileSetupStep,
-  initCodexMobileSetupFlowChunk,
   initCodexMobileSetupFlowNoopChunk,
   initCodexMobileSetupFlowQueriesChunk,
-  initMfaSetupFlowRuntime,
-  initRemoteControlEnableForSetupChunk,
   remoteControlClientsQuery,
   remoteControlClientsQuery as codexMobileSetupRemoteControlClientsQuery,
-  shouldShowCodexMobileSetupFlow,
   waitingForAddedRemoteControlClientQuery,
   waitingForAddedRemoteControlClientQuery as codexMobileSetupWaitingForAddedClientQuery,
-} from "./setup-flow-impl";
+} from "./setup-flow/queries";
+export {
+  enableRemoteControlForSetup,
+  initRemoteControlEnableForSetupChunk,
+} from "./setup-flow/remote-control";
+export {
+  getInitialCodexMobileSetupStep,
+  shouldShowCodexMobileSetupFlow,
+} from "./setup-flow/status";
+export type * from "./setup-flow/types";
