@@ -84,3 +84,5 @@ export function AnsiOutput({ children, className }: AnsiOutputProps) {
   );
   return <code className={className}>{segments.map(renderAnsiSegment)}</code>;
 }
+
+export function initAnsiOutputChunk() {}
