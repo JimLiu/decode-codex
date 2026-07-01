@@ -42673,12 +42673,12 @@
         "AppPrefetchImpl": "appPrefetchImpl"
       },
       "status": "done",
-      "note": "Current app prefetch implementation hash maps to a dedicated current-ref runtime over vendor/app-prefetch-impl-current-bundle.tsx; dependencies are rewritten through restored current bundles.",
-      "lastUpdated": "2026-06-30T23:21:25.587Z",
+      "note": "Current app prefetch implementation hash maps to a dedicated current-ref runtime over app-shell/app-prefetch-impl.tsx; vendor/app-prefetch-impl-current-bundle.tsx remains only as a compatibility shim.",
+      "lastUpdated": "2026-07-01T02:14:44.000Z",
       "stage3Accepted": true,
-      "stage3AcceptedAt": "2026-06-30T23:21:25.587Z",
-      "stage3Review": "Host self-review: parsed app-prefetch-impl-DeWg99La.js exports, rebuilt compatibility exports from auto-renames.json, and rewrote dependency imports through restored/IMPORT_MAP.json.",
-      "stage3Note": "Accepted as a current-ref compatibility export over a restored-dependency backing bundle; full semantic split remains future cleanup."
+      "stage3AcceptedAt": "2026-07-01T02:14:44.000Z",
+      "stage3Review": "Host self-review: moved AppPrefetchImpl into app-shell/app-prefetch-impl.tsx, preserved Vite dependency preloading as a named prefetch dependency mapper, updated moved relative imports, and kept vendor/app-prefetch-impl-current-bundle.tsx as a compatibility shim.",
+      "stage3Note": "Accepted as a semantic app prefetch implementation surface with current-ref runtime and vendor shim exports."
     },
     "pets-settings-CeDsTNTI": {
       "restored": "runtime/current-app-initial/pets-settings-current-runtime.ts",
