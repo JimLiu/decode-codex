@@ -20,3 +20,5 @@ export function MessageSquareIcon(props: SVGProps<SVGSVGElement>) {
     </svg>
   );
 }
+
+export function initMessageSquareIconChunk(): void {}

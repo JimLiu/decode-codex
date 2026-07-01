@@ -21,6 +21,7 @@ export {
   formatScheduleConfigSummary,
   getDefaultCronScheduleConfig,
   getDefaultHeartbeatScheduleConfig,
+  initAutomationScheduleConfigChunk,
   initAutomationScheduleSummaryFormatter,
   isAutomationScheduleConfigValid,
   normalizeIntervalHours,

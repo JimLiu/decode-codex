@@ -42,6 +42,7 @@ import {
   setBackgroundThreadPinned,
   setBackgroundThreadArchived,
   setBackgroundThreadTitle,
+  LOCAL_HOST_ID,
 } from "../boundaries/onboarding-commons-externals.facade";
 
 type AppScope = {
@@ -80,6 +81,18 @@ type BackgroundProject = {
   path: string;
 };
 
+type AvailableModel = {
+  model: string;
+  description?: string;
+  supportedReasoningEfforts: Array<{ reasoningEffort: string }>;
+};
+
+type GetAvailableModels = (
+  hostId: string,
+) => Promise<AvailableModel[]> | AvailableModel[];
+
+const DEFAULT_CREATE_THREAD_MODEL_FOR_VALIDATION = "gpt-5.5";
+
 function toToolResult(payload: unknown): ToolResult {
   return {
     contentItems: [
@@ -115,6 +128,31 @@ function resolveCreateThreadTarget(
         projectId: project.projectId,
         environment: target.environment,
       };
+}
+
+function validateReasoningEffortForModel(
+  toolName: string,
+  model: string,
+  reasoningEffort: string,
+  availableModels: AvailableModel[],
+): string | null {
+  const matchedModel = availableModels.find(
+    (candidate) => candidate.model === model,
+  );
+  if (matchedModel == null) {
+    return `${toolName} could not validate reasoning effort "${reasoningEffort}" for model "${model}". Use a model and reasoning combination listed in the tool description, or omit thinking.`;
+  }
+
+  const supportedEfforts = matchedModel.supportedReasoningEfforts.map(
+    ({ reasoningEffort }) => reasoningEffort,
+  );
+  if (supportedEfforts.includes(reasoningEffort)) return null;
+
+  const supportedMessage =
+    supportedEfforts.length === 0
+      ? "This model supports no reasoning effort overrides."
+      : `Supported reasoning efforts: ${supportedEfforts.join(", ")}.`;
+  return `${toolName} rejected unsupported model/reasoning combination: "${matchedModel.model}" does not support "${reasoningEffort}". ${supportedMessage}`;
 }
 
 export async function handleForkThread({
@@ -155,10 +193,12 @@ export async function handleForkThread({
 
 async function handleCreateThread({
   argumentsValue,
+  getAvailableModels,
   scope,
   sourceThreadId,
 }: {
   argumentsValue: unknown;
+  getAvailableModels?: GetAvailableModels;
   scope: AppScope;
   sourceThreadId: string | null;
 }): Promise<ToolResult> {
@@ -169,16 +209,32 @@ async function handleCreateThread({
     );
   }
   try {
+    const target = resolveCreateThreadTarget(
+      scope,
+      parsed.data.target as CreateThreadTarget,
+    );
+    if (parsed.data.thinking != null) {
+      const hostId =
+        target.type === "remoteProject" ? target.hostId : LOCAL_HOST_ID;
+      const availableModels =
+        getAvailableModels == null ? [] : await getAvailableModels(hostId);
+      const validationError = validateReasoningEffortForModel(
+        CREATE_THREAD_TOOL_NAME,
+        parsed.data.model ?? DEFAULT_CREATE_THREAD_MODEL_FOR_VALIDATION,
+        parsed.data.thinking,
+        availableModels,
+      );
+      if (validationError != null) {
+        return buildToolErrorResult(validationError);
+      }
+    }
     return toToolResult(
       await createBackgroundThread({
         model: parsed.data.model,
         prompt: parsed.data.prompt,
         scope,
         sourceThreadId,
-        target: resolveCreateThreadTarget(
-          scope,
-          parsed.data.target as CreateThreadTarget,
-        ),
+        target,
         thinking: parsed.data.thinking,
       }),
     );
@@ -385,4 +441,17 @@ async function handleSetThreadTitle({
       error instanceof Error ? error.message : String(error),
     );
   }
+}
+
+export function getThreadManagementToolHandlers() {
+  return {
+    handleCreateThread,
+    handleListProjects,
+    handleListThreads,
+    handleReadThread,
+    handleSendMessageToThread,
+    handleSetThreadPinned,
+    handleSetThreadArchived,
+    handleSetThreadTitle,
+  };
 }

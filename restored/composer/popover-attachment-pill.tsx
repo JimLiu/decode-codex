@@ -114,3 +114,5 @@ export function PopoverAttachmentPill({
     </Popover>
   );
 }
+
+export function initPopoverAttachmentPillChunk(): void {}

@@ -69,3 +69,5 @@ export function SelectedTextTooltip({ selections }: SelectedTextTooltipProps) {
     </div>
   );
 }
+
+export function initSelectedTextAttachmentPillChunk(): void {}

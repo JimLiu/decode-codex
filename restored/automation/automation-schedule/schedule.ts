@@ -11,6 +11,7 @@ export {
   changeAutomationScheduleMode,
   getDefaultCronScheduleConfig,
   getDefaultHeartbeatScheduleConfig,
+  initAutomationScheduleConfigChunk,
   isAutomationScheduleConfigValid,
   parseCronScheduleConfig,
   parseHeartbeatScheduleConfig,

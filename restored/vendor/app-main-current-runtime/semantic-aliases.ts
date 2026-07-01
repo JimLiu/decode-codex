@@ -1,6 +1,8 @@
 // Restored from ref/webview/assets/app-initial~app-main~onboarding-page-CgNc-Bk2.js
 // Named app-main current runtime aliases recovered from the current producer.
 // Flat boundary. Vendored app-main current runtime semantic alias barrel.
+import { getThreadManagementToolHandlers } from "../../conversations/thread-management-tool-handlers";
+
 export { GlobeIcon } from "../../icons/globe-icon";
 export { AlertIcon, initAlertIconChunk } from "../../icons/alert-icon";
 export { FolderIcon, initFolderIconChunk } from "../../icons/folder-icon";
@@ -245,7 +247,20 @@ export {
   formatRemainingPercent,
   formatResetDate,
 } from "../../utils/rate-limit-status/formatting";
-export { formatScheduleConfigSummary } from "../../automation/automation-schedule";
+export {
+  formatAutomationScheduleSummary,
+  formatScheduleConfigSummary,
+  getAutomationAnalyticsProperties,
+  getDefaultHeartbeatScheduleConfig,
+  initAutomationScheduleConfigChunk,
+  isAutomationScheduleConfigValid,
+  serializeAutomationScheduleConfig,
+} from "../../automation/automation-schedule";
+export {
+  areAutomationRecordsEqual,
+  isAutomationRecordInSync,
+  toAutomationRecordWithStatus,
+} from "../../automations/automation-record-sync";
 export { useImageAssetDownload } from "../../image-side-panel/use-image-asset-download";
 export { openImagePreviewTab } from "../../image-side-panel/open-image-preview-tab";
 export {
@@ -255,6 +270,22 @@ export {
 export { isCurrentLocationCodexPage } from "../../utils/is-codex-page-route";
 export { remapDiffCommentsForHandoff } from "../../conversations/remap-diff-comments-for-handoff";
 export { handleForkThread } from "../../conversations/thread-management-tool-handlers";
+export { buildCodexAppToolNamespace } from "../../conversations/codex-app-tool-namespace";
+const threadManagementToolHandlers = getThreadManagementToolHandlers();
+export const handleCreateThread =
+  threadManagementToolHandlers.handleCreateThread;
+export const handleListProjects =
+  threadManagementToolHandlers.handleListProjects;
+export const handleListThreads = threadManagementToolHandlers.handleListThreads;
+export const handleReadThread = threadManagementToolHandlers.handleReadThread;
+export const handleSendMessageToThread =
+  threadManagementToolHandlers.handleSendMessageToThread;
+export const handleSetThreadArchived =
+  threadManagementToolHandlers.handleSetThreadArchived;
+export const handleSetThreadPinned =
+  threadManagementToolHandlers.handleSetThreadPinned;
+export const handleSetThreadTitle =
+  threadManagementToolHandlers.handleSetThreadTitle;
 export {
   CREATE_THREAD_TOOL_NAME,
   FORK_THREAD_TOOL_NAME,
@@ -276,6 +307,25 @@ export {
   ThinkingShimmerMessage,
 } from "../../ui/thinking-shimmer";
 export {
+  DEFAULT_AUTOMATION_DRAFT,
+  applyAutomationDraftModelDefaults,
+  applyAutomationScheduleDraft,
+  applyHeartbeatTargetThread,
+  automationDirectiveResultAtom,
+  automationDirectiveSeedAtom,
+  createAutomationDraftFromAutomation,
+  createAutomationDraftFromSeed,
+  getAutomationDestinationOptions,
+  getAutomationDraftDestination,
+  getAutomationDraftRrule,
+  initAutomationDraftRuntimeChunk,
+  isAutomationDraftUsingDefaultCwd,
+  isDefaultAutomationDraft,
+  setAutomationDraftCwds,
+  setAutomationDraftDestination,
+  toAutomationCreatePayload,
+  toAutomationUpdatePayload,
+  validateAutomationDraft,
   formatAutomationNextRunLabel,
   initAutomationNextRunLabelChunk,
 } from "../../automations/shared";
@@ -354,6 +404,27 @@ export {
   initCommandExecutionTextRuntime,
 } from "../../runtime/window-chrome-runtime";
 export {
+  initMessageSquareIconChunk,
+  MessageSquareIcon,
+} from "../../composer/message-square-icon";
+export {
+  initPopoverAttachmentPillChunk,
+  PopoverAttachmentPill,
+} from "../../composer/popover-attachment-pill";
+export {
+  CommentAttachmentPill,
+  initCommentAttachmentPillChunk,
+} from "../../composer/comment-attachment-pill";
+export {
+  initSelectedTextAttachmentPillChunk,
+  SelectedTextAttachmentPill,
+  SelectedTextTooltip,
+} from "../../composer/selected-text-attachment-pill";
+export {
+  ExternalSiteIcon,
+  initExternalSiteIconChunk,
+} from "../../icons/external-site-icon";
+export {
   initResolvedHighlightThemesChunk,
   initSharedHighlightThemeRegistryChunk,
   sharedHighlightThemeRegistry,
@@ -363,6 +434,11 @@ export {
   initComposeEventHandlersRuntime,
 } from "../radix-event-helpers";
 export { isComposerDictationTarget } from "../../composer/composer-dictation-focus";
+export {
+  initMessageOrStringHelpersChunk,
+  renderMessageOrString,
+} from "../../composer/render-message-or-string";
+export { formatMessageOrString } from "../../composer/format-message-or-string";
 export {
   buildCreateConversationParams,
   initBuildCreateConversationParamsChunk,

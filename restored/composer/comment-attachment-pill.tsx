@@ -69,3 +69,5 @@ export function CommentAttachmentPill({
     />
   );
 }
+
+export function initCommentAttachmentPillChunk(): void {}

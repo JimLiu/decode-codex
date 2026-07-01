@@ -23,6 +23,8 @@ import {
   serializeWeeklyRrule,
 } from "./rrule-parser";
 
+export function initAutomationScheduleConfigChunk(): void {}
+
 export function getDefaultCronScheduleConfig(): AutomationScheduleConfig {
   return {
     mode: "daily",

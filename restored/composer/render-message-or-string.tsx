@@ -12,3 +12,5 @@ export function renderMessageOrString(
     <FormattedMessage {...value} />
   );
 }
+
+export function initMessageOrStringHelpersChunk(): void {}

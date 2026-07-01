@@ -151,6 +151,8 @@ export const automationDirectiveResultAtom = createAtom<{
   automationId: string;
 } | null>(null);
 
+export function initAutomationDraftRuntimeChunk(): void {}
+
 export function initAutomationNextRunLabelChunk(): void {}
 
 export function formatAutomationNextRunLabel({

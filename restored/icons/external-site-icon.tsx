@@ -33,4 +33,6 @@ export function ExternalSiteIcon(props: IconProps) {
   );
 }
 
+export function initExternalSiteIconChunk(): void {}
+
 export default ExternalSiteIcon;
