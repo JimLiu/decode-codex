@@ -1,71 +1,69 @@
 // Restored from ref/webview/assets/pets-settings-CeDsTNTI.js
 // Current pets settings backing bundle with restored dependency imports.
 
-import { once, toEsModule } from "../runtime/commonjs-interop";
+import { useCallback, useMemo, useState, type ReactElement } from "react";
+import { once } from "../runtime/commonjs-interop";
 import {
-  currentAppInitialSharedCompatSlotUnderscoreLowerC as _appInitialAppMainRemoteConversationPageHotkeyWindowThreadPageAutomationsPageThBnlvjk3wC,
-  currentAppInitialSharedCompatSlotUnderscoreLowerC,
-  currentAppInitialSharedCompatSlotUpperD,
-  currentAppInitialSharedCompatSlotUpperE,
-  currentAppInitialSharedCompatSlotLowerGLowerC,
-  currentAppInitialSharedCompatSlotLowerI,
-  currentAppInitialSharedCompatSlotUpperKLowerO,
-  currentAppInitialSharedCompatSlotLowerLLowerC,
-  currentAppInitialSharedCompatSlotLowerQLowerO,
-  currentAppInitialSharedCompatSlotLowerU,
-  currentAppInitialSharedCompatSlotUnderscore,
-  currentAppInitialSharedCompatSlotLowerV,
-  currentAppInitialSharedCompatSlotUpperVLowerO,
+  currentAppInitialSharedCompatSlotUnderscore as initObjectRuntime,
+  currentAppInitialSharedCompatSlotUpperD as initAppScopeRuntimeChunk,
+  currentAppInitialSharedCompatSlotUpperE as appScopeRoot,
+  currentAppInitialSharedCompatSlotLowerGLowerC as initReactCompilerRuntime,
+  currentAppInitialSharedCompatSlotLowerI as sendHostRequest,
+  currentAppInitialSharedCompatSlotUpperKLowerO as useRouteScopeContext,
+  currentAppInitialSharedCompatSlotLowerQLowerO as useSignalValue,
+  currentAppInitialSharedCompatSlotLowerU as useHostMutation,
+  currentAppInitialSharedCompatSlotLowerV as nativeAppMessageBus,
+  currentAppInitialSharedCompatSlotUpperVLowerO as initHotkeyWindowRoutingRuntime,
 } from "../runtime/current-app-initial/current-app-initial-shared-runtime";
 import {
-  worktreeNewThreadQueryCompatSlotUpperDLowerM,
-  worktreeNewThreadQueryCompatSlotUpperDLowerN,
-  worktreeNewThreadQueryCompatSlotUpperELowerM,
-  worktreeNewThreadQueryCompatSlotLowerGLowerP,
-  worktreeNewThreadQueryCompatSlotLowerHLowerH,
-  worktreeNewThreadQueryCompatSlotLowerLLowerS,
-  worktreeNewThreadQueryCompatSlotLowerMLowerH,
-  worktreeNewThreadQueryCompatSlotLowerMLowerP,
-  worktreeNewThreadQueryCompatSlotLowerMLowerR,
-  worktreeNewThreadQueryCompatSlotUpperOLowerM,
-  worktreeNewThreadQueryCompatSlotUpperOLowerN,
-  worktreeNewThreadQueryCompatSlotLowerPLowerR,
-  worktreeNewThreadQueryCompatSlotLowerQLowerU,
-  worktreeNewThreadQueryCompatSlotUpperTLowerM,
-  worktreeNewThreadQueryCompatSlotLowerULowerS,
-  worktreeNewThreadQueryCompatSlotUpperXLowerU,
+  worktreeNewThreadQueryCompatSlotUpperDLowerM as LoadingSpinnerIcon,
+  worktreeNewThreadQueryCompatSlotUpperDLowerN as OpenFolderIcon,
+  worktreeNewThreadQueryCompatSlotUpperELowerM as initDialogLayoutRuntime,
+  worktreeNewThreadQueryCompatSlotLowerGLowerP as toastControllerSignal,
+  worktreeNewThreadQueryCompatSlotLowerHLowerH as initClassNameRuntime,
+  worktreeNewThreadQueryCompatSlotLowerLLowerS as PlatformGate,
+  worktreeNewThreadQueryCompatSlotLowerMLowerH as classNames,
+  worktreeNewThreadQueryCompatSlotLowerMLowerP as initToastControllerRuntime,
+  worktreeNewThreadQueryCompatSlotLowerMLowerR as useSkillForceReload,
+  worktreeNewThreadQueryCompatSlotUpperOLowerM as initDialogShellRuntime,
+  worktreeNewThreadQueryCompatSlotUpperOLowerN as initOpenFolderIconRuntime,
+  worktreeNewThreadQueryCompatSlotLowerPLowerR as initSkillForceReloadRuntime,
+  worktreeNewThreadQueryCompatSlotLowerQLowerU as formatSkillReference,
+  worktreeNewThreadQueryCompatSlotUpperTLowerM as Button,
+  worktreeNewThreadQueryCompatSlotLowerULowerS as initPlatformGateRuntime,
+  worktreeNewThreadQueryCompatSlotUpperXLowerU as initSkillReferenceFormatterRuntime,
 } from "../runtime/current-app-initial/worktree-new-thread-query-runtime";
 import {
-  currentAppInitialSharedMember0542,
-  currentAppInitialSharedMember0097,
-  analyticsMember0137,
-  intlFormatDateTimeRuntime,
-  remoteControlRefreshSourceEnum,
-  currentAppInitialSharedMember0654,
-  currentAppInitialSharedDisplayRuntime,
-  remoteConnectionRuntime0298,
-  currentAppInitialSharedMember0342,
-  currentAppInitialSharedFunction0375,
-  currentAppInitialSharedMember0924,
+  currentAppInitialSharedMember0542 as localHostId,
+  currentAppInitialSharedMember0097 as avatarOverlayProductEvent,
+  analyticsMember0137 as analyticsSignal,
+  intlFormatDateTimeRuntime as initIntlFormattingRuntime,
+  remoteControlRefreshSourceEnum as initRemoteControlRefreshSourceRuntime,
+  currentAppInitialSharedMember0654 as avatarOverlaySource,
+  currentAppInitialSharedDisplayRuntime as initDisplayRuntime,
+  remoteConnectionRuntime0298 as initRemoteConnectionRuntime,
+  currentAppInitialSharedMember0342 as avatarOverlayAction,
+  currentAppInitialSharedFunction0375 as useIntl,
+  currentAppInitialSharedMember0924 as FormattedMessage,
 } from "../runtime/current-app-initial/remote-projects-app-shared-runtime";
 import {
-  initAvatarOverlayOpenStateChunk,
+  initAvatarOverlayOpenStateChunk as initAvatarOverlayAnalyticsRuntime,
   avatarOverlayAnalytics,
 } from "./automations-page-current-runtime";
 import { initCodexAvatarChunk, CodexAvatar } from "../utils/codex-avatar";
 import {
-  pullRequestNewThreadCompatSlotLowerBLowerN,
-  pullRequestNewThreadCompatSlotLowerYLowerN,
+  pullRequestNewThreadCompatSlotLowerBLowerN as useInvalidateQueryKey,
+  pullRequestNewThreadCompatSlotLowerYLowerN as initInvalidateQueryKeyRuntime,
 } from "../runtime/current-app-initial/pull-request-new-thread-runtime";
 import {
-  appMainCurrentCompatSlotUpperFLowerN,
-  appMainCurrentCompatSlotUpperILowerN,
+  appMainCurrentCompatSlotUpperFLowerN as SettingsRow,
+  appMainCurrentCompatSlotUpperILowerN as initSettingsRowRuntime,
 } from "./app-main-current-runtime";
 import {
-  appgenLibraryHotDjo67r4nCompatSlotUpperH,
-  appgenLibraryHotDjo67r4nCompatSlotLowerILowerR,
-  appgenLibraryHotDjo67r4nCompatSlotLowerNLowerR,
-  appgenLibraryHotDjo67r4nCompatSlotUpperV,
+  appgenLibraryHotDjo67r4nCompatSlotUpperH as initSettingsTitleRuntime,
+  appgenLibraryHotDjo67r4nCompatSlotLowerILowerR as useStartThreadWithPrefill,
+  appgenLibraryHotDjo67r4nCompatSlotLowerNLowerR as initStartThreadWithPrefillRuntime,
+  appgenLibraryHotDjo67r4nCompatSlotUpperV as SettingsTitle,
 } from "../runtime/current-app-initial/appgen-library-hot-djo67r4n-runtime";
 import {
   initRecommendedSkillStatsigOverridesChunk,
@@ -73,12 +71,12 @@ import {
   getRecommendedSkillStatsigOverride,
 } from "../plugins/recommended-skill-statsig-overrides";
 import {
-  generalAppearanceCurrentCompatSlotLowerD,
-  generalAppearanceCurrentCompatSlotLowerF,
-  generalAppearanceCurrentCompatSlotUpperJ,
-  generalAppearanceCurrentCompatSlotLowerL,
-  generalAppearanceCurrentCompatSlotLowerQ,
-  generalAppearanceCurrentCompatSlotLowerU,
+  generalAppearanceCurrentCompatSlotLowerD as SettingsCard,
+  generalAppearanceCurrentCompatSlotLowerF as initSettingsCardRuntime,
+  generalAppearanceCurrentCompatSlotUpperJ as initGeneralAppearanceRuntime,
+  generalAppearanceCurrentCompatSlotLowerL as initPathRuntime,
+  generalAppearanceCurrentCompatSlotLowerQ as SettingsCardSection,
+  generalAppearanceCurrentCompatSlotLowerU as joinPath,
 } from "../runtime/current-app-initial/general-appearance-current-runtime";
 import {
   initSettingsContentLayoutChunk,
@@ -89,575 +87,587 @@ import {
   initDefaultAvatarDefinitionsChunk,
   useSelectedAvatar,
   initAvatarSelectionStateChunk,
-} from "../features/custom-avatars-query";
-import {
-  avatarOverlayOpenSignal,
-  initAvatarOverlayOpenStateChunk as appInitialAppMainPetsSettingsT,
-} from "../features/avatar-overlay-open-state";
-import {
   initCustomAvatarsQueryChunk,
   CUSTOM_AVATARS_QUERY_KEY,
 } from "../features/custom-avatars-query";
 import {
+  avatarOverlayOpenSignal,
+  initAvatarOverlayOpenStateChunk,
+} from "../features/avatar-overlay-open-state";
+import {
   initUseAvatarOptionsChunk,
   useAvatarOptions,
 } from "../utils/use-avatar-options";
-function petsSettingsHelper1(petsSettingsParam5) {
-  let { avatar, className, size = "md" } = petsSettingsParam5,
-    petsSettingsValue76 = size === "sm" ? "size-8" : "size-16",
-    petsSettingsValue77 = worktreeNewThreadQueryCompatSlotLowerMLowerH(
-      "flex shrink-0 items-center justify-center overflow-hidden rounded-lg border border-token-border bg-token-bg-secondary",
-      petsSettingsValue76,
-      className,
-    );
-  let petsSettingsValue78 = avatar?.id ?? "default",
-    petsSettingsValue79 = avatar?.assetRef,
-    petsSettingsValue80 = size === "sm" ? "scale-[0.42]" : "scale-75",
-    petsSettingsValue81 = avatar?.spritesheetUrl,
-    petsSettingsValue82 = petsSettingsValue2.jsx(CodexAvatar, {
-      assetRef: petsSettingsValue79,
-      className: petsSettingsValue80,
-      spritesheetUrl: petsSettingsValue81,
-    });
+
+type AvatarOption = (typeof DEFAULT_AVATARS)[number] & {
+  spritesheetUrl?: string;
+};
+
+type AnalyticsClient = {
+  logProductEvent(eventName: unknown, payload: unknown): void;
+};
+
+type ToastController = {
+  danger(message: unknown): void;
+};
+
+type AppRouteScope = {
+  get<TValue>(signal: unknown): TValue;
+};
+
+type HostMutationResult = {
+  mutate(payload: unknown): void;
+};
+
+type InstallRecommendedSkillResult = {
+  destination?: string | null;
+  error?: string | null;
+  success: boolean;
+};
+
+type CustomPetsFolderSettingProps = {
+  avatarDirectory: string;
+};
+
+type PetsSettingsContentProps = {
+  avatarDirectory: string | null;
+  avatarOptions?: AvatarOption[];
+  isCreatingCustomAvatar?: boolean;
+  isCustomAvatarLoadError?: boolean;
+  isLoadingCustomAvatars?: boolean;
+  onCreateCustomAvatar?: () => void;
+  onRefreshCustomAvatars?: () => void;
+};
+
+type PetsSettingsListProps = Required<
+  Pick<
+    PetsSettingsContentProps,
+    | "isCreatingCustomAvatar"
+    | "isCustomAvatarLoadError"
+    | "isLoadingCustomAvatars"
+  >
+> &
+  Pick<
+    PetsSettingsContentProps,
+    | "avatarDirectory"
+    | "avatarOptions"
+    | "onCreateCustomAvatar"
+    | "onRefreshCustomAvatars"
+  >;
+
+type AvatarSettingRowProps = {
+  avatar: AvatarOption;
+  isSelected: boolean;
+  onSelectAvatar(avatar: AvatarOption): void;
+};
+
+const HATCH_PET_SKILL_ID = "hatch-pet";
+const HATCH_PET_REPO_PATH = "skills/.curated/hatch-pet";
+
+function isCustomAvatar(avatar: AvatarOption): boolean {
+  return avatar.id.startsWith("custom:");
+}
+
+function isDefaultAvatar(avatar: AvatarOption): boolean {
+  return !avatar.id.startsWith("custom:");
+}
+
+function AvatarPreview({
+  avatar,
+  className,
+  size = "md",
+}: {
+  avatar?: AvatarOption | null;
+  className?: string;
+  size?: "md" | "sm";
+}): ReactElement {
+  const previewSizeClassName = size === "sm" ? "size-8" : "size-16";
+  const avatarScaleClassName = size === "sm" ? "scale-[0.42]" : "scale-75";
+  const avatarId = avatar?.id ?? "default";
+
   return (
-    <div className={petsSettingsValue77} data-avatar-id={petsSettingsValue78}>
-      {petsSettingsValue82}
+    <div
+      className={classNames(
+        "flex shrink-0 items-center justify-center overflow-hidden rounded-lg border border-token-border bg-token-bg-secondary",
+        previewSizeClassName,
+        className,
+      )}
+      data-avatar-id={avatarId}
+    >
+      <CodexAvatar
+        assetRef={avatar?.assetRef}
+        className={avatarScaleClassName}
+        spritesheetUrl={avatar?.spritesheetUrl}
+      />
     </div>
   );
 }
-var petsSettingsValue1,
-  petsSettingsValue2,
-  petsSettingsValue3 = once(() => {
-    petsSettingsValue1 = currentAppInitialSharedCompatSlotLowerGLowerC();
-    worktreeNewThreadQueryCompatSlotLowerHLowerH();
-    initCodexAvatarChunk();
-    petsSettingsValue2 = currentAppInitialSharedCompatSlotLowerLLowerC();
-  });
-function petsSettingsHelper2(petsSettingsParam2) {
-  let { avatarDirectory } = petsSettingsParam2,
-    petsSettingsValue51 = currentAppInitialSharedCompatSlotUpperKLowerO(
-      currentAppInitialSharedCompatSlotUpperE,
-    ),
-    petsSettingsValue52 = currentAppInitialSharedFunction0375(),
-    petsSettingsValue53 = () => {
-      petsSettingsValue51
-        .get(worktreeNewThreadQueryCompatSlotLowerGLowerP)
-        .danger(
-          petsSettingsValue52.formatMessage({
-            id: "settings.pets.custom.openFolderError",
-            defaultMessage: "Unable to open pet folder",
-            description: "Toast shown when opening the custom pet folder fails",
-          }),
-        );
-    };
-  let petsSettingsValue54 = petsSettingsValue53,
-    petsSettingsValue55 = (petsSettingsParam13) => {
-      petsSettingsParam13.success || petsSettingsValue54();
-    };
-  let petsSettingsValue56 = {
-    onSuccess: petsSettingsValue55,
-    onError: petsSettingsValue54,
-  };
-  let { mutate } = currentAppInitialSharedCompatSlotLowerU(
-      "open-file",
-      petsSettingsValue56,
-    ),
-    petsSettingsValue57 = petsSettingsValue5.jsx(
-      currentAppInitialSharedMember0924,
-      {
-        id: "settings.pets.custom.title",
-        defaultMessage: "Custom pets",
-        description: "Heading for custom pet settings",
-      },
+
+const initAvatarPreviewRuntime = once(() => {
+  initReactCompilerRuntime();
+  initClassNameRuntime();
+  initCodexAvatarChunk();
+});
+
+function CustomPetsFolderSetting({
+  avatarDirectory,
+}: CustomPetsFolderSettingProps): ReactElement {
+  const routeScope = useRouteScopeContext(appScopeRoot) as AppRouteScope;
+  const intl = useIntl();
+  const showOpenFolderError = useCallback(() => {
+    routeScope.get<ToastController>(toastControllerSignal).danger(
+      intl.formatMessage({
+        id: "settings.pets.custom.openFolderError",
+        defaultMessage: "Unable to open pet folder",
+        description: "Toast shown when opening the custom pet folder fails",
+      }),
     );
-  let petsSettingsValue58 = (
-    <span className="font-mono text-xs break-all">{avatarDirectory}</span>
-  );
-  let petsSettingsValue59 = () => {
+  }, [intl, routeScope]);
+
+  const { mutate } = useHostMutation("open-file", {
+    onSuccess: (result: { success: boolean }) => {
+      if (!result.success) {
+        showOpenFolderError();
+      }
+    },
+    onError: showOpenFolderError,
+  }) as HostMutationResult;
+
+  const handleOpenFolder = useCallback(() => {
     mutate({
       path: avatarDirectory,
       cwd: null,
       target: "fileManager",
       openMode: "workspace",
     });
-  };
-  let petsSettingsValue60, petsSettingsValue61;
-  petsSettingsValue60 = petsSettingsValue5.jsx(
-    currentAppInitialSharedMember0924,
-    {
-      id: "settings.pets.custom.openFolder",
-      defaultMessage: "Open folder",
-      description: "Button label to open the local custom pet folder",
-    },
-  );
-  petsSettingsValue61 = petsSettingsValue5.jsx(
-    worktreeNewThreadQueryCompatSlotUpperDLowerN,
-    {
-      className: "icon-2xs",
-    },
-  );
-  let petsSettingsValue62 = petsSettingsValue5.jsxs(
-    worktreeNewThreadQueryCompatSlotUpperTLowerM,
-    {
-      color: "ghost",
-      onClick: petsSettingsValue59,
-      size: "toolbar",
-      children: [petsSettingsValue60, petsSettingsValue61],
-    },
-  );
-  return petsSettingsValue5.jsx(appMainCurrentCompatSlotUpperFLowerN, {
-    label: petsSettingsValue57,
-    description: petsSettingsValue58,
-    control: petsSettingsValue62,
-  });
-}
-var petsSettingsValue4,
-  petsSettingsValue5,
-  petsSettingsValue6 = once(() => {
-    petsSettingsValue4 = currentAppInitialSharedCompatSlotLowerGLowerC();
-    currentAppInitialSharedCompatSlotUpperVLowerO();
-    intlFormatDateTimeRuntime();
-    worktreeNewThreadQueryCompatSlotUpperELowerM();
-    worktreeNewThreadQueryCompatSlotLowerMLowerP();
-    worktreeNewThreadQueryCompatSlotUpperOLowerN();
-    currentAppInitialSharedCompatSlotUpperD();
-    appMainCurrentCompatSlotUpperILowerN();
-    _appInitialAppMainRemoteConversationPageHotkeyWindowThreadPageAutomationsPageThBnlvjk3wC();
-    petsSettingsValue5 = currentAppInitialSharedCompatSlotLowerLLowerC();
-  });
-function petsSettingsHelper3(petsSettingsParam4) {
-  let {
-      avatarDirectory,
-      avatarOptions,
-      isCreatingCustomAvatar = false,
-      isCustomAvatarLoadError = false,
-      isLoadingCustomAvatars = false,
-      onCreateCustomAvatar,
-      onRefreshCustomAvatars,
-    } = petsSettingsParam4,
-    petsSettingsValue69 =
-      avatarOptions === undefined ? DEFAULT_AVATARS : avatarOptions;
-  return petsSettingsValue8.jsx(worktreeNewThreadQueryCompatSlotLowerLLowerS, {
-    electron: true,
-    children: petsSettingsValue8.jsx(petsSettingsHelper4, {
-      avatarDirectory,
-      avatarOptions: petsSettingsValue69,
-      isCreatingCustomAvatar: isCreatingCustomAvatar,
-      isCustomAvatarLoadError: isCustomAvatarLoadError,
-      isLoadingCustomAvatars: isLoadingCustomAvatars,
-      onCreateCustomAvatar,
-      onRefreshCustomAvatars,
-    }),
-  });
-}
-function petsSettingsHelper4(petsSettingsParam1) {
-  let {
-      avatarDirectory,
-      avatarOptions,
-      isCreatingCustomAvatar,
-      isCustomAvatarLoadError,
-      isLoadingCustomAvatars,
-      onCreateCustomAvatar,
-      onRefreshCustomAvatars,
-    } = petsSettingsParam1,
-    petsSettingsValue19 = currentAppInitialSharedCompatSlotLowerQLowerO(
-      appInitialAppMainPetsSettingsT,
-    ),
-    petsSettingsValue20 =
-      currentAppInitialSharedCompatSlotLowerQLowerO(analyticsMember0137),
-    { selectedAvatar, setSelectedAvatarId } = useSelectedAvatar(avatarOptions),
-    petsSettingsValue21,
-    petsSettingsValue22,
-    petsSettingsValue23,
-    petsSettingsValue24,
-    petsSettingsValue25,
-    petsSettingsValue26,
-    petsSettingsValue27,
-    petsSettingsValue28,
-    petsSettingsValue29,
-    petsSettingsValue30;
-  {
-    let petsSettingsValue37 = avatarOptions.filter(petsSettingsHelper6),
-      petsSettingsValue38 = avatarOptions.filter(petsSettingsHelper5),
-      petsSettingsValue39 = (petsSettingsParam6, petsSettingsParam7) => {
-        petsSettingsValue20.logProductEvent(
-          currentAppInitialSharedMember0097,
-          avatarOverlayAnalytics({
-            action: petsSettingsParam6,
-            selectedAvatar: petsSettingsParam7,
-            source:
-              currentAppInitialSharedMember0654.CODEX_AVATAR_OVERLAY_SOURCE_SETTINGS,
-          }),
-        );
-      };
-    let petsSettingsValue40 = petsSettingsValue39,
-      petsSettingsValue41 = (petsSettingsParam10) => {
-        setSelectedAvatarId(petsSettingsParam10.id);
-        petsSettingsValue40(
-          currentAppInitialSharedMember0342.CODEX_AVATAR_OVERLAY_ACTION_PET_SELECTED,
-          petsSettingsParam10,
-        );
-      };
-    let petsSettingsValue42 = petsSettingsValue41;
-    petsSettingsValue30 = "flex flex-col gap-[var(--padding-panel)]";
-    petsSettingsValue23 = generalAppearanceCurrentCompatSlotLowerD;
-    petsSettingsValue22 = generalAppearanceCurrentCompatSlotLowerD.Content;
-    petsSettingsValue21 = generalAppearanceCurrentCompatSlotLowerQ;
-    petsSettingsValue24 =
-      "flex flex-col divide-y divide-token-border bg-token-bg-secondary/20";
-    let petsSettingsValue43 = onCreateCustomAvatar
-      ? petsSettingsValue8.jsx(worktreeNewThreadQueryCompatSlotUpperTLowerM, {
-          color: "secondary",
-          loading: isCreatingCustomAvatar,
-          onClick: () => {
-            petsSettingsValue40(
-              currentAppInitialSharedMember0342.CODEX_AVATAR_OVERLAY_ACTION_CUSTOM_PET_CREATE_STARTED,
-              selectedAvatar,
-            );
-            onCreateCustomAvatar();
-          },
-          size: "toolbar",
-          children: petsSettingsValue8.jsx(currentAppInitialSharedMember0924, {
-            id: "settings.pets.custom.create.title",
-            defaultMessage: "Create your own pet",
-            description:
-              "Button label for creating a custom Codex pet from settings",
-          }),
-        })
-      : null;
-    let petsSettingsValue44 = onRefreshCustomAvatars
-      ? petsSettingsValue8.jsx(worktreeNewThreadQueryCompatSlotUpperTLowerM, {
-          color: "secondary",
-          onClick: onRefreshCustomAvatars,
-          size: "toolbar",
-          children: petsSettingsValue8.jsx(currentAppInitialSharedMember0924, {
-            id: "settings.pets.refresh",
-            defaultMessage: "Refresh",
-            description:
-              "Button label to refresh custom pets from local manifests",
-          }),
-        })
-      : null;
-    let petsSettingsValue45 = () => {
-      petsSettingsValue40(
-        petsSettingsValue19
-          ? currentAppInitialSharedMember0342.CODEX_AVATAR_OVERLAY_ACTION_CLOSE_REQUESTED
-          : currentAppInitialSharedMember0342.CODEX_AVATAR_OVERLAY_ACTION_OPEN_REQUESTED,
-        selectedAvatar,
-      );
-      currentAppInitialSharedCompatSlotLowerV.dispatchMessage(
-        "avatar-overlay-open",
-        {},
-      );
-    };
-    let petsSettingsValue46 = petsSettingsValue19
-      ? petsSettingsValue8.jsx(currentAppInitialSharedMember0924, {
-          id: "settings.personalization.pets.tuckAwayPet",
-          defaultMessage: "Tuck Away Pet",
-          description: "Button that closes the floating pet overlay",
-        })
-      : petsSettingsValue8.jsx(currentAppInitialSharedMember0924, {
-          id: "settings.personalization.pets.openPet",
-          defaultMessage: "Wake Pet",
-          description: "Button that opens the floating pet overlay",
-        });
-    let petsSettingsValue47;
-    petsSettingsValue47 = petsSettingsValue8.jsx(
-      worktreeNewThreadQueryCompatSlotUpperTLowerM,
-      {
-        color: "secondary",
-        onClick: petsSettingsValue45,
-        size: "toolbar",
-        children: petsSettingsValue46,
-      },
-    );
-    petsSettingsValue25 = (
-      <div className="flex justify-end gap-2 p-3">
-        {petsSettingsValue43}
-        {petsSettingsValue44}
-        {petsSettingsValue47}
-      </div>
-    );
-    petsSettingsValue26 = isLoadingCustomAvatars ? (
-      <div className="flex items-center gap-2 p-3 text-sm text-token-text-secondary">
-        {petsSettingsValue8.jsx(worktreeNewThreadQueryCompatSlotUpperDLowerM, {
-          className: "icon-xs",
-        })}
-        {petsSettingsValue8.jsx(currentAppInitialSharedMember0924, {
-          id: "settings.pets.loadingCustom",
-          defaultMessage: "Loading custom pets",
-          description: "Message shown while loading custom pet manifests",
-        })}
-      </div>
-    ) : null;
-    petsSettingsValue27 = isCustomAvatarLoadError ? (
-      <div className="p-3 text-sm text-token-text-secondary">
-        {petsSettingsValue8.jsx(currentAppInitialSharedMember0924, {
-          id: "settings.pets.loadCustomError",
-          defaultMessage: "Unable to load custom pets",
-          description: "Message shown when custom pet manifests fail to load",
-        })}
-      </div>
-    ) : null;
-    let petsSettingsValue48;
-    petsSettingsValue48 = (petsSettingsParam8) =>
-      petsSettingsValue8.jsx(
-        petsSettingsHelper7,
-        {
-          avatar: petsSettingsParam8,
-          isSelected: petsSettingsParam8.id === selectedAvatar.id,
-          onSelectAvatar: petsSettingsValue42,
-        },
-        petsSettingsParam8.id,
-      );
-    petsSettingsValue28 = petsSettingsValue38.map(petsSettingsValue48);
-    let petsSettingsValue49;
-    petsSettingsValue49 = (petsSettingsParam9) =>
-      petsSettingsValue8.jsx(
-        petsSettingsHelper7,
-        {
-          avatar: petsSettingsParam9,
-          isSelected: petsSettingsParam9.id === selectedAvatar.id,
-          onSelectAvatar: petsSettingsValue42,
-        },
-        petsSettingsParam9.id,
-      );
-    petsSettingsValue29 = petsSettingsValue37.map(petsSettingsValue49);
-  }
-  let petsSettingsValue31 =
-    avatarDirectory == null
-      ? null
-      : petsSettingsValue8.jsx(petsSettingsHelper2, {
-          avatarDirectory,
-        });
-  let petsSettingsValue32 = (
-    <div className={petsSettingsValue24}>
-      {petsSettingsValue25}
-      {petsSettingsValue26}
-      {petsSettingsValue27}
-      {petsSettingsValue28}
-      {petsSettingsValue29}
-      {petsSettingsValue31}
-    </div>
-  );
-  let petsSettingsValue33 = petsSettingsValue8.jsx(petsSettingsValue21, {
-    children: petsSettingsValue32,
-  });
-  let petsSettingsValue34 = petsSettingsValue8.jsx(petsSettingsValue22, {
-    children: petsSettingsValue33,
-  });
-  let petsSettingsValue35 = petsSettingsValue8.jsx(petsSettingsValue23, {
-    children: petsSettingsValue34,
-  });
+  }, [avatarDirectory, mutate]);
+
   return (
-    <section className={petsSettingsValue30}>{petsSettingsValue35}</section>
+    <SettingsRow
+      label={
+        <FormattedMessage
+          id="settings.pets.custom.title"
+          defaultMessage="Custom pets"
+          description="Heading for custom pet settings"
+        />
+      }
+      description={
+        <span className="font-mono text-xs break-all">{avatarDirectory}</span>
+      }
+      control={
+        <Button color="ghost" onClick={handleOpenFolder} size="toolbar">
+          <FormattedMessage
+            id="settings.pets.custom.openFolder"
+            defaultMessage="Open folder"
+            description="Button label to open the local custom pet folder"
+          />
+          <OpenFolderIcon className="icon-2xs" />
+        </Button>
+      }
+    />
   );
 }
-function petsSettingsHelper5(petsSettingsParam12) {
-  return petsSettingsParam12.id.startsWith("custom:");
+
+const initCustomPetsFolderSettingRuntime = once(() => {
+  initReactCompilerRuntime();
+  initHotkeyWindowRoutingRuntime();
+  initIntlFormattingRuntime();
+  initDialogLayoutRuntime();
+  initToastControllerRuntime();
+  initOpenFolderIconRuntime();
+  initAppScopeRuntimeChunk();
+  initSettingsRowRuntime();
+});
+
+function PetsSettingsContent({
+  avatarDirectory,
+  avatarOptions = DEFAULT_AVATARS,
+  isCreatingCustomAvatar = false,
+  isCustomAvatarLoadError = false,
+  isLoadingCustomAvatars = false,
+  onCreateCustomAvatar,
+  onRefreshCustomAvatars,
+}: PetsSettingsContentProps): ReactElement {
+  return (
+    <PlatformGate electron>
+      <PetsSettingsList
+        avatarDirectory={avatarDirectory}
+        avatarOptions={avatarOptions}
+        isCreatingCustomAvatar={isCreatingCustomAvatar}
+        isCustomAvatarLoadError={isCustomAvatarLoadError}
+        isLoadingCustomAvatars={isLoadingCustomAvatars}
+        onCreateCustomAvatar={onCreateCustomAvatar}
+        onRefreshCustomAvatars={onRefreshCustomAvatars}
+      />
+    </PlatformGate>
+  );
 }
-function petsSettingsHelper6(petsSettingsParam11) {
-  return !petsSettingsParam11.id.startsWith("custom:");
-}
-function petsSettingsHelper7(petsSettingsParam3) {
-  let { avatar, isSelected, onSelectAvatar } = petsSettingsParam3,
-    petsSettingsValue65 = petsSettingsValue8.jsx(petsSettingsHelper1, {
-      avatar,
-    });
-  let petsSettingsValue66 = isSelected
-    ? petsSettingsValue8.jsx(worktreeNewThreadQueryCompatSlotUpperTLowerM, {
-        color: "secondary",
-        disabled: true,
-        size: "toolbar",
-        children: petsSettingsValue8.jsx(currentAppInitialSharedMember0924, {
-          id: "settings.personalization.avatars.selected",
-          defaultMessage: "Selected",
-          description: "Label for the selected avatar",
+
+function PetsSettingsList({
+  avatarDirectory,
+  avatarOptions = DEFAULT_AVATARS,
+  isCreatingCustomAvatar,
+  isCustomAvatarLoadError,
+  isLoadingCustomAvatars,
+  onCreateCustomAvatar,
+  onRefreshCustomAvatars,
+}: PetsSettingsListProps): ReactElement {
+  const isAvatarOverlayOpen = useSignalValue(avatarOverlayOpenSignal);
+  const analytics = useSignalValue(analyticsSignal) as AnalyticsClient;
+  const { selectedAvatar, setSelectedAvatarId } =
+    useSelectedAvatar(avatarOptions);
+
+  const defaultAvatars = useMemo(
+    () => avatarOptions.filter(isDefaultAvatar),
+    [avatarOptions],
+  );
+  const customAvatars = useMemo(
+    () => avatarOptions.filter(isCustomAvatar),
+    [avatarOptions],
+  );
+
+  const logAvatarOverlayAction = useCallback(
+    (action: unknown, nextSelectedAvatar: AvatarOption) => {
+      analytics.logProductEvent(
+        avatarOverlayProductEvent,
+        avatarOverlayAnalytics({
+          action,
+          selectedAvatar: nextSelectedAvatar,
+          source: avatarOverlaySource.CODEX_AVATAR_OVERLAY_SOURCE_SETTINGS,
         }),
-      })
-    : petsSettingsValue8.jsx(worktreeNewThreadQueryCompatSlotUpperTLowerM, {
-        color: "secondary",
-        size: "toolbar",
-        onClick: () => {
-          onSelectAvatar(avatar);
-        },
-        children: petsSettingsValue8.jsx(currentAppInitialSharedMember0924, {
-          id: "settings.personalization.avatars.select",
-          defaultMessage: "Select",
-          description: "Button label to select an avatar",
-        }),
-      });
-  return petsSettingsValue8.jsx(appMainCurrentCompatSlotUpperFLowerN, {
-    icon: petsSettingsValue65,
-    label: avatar.displayName,
-    description: avatar.description,
-    control: petsSettingsValue66,
-  });
+      );
+    },
+    [analytics],
+  );
+
+  const handleSelectAvatar = useCallback(
+    (avatar: AvatarOption) => {
+      setSelectedAvatarId(avatar.id);
+      logAvatarOverlayAction(
+        avatarOverlayAction.CODEX_AVATAR_OVERLAY_ACTION_PET_SELECTED,
+        avatar,
+      );
+    },
+    [logAvatarOverlayAction, setSelectedAvatarId],
+  );
+
+  const handleCreateCustomAvatar = useCallback(() => {
+    if (!onCreateCustomAvatar) {
+      return;
+    }
+    logAvatarOverlayAction(
+      avatarOverlayAction.CODEX_AVATAR_OVERLAY_ACTION_CUSTOM_PET_CREATE_STARTED,
+      selectedAvatar,
+    );
+    onCreateCustomAvatar();
+  }, [logAvatarOverlayAction, onCreateCustomAvatar, selectedAvatar]);
+
+  const handleToggleAvatarOverlay = useCallback(() => {
+    logAvatarOverlayAction(
+      isAvatarOverlayOpen
+        ? avatarOverlayAction.CODEX_AVATAR_OVERLAY_ACTION_CLOSE_REQUESTED
+        : avatarOverlayAction.CODEX_AVATAR_OVERLAY_ACTION_OPEN_REQUESTED,
+      selectedAvatar,
+    );
+    nativeAppMessageBus.dispatchMessage("avatar-overlay-open", {});
+  }, [isAvatarOverlayOpen, logAvatarOverlayAction, selectedAvatar]);
+
+  const renderAvatarSettingRow = useCallback(
+    (avatar: AvatarOption) => (
+      <AvatarSettingRow
+        key={avatar.id}
+        avatar={avatar}
+        isSelected={avatar.id === selectedAvatar.id}
+        onSelectAvatar={handleSelectAvatar}
+      />
+    ),
+    [handleSelectAvatar, selectedAvatar.id],
+  );
+
+  const customPetsFolderSetting =
+    avatarDirectory == null ? null : (
+      <CustomPetsFolderSetting avatarDirectory={avatarDirectory} />
+    );
+
+  return (
+    <section className="flex flex-col gap-[var(--padding-panel)]">
+      <SettingsCard>
+        <SettingsCard.Content>
+          <SettingsCardSection>
+            <div className="flex flex-col divide-y divide-token-border bg-token-bg-secondary/20">
+              <div className="flex justify-end gap-2 p-3">
+                {onCreateCustomAvatar ? (
+                  <Button
+                    color="secondary"
+                    loading={isCreatingCustomAvatar}
+                    onClick={handleCreateCustomAvatar}
+                    size="toolbar"
+                  >
+                    <FormattedMessage
+                      id="settings.pets.custom.create.title"
+                      defaultMessage="Create your own pet"
+                      description="Button label for creating a custom Codex pet from settings"
+                    />
+                  </Button>
+                ) : null}
+                {onRefreshCustomAvatars ? (
+                  <Button
+                    color="secondary"
+                    onClick={onRefreshCustomAvatars}
+                    size="toolbar"
+                  >
+                    <FormattedMessage
+                      id="settings.pets.refresh"
+                      defaultMessage="Refresh"
+                      description="Button label to refresh custom pets from local manifests"
+                    />
+                  </Button>
+                ) : null}
+                <Button
+                  color="secondary"
+                  onClick={handleToggleAvatarOverlay}
+                  size="toolbar"
+                >
+                  {isAvatarOverlayOpen ? (
+                    <FormattedMessage
+                      id="settings.personalization.pets.tuckAwayPet"
+                      defaultMessage="Tuck Away Pet"
+                      description="Button that closes the floating pet overlay"
+                    />
+                  ) : (
+                    <FormattedMessage
+                      id="settings.personalization.pets.openPet"
+                      defaultMessage="Wake Pet"
+                      description="Button that opens the floating pet overlay"
+                    />
+                  )}
+                </Button>
+              </div>
+              {isLoadingCustomAvatars ? (
+                <div className="flex items-center gap-2 p-3 text-sm text-token-text-secondary">
+                  <LoadingSpinnerIcon className="icon-xs" />
+                  <FormattedMessage
+                    id="settings.pets.loadingCustom"
+                    defaultMessage="Loading custom pets"
+                    description="Message shown while loading custom pet manifests"
+                  />
+                </div>
+              ) : null}
+              {isCustomAvatarLoadError ? (
+                <div className="p-3 text-sm text-token-text-secondary">
+                  <FormattedMessage
+                    id="settings.pets.loadCustomError"
+                    defaultMessage="Unable to load custom pets"
+                    description="Message shown when custom pet manifests fail to load"
+                  />
+                </div>
+              ) : null}
+              {customAvatars.map(renderAvatarSettingRow)}
+              {defaultAvatars.map(renderAvatarSettingRow)}
+              {customPetsFolderSetting}
+            </div>
+          </SettingsCardSection>
+        </SettingsCard.Content>
+      </SettingsCard>
+    </section>
+  );
 }
-var petsSettingsValue7,
-  petsSettingsValue8,
-  petsSettingsValue9 = once(() => {
-    petsSettingsValue7 = currentAppInitialSharedCompatSlotLowerGLowerC();
-    remoteControlRefreshSourceEnum();
-    currentAppInitialSharedCompatSlotUpperVLowerO();
-    intlFormatDateTimeRuntime();
-    petsSettingsValue3();
-    initAvatarOverlayOpenStateChunk();
-    avatarOverlayOpenSignal();
-    worktreeNewThreadQueryCompatSlotUpperELowerM();
-    worktreeNewThreadQueryCompatSlotUpperOLowerM();
-    worktreeNewThreadQueryCompatSlotLowerULowerS();
-    currentAppInitialSharedCompatSlotUnderscore();
-    remoteConnectionRuntime0298();
-    generalAppearanceCurrentCompatSlotLowerF();
-    appMainCurrentCompatSlotUpperILowerN();
-    generalAppearanceCurrentCompatSlotUpperJ();
-    initDefaultAvatarDefinitionsChunk();
-    initAvatarSelectionStateChunk();
-    petsSettingsValue6();
-    petsSettingsValue8 = currentAppInitialSharedCompatSlotLowerLLowerC();
-  });
-async function petsSettingsHelper8({
+
+function AvatarSettingRow({
+  avatar,
+  isSelected,
+  onSelectAvatar,
+}: AvatarSettingRowProps): ReactElement {
+  const handleSelectAvatar = useCallback(() => {
+    onSelectAvatar(avatar);
+  }, [avatar, onSelectAvatar]);
+
+  return (
+    <SettingsRow
+      icon={<AvatarPreview avatar={avatar} />}
+      label={avatar.displayName}
+      description={avatar.description}
+      control={
+        isSelected ? (
+          <Button color="secondary" disabled size="toolbar">
+            <FormattedMessage
+              id="settings.personalization.avatars.selected"
+              defaultMessage="Selected"
+              description="Label for the selected avatar"
+            />
+          </Button>
+        ) : (
+          <Button color="secondary" size="toolbar" onClick={handleSelectAvatar}>
+            <FormattedMessage
+              id="settings.personalization.avatars.select"
+              defaultMessage="Select"
+              description="Button label to select an avatar"
+            />
+          </Button>
+        )
+      }
+    />
+  );
+}
+
+const initPetsSettingsListRuntime = once(() => {
+  initReactCompilerRuntime();
+  initRemoteControlRefreshSourceRuntime();
+  initHotkeyWindowRoutingRuntime();
+  initIntlFormattingRuntime();
+  initAvatarPreviewRuntime();
+  initAvatarOverlayAnalyticsRuntime();
+  initAvatarOverlayOpenStateChunk();
+  initDialogLayoutRuntime();
+  initDialogShellRuntime();
+  initPlatformGateRuntime();
+  initObjectRuntime();
+  initRemoteConnectionRuntime();
+  initSettingsCardRuntime();
+  initSettingsRowRuntime();
+  initGeneralAppearanceRuntime();
+  initDefaultAvatarDefinitionsChunk();
+  initAvatarSelectionStateChunk();
+  initCustomPetsFolderSettingRuntime();
+});
+
+async function installHatchPetSkill({
   forceReloadSkills,
   skillStatsigOverride,
-}) {
-  let petsSettingsValue91 = await currentAppInitialSharedCompatSlotLowerI(
-    "install-recommended-skill",
-    {
-      params: {
-        forceReinstall: true,
-        hostId: currentAppInitialSharedMember0542,
-        installRoot: null,
-        repoPath: petsSettingsValue11,
-        skillId: petsSettingsValue10,
-        skillStatsigOverride,
-        source: "bundled",
-      },
+}: {
+  forceReloadSkills: () => Promise<unknown>;
+  skillStatsigOverride?: string;
+}): Promise<string> {
+  const installResult = (await sendHostRequest("install-recommended-skill", {
+    params: {
+      forceReinstall: true,
+      hostId: localHostId,
+      installRoot: null,
+      repoPath: HATCH_PET_REPO_PATH,
+      skillId: HATCH_PET_SKILL_ID,
+      skillStatsigOverride,
+      source: "bundled",
     },
-  );
-  if (!petsSettingsValue91.success || petsSettingsValue91.destination == null)
-    throw Error(petsSettingsValue91.error ?? "Unable to install Hatch Pet");
+  })) as InstallRecommendedSkillResult;
+
+  if (!installResult.success || installResult.destination == null) {
+    throw Error(installResult.error ?? "Unable to install Hatch Pet");
+  }
+
+  await forceReloadSkills();
+
+  return `${formatSkillReference({
+    name: HATCH_PET_SKILL_ID,
+    path: joinPath(installResult.destination, "SKILL.md"),
+  })} create a pet based on what you know about me`;
+}
+
+const initInstallHatchPetSkillRuntime = once(() => {
+  initPathRuntime();
+  initDisplayRuntime();
+  initSkillReferenceFormatterRuntime();
+});
+
+function PetsSettingsElectronContent(): ReactElement {
   return (
-    await forceReloadSkills(),
-    `${worktreeNewThreadQueryCompatSlotLowerQLowerU({
-      name: petsSettingsValue10,
-      path: generalAppearanceCurrentCompatSlotLowerU(
-        petsSettingsValue91.destination,
-        "SKILL.md",
-      ),
-    })} create a pet based on what you know about me`
+    <PlatformGate electron>
+      <PetsSettingsDataSource />
+    </PlatformGate>
   );
 }
-var petsSettingsValue10,
-  petsSettingsValue11,
-  petsSettingsValue12 = once(() => {
-    generalAppearanceCurrentCompatSlotLowerL();
-    currentAppInitialSharedDisplayRuntime();
-    worktreeNewThreadQueryCompatSlotUpperXLowerU();
-    _appInitialAppMainRemoteConversationPageHotkeyWindowThreadPageAutomationsPageThBnlvjk3wC();
-    petsSettingsValue10 = "hatch-pet";
-    petsSettingsValue11 = "skills/.curated/hatch-pet";
-  });
-function petsSettingsHelper9() {
-  return petsSettingsValue15.jsx(worktreeNewThreadQueryCompatSlotLowerLLowerS, {
-    electron: true,
-    children: petsSettingsValue15.jsx(petsSettingsHelper10, {}),
-  });
-}
-function petsSettingsHelper10() {
-  let petsSettingsValue84 = currentAppInitialSharedCompatSlotUpperKLowerO(
-      currentAppInitialSharedCompatSlotUpperE,
-    ),
-    [petsSettingsValue85, petsSettingsValue86] =
-      petsSettingsValue14.useState(false),
-    { avatarDirectory, avatarOptions, isError, isLoading } =
-      initUseAvatarOptionsChunk(),
-    petsSettingsValue87 = pullRequestNewThreadCompatSlotLowerBLowerN(),
-    petsSettingsValue88 = appgenLibraryHotDjo67r4nCompatSlotLowerILowerR(),
-    { forceReload } = worktreeNewThreadQueryCompatSlotLowerMLowerR(
-      undefined,
-      currentAppInitialSharedMember0542,
-    ),
-    petsSettingsValue89 = useRecommendedSkillStatsigOverrides(),
-    petsSettingsValue90 = async () => {
-      petsSettingsValue86(true);
-      try {
-        petsSettingsValue88({
-          prefillPrompt: await petsSettingsHelper8({
-            forceReloadSkills: forceReload,
-            skillStatsigOverride: getRecommendedSkillStatsigOverride(
-              petsSettingsValue89,
-              "hatch-pet",
-            ),
-          }),
-        });
-      } catch {
-        petsSettingsValue84
-          .get(worktreeNewThreadQueryCompatSlotLowerGLowerP)
-          .danger(
-            petsSettingsValue15.jsx(currentAppInitialSharedMember0924, {
-              id: "settings.pets.createCustom.error",
-              defaultMessage: "Unable to start pet creation",
-              description:
-                "Toast shown when the Hatch Pet skill cannot be installed",
-            }),
-          );
-      } finally {
-        petsSettingsValue86(false);
-      }
-    };
-  return petsSettingsValue15.jsx(petsSettingsHelper3, {
-    avatarDirectory,
-    avatarOptions,
-    isCreatingCustomAvatar: petsSettingsValue85,
-    isCustomAvatarLoadError: isError,
-    isLoadingCustomAvatars: isLoading,
-    onCreateCustomAvatar: () => {
-      petsSettingsValue90();
-    },
-    onRefreshCustomAvatars: () => {
-      petsSettingsValue87(CUSTOM_AVATARS_QUERY_KEY);
-    },
-  });
-}
-var petsSettingsValue13,
-  petsSettingsValue14,
-  petsSettingsValue15,
-  petsSettingsValue16 = once(() => {
-    petsSettingsValue13 = currentAppInitialSharedCompatSlotLowerGLowerC();
-    currentAppInitialSharedCompatSlotUpperVLowerO();
-    petsSettingsValue14 = toEsModule(
-      currentAppInitialSharedCompatSlotUnderscoreLowerC(),
-      1,
-    );
-    intlFormatDateTimeRuntime();
-    worktreeNewThreadQueryCompatSlotLowerMLowerP();
-    worktreeNewThreadQueryCompatSlotLowerULowerS();
-    appgenLibraryHotDjo67r4nCompatSlotLowerNLowerR();
-    pullRequestNewThreadCompatSlotLowerYLowerN();
-    currentAppInitialSharedCompatSlotUpperD();
-    currentAppInitialSharedDisplayRuntime();
-    initRecommendedSkillStatsigOverridesChunk();
-    worktreeNewThreadQueryCompatSlotLowerPLowerR();
-    petsSettingsValue9();
-    petsSettingsValue12();
-    initCustomAvatarsQueryChunk();
+
+function PetsSettingsDataSource(): ReactElement {
+  const routeScope = useRouteScopeContext(appScopeRoot) as AppRouteScope;
+  const [isCreatingCustomAvatar, setIsCreatingCustomAvatar] = useState(false);
+  const { avatarDirectory, avatarOptions, isError, isLoading } =
     useAvatarOptions();
-    petsSettingsValue15 = currentAppInitialSharedCompatSlotLowerLLowerC();
-  });
-export function PetsSettings() {
-  return $.jsx(SettingsContentLayout, {
-    title: $.jsx(appgenLibraryHotDjo67r4nCompatSlotUpperV, {
-      slug: "pets",
-    }),
-    children: $.jsx(petsSettingsHelper9, {}),
-  });
+  const invalidateQueryKey = useInvalidateQueryKey();
+  const startThreadWithPrefill = useStartThreadWithPrefill();
+  const { forceReload } = useSkillForceReload(undefined, localHostId) as {
+    forceReload(): Promise<unknown>;
+  };
+  const recommendedSkillOverrides = useRecommendedSkillStatsigOverrides();
+
+  const handleCreateCustomAvatar = useCallback(async () => {
+    setIsCreatingCustomAvatar(true);
+    try {
+      startThreadWithPrefill({
+        prefillPrompt: await installHatchPetSkill({
+          forceReloadSkills: forceReload,
+          skillStatsigOverride: getRecommendedSkillStatsigOverride(
+            recommendedSkillOverrides,
+            HATCH_PET_SKILL_ID,
+          ),
+        }),
+      });
+    } catch {
+      routeScope
+        .get<ToastController>(toastControllerSignal)
+        .danger(
+          <FormattedMessage
+            id="settings.pets.createCustom.error"
+            defaultMessage="Unable to start pet creation"
+            description="Toast shown when the Hatch Pet skill cannot be installed"
+          />,
+        );
+    } finally {
+      setIsCreatingCustomAvatar(false);
+    }
+  }, [
+    forceReload,
+    recommendedSkillOverrides,
+    routeScope,
+    startThreadWithPrefill,
+  ]);
+
+  const handleRefreshCustomAvatars = useCallback(() => {
+    void invalidateQueryKey(CUSTOM_AVATARS_QUERY_KEY);
+  }, [invalidateQueryKey]);
+
+  return (
+    <PetsSettingsContent
+      avatarDirectory={avatarDirectory}
+      avatarOptions={avatarOptions}
+      isCreatingCustomAvatar={isCreatingCustomAvatar}
+      isCustomAvatarLoadError={isError}
+      isLoadingCustomAvatars={isLoading}
+      onCreateCustomAvatar={() => {
+        void handleCreateCustomAvatar();
+      }}
+      onRefreshCustomAvatars={handleRefreshCustomAvatars}
+    />
+  );
 }
-var petsSettingsValue17, $;
+
+const initPetsSettingsDataSourceRuntime = once(() => {
+  initReactCompilerRuntime();
+  initHotkeyWindowRoutingRuntime();
+  initIntlFormattingRuntime();
+  initToastControllerRuntime();
+  initPlatformGateRuntime();
+  initStartThreadWithPrefillRuntime();
+  initInvalidateQueryKeyRuntime();
+  initAppScopeRuntimeChunk();
+  initDisplayRuntime();
+  initRecommendedSkillStatsigOverridesChunk();
+  initSkillForceReloadRuntime();
+  initPetsSettingsListRuntime();
+  initInstallHatchPetSkillRuntime();
+  initCustomAvatarsQueryChunk();
+  initUseAvatarOptionsChunk();
+});
+
+export function PetsSettings(): ReactElement {
+  return (
+    <SettingsContentLayout title={<SettingsTitle slug="pets" />}>
+      <PetsSettingsElectronContent />
+    </SettingsContentLayout>
+  );
+}
+
 once(() => {
-  petsSettingsValue17 = currentAppInitialSharedCompatSlotLowerGLowerC();
-  petsSettingsValue16();
+  initReactCompilerRuntime();
+  initPetsSettingsDataSourceRuntime();
   initSettingsContentLayoutChunk();
-  appgenLibraryHotDjo67r4nCompatSlotUpperH();
-  $ = currentAppInitialSharedCompatSlotLowerLLowerC();
+  initSettingsTitleRuntime();
 })();
