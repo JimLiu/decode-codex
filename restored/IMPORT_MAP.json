@@ -42063,12 +42063,12 @@
         "ReviewModeContent": "ReviewModeContent"
       },
       "status": "done",
-      "note": "Current ReviewModeContent hash maps to a dedicated current-ref runtime over vendor/review-mode-content-current-bundle.tsx; the single semantic export is re-derived from the current file.",
-      "lastUpdated": "2026-06-30T22:22:31.375Z",
+      "note": "Current ReviewModeContent hash maps to a dedicated current-ref runtime over review/review-mode-content.tsx; vendor/review-mode-content-current-bundle.tsx remains only as a compatibility shim.",
+      "lastUpdated": "2026-07-01T02:17:29.000Z",
       "stage3Accepted": true,
-      "stage3AcceptedAt": "2026-06-30T22:22:31.375Z",
-      "stage3Review": "Host self-review: verified the current file exports ReviewModeContent, rewrote dependency imports through restored/IMPORT_MAP.json, and passed quality gates on the backing bundle and runtime.",
-      "stage3Note": "Accepted as a current-ref compatibility export over a restored-dependency backing bundle; full semantic split of ReviewModeContent remains a later cleanup."
+      "stage3AcceptedAt": "2026-07-01T02:17:29.000Z",
+      "stage3Review": "Host self-review: moved the ReviewModeContent body into review/review-mode-content.tsx, preserved the current runtime public export, corrected the moved app-main runtime import, and kept vendor/review-mode-content-current-bundle.tsx as a compatibility shim.",
+      "stage3Note": "Accepted as a semantic review mode command content surface with current-ref runtime and vendor shim exports."
     },
     "appgen-library-page-ky7mDvfs": {
       "restored": "runtime/current-app-initial/appgen-library-page-current-runtime.ts",
