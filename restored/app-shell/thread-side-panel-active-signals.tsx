@@ -176,13 +176,19 @@ function initBrowserSidebarTweaksStateChunk(): void {
   void browserSidebarTweaksStateByTarget;
 }
 
+function initActiveSidePanelBrowserTabSignalsChunk(): void {
+  void activeSidePanelBrowserTabIdSignal;
+  void timelineRightPanelActiveSignal;
+}
+
 export {
   subscribeBrowserSidebarTweaksSubmit,
   BrowserSidebarTweaksIcon,
+  activeSidePanelBrowserTabIdSignal,
   getBrowserSidebarTweaksState,
+  initActiveSidePanelBrowserTabSignalsChunk,
   initBrowserSidebarTweaksStateChunk,
   initBrowserSidebarTweaksSubmitRequestChunk,
   requestBrowserSidebarTweaksSubmit,
   setBrowserSidebarTweaksState,
-  activeSidePanelBrowserTabIdSignal,
 };

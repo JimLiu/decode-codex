@@ -249,7 +249,9 @@ export {
   initBrowserSidebarStateChunk,
 } from "../../browser/browser-sidebar-state";
 export {
+  activeSidePanelBrowserTabIdSignal,
   getBrowserSidebarTweaksState,
+  initActiveSidePanelBrowserTabSignalsChunk,
   initBrowserSidebarTweaksStateChunk,
   initBrowserSidebarTweaksSubmitRequestChunk,
   subscribeBrowserSidebarTweaksSubmit,
