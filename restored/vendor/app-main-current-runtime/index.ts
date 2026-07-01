@@ -1,5 +1,6 @@
 // Restored from ref/webview/assets/app-initial~app-main~onboarding-page-CgNc-Bk2.js
 // Directory barrel for the current app-main/onboarding semantic alias layer.
+export * from "./automation-aliases";
 export * from "./semantic-aliases";
 export * from "./thread-action-aliases";
 export * from "./thread-message-aliases";

@@ -7,7 +7,6 @@ export {
   Wn as appMainCurrentCompatSlotUpperWLowerN,
   Wo as appMainCurrentCompatSlotUpperWLowerO,
   Wp as appMainCurrentCompatSlotUpperWLowerP,
-  Wr as appMainCurrentCompatSlotUpperWLowerR,
   Ws as appMainCurrentCompatSlotUpperWLowerS,
   Wt as appMainCurrentCompatSlotUpperWLowerT,
   Wu as appMainCurrentCompatSlotUpperWLowerU,

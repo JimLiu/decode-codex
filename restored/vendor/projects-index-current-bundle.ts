@@ -349,7 +349,7 @@ import {
   initFastServiceTierIcon as ma,
   appMainCurrentCompatSlotUpperVLowerA as ha,
   setPinnedThreadsOrder as ga,
-  appMainCurrentCompatSlotUpperWLowerR as _a,
+  automationsQuerySignal as _a,
   appMainCurrentCompatSlotUpperWLowerT as va,
   appMainCurrentCompatSlotUpperXLowerT as ya,
   appMainCurrentCompatSlotUpperZLowerT as ba,
