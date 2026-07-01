@@ -9,6 +9,8 @@ interface AppScope {
 
 export const BROWSER_CONVERSATION_FEATURE_GATE_ID = "40604217";
 
+export function initBrowserConversationFeatureGateChunk(): void {}
+
 export function isBrowserConversationFeatureGateEnabled(
   scope: AppScope,
 ): boolean {

@@ -22,6 +22,8 @@ const FALLBACK_KEY_BY_CODE = new Map([
 
 let keyboardLayoutMap: Record<string, string> | null = null;
 
+export function initKeyboardLayoutMapChunk(): void {}
+
 export function setKeyboardLayoutMap(layoutMap: Record<string, string>): void {
   keyboardLayoutMap = layoutMap;
 }

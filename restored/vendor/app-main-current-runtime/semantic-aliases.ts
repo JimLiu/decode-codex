@@ -266,6 +266,10 @@ export {
   ServiceTierCopyIcon2,
 } from "../../icons/service-tier-copy";
 export {
+  initTwoPeopleShieldIconChunk,
+  TwoPeopleShieldIcon,
+} from "../../icons/two-people-shield-icon";
+export {
   ComposerContextButton,
   initComposerContextButtonChunk,
 } from "../../features/use-dictation/context-button";
@@ -301,6 +305,26 @@ export {
   initUseRecordingWaveformChunk,
   useRecordingWaveform,
 } from "../../utils/use-recording-waveform";
+export {
+  initUseDictationKeyboardChunk,
+  useDictationKeyboard,
+} from "../../composer/use-dictation-keyboard";
+export {
+  initUseIsDictationSupportedChunk,
+  useIsDictationSupported,
+} from "../../utils/use-is-dictation-supported";
+export {
+  initKeyboardLayoutMapChunk,
+  resolveKeyboardLayoutKey,
+  setKeyboardLayoutMap,
+} from "../../utils/keyboard-layout-map";
+export {
+  BROWSER_CONVERSATION_FEATURE_GATE_ID,
+  initBrowserConversationFeatureGateChunk,
+  isBrowserConversationFeatureGateEnabled,
+} from "../../browser/browser-conversation-feature-gate";
+export { createThread } from "../../threads/create-thread";
+export { LargeEmptyState } from "../../utils/large-empty-state";
 export {
   CHATGPT_ADMIN_BILLING_ADD_CREDITS_URL,
   CHATGPT_ADMIN_URL,
@@ -747,6 +771,10 @@ export {
   composeEventHandlers,
   initComposeEventHandlersRuntime,
 } from "../radix-event-helpers";
+export {
+  useDictationCommandAccelerator,
+  useDictationShortcutLabel,
+} from "../../composer/composer-command-keymap";
 export { isComposerDictationTarget } from "../../composer/composer-dictation-focus";
 export {
   initMessageOrStringHelpersChunk,

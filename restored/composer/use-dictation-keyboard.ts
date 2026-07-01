@@ -25,6 +25,8 @@ export type UseDictationKeyboardOptions = {
   ignoreWithin?: string;
 };
 
+export function initUseDictationKeyboardChunk(): void {}
+
 export function useDictationKeyboard({
   enabled,
   isDictating,

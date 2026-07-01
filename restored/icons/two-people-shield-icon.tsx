@@ -2,6 +2,8 @@
 // Small two-figure privacy/shared glyph (11x10) used as an inline status badge.
 import type { SVGProps } from "react";
 
+export function initTwoPeopleShieldIconChunk(): void {}
+
 export function TwoPeopleShieldIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <svg

@@ -6,6 +6,9 @@ import {
 } from "../vendor/statsig-current-runtime";
 import { useAuthForHost } from "../auth/use-auth";
 const VOICE_INPUT_GATE = "4100906017";
+
+export function initUseIsDictationSupportedChunk(): void {}
+
 export function useIsDictationSupported(hostId: string): boolean | null {
   const authState = useAuthForHost(hostId);
   const isVoiceInputEnabled = useGateValue(VOICE_INPUT_GATE);
