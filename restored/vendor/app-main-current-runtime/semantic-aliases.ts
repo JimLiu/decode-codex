@@ -2,6 +2,7 @@
 // Named app-main current runtime aliases recovered from the current producer.
 export { GlobeIcon } from "../../icons/globe-icon";
 export { composeRefs } from "../../utils/compose-refs";
+export { composeEventHandlers } from "../radix-event-helpers";
 
 export {
   $l as SidebarSection,
@@ -84,7 +85,6 @@ export {
   ml as openSessionSandboxSidePanel,
   mo as initForkConversationMessagesChunk,
   nf as liveMcpAppFrameSignal,
-  nl as composeEventHandlers,
   nm as SidebarRowHoverCard,
   of as closeThreadMcpAppSidePanelTab,
   ol as useReferralInviteMutation,

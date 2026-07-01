@@ -27523,12 +27523,12 @@
         "zu": "appMainCurrentCompatSlotLowerZLowerU"
       },
       "status": "done",
-      "note": "Current app-main/onboarding shared runtime restored as a semantic alias layer over boundaries/current-ref/app-main-current-producer.ts. GlobeIcon and composeRefs now resolve directly to semantic modules; remaining aliases still route through vendor/app-main-current-cgnc-bundle.ts while semantic consumers continue through app-main-current-runtime.ts.",
-      "lastUpdated": "2026-07-01T02:48:00.000Z",
+      "note": "Current app-main/onboarding shared runtime restored as a semantic alias layer over boundaries/current-ref/app-main-current-producer.ts. GlobeIcon, composeRefs, and composeEventHandlers now resolve directly to semantic modules; remaining aliases still route through vendor/app-main-current-cgnc-bundle.ts while semantic consumers continue through app-main-current-runtime.ts.",
+      "lastUpdated": "2026-07-01T02:53:00.000Z",
       "stage3Accepted": true,
       "migratedFrom": "app-initial~app-main~onboarding-page-BUwCKIcU",
       "stage3AcceptedAt": "2026-06-29T21:20:00.000Z",
-      "stage3Review": "Host self-review: compared CgNc-Bk2 export aliases against the semantic alias layer, filtered this import-map entry to the current source export surface, and migrated Ar/GlobeIcon plus mp/composeRefs to semantic modules."
+      "stage3Review": "Host self-review: compared CgNc-Bk2 export aliases against the semantic alias layer, filtered this import-map entry to the current source export surface, and migrated Ar/GlobeIcon, mp/composeRefs, and nl/composeEventHandlers to semantic modules."
     },
     "app-initial~app-main~remote-conversation-page~new-thread-panel-page~appgen-library-page~hot~djo67r4n-CrVrqCBe": {
       "restored": "runtime/current-app-initial/appgen-library-hot-djo67r4n-runtime.ts",
