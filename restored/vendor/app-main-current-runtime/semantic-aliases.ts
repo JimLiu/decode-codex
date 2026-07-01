@@ -59,7 +59,10 @@ export {
 } from "../../utils/links-bd-mmkun-d";
 export { resolveSidePanelBrowserTabId } from "../../browser/browser-tab-id-resolution";
 export { normalizeWorkspacePath } from "../../boundaries/src-l0hb/paths";
-export { pinnedThreadsQuery } from "../../utils/pinned-threads-query";
+export {
+  initPinnedThreadsQueryChunk,
+  pinnedThreadsQuery,
+} from "../../utils/pinned-threads-query";
 export { setPinnedThreadsOrder } from "../../utils/set-pinned-thread";
 export {
   declineConversationalOnboardingTask,

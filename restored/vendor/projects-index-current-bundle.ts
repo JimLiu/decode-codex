@@ -326,7 +326,7 @@ import {
   areArraysEqual as Gi,
   appMainCurrentCompatSlotUpperALowerU as Ki,
   useThreadActions as qi,
-  appMainCurrentCompatSlotUpperCLowerC as Ji,
+  initPinnedThreadsQueryChunk as Ji,
   getThreadTaskKeys as Yi,
   appMainCurrentCompatSlotUpperDLowerN as Xi,
   getSidebarThreadEntityIds as Zi,

@@ -26773,7 +26773,7 @@
         "Bu": "appMainCurrentCompatSlotUpperBLowerU",
         "C": "appMainCurrentCompatSlotUpperC",
         "Ca": "appMainCurrentCompatSlotUpperCLowerA",
-        "Cc": "appMainCurrentCompatSlotUpperCLowerC",
+        "Cc": "initPinnedThreadsQueryChunk",
         "Cd": "appMainCurrentCompatSlotUpperCLowerD",
         "Cf": "appMainCurrentCompatSlotUpperCLowerF",
         "Ci": "appMainCurrentCompatSlotUpperCLowerI",
