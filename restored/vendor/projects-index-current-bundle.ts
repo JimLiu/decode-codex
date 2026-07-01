@@ -353,7 +353,7 @@ import {
   AlertIcon as va,
   CloudIcon as ya,
   initCloudIconChunk as ba,
-  appMainCurrentCompatSlotUnderscoreLowerD as xa,
+  initDragIconChunk as xa,
   openThreadBrowserSidePanelTabWithPendingState as Sa,
   ClockIcon as Ca,
   openThreadReviewSidePanelTab as wa,

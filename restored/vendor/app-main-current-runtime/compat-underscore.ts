@@ -4,7 +4,6 @@ export {
   _ as appMainCurrentCompatSlotUnderscore,
   _a as appMainCurrentCompatSlotUnderscoreLowerA,
   _c as appMainCurrentCompatSlotUnderscoreLowerC,
-  _d as appMainCurrentCompatSlotUnderscoreLowerD,
   _f as appMainCurrentCompatSlotUnderscoreLowerF,
   _m as appMainCurrentCompatSlotUnderscoreLowerM,
   _n as appMainCurrentCompatSlotUnderscoreLowerN,

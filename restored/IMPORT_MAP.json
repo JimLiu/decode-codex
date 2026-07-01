@@ -27122,7 +27122,7 @@
         "_": "appMainCurrentCompatSlotUnderscore",
         "_a": "appMainCurrentCompatSlotUnderscoreLowerA",
         "_c": "appMainCurrentCompatSlotUnderscoreLowerC",
-        "_d": "appMainCurrentCompatSlotUnderscoreLowerD",
+        "_d": "initDragIconChunk",
         "_f": "appMainCurrentCompatSlotUnderscoreLowerF",
         "_i": "isWindowsStyleAbsolutePath",
         "_l": "openThreadBrowserSidePanelTabWithPendingState",
