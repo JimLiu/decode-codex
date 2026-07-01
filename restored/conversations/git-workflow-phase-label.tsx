@@ -16,6 +16,8 @@ export interface GitWorkflowPhaseLabelProps {
   phase: GitWorkflowPhase;
 }
 
+export function initGitWorkflowPhaseLabelChunk(): void {}
+
 export function GitWorkflowPhaseLabel({ phase }: GitWorkflowPhaseLabelProps) {
   const descriptor = getGitWorkflowPhaseMessageDescriptor(phase);
   return <FormattedMessage {...descriptor} />;

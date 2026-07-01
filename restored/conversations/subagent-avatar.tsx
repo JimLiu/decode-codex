@@ -17,6 +17,8 @@ const subagentAvatars: SubagentAvatarGlyph[] = [
   ...subagentAvatarGlyphs27To35,
 ];
 
+export function initSubagentAvatarChunk(): void {}
+
 export function hashSeed(seed: string): number {
   let hash = 0;
   for (let i = 0; i < seed.length; i += 1)

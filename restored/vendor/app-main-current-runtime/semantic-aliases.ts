@@ -115,6 +115,14 @@ export {
   initActivityScrollContainerChunk,
 } from "../../conversations/activity-scroll-container";
 export { ComputerUseGlyphIcon } from "../../conversations/tool-activity-source-icon";
+export {
+  initSubagentAvatarChunk,
+  SubagentAvatar,
+} from "../../conversations/subagent-avatar";
+export {
+  GitWorkflowPhaseLabel,
+  initGitWorkflowPhaseLabelChunk,
+} from "../../conversations/git-workflow-phase-label";
 export { DiffStats, initDiffStatsChunk } from "../../git/git-review-primitives";
 export {
   ImageAttachment,
