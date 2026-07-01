@@ -21,3 +21,5 @@ export function CloudIcon(props: IconProps) {
   );
 }
 export default CloudIcon;
+
+export function initCloudIconChunk(): void {}

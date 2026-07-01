@@ -13,5 +13,4 @@ export {
   Zp as appMainCurrentCompatSlotUpperZLowerP,
   Zr as appMainCurrentCompatSlotUpperZLowerR,
   Zs as appMainCurrentCompatSlotUpperZLowerS,
-  Zt as appMainCurrentCompatSlotUpperZLowerT,
 } from "../app-main-current-cgnc-bundle";

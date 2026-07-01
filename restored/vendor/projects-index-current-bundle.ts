@@ -352,7 +352,7 @@ import {
   automationsQuerySignal as _a,
   appMainCurrentCompatSlotUpperWLowerT as va,
   CloudIcon as ya,
-  appMainCurrentCompatSlotUpperZLowerT as ba,
+  initCloudIconChunk as ba,
   appMainCurrentCompatSlotUnderscoreLowerD as xa,
   openThreadBrowserSidePanelTabWithPendingState as Sa,
   ClockIcon as Ca,
