@@ -1987,3 +1987,21 @@ export const primaryRuntimeReadyInvalidationQueryKeyPrefixes: any =
 export const readPersistedStorageValue: any = undefined as any;
 export const setHeartbeatAutomationsEnabled: any = undefined as any;
 export const useSetAtom: any = undefined as any;
+
+// --- automations-page Bc0ZtIBr final residue (open boundary) ---
+export const addForkedFromConversationSyntheticItem: any = undefined as any;
+export const applyConversationStateSlice: any = undefined as any;
+export const buildConversationStateFromThread: any = undefined as any;
+export const bundledMarketplaceName: any = undefined as any;
+export const curatedMarketplaceName: any = undefined as any;
+export const curatedRemoteMarketplaceName: any = undefined as any;
+export const firstPartyBundledAppNameA: any = undefined as any;
+export const firstPartyBundledAppNameB: any = undefined as any;
+export const firstPartyBundledAppNameC: any = undefined as any;
+export const firstPartyBundledAppNameD: any = undefined as any;
+export const firstPartyBundledAppNameE: any = undefined as any;
+export const firstPartyBundledAppNameF: any = undefined as any;
+export const firstPartyBundledAppNameG: any = undefined as any;
+export const getConversationDisplayTitle: any = undefined as any;
+export const registerThreadSnapshot: any = undefined as any;
+export const resolveCatalogAppIdForMcpTool: any = undefined as any;
