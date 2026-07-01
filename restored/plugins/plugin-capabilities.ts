@@ -20,25 +20,25 @@ import {
   resolveCatalogAppIdForMcpTool,
 } from "../boundaries/onboarding-commons-externals.facade";
 
-export type CapabilityType = "skill" | "connector" | "plugin";
-export type CapabilityOrigin = "firstParty" | "marketplace" | "custom";
-export type CatalogDistribution = "firstParty" | "marketplace";
+type CapabilityType = "skill" | "connector" | "plugin";
+type CapabilityOrigin = "firstParty" | "marketplace" | "custom";
+type CatalogDistribution = "firstParty" | "marketplace";
 
-export interface Capability {
+interface Capability {
   capabilityType: CapabilityType;
   origin: CapabilityOrigin;
   catalogId?: string;
   customDistinctCount?: number;
 }
 
-export interface CapabilitySkill {
+interface CapabilitySkill {
   privateIdentity: string;
   isSystem?: boolean;
   pluginId?: string | null;
   pluginMarketplaceName?: string | null;
 }
 
-export interface CapabilityPlugin {
+interface CapabilityPlugin {
   id: string;
   name?: string;
   marketplaceName?: string;
@@ -47,19 +47,19 @@ export interface CapabilityPlugin {
   isRemoteCatalogEntry?: boolean;
 }
 
-export interface CapabilityApp {
+interface CapabilityApp {
   id: string;
   appMetadata?: { firstPartyType?: string } | null;
   distributionChannel?: string;
 }
 
-export interface CapabilityToolCall {
+interface CapabilityToolCall {
   server: string;
   tool: string;
   pluginId?: string | null;
 }
 
-export interface PluginCapabilityInputs {
+interface PluginCapabilityInputs {
   apps?: readonly CapabilityApp[] | null;
   catalogSkills?: readonly { privateIdentity: string }[] | null;
   mcpServerStatuses?: unknown;
@@ -68,14 +68,22 @@ export interface PluginCapabilityInputs {
   toolCalls: readonly CapabilityToolCall[];
 }
 
-export interface PluginCapabilitiesResult {
+interface PluginCapabilitiesResult {
   capabilities: Capability[];
   capabilitiesTruncated: boolean;
 }
 
 const MAX_CAPABILITIES = 100;
-const CAPABILITY_TYPE_ORDER: CapabilityType[] = ["skill", "connector", "plugin"];
-const ORIGIN_ORDER: CapabilityOrigin[] = ["firstParty", "marketplace", "custom"];
+const CAPABILITY_TYPE_ORDER: CapabilityType[] = [
+  "skill",
+  "connector",
+  "plugin",
+];
+const ORIGIN_ORDER: CapabilityOrigin[] = [
+  "firstParty",
+  "marketplace",
+  "custom",
+];
 
 const FIRST_PARTY_MARKETPLACE_NAMES = new Set<string>([
   "codex-official",
@@ -107,7 +115,7 @@ const FIRST_PARTY_CATALOG_APP_IDS = new Set<string>([
   "spreadsheets@openai-primary-runtime",
 ]);
 
-export function classifyAppDistribution(
+function classifyAppDistribution(
   app: CapabilityApp | null | undefined,
 ): CatalogDistribution | null {
   if (
@@ -119,7 +127,7 @@ export function classifyAppDistribution(
   return null;
 }
 
-export function classifyPluginDistribution(
+function classifyPluginDistribution(
   plugin: CapabilityPlugin | null | undefined,
 ): CatalogDistribution | null {
   if (plugin == null || !plugin.isAvailable) return null;
@@ -139,13 +147,13 @@ export function classifyPluginDistribution(
     : "marketplace";
 }
 
-export function getPluginCatalogId(plugin: CapabilityPlugin): string {
+function getPluginCatalogId(plugin: CapabilityPlugin): string {
   return plugin.isRemoteCatalogEntry
     ? (plugin.remotePluginId ?? plugin.id)
     : plugin.id;
 }
 
-export function getPluginCapabilityId(
+function getPluginCapabilityId(
   plugin: CapabilityPlugin | null | undefined,
   pluginId: string,
   marketplaceName: string | null,
@@ -158,7 +166,7 @@ export function getPluginCapabilityId(
   );
 }
 
-export function compareCapabilities(a: Capability, b: Capability): number {
+function compareCapabilities(a: Capability, b: Capability): number {
   const typeDelta =
     CAPABILITY_TYPE_ORDER.indexOf(a.capabilityType) -
     CAPABILITY_TYPE_ORDER.indexOf(b.capabilityType);
@@ -168,12 +176,16 @@ export function compareCapabilities(a: Capability, b: Capability): number {
   if (originDelta !== 0) return originDelta;
   const aCatalogId = a.catalogId ?? "";
   const bCatalogId = b.catalogId ?? "";
-  if (a.origin === "custom" || b.origin === "custom" || aCatalogId === bCatalogId)
+  if (
+    a.origin === "custom" ||
+    b.origin === "custom" ||
+    aCatalogId === bCatalogId
+  )
     return 0;
   return aCatalogId < bCatalogId ? -1 : 1;
 }
 
-export function aggregatePluginCapabilities({
+function aggregatePluginCapabilities({
   apps,
   catalogSkills,
   mcpServerStatuses,
@@ -259,7 +271,11 @@ export function aggregatePluginCapabilities({
       );
       const distribution = classifyPluginDistribution(plugin);
       if (plugin != null && distribution != null)
-        addCatalogCapability("plugin", distribution, getPluginCatalogId(plugin));
+        addCatalogCapability(
+          "plugin",
+          distribution,
+          getPluginCatalogId(plugin),
+        );
       else
         addCustomCapability(
           "plugin",
@@ -276,9 +292,9 @@ export function aggregatePluginCapabilities({
     customDistinctCount: customIdsByType[capabilityType].size,
   }));
 
-  const catalogCapabilities = Array.from(
-    catalogCapabilityByKey.values(),
-  ).sort(compareCapabilities);
+  const catalogCapabilities = Array.from(catalogCapabilityByKey.values()).sort(
+    compareCapabilities,
+  );
   const catalogLimit = MAX_CAPABILITIES - customCapabilities.length;
 
   return {

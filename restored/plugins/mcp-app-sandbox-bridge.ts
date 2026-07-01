@@ -3,14 +3,11 @@
 // webview: handshakes the init message, wraps host API handlers as callable
 // ports, and exposes the sandbox-side API (calls + async generators) to the host.
 
-import { z } from "zod";
 import {
   SANDBOX_PORT_NAMES,
   buildSandboxFrameSrc,
-  httpsUrlSchema,
   isNonEmptyStringArray,
 } from "../boundaries/onboarding-commons-externals.facade";
-import { createMcpAppError } from "./mcp-app-errors";
 
 const RPC_CALL = "CALL";
 const RPC_GENERATOR_GENERATE = "GENERATOR_GENERATE";
@@ -18,17 +15,6 @@ const RPC_REJECT = "REJECT";
 const RPC_RESOLVE = "RESOLVE";
 const INIT_TIMEOUT_MS = 1e4;
 const DEFAULT_CALL_TIMEOUT_MS = 3e4;
-
-export const environmentStatusSchema = z
-  .object({
-    status: z.literal(2),
-    type: z.literal("environment_status"),
-  })
-  .passthrough();
-
-export const openExternalRequestSchema = z.object({
-  href: httpsUrlSchema({ protocol: /^https$/ }),
-});
 
 function createAbortError(): Error {
   const error = new Error("MCP sandbox RPC aborted.");
@@ -382,5 +368,3 @@ export async function connectMcpAppSandbox({
   replyPort.start();
   return buildSandboxApi(ports, signal);
 }
-
-export { createMcpAppError };

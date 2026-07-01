@@ -6,7 +6,6 @@ export {
   rd as appMainCurrentCompatSlotLowerRLowerD,
   rf as appMainCurrentCompatSlotLowerRLowerF,
   ri as appMainCurrentCompatSlotLowerRLowerI,
-  rm as appMainCurrentCompatSlotLowerRLowerM,
   rn as appMainCurrentCompatSlotLowerRLowerN,
   ro as appMainCurrentCompatSlotLowerRLowerO,
   rp as appMainCurrentCompatSlotLowerRLowerP,

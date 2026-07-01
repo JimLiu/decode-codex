@@ -2,6 +2,9 @@
 // Named app-main current runtime aliases recovered from the current producer.
 export { GlobeIcon } from "../../icons/globe-icon";
 export { FolderIcon, initFolderIconChunk } from "../../icons/folder-icon";
+export { ClockIcon } from "../../icons/clock-icon";
+export { LaptopIcon } from "../../icons/laptop-icon";
+export { WarningIcon } from "../../icons/warning-icon";
 export { FileSourceTab } from "../../review/file-source-tab";
 export {
   FastServiceTierIcon,
