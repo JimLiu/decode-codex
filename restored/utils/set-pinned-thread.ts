@@ -35,4 +35,9 @@ async function setPinnedThreadsOrder(threadIds: string[]) {
     });
   }
 }
-export { setPinnedThread, setPinnedThreadsOrder };
+function initSetPinnedThreadRuntimeChunk(): void {}
+export {
+  initSetPinnedThreadRuntimeChunk,
+  setPinnedThread,
+  setPinnedThreadsOrder,
+};

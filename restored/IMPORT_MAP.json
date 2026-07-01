@@ -27036,7 +27036,7 @@
         "Tt": "appMainCurrentCompatSlotUpperTLowerT",
         "Tu": "appMainCurrentCompatSlotUpperTLowerU",
         "U": "appMainCurrentCompatSlotUpperU",
-        "Ua": "appMainCurrentCompatSlotUpperULowerA",
+        "Ua": "initSetPinnedThreadRuntimeChunk",
         "Uc": "appMainCurrentCompatSlotUpperULowerC",
         "Ud": "ThreadRowPinAction",
         "Uf": "appMainCurrentCompatSlotUpperULowerF",

@@ -2,7 +2,6 @@
 // Uppercase U compatibility aliases for the current app-main producer.
 export {
   U as appMainCurrentCompatSlotUpperU,
-  Ua as appMainCurrentCompatSlotUpperULowerA,
   Uc as appMainCurrentCompatSlotUpperULowerC,
   Uf as appMainCurrentCompatSlotUpperULowerF,
   Ui as appMainCurrentCompatSlotUpperULowerI,

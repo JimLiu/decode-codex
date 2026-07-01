@@ -79,7 +79,10 @@ export {
   initPinnedThreadsQueryChunk,
   pinnedThreadsQuery,
 } from "../../utils/pinned-threads-query";
-export { setPinnedThreadsOrder } from "../../utils/set-pinned-thread";
+export {
+  initSetPinnedThreadRuntimeChunk,
+  setPinnedThreadsOrder,
+} from "../../utils/set-pinned-thread";
 export {
   declineConversationalOnboardingTask,
   getConversationalOnboardingWorkflowState,

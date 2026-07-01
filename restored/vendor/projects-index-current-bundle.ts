@@ -345,7 +345,7 @@ import {
   sortThreadTasksByPinnedOrder as ua,
   initPullRequestStatusTooltipChunk as da,
   PullRequestCheckStatusIcon as fa,
-  appMainCurrentCompatSlotUpperULowerA as pa,
+  initSetPinnedThreadRuntimeChunk as pa,
   initFastServiceTierIcon as ma,
   appMainCurrentCompatSlotUpperVLowerA as ha,
   setPinnedThreadsOrder as ga,
