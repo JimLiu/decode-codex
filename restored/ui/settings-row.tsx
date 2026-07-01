@@ -158,4 +158,12 @@ function SettingsButtonRow({
     </div>
   );
 }
-export { SettingsKeyValueRow, SettingsControlRow, SettingsButtonRow };
+
+function initSettingsControlRowChunk(): void {}
+
+export {
+  SettingsKeyValueRow,
+  SettingsControlRow,
+  SettingsButtonRow,
+  initSettingsControlRowChunk,
+};

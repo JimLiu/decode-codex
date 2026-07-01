@@ -1,7 +1,7 @@
 // Restored from ref/webview/assets/app-initial~app-main~onboarding-page-CgNc-Bk2.js
 // Named app-main current runtime aliases recovered from the current producer.
 export { GlobeIcon } from "../../icons/globe-icon";
-export { FolderIcon } from "../../icons/folder-icon";
+export { FolderIcon, initFolderIconChunk } from "../../icons/folder-icon";
 export { FileSourceTab } from "../../review/file-source-tab";
 export {
   FastServiceTierIcon,
@@ -32,7 +32,10 @@ export {
   terminalSessionSnapshotStore,
 } from "../../conversations/fork-conversation-panel-state-deps";
 export { serializeError } from "../../runtime/app-logger";
-export { SettingsControlRow } from "../../ui/settings-row";
+export {
+  initSettingsControlRowChunk,
+  SettingsControlRow,
+} from "../../ui/settings-row";
 export { CHATGPT_PRICING_URL } from "../../utils/links-bd-mmkun-d";
 export { normalizeWorkspacePath } from "../../boundaries/src-l0hb/paths";
 export {
@@ -45,7 +48,10 @@ export {
   initSharedHighlightThemeRegistryChunk,
   sharedHighlightThemeRegistry,
 } from "../../utils/shared-highlight-themes";
-export { composeEventHandlers } from "../radix-event-helpers";
+export {
+  composeEventHandlers,
+  initComposeEventHandlersRuntime,
+} from "../radix-event-helpers";
 
 export {
   $l as SidebarSection,
@@ -87,7 +93,6 @@ export {
   dl as SidebarRowDragHandle,
   el as initOpenInBrowserRuntimeChunk,
   eu as SidebarRowUnreadDot,
-  ff as initFolderIconChunk,
   fl as getBrowserTabIdForSidePanelOpen,
   fr as normalizeFilesystemPathForDisplay,
   gl as openThreadBrowserSidePanelTab,
@@ -112,13 +117,11 @@ export {
   sf as getThreadMcpAppSidePanelTabId,
   sl as SidebarRowShortcutScope,
   sm as SidebarRowContextMenuItem,
-  tl as initComposeEventHandlersRuntime,
   ud as initExternalAgentImportStatusIconsChunk,
   ul as mergeVisibleThreadOrder,
   vl as openThreadBrowserSidePanelTabWithoutAnimation,
   xl as openThreadTimelineSidePanel,
   xo as initForkConversationToastRuntime,
-  xr as initSettingsControlRowChunk,
   yl as openThreadLastTurnReviewSidePanelTab,
   zn as SidebarRowRuntime,
 } from "../app-main-current-cgnc-bundle";

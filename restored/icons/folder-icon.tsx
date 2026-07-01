@@ -21,3 +21,5 @@ export function FolderIcon(props: IconProps) {
   );
 }
 export default FolderIcon;
+
+export function initFolderIconChunk(): void {}
