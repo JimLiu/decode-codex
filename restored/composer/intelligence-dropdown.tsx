@@ -51,6 +51,8 @@ const THUMB_PRESS_TRANSITION = {
 };
 const DRAG_THRESHOLD_PX = 3;
 
+export function initIntelligenceDropdownChunk(): void {}
+
 type IntlWithLocale = ReturnType<typeof useIntl> & { locale: string };
 
 interface DragSelectionState {

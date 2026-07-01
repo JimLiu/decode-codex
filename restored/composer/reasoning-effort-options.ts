@@ -9,6 +9,8 @@ import {
   type ReasoningEffortOption,
 } from "../boundaries/automation-editor-deps.facade";
 
+export function initReasoningEffortOptionsChunk(): void {}
+
 export function getModelReasoningEffortOptions(
   models: ModelOption[] | null | undefined,
   selectedModel: string | null | undefined,

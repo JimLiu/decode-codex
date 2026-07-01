@@ -847,13 +847,22 @@ export {
   initModelsAndReasoningEffortsChunk,
   isReasoningEffort,
 } from "../../utils/models-and-reasoning-efforts";
-export { ReasoningEffortLabel } from "../../composer/reasoning-effort-label";
+export {
+  initReasoningEffortLabelChunk,
+  ReasoningEffortLabel,
+} from "../../composer/reasoning-effort-label";
 export {
   cycleReasoningEffortOption,
   getModelReasoningEffortOptions,
+  initReasoningEffortOptionsChunk,
   resolveReasoningEffortOption,
   stepReasoningEffortOption,
 } from "../../composer/reasoning-effort-options";
+export { ModelLabel } from "../../composer/model-label";
+export {
+  initIntelligenceDropdownChunk,
+  IntelligenceDropdown,
+} from "../../composer/intelligence-dropdown";
 export {
   enabledReasoningEffortsSetSignal,
   initEnabledReasoningEffortsChunk,

@@ -52,6 +52,8 @@ export interface ReasoningEffortLabelProps {
   effort: ReasoningEffortLevel;
 }
 
+export function initReasoningEffortLabelChunk(): void {}
+
 export function ReasoningEffortLabel({
   effort,
 }: ReasoningEffortLabelProps): ReactElement {
