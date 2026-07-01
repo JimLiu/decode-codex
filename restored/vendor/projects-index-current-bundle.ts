@@ -344,7 +344,7 @@ import {
   initPullRequestStatusBadgeChunk as la,
   sortThreadTasksByPinnedOrder as ua,
   appMainCurrentCompatSlotUpperTLowerD as da,
-  appMainCurrentCompatSlotUpperTLowerL as fa,
+  PullRequestCheckStatusIcon as fa,
   appMainCurrentCompatSlotUpperULowerA as pa,
   initFastServiceTierIcon as ma,
   appMainCurrentCompatSlotUpperVLowerA as ha,
@@ -371,7 +371,7 @@ import {
   appMainCurrentCompatSlotLowerSLowerP as Ia,
   pinnedThreadsQuery as La,
   PullRequestStatusTooltip as Ra,
-  appMainCurrentCompatSlotLowerWLowerL as za,
+  PullRequestStatusIcon as za,
   openThreadTimelineSidePanel as Ba,
 } from "./app-main-current-runtime";
 import {
