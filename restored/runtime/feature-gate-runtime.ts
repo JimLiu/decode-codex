@@ -1,7 +1,7 @@
 // Restored from ref/webview/assets/app-initial~app-main~worktree-init-v2-page~remote-conversation-page~new-thread-panel-page~o~bj5tp28r-Dcs9S3fj.js
 // Statsig feature-gate signal and hook facade for restored conversation modules.
 import { useMemo } from "react";
-import { useStatsigClient } from "@statsig/react-bindings";
+import { useStatsigClient } from "../vendor/statsig-current-runtime";
 import {
   createAppScopedSignal,
   createAppScopedSignalFamily,
