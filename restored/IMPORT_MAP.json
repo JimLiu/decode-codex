@@ -42750,12 +42750,12 @@
         "AvatarOverlayFeatureGatePage": "AvatarOverlayFeaturegatePage"
       },
       "status": "done",
-      "note": "Current avatar overlay feature gate page hash maps to a dedicated current-ref runtime over vendor/avatar-overlay-featuregate-page-current-bundle.tsx; dependencies are rewritten through restored current bundles.",
-      "lastUpdated": "2026-06-30T23:21:25.587Z",
+      "note": "Current avatar overlay feature gate page hash maps to a dedicated current-ref runtime over features/avatar-overlay-featuregate-page.tsx; vendor/avatar-overlay-featuregate-page-current-bundle.tsx remains only as a compatibility shim.",
+      "lastUpdated": "2026-07-01T01:55:03.633Z",
       "stage3Accepted": true,
-      "stage3AcceptedAt": "2026-06-30T23:21:25.587Z",
-      "stage3Review": "Host self-review: parsed avatar-overlay-featuregate-page-CD3wz3Jd.js exports, rebuilt compatibility exports from auto-renames.json, and rewrote dependency imports through restored/IMPORT_MAP.json.",
-      "stage3Note": "Accepted as a current-ref compatibility export over a restored-dependency backing bundle; full semantic split remains future cleanup."
+      "stage3AcceptedAt": "2026-07-01T01:55:03.633Z",
+      "stage3Review": "Host self-review: moved the readable avatar overlay feature gate body into features/avatar-overlay-featuregate-page.tsx, preserved the current runtime public export alias, and kept vendor/avatar-overlay-featuregate-page-current-bundle.tsx as a compatibility shim.",
+      "stage3Note": "Accepted as a semantic avatar overlay feature gate surface with current-ref runtime and vendor shim exports."
     },
     "hotkey-window-home-page-HuAbYFeH": {
       "restored": "runtime/current-app-initial/hotkey-window-home-page-current-runtime.ts",
