@@ -700,6 +700,7 @@ export {
   computeBranchMismatch,
   initLocalGitActionBranchAtomsChunk,
 } from "../../review/local-git-action-branch-atoms";
+export { initLocalGitActionScopedContextChunk } from "../../review/local-git-action-scoped-context";
 export { initLocalGitActionStateChunk } from "../../review/local-git-action-state";
 const threadManagementToolHandlers = getThreadManagementToolHandlers();
 export const handleCreateThread =

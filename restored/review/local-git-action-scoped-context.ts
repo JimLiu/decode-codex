@@ -25,6 +25,8 @@ export interface GitActionsScopeValue {
   codexWorktree?: boolean;
 }
 
+export function initLocalGitActionScopedContextChunk(): void {}
+
 export const localConversationGitActionsScope = defineScope(
   "LocalGitActionsScope",
   {
