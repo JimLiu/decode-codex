@@ -27814,12 +27814,12 @@
         "y": "projectHoverCardCurrentCompatSlotLowerY"
       },
       "status": "done",
-      "note": "Current exact-hash chunk restored through runtime/current-app-initial/project-hover-card-current-runtime.ts; backing bundle is vendor/../../vendor/project-hover-card-current-bundle and all current export aliases are covered by compatibility slot names.",
-      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "note": "Current exact-hash chunk restored through runtime/current-app-initial/project-hover-card-current-runtime.ts. The runtime now maps current export aliases directly to the semantic project hover card/sidebar modules; vendor/project-hover-card-current-bundle.ts is only a semantic re-export shim.",
+      "lastUpdated": "2026-07-01T00:00:00.000-05:00",
       "migratedFrom": "app-initial~app-main~projects-index-page~local-conversation-page-4SURv8Cr",
       "stage3Accepted": true,
-      "stage3AcceptedAt": "2026-06-29T20:20:00.000Z",
-      "stage3Review": "Host self-review: quality-gate and prettier passed on the mapped public file; file read end-to-end against Stage 3 E1-E4."
+      "stage3AcceptedAt": "2026-07-01T00:00:00.000-05:00",
+      "stage3Review": "Host self-review: current runtime no longer imports the mechanical vendor bundle; quality-gate and prettier passed on the mapped public runtime and the vendor shim, and the current export aliases were checked against the semantic sidebar/project hover card modules."
     },
     "app-initial~app-main~remote-conversation-page~projects-index-page-px21igmO": {
       "restored": "runtime/current-app-initial/projects-index-current-runtime.ts",

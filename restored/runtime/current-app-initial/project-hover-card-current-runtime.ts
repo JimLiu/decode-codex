@@ -1,12 +1,59 @@
 // Restored from ref/webview/assets/app-initial~app-main~projects-index-page~local-conversation-page-HgUkvfGN.js
 // Complete current-ref compatibility export surface for projectHoverCardCurrent.
-// prettier-ignore
+import {
+  buildRemoteHostGlobeColors,
+  collapseHomeDirectoryInPath,
+  formatAppServerConnectionErrorMessage,
+  getRemoteConnectionStatusBadgeModel,
+  initPinnedProjectRuntime,
+  initProjectHoverCardChunk,
+  initProjectHoverCardSourceHelpers,
+  initProjectPinButtonChunk,
+  initProjectSourceFolderIconChunk,
+  initRemoteConnectionStatusMessagesChunk,
+  initRemoteConnectionStatusModelChunk,
+  initRemoteHostGlobeColorMath,
+  initRemoteHostGlobeColorSignal,
+  initRemoteHostGlobeIconChunk,
+  ProjectHoverCard,
+  ProjectPinButton,
+  ProjectSourceFolderIcon,
+  RemoteHostGlobeIcon,
+  remoteHostGlobeColorByHostIdSignal,
+  replacePinnedProjectOrder,
+  setProjectPinned,
+} from "../../sidebar/project-hover-card";
+import {
+  initRemoteProjectIconChunk,
+  initWaitingStatusIconChunk,
+  RemoteProjectIcon,
+  WaitingStatusIcon,
+} from "../../remote/remote-connection-runtime";
+
 export {
-  C as projectHoverCardCurrentCompatSlotUpperC, S as projectHoverCardCurrentCompatSlotUpperS, T as projectHoverCardCurrentCompatSlotUpperT, _ as projectHoverCardCurrentCompatSlotUnderscore,
-  a as projectHoverCardCurrentCompatSlotLowerA, b as projectHoverCardCurrentCompatSlotLowerB, c as projectHoverCardCurrentCompatSlotLowerC, d as projectHoverCardCurrentCompatSlotLowerD,
-  f as projectHoverCardCurrentCompatSlotLowerF, g as projectHoverCardCurrentCompatSlotLowerG, h as projectHoverCardCurrentCompatSlotLowerH, i as projectHoverCardCurrentCompatSlotLowerI,
-  l as projectHoverCardCurrentCompatSlotLowerL, m as projectHoverCardCurrentCompatSlotLowerM, n as projectHoverCardCurrentCompatSlotLowerN, o as projectHoverCardCurrentCompatSlotLowerO,
-  p as projectHoverCardCurrentCompatSlotLowerP, r as projectHoverCardCurrentCompatSlotLowerR, s as projectHoverCardCurrentCompatSlotLowerS, t as projectHoverCardCurrentCompatSlotLowerT,
-  u as projectHoverCardCurrentCompatSlotLowerU, v as projectHoverCardCurrentCompatSlotLowerV, w as projectHoverCardCurrentCompatSlotLowerW, x as projectHoverCardCurrentCompatSlotLowerX,
-  y as projectHoverCardCurrentCompatSlotLowerY
-} from "../../vendor/project-hover-card-current-bundle";
+  remoteHostGlobeColorByHostIdSignal as projectHoverCardCurrentCompatSlotUpperC,
+  initRemoteHostGlobeColorSignal as projectHoverCardCurrentCompatSlotUpperS,
+  initWaitingStatusIconChunk as projectHoverCardCurrentCompatSlotUpperT,
+  initRemoteProjectIconChunk as projectHoverCardCurrentCompatSlotUnderscore,
+  setProjectPinned as projectHoverCardCurrentCompatSlotLowerA,
+  buildRemoteHostGlobeColors as projectHoverCardCurrentCompatSlotLowerB,
+  ProjectSourceFolderIcon as projectHoverCardCurrentCompatSlotLowerC,
+  initRemoteConnectionStatusMessagesChunk as projectHoverCardCurrentCompatSlotLowerD,
+  formatAppServerConnectionErrorMessage as projectHoverCardCurrentCompatSlotLowerF,
+  RemoteProjectIcon as projectHoverCardCurrentCompatSlotLowerG,
+  initProjectPinButtonChunk as projectHoverCardCurrentCompatSlotLowerH,
+  initPinnedProjectRuntime as projectHoverCardCurrentCompatSlotLowerI,
+  initProjectSourceFolderIconChunk as projectHoverCardCurrentCompatSlotLowerL,
+  ProjectPinButton as projectHoverCardCurrentCompatSlotLowerM,
+  initProjectHoverCardChunk as projectHoverCardCurrentCompatSlotLowerN,
+  collapseHomeDirectoryInPath as projectHoverCardCurrentCompatSlotLowerO,
+  initRemoteConnectionStatusModelChunk as projectHoverCardCurrentCompatSlotLowerP,
+  replacePinnedProjectOrder as projectHoverCardCurrentCompatSlotLowerR,
+  initProjectHoverCardSourceHelpers as projectHoverCardCurrentCompatSlotLowerS,
+  ProjectHoverCard as projectHoverCardCurrentCompatSlotLowerT,
+  getRemoteConnectionStatusBadgeModel as projectHoverCardCurrentCompatSlotLowerU,
+  RemoteHostGlobeIcon as projectHoverCardCurrentCompatSlotLowerV,
+  WaitingStatusIcon as projectHoverCardCurrentCompatSlotLowerW,
+  initRemoteHostGlobeColorMath as projectHoverCardCurrentCompatSlotLowerX,
+  initRemoteHostGlobeIconChunk as projectHoverCardCurrentCompatSlotLowerY,
+};
