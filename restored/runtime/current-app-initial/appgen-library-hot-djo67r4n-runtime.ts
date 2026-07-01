@@ -1,5 +1,47 @@
 // Restored from ref/webview/assets/app-initial~app-main~remote-conversation-page~new-thread-panel-page~appgen-library-page~hot~djo67r4n-CrVrqCBe.js
 // Complete current-ref compatibility export surface for appgenLibraryHotDjo67r4n.
+import {
+  $ as initAppgenLibraryHotRuntime,
+  $n as initWorkspaceRootLabelFormatterRuntime,
+  an as QueuedMessageListFrame,
+  cn as splitCommentAttachmentsBySurface,
+  H as initSettingsTitleRuntime,
+  ir as useStartThreadWithPrefill,
+  it as initAppgenLibraryMenuRuntime,
+  n as initNewThreadComposerFooterRuntime,
+  nr as initStartThreadWithPrefillRuntime,
+  on as initAppgenLibraryRowRuntime,
+  Qn as formatWorkspaceRootLabel,
+  rt as QueuedMessageRowShell,
+  sn as initAppgenQueueContainerRuntime,
+  t as NewThreadComposerFooter,
+  tt as getWorkspaceGitRoot,
+  V as SettingsTitle,
+} from "../../vendor/appgen-library-hot-current-bundle";
+
+export {
+  formatWorkspaceRootLabel,
+  getWorkspaceGitRoot,
+  initAppgenLibraryHotRuntime,
+  initAppgenLibraryMenuRuntime,
+  initAppgenLibraryRowRuntime,
+  initAppgenQueueContainerRuntime,
+  initNewThreadComposerFooterRuntime,
+  initSettingsTitleRuntime,
+  initStartThreadWithPrefillRuntime,
+  initWorkspaceRootLabelFormatterRuntime,
+  NewThreadComposerFooter,
+  QueuedMessageListFrame,
+  QueuedMessageRowShell,
+  SettingsTitle,
+  splitCommentAttachmentsBySurface,
+  useStartThreadWithPrefill,
+};
+
+export function initAppgenLibraryHotSemanticRuntime(): void {
+  initAppgenLibraryHotRuntime();
+}
+
 // prettier-ignore
 export {
   $ as appgenLibraryHotDjo67r4nCompatSlotDollar, $n as appgenLibraryHotDjo67r4nCompatSlotDollarLowerN, $r as appgenLibraryHotDjo67r4nCompatSlotDollarLowerR, $t as appgenLibraryHotDjo67r4nCompatSlotDollarLowerT,
