@@ -2,7 +2,6 @@
 // Uppercase R compatibility aliases for the current app-main producer.
 export {
   R as appMainCurrentCompatSlotUpperR,
-  Ra as appMainCurrentCompatSlotUpperRLowerA,
   Rc as appMainCurrentCompatSlotUpperRLowerC,
   Rf as appMainCurrentCompatSlotUpperRLowerF,
   Ri as appMainCurrentCompatSlotUpperRLowerI,

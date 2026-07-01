@@ -340,7 +340,7 @@ import {
   getSidebarThreadKeyFromValue as aa,
   getThreadMoveTarget as oa,
   appMainCurrentCompatSlotUpperOLowerN as sa,
-  appMainCurrentCompatSlotUpperRLowerA as ca,
+  threadActionMessages as ca,
   initPullRequestStatusBadgeChunk as la,
   sortThreadTasksByPinnedOrder as ua,
   appMainCurrentCompatSlotUpperTLowerD as da,
