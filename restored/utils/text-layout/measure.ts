@@ -15,18 +15,17 @@ import {
   getGraphemeWidths,
   measureSegment,
 } from "./measure-cache";
+import { analyzeText } from "./segmentation";
 import {
-  analyzeText,
   CJK_CLOSING_PUNCTUATION,
   containsCJK,
   endsWithClosingQuote,
   OPENING_PUNCTUATION,
   TERMINAL_PUNCTUATION,
-  type AnalyzedText,
-  type TextChunk,
-} from "./segmentation";
+} from "./segmentation-rules";
+import type { AnalyzedText, TextChunk } from "./segmentation-types";
 
-export interface TextLayoutOptions {
+interface TextLayoutOptions {
   whiteSpace?: string;
 }
 
@@ -340,12 +339,3 @@ function measureWrappedText(
   const lineCount = countWrappedLines(layout, maxWidth);
   return { lineCount, height: lineCount * lineHeightPx };
 }
-
-export {
-  buildLayout,
-  remapChunkIndices,
-  layoutText,
-  layoutPlainText,
-  measureWrappedText,
-  emptyLayout,
-};

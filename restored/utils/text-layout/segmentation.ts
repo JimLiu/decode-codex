@@ -4,90 +4,29 @@
 // applies a series of merge passes so that URLs, numbers, hyphenated terms, CJK
 // punctuation and combining marks break the way browsers do.
 
-export type SegmentKind =
-  | "text"
-  | "space"
-  | "preserved-space"
-  | "tab"
-  | "hard-break"
-  | "glue"
-  | "zero-width-break"
-  | "soft-hyphen";
-
-export interface SegmentedText {
-  len: number;
-  texts: string[];
-  isWordLike: boolean[];
-  kinds: SegmentKind[];
-  starts: number[];
-}
-
-export interface WhiteSpaceMode {
-  mode: string;
-  preserveOrdinarySpaces: boolean;
-  preserveHardBreaks: boolean;
-}
-
-export interface AnalyzedText extends SegmentedText {
-  normalized: string;
-  chunks: TextChunk[];
-}
-
-export interface TextChunk {
-  startSegmentIndex: number;
-  endSegmentIndex: number;
-  consumedEndSegmentIndex: number;
-}
+import {
+  CJK_CLOSING_PUNCTUATION,
+  OPENING_PUNCTUATION,
+  TERMINAL_PUNCTUATION,
+  containsCJK,
+  endsWithClosingQuote,
+} from "./segmentation-rules";
+import type {
+  AnalyzedText,
+  SegmentedText,
+  SegmentKind,
+  TextChunk,
+  WhiteSpaceMode,
+} from "./segmentation-types";
 
 const WHITESPACE_RUN = /[ \t\n\r\f]+/g;
 const COLLAPSIBLE_WHITESPACE = /[\t\n\r\f]| {2,}|^ | $/;
 const ARABIC_SCRIPT = /\p{Script=Arabic}/u;
 const COMBINING_MARK = /\p{M}/u;
 const DECIMAL_DIGIT = /\p{Nd}/u;
-const CJK_CLOSING_PUNCTUATION = new Set(
-  "，.．.！.：.；.？.、.。.・.）.〕.〉.》.」.』.】.〗.〙.〛.ー.々.〻.ゝ.ゞ.ヽ.ヾ".split(
-    ".",
-  ),
-);
-const OPENING_PUNCTUATION = new Set([
-  '"',
-  "(",
-  "[",
-  "{",
-  "“",
-  "‘",
-  "«",
-  "‹",
-  "（",
-  "〔",
-  "〈",
-  "《",
-  "「",
-  "『",
-  "【",
-  "〖",
-  "〘",
-  "〚",
-]);
 const APOSTROPHES = new Set(["'", "’"]);
-const TERMINAL_PUNCTUATION = new Set(
-  '.(,(!(?(:(;(،(؛(؟(।(॥(၊(။(၌(၍(၏()(](}(%("(”(’(»(›(…'.split("("),
-);
 const COLON_LIKE_PUNCTUATION = new Set([":", ".", "،", "؛"]);
 const MYANMAR_SECTION_MARK = new Set(["၏"]);
-const CLOSING_QUOTES = new Set([
-  "”",
-  "’",
-  "»",
-  "›",
-  "」",
-  "』",
-  "】",
-  "》",
-  "〉",
-  "〕",
-  "）",
-]);
 const URL_SCHEME_PATTERN = /^[A-Za-z][A-Za-z0-9+.-]*:$/;
 const NUMERIC_CONNECTORS = new Set([
   ":",
@@ -135,31 +74,6 @@ function getWordSegmenter(): Intl.Segmenter {
 
 function isArabic(text: string): boolean {
   return ARABIC_SCRIPT.test(text);
-}
-
-function containsCJK(text: string): boolean {
-  for (const char of text) {
-    const codePoint = char.codePointAt(0)!;
-    if (
-      (codePoint >= 19968 && codePoint <= 40959) ||
-      (codePoint >= 13312 && codePoint <= 19903) ||
-      (codePoint >= 131072 && codePoint <= 173791) ||
-      (codePoint >= 173824 && codePoint <= 177983) ||
-      (codePoint >= 177984 && codePoint <= 178207) ||
-      (codePoint >= 178208 && codePoint <= 183983) ||
-      (codePoint >= 183984 && codePoint <= 191471) ||
-      (codePoint >= 196608 && codePoint <= 201551) ||
-      (codePoint >= 63744 && codePoint <= 64255) ||
-      (codePoint >= 194560 && codePoint <= 195103) ||
-      (codePoint >= 12288 && codePoint <= 12351) ||
-      (codePoint >= 12352 && codePoint <= 12447) ||
-      (codePoint >= 12448 && codePoint <= 12543) ||
-      (codePoint >= 44032 && codePoint <= 55215) ||
-      (codePoint >= 65280 && codePoint <= 65519)
-    )
-      return true;
-  }
-  return false;
 }
 
 // Returns true when the run begins with terminal punctuation and is otherwise
@@ -266,15 +180,6 @@ function leadingSpaceWithMarks(
   if (text.length < 2 || text[0] !== " ") return null;
   const marks = text.slice(1);
   return /^\p{M}+$/u.test(marks) ? { space: " ", marks } : null;
-}
-
-function endsWithClosingQuote(text: string): boolean {
-  for (let index = text.length - 1; index >= 0; index--) {
-    const char = text[index];
-    if (CLOSING_QUOTES.has(char)) return true;
-    if (!TERMINAL_PUNCTUATION.has(char)) return false;
-  }
-  return false;
 }
 
 function classifySegmentKind(char: string, mode: WhiteSpaceMode): SegmentKind {
@@ -490,7 +395,6 @@ function mergeNumericRuns(segmented: SegmentedText): SegmentedText {
         scan < segmented.len &&
         segmented.kinds[scan] === "text" &&
         isNumericLike(segmented.texts[scan]);
-
       ) {
         parts.push(segmented.texts[scan]);
         scan++;
@@ -538,7 +442,6 @@ function mergeWordsWithTrailingPunctuation(
         segmented.kinds[scan] === "text" &&
         segmented.isWordLike[scan] &&
         WORD_WITH_TRAILING_PUNCTUATION.test(segmented.texts[scan]);
-
       ) {
         const nextText = segmented.texts[scan];
         parts.push(nextText);
@@ -623,7 +526,6 @@ function mergeGlueSegments(segmented: SegmentedText): SegmentedText {
       for (
         index++;
         index < segmented.len && segmented.kinds[index] === "glue";
-
       ) {
         glueParts.push(segmented.texts[index]);
         index++;
@@ -916,20 +818,4 @@ function analyzeText(
   };
 }
 
-export {
-  resolveWhiteSpaceMode,
-  collapseWhitespace,
-  normalizeNewlines,
-  containsCJK,
-  isArabic,
-  classifySegmentKind,
-  joinSegmentParts,
-  isBreakKind,
-  segmentText,
-  splitIntoChunks,
-  analyzeText,
-  endsWithClosingQuote,
-  OPENING_PUNCTUATION,
-  CJK_CLOSING_PUNCTUATION,
-  TERMINAL_PUNCTUATION,
-};
+export { analyzeText };

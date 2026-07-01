@@ -3,7 +3,7 @@
 // caches of measured segment widths, grapheme/prefix width tables and emoji-width
 // corrections, plus per-engine browser tuning.
 
-import { containsCJK } from "./segmentation";
+import { containsCJK } from "./segmentation-rules";
 
 export interface MeasuredSegment {
   width: number;

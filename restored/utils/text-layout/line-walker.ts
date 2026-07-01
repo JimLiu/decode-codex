@@ -4,7 +4,7 @@
 // to a given width, handling breakable runs, soft hyphens, tabs and hard breaks.
 
 import { getEngineConfig } from "./measure-cache";
-import type { SegmentKind, TextChunk } from "./segmentation";
+import type { SegmentKind, TextChunk } from "./segmentation-types";
 
 export interface TextLayout {
   widths: number[];
@@ -21,7 +21,7 @@ export interface TextLayout {
   segments?: string[];
 }
 
-export interface LineInfo {
+interface LineInfo {
   startSegmentIndex: number;
   startGraphemeIndex: number;
   endSegmentIndex: number;
@@ -29,7 +29,7 @@ export interface LineInfo {
   width: number;
 }
 
-export type LineCallback = (line: LineInfo) => void;
+type LineCallback = (line: LineInfo) => void;
 
 function isSkippableBreakKind(kind: SegmentKind): boolean {
   return (
@@ -236,7 +236,6 @@ function walkSimpleLines(
       !hasLine &&
       ((index = skipLeadingBreaks(layout, index)), index >= widths.length)
     );
-
   ) {
     const width = widths[index];
     const kind = kinds[index];
@@ -565,14 +564,4 @@ function walkComplexLines(
   return lineCount;
 }
 
-export {
-  isSkippableBreakKind,
-  skipLeadingBreaks,
-  tabAdvance,
-  breakableGraphemeAdvance,
-  fitBreakableGraphemes,
-  countWrappedLines,
-  walkFastPath,
-  walkSimpleLines,
-  walkComplexLines,
-};
+export { countWrappedLines };
