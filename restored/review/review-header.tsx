@@ -8,12 +8,9 @@ import { Tooltip } from "../ui/tooltip-b";
 import { JumpToFileButton } from "./jump-to-file-menu";
 import { ReviewSourceControls } from "./review-source-controls";
 import { BaseBranchPicker } from "./review-source-controls";
-import {
-  ReviewOptionsToolbar,
-  DiffModeToggleButton,
-  type ToolbarDiffControls,
-} from "./review-options-toolbar";
+import { ReviewOptionsToolbar } from "./review-options-toolbar";
 import { ReviewOptionsMenuCompact } from "./review-options-menu-compact";
+import type { ReviewDiffControls } from "./review-options-menu-compact";
 import {
   reviewDiffFilterAtom,
   setReviewDiffFilter,
@@ -56,12 +53,56 @@ import {
   toastControllerAtom,
   GitActionsReviewToolbar,
   SidePanelIcon,
+  SplitDiffModeIcon,
+  UnifiedDiffModeIcon,
 } from "../boundaries/onboarding-commons-externals.facade";
 
 interface RouteStore {
   value: { routeKind: string; conversationId?: string | null };
   get(atom: unknown): any;
   set(atom: unknown, ...args: unknown[]): void;
+}
+
+interface ToolbarDiffControls extends ReviewDiffControls {
+  diffMode: "unified" | "split";
+  onSelectDiffMode: (side: "left" | "right") => void;
+}
+
+function DiffModeToggleButton({
+  diffControls,
+}: {
+  diffControls: ToolbarDiffControls;
+}) {
+  const intl = useIntl();
+  const isUnified = diffControls.diffMode === "unified";
+  const label = isUnified
+    ? intl.formatMessage({
+        id: "codex.review.switchToSplit",
+        defaultMessage: "Switch to split diff",
+        description: "Button label to switch to split diff view",
+      })
+    : intl.formatMessage({
+        id: "codex.review.switchToUnified",
+        defaultMessage: "Switch to unified diff",
+        description: "Button label to switch to unified diff view",
+      });
+  const handleClick = () =>
+    diffControls.onSelectDiffMode(isUnified ? "right" : "left");
+  const Icon = isUnified ? SplitDiffModeIcon : UnifiedDiffModeIcon;
+
+  return (
+    <Tooltip tooltipContent={label}>
+      <Button
+        aria-label={label}
+        color="ghost"
+        size="toolbar"
+        uniform={true}
+        onClick={handleClick}
+      >
+        <Icon className="icon-xs" />
+      </Button>
+    </Tooltip>
+  );
 }
 
 export function ReviewHeader() {

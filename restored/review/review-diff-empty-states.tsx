@@ -18,7 +18,7 @@ import {
   reviewShowGitRepoEmptyStateAtom,
 } from "../boundaries/onboarding-commons-externals.facade";
 
-export function ReviewEmptyIllustration(props: React.SVGProps<SVGSVGElement>) {
+function ReviewEmptyIllustration(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       width={66}
@@ -36,7 +36,7 @@ export function ReviewEmptyIllustration(props: React.SVGProps<SVGSVGElement>) {
   );
 }
 
-export function ReviewEmptyIllustrationContainer() {
+function ReviewEmptyIllustrationContainer() {
   return (
     <div className="flex justify-center">
       <ReviewEmptyIllustration
@@ -47,13 +47,11 @@ export function ReviewEmptyIllustrationContainer() {
   );
 }
 
-export interface DiffTooLargeEmptyStateProps {
+interface DiffTooLargeEmptyStateProps {
   className?: string;
 }
 
-export function DiffTooLargeEmptyState({
-  className,
-}: DiffTooLargeEmptyStateProps) {
+function DiffTooLargeEmptyState({ className }: DiffTooLargeEmptyStateProps) {
   return (
     <LargeEmptyState
       className={clsx("h-full", className)}
@@ -164,7 +162,7 @@ function ReviewNoDiffGitRepoActions({
   );
 }
 
-export interface ReviewNoDiffEmptyStateProps {
+interface ReviewNoDiffEmptyStateProps {
   hasLastTurnDiff: boolean;
   className?: string;
   actions?: React.ReactNode;
@@ -173,7 +171,7 @@ export interface ReviewNoDiffEmptyStateProps {
   gitRepoErrorMessage?: string | null;
 }
 
-export function ReviewNoDiffEmptyState({
+function ReviewNoDiffEmptyState({
   hasLastTurnDiff,
   className,
   actions,
@@ -219,12 +217,12 @@ export function ReviewNoDiffEmptyState({
   );
 }
 
-export interface ReviewNoDiffEmptyStateContainerProps {
+interface ReviewNoDiffEmptyStateContainerProps {
   actions?: React.ReactNode;
   className?: string;
 }
 
-export function ReviewNoDiffEmptyStateContainer({
+function ReviewNoDiffEmptyStateContainer({
   actions,
   className,
 }: ReviewNoDiffEmptyStateContainerProps) {
@@ -289,13 +287,13 @@ export function ReviewNoDiffEmptyStateContainer({
   );
 }
 
-export interface StageFilterEmptyStateProps {
+interface StageFilterEmptyStateProps {
   actions?: React.ReactNode;
   className?: string;
   stageFilter: "staged" | "unstaged";
 }
 
-export function StageFilterEmptyState({
+function StageFilterEmptyState({
   actions,
   className,
   stageFilter,

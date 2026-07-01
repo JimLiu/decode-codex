@@ -1,27 +1,14 @@
 // Restored from ref/webview/assets/app-initial~app-main~onboarding-page-BUwCKIcU.js
-// The local conversation git actions scope: draft state atoms, the message-generation
-// abort-controller registry, the default-branch query, branch-mismatch derivation,
-// and the scoped derived atoms (current branch, availability, blocked step, etc.).
+// Compatibility entry for local conversation git actions: workflow-step setters
+// and scoped availability/blocked-step derivations.
 
 import {
   appStoreScope,
-  createCwdQueryAtomFamily,
   createParametricAtom,
-  createParametricStateAtom,
-  createPersistedToggleAtom,
   createScopedAtom,
-  createScopedStateAtom,
-  currentBranchQueryAtom,
-  defineScope,
-  gitActionsParentScope,
-  hostConfigByIdAtom,
-  hasOpenPullRequestAtom,
-  pullRequestStatusForBranchAtom,
   pushStatusAtom,
-  storedThreadBranchAtom,
 } from "../boundaries/onboarding-commons-externals.facade";
 import {
-  buildPullRequestStatusParams,
   type GitActionBlockedStep,
   type PushBlockedReason,
 } from "./git-action-blocked-reasons";
@@ -31,177 +18,70 @@ import {
   pushAfterCommitBlockedReasonAtom,
   pushBlockedReasonAtom,
 } from "./git-action-availability-atoms";
+import { LOCAL_GIT_ACTION_OPERATION_SOURCE } from "./git-action-workflow-types";
+import {
+  conversationIsDetachedHeadAtom,
+  gitActionCurrentBranchQueryAtom,
+  gitActionDefaultBranchQueryAtom,
+  type GitActionContext,
+} from "./local-git-action-branch-atoms";
+import {
+  createPullRequestIncludeLocalChangesAtom,
+  type GitActionStep,
+  type ScopedStore,
+} from "./local-git-action-state";
+import {
+  gitActionsContextAtom,
+  localConversationGitActionsScope,
+  nextGitActionStepAtom,
+  pendingGitActionStepAtom,
+  scopedCommitBlockedReasonAtom,
+} from "./local-git-action-scoped-context";
 
-const GIT_ACTION_OPERATION_SOURCE = "local_conversation_git_actions";
+export {
+  conversationDefaultBranchAtom,
+  conversationHeadBranchAtom,
+  conversationIsDetachedHeadAtom,
+  computeBranchMismatch,
+  defaultBranchFromCwdQueryFamily,
+  gitActionCurrentBranchQueryAtom,
+  gitActionDefaultBranchQueryAtom,
+  hasOpenPullRequestForHeadAtom,
+  pullRequestStatusForHeadAtom,
+  shouldRecordConversationBranchAtom,
+} from "./local-git-action-branch-atoms";
+export type { GitActionContext } from "./local-git-action-branch-atoms";
+export {
+  activeGitWorkflowAtom,
+  cancelGitWorkflowAbortSignal,
+  cleanupGitWorkflowAbortSignal,
+  commitMessageDraftAtom,
+  createGitWorkflowAbortSignal,
+  createPullRequestBodyDraftAtom,
+  createPullRequestIncludeLocalChangesAtom,
+  createPullRequestTitleDraftAtom,
+  getGitActionMessageGenerationKey,
+  gitActionMessageGenerationControllers,
+  includeUnstagedChangesAtom,
+  resetCreatePullRequestDrafts,
+} from "./local-git-action-state";
+export type {
+  ActiveGitWorkflow,
+  GitActionStep,
+  HostScope,
+  ScopedStore,
+} from "./local-git-action-state";
+export {
+  activeGitWorkflowForScopeAtom,
+  gitActionsContextAtom,
+  localConversationGitActionsScope,
+  nextGitActionStepAtom,
+  pendingGitActionStepAtom,
+  scopedCommitBlockedReasonAtom,
+} from "./local-git-action-scoped-context";
+export type { GitActionsScopeValue } from "./local-git-action-scoped-context";
 
 type Getter = <TValue>(atom: unknown, params?: unknown) => TValue;
-
-interface ScopedStore {
-  get<TValue>(atom: unknown, params?: unknown): TValue;
-  set(atom: unknown, params: unknown, value: unknown): void;
-}
-
-interface HostScope {
-  cwd: string;
-  hostId: string;
-}
-
-export type GitActionStep = "commit" | "create-pr";
-export type ActiveGitWorkflow = {
-  workflow: "commit" | "create-pr";
-  phase: string;
-} | null;
-
-// --- Draft / workflow state atoms ------------------------------------------
-
-export const activeGitWorkflowAtom = createParametricStateAtom(
-  appStoreScope,
-  (): ActiveGitWorkflow => null,
-);
-
-export const commitMessageDraftAtom = createParametricStateAtom(
-  appStoreScope,
-  (): string => "",
-);
-
-export const includeUnstagedChangesAtom = createPersistedToggleAtom(
-  "git-action-include-unstaged-changes",
-  true,
-);
-
-export const createPullRequestTitleDraftAtom = createParametricStateAtom(
-  appStoreScope,
-  (): string => "",
-);
-
-export const createPullRequestBodyDraftAtom = createParametricStateAtom(
-  appStoreScope,
-  (): string => "",
-);
-
-export const createPullRequestIncludeLocalChangesAtom =
-  createParametricStateAtom(appStoreScope, (): boolean => true);
-
-export function resetCreatePullRequestDrafts(
-  scope: ScopedStore,
-  hostScope: HostScope,
-): void {
-  scope.set(createPullRequestTitleDraftAtom, hostScope, "");
-  scope.set(createPullRequestBodyDraftAtom, hostScope, "");
-  scope.set(createPullRequestIncludeLocalChangesAtom, hostScope, true);
-}
-
-// --- Message generation abort-controller registry --------------------------
-
-export const gitActionMessageGenerationControllers = new Map<
-  string,
-  AbortController
->();
-
-export function getGitActionMessageGenerationKey(target: HostScope): string {
-  return JSON.stringify([target.hostId, target.cwd]);
-}
-
-export function createGitWorkflowAbortSignal(target: HostScope): AbortSignal {
-  const controller = new AbortController();
-  gitActionMessageGenerationControllers.set(
-    getGitActionMessageGenerationKey(target),
-    controller,
-  );
-  return controller.signal;
-}
-
-export function cancelGitWorkflowAbortSignal(target: HostScope): void {
-  gitActionMessageGenerationControllers
-    .get(getGitActionMessageGenerationKey(target))
-    ?.abort();
-}
-
-export function cleanupGitWorkflowAbortSignal(
-  target: HostScope,
-  signal: AbortSignal,
-): void {
-  const key = getGitActionMessageGenerationKey(target);
-  if (gitActionMessageGenerationControllers.get(key)?.signal === signal) {
-    gitActionMessageGenerationControllers.delete(key);
-  }
-}
-
-// --- Default branch query --------------------------------------------------
-
-export const defaultBranchFromCwdQueryFamily = createCwdQueryAtomFamily({
-  method: "default-branch",
-  getParams: (params: { operationSource: string; root: string }) => ({
-    operationSource: params.operationSource,
-    root: params.root,
-  }),
-  getOptions: (params: {
-    refetchOnWindowFocus?: boolean | "always";
-    staleTime?: number | null;
-  }) => ({
-    refetchOnWindowFocus: params.refetchOnWindowFocus,
-    select: (response: { branch: string | null }) => response.branch,
-    ...(params.staleTime == null ? {} : { staleTime: params.staleTime }),
-  }),
-});
-
-export const conversationDefaultBranchAtom =
-  defaultBranchFromCwdQueryFamily.fromCwd$;
-
-// --- Branch mismatch derivation --------------------------------------------
-
-export function computeBranchMismatch({
-  currentBranch,
-  storedThreadBranch,
-}: {
-  currentBranch?: string | null;
-  storedThreadBranch?: string | null;
-}): {
-  currentBranchName: string;
-  hasThreadBranchMismatch: boolean;
-  storedThreadBranchName: string;
-} {
-  const currentBranchName = currentBranch?.trim() ?? "";
-  const storedThreadBranchName = storedThreadBranch?.trim() ?? "";
-  return {
-    currentBranchName,
-    hasThreadBranchMismatch:
-      currentBranchName.length > 0 &&
-      storedThreadBranchName.length > 0 &&
-      currentBranchName !== storedThreadBranchName,
-    storedThreadBranchName,
-  };
-}
-
-// --- Scope -----------------------------------------------------------------
-
-interface GitActionsScopeValue {
-  cwd: string;
-  hostId: string;
-  conversationId?: string | null;
-  codexWorktree?: boolean;
-}
-
-export const localConversationGitActionsScope = defineScope(
-  "LocalGitActionsScope",
-  {
-    key: ({ cwd, hostId }: GitActionsScopeValue) =>
-      JSON.stringify([hostId, cwd]),
-    parent: gitActionsParentScope,
-  },
-);
-
-// --- Scoped workflow-step setters ------------------------------------------
-
-export const nextGitActionStepAtom = createScopedStateAtom<
-  "commit" | "create-pr" | "worktree-branch-setup" | null
->(localConversationGitActionsScope, null);
-
-export const pendingGitActionStepAtom =
-  createScopedStateAtom<GitActionStep | null>(
-    localConversationGitActionsScope,
-    null,
-  );
 
 export function startCommitGitAction(scope: ScopedStore): void {
   if (scope.get(canCreateWorktreeBranchAtom)) {
@@ -233,157 +113,6 @@ export function resumeGitActionAfterBranchSetup(scope: ScopedStore): void {
   scope.set(nextGitActionStepAtom, undefined, pendingStep);
 }
 
-interface GitActionContext {
-  cwd: string;
-  hostConfig: { id: string };
-  conversationId?: string | null;
-  codexWorktree?: boolean;
-}
-
-// --- Scoped derived atoms --------------------------------------------------
-
-export const gitActionCurrentBranchQueryAtom = createParametricAtom(
-  appStoreScope,
-  (params: GitActionContext, { get }: { get: Getter }) =>
-    get(currentBranchQueryAtom, {
-      cwd: params.cwd,
-      enabled: true,
-      hostConfig: params.hostConfig,
-      operationSource: GIT_ACTION_OPERATION_SOURCE,
-      refetchOnWindowFocus: "always",
-      staleTime: null,
-    }),
-);
-
-export const gitActionDefaultBranchQueryAtom = createParametricAtom(
-  appStoreScope,
-  (params: GitActionContext, { get }: { get: Getter }) =>
-    get(conversationDefaultBranchAtom, {
-      cwd: params.cwd,
-      enabled: true,
-      hostConfig: params.hostConfig,
-      operationSource: GIT_ACTION_OPERATION_SOURCE,
-      refetchOnWindowFocus: true,
-      staleTime: 3e4,
-    }),
-);
-
-export const conversationHeadBranchAtom = createParametricAtom(
-  appStoreScope,
-  (
-    params: GitActionContext & { conversationId?: string | null },
-    { get }: { get: Getter },
-  ): string => {
-    const currentBranchQuery = get<{ data?: string | null }>(
-      gitActionCurrentBranchQueryAtom,
-      params,
-    );
-    const pushStatusResult = get<{
-      type: string;
-      data?: { branch?: string | null };
-    }>(pushStatusAtom, {
-      cwd: params.cwd,
-      hostConfig: params.hostConfig,
-      operationSource: GIT_ACTION_OPERATION_SOURCE,
-    });
-    return computeBranchMismatch({
-      currentBranch:
-        currentBranchQuery.data ??
-        (pushStatusResult.type === "success"
-          ? (pushStatusResult.data?.branch ?? null)
-          : null),
-      storedThreadBranch: get(storedThreadBranchAtom, params.conversationId),
-    }).currentBranchName;
-  },
-);
-
-export const pullRequestStatusForHeadAtom = createParametricAtom(
-  appStoreScope,
-  (params: GitActionContext, { get }: { get: Getter }) =>
-    get(
-      pullRequestStatusForBranchAtom,
-      buildPullRequestStatusParams(
-        params,
-        get(conversationHeadBranchAtom, params),
-      ),
-    ),
-);
-
-export const hasOpenPullRequestForHeadAtom = createParametricAtom(
-  appStoreScope,
-  (params: GitActionContext, { get }: { get: Getter }) =>
-    get(
-      hasOpenPullRequestAtom,
-      buildPullRequestStatusParams(
-        params,
-        get(conversationHeadBranchAtom, params),
-      ),
-    ),
-);
-
-export const shouldRecordConversationBranchAtom = createParametricAtom(
-  appStoreScope,
-  (
-    params: GitActionContext & { conversationId?: string | null },
-    { get }: { get: Getter },
-  ): boolean =>
-    computeBranchMismatch({
-      currentBranch: get(conversationHeadBranchAtom, params),
-      storedThreadBranch: get(storedThreadBranchAtom, params.conversationId),
-    }).hasThreadBranchMismatch,
-);
-
-export const conversationIsDetachedHeadAtom = createParametricAtom(
-  appStoreScope,
-  (params: GitActionContext, { get }: { get: Getter }): boolean => {
-    const currentBranchQuery = get<{
-      isSuccess: boolean;
-      data?: string | null;
-    }>(gitActionCurrentBranchQueryAtom, params);
-    return currentBranchQuery.isSuccess && currentBranchQuery.data == null;
-  },
-);
-
-export const gitActionsContextAtom = createScopedAtom(
-  localConversationGitActionsScope,
-  ({
-    get,
-    scope,
-  }: {
-    get: Getter;
-    scope: { value: GitActionsScopeValue };
-  }): GitActionContext => ({
-    codexWorktree: scope.value.codexWorktree,
-    conversationId: scope.value.conversationId,
-    cwd: scope.value.cwd,
-    hostConfig: get(hostConfigByIdAtom, scope.value.hostId),
-  }),
-);
-
-export const activeGitWorkflowForScopeAtom = createScopedAtom(
-  localConversationGitActionsScope,
-  ({
-    get,
-    scope,
-  }: {
-    get: Getter;
-    scope: { value: GitActionsScopeValue };
-  }): ActiveGitWorkflow =>
-    get(activeGitWorkflowAtom, {
-      cwd: scope.value.cwd,
-      hostId: scope.value.hostId,
-    }),
-);
-
-export const scopedCommitBlockedReasonAtom = createScopedAtom(
-  localConversationGitActionsScope,
-  ({ get }: { get: Getter }) =>
-    get(commitBlockedReasonAtom, {
-      ...get<GitActionContext>(gitActionsContextAtom),
-      includeUnstaged: true,
-    }),
-);
-
 export type GitActionAvailability = "hidden" | "enabled" | "disabled";
 
 export const gitActionAvailabilityAtom = createParametricAtom(
@@ -408,7 +137,7 @@ export const gitActionAvailabilityAtom = createParametricAtom(
       }>(pushStatusAtom, {
         cwd: params.cwd,
         hostConfig: params.hostConfig,
-        operationSource: GIT_ACTION_OPERATION_SOURCE,
+        operationSource: LOCAL_GIT_ACTION_OPERATION_SOURCE,
       });
       const pushStatus =
         pushStatusResult.type === "success" ? pushStatusResult.data : null;
@@ -461,7 +190,7 @@ export const canCreateWorktreeBranchAtom = createScopedAtom(
     }>(pushStatusAtom, {
       cwd: context.cwd,
       hostConfig: context.hostConfig,
-      operationSource: GIT_ACTION_OPERATION_SOURCE,
+      operationSource: LOCAL_GIT_ACTION_OPERATION_SOURCE,
     });
     const pushStatus =
       pushStatusResult.type === "success" ? pushStatusResult.data : undefined;

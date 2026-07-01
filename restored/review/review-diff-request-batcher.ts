@@ -9,14 +9,14 @@ import {
   normalizeRequestCwd,
 } from "../boundaries/onboarding-commons-externals.facade";
 
-export type ReviewDiffSource = "branch" | "commit" | "unstaged" | "staged";
+type ReviewDiffSource = "branch" | "commit" | "unstaged" | "staged";
 
-export interface ReviewDiffSuccessResult {
+interface ReviewDiffSuccessResult {
   type: "success";
   diff: string;
 }
 
-export type ReviewDiffResult =
+type ReviewDiffResult =
   | ReviewDiffSuccessResult
   | { type: "error"; [key: string]: unknown };
 
@@ -121,7 +121,7 @@ export function requestReviewFileDiff({
   });
 }
 
-export function partitionTrackedUntracked(
+function partitionTrackedUntracked(
   files: ReviewDiffFileSpec[],
 ): ReviewDiffFileSpec[][] {
   return [
@@ -130,7 +130,7 @@ export function partitionTrackedUntracked(
   ].filter((group) => group.length > 0);
 }
 
-export function attachAbortListener({
+function attachAbortListener({
   abortPathRequest: onAbort,
   signal,
 }: {
@@ -280,7 +280,7 @@ function rejectPendingDiffs({
   for (const file of files) batch.paths.get(file.path)?.reject(error);
 }
 
-export function buildReviewDiffRequestParams({
+function buildReviewDiffRequestParams({
   baseBranch,
   commitSha,
   cwd,

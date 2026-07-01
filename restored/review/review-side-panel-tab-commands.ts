@@ -50,7 +50,7 @@ function openReviewSidePanelTab(
 
 export function openReviewTab(
   store: AppStore,
-  activate = true,
+  activate: boolean = true,
   target: SidePanelTarget = "right",
 ): boolean {
   if (shouldResetReviewSourceToLastTurn(store)) {

@@ -30,12 +30,12 @@ type IconComponent = ComponentType<{ className?: string }>;
 
 // The toolbar renders the diff-mode toggle, so it needs the extra mode fields the
 // compact menu's ReviewDiffControls omits.
-export interface ToolbarDiffControls extends ReviewDiffControls {
+interface ToolbarDiffControls extends ReviewDiffControls {
   diffMode: "unified" | "split";
   onSelectDiffMode: (side: "left" | "right") => void;
 }
 
-export interface ReviewOptionsToolbarProps {
+interface ReviewOptionsToolbarProps {
   copyGitApplyCommandDisabled?: boolean;
   diffControls: ToolbarDiffControls;
   onClickCopyGitApplyCommand?: () => void;
@@ -47,7 +47,7 @@ export interface ReviewOptionsToolbarProps {
   showRefreshGitQueries?: boolean;
 }
 
-export interface ReviewToolbarIconButtonProps {
+interface ReviewToolbarIconButtonProps {
   Icon: IconComponent;
   label: string;
   onClick?: () => void;
@@ -55,7 +55,7 @@ export interface ReviewToolbarIconButtonProps {
   pressed?: boolean;
 }
 
-export function ReviewToolbarIconButton({
+function ReviewToolbarIconButton({
   Icon,
   label,
   onClick,
@@ -79,7 +79,7 @@ export function ReviewToolbarIconButton({
   );
 }
 
-export interface ReviewDiffOptionsMenuItemsProps {
+interface ReviewDiffOptionsMenuItemsProps {
   onClose: () => void;
   wordDiffsEnabled: boolean;
   showCopyGitApplyCommand?: boolean;
@@ -96,7 +96,7 @@ export interface ReviewDiffOptionsMenuItemsProps {
   onToggleLoadFullFiles: () => void;
 }
 
-export function ReviewDiffOptionsMenuItems({
+function ReviewDiffOptionsMenuItems({
   onClose,
   wordDiffsEnabled,
   showCopyGitApplyCommand,
@@ -263,13 +263,11 @@ export function ReviewDiffOptionsMenuItems({
   );
 }
 
-export interface DiffModeToggleButtonProps {
+interface DiffModeToggleButtonProps {
   diffControls: ToolbarDiffControls;
 }
 
-export function DiffModeToggleButton({
-  diffControls,
-}: DiffModeToggleButtonProps) {
+function DiffModeToggleButton({ diffControls }: DiffModeToggleButtonProps) {
   const intl = useIntl();
   const isUnified = diffControls.diffMode === "unified";
   const label = isUnified

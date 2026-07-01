@@ -61,7 +61,7 @@ interface CreatePullRequestWorkflowRequest {
   openInBrowser?: boolean;
 }
 
-export async function runCreatePullRequestWorkflow(
+async function runCreatePullRequestWorkflow(
   scope: ScopedStore,
   context: GitWorkflowContext,
   request: CreatePullRequestWorkflowRequest,
@@ -256,7 +256,7 @@ export async function runCreatePullRequestWorkflow(
   }
 }
 
-export function showCreatePullRequestSuccessToast(
+function showCreatePullRequestSuccessToast(
   scope: ScopedStore,
   branch: string | null | undefined,
   url: string | null | undefined,

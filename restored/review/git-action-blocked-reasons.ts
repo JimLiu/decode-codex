@@ -3,56 +3,29 @@
 // blocked, which capabilities are currently allowed, the next workflow step to run,
 // and the single blocked step that should be surfaced to the user.
 
-export const LOCAL_GIT_ACTION_OPERATION_SOURCE =
-  "local_conversation_git_actions";
+import { LOCAL_GIT_ACTION_OPERATION_SOURCE } from "./git-action-workflow-types";
+import type {
+  CommitBlockedReason,
+  CreatePullRequestBlockedReason,
+  GhCliAvailability,
+  GitActionBlockedStep,
+  GitActionNextStep,
+  GitWorkflowCapabilities,
+  PushBlockedReason,
+  PushStatus,
+} from "./git-action-workflow-types";
 
-export type CommitBlockedReason =
-  | "changes-loading"
-  | "changes-unavailable"
-  | "no-changes";
-
-export type PushBlockedReason =
-  | "branch-missing"
-  | "nothing-to-push"
-  | "push-status-loading";
-
-export type CreatePullRequestBlockedReason =
-  | "branch-missing"
-  | "checking-existing-pr"
-  | "default-branch-checked-out"
-  | "default-branch-missing"
-  | "gh-auth-required"
-  | "gh-cli-missing"
-  | "gh-status-loading"
-  | "no-git-repository"
-  | "pull-request-exists"
-  | "push-status-loading"
-  | "upstream-missing";
-
-export type GhCliAvailability =
-  | "available"
-  | "loading"
-  | "error"
-  | "missing"
-  | "unauthenticated";
-
-export interface PushStatus {
-  branch?: string | null;
-  defaultBranch?: string | null;
-  gitRoot?: string | null;
-  upstreamRef?: string | null;
-  commitsAhead?: number;
-}
-
-export type GitActionNextStep =
-  | "commit-push-and-create-pr"
-  | "push-and-create-pr"
-  | "create-pr";
-
-export type GitActionBlockedStep =
-  | { kind: "commit"; reason: CommitBlockedReason }
-  | { kind: "push"; reason: PushBlockedReason }
-  | { kind: "create-pr"; reason: CreatePullRequestBlockedReason };
+export { LOCAL_GIT_ACTION_OPERATION_SOURCE } from "./git-action-workflow-types";
+export type {
+  CommitBlockedReason,
+  CreatePullRequestBlockedReason,
+  GhCliAvailability,
+  GitActionBlockedStep,
+  GitActionNextStep,
+  GitWorkflowCapabilities,
+  PushBlockedReason,
+  PushStatus,
+} from "./git-action-workflow-types";
 
 interface GitActionOperationContext {
   cwd: string;
@@ -181,12 +154,6 @@ export function isBranchSetupResolvableBlockedReason(
     reason === "default-branch-checked-out" ||
     reason === "push-status-loading"
   );
-}
-
-export interface GitWorkflowCapabilities {
-  canCommitPushAndCreatePullRequest: boolean;
-  canCreatePullRequest: boolean;
-  canPushAndCreatePullRequest: boolean;
 }
 
 export function computeWorkflowCapabilities({

@@ -73,7 +73,7 @@ interface SearchReadinessArgs {
   reviewSummarySource: string | null;
 }
 
-export function canSearchReviewLocally({
+function canSearchReviewLocally({
   cwd,
   fileEntries,
   generatedPathsReady,
@@ -185,7 +185,7 @@ function buildHunkSearchText(
   return mergeLineSpans(entries);
 }
 
-export function collectSearchableFiles(
+function collectSearchableFiles(
   fileEntries: SearchableFileEntry[],
   generatedPaths: Set<string>,
 ) {
@@ -241,7 +241,7 @@ interface RemoteSearchResponse {
   isCapped: boolean;
 }
 
-export function mapRemoteSearchResults(
+function mapRemoteSearchResults(
   query: { contextId: string; query: string },
   response: RemoteSearchResponse,
   fileEntries: SearchableFileEntry[],
@@ -284,7 +284,7 @@ export function mapRemoteSearchResults(
   };
 }
 
-export interface ReviewSearchControllerProps {
+interface ReviewSearchControllerProps {
   diffRefs: MutableRefObject<Map<string, Element>>;
   scrollContainerRef: MutableRefObject<HTMLElement | null>;
   setSelectedPathWithoutScroll: (path: string) => void;

@@ -7,7 +7,7 @@ import { flushSync } from "react-dom";
 import { createRoot, type Root } from "react-dom/client";
 import { parseDiffColumnLineNumber } from "./diff-column-line-number";
 
-export interface BlameLine {
+interface BlameLine {
   author?: string | null;
   authorLogin?: string | null;
   authorTime?: number | null;
@@ -15,7 +15,7 @@ export interface BlameLine {
   summary?: string | null;
 }
 
-export interface BlameLabels {
+interface BlameLabels {
   author: string;
   commit: string;
   date: string;
@@ -27,7 +27,7 @@ interface BlameLink {
   url: string;
 }
 
-export interface FileBlameLineProps {
+interface FileBlameLineProps {
   isExpanded: boolean;
   labels: BlameLabels;
   line: BlameLine;
@@ -37,7 +37,7 @@ export interface FileBlameLineProps {
   repositoryWebUrl: string | null;
 }
 
-export function FileBlameLine(props: FileBlameLineProps) {
+function FileBlameLine(props: FileBlameLineProps) {
   const {
     isExpanded,
     labels,

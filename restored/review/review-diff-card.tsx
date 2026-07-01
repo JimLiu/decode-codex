@@ -63,7 +63,7 @@ interface ReviewFileModel {
   };
 }
 
-export function buildPlaceholderDiff(file: ReviewFileModel): ReviewFileDiff {
+function buildPlaceholderDiff(file: ReviewFileModel): ReviewFileDiff {
   const parsed = parseUnifiedDiff(PLACEHOLDER_REVIEW_DIFF)[0];
   if (parsed == null)
     throw new Error("Failed to parse placeholder review diff");
@@ -74,9 +74,7 @@ export function buildPlaceholderDiff(file: ReviewFileModel): ReviewFileDiff {
   } as ReviewFileDiff;
 }
 
-export function buildMergeConflictPlaceholderDiff(
-  message: string,
-): ReviewFileDiff {
+function buildMergeConflictPlaceholderDiff(message: string): ReviewFileDiff {
   const parsed =
     parseUnifiedDiff(`diff --git a/${PLACEHOLDER_REVIEW_PATH} b/${PLACEHOLDER_REVIEW_PATH}
 --- a/${PLACEHOLDER_REVIEW_PATH}
@@ -90,7 +88,7 @@ export function buildMergeConflictPlaceholderDiff(
   return parsed as ReviewFileDiff;
 }
 
-export interface ReviewDiffCardProps {
+interface ReviewDiffCardProps {
   defaultOpen: boolean;
   diffMode: "split" | "unified" | string;
   diffRefs: MutableRefObject<Map<string, Element>>;

@@ -146,135 +146,134 @@ export const generateCommitMessageMutationAtom = createScopedMutationAtom(
   },
 );
 
-export const generateCommitPullRequestMessageMutationAtom =
-  createScopedMutationAtom(
-    appStoreScope,
-    (context: MutationContext, { scope }: { scope: ScopedStore }) => {
-      const hostScope = { cwd: context.cwd, hostId: context.hostConfig.id };
-      const intl = scope.get<IntlController>(intlAtom);
-      const toaster = scope.get<ToastController>(toastControllerAtom);
-      return {
-        mutationKey: [
-          "vscode",
-          "generate-commit-pull-request-message",
-          context.cwd,
-          context.hostConfig.id,
-          context.conversationId,
-        ],
-        mutationFn: async ({
-          headBranch,
-          signal,
-        }: { headBranch?: string; signal?: AbortSignal } = {}) => {
-          const draftMessage = scope.get<string>(
-            commitMessageDraftAtom,
-            hostScope,
-          );
-          const draftTitle = scope
-            .get<string>(createPullRequestTitleDraftAtom, hostScope)
-            .trim();
-          const draftBody = scope
-            .get<string>(createPullRequestBodyDraftAtom, hostScope)
-            .trim();
-          const trimmedMessage = draftMessage.trim();
-          if (
-            trimmedMessage.length > 0 &&
-            draftTitle.length > 0 &&
-            draftBody.length > 0
-          ) {
-            return {
-              body: draftBody,
-              message: trimmedMessage,
-              title: draftTitle,
-            };
-          }
-          let generated: {
-            message?: string | null;
-            title?: string | null;
-            body?: string | null;
+const generateCommitPullRequestMessageMutationAtom = createScopedMutationAtom(
+  appStoreScope,
+  (context: MutationContext, { scope }: { scope: ScopedStore }) => {
+    const hostScope = { cwd: context.cwd, hostId: context.hostConfig.id };
+    const intl = scope.get<IntlController>(intlAtom);
+    const toaster = scope.get<ToastController>(toastControllerAtom);
+    return {
+      mutationKey: [
+        "vscode",
+        "generate-commit-pull-request-message",
+        context.cwd,
+        context.hostConfig.id,
+        context.conversationId,
+      ],
+      mutationFn: async ({
+        headBranch,
+        signal,
+      }: { headBranch?: string; signal?: AbortSignal } = {}) => {
+        const draftMessage = scope.get<string>(
+          commitMessageDraftAtom,
+          hostScope,
+        );
+        const draftTitle = scope
+          .get<string>(createPullRequestTitleDraftAtom, hostScope)
+          .trim();
+        const draftBody = scope
+          .get<string>(createPullRequestBodyDraftAtom, hostScope)
+          .trim();
+        const trimmedMessage = draftMessage.trim();
+        if (
+          trimmedMessage.length > 0 &&
+          draftTitle.length > 0 &&
+          draftBody.length > 0
+        ) {
+          return {
+            body: draftBody,
+            message: trimmedMessage,
+            title: draftTitle,
           };
-          try {
-            const [commitPrompt, pullRequestPrompt] = await Promise.all([
-              buildCommitPromptFromGit(scope, context, draftMessage, signal),
-              buildPullRequestPromptFromGit(scope, context, {
-                headBranch,
-                signal,
-              }),
-            ]);
-            if (pullRequestPrompt.trim().length === 0) {
-              return null;
-            }
-            generated = await dispatchHostRequest(
-              "generate-commit-pull-request-message",
-              {
-                params: {
-                  hostId: context.hostConfig.id,
-                  prompt: [
-                    "Commit message context:",
-                    commitPrompt,
-                    "",
-                    "Pull request context:",
-                    pullRequestPrompt,
-                  ].join("\n"),
-                  cwd: context.cwd,
-                },
-                signal,
+        }
+        let generated: {
+          message?: string | null;
+          title?: string | null;
+          body?: string | null;
+        };
+        try {
+          const [commitPrompt, pullRequestPrompt] = await Promise.all([
+            buildCommitPromptFromGit(scope, context, draftMessage, signal),
+            buildPullRequestPromptFromGit(scope, context, {
+              headBranch,
+              signal,
+            }),
+          ]);
+          if (pullRequestPrompt.trim().length === 0) {
+            return null;
+          }
+          generated = await dispatchHostRequest(
+            "generate-commit-pull-request-message",
+            {
+              params: {
+                hostId: context.hostConfig.id,
+                prompt: [
+                  "Commit message context:",
+                  commitPrompt,
+                  "",
+                  "Pull request context:",
+                  pullRequestPrompt,
+                ].join("\n"),
+                cwd: context.cwd,
               },
-            );
-          } catch (error) {
-            if (!signal?.aborted) {
-              toaster.danger(
-                intl.formatMessage(
-                  {
-                    id: "review.commitPullRequest.generate.failed",
-                    defaultMessage:
-                      "Failed to generate commit and pull request messages: {error}",
-                    description:
-                      "Toast shown when combined commit and pull request message generation fails",
-                  },
-                  { error: describeError(error) },
-                ),
-              );
-            }
-            return null;
-          }
-          const message = trimmedMessage || generated.message?.trim() || "";
-          const title = draftTitle || generated.title?.trim() || "";
-          const body = draftBody || generated.body?.trim() || "";
-          if (signal?.aborted) {
-            return null;
-          }
-          if (message.length === 0 || title.length === 0 || body.length === 0) {
+              signal,
+            },
+          );
+        } catch (error) {
+          if (!signal?.aborted) {
             toaster.danger(
-              intl.formatMessage({
-                id: "review.commitPullRequest.generate.emptyResponse",
-                defaultMessage:
-                  "Couldn't generate commit and pull request messages",
-                description:
-                  "Toast shown when combined commit and pull request message generation returns no result",
-              }),
-            );
-            return null;
-          }
-          seedCommitDraftMessage(scope, hostScope, draftMessage, message);
-          if (draftTitle.length === 0) {
-            scope.set(
-              createPullRequestTitleDraftAtom,
-              hostScope,
-              (value: string) => (value.trim().length === 0 ? title : value),
+              intl.formatMessage(
+                {
+                  id: "review.commitPullRequest.generate.failed",
+                  defaultMessage:
+                    "Failed to generate commit and pull request messages: {error}",
+                  description:
+                    "Toast shown when combined commit and pull request message generation fails",
+                },
+                { error: describeError(error) },
+              ),
             );
           }
-          if (draftBody.length === 0) {
-            scope.set(
-              createPullRequestBodyDraftAtom,
-              hostScope,
-              (value: string) => (value.trim().length === 0 ? body : value),
-            );
-          }
-          return { body, message, title };
-        },
-      };
-    },
-  );
+          return null;
+        }
+        const message = trimmedMessage || generated.message?.trim() || "";
+        const title = draftTitle || generated.title?.trim() || "";
+        const body = draftBody || generated.body?.trim() || "";
+        if (signal?.aborted) {
+          return null;
+        }
+        if (message.length === 0 || title.length === 0 || body.length === 0) {
+          toaster.danger(
+            intl.formatMessage({
+              id: "review.commitPullRequest.generate.emptyResponse",
+              defaultMessage:
+                "Couldn't generate commit and pull request messages",
+              description:
+                "Toast shown when combined commit and pull request message generation returns no result",
+            }),
+          );
+          return null;
+        }
+        seedCommitDraftMessage(scope, hostScope, draftMessage, message);
+        if (draftTitle.length === 0) {
+          scope.set(
+            createPullRequestTitleDraftAtom,
+            hostScope,
+            (value: string) => (value.trim().length === 0 ? title : value),
+          );
+        }
+        if (draftBody.length === 0) {
+          scope.set(
+            createPullRequestBodyDraftAtom,
+            hostScope,
+            (value: string) => (value.trim().length === 0 ? body : value),
+          );
+        }
+        return { body, message, title };
+      },
+    };
+  },
+);
 
 export const generatePullRequestMessageMutationAtom = createScopedMutationAtom(
   appStoreScope,

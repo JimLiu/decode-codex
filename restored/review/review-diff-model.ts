@@ -4,11 +4,8 @@
 
 import {
   createScopedAtom,
-  createScopedQueryAtom,
-  createParametricAtom,
   appAtomScope,
   threadAtomScope,
-  reviewMetadataScope,
   reviewGitMetadataQueryAtom,
   isReviewDiffEnabledAtom,
   reviewHostConfigAtom,
@@ -26,13 +23,9 @@ import {
   invalidateReviewDiffQueries,
   invalidateGitQueries,
   RequestAbortedError,
-  disabledQueryResult,
-  pendingQueryResult,
-  createGitQueryOptions,
-  getHostKey,
-  gitMetadataReadinessAtom,
-  gitMetadataFromCwdQuery,
 } from "../boundaries/onboarding-commons-externals.facade";
+
+export { createGitMetadataQueryFamily } from "./review-git-metadata-query-family";
 
 export type ReviewDiffFilter =
   | "staged"
@@ -41,7 +34,7 @@ export type ReviewDiffFilter =
   | "commit"
   | "last-turn";
 
-export interface BranchRef {
+interface BranchRef {
   local: string | null;
   remote: string | null;
 }
@@ -73,7 +66,7 @@ interface ReviewSummaryParams {
 export const reviewDiffFilterAtom = createScopedAtom(appAtomScope, "unstaged");
 
 // Transient review-diff selection, cleared whenever the diff filter changes.
-export const reviewDiffSelectionAtom = createScopedAtom(threadAtomScope, null);
+const reviewDiffSelectionAtom = createScopedAtom(threadAtomScope, null);
 
 export function setReviewDiffFilter(
   store: ReviewStore,
@@ -238,81 +231,4 @@ export async function refreshReviewSummary(
     if (pendingReviewSummaryRefreshes.get(store) === refresh)
       pendingReviewSummaryRefreshes.delete(store);
   }
-}
-
-interface GitMetadataQueryConfig {
-  method: string;
-  getParams: (metadata: any) => unknown;
-  getOptions?: (metadata: any) => Record<string, unknown>;
-}
-
-// Builds a trio of scoped query atoms for a git operation keyed by repo metadata:
-//   queryByMetadata$ — keyed directly by {commonDir, root}
-//   fromMetadata$    — gated on git-metadata readiness before delegating to queryByMetadata$
-//   fromCwd$         — resolves repo metadata from a cwd first, then delegates to fromMetadata$
-export function createGitMetadataQueryFamily({
-  method,
-  getParams,
-  getOptions,
-}: GitMetadataQueryConfig) {
-  const queryByMetadata = createScopedQueryAtom(
-    reviewMetadataScope,
-    (metadata: any) =>
-      createGitQueryOptions(
-        method,
-        { commonDir: metadata.commonDir, root: metadata.root },
-        getParams(metadata),
-        getHostKey(metadata.hostConfig),
-        metadata.hostConfig,
-        { enabled: metadata.enabled, ...getOptions?.(metadata) },
-      ),
-    { excludeFieldsFromKey: ["operationSource"] },
-  );
-
-  const fromMetadata = createParametricAtom(
-    reviewMetadataScope,
-    (params: any, { get }: { get: (atom: unknown, arg?: unknown) => any }) => (
-      get(
-        get(gitMetadataReadinessAtom, {
-          commonDir: params.commonDir,
-          enabled: params.enabled,
-          hostConfig: params.hostConfig,
-          operationSource: params.operationSource,
-          root: params.root,
-        }),
-      ),
-      get(queryByMetadata, params)
-    ),
-    { excludeFieldsFromKey: ["operationSource"] },
-  );
-
-  return {
-    fromCwd$: createParametricAtom(
-      reviewMetadataScope,
-      (
-        params: any,
-        { get }: { get: (atom: unknown, arg?: unknown) => any },
-      ) => {
-        if (!params.enabled || params.cwd == null) return disabledQueryResult();
-        const cwdMetadataQuery = get(gitMetadataFromCwdQuery, {
-          cwd: params.cwd,
-          enabled: params.enabled,
-          hostConfig: params.hostConfig,
-          operationSource: params.operationSource,
-          watchForGitInit: false,
-        });
-        const cwdMetadata = cwdMetadataQuery.data ?? null;
-        if (cwdMetadata == null) return pendingQueryResult(cwdMetadataQuery);
-        const { cwd, ...rest } = params;
-        return get(fromMetadata, {
-          ...rest,
-          commonDir: cwdMetadata.commonDir,
-          root: cwdMetadata.root,
-        });
-      },
-      { excludeFieldsFromKey: ["operationSource"] },
-    ),
-    fromMetadata$: fromMetadata,
-    queryByMetadata$: queryByMetadata,
-  };
 }
