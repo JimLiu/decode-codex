@@ -1,37 +1,36 @@
 // Restored from ref/webview/assets/hotkey-window-thread-page-DGErqu4u.js
 // Current hotkey window thread page backing bundle with restored dependency imports.
 
+import type { ReactElement } from "react";
 import { once } from "../runtime/commonjs-interop";
 import {
-  currentAppInitialSharedCompatSlotLowerGLowerC,
-  currentAppInitialSharedCompatSlotUpperGLowerO,
-  currentAppInitialSharedCompatSlotUpperJLowerT,
-  currentAppInitialSharedCompatSlotUpperKLowerO,
-  currentAppInitialSharedCompatSlotLowerLLowerC,
-  currentAppInitialSharedCompatSlotUpperO,
-  currentAppInitialSharedCompatSlotLowerQLowerO,
-  currentAppInitialSharedCompatSlotUpperQLowerT,
-  currentAppInitialSharedCompatSlotLowerTLowerR,
-  currentAppInitialSharedCompatSlotUpperVLowerO,
+  currentAppInitialSharedCompatSlotLowerGLowerC as initReactCompilerRuntime,
+  currentAppInitialSharedCompatSlotUpperGLowerO as useScopedSignalValue,
+  currentAppInitialSharedCompatSlotUpperJLowerT as buildHotkeyWindowConversationPath,
+  currentAppInitialSharedCompatSlotUpperKLowerO as useRouteScopeContext,
+  currentAppInitialSharedCompatSlotUpperO as initReactRuntime,
+  currentAppInitialSharedCompatSlotLowerQLowerO as useQuery,
+  currentAppInitialSharedCompatSlotUpperQLowerT as buildHotkeyWindowHomePath,
+  currentAppInitialSharedCompatSlotUpperVLowerO as initHotkeyWindowRoutingRuntime,
 } from "../runtime/current-app-initial/current-app-initial-shared-runtime";
 import {
-  worktreeNewThreadOrchestratorCompatSlotUpperRLowerF,
-  worktreeNewThreadOrchestratorCompatSlotLowerZLowerF,
+  worktreeNewThreadOrchestratorCompatSlotUpperRLowerF as initWorktreeNewThreadOrchestratorRuntime,
+  worktreeNewThreadOrchestratorCompatSlotLowerZLowerF as localConversationTitleByIdSignal,
 } from "../runtime/current-app-initial/worktree-new-thread-orchestrator-runtime";
 import {
-  currentAppInitialSharedMember0084,
-  reactRouterRouteScopeParentRuntime,
-  intlFormatDateTimeRuntime,
-  currentAppInitialSharedMember0194,
-  appServerDisconnectedAppServerSignal,
-  reactRouterMember0297,
-  currentAppInitialSharedFunction0375,
-  currentAppInitialSharedMember0874,
-  openAiNativeAppDefinition,
+  currentAppInitialSharedMember0084 as Navigate,
+  reactRouterRouteScopeParentRuntime as initReactRouterRouteScopeRuntime,
+  intlFormatDateTimeRuntime as initIntlFormattingRuntime,
+  currentAppInitialSharedMember0194 as useHotkeyThreadRouteParams,
+  appServerDisconnectedAppServerSignal as initAppServerDisconnectedSignal,
+  reactRouterMember0297 as reactRouterRouteScopeParent,
+  currentAppInitialSharedFunction0375 as useIntl,
+  currentAppInitialSharedMember0874 as conversationWorkspaceRootByIdSignal,
+  openAiNativeAppDefinition as initOpenAiNativeAppDefinition,
 } from "../runtime/current-app-initial/remote-projects-app-shared-runtime";
 import {
-  appgenLibraryHotDjo67r4nCompatSlotDollarLowerN,
-  appgenLibraryHotDjo67r4nCompatSlotUpperQLowerN,
+  appgenLibraryHotDjo67r4nCompatSlotDollarLowerN as initWorkspaceRootLabelFormatterRuntime,
+  appgenLibraryHotDjo67r4nCompatSlotUpperQLowerN as formatWorkspaceRootLabel,
 } from "../runtime/current-app-initial/appgen-library-hot-djo67r4n-runtime";
 import {
   launcherHotkeyStateQuery,
@@ -53,127 +52,92 @@ import {
   initLocalConversationArtifacts,
   LocalConversationThread,
 } from "../conversations/local-conversation-thread";
-export function HotkeyWindowThreadPage() {
-  let hotkeyWindowThreadPageValue4 =
-      currentAppInitialSharedCompatSlotUpperKLowerO(reactRouterMember0297),
-    hotkeyWindowThreadPageValue5 = currentAppInitialSharedFunction0375(),
-    { conversationId } = currentAppInitialSharedMember0194(),
-    { data } = currentAppInitialSharedCompatSlotLowerQLowerO(
-      launcherHotkeyStateQuery,
-    ),
-    hotkeyWindowThreadPageValue6 =
-      data == null || data.configuredHotkey != null,
-    hotkeyWindowThreadPageValue7 =
-      currentAppInitialSharedCompatSlotUpperQLowerT(
-        hotkeyWindowThreadPageValue6,
-      );
-  let hotkeyWindowThreadPageValue8 = hotkeyWindowThreadPageValue7,
-    hotkeyWindowThreadPageValue9 =
-      currentAppInitialSharedCompatSlotUpperGLowerO(
-        worktreeNewThreadOrchestratorCompatSlotLowerZLowerF,
-        conversationId ?? null,
-      ),
-    hotkeyWindowThreadPageValue10 =
-      currentAppInitialSharedCompatSlotUpperGLowerO(
-        currentAppInitialSharedMember0874,
-        conversationId ?? null,
-      ),
-    hotkeyWindowThreadPageValue11 =
-      appgenLibraryHotDjo67r4nCompatSlotUpperQLowerN(
-        hotkeyWindowThreadPageValue10
-          ? currentAppInitialSharedCompatSlotLowerTLowerR(
-              hotkeyWindowThreadPageValue10,
-            )
-          : null,
-      );
-  let hotkeyWindowThreadPageValue12 = hotkeyWindowThreadPageValue11;
-  usePinnedSummaryPanelLayout(hotkeyWindowThreadPageValue4);
-  let hotkeyWindowThreadPageValue13;
-  if (
-    ((hotkeyWindowThreadPageValue13 =
-      conversationId == null
-        ? null
-        : {
-            title: (
-              <div className="flex max-w-full min-w-0 items-baseline gap-2">
-                <div className="min-w-0 shrink-[999] truncate text-token-foreground">
-                  {hotkeyWindowThreadPageValue9 ??
-                    hotkeyWindowThreadPageValue5.formatMessage({
-                      id: "hotkeyWindow.defaultTitle",
-                      defaultMessage: "Codex",
-                      description:
-                        "Fallback title for hotkey window thread header",
-                    })}
-                </div>
-                {hotkeyWindowThreadPageValue12 == null ? null : (
-                  <div className="flex shrink-0 items-center gap-1 whitespace-nowrap text-token-description-foreground">
-                    <span className="truncate">
-                      {hotkeyWindowThreadPageValue12}
-                    </span>
-                  </div>
-                )}
+
+export function HotkeyWindowThreadPage(): ReactElement {
+  const routeScope = useRouteScopeContext(reactRouterRouteScopeParent);
+  const intl = useIntl();
+  const { conversationId } = useHotkeyThreadRouteParams();
+  const { data: launcherHotkeyState } = useQuery(launcherHotkeyStateQuery);
+  const hasConfiguredHotkey =
+    launcherHotkeyState == null || launcherHotkeyState.configuredHotkey != null;
+  const homePath = buildHotkeyWindowHomePath(hasConfiguredHotkey);
+  const conversationTitle = useScopedSignalValue(
+    localConversationTitleByIdSignal,
+    conversationId ?? null,
+  );
+  const conversationWorkspaceRoot = useScopedSignalValue(
+    conversationWorkspaceRootByIdSignal,
+    conversationId ?? null,
+  );
+  const workspaceLabel = formatWorkspaceRootLabel(
+    conversationWorkspaceRoot ?? null,
+  );
+
+  usePinnedSummaryPanelLayout(routeScope);
+
+  const detailLayout =
+    conversationId == null
+      ? null
+      : {
+          title: (
+            <div className="flex max-w-full min-w-0 items-baseline gap-2">
+              <div className="min-w-0 shrink-[999] truncate text-token-foreground">
+                {conversationTitle ??
+                  intl.formatMessage({
+                    id: "hotkeyWindow.defaultTitle",
+                    defaultMessage: "Codex",
+                    description:
+                      "Fallback title for hotkey window thread header",
+                  })}
               </div>
-            ),
-            mainWindowPath:
-              currentAppInitialSharedCompatSlotUpperJLowerT(conversationId),
-          }),
-    useHotkeyWindowDetailLayout(hotkeyWindowThreadPageValue13),
-    !conversationId)
-  ) {
-    let hotkeyWindowThreadPageValue18;
-    return hotkeyWindowThreadPageValue2.jsx(currentAppInitialSharedMember0084, {
-      to: hotkeyWindowThreadPageValue8,
-      replace: true,
-    });
+              {workspaceLabel == null ? null : (
+                <div className="flex shrink-0 items-center gap-1 whitespace-nowrap text-token-description-foreground">
+                  <span className="truncate">{workspaceLabel}</span>
+                </div>
+              )}
+            </div>
+          ),
+          mainWindowPath: buildHotkeyWindowConversationPath(conversationId),
+        };
+  useHotkeyWindowDetailLayout(detailLayout);
+
+  if (!conversationId) {
+    return <Navigate to={homePath} replace />;
   }
-  let hotkeyWindowThreadPageValue14, hotkeyWindowThreadPageValue15;
-  hotkeyWindowThreadPageValue14 = hotkeyWindowThreadPageValue2.jsx(
-    LocalConversationStreamRoleProductEventReporter,
-    {
-      conversationId,
-    },
-  );
-  hotkeyWindowThreadPageValue15 = hotkeyWindowThreadPageValue2.jsx(
-    LocalConversationHeartbeatAutomationThreadStateReporter,
-    {
-      conversationId,
-    },
-  );
-  let hotkeyWindowThreadPageValue16 = (
-    <div className="h-full [--padding-panel:calc(var(--padding-panel-base)/2)]">
-      {hotkeyWindowThreadPageValue2.jsx(LocalConversationThread, {
-        conversationId,
-        allowMissingConversation: true,
-        showExternalFooter: true,
-      })}
-    </div>
-  );
+
   return (
     <>
-      {hotkeyWindowThreadPageValue14}
-      {hotkeyWindowThreadPageValue15}
-      {hotkeyWindowThreadPageValue16}
+      <LocalConversationStreamRoleProductEventReporter
+        conversationId={conversationId}
+      />
+      <LocalConversationHeartbeatAutomationThreadStateReporter
+        conversationId={conversationId}
+      />
+      <div className="h-full [--padding-panel:calc(var(--padding-panel-base)/2)]">
+        <LocalConversationThread
+          conversationId={conversationId}
+          allowMissingConversation={true}
+          showExternalFooter={true}
+        />
+      </div>
     </>
   );
 }
-var hotkeyWindowThreadPageValue1, hotkeyWindowThreadPageValue2;
+
 once(() => {
-  hotkeyWindowThreadPageValue1 =
-    currentAppInitialSharedCompatSlotLowerGLowerC();
-  currentAppInitialSharedCompatSlotUpperVLowerO();
-  currentAppInitialSharedCompatSlotUpperO();
-  intlFormatDateTimeRuntime();
-  openAiNativeAppDefinition();
-  appServerDisconnectedAppServerSignal();
+  initReactCompilerRuntime();
+  initHotkeyWindowRoutingRuntime();
+  initReactRuntime();
+  initIntlFormattingRuntime();
+  initOpenAiNativeAppDefinition();
+  initAppServerDisconnectedSignal();
   initLocalConversationHeartbeatAutomationThreadStateReporter();
   initLocalConversationStreamRoleProductEventReporter();
   initLocalConversationThreadChunk();
-  worktreeNewThreadOrchestratorCompatSlotUpperRLowerF();
-  reactRouterRouteScopeParentRuntime();
-  appgenLibraryHotDjo67r4nCompatSlotDollarLowerN();
+  initWorktreeNewThreadOrchestratorRuntime();
+  initReactRouterRouteScopeRuntime();
+  initWorkspaceRootLabelFormatterRuntime();
   initLocalConversationArtifacts();
   initLauncherHotkeyStateChunk();
   initHotkeyWindowDetailLayoutChunk();
-  hotkeyWindowThreadPageValue2 =
-    currentAppInitialSharedCompatSlotLowerLLowerC();
 })();
