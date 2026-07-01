@@ -9,16 +9,18 @@ import { Button } from "../ui/button";
 import { Spinner } from "../ui/spinner";
 import { ShareIcon } from "../icons/share-icon";
 import {
+  AppgenAccessStateIcon,
+  getAppgenAccessStateMessage,
+} from "../utils/appgen-access-state-messages";
+import { summarizeAppgenAccessPolicy } from "../utils/appgen-access";
+import {
   HOVER_REVEAL_CLASS_NAME,
   OVERLAY_BUTTON_CLASS_NAME,
 } from "./end-resource-card-shared";
 import {
-  AccessPolicyIcon,
   AppgenSiteIcon,
   OpenInTargetsHoverSubtitle,
   ResourceOverflowMenu,
-  getAccessPolicyMessageValues,
-  getAccessPolicySubtitleDescriptor,
   handleOpenResourceLink,
   openAppgenShareDialog,
   trackOpenInCodexBrowser,
@@ -28,7 +30,7 @@ import {
 } from "../boundaries/onboarding-commons-externals.facade";
 
 export interface AppgenAccessPolicySubtitleProps {
-  accessPolicy: unknown;
+  accessPolicy: Parameters<typeof summarizeAppgenAccessPolicy>[0];
   isLoading: boolean;
 }
 
@@ -43,11 +45,11 @@ export function AppgenAccessPolicySubtitle({
       </span>
     );
   }
-  const messageValues = getAccessPolicyMessageValues(accessPolicy);
-  const descriptor = getAccessPolicySubtitleDescriptor(messageValues);
+  const messageValues = summarizeAppgenAccessPolicy(accessPolicy);
+  const descriptor = getAppgenAccessStateMessage(messageValues);
   return (
     <span className="flex items-center gap-1">
-      <AccessPolicyIcon
+      <AppgenAccessStateIcon
         aria-hidden={true}
         accessPolicy={accessPolicy}
         className="icon-2xs shrink-0"

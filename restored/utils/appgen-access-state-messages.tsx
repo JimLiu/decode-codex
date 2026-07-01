@@ -16,6 +16,11 @@ type AppgenAccessMessageKey =
 type AppgenAccessStateIconProps = SVGProps<SVGSVGElement> & {
   accessPolicy: Parameters<typeof summarizeAppgenAccessPolicy>[0];
 };
+
+export function initAppgenAccessStateIconChunk(): void {}
+
+export function initAppgenAccessStateMessagesChunk(): void {}
+
 export function AppgenAccessStateIcon({
   accessPolicy,
   ...iconProps

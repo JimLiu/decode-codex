@@ -4,8 +4,8 @@
 // and marks tools that should be deferred until first use (localConversation
 // domain).
 import { buildThreadTools } from "./thread-management-tool-definitions";
+import { isLocalHost } from "../utils/automation-host-support";
 import {
-  isLocalHost,
   filterAvailableModels,
   readFeatureGateById,
   settingsToolNamespaceEntries,

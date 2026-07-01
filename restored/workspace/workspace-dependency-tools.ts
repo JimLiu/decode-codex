@@ -8,9 +8,9 @@ import { appLogger } from "../runtime/app-logger";
 import { appServices } from "../boundaries/rpc.facade";
 import { hasWorkspaceDependenciesFeature } from "../features/workspace-dependencies";
 import { sendAppServerRequest } from "../boundaries/use-host-config.facade";
+import { isLocalHost } from "../utils/automation-host-support";
 import {
   buildToolErrorResult,
-  isLocalHost,
   loadWorkspaceDependenciesToolName,
 } from "../boundaries/onboarding-commons-externals.facade";
 

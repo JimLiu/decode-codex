@@ -28,6 +28,9 @@ type AppgenAccessPolicyUpdate = {
   allowed_workspace_group_ids?: string[];
   allowed_tenant_group_ids?: string[];
 };
+
+export function initAppgenAccessPolicyRuntimeChunk(): void {}
+
 export function buildAppgenAccessPolicyWithoutUser(
   accessPolicy: AppgenAccessPolicy,
   accountUserId: string | null | undefined,

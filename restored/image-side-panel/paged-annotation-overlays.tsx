@@ -1,6 +1,10 @@
 // Restored from ref/webview/assets/app-initial~app-main~onboarding-page-BUwCKIcU.js
 // Public barrel for paged annotation overlay primitives and geometry helpers.
 
+export function initPagedAnnotationOverlayGeometryChunk(): void {}
+
+export function initPagedAnnotationOverlaysChunk(): void {}
+
 export {
   ANNOTATION_CROSSHAIR_CURSOR,
   ANNOTATION_EDITOR_ENTER_CLASS,
@@ -33,3 +37,5 @@ export {
 } from "./paged-annotation-rects";
 export type { CommentPreviewProps } from "./paged-annotation-comment-preview";
 export { CommentPreview } from "./paged-annotation-comment-preview";
+export type { PagedAnnotationMarkerProps } from "./paged-annotation-marker";
+export { PagedAnnotationMarker } from "./paged-annotation-marker";

@@ -6,10 +6,12 @@ import { getThreadManagementToolHandlers } from "../../conversations/thread-mana
 export { GlobeIcon } from "../../icons/globe-icon";
 export { AlertIcon, initAlertIconChunk } from "../../icons/alert-icon";
 export { FolderIcon, initFolderIconChunk } from "../../icons/folder-icon";
+export { BuildingIcon, initBuildingIconChunk } from "../../icons/building-icon";
 export { ClockIcon, initClockIconChunk } from "../../icons/clock-icon";
 export { CloudIcon, initCloudIconChunk } from "../../icons/cloud-icon";
 export { DragIcon, initDragIconChunk } from "../../icons/drag-icon";
 export { LaptopIcon, initLaptopIconChunk } from "../../icons/laptop-icon";
+export { LockIcon, initLockIconChunk } from "../../icons/lock-icon";
 export { PinIcon, initPinIconChunk } from "../../icons/pin-icon";
 export { UploadIcon } from "../../icons/upload-icon";
 export { WarningIcon, initWarningIconChunk } from "../../icons/warning-icon";
@@ -33,6 +35,21 @@ export {
   hasSeenAppgenPublicationTermsDisclosureSignal,
   initAppgenPublicationTermsDisclosureRuntime,
 } from "../../appgen/appgen-publication-terms-disclosure";
+export {
+  buildAppgenAccessPolicyUpdate,
+  buildAppgenAccessPolicyWithoutGroup,
+  buildAppgenAccessPolicyWithoutUser,
+  getAppgenAccessModeOptions,
+  initAppgenAccessPolicyRuntimeChunk,
+  summarizeAppgenAccessPolicy,
+} from "../../utils/appgen-access";
+export {
+  AppgenAccessStateIcon,
+  getAppgenAccessShortStateMessage,
+  getAppgenAccessStateMessage,
+  initAppgenAccessStateIconChunk,
+  initAppgenAccessStateMessagesChunk,
+} from "../../utils/appgen-access-state-messages";
 export { composeRefs } from "../../utils/compose-refs";
 export { QueryClientProvider } from "../../runtime/query-client/react-query-context";
 export { useQueries } from "../../runtime/query-client/react-query-hooks";
@@ -67,6 +84,11 @@ export {
   OPEN_IN_CODEX_TOOL_NAME,
   runAppActionInPrimaryWindow,
 } from "../../runtime/run-app-action-in-primary-window";
+export {
+  finishPrimaryRuntimeInstallBeforeFirstTurn,
+  initPrimaryRuntimeInstallStateChunk,
+  primaryRuntimeInstallReleaseSignal,
+} from "../../runtime/primary-runtime-install-state";
 export {
   CONVERSATION_DETAIL_STEPS_COMMANDS,
   CONVERSATION_DETAIL_STEPS_PROSE,
@@ -229,6 +251,10 @@ export {
   shouldUseCreditsRateLimitDisplay,
 } from "../../utils/rate-limit-status/account-status";
 export {
+  initLocalHostRuntimeChunk,
+  isLocalHost,
+} from "../../utils/automation-host-support";
+export {
   DAY_MINUTES,
   getLatestRateLimitResetAt,
   hasRateLimitWindow,
@@ -263,6 +289,18 @@ export {
 } from "../../automations/automation-record-sync";
 export { useImageAssetDownload } from "../../image-side-panel/use-image-asset-download";
 export { openImagePreviewTab } from "../../image-side-panel/open-image-preview-tab";
+export {
+  AnnotationSelectionRect,
+  applyAbsolutePosition,
+  AskForEditButton,
+  computeAskForEditButtonPosition,
+  computeRectAskForEditPosition,
+  initPagedAnnotationOverlayGeometryChunk,
+  initPagedAnnotationOverlaysChunk,
+  isToggleImageCommentShortcut,
+  PagedAnnotationMarker,
+  topRightCorner,
+} from "../../image-side-panel/paged-annotation-overlays";
 export {
   applyBrowserCommentPopupShake,
   initBrowserCommentPopupShakeChunk,

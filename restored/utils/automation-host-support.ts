@@ -25,3 +25,9 @@ export function isAutomationHostSupported(hostId: string): boolean {
   }
   return snapshot.id === hostId && snapshot.kind === "local";
 }
+
+export function isLocalHost(hostId: string): boolean {
+  return isAutomationHostSupported(hostId);
+}
+
+export function initLocalHostRuntimeChunk(): void {}

@@ -20,4 +20,7 @@ export function BuildingIcon(props: IconProps) {
     </svg>
   );
 }
+
+export function initBuildingIconChunk(): void {}
+
 export default BuildingIcon;

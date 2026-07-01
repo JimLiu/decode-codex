@@ -119,6 +119,9 @@ export const primaryRuntimeInstallStatusSignal = createAppScopeSignal(
   appScopeRoot,
   null,
 );
+
+export function initPrimaryRuntimeInstallStateChunk(): void {}
+
 export function isPrimaryRuntimeInstallProgressPhase(
   status: PrimaryRuntimeInstallStatus,
 ): boolean {

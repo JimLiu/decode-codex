@@ -38,4 +38,7 @@ export function LockIcon(props: IconProps) {
     </svg>
   );
 }
+
+export function initLockIconChunk(): void {}
+
 export default LockIcon;
