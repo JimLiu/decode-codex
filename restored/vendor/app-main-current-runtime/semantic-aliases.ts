@@ -200,6 +200,10 @@ export {
   initBrowserOptionsMenuTriggerButtonChunk,
 } from "../../browser/browser-options-menu-trigger-button";
 export {
+  BrowserSidebarWebview,
+  initBrowserSidebarWebviewChunk,
+} from "../../browser/sidebar-webview";
+export {
   browserUseOriginStateQuery,
   initBrowserUseOriginStateQueriesChunk,
   useAddBrowserUseFileTransferOriginMutation,

@@ -36,6 +36,7 @@ type BrowserSidebarElectronWebviewOptions = {
   adoptionLease?: string | null;
   adoptedWebContentsId?: number | null;
   hostKind?: BrowserSidebarHostKind;
+  persistedTabsEnabled?: boolean;
 };
 type BrowserSidebarRetainedWebviewOptions = {
   hostKind?: BrowserSidebarHostKind;

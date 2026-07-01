@@ -25,6 +25,7 @@ export type BrowserSidebarWebviewProps = {
   hostKind?: BrowserSidebarHostKind;
   initialUrl: string;
   isVisible: boolean;
+  persistedTabsEnabled?: boolean;
   scale: number;
   shouldBootstrapWhenHidden?: boolean;
   shouldPaint?: boolean;
@@ -45,6 +46,7 @@ export function BrowserSidebarWebview({
   hostKind = "right-panel",
   initialUrl,
   isVisible,
+  persistedTabsEnabled = false,
   scale,
   shouldBootstrapWhenHidden,
   shouldPaint,
@@ -209,6 +211,7 @@ export function BrowserSidebarWebview({
         adoptionLease,
         adoptedWebContentsId,
         hostKind,
+        persistedTabsEnabled,
       },
     );
     managedWebviewRef.current = nextManagedWebview;
@@ -236,6 +239,7 @@ export function BrowserSidebarWebview({
     bounds,
     isPresented,
     mountClaimKey,
+    persistedTabsEnabled,
     scale,
     shouldPaint,
     shouldBootstrapWhenHidden,
@@ -269,3 +273,5 @@ function createBrowserSidebarTabKey(
 ): string {
   return `${conversationId}\0${browserTabId}`;
 }
+
+export function initBrowserSidebarWebviewChunk(): void {}
