@@ -1,0 +1,27 @@
+// Restored from ref/webview/assets/app-initial~app-main~onboarding-page-BUwCKIcU.js
+// Stable BUw aliases: dollar.
+export {
+  $ as legacyAppMainBuwDollarExport,
+  $S as rightPanelOpenStateKey,
+  $_ as legacyAppMainBuwDollarUnderscoreExport,
+  $a as legacyAppMainBuwDollarLowerAExport,
+  $b as legacyAppMainBuwDollarLowerBExport,
+  $c as legacyAppMainBuwDollarLowerCExport,
+  $d as legacyAppMainBuwDollarLowerDExport,
+  $f as legacyAppMainBuwDollarLowerFExport,
+  $g as legacyAppMainBuwDollarLowerGExport,
+  $h as legacyAppMainBuwDollarLowerHExport,
+  $i as legacyAppMainBuwDollarLowerIExport,
+  $l as SidebarSection,
+  $m as SidebarSectionTitle,
+  $n as legacyAppMainBuwDollarLowerNExport,
+  $o as legacyAppMainBuwDollarLowerOExport,
+  $p as legacyAppMainBuwDollarLowerPExport,
+  $r as legacyAppMainBuwDollarLowerRExport,
+  $s as legacyAppMainBuwDollarLowerSExport,
+  $t as legacyAppMainBuwDollarLowerTExport,
+  $u as legacyAppMainBuwDollarLowerUExport,
+  $v as legacyAppMainBuwDollarLowerVExport,
+  $x as legacyAppMainBuwDollarLowerXExport,
+  $y as resetNewThreadRouteContext,
+} from "../../app-main-legacy-buw-compat-bundle";
