@@ -27491,7 +27491,7 @@
         "jp": "initModelSettingsCoreChunk",
         "jr": "applyHeartbeatTargetThread",
         "js": "formatResetTimestamp",
-        "jt": "appMainCurrentCompatSlotLowerJLowerT",
+        "jt": "FONT_FAMILY",
         "ju": "setSettingsSelectedHostId",
         "k": "cancelActiveConversationalOnboardingForHost",
         "ka": "getMoveToLocalTargets",

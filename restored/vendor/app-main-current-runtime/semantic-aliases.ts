@@ -548,6 +548,7 @@ export {
   AskForEditButton,
   computeAskForEditButtonPosition,
   computeRectAskForEditPosition,
+  FONT_FAMILY,
   initPagedAnnotationOverlayGeometryChunk,
   initPagedAnnotationOverlaysChunk,
   isToggleImageCommentShortcut,

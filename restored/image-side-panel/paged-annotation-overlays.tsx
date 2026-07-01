@@ -9,6 +9,7 @@ export {
   ANNOTATION_ACCENT_COLOR,
   ANNOTATION_CROSSHAIR_CURSOR,
   ANNOTATION_EDITOR_ENTER_CLASS,
+  FONT_FAMILY,
 } from "./paged-annotation-overlay-constants";
 export type {
   AskForEditAlignment,
