@@ -42432,12 +42432,12 @@
         "AgentSettings": "AgentSettings"
       },
       "status": "done",
-      "note": "Current AgentSettings hash maps to a dedicated current-ref runtime over vendor/agent-settings-current-bundle.tsx; the single semantic export is re-derived from the current file.",
-      "lastUpdated": "2026-06-30T23:35:00.000Z",
+      "note": "Current AgentSettings hash maps to a dedicated current-ref runtime over settings/agent-settings.tsx; the page body was lifted out of vendor parking, React Compiler cache scaffolding was stripped, and the main settings/config helpers now use semantic names.",
+      "lastUpdated": "2026-07-02T03:35:42.000Z",
       "stage3Accepted": true,
       "stage3AcceptedAt": "2026-06-30T23:35:00.000Z",
-      "stage3Review": "Host self-review: verified the current file exports AgentSettings, rewrote dependency imports through restored/IMPORT_MAP.json, and passed quality gates on the backing bundle and runtime.",
-      "stage3Note": "Accepted as a current-ref compatibility export over a restored-dependency backing bundle; full semantic split of AgentSettings remains a later cleanup."
+      "stage3Review": "Host self-review: verified the current file exports AgentSettings, rewrote dependency imports through restored/IMPORT_MAP.json, lifted the page body into settings/agent-settings.tsx, stripped React Compiler cache scaffolding, named the main settings/config helpers, and verified the promoted page plus runtime with Bun builds. Runtime quality gate passes; the page gate now only reports remaining JSX factory call residue and the later component split.",
+      "stage3Note": "Accepted as a current-ref compatibility export over a promoted AgentSettings implementation; JSX factory cleanup and component splitting remain later cleanup."
     },
     "appgen-settings-page-BxhhSHRZ": {
       "restored": "runtime/current-app-initial/appgen-settings-page-current-runtime.ts",
