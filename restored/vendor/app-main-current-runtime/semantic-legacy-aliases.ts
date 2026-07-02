@@ -112,6 +112,7 @@ export {
   cancelGitWorkflowAbortSignal as ThreadRowTitle,
 } from "../../review/local-git-action-state";
 export {
+  gitActionAvailabilityAtom as projectGroupRepositoryDataSignal,
   initLocalGitActionsScopeChunk as SidebarListSection,
 } from "../../review/local-git-actions-scope";
 export {
@@ -155,7 +156,6 @@ export {
 
 export {
   Bn as ArchiveMenuItem,
-  Gl as projectGroupRepositoryDataSignal,
   Nn as SidebarRowActionButton,
   Nr as SidebarRowContextMenu,
   Oi as SidebarRowOverflowMenu,
