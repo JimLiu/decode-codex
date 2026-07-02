@@ -73,6 +73,58 @@ describe("quality-gate", () => {
     expect(report.issues).toEqual([]);
   });
 
+  test("fails hand-written react-intl vendor compatibility shims", () => {
+    const source = `
+      // Restored from ref/webview/assets/lib-BWT6A3Q0.js
+      export function useIntl() {
+        return {
+          formatMessage(descriptor) {
+            return descriptor.defaultMessage ?? descriptor.id ?? "";
+          },
+        };
+      }
+      export function FormattedMessage(props) {
+        return props.defaultMessage ?? props.id ?? "";
+      }
+    `;
+    const report = analyzeSource(source, "restored/vendor/react-intl.tsx", {
+      ...DEFAULT_OPTIONS,
+      allowFlat: true,
+      allowUntyped: true,
+    });
+    expect(report.issues.map((issue) => issue.code)).toContain(
+      "third-party-npm-shim-not-reexport",
+    );
+  });
+
+  test("passes react-intl vendor shims that re-export the npm package", () => {
+    const source = `
+      // Restored from ref/webview/assets/lib-BWT6A3Q0.js
+      export {
+        FormattedMessage,
+        IntlProvider,
+        RawIntlProvider,
+        createIntl,
+        createIntlCache,
+        defineMessage,
+        defineMessages,
+        useIntl,
+      } from "react-intl";
+      export type {
+        IntlShape,
+        MessageDescriptor,
+        PrimitiveType,
+        ReactIntlConfig,
+        ResolvedIntlConfig,
+      } from "react-intl";
+    `;
+    const report = analyzeSource(source, "restored/vendor/react-intl.tsx", {
+      ...DEFAULT_OPTIONS,
+      allowFlat: true,
+    });
+    expect(report.issues).toEqual([]);
+  });
+
   test("passes Electron main build provenance headers when required", () => {
     const source = `
       // Restored from ref/.vite/build/preload.js

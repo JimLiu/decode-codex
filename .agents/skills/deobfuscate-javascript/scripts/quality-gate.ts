@@ -467,6 +467,10 @@ const MECHANICAL_IMPORT_BINDING_RE =
   /^(?:_{0,3}appServerManager[A-Z]|appServerManager(?:Dollar|Underscore)$|_{0,3}(?:chrome|single|setting)(?:[A-Z][A-Za-z]*|Underscore)$|_{0,3}(?:src|dist|lib|pkg)[A-Z][A-Za-z]*|Dist(?:$|[A-Z])|windowAppAction[A-Z]|windowAppActionUnderscore$)/;
 const SOURCE_EXT_RE = /\.[cm]?[jt]sx?$/i;
 const SMALL_COHESIVE_MODULE_LINE_LIMIT = 300;
+const PUBLIC_NPM_VENDOR_SHIMS: Record<string, string> = {
+  formatjs: "react-intl",
+  "react-intl": "react-intl",
+};
 
 export type QualityGateOptions = {
   maxCrypticParams: number;
@@ -778,6 +782,25 @@ function isVendoredDataModule(file: string, source: string): boolean {
     isBundlerInteropRuntimeModule(file, source) ||
     isGeneratedSchemaRuntimeModule(file, source)
   );
+}
+
+function expectedPublicNpmVendorSpecifier(file: string): string | null {
+  const normalized = file.replace(/\\/g, "/");
+  if (!/(?:^|\/)vendor\/[^/]+\.[cm]?[jt]sx?$/i.test(normalized)) {
+    return null;
+  }
+
+  const extensionlessBasename = path
+    .basename(normalized)
+    .replace(/\.[cm]?[jt]sx?$/i, "");
+  return PUBLIC_NPM_VENDOR_SHIMS[extensionlessBasename] ?? null;
+}
+
+function hasBareReexportFrom(source: string, specifier: string): boolean {
+  const escapedSpecifier = specifier.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  return new RegExp(
+    String.raw`\bexport\s+(?:type\s+)?(?:\*|\{[\s\S]*?\})\s+from\s+["']${escapedSpecifier}["']`,
+  ).test(source);
 }
 
 function countLines(source: string): number {
@@ -1887,6 +1910,7 @@ export function analyzeSource(
   const unfinishedAppFlatBoundaryBundle =
     isUnfinishedAppFlatBoundaryBundle(source);
   const relocatedBundleBody = isRelocatedBundleBody(source, lineCount);
+  const expectedNpmVendorSpecifier = expectedPublicNpmVendorSpecifier(file);
   // A faithful vendored module or a generated boundary facade is code we
   // deliberately did not rewrite — relax the semantic-naming/typing/split
   // checks that would false-positive on a package's own short API names or a
@@ -1948,6 +1972,21 @@ export function analyzeSource(
       code: "flat-boundary-app-bundle",
       message:
         "Flat boundary app/runtime bundle remains parked as a vendored bundle; split it into semantic files or replace it with a real third-party re-export boundary.",
+    });
+  }
+  if (
+    expectedNpmVendorSpecifier != null &&
+    !hasBareReexportFrom(source, expectedNpmVendorSpecifier)
+  ) {
+    issues.push({
+      code: "third-party-npm-shim-not-reexport",
+      message:
+        `Known third-party npm vendor shim must re-export '${expectedNpmVendorSpecifier}' ` +
+        "instead of shipping a hand-written compatibility implementation.",
+      detail: {
+        expectedSpecifier: expectedNpmVendorSpecifier,
+        file: path.basename(file),
+      },
     });
   }
   if (!vendored && relocatedBundleBody) {
