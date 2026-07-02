@@ -254,7 +254,7 @@ bun <skill-dir>/scripts/resolve-npm-imports.ts <input.js|-> [--out output.js] [-
 
 Rewrites vendored-npm chunk imports back to bare specifiers, two strategies in order:
 
-- **Chunk-name lookup (high confidence):** strips the hash suffix off `../clsx-DDuZWq6Y.js` → `clsx`, looks it up in `CHUNK_NAME_REGISTRY`; if found, every specifier is rewritten. The registry knows clsx, classnames, tslib, react, react-dom, react-is, jsx-runtime, jsx-dev-runtime, use-sync-external-store, Jotai, `@dnd-kit/*`, framer-motion, react-intl, marked, `@floating-ui/*`, Statsig, and more.
+- **Chunk-name lookup (high confidence):** strips the hash suffix off `../clsx-DDuZWq6Y.js` → `clsx`, looks it up in `CHUNK_NAME_REGISTRY`; if found, every specifier is rewritten. The registry knows clsx, classnames, tslib, react, react-dom, react-is, react-colorful, jsx-runtime, jsx-dev-runtime, use-sync-external-store, Jotai, `@dnd-kit/*`, framer-motion, react-intl, marked, `@floating-ui/*`, Statsig, and more.
 - **Alias fallback:** when the basename isn't recognised (`./shared`), looks up each specifier's local binding in `ALIAS_REGISTRY` (React API, jsx helpers, clsx, tslib, etc.) and splits matching ones into a bare import.
 - **Cross-file shim chains:** recognises `_React = toESM(React())` re-exported via `./shared`, rewrites consumers to `import React from "react"` and renames `_React.useState(…)` → `React.useState(…)`.
 

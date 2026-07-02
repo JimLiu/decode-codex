@@ -477,6 +477,7 @@ const PUBLIC_NPM_VENDOR_SHIMS: Record<string, string> = {
   "jotai-runtime": "jotai",
   lodash: "lodash",
   motion: "framer-motion",
+  "react-colorful": "react-colorful",
   "react-router": "react-router",
   "react-intl": "react-intl",
   "react-is-runtime": "react-is",

@@ -155,6 +155,12 @@ describe("classifyBoundary", () => {
       specifier: "react-is",
     });
     expect(
+      classifyBoundary("react-colorful-XX", { vendor: "react-colorful" }),
+    ).toEqual({
+      kind: "vendor-npm",
+      specifier: "react-colorful",
+    });
+    expect(
       classifyBoundary("with-selector-XX", {
         vendor: "use-sync-external-store",
       }),

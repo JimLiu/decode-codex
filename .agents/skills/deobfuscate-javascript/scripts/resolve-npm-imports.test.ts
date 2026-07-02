@@ -108,6 +108,19 @@ describe("resolveNpmImports (chunk-name based)", () => {
     expect(out.stats.specifiersResolved).toBe(2);
   });
 
+  test("rewrites react-colorful chunk imports to the npm package", () => {
+    const src = `
+      import { t as HexColorPicker } from "../react-colorful-AbCdEf12.js";
+      HexColorPicker;
+    `;
+    const out = resolveNpmImports(src);
+    const n = normalize(out.code);
+    expect(n).toContain('from "react-colorful"');
+    expect(n).toContain("HexColorPicker");
+    expect(n).not.toContain("react-colorful-AbCdEf12");
+    expect(out.stats.specifiersResolved).toBe(1);
+  });
+
   test("rewrites tslib chunk as named-only", () => {
     const src = `import { a as __assign, b as __rest } from "../tslib-X.js";`;
     const out = resolveNpmImports(src);

@@ -87,6 +87,8 @@ export const CHUNK_NAME_REGISTRY: Record<string, ChunkRule> = {
   // Jotai
   jotai: { package: "jotai", namedOnly: true },
   "jotai-react": { package: "jotai", namedOnly: true },
+  // react-colorful
+  "react-colorful": { package: "react-colorful", namedOnly: true },
   // markdown / parsers
   "marked.esm": { package: "marked", namedOnly: true },
   marked: { package: "marked", namedOnly: true },
@@ -179,6 +181,9 @@ export const ALIAS_REGISTRY: Record<string, AliasRule> = {
     package: "use-sync-external-store/shim/with-selector",
     style: "named",
   },
+
+  // react-colorful
+  HexColorPicker: { package: "react-colorful", style: "named" },
 
   // clsx / classnames default exports
   clsx: { package: "clsx", style: "default" },

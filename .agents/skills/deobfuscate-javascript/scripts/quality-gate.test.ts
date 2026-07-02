@@ -270,6 +270,36 @@ describe("quality-gate", () => {
     expect(useSyncReport.issues).toEqual([]);
   });
 
+  test("fails hand-written react-colorful vendor picker bodies", () => {
+    const source = `
+      // Restored from ref/webview/assets/dist-BDOgluP9.js
+      import React from "react";
+      export const Dist = function HexColorPickerBody(props) {
+        return React.createElement("div", { className: "react-colorful" });
+      };
+    `;
+    const report = analyzeSource(source, "restored/vendor/react-colorful.tsx", {
+      ...DEFAULT_OPTIONS,
+      allowFlat: true,
+      allowUntyped: true,
+    });
+    expect(report.issues.map((issue) => issue.code)).toContain(
+      "third-party-npm-shim-not-reexport",
+    );
+  });
+
+  test("passes react-colorful vendor shims that re-export the npm package", () => {
+    const source = `
+      // Restored from ref/webview/assets/dist-BDOgluP9.js
+      export { HexColorPicker, HexColorPicker as Dist } from "react-colorful";
+    `;
+    const report = analyzeSource(source, "restored/vendor/react-colorful.tsx", {
+      ...DEFAULT_OPTIONS,
+      allowFlat: true,
+    });
+    expect(report.issues).toEqual([]);
+  });
+
   test("passes Electron main build provenance headers when required", () => {
     const source = `
       // Restored from ref/.vite/build/preload.js
