@@ -4,7 +4,7 @@ import { createContext, type ComponentType, type ReactNode } from "react";
 import {
   n as initRawThreadComposerFooterChunk,
   t as RawThreadComposerFooter,
-} from "./appgen-library-hot-current-runtime";
+} from "../appgen/library-hot-current-runtime-backing";
 import { AppShellElementContext } from "../app-shell/app-shell-element-context";
 
 type ThreadComposerFooterComponent = ComponentType<{
@@ -169,4 +169,4 @@ export {
   pt as initBrowserExtensionInstallMessagesRuntime,
   yn as sidebarProjectVisibilitySelector,
   Rt as initComputerUseAllowedAppsAtom,
-} from "./appgen-library-hot-current-runtime";
+} from "../appgen/library-hot-current-runtime-backing";

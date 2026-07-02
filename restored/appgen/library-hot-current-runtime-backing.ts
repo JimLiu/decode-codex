@@ -1,5 +1,5 @@
 // Restored from ref/webview/assets/app-initial~app-main~remote-conversation-page~new-thread-panel-page~appgen-library-page~hot~djo67r4n-CrVrqCBe.js
-// Flat boundary. Vendored current appgen-library hot-path bundle copied from the Codex webview chunk.
+// Current appgen library hot-path backing runtime with restored dependency imports.
 const __vite__mapDeps = (
   i,
   m = __vite__mapDeps,
@@ -199,7 +199,7 @@ import {
   xi as Ke,
   y as qe,
   zs as Je,
-} from "./current-app-initial-bnlvjk3w-shared-bundle";
+} from "../vendor/current-app-initial-bnlvjk3w-shared-bundle";
 import {
   $a as Ye,
   $o as Xe,
@@ -362,7 +362,7 @@ import {
   zg as Kr,
   zo as qr,
   zu as Jr,
-} from "./worktree-new-thread-orchestrator-current-bundle";
+} from "../vendor/worktree-new-thread-orchestrator-current-bundle";
 import {
   $ as Yr,
   $c as Xr,
@@ -686,7 +686,7 @@ import {
   zm as Wl,
   zo as Gl,
   zu as Kl,
-} from "./worktree-new-thread-query-current-bundle";
+} from "../vendor/worktree-new-thread-query-current-bundle";
 import {
   $ as ql,
   $_ as Jl,
@@ -909,7 +909,7 @@ import {
   yp as Xp,
   zc as Zp,
   zy as X,
-} from "./remote-projects-app-shared-current-bundle";
+} from "../vendor/remote-projects-app-shared-current-bundle";
 import {
   Bt as Qp,
   C as $p,
@@ -948,7 +948,7 @@ import {
   y as Mm,
   yn as Nm,
   zt as Pm,
-} from "./pull-request-new-thread-current-runtime";
+} from "../vendor/pull-request-new-thread-current-runtime";
 import {
   $d as Fm,
   $f as Im,
@@ -1147,7 +1147,7 @@ import {
   zi as pv,
   zl as mv,
   zs as hv,
-} from "./app-main-current-cgnc-bundle";
+} from "../vendor/app-main-current-cgnc-bundle";
 import {
   RemoteHostGlobeIcon as vv,
   initRemoteHostGlobeIconChunk as _v,
@@ -1212,7 +1212,7 @@ import {
   ut as dy,
   x as fy,
   z as py,
-} from "./appgen-library-hot-current-runtime-bundle";
+} from "./library-hot-current-runtime-implementation";
 import {
   AppgenPublicationTermsFallbackIcon as hy,
   AppgenSettingsOpenAiIcon as _y,
@@ -1223,7 +1223,7 @@ import {
   initAppgenSettingsFilesystemMediaChunk as vy,
   initAppgenSettingsOpenAiIconChunk as my,
   initAppgenSettingsPencilIconChunk as Sy,
-} from "../appgen/settings-publication-runtime";
+} from "./settings-publication-runtime";
 import {
   MoonIcon as wy,
   initMoonIconChunk as Cy,

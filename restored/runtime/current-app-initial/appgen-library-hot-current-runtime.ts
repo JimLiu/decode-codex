@@ -76,4 +76,4 @@ export {
   Y as openCheckoutUrlInBrowser,
   z as useCreditPurchaseHandler,
   Z as initUsageSettingsBillingQueriesRuntime,
-} from "../../vendor/appgen-library-hot-current-runtime-bundle";
+} from "../../appgen/library-hot-current-runtime-implementation";

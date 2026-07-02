@@ -27753,7 +27753,7 @@
     "app-initial~app-main~remote-conversation-page~new-thread-panel-page~appgen-library-page~hot~djo67r4n-CrVrqCBe": {
       "restored": "runtime/current-app-initial/appgen-library-hot-djo67r4n-runtime.ts",
       "status": "done",
-      "note": "Current exact-hash chunk restored through runtime/current-app-initial/appgen-library-hot-djo67r4n-runtime.ts; backing runtime is vendor/appgen-library-hot-current-runtime.ts and all current export aliases are covered by semantic names with legacy compatibility forwarding.",
+      "note": "Current exact-hash chunk restored through runtime/current-app-initial/appgen-library-hot-djo67r4n-runtime.ts; backing runtime is appgen/library-hot-current-runtime-backing.ts and all current export aliases are covered by semantic names with legacy compatibility forwarding.",
       "lastUpdated": "2026-07-02T02:00:14.000Z",
       "exports": {
         "$": "initWorkspaceGitRootLookupRuntime",

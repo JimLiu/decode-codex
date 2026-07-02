@@ -1,5 +1,5 @@
 // Restored from ref/webview/assets/app-initial~app-main~remote-conversation-page~new-thread-panel-page~appgen-library-page~hot~fjhbmao5-BWbJojtu.js
-// Flat boundary. Vendored current appgen-library hot-path runtime bundle copied from the Codex webview chunk.
+// Current appgen library hot-path runtime implementation with restored dependency imports.
 const __vite__mapDeps = (
   i,
   m = __vite__mapDeps,
@@ -111,11 +111,11 @@ import {
   qo as w,
   so as T,
   tc as E,
-} from "./current-app-initial-bnlvjk3w-shared-bundle";
+} from "../vendor/current-app-initial-bnlvjk3w-shared-bundle";
 import {
   Xi as D,
   Zi as O,
-} from "./worktree-new-thread-orchestrator-current-bundle";
+} from "../vendor/worktree-new-thread-orchestrator-current-bundle";
 import {
   Ca as k,
   Da as A,
@@ -167,7 +167,7 @@ import {
   va as je,
   wo as Me,
   ya as Ne,
-} from "./worktree-new-thread-query-current-bundle";
+} from "../vendor/worktree-new-thread-query-current-bundle";
 import {
   Bl as Pe,
   Fa as Fe,
@@ -196,7 +196,7 @@ import {
   xa as nt,
   zf as rt,
   zy as q,
-} from "./remote-projects-app-shared-current-bundle";
+} from "../vendor/remote-projects-app-shared-current-bundle";
 import {
   $s as it,
   Is as at,
@@ -213,7 +213,7 @@ import {
   qs as gt,
   sc as _t,
   tc as vt,
-} from "./app-main-current-cgnc-bundle";
+} from "../vendor/app-main-current-cgnc-bundle";
 import {
   CloudTerminalIcon as bt,
   initCloudTerminalIconChunk as yt,
