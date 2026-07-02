@@ -2664,11 +2664,11 @@
       },
       "status": "done",
       "vendor": "react-dom/client",
-      "note": "Historical React DOM client namespace helper retained in vendor/react-dom-client.ts; the current synced ref no longer has this standalone client-C1mrATqU hash.",
-      "lastUpdated": "2026-06-30T00:00:00.000Z",
+      "note": "Historical React DOM client namespace helper replaced with npm-backed react-dom/client re-export shim; the current synced ref no longer has this standalone client-C1mrATqU hash.",
+      "lastUpdated": "2026-07-02T00:00:00.000-05:00",
       "stage3Accepted": true,
-      "stage3AcceptedAt": "2026-06-30T00:00:00.000Z",
-      "stage3Review": "Host self-review: vendor/react-dom-client.ts is a typed namespace loader for the stock react-dom/client package, preserves the recorded t alias as loadReactDomClient, and passes quality-gate."
+      "stage3AcceptedAt": "2026-07-02T00:00:00.000-05:00",
+      "stage3Review": "Host self-review: vendor/react-dom-client.ts is a typed npm re-export shim for the stock react-dom/client package, preserves the recorded t alias as loadReactDomClient, and passes quality-gate."
     },
     "legacy-video-plugins-BKJsmZCC": {
       "restored": "utils/legacy-video-plugins.ts",
