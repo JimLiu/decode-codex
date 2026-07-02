@@ -60,6 +60,9 @@ export {
   useDictation as ThreadRowEnvironmentMeta,
 } from "../../features/use-dictation/use-dictation";
 export {
+  initUseDictationRuntimeChunk as SidebarRowContextMenuItem,
+} from "../../features/use-dictation";
+export {
   cleanupDictationTranscript as SidebarRowHostLabel,
 } from "../../utils/transcribe-audio";
 export {
@@ -163,7 +166,6 @@ export {
   hp as useComposedRefs,
   mo as initForkConversationMessagesChunk,
   sl as SidebarRowShortcutScope,
-  sm as SidebarRowContextMenuItem,
   xo as initForkConversationToastRuntime,
   zn as SidebarRowRuntime,
 } from "../app-main-current-cgnc-bundle";
