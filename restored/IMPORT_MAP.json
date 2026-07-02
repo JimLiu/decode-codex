@@ -42258,12 +42258,12 @@
         "PricingPlanPage": "PricingPlanPage"
       },
       "status": "done",
-      "note": "Current PricingPlanPage hash maps to a dedicated current-ref runtime over settings/pricing-plan-page.tsx; the page body was lifted out of vendor parking, React Compiler cache scaffolding was stripped, and the main pricing helpers now use semantic names.",
-      "lastUpdated": "2026-07-02T03:50:00.000Z",
+      "note": "Current PricingPlanPage hash maps to a dedicated current-ref runtime over settings/pricing-plan-page.tsx; the page body was lifted out of vendor parking, React Compiler cache scaffolding was stripped, JSX factory calls were removed, and feature-list icons/helpers are split under settings/pricing-plan-page/.",
+      "lastUpdated": "2026-07-02T04:11:40.000Z",
       "stage3Accepted": true,
       "stage3AcceptedAt": "2026-07-02T03:50:00.000Z",
-      "stage3Review": "Host self-review: verified the current file exports PricingPlanPage, promoted the page body to settings/pricing-plan-page.tsx, stripped React Compiler cache scaffolding, renamed the main pricing plan/page/card/link helpers, passed Bun builds for the page and runtime, and passed the runtime quality gate. The page gate now reports only JSX factory residue and split-required for the large flat page.",
-      "stage3Note": "Accepted as a current-ref compatibility export over the promoted PricingPlanPage implementation; JSX factory cleanup and component splitting remain later deep-restore cleanup."
+      "stage3Review": "Host self-review: verified the current file exports PricingPlanPage, promoted the page body to settings/pricing-plan-page.tsx, stripped React Compiler cache scaffolding, removed JSX factory residue, split feature-list icons/helpers under settings/pricing-plan-page/, passed Bun builds for the page and split helpers, and passed quality gate for the page and split helper modules.",
+      "stage3Note": "Accepted as a current-ref compatibility export over the promoted PricingPlanPage implementation; the pricing page body now passes the restored quality gate after JSX factory cleanup and helper splitting."
     },
     "pdf-preview-panel-KZgIg0w6": {
       "restored": "runtime/current-app-initial/pdf-preview-panel-current-runtime.ts",
