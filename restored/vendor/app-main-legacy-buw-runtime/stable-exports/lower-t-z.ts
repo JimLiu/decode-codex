@@ -1,5 +1,7 @@
 // Restored from ref/webview/assets/app-initial~app-main~onboarding-page-BUwCKIcU.js
 // Stable BUw aliases: lower-t-z.
+export { mergeVisibleThreadIdsIntoThreadOrder as mergeVisibleThreadOrder } from "../../../threads/thread-actions";
+
 export {
   t as legacyAppMainBuwLowerTExport,
   tC as PortalFromLowerTC,
@@ -37,7 +39,6 @@ export {
   ug as legacyAppMainBuwLowerULowerGExport,
   uh as SidebarRowLocalEnvironment,
   ui as legacyAppMainBuwLowerULowerIExport,
-  ul as mergeVisibleThreadOrder,
   um as legacyAppMainBuwLowerULowerMExport,
   un as legacyAppMainBuwLowerULowerNExport,
   uo as legacyAppMainBuwLowerULowerOExport,

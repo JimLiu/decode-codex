@@ -1,5 +1,7 @@
 // Restored from ref/webview/assets/app-initial~app-main~onboarding-page-BUwCKIcU.js
 // Lowercase u compatibility aliases for the legacy app-main/onboarding producer.
+export { mergeVisibleThreadIdsIntoThreadOrder as mergeVisibleThreadOrder } from "../../threads/thread-actions";
+
 export {
   u as appMainCurrentCompatSlotLowerU,
   u_ as appMainCurrentCompatSlotLowerUUnderscore,
@@ -12,7 +14,6 @@ export {
   ug as appMainCurrentCompatSlotLowerULowerG,
   uh as SidebarRowLocalEnvironment,
   ui as appMainCurrentCompatSlotLowerULowerI,
-  ul as mergeVisibleThreadOrder,
   um as appMainCurrentCompatSlotLowerULowerM,
   un as appMainCurrentCompatSlotLowerULowerN,
   uo as appMainCurrentCompatSlotLowerULowerO,
