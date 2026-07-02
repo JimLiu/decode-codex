@@ -468,6 +468,7 @@ const MECHANICAL_IMPORT_BINDING_RE =
 const SOURCE_EXT_RE = /\.[cm]?[jt]sx?$/i;
 const SMALL_COHESIVE_MODULE_LINE_LIMIT = 300;
 const PUBLIC_NPM_VENDOR_SHIMS: Record<string, string> = {
+  cmdk: "cmdk",
   "dnd-kit-core": "@dnd-kit/core",
   "dnd-kit-sortable": "@dnd-kit/sortable",
   "dnd-kit-utilities": "@dnd-kit/utilities",
@@ -483,6 +484,7 @@ const PUBLIC_NPM_VENDOR_SHIMS: Record<string, string> = {
   "react-router": "react-router",
   "react-intl": "react-intl",
   "react-is-runtime": "react-is",
+  "tanstack-react-form": "@tanstack/react-form",
   "use-sync-external-store-selector-runtime":
     "use-sync-external-store/shim/with-selector",
   "use-sync-external-store-with-selector":

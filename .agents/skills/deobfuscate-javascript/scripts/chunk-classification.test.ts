@@ -160,6 +160,16 @@ describe("classifyBoundary", () => {
       kind: "vendor-npm",
       specifier: "react-colorful",
     });
+    expect(classifyBoundary("dist-XX", { vendor: "cmdk" })).toEqual({
+      kind: "vendor-npm",
+      specifier: "cmdk",
+    });
+    expect(
+      classifyBoundary("esm-XX", { vendor: "tanstack-react-form" }),
+    ).toEqual({
+      kind: "vendor-npm",
+      specifier: "@tanstack/react-form",
+    });
     expect(
       classifyBoundary("browser-XX", {
         vendor: "@lottiefiles/dotlottie-react",

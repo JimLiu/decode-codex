@@ -187,6 +187,8 @@ repo (record the package in IMPORT_MAP `vendor`; `classifyBoundary()` reads it):
 | -------------------------------------------- | ------------------------------ | --------------------------------------------------------------- |
 | `lodash.ts` (`isEqual-*`)                    | `lodash`                       | named/star re-export                                            |
 | `react-router.ts` (`chunk-LFPYN7LY-*`)       | `react-router`                 |                                                                 |
+| `cmdk.tsx` (`dist-*`)                        | `cmdk`                         | command palette primitives                                      |
+| `tanstack-react-form.ts` (`esm-*`)           | `@tanstack/react-form`         | form hook wrapper                                               |
 | `formatjs.ts` (`lib-BWT6A3Q0`)               | `react-intl`                   | consumers import `useIntl`/`FormattedMessage`                   |
 | `react-is-runtime.ts`                        | `react-is`                     | React companion package; keep loader shape if needed            |
 | `use-sync-external-store-*.ts`               | `use-sync-external-store`      | `shim/with-selector` selector helper                            |
@@ -208,11 +210,12 @@ stock. Prefer `ref/node_modules` proof when available, but do not require it for
 unforked, high-confidence packages already listed above: `formatjs.ts` /
 `lib-BWT6A3Q0` is `react-intl` even if the extracted app snapshot lacks
 `ref/node_modules/react-intl` or a `react-intl` package entry. The same rule
-applies to React companion packages (`react-is`, `use-sync-external-store`),
-react-colorful, dotLottie React, Day.js, Jotai, `@dnd-kit/*`, and other
-high-confidence registry packages. In that case emit the npm-backed re-export
-shim and add/keep ambient module declarations or package install notes as
-needed; do not create a local "minimal" replacement for a stock package.
+applies to React Router, cmdk, TanStack React Form, React companion packages
+(`react-is`, `use-sync-external-store`), react-colorful, dotLottie React,
+Day.js, Jotai, `@dnd-kit/*`, and other high-confidence registry packages. In
+that case emit the npm-backed re-export shim and add/keep ambient module
+declarations or package install notes as needed; do not create a local
+"minimal" replacement for a stock package.
 For a confirmed fork keep the forked wrapper and boundary-ize it
 (`quality-gate.ts --vendored`).
 

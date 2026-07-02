@@ -73,6 +73,76 @@ describe("quality-gate", () => {
     expect(report.issues).toEqual([]);
   });
 
+  test("fails hand-written cmdk vendor compatibility shims", () => {
+    const source = `
+      // Restored from ref/webview/assets/dist-BLGenw3M.js
+      export function Command(props) {
+        return props.children ?? null;
+      }
+      export function useCommandState(selector) {
+        return selector({});
+      }
+    `;
+    const report = analyzeSource(source, "restored/vendor/cmdk.tsx", {
+      ...DEFAULT_OPTIONS,
+      allowFlat: true,
+      allowUntyped: true,
+    });
+    expect(report.issues.map((issue) => issue.code)).toContain(
+      "third-party-npm-shim-not-reexport",
+    );
+  });
+
+  test("passes cmdk vendor shims that re-export the npm package", () => {
+    const source = `
+      // Restored from ref/webview/assets/dist-BLGenw3M.js
+      export { Command, useCommandState } from "cmdk";
+    `;
+    const report = analyzeSource(source, "restored/vendor/cmdk.tsx", {
+      ...DEFAULT_OPTIONS,
+      allowFlat: true,
+    });
+    expect(report.issues).toEqual([]);
+  });
+
+  test("fails hand-written TanStack React Form vendor shims", () => {
+    const source = `
+      // Restored from ref/webview/assets/esm-BrsRQYxN.js
+      export function useForm(options) {
+        return { options, Field: () => null, Subscribe: () => null };
+      }
+    `;
+    const report = analyzeSource(
+      source,
+      "restored/vendor/tanstack-react-form.ts",
+      {
+        ...DEFAULT_OPTIONS,
+        allowFlat: true,
+        allowUntyped: true,
+      },
+    );
+    expect(report.issues.map((issue) => issue.code)).toContain(
+      "third-party-npm-shim-not-reexport",
+    );
+  });
+
+  test("passes TanStack React Form shims that re-export the npm package", () => {
+    const source = `
+      // Restored from ref/webview/assets/esm-BrsRQYxN.js
+      export { useForm } from "@tanstack/react-form";
+      export function initTanstackReactFormChunk(): void {}
+    `;
+    const report = analyzeSource(
+      source,
+      "restored/vendor/tanstack-react-form.ts",
+      {
+        ...DEFAULT_OPTIONS,
+        allowFlat: true,
+      },
+    );
+    expect(report.issues).toEqual([]);
+  });
+
   test("fails hand-written react-intl vendor compatibility shims", () => {
     const source = `
       // Restored from ref/webview/assets/lib-BWT6A3Q0.js

@@ -240,9 +240,12 @@ export type BoundaryKind = "vendor-npm" | "vendor-runtime";
  * specifier resolves before relying on it.
  */
 export const VENDOR_NPM_SPECIFIERS: Record<string, string> = {
+  cmdk: "cmdk",
   lodash: "lodash",
   "react-router": "react-router",
   "react-colorful": "react-colorful",
+  "@tanstack/react-form": "@tanstack/react-form",
+  "tanstack-react-form": "@tanstack/react-form",
   "@lottiefiles/dotlottie-react": "@lottiefiles/dotlottie-react",
   dotlottie: "@lottiefiles/dotlottie-react",
   "dotlottie-react": "@lottiefiles/dotlottie-react",
