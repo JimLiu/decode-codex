@@ -1911,6 +1911,9 @@ export function analyzeSource(
     isUnfinishedAppFlatBoundaryBundle(source);
   const relocatedBundleBody = isRelocatedBundleBody(source, lineCount);
   const expectedNpmVendorSpecifier = expectedPublicNpmVendorSpecifier(file);
+  const isPublicNpmVendorReexportShim =
+    expectedNpmVendorSpecifier != null &&
+    hasBareReexportFrom(source, expectedNpmVendorSpecifier);
   // A faithful vendored module or a generated boundary facade is code we
   // deliberately did not rewrite — relax the semantic-naming/typing/split
   // checks that would false-positive on a package's own short API names or a
@@ -1926,6 +1929,7 @@ export function analyzeSource(
   const vendored =
     options.vendored ||
     isGeneratedFacade(source) ||
+    isPublicNpmVendorReexportShim ||
     (headerExemptAllowed && isLegacyVendoredBoundaryFacade(source)) ||
     isVendoredDataModule(file, source);
   const residueMatches = collectResidueMatches(source).filter(
@@ -1974,10 +1978,7 @@ export function analyzeSource(
         "Flat boundary app/runtime bundle remains parked as a vendored bundle; split it into semantic files or replace it with a real third-party re-export boundary.",
     });
   }
-  if (
-    expectedNpmVendorSpecifier != null &&
-    !hasBareReexportFrom(source, expectedNpmVendorSpecifier)
-  ) {
+  if (expectedNpmVendorSpecifier != null && !isPublicNpmVendorReexportShim) {
     issues.push({
       code: "third-party-npm-shim-not-reexport",
       message:

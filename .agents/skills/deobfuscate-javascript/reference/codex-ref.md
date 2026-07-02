@@ -10,7 +10,10 @@ so agents spend effort on app code instead of rediscovering the local layout.
 ## Scope map
 
 - `ref/package.json` identifies the extracted app as
-  `openai-codex-electron`; use it as the dependency oracle.
+  `openai-codex-electron`; use it as dependency evidence, not an absolute
+  oracle. Missing entries in the extracted package file or `ref/node_modules`
+  do **not** justify hand-writing a local compatibility layer for a
+  high-confidence third-party package.
 - `ref/webview/index.html` names the browser entry and modulepreload roots.
   Read it before picking an entry when the user says "restore ./ref".
 - `ref/webview/assets/*.js` is the bundled code root. These chunks are the
@@ -19,7 +22,9 @@ so agents spend effort on app code instead of rediscovering the local layout.
   assets. Preserve or reference them; do not turn them into TS/TSX unless a JS
   chunk wraps them.
 - `ref/node_modules/**` is extracted dependency/native-module source. Use it for
-  package identity and API shape, not as a target for bundle restoration.
+  package identity and API shape, not as a target for bundle restoration. Its
+  absence is weak evidence only; public npm boundaries should still externalize
+  confirmed packages and record any needed ambient declaration/install note.
 - `ref/native-menu-locales/**` is JSON data. Treat it as a data source, not a JS
   restoration target.
 
@@ -134,9 +139,10 @@ asset-like chunk as a feature module:
   `grammars/diffGrammar.ts` (`diff-*` = Shiki TextMate `source.diff` grammar),
   `treeView-SZITEDCU-*` / `treemap-*` (Mermaid/d3 diagram vendor),
   `worktree-*` / `pending-worktree-*` (git-worktree features). And the genuine
-  Codex consumers that merely *use* the surface — `review-*`,
+  Codex consumers that merely _use_ the surface — `review-*`,
   `pull-request-code-review-comments-*`, `thread-side-panel-tabs-*`,
   `workspace-directory-tree-*`, `editor-diff-page-*` — stay restored.
+
 - Syntax grammar, theme, locale, Mermaid, KaTeX, PDF, workbook, and protobuf
   runtime chunks may be public output, but they should be compact semantic
   facades or data modules. Do not invent app-specific component names for them.
@@ -177,22 +183,28 @@ a **bare re-export shim** (`make-facade.ts <chunk> --reexport <specifier>`), not
 `any`-facade — `boundaries/highlight-js-core.ts` is the model. The map seen in this
 repo (record the package in IMPORT_MAP `vendor`; `classifyBoundary()` reads it):
 
-| Boundary file (chunk) | npm specifier | notes |
-| --- | --- | --- |
-| `lodash.ts` (`isEqual-*`) | `lodash` | named/star re-export |
-| `react-router.ts` (`chunk-LFPYN7LY-*`) | `react-router` | |
-| `formatjs.ts` (`lib-BWT6A3Q0`) | `react-intl` | consumers import `useIntl`/`FormattedMessage` |
-| `motion.ts` (`single-value-*`) | `framer-motion` | |
-| `markdown-ast.ts` (`lib-CqEvD6Nn`) | `mdast-util-*` | confirm the exact util |
-| `parse-patch-files.ts` (`parsePatchFiles-*`) | `@pierre/diffs` | **forked** — see Pierre note; keep wrapper if it diverges |
-| `src.ts` (`src-*`) | `zod` | verify it is stock Zod, not a fork |
-| `analytics.ts` (`pkg-*`) | `@segment/analytics-next` | Segment browser SDK |
-| `radix-*.ts` (`dist-*`, `Combination-*`) | `@radix-ui/react-*` | per-primitive; **may be forked** |
+| Boundary file (chunk)                        | npm specifier             | notes                                                     |
+| -------------------------------------------- | ------------------------- | --------------------------------------------------------- |
+| `lodash.ts` (`isEqual-*`)                    | `lodash`                  | named/star re-export                                      |
+| `react-router.ts` (`chunk-LFPYN7LY-*`)       | `react-router`            |                                                           |
+| `formatjs.ts` (`lib-BWT6A3Q0`)               | `react-intl`              | consumers import `useIntl`/`FormattedMessage`             |
+| `motion.ts` (`single-value-*`)               | `framer-motion`           |                                                           |
+| `markdown-ast.ts` (`lib-CqEvD6Nn`)           | `mdast-util-*`            | confirm the exact util                                    |
+| `parse-patch-files.ts` (`parsePatchFiles-*`) | `@pierre/diffs`           | **forked** — see Pierre note; keep wrapper if it diverges |
+| `src.ts` (`src-*`)                           | `zod`                     | verify it is stock Zod, not a fork                        |
+| `analytics.ts` (`pkg-*`)                     | `@segment/analytics-next` | Segment browser SDK                                       |
+| `radix-*.ts` (`dist-*`, `Combination-*`)     | `@radix-ui/react-*`       | per-primitive; **may be forked**                          |
 
 **Fork caveat:** `@pierre/*`, `@radix-ui/*`, and `zod`(`src`) may be Codex forks, not
 stock npm. Before swapping to a bare specifier, confirm the export surface matches
-stock and the specifier resolves in `ref/node_modules`; for a confirmed fork keep the
-forked wrapper and boundary-ize it (`quality-gate.ts --vendored`).
+stock. Prefer `ref/node_modules` proof when available, but do not require it for
+unforked, high-confidence packages already listed above: `formatjs.ts` /
+`lib-BWT6A3Q0` is `react-intl` even if the extracted app snapshot lacks
+`ref/node_modules/react-intl` or a `react-intl` package entry. In that case emit
+the npm-backed re-export shim and add/keep ambient module declarations or package
+install notes as needed; do not create a local "minimal React Intl" replacement.
+For a confirmed fork keep the forked wrapper and boundary-ize it
+(`quality-gate.ts --vendored`).
 
 ## Semantic rewrite playbook
 
@@ -244,10 +256,10 @@ Do not accept a boundary-only audit, a count of placeholder files under
 
 ## `current-ref` stable-stem chunks: never trust an inherited alias map
 
-`boundaries/current-ref/*-producer.ts` facades map a *current* build chunk to
+`boundaries/current-ref/*-producer.ts` facades map a _current_ build chunk to
 prior restored work by **stable stem** (the hash-stripped name), recording the
 old hash under `migratedFrom`. The export **alias letters** (`a`, `B`, `_t`, …)
-are bundler-assigned and **repack between builds**: when the export *set* changes
+are bundler-assigned and **repack between builds**: when the export _set_ changes
 (features added/removed/code-split differently), the minifier reassigns aliases
 for the survivors too. So an IMPORT_MAP `exports` map copied from the old hash is
 **stale** — its alias→name pairs silently point at the wrong bindings, which
@@ -266,7 +278,7 @@ file**, do not trust the inherited map:
    thunks by the distinctive literal/signal they set up. String literals and prop
    names survive minification, so grep-against-`restored/` is reliable; the alias
    letter is **not**.
-3. Diff the re-derived semantic-name *set* (not the alias set) vs the old map to
+3. Diff the re-derived semantic-name _set_ (not the alias set) vs the old map to
    find genuinely added/removed exports. Newly-added exports are real new modules
    to restore; they are not "already done" just because the stem matched.
 4. Rebuild the producer barrel to exactly the current name set and rewrite the
@@ -288,13 +300,13 @@ sub-tasks that must **both** complete:
 
 1. **Alias-map fix (delta task):** re-derive the alias→semantic-name map and
    update `IMPORT_MAP.json` + the `boundaries/current-ref/` producer barrel.
-   This is a *narrow* sub-task that can finish in one session and is described
+   This is a _narrow_ sub-task that can finish in one session and is described
    in the `current-ref` section above.
 
 2. **Body restoration (organize→promote pipeline):** deobfuscate the chunk body
    (Stage 2 rename + polish → Stage 3 finalize → organize → promote). This
    produces the actual source files in `restored/`. `auto-restore-full.ts`
-   generates a mechanical *checkpoint* as a starting point; that checkpoint
+   generates a mechanical _checkpoint_ as a starting point; that checkpoint
    must be turned into semantic files before the chunk counts as restored.
 
 **These two sub-tasks are independent.** Finishing the alias-map fix (1) does

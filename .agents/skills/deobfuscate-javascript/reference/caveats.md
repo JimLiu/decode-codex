@@ -8,10 +8,10 @@ Pitfalls, gotchas, and FAQ for each stage of the pipeline. Each stage doc links 
 
 ## Pipeline ordering (Stage 1) — critical
 
-Each Stage 1 step has an *input shape* the previous step produced. Running them out of order silently no-ops or, worse, mangles things:
+Each Stage 1 step has an _input shape_ the previous step produced. Running them out of order silently no-ops or, worse, mangles things:
 
 - **`unpack` first** — packed input is one giant `CallExpression`; AST passes have nothing to chew on until it's unpacked. Layered packers re-detect after each pass.
-- **`string-array` before `decode-strings`** — string-array literals are already-readable strings; decoding the giant array first wastes work, and inlining first lets `decode-strings` only walk *used* literals.
+- **`string-array` before `decode-strings`** — string-array literals are already-readable strings; decoding the giant array first wastes work, and inlining first lets `decode-strings` only walk _used_ literals.
 - **`simplify` after `string-array` + `decode-strings`** — folding/inlining works on literals; needs string-array references resolved first. Running `simplify` first will split rotation IIFEs into separate statements that `string-array`'s pattern matcher won't recognize.
 - **`control-flow-report` last** — opaque predicates fed to `simplify` get folded out; what's left is the real CFG worth reporting on.
 - **Stage 1 before Stage 2** — `extract.ts` byte offsets are stable within a source, but invalid across Stage 1 rewrites. Always run Stage 1 to completion before `extract.ts`; `renames.json` ids from pre-deobfuscation code are invalid afterward.
@@ -21,7 +21,7 @@ Each Stage 1 step has an *input shape* the previous step produced. Running them 
 - **`unpack.ts` evaluates JS** — Dean Edwards Packer arg parsing and AAEncode decoding use `new Function(...)`. Stderr warns before each eval. Use `--no-eval` to refuse — the script exits 0 with input unchanged and `evalRefused: true` in the result. Run on untrusted input only after you've eyeballed the wrapper.
 - **`string-array.ts` decoder-indirection** — when arrays are accessed through a wrapper function rather than directly, the script collects the array but produces 0 replacements (`decoderIndirection: true`). Run `simplify` (which inlines small functions) first, then re-run.
 - **`simplify.ts` `--no-inline`** — by default `simplify` inlines `var k = 5; … k` → `… 5` when the binding is constant. Pass `--no-inline` if you want to preserve binding names for Stage 2's renamer to handle.
-- **Stage 1 invalidates sourcemaps** — if a `.map` exists, sourcemap recovery (`source-map-explorer`) is strictly better than Stage 1 + Stage 2. Run `sourcemap-check.ts` *before* committing to Stage 1.
+- **Stage 1 invalidates sourcemaps** — if a `.map` exists, sourcemap recovery (`source-map-explorer`) is strictly better than Stage 1 + Stage 2. Run `sourcemap-check.ts` _before_ committing to Stage 1.
 
 ## Stage 2 rename
 
@@ -33,20 +33,29 @@ Each Stage 1 step has an *input shape* the previous step produced. Running them 
 - **Reserved words**: auto-`_`-prefixed (`static` → `_static`).
 - **Large bundles**: up to ~10 MB parse cleanly; the bottleneck is your token budget for the rename JSON. Use webcrack ([webpack-bundle.md](../workflows/webpack-bundle.md)) past that point.
 - **Source maps are non-deterministic across builds** — if the user's bundle has a `.map` from a different commit, recovered originals may not match runtime behaviour. Sanity-check.
-- **Don't re-rename a renamed file** — `id` offsets shift after generator reformatting, so re-running extract on an already-renamed file gives fresh ids that won't match a prior `renames.json`. (Pass 2 of the multi-pass workflow is the exception: you *do* extract from `pass1.js`, but you build a *new* `renames.json` from those new ids — not re-use the old one.)
+- **Don't re-rename a renamed file** — `id` offsets shift after generator reformatting, so re-running extract on an already-renamed file gives fresh ids that won't match a prior `renames.json`. (Pass 2 of the multi-pass workflow is the exception: you _do_ extract from `pass1.js`, but you build a _new_ `renames.json` from those new ids — not re-use the old one.)
 - **`--scope-kind Program` is a Pass-1 filter, not the whole pass.** Running extract with `--scope-kind Program` and stopping after one apply leaves every function body un-renamed — see [stage-2-restore.md → Step 2.5](../stages/stage-2-restore.md#step-25--dont-stop-at-program-scope) and run Pass 2.
 
 ## Stage 2 polish
+
+- **Missing `ref/node_modules` is not a reason to reimplement npm packages.**
+  Extracted app snapshots can omit dependencies that were bundled into webview
+  chunks. When package identity is high-confidence from fingerprints,
+  `CHUNK_NAME_REGISTRY`, or the Codex package table (`react-intl`/FormatJS,
+  `react-router`, `framer-motion`, Segment, etc.), keep the boundary as a bare
+  npm re-export and record the dependency/ambient-declaration requirement. A
+  hand-written compatibility layer is only acceptable for a genuinely
+  app-specific fork or runtime bridge, not for a stock third-party package.
 
 - **Tier note**: the default "readable restore" tier runs `polish.ts --fast` — the reading-aid subset only (`strip-react-compiler`, `simplify`, `jsx-runtime`, `inline-defaults`, `normalize-exports`). The import-resolution tail (`react-shim-elim`, `resolve-npm-imports`, `npm-cjs-shim-elim`, `dead-shim-elim`) only makes imports resolve against `node_modules` and runs in **deep mode** (drop `--fast`).
 - **Idempotent**: running `polish.ts` twice on the same input changes nothing on the second pass. Safe to re-run if you tweak one of `--prefer` / `--skip` / `--stop-after`.
 - **`strip-react-compiler` detection is by callee name**: any `let X = expr.c(N)` or `let X = (0, expr.c)(N)` with a numeric literal arg is treated as a React Compiler cache. A user-defined `.c()` method that happens to match this shape would also be stripped — extremely rare in practice but possible. If you hit a false positive, run polish with `--skip strip-react-compiler` and handle the React Compiler bundle manually.
 - **`(0, fn)(args)` → `fn(args)` is a `this`-affecting rewrite**: Rollup emits the IIFE wrapper specifically to set the call's `this` to `undefined` (otherwise `obj.method()` binds `obj` as `this`). The replacement makes the receiver `this` again. This is fine for the overwhelming majority of bundled output (React's `jsx`-runtime, Lodash, etc. don't read `this`) but technically observable. Pass `--skip simplify` if you have a transform that genuinely depends on `this`-stripping. **wakaru's `un_indirect_call` does the same rewrite** — if you ran wakaru-normalize (Step 0b.5) the unwrap may already be done; use `--level minimal` when this `this`-stripping matters.
 - **`jsx-runtime` detection is by name, not by binding**: any `.jsx`, `.jsxs`, `.jsxDEV`, `.Fragment` reference is treated as JSX-runtime. False positives are rare (these names are reserved by convention) but possible. If you have a user-defined `.jsx` method, the script will rewrite the call — re-check after polish.
-- **`inline-defaults` treats `??` as a destructure default**: a destructure default fires only on `undefined`; `??` fires on `null` *and* `undefined`. The script applies the transform anyway because React component props almost never carry `null`. If you have a `null`-tolerant prop, audit after polish or `--skip inline-defaults`.
+- **`inline-defaults` treats `??` as a destructure default**: a destructure default fires only on `undefined`; `??` fires on `null` _and_ `undefined`. The script applies the transform anyway because React component props almost never carry `null`. If you have a `null`-tolerant prop, audit after polish or `--skip inline-defaults`.
 - **`polish.ts` defaults to `--prefer local`** (the bundle's alias gets replaced with the local rename, e.g. `export const ClockIcon = …` not `export const t = …`). Pass `--prefer exported` if you want to keep the bundle's alias. The standalone `normalize-exports.ts` script still defaults to `--prefer exported` (its old behaviour) for backwards compatibility — the override is only on `polish.ts`.
-- **Provenance header via `--source`**: polish only prepends the `// Restored from <path>` header when you explicitly pass `--source` (it has no way to know the original chunk path otherwise — its input is usually `$WS/renamed.js`). Re-running polish on already-headered code will *duplicate* the header — don't pipe polish through itself.
-- **Header description via `--description`**: pass `--description "<text>"` to add a second `// <text>` line under the source line. Use this for a one-sentence summary of what the file does (`"Semantic button component: named variants, typed props, and direct JSX."`). The description is agent judgment — write it *after* you've understood the polished code. The flag also works standalone (without `--source`) and just emits the description line on its own.
+- **Provenance header via `--source`**: polish only prepends the `// Restored from <path>` header when you explicitly pass `--source` (it has no way to know the original chunk path otherwise — its input is usually `$WS/renamed.js`). Re-running polish on already-headered code will _duplicate_ the header — don't pipe polish through itself.
+- **Header description via `--description`**: pass `--description "<text>"` to add a second `// <text>` line under the source line. Use this for a one-sentence summary of what the file does (`"Semantic button component: named variants, typed props, and direct JSX."`). The description is agent judgment — write it _after_ you've understood the polished code. The flag also works standalone (without `--source`) and just emits the description line on its own.
 - **Sourcemap comments survive polish**: a dangling `//# sourceMappingURL=…` will pass through to the output. Delete by hand or post-process with `sed`/`prettier` if needed.
 - **Dead Vite/Rollup runtime stubs survive polish**: after `jsx-runtime` un-transform and `strip-react-compiler`, lines like `var jsxRuntime = requireJsxRuntime();`, `var react = requireReact();` and `toESM(requireReact());` may become unreferenced. The skill does not auto-delete them because static side-effect analysis isn't reliable on arbitrary calls — confirm and remove by hand.
 
@@ -64,7 +73,7 @@ Each Stage 1 step has an *input shape* the previous step produced. Running them 
 - **Sourcemap first** — if a usable `.map` exists, recover via `source-map-explorer` and skip wakaru entirely; running it rewrites the bytes the `.map` indexes.
 - **Not a deobfuscator** — wakaru recovers transpiler/minifier output, not Obfuscator.IO / Packer / AAEncode / control-flow flattening. Run Stage 1 first on obfuscated input.
 - **Not a semantic renamer** — its `smart_rename` is the same deterministic heuristic as `smart-rename.ts`. wakaru never produces meaningful names; the skill's rename remains the hard bar.
-- **`--unpack` forks the restore root** — only ever `--unpack` a single scope-hoisted bundle. On an already-split chunk tree it re-derives its own filenames matching nothing in the manifest/ledger/`CHUNK_NAME_REGISTRY`. In full-restoration, normalize chunk *bodies* only and rebuild the graph from the real chunk files afterward; never let wakaru's `un_esm` substitute for `resolve-npm-imports.ts`.
+- **`--unpack` forks the restore root** — only ever `--unpack` a single scope-hoisted bundle. On an already-split chunk tree it re-derives its own filenames matching nothing in the manifest/ledger/`CHUNK_NAME_REGISTRY`. In full-restoration, normalize chunk _bodies_ only and rebuild the graph from the real chunk files afterward; never let wakaru's `un_esm` substitute for `resolve-npm-imports.ts`.
 - **Fidelity at `aggressive` / `--dce`** — default is `--level standard` (no `--dce`). `--level minimal` for fidelity-critical/untrusted code; `aggressive` only with a re-read + behavioral sanity check; `--dce` can drop side-effecting code, so opt in only when you've audited.
 - **Double-transform with Phase B** — overlapping passes (`un_jsx`/`jsx-runtime`, `un_indirect_call`/`simplify`, `un_template_literal`, `un_export_rename`/`normalize-exports`) make Phase B largely no-op afterward — expected. `strip-react-compiler` has no wakaru equivalent, so Phase B must still run.
 - **Availability / version** — invoked via `npx @wakaru/cli@1.5.0` (pinned) or a global `wakaru`. When unavailable the wrapper passes the input through unchanged (stderr note, exit 0) so offline/CI runs don't break — surfaced as `skipped`. A genuine wakaru parse error surfaces as exit 2 with a usable passthrough output left in place.
@@ -77,7 +86,7 @@ The detector requires the exact `(p, a, c, k, e, d|r)` parameter signature. If t
 
 ### "string-array replaced 0 references"
 
-Check stderr for `decoder-indirection`. If true, the obfuscator wraps array access behind a function. Run `bun scripts/simplify.ts <input>` first (it inlines small constant functions), then re-run `string-array`. If it's still 0, the array might be rotated *and* the rotation pattern is non-standard — file a fixture and we can extend the matcher.
+Check stderr for `decoder-indirection`. If true, the obfuscator wraps array access behind a function. Run `bun scripts/simplify.ts <input>` first (it inlines small constant functions), then re-run `string-array`. If it's still 0, the array might be rotated _and_ the rotation pattern is non-standard — file a fixture and we can extend the matcher.
 
 ### "simplify inlined too aggressively, I lost a name I wanted"
 
@@ -97,7 +106,7 @@ By design — one failing AST pass doesn't abort the rest. Read the `--report` J
 
 ### Output has lots of `_foo`, `__foo` names
 
-You picked the same target for many bindings within a *single* scope, or those targets collided with existing names visible in that scope. `apply.ts` tracks "taken" names per scope (not globally), so reusing the same target name across *unrelated* function scopes — e.g. naming many local `routeScope` bindings — is fine and does NOT cause `_`-prefixing. If you still see chains of underscores (`____routeScope`), the bindings are actually shadowing each other (same scope or parent/child relationship) — pick a more specific name or accept the prefixes.
+You picked the same target for many bindings within a _single_ scope, or those targets collided with existing names visible in that scope. `apply.ts` tracks "taken" names per scope (not globally), so reusing the same target name across _unrelated_ function scopes — e.g. naming many local `routeScope` bindings — is fine and does NOT cause `_`-prefixing. If you still see chains of underscores (`____routeScope`), the bindings are actually shadowing each other (same scope or parent/child relationship) — pick a more specific name or accept the prefixes.
 
 ### Top-level exports got semantic names but function bodies are still `e, t, n, k, A, M, N, …`
 
@@ -121,7 +130,7 @@ Don't. Use `scripts/plan.ts` to group them into batches and walk the checklist. 
 
 ### Apply renames 0 symbols but renames.json has entries
 
-The `id` strings in `renames.json` don't match what `extract.ts` produced this run. Re-run extract first, then make sure renames.json uses the fresh ids (the `@<offset>` part is what changes). This frequently happens after a Stage 1 pass — *always* re-run `extract.ts` after Stage 1.
+The `id` strings in `renames.json` don't match what `extract.ts` produced this run. Re-run extract first, then make sure renames.json uses the fresh ids (the `@<offset>` part is what changes). This frequently happens after a Stage 1 pass — _always_ re-run `extract.ts` after Stage 1.
 
 ### webcrack errored / left files unsplit
 
@@ -169,4 +178,4 @@ You ran `polish.ts --source` twice on the same code. Polish doesn't deduplicate 
 
 ### My output renamed `./spinner-D37df5tU.js` to `./spinner.js` and now imports are broken
 
-You shouldn't rewrite local import paths — even if the hash suffix looks ugly, it's the real file name on disk. Only resolve a path to a bare npm specifier (e.g. `"clsx"`) when you're certain the binding *is* a vendored copy of that package. See [Stage 3 D2](../stages/stage-3-finalize.md#d2--import-paths-preserve-local-resolve-npm).
+You shouldn't rewrite local import paths — even if the hash suffix looks ugly, it's the real file name on disk. Only resolve a path to a bare npm specifier (e.g. `"clsx"`) when you're certain the binding _is_ a vendored copy of that package. See [Stage 3 D2](../stages/stage-3-finalize.md#d2--import-paths-preserve-local-resolve-npm).

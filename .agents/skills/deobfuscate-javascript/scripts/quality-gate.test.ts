@@ -117,6 +117,13 @@ describe("quality-gate", () => {
         ReactIntlConfig,
         ResolvedIntlConfig,
       } from "react-intl";
+      export {
+        createIntl as libA,
+        createIntlCache as libC,
+        defineMessages as libI,
+        useIntl as libL,
+        FormattedMessage as libS,
+      } from "react-intl";
     `;
     const report = analyzeSource(source, "restored/vendor/react-intl.tsx", {
       ...DEFAULT_OPTIONS,
