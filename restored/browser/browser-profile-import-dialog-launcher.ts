@@ -15,6 +15,10 @@ const BrowserProfileImportDialogModalLazy = React.lazy(async () => ({
     .BrowserProfileImportDialogModal,
 }));
 
+export function initBrowserProfileImportDialogLauncherChunk(): void {
+  void BrowserProfileImportDialogModalLazy;
+}
+
 export function openBrowserProfileImportDialog(
   store: ModalStore,
   service: BrowserProfileImportService | null | undefined,

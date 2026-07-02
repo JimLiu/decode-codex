@@ -99,6 +99,10 @@ export {
   initReviewTabIconChunk as getThreadMcpAppSidePanelTabId,
 } from "../../icons/review-tab-icon";
 export {
+  initBrowserProfileImportDialogLauncherChunk as initThreadRowRuntimeChunk,
+  openBrowserProfileImportDialog as ThreadRowPinAction,
+} from "../../browser/browser-profile-import-dialog-launcher";
+export {
   cancelGitWorkflowAbortSignal as ThreadRowTitle,
 } from "../../review/local-git-action-state";
 export {
@@ -138,13 +142,11 @@ export {
 export {
   Bn as ArchiveMenuItem,
   Gl as projectGroupRepositoryDataSignal,
-  Hd as initThreadRowRuntimeChunk,
   Nn as SidebarRowActionButton,
   Nr as SidebarRowContextMenu,
   Oi as SidebarRowOverflowMenu,
   Pn as SidebarTaskRow,
   Qp as SidebarTaskRowTitle,
-  Ud as ThreadRowPinAction,
   Wc as primeBrowserTabTransfers,
   Wc as transferForkedConversationBrowserTabs,
   al as SidebarRowMenuSeparator,
