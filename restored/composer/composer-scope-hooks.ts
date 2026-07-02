@@ -1,13 +1,13 @@
 // Restored from ref/webview/assets/app-initial~app-main~remote-conversation-page~hotkey-window-thread-page~automations-page~th~bnlvjk3w-ClqKjb2h.js
 // Scope-access hooks used by the composer: read the scope store for a scope token,
 // derive the conversation id it represents, and read scoped queries / atoms. The
-// store/query/atom hooks resolve to the vendored shared runtime bundle they were
-// code-split from; the conversation-id derivation is reconstructed inline.
+// store/query/atom hooks resolve through the app-scope hook wrappers; the
+// conversation-id derivation is reconstructed inline.
 import {
-  Ko as useScopeStoreImpl,
-  Go as useScopedQueryImpl,
-  Qo as useScopedAtomValueImpl,
-} from "../vendor/current-app-initial-bnlvjk3w-shared-bundle";
+  useScope as useScopeStoreImpl,
+  useScopedValue as useScopedQueryImpl,
+  useSignalValue as useScopedAtomValueImpl,
+} from "../runtime/app-scope-hooks";
 import type { ScopeToken } from "../runtime/scope-signal-runtime";
 import type { ComposerScopeValue, ScopeAtom } from "./composer-atoms";
 
@@ -26,7 +26,7 @@ export interface ScopeStore<Value> {
 export function useScopeStore<Value>(
   scope: ScopeToken<Value>,
 ): ScopeStore<Value> {
-  return useScopeStoreImpl(scope);
+  return useScopeStoreImpl<ScopeStore<Value>>(scope);
 }
 
 /** The conversation id represented by a composer scope, or `null` for new/other scopes. */
@@ -39,7 +39,7 @@ export function useScopeConversationId(
 
 /** Subscribe to the value of a scoped atom in the current scope. */
 export function useScopedAtomValue<Value>(atom: ScopeAtom<Value>): Value {
-  return useScopedAtomValueImpl(atom);
+  return useScopedAtomValueImpl<Value>(atom);
 }
 
 /** Subscribe to a scoped query family resolved for the given argument. */
@@ -47,5 +47,5 @@ export function useScopedQuery<Data>(
   queryFamily: unknown,
   arg?: unknown,
 ): Data {
-  return useScopedQueryImpl(queryFamily, arg);
+  return useScopedQueryImpl<Data>(queryFamily, arg);
 }
