@@ -20592,8 +20592,8 @@
         "t": "loadUseSyncExternalStoreWithSelectorModule"
       },
       "status": "done",
-      "note": "Deep-restored the bundled use-sync-external-store/shim/with-selector CommonJS module as a typed React compatibility module. The original t export remains a loader function that returns { useSyncExternalStoreWithSelector }.",
-      "lastUpdated": "2026-06-29T00:00:00.000Z"
+      "note": "Replaced the bundled use-sync-external-store/shim/with-selector compatibility module with an npm-backed typed facade. The original t export remains a loader function that returns { useSyncExternalStoreWithSelector }.",
+      "lastUpdated": "2026-07-02T00:00:00.000Z"
     },
     "app-initial~app-main~remote-conversation-page~onboarding-page~hotkey-window-thread-page~app~c482ypdv-DWbVQfmz": {
       "restored": "icons/chat-bubbles-icon.tsx",
