@@ -46,6 +46,9 @@ export {
   isDeeplyDifferent as initSidebarRowPrimitivesChunk,
 } from "../../utils/is-deeply-different";
 export {
+  normalizeThreadDetailLevel as ThreadRowTimestamp,
+} from "../../utils/thread-detail-level";
+export {
   initSettingsControlRowChunk as initSettingsRowRuntime,
 } from "../../ui/settings-row";
 export {
@@ -102,7 +105,6 @@ export {
   _l as openThreadBrowserSidePanelTabWithPendingState,
   al as SidebarRowMenuSeparator,
   cm as ThreadRowEnvironmentMeta,
-  cp as ThreadRowTimestamp,
   dl as SidebarRowDragHandle,
   eu as SidebarRowUnreadDot,
   fl as getBrowserTabIdForSidePanelOpen,
