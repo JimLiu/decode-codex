@@ -4,4 +4,4 @@ const settingsPageSemanticEntry = () => "settings-page";
 
 void settingsPageSemanticEntry;
 
-export { SettingsPageIcon as SettingsPage } from "../vendor/settings-page-current-bundle";
+export { SettingsPageIcon as SettingsPage } from "./settings-page-current";

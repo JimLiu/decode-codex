@@ -1,5 +1,5 @@
 // Restored from ref/webview/assets/settings-page-Czsl4aZl.js
-// Flat boundary. Vendored current settings page backing bundle with restored dependency imports.
+// Current settings page implementation with restored dependency imports.
 
 import { once, toEsModule } from "../runtime/commonjs-interop";
 import {
@@ -110,7 +110,7 @@ import {
   initAppHeaderUpdateButtonChunk,
   initSunIconChunk,
   useRegisterToggleSidebarCommand,
-} from "./automations-page-current-runtime";
+} from "../vendor/automations-page-current-runtime";
 import {
   pullRequestNewThreadCompatSlotLowerALowerT,
   pullRequestNewThreadCompatSlotLowerL,
@@ -138,7 +138,7 @@ import {
   appMainCurrentCompatSlotUpperXLowerT,
   initResolvedHighlightThemesChunk,
   appMainCurrentCompatSlotUpperZLowerT,
-} from "./app-main-current-runtime";
+} from "../vendor/app-main-current-runtime";
 import {
   appgenLibraryHotDjo67r4nCompatSlotLowerA,
   appgenLibraryHotDjo67r4nCompatSlotLowerDLowerT,
@@ -216,14 +216,14 @@ var settingsPageValue1,
   settingsPageValue3 = once(() => {
     toEsModule(currentAppInitialSharedCompatSlotUnderscoreLowerC());
     settingsPageValue1 = currentAppInitialSharedCompatSlotLowerLLowerC();
-    settingsPageValue2 = (settingsPageParam11) => (
+    settingsPageValue2 = (iconProps) => (
       <svg
         width={24}
         height={24}
         viewBox="0 0 24 24"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        {...settingsPageParam11}
+        {...iconProps}
       >
         <path
           d="M12.8124 13.516V11.7015C12.8124 10.9836 13.3942 10.4017 14.1122 10.4017C14.8302 10.4017 15.412 10.9836 15.412 11.7015V13.516C15.4118 14.2338 14.83 14.8158 14.1122 14.8158C13.3944 14.8158 12.8126 14.2338 12.8124 13.516Z"
@@ -245,14 +245,14 @@ var settingsPageValue1,
   settingsPageValue5 = once(() => {
     toEsModule(currentAppInitialSharedCompatSlotUnderscoreLowerC());
     _n = currentAppInitialSharedCompatSlotLowerLLowerC();
-    settingsPageValue4 = (settingsPageParam8) => (
+    settingsPageValue4 = (iconProps) => (
       <svg
         width={24}
         height={24}
         viewBox="0 0 24 24"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        {...settingsPageParam8}
+        {...iconProps}
       >
         <path
           fillRule="evenodd"
@@ -280,14 +280,14 @@ var settingsPageValue1,
   settingsPageValue8 = once(() => {
     toEsModule(currentAppInitialSharedCompatSlotUnderscoreLowerC());
     settingsPageValue6 = currentAppInitialSharedCompatSlotLowerLLowerC();
-    settingsPageValue7 = (settingsPageParam7) => (
+    settingsPageValue7 = (iconProps) => (
       <svg
         width={20}
         height={20}
         viewBox="0 0 20 20"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        {...settingsPageParam7}
+        {...iconProps}
       >
         <path
           d="M15.9951 7.33002C15.9951 6.61898 15.9942 6.12565 15.9629 5.74213C15.9398 5.46008 15.9021 5.27068 15.8506 5.12689L15.7949 4.99701C15.6409 4.69476 15.4068 4.44188 15.1191 4.26556L14.9932 4.19525C14.8352 4.11475 14.6237 4.05799 14.248 4.02728C13.8645 3.99595 13.3712 3.99506 12.6602 3.99506H7.33008C6.61904 3.99506 6.12571 3.99595 5.74219 4.02728C5.36648 4.05799 5.15508 4.11474 4.99707 4.19525C4.65183 4.37117 4.37124 4.65177 4.19531 4.99701C4.1148 5.15502 4.05805 5.36642 4.02734 5.74213C3.99601 6.12565 3.99512 6.61898 3.99512 7.33002V12.6601C3.99512 13.3711 3.99601 13.8645 4.02734 14.248C4.05805 14.6236 4.11481 14.8351 4.19531 14.9931L4.26563 15.1191C4.44194 15.4067 4.69482 15.6409 4.99707 15.7949L5.12695 15.8505C5.27074 15.902 5.46014 15.9398 5.74219 15.9628C6.12571 15.9942 6.61904 15.9951 7.33008 15.9951H12.6602C13.3712 15.9951 13.8645 15.9942 14.248 15.9628C14.6237 15.9321 14.8352 15.8754 14.9932 15.7949L15.1191 15.7245C15.4068 15.5482 15.6409 15.2953 15.7949 14.9931L15.8506 14.8632C15.9021 14.7194 15.9398 14.53 15.9629 14.248C15.9942 13.8645 15.9951 13.3711 15.9951 12.6601V7.33002ZM17.3252 12.6601C17.3252 13.3492 17.3258 13.9062 17.2891 14.3564C17.2563 14.757 17.1911 15.1178 17.0469 15.454L16.9805 15.5966C16.7149 16.1179 16.3105 16.5542 15.8145 16.8583L15.5967 16.9804C15.2201 17.1722 14.8142 17.2516 14.3564 17.289C13.9062 17.3258 13.3492 17.3251 12.6602 17.3251H7.33008C6.64099 17.3251 6.08403 17.3258 5.63379 17.289C5.23315 17.2563 4.87242 17.191 4.53613 17.0468L4.39356 16.9804C3.87229 16.7148 3.43595 16.3104 3.13184 15.8144L3.00977 15.5966C2.81795 15.22 2.73859 14.8142 2.70117 14.3564C2.66439 13.9062 2.66504 13.3492 2.66504 12.6601V7.33002C2.66504 6.64093 2.66439 6.08397 2.70117 5.63373C2.73858 5.17594 2.81796 4.77011 3.00977 4.39349C3.31321 3.79796 3.79802 3.31314 4.39356 3.00971C4.77017 2.8179 5.176 2.73852 5.63379 2.70111C6.08403 2.66433 6.64099 2.66498 7.33008 2.66498H12.6602C13.3492 2.66498 13.9062 2.66433 14.3564 2.70111C14.8142 2.73853 15.2201 2.81789 15.5967 3.00971L15.8145 3.13178C16.3105 3.43589 16.7149 3.87223 16.9805 4.39349L17.0469 4.53607C17.1911 4.87236 17.2563 5.23309 17.2891 5.63373C17.3258 6.08397 17.3252 6.64093 17.3252 7.33002V12.6601Z"
@@ -300,7 +300,12 @@ var settingsPageValue1,
       </svg>
     );
   });
-function settingsPageHelper1({ intl, query, targets, visibleSectionSlugs }) {
+function searchSettingsNavigationTargets({
+  intl,
+  query,
+  targets,
+  visibleSectionSlugs,
+}) {
   if (query.trim().length === 0) return [];
   let settingsPageValue178 = query.trim().split(/\s+/).filter(Boolean),
     settingsPageValue179 = new Map();
@@ -313,20 +318,20 @@ function settingsPageHelper1({ intl, query, targets, visibleSectionSlugs }) {
   return targets
     .flatMap((item) => {
       if (!settingsPageValue179.has(item.sectionSlug)) return [];
-      let settingsPageValue198 = settingsPageHelper2(
-        settingsPageHelper4(intl, item),
+      let settingsPageValue198 = matchSettingsSearchTarget(
+        getSettingsSearchTargetDescriptor(intl, item),
         query,
         settingsPageValue178,
       );
       return settingsPageValue198 == null ? [] : [settingsPageValue198];
     })
-    .sort((settingsPageParam21, settingsPageParam22) =>
-      settingsPageParam21.matchPriority === settingsPageParam22.matchPriority
-        ? settingsPageParam21.score === settingsPageParam22.score
-          ? (settingsPageValue179.get(settingsPageParam21.sectionSlug) ?? 0) -
-            (settingsPageValue179.get(settingsPageParam22.sectionSlug) ?? 0)
-          : settingsPageParam22.score - settingsPageParam21.score
-        : settingsPageParam21.matchPriority - settingsPageParam22.matchPriority,
+    .sort((leftResult, rightResult) =>
+      leftResult.matchPriority === rightResult.matchPriority
+        ? leftResult.score === rightResult.score
+          ? (settingsPageValue179.get(leftResult.sectionSlug) ?? 0) -
+            (settingsPageValue179.get(rightResult.sectionSlug) ?? 0)
+          : rightResult.score - leftResult.score
+        : leftResult.matchPriority - rightResult.matchPriority,
     )
     .map(({ label, panelLabel, sectionSlug }) => ({
       label,
@@ -334,15 +339,11 @@ function settingsPageHelper1({ intl, query, targets, visibleSectionSlugs }) {
       sectionSlug,
     }));
 }
-function settingsPageHelper2(
-  settingsPageParam13,
-  settingsPageParam14,
-  settingsPageParam15,
-) {
-  let { messageTexts, panelLabel, sectionSlug } = settingsPageParam13,
+function matchSettingsSearchTarget(targetDescriptor, query, searchTerms) {
+  let { messageTexts, panelLabel, sectionSlug } = targetDescriptor,
     settingsPageValue180 = pullRequestNewThreadCompatSlotLowerU(
       panelLabel,
-      settingsPageParam14,
+      query,
     );
   if (settingsPageValue180 > 0)
     return {
@@ -352,19 +353,16 @@ function settingsPageHelper2(
       score: settingsPageValue180,
       sectionSlug,
     };
-  let settingsPageValue181 = settingsPageHelper3(
+  let settingsPageValue181 = scoreSearchTermsAcrossTexts(
     [panelLabel, ...messageTexts],
-    settingsPageParam15,
+    searchTerms,
   );
   if (settingsPageValue181 === 0) return null;
   let settingsPageValue182 = null;
   for (let settingsPageValue196 of messageTexts) {
     let settingsPageValue197 = Math.max(
-      pullRequestNewThreadCompatSlotLowerU(
-        settingsPageValue196,
-        settingsPageParam14,
-      ),
-      ...settingsPageParam15.map((item) =>
+      pullRequestNewThreadCompatSlotLowerU(settingsPageValue196, query),
+      ...searchTerms.map((item) =>
         pullRequestNewThreadCompatSlotLowerU(settingsPageValue196, item),
       ),
     );
@@ -387,11 +385,11 @@ function settingsPageHelper2(
     sectionSlug,
   };
 }
-function settingsPageHelper3(settingsPageParam26, settingsPageParam27) {
-  let settingsPageValue195 = settingsPageParam27.map((item) =>
+function scoreSearchTermsAcrossTexts(candidateTexts, searchTerms) {
+  let settingsPageValue195 = searchTerms.map((item) =>
     Math.max(
       0,
-      ...settingsPageParam26.map((_item) =>
+      ...candidateTexts.map((_item) =>
         pullRequestNewThreadCompatSlotLowerU(_item, item),
       ),
     ),
@@ -404,30 +402,30 @@ function settingsPageHelper3(settingsPageParam26, settingsPageParam27) {
         0,
       );
 }
-function settingsPageHelper4(settingsPageParam16, settingsPageParam17) {
-  let settingsPageValue185 = settingsPageValue9.get(settingsPageParam16);
+function getSettingsSearchTargetDescriptor(intl, target) {
+  let settingsPageValue185 = settingsPageValue9.get(intl);
   settingsPageValue185 ??
     ((settingsPageValue185 = new WeakMap()),
-    settingsPageValue9.set(settingsPageParam16, settingsPageValue185));
-  let settingsPageValue186 = settingsPageValue185.get(settingsPageParam17);
+    settingsPageValue9.set(intl, settingsPageValue185));
+  let settingsPageValue186 = settingsPageValue185.get(target);
   if (settingsPageValue186 != null) return settingsPageValue186;
   let settingsPageValue187 = {
     messageTexts: [
-      ...settingsPageParam17.messages.map((item) => {
-        let settingsPageValue199 = settingsPageParam16.messages[item.id];
+      ...target.messages.map((item) => {
+        let settingsPageValue199 = intl.messages[item.id];
         return typeof settingsPageValue199 == "string"
           ? settingsPageValue199
           : item.defaultMessage;
       }),
-      ...(settingsPageParam17.terms ?? []),
+      ...(target.terms ?? []),
     ],
-    panelLabel: settingsPageParam16.formatMessage(
-      appgenLibraryHotDjo67r4nCompatSlotUpperU(settingsPageParam17.sectionSlug),
+    panelLabel: intl.formatMessage(
+      appgenLibraryHotDjo67r4nCompatSlotUpperU(target.sectionSlug),
     ),
-    sectionSlug: settingsPageParam17.sectionSlug,
+    sectionSlug: target.sectionSlug,
   };
   return (
-    settingsPageValue185.set(settingsPageParam17, settingsPageValue187),
+    settingsPageValue185.set(target, settingsPageValue187),
     settingsPageValue187
   );
 }
@@ -437,7 +435,7 @@ var settingsPageValue9,
     appgenLibraryHotDjo67r4nCompatSlotUpperW();
     settingsPageValue9 = new WeakMap();
   });
-function settingsPageHelper5(settingsPageParam1) {
+function SettingsNavigationSidebar(props) {
   let {
       settingsSections,
       activeSection,
@@ -449,7 +447,7 @@ function settingsPageHelper5(settingsPageParam1) {
       onClearHostFilter,
       searchTargets,
       sidebarHostSelector,
-    } = settingsPageParam1,
+    } = props,
     settingsPageValue35 =
       searchTargets === undefined ? settingsPageValue18 : searchTargets,
     settingsPageValue36 = currentAppInitialSharedFunction0375(),
@@ -467,22 +465,22 @@ function settingsPageHelper5(settingsPageParam1) {
   let settingsPageValue45 = settingsPageValue44,
     settingsPageValue46,
     settingsPageValue47;
-  settingsPageValue46 = settingsPageHelper1({
+  settingsPageValue46 = searchSettingsNavigationTargets({
     intl: settingsPageValue36,
     query: settingsPageValue40,
     targets: settingsPageValue35,
-    visibleSectionSlugs: settingsSections.flatMap(settingsPageHelper11),
+    visibleSectionSlugs: settingsSections.flatMap(getNavigableSectionSlug),
   });
   settingsPageValue47 = settingsPageValue46
-    .map(settingsPageHelper10)
+    .map(getSearchResultSectionSlug)
     .join("\0");
   let settingsPageValue48 = settingsPageValue47,
     settingsPageValue49 =
       settingsPageValue48.length === 0 ? [] : settingsPageValue48.split("\0");
   let settingsPageValue50 = settingsPageValue49,
     settingsPageValue51 = settingsPageValue43 && settingsPageValue40.length > 0,
-    settingsPageValue52 = (settingsPageParam34, settingsPageParam35) => {
-      let settingsPageValue202 = settingsPageValue46[settingsPageParam35];
+    settingsPageValue52 = (selectedItem, resultIndex) => {
+      let settingsPageValue202 = settingsPageValue46[resultIndex];
       settingsPageValue202 != null &&
         onSelect(settingsPageValue202.sectionSlug);
     };
@@ -540,16 +538,20 @@ function settingsPageHelper5(settingsPageParam1) {
       {
         key: "settings",
         heading: null,
-        sections: settingsPageHelper15(settingsSections, settingsPageValue16),
+        sections: orderSettingsSectionsByPreferredSlugs(
+          settingsSections,
+          settingsPageValue16,
+        ),
       },
     ];
     groupSettingsSections &&
-      (settingsPageValue119 = settingsPageHelper14(
+      (settingsPageValue119 = groupSettingsSectionsByHeading(
         settingsSections,
         settingsPageValue17,
       ));
-    let settingsPageValue120 =
-      settingsPageValue119.flatMap(settingsPageHelper8);
+    let settingsPageValue120 = settingsPageValue119.flatMap(
+      getGroupSelectableSections,
+    );
     settingsPageValue71 = worktreeNewThreadQueryCompatSlotLowerMLowerH(
       "flex min-h-0 flex-1 flex-col select-none px-row-x",
       className,
@@ -585,7 +587,7 @@ function settingsPageHelper5(settingsPageParam1) {
               ),
               title: settingsPageValue62,
               onClick: () => {
-                settingsPageValue39(settingsPageHelper7);
+                settingsPageValue39(invertBoolean);
               },
             },
           ),
@@ -634,12 +636,12 @@ function settingsPageHelper5(settingsPageParam1) {
         <div className="mb-4 shrink-0">{sidebarHostSelector}</div>
       ) : null;
     settingsPageValue70 = settingsPageValue43
-      ? settingsPageValue13.jsx(settingsPageHelper12, {
+      ? settingsPageValue13.jsx(SettingsSearchInput, {
           onKeyDown: settingsPageValue55.getInputProps().onKeyDown,
           searchQuery: settingsPageValue40,
-          onQueryChange: (settingsPageParam37) => {
+          onQueryChange: (nextQuery) => {
             settingsPageValue55.setHighlightedIndex(-1);
-            settingsPageValue41(settingsPageParam37);
+            settingsPageValue41(nextQuery);
           },
         })
       : null;
@@ -651,7 +653,7 @@ function settingsPageHelper5(settingsPageParam1) {
       settingsPageValue121,
     );
     settingsPageValue65 = settingsPageValue45
-      ? settingsPageValue13.jsx(settingsPageHelper13, {
+      ? settingsPageValue13.jsx(SettingsSearchResults, {
           intl: settingsPageValue36,
           highlightedIndex: settingsPageValue55.highlightedIndex,
           listRef: settingsPageValue55.listRef,
@@ -680,11 +682,11 @@ function settingsPageHelper5(settingsPageParam1) {
                   settingsPageValue155 = settingsPageValue36.formatMessage(
                     appgenLibraryHotDjo67r4nCompatSlotUpperU(_item.slug),
                   ),
-                  settingsPageValue156 = (settingsPageParam18) => {
+                  settingsPageValue156 = (event) => {
                     if (!settingsPageValue153) {
                       if (settingsPageValue152 && _item.externalUrl) {
                         worktreeNewThreadQueryCompatSlotLowerILowerS({
-                          event: settingsPageParam18,
+                          event: event,
                           href: _item.externalUrl,
                           initiator: "open_in_browser_bridge",
                         });
@@ -810,7 +812,7 @@ function settingsPageHelper5(settingsPageParam1) {
             label: settingsPageValue13.jsx(currentAppInitialSharedMember0924, {
               ...settingsPageValue15.chatSettings,
             }),
-            onClick: settingsPageHelper6,
+            onClick: openChatSettings,
             trailing: settingsPageValue42
               ? undefined
               : settingsPageValue13.jsx(
@@ -871,35 +873,31 @@ function settingsPageHelper5(settingsPageParam1) {
     </nav>
   );
 }
-function settingsPageHelper6(settingsPageParam29) {
+function openChatSettings(event) {
   worktreeNewThreadQueryCompatSlotLowerILowerS({
-    event: settingsPageParam29,
+    event: event,
     href: settingsPageValue20,
     initiator: "open_in_browser_bridge",
     openTarget: "external-browser",
   });
 }
-function settingsPageHelper7(settingsPageParam46) {
-  return !settingsPageParam46;
+function invertBoolean(isCollapsed) {
+  return !isCollapsed;
 }
-function settingsPageHelper8(settingsPageParam41) {
-  return settingsPageParam41.sections.filter(settingsPageHelper9);
+function getGroupSelectableSections(group) {
+  return group.sections.filter(isInteractiveSettingsSection);
 }
-function settingsPageHelper9(settingsPageParam39) {
-  return (
-    !settingsPageParam39.disabled && settingsPageParam39.externalUrl == null
-  );
+function isInteractiveSettingsSection(section) {
+  return !section.disabled && section.externalUrl == null;
 }
-function settingsPageHelper10(settingsPageParam45) {
-  return settingsPageParam45.sectionSlug;
+function getSearchResultSectionSlug(searchResult) {
+  return searchResult.sectionSlug;
 }
-function settingsPageHelper11(settingsPageParam36) {
-  return settingsPageParam36.disabled || settingsPageParam36.externalUrl != null
-    ? []
-    : [settingsPageParam36.slug];
+function getNavigableSectionSlug(section) {
+  return section.disabled || section.externalUrl != null ? [] : [section.slug];
 }
-function settingsPageHelper12(settingsPageParam2) {
-  let { onKeyDown, searchQuery, onQueryChange } = settingsPageParam2,
+function SettingsSearchInput(props) {
+  let { onKeyDown, searchQuery, onQueryChange } = props,
     settingsPageValue123 = currentAppInitialSharedFunction0375(),
     settingsPageValue124 = settingsPageValue12.useRef(null),
     settingsPageValue125;
@@ -972,9 +970,8 @@ function settingsPageHelper12(settingsPageParam2) {
     </div>
   );
 }
-function settingsPageHelper13(settingsPageParam6) {
-  let { highlightedIndex, intl, listRef, onSelect, searchResults } =
-    settingsPageParam6;
+function SettingsSearchResults(props) {
+  let { highlightedIndex, intl, listRef, onSelect, searchResults } = props;
   if (searchResults.length === 0) {
     let settingsPageValue184;
     return (
@@ -991,19 +988,15 @@ function settingsPageHelper13(settingsPageParam6) {
   let settingsPageValue158;
   {
     let settingsPageValue160;
-    settingsPageValue160 = (settingsPageParam9, settingsPageParam10) => {
-      let settingsPageValue161 =
-        settingsPageValue14[settingsPageParam9.sectionSlug];
+    settingsPageValue160 = (result, index) => {
+      let settingsPageValue161 = settingsPageValue14[result.sectionSlug];
       return (
-        <div
-          key={settingsPageParam9.sectionSlug}
-          className="flex flex-col gap-0.5"
-        >
+        <div key={result.sectionSlug} className="flex flex-col gap-0.5">
           <div className="flex items-center gap-2 px-row-x py-1 text-base text-token-text-secondary">
             {settingsPageValue13.jsx(settingsPageValue161, {
               className: "icon-sm shrink-0",
             })}
-            <span className="truncate">{settingsPageParam9.panelLabel}</span>
+            <span className="truncate">{result.panelLabel}</span>
           </div>
           <button
             aria-label={intl.formatMessage(
@@ -1014,22 +1007,21 @@ function settingsPageHelper13(settingsPageParam6) {
                   "Accessible label for a settings search result and its containing panel",
               },
               {
-                destination: settingsPageParam9.label,
-                panel: settingsPageParam9.panelLabel,
+                destination: result.label,
+                panel: result.panelLabel,
               },
             )}
             className={worktreeNewThreadQueryCompatSlotLowerMLowerH(
               "focus-visible:ring-token-focus flex cursor-interaction items-center rounded-lg py-1.5 pe-2 ps-8.5 text-left text-base text-token-foreground hover:bg-token-list-hover-background focus-visible:ring-1 focus-visible:outline-none",
-              settingsPageParam10 === highlightedIndex &&
-                "bg-token-list-hover-background",
+              index === highlightedIndex && "bg-token-list-hover-background",
             )}
             data-list-navigation-item="true"
             onClick={() => {
-              onSelect(settingsPageParam9.sectionSlug);
+              onSelect(result.sectionSlug);
             }}
             type="button"
           >
-            <span className="truncate">{settingsPageParam9.label}</span>
+            <span className="truncate">{result.label}</span>
           </button>
         </div>
       );
@@ -1042,11 +1034,9 @@ function settingsPageHelper13(settingsPageParam6) {
     </div>
   );
 }
-function settingsPageHelper14(settingsPageParam19, settingsPageParam20) {
-  let settingsPageValue188 = new Map(
-      settingsPageParam19.map((item) => [item.slug, item]),
-    ),
-    settingsPageValue189 = settingsPageParam20.map((item) => ({
+function groupSettingsSectionsByHeading(sections, groups) {
+  let settingsPageValue188 = new Map(sections.map((item) => [item.slug, item])),
+    settingsPageValue189 = groups.map((item) => ({
       ...item,
       sections: item.slugs.flatMap((_item) => {
         let settingsPageValue200 = settingsPageValue188.get(_item);
@@ -1064,12 +1054,10 @@ function settingsPageHelper14(settingsPageParam19, settingsPageParam20) {
     settingsPageValue189.filter((item) => item.sections.length > 0)
   );
 }
-function settingsPageHelper15(settingsPageParam24, settingsPageParam25) {
-  let settingsPageValue194 = new Map(
-    settingsPageParam24.map((item) => [item.slug, item]),
-  );
+function orderSettingsSectionsByPreferredSlugs(sections, preferredSlugs) {
+  let settingsPageValue194 = new Map(sections.map((item) => [item.slug, item]));
   return [
-    ...settingsPageParam25.flatMap((item) => {
+    ...preferredSlugs.flatMap((item) => {
       let settingsPageValue201 = settingsPageValue194.get(item);
       return settingsPageValue201 == null
         ? []
@@ -11534,26 +11522,26 @@ var settingsPageValue11,
       ],
     };
   });
-function $n(settingsPageParam12) {
+function $n(options) {
   let settingsPageValue167 = currentAppInitialSharedFunction0375(),
     { data } = pullRequestNewThreadCompatSlotLowerV(),
     settingsPageValue168 = data?.isSystemBackdropSupported !== false,
     settingsPageValue169 = data?.platform === "darwin",
     { data: _data = [] } = currentAppInitialSharedCompatSlotUpperGLowerO(
       worktreeNewThreadQueryCompatSlotLowerSLowerL,
-      settingsPageParam12.selectedHostId,
+      options.selectedHostId,
     );
   let settingsPageValue171 = _data,
     settingsPageValue172 = settingsPageValue171
       .filter(isExperimentalFeatureVisible)
-      .flatMap(settingsPageHelper18);
+      .flatMap(getExperimentalFeatureSearchTerms);
   let settingsPageValue173 = settingsPageValue172,
     settingsPageValue174 = [
       {
         locale: appMainCurrentCompatSlotLowerXLowerF,
         language: "en",
       },
-      ...appMainCurrentCompatSlotUpperCLowerF().map(settingsPageHelper17),
+      ...appMainCurrentCompatSlotUpperCLowerF().map(localeToSearchLanguageTerm),
     ].flatMap((item) => {
       let { language, locale } = item;
       return [
@@ -11569,7 +11557,7 @@ function $n(settingsPageParam12) {
     item.sectionSlug === "appearance" && !settingsPageValue168
       ? {
           ...item,
-          messages: item.messages.filter(settingsPageHelper16),
+          messages: item.messages.filter(isSupportedAppearanceSearchMessage),
         }
       : item.sectionSlug === "agent"
         ? {
@@ -11585,21 +11573,19 @@ function $n(settingsPageParam12) {
           : item,
   );
 }
-function settingsPageHelper16(settingsPageParam42) {
-  return !settingsPageValue27.includes(settingsPageParam42.id);
+function isSupportedAppearanceSearchMessage(message) {
+  return !settingsPageValue27.includes(message.id);
 }
-function settingsPageHelper17(settingsPageParam38) {
+function localeToSearchLanguageTerm(localeOption) {
   return {
-    locale: settingsPageParam38.locale,
-    language: settingsPageParam38.locale,
+    locale: localeOption.locale,
+    language: localeOption.locale,
   };
 }
-function settingsPageHelper18(settingsPageParam30) {
+function getExperimentalFeatureSearchTerms(feature) {
   return [
-    settingsPageParam30.displayName ?? settingsPageParam30.name,
-    ...(settingsPageParam30.description == null
-      ? []
-      : [settingsPageParam30.description]),
+    feature.displayName ?? feature.name,
+    ...(feature.description == null ? [] : [feature.description]),
   ];
 }
 var settingsPageValue25,
@@ -11624,21 +11610,21 @@ var settingsPageValue25,
       "settings.general.appearance.chromeTheme.translucentSidebar.short",
     ];
   });
-function settingsPageHelper19(
-  settingsPageParam3 = null,
-  settingsPageParam4 = true,
-  settingsPageParam5 = currentAppInitialSharedMember0542,
+function useSettingsPageNavigation(
+  requestedSectionSlug = null,
+  includeAllSections = true,
+  hostId = currentAppInitialSharedMember0542,
 ) {
   worktreeNewThreadQueryCompatSlotUpperYLowerC({
-    hostId: settingsPageParam5,
+    hostId: hostId,
   });
   let settingsPageValue133 = useIsRemoteHost(),
     settingsPageValue134 = pullRequestNewThreadCompatSlotLowerSLowerT(),
     settingsPageValue135 = worktreeNewThreadQueryCompatSlotUpperZLowerC({
-      hostId: settingsPageParam5,
+      hostId: hostId,
     }),
     settingsPageValue136 = worktreeNewThreadQueryCompatSlotLowerTLowerL({
-      hostId: settingsPageParam5,
+      hostId: hostId,
     });
   currentAppInitialSharedMember0781("3207467860");
   let settingsPageValue137 = currentAppInitialSharedMember0781(
@@ -11653,30 +11639,30 @@ function settingsPageHelper19(
     { isUsageSettingsVisible, isUsageSettingsAccessLoading } =
       useUsageSettingsAccess(),
     settingsPageValue140 = worktreeNewThreadQueryCompatSlotLowerRLowerL({
-      hostId: settingsPageParam5,
+      hostId: hostId,
     }),
     settingsPageValue141 =
-      settingsPageParam4 &&
+      includeAllSections &&
       !settingsPageValue136.isLoading &&
       !settingsPageValue136.allowed,
     settingsPageValue142 =
-      settingsPageParam4 &&
+      includeAllSections &&
       !settingsPageValue135.isLoading &&
       (settingsPageValue135.reason === "statsig-disabled" ||
         settingsPageValue135.reason === "config-requirement-disabled" ||
         settingsPageValue135.reason === "wsl-disabled"),
     settingsPageValue143 =
-      settingsPageParam4 &&
+      includeAllSections &&
       (settingsPageValue140.available ||
         settingsPageValue136.available ||
         settingsPageValue141),
     settingsPageValue144 =
-      settingsPageParam4 &&
+      includeAllSections &&
       (settingsPageValue135.available ||
         settingsPageValue136.available ||
         settingsPageValue142),
     settingsPageValue145 = settingsNavigationSections.filter((item) => {
-      if (!settingsPageParam4 && !settingsPageValue28.includes(item.slug))
+      if (!includeAllSections && !settingsPageValue28.includes(item.slug))
         return false;
       switch (item.slug) {
         case "appshots":
@@ -11726,19 +11712,19 @@ function settingsPageHelper19(
       }
     }),
     settingsPageValue146 = settingsPageValue145.find(
-      (item) => item.slug === settingsPageParam3,
+      (item) => item.slug === requestedSectionSlug,
     ),
-    settingsPageValue147 = settingsPageHelper20(settingsPageParam3),
+    settingsPageValue147 = findSettingsNavigationSection(requestedSectionSlug),
     settingsPageValue148 =
       settingsPageValue147 != null && settingsPageValue146 == null,
-    settingsPageValue149 = settingsPageParam4
+    settingsPageValue149 = includeAllSections
       ? defaultSettingsSection
       : settingsPageValue29,
     settingsPageValue150 = false;
   if (
     settingsPageValue148 &&
     !(
-      !settingsPageParam4 &&
+      !includeAllSections &&
       !settingsPageValue28.includes(settingsPageValue147.slug)
     )
   )
@@ -11799,16 +11785,15 @@ function settingsPageHelper19(
     shouldRedirectToVisibleSettingsSection:
       settingsPageValue148 && !settingsPageValue150,
     shouldRenderRouteContent:
-      settingsPageParam3 !== "import" || !settingsPageValue150,
+      requestedSectionSlug !== "import" || !settingsPageValue150,
     visibleSettingsSections: settingsPageValue145,
   };
 }
-function settingsPageHelper20(settingsPageParam33) {
-  return settingsPageParam33 == null
+function findSettingsNavigationSection(sectionSlug) {
+  return sectionSlug == null
     ? null
-    : (settingsNavigationSections.find(
-        (item) => item.slug === settingsPageParam33,
-      ) ?? null);
+    : (settingsNavigationSections.find((item) => item.slug === sectionSlug) ??
+        null);
 }
 var settingsPageValue28,
   settingsPageValue29,
@@ -11862,7 +11847,7 @@ export function SettingsPageIcon() {
       shouldRedirectToVisibleSettingsSection,
       shouldRenderRouteContent,
       visibleSettingsSections,
-    } = settingsPageHelper19(
+    } = useSettingsPageNavigation(
       settingsPageValue83,
       settingsPageValue84,
       selectedHostId,
@@ -11875,7 +11860,7 @@ export function SettingsPageIcon() {
       worktreeNewThreadOrchestratorCompatSlotLowerELowerM,
     ),
     settingsPageValue88 = () =>
-      settingsPageHelper23(settingsPageValue81, settingsPageValue86);
+      navigateToSettingsReturnRoute(settingsPageValue81, settingsPageValue86);
   let settingsPageValue89 = settingsPageValue88,
     settingsPageValue90 = {
       selectedHostId,
@@ -11932,8 +11917,8 @@ export function SettingsPageIcon() {
         })
       : $.jsx(SettingsContentLayout, {});
   let settingsPageValue99 = settingsPageValue98,
-    settingsPageValue100 = (settingsPageParam28) => {
-      settingsPageParam28 === "profile" &&
+    settingsPageValue100 = (sectionSlug) => {
+      sectionSlug === "profile" &&
         imagePickerSchemaCapabilities(
           settingsPageValue79,
           currentAppInitialSharedMember0021,
@@ -11941,25 +11926,23 @@ export function SettingsPageIcon() {
             source: "settings_page",
           },
         );
-      settingsPageValue81(`/settings/${settingsPageParam28}`, {
+      settingsPageValue81(`/settings/${sectionSlug}`, {
         replace: true,
         state: settingsPageValue82.state,
       });
     };
   let settingsPageValue101 = settingsPageValue100,
-    settingsPageValue102 = (settingsPageParam43, settingsPageParam44) => {
+    settingsPageValue102 = (_panelEvent, panelState) => {
       settingsPageValue79.set(
         worktreeNewThreadOrchestratorCompatSlotUpperNLowerT,
-        worktreeNewThreadOrchestratorCompatSlotUpperMLowerT(
-          settingsPageParam44,
-        ),
+        worktreeNewThreadOrchestratorCompatSlotUpperMLowerT(panelState),
       );
     };
   let settingsPageValue103 =
       worktreeNewThreadOrchestratorCompatSlotLowerSLowerA(settingsPageValue102),
-    settingsPageValue104 = (settingsPageParam40) => {
-      settingsPageValue103(settingsPageParam40);
-      settingsPageParam40 ??
+    settingsPageValue104 = (leftPanelElement) => {
+      settingsPageValue103(leftPanelElement);
+      leftPanelElement ??
         settingsPageValue79.set(
           worktreeNewThreadOrchestratorCompatSlotUpperNLowerT,
           null,
@@ -11972,7 +11955,7 @@ export function SettingsPageIcon() {
       .invalidate(appgenLibraryHotDjo67r4nCompatSlotLowerDLowerT, {
         exact: true,
       })
-      .catch(settingsPageHelper21);
+      .catch(ignoreInvalidateError);
   };
   let settingsPageValue107;
   settingsPageValue107 = [settingsPageValue79];
@@ -11984,10 +11967,13 @@ export function SettingsPageIcon() {
         event.key === "Escape" &&
           (event.defaultPrevented ||
             (event.target instanceof HTMLElement &&
-              (settingsPageHelper22(event.target) ||
+              (isTextEditingTarget(event.target) ||
                 event.target.closest('[role="dialog"][data-state="open"]') !=
                   null)) ||
-            settingsPageHelper23(settingsPageValue81, settingsPageValue86));
+            navigateToSettingsReturnRoute(
+              settingsPageValue81,
+              settingsPageValue86,
+            ));
       };
       return (
         window.addEventListener("keydown", settingsPageValue183),
@@ -12015,7 +12001,7 @@ export function SettingsPageIcon() {
         {
           children: (
             <div className="flex h-full min-h-0 flex-col overflow-hidden">
-              {$.jsx(settingsPageHelper5, {
+              {$.jsx(SettingsNavigationSidebar, {
                 canCollapse: false,
                 className: "pt-2",
                 settingsSections: visibleSettingsSections,
@@ -12067,7 +12053,7 @@ export function SettingsPageIcon() {
     settingsPageValue114 = (
       <div className={settingsPageValue111}>
         {settingsPageValue112}
-        {$.jsx(settingsPageHelper5, {
+        {$.jsx(SettingsNavigationSidebar, {
           canCollapse: false,
           className: undefined,
           settingsSections: visibleSettingsSections,
@@ -12103,22 +12089,22 @@ export function SettingsPageIcon() {
     </div>
   );
 }
-function settingsPageHelper21() {}
-function settingsPageHelper22(settingsPageParam23) {
-  let settingsPageValue193 = settingsPageParam23.tagName.toLowerCase();
+function ignoreInvalidateError() {}
+function isTextEditingTarget(target) {
+  let settingsPageValue193 = target.tagName.toLowerCase();
   return settingsPageValue193 === "input" ||
     settingsPageValue193 === "textarea" ||
     settingsPageValue193 === "select" ||
-    settingsPageParam23.isContentEditable
+    target.isContentEditable
     ? true
-    : settingsPageParam23.closest("[contenteditable='true']") != null;
+    : target.closest("[contenteditable='true']") != null;
 }
-function settingsPageHelper23(settingsPageParam31, settingsPageParam32) {
-  if (settingsPageParam32 != null) {
-    settingsPageParam31(settingsPageParam32);
+function navigateToSettingsReturnRoute(navigate, returnRoute) {
+  if (returnRoute != null) {
+    navigate(returnRoute);
     return;
   }
-  settingsPageParam31("/", {
+  navigate("/", {
     replace: true,
   });
 }
