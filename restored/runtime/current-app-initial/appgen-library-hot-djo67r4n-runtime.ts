@@ -17,7 +17,7 @@ import {
   t as NewThreadComposerFooter,
   tt as getWorkspaceGitRoot,
   V as SettingsTitle,
-} from "../../vendor/appgen-library-hot-current-bundle";
+} from "../../vendor/appgen-library-hot-current-runtime";
 
 export {
   formatWorkspaceRootLabel,
@@ -66,7 +66,7 @@ export {
   ui as localProjectActionsEnabledAtom, un as useWindowsSandboxSetupController, ur as finalizeComputerUseAppApproval, ut as computerUseAppApprovalsQuery, v as shouldUseCloudFollowUpForLocalComposer, vi as initLazySuspenseRuntime, vn as getWindowsSandboxBannerVisibility, vr as activeRemoteProjectIdSelector, vt as initAppsAmbientSuggestionsRefreshRuntime, w as initProjectSlashCommandIconRuntime, wi as useCodexCloudAccessState, wn as initArtifactKeywordRuntimeMessages,
   wr as setSidebarOrganizeMode, wt as getConnectorUpsellFamily, x as buildRateLimitResetBuckets, xi as initLazySuspensePlaceholderRuntime, xn as getArtifactKeywordMentionId, xr as sidebarProjectPreferencesSelector, xt as initPluginInstallModalChunk, y as initSettingsNavigationRuntime, yi as lazyLoadWithSuspense, yn as initWindowsSandboxSetupHelpers, yr as sidebarProjectSortModeSelector, yt as refreshAppsAndAmbientSuggestionsForInstalledApps,
   z as SettingsNavigationTitle, zn as DocumentStackIcon, zr as sidebarThreadRemoteHostSelector, zt as PluginAppCard
-} from "../../vendor/appgen-library-hot-current-bundle";
+} from "../../vendor/appgen-library-hot-current-runtime";
 
 // prettier-ignore
 // prettier-ignore
@@ -92,4 +92,4 @@ export {
   ui as appgenLibraryHotDjo67r4nCompatSlotLowerULowerI, un as appgenLibraryHotDjo67r4nCompatSlotLowerULowerN, ur as appgenLibraryHotDjo67r4nCompatSlotLowerULowerR, ut as appgenLibraryHotDjo67r4nCompatSlotLowerULowerT, v as appgenLibraryHotDjo67r4nCompatSlotLowerV, vi as appgenLibraryHotDjo67r4nCompatSlotLowerVLowerI, vn as appgenLibraryHotDjo67r4nCompatSlotLowerVLowerN, vr as appgenLibraryHotDjo67r4nCompatSlotLowerVLowerR, vt as appgenLibraryHotDjo67r4nCompatSlotLowerVLowerT, w as appgenLibraryHotDjo67r4nCompatSlotLowerW, wi as appgenLibraryHotDjo67r4nCompatSlotLowerWLowerI, wn as appgenLibraryHotDjo67r4nCompatSlotLowerWLowerN,
   wr as appgenLibraryHotDjo67r4nCompatSlotLowerWLowerR, wt as appgenLibraryHotDjo67r4nCompatSlotLowerWLowerT, x as appgenLibraryHotDjo67r4nCompatSlotLowerX, xi as appgenLibraryHotDjo67r4nCompatSlotLowerXLowerI, xn as appgenLibraryHotDjo67r4nCompatSlotLowerXLowerN, xr as appgenLibraryHotDjo67r4nCompatSlotLowerXLowerR, xt as appgenLibraryHotDjo67r4nCompatSlotLowerXLowerT, y as appgenLibraryHotDjo67r4nCompatSlotLowerY, yi as appgenLibraryHotDjo67r4nCompatSlotLowerYLowerI, yn as appgenLibraryHotDjo67r4nCompatSlotLowerYLowerN, yr as appgenLibraryHotDjo67r4nCompatSlotLowerYLowerR, yt as appgenLibraryHotDjo67r4nCompatSlotLowerYLowerT,
   z as appgenLibraryHotDjo67r4nCompatSlotLowerZ, zn as appgenLibraryHotDjo67r4nCompatSlotLowerZLowerN, zr as appgenLibraryHotDjo67r4nCompatSlotLowerZLowerR, zt as appgenLibraryHotDjo67r4nCompatSlotLowerZLowerT
-} from "../../vendor/appgen-library-hot-current-bundle";
+} from "../../vendor/appgen-library-hot-current-runtime";
